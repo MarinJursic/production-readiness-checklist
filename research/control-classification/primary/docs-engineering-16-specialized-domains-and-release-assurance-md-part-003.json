@@ -1,0 +1,413 @@
+{
+  "schema_version": "prc.control-classification-review/v0.1",
+  "packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-003",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "source_path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+  "controls": [
+    {
+      "control_id": "USEQ-E8034D11",
+      "revision": 1,
+      "semantic_sha256": "e8034d1133b9795ae21cbd44f32141f1e50ff8c1c826b6af245266878e00020a",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "Export and print renderers can be exercised with known valid, invalid, expired, revoked, and unverifiable signature fixtures.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every exported and printed representation displays the same signature-validity state as the authoritative verifier for approved status fixtures.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-E071C3CF",
+      "revision": 1,
+      "semantic_sha256": "e071c3cf949bc40150080fa32a81a822f09a5cac922d8681e10f6b1280fdbd8d",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Privacy and human-rights effects of tracking, exclusion, and surveillance require qualified legal, social, and affected-person assessment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-79ED6733",
+      "revision": 1,
+      "semantic_sha256": "79ed6733facfed54a1fe00149cd5f26f6afc53a50dcfd9b070e5717fb5cf858c",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Central logging and authorization records are objective, but strict necessity requires privacy-purpose and proportionality judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every central credential-presentation log has an explicit scoped authorization and necessity decision record.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-4D4D7C2A",
+      "revision": 1,
+      "semantic_sha256": "4d4d7c2a70463f7820bb4d3f1b8ba94ea508445f0fce2107f8464d8ba1c5d629",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Declared purpose and requested-claim sets are checkable, but necessity of each claim requires privacy and domain judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every verifier request contains only claims listed in its approved declared-purpose mapping.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-B8DDA406",
+      "revision": 1,
+      "semantic_sha256": "b8dda4068f1524e457c22ff9f460937dedcabc917f14598c7c50559409a10e5e",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Status-request fields and correlation tests are objective, but unnecessary holder-activity disclosure requires privacy threat judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every status-check protocol passes its approved holder-correlation and activity-disclosure tests.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-BCE7A5A9",
+      "revision": 1,
+      "semantic_sha256": "bce7a5a915020fe26471f14f7e35a63e302f725a2c9121f485a85c1a1aa4ce9a",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Alternative-path presence and execution are objective, but whether alternatives adequately include people with each constraint requires accessibility and rights judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Documented alternative paths exist and execute without requiring a compatible device, stable connectivity, official document, biometric, or excluded ability.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-9CEB51E5",
+      "revision": 1,
+      "semantic_sha256": "9ceb51e5d4b7749f3c80cd891dbf7c931ccf6471cf4d205706123e54b53202ed",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Recovery behavior and permanent-denial states can be tested, but legitimate identity and adequate recovery safeguards require specialist judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "A registered legitimate-holder fixture can recover after device or credential loss without entering a permanent-denial state.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F3DD21EB",
+      "revision": 1,
+      "semantic_sha256": "f3dd21eba884dfe4616d495ba110c533d548b68be6e448b1cc0bcb4cb7305c12",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Accessibility of enrollment, presentation, recovery, support, and disputes requires representative disabled-user and expert evaluation.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "undefined_protocol",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-C016832D",
+      "revision": 1,
+      "semantic_sha256": "c016832d207e3eddbb8807974378184f924c438096a30177566562c34cc477c3",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Executed cases are objective, but intended-population scope and representative names, scripts, households, and identity situations require research judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every population case approved in the identity test plan has executed name, script, address, family-structure, and identity-situation tests.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-271DE6C6",
+      "revision": 1,
+      "semantic_sha256": "271de6c660fb738c510515e655a12084563a0de949a048a4e93235f93b5c2e39",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "Decision logic can be tested so absence of one format never produces ineligibility when an alternative-required flag applies.",
+      "deterministic_clauses": [
+        {
+          "statement": "For every alternative-required case, inability to present one credential format does not produce an automated ineligibility result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-DA631250",
+      "revision": 1,
+      "semantic_sha256": "da631250736044c410e87a4311767e49b1b3adad562e272d5ed2aaf941a72318",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Understandability of data-flow, retention, trust, status, and remedy information requires audience research, accessibility, and legal review.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "undefined_protocol",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-A48D2BAD",
+      "revision": 1,
+      "semantic_sha256": "a48d2bad32f7176544d8edcb51f0879dc2fcdd51e85ff79f7aeac1a48b67aaaf",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Registered cryptographic assets are objective, but proving discovery of every identifier, proof, registry, and trust anchor is unbounded.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every discovered algorithm, key, certificate, identifier, proof, status mechanism, registry, and trust anchor has an inventory entry.",
+          "checker_family": "inventory_fact",
+          "evidence_authority": "repository"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-FD3F890D",
+      "revision": 1,
+      "semantic_sha256": "fd3f890d9206fdcef870fe6a52c1302cba121d7a25aefbe737e0f8d78e9f396d",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "Deprecation and obsolescence dates can be compared with preexisting migration plans for each named dependency class.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every algorithm, format, provider, registry, or issuer with an obsolescence date has an approved migration plan dated earlier.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-FB095D6A",
+      "revision": 1,
+      "semantic_sha256": "fb095d6a025b0439d7fbcf0e982535112c03d2a3eb4d5c794b6395cfdf17e926",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rotation and credential-validation tests are objective, but legitimacy and unnecessary invalidation require policy and rights judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Key-rotation tests preserve every credential fixture marked valid under the approved transition policy.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-5E18FC51",
+      "revision": 1,
+      "semantic_sha256": "5e18fc51514c08d6f7f820e699f7bb71dc2ce821f7f754ce5420a594cfc59023",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "A finite resilience suite can exercise all six explicitly named credential and trust-service failure scenarios.",
+      "deterministic_clauses": [
+        {
+          "statement": "Current tests cover compromise, revocation, offline verification, registry outage, wallet loss, and issuer retirement.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-BEB1A131",
+      "revision": 1,
+      "semantic_sha256": "beb1a13110a7aebf8dde4b835054492878ace578e1ef37780447771c931bd4ae",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "Archived evidence can be verified after replacing ordinary online dependencies in a controlled long-term-validation exercise.",
+      "deterministic_clauses": [
+        {
+          "statement": "Long-lived credential and signature fixtures remain verifiable using retained evidence after ordinary service-change and outage scenarios.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-942AB317",
+      "revision": 1,
+      "semantic_sha256": "942ab317c010be2f45302ff68c43297ed89b08b58d375dce6be15631fa5c757f",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "Protocol negotiation tests can attempt weaker proofs and status methods and verify rejection below the approved profile.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every downgrade attempt below the declared proof and status profile is rejected.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-1B9B5CDF",
+      "revision": 1,
+      "semantic_sha256": "1b9b5cdf8b6b0fbbfc0ba0894fedb819b7eeeaa21ba46aae77794ea96d275a4f",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "Independent implementations can exchange declared-profile fixtures and compare verification outcomes.",
+      "deterministic_clauses": [
+        {
+          "statement": "At least two independent implementations pass bidirectional issuance, presentation, and verification tests against the declared profile.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-137674FC",
+      "revision": 1,
+      "semantic_sha256": "137674fc913d0fdf4c84af77ba20319b210f4c39915cb153de8b321198a52de7",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The test evidence registry can be checked for completed results in all six explicitly required assurance categories.",
+      "deterministic_clauses": [
+        {
+          "statement": "Current evidence records completed security, privacy, accessibility, usability, conformance, and abuse tests.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-48D94432",
+      "revision": 1,
+      "semantic_sha256": "48d944328d0dad86cef3524f279f996d9f93ced1cd7131f1c7adc502591c93b2",
+      "classification": "deterministic",
+      "route": "external_readonly_query",
+      "reason": "Operational monitoring can be queried for each of the six explicitly named credential ecosystem indicators.",
+      "deterministic_clauses": [
+        {
+          "statement": "Monitoring tracks issuance anomalies, verification failures, replay, fraud, mass correlation, and support burden.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-07A28D8C",
+      "revision": 1,
+      "semantic_sha256": "07a28d8c2fff69fd6f98641eda276530d27d66233f1330b634c1e98536920b73",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "Incident coordination records can be checked for roles, contacts, escalation, and exercises spanning all five named participants.",
+      "deterministic_clauses": [
+        {
+          "statement": "The incident plan coordinates issuers, wallets, verifiers, trust services, and governance authorities with current contacts and exercise evidence.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-87B20C17",
+      "revision": 1,
+      "semantic_sha256": "87b20c17b72e48bfa4d3a6538251adf42d4455ba3a5e0217abcfdd57ef5d948b",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "No-go gate configuration is objective, but materiality of ambiguous semantics or assurance failures requires accountable specialist judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "The release gate blocks every ambiguous-semantics, unverifiable-status, inaccessible-presentation, compromised-key, or missing-recovery condition marked material.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "human_accountability",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    }
+  ]
+}

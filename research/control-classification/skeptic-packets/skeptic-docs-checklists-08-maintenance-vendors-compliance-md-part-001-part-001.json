@@ -1,0 +1,635 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-checklists-08-maintenance-vendors-compliance-md-part-001-part-001",
+  "primary_packet_id": "docs-checklists-08-maintenance-vendors-compliance-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 26,
+  "controls": [
+    {
+      "control_id": "PRC-36-002",
+      "revision": 1,
+      "semantic_sha256": "20019981fe6295a2a22c00d806b44ec8b4cba30c86bece7604a373e714835ab1",
+      "statement": "Architecture, data flow, dependencies, deployment, and recovery are documented.",
+      "source": {
+        "path": "docs/checklists/08-maintenance-vendors-compliance.md",
+        "line": 10
+      },
+      "heading_trail": [
+        "Maintenance, vendors, and compliance",
+        "36. Maintainability and long-term operability"
+      ],
+      "primary_packet_id": "docs-checklists-08-maintenance-vendors-compliance-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The five named documentation subjects can be required as explicit sections or linked versioned records; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Architecture, data flow, dependencies, deployment, and recovery are documented.",
+          "checker_family": "structured_document",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-36-003",
+      "revision": 1,
+      "semantic_sha256": "0c160985ec1702168ee40668300f8804e0bd826338d377d415bb3de48bde3bd3",
+      "statement": "Local or isolated development setup is reproducible.",
+      "source": {
+        "path": "docs/checklists/08-maintenance-vendors-compliance.md",
+        "line": 11
+      },
+      "heading_trail": [
+        "Maintenance, vendors, and compliance",
+        "36. Maintainability and long-term operability"
+      ],
+      "primary_packet_id": "docs-checklists-08-maintenance-vendors-compliance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A sealed clean development environment and declared setup procedure produce observable reproducibility outcomes; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Local or isolated development setup is reproducible.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-36-004",
+      "revision": 1,
+      "semantic_sha256": "75e424d872b029dbf5fb29f870c665ab106f6d751a117c7528ee4bcd395cf231",
+      "statement": "Build and test commands are documented.",
+      "source": {
+        "path": "docs/checklists/08-maintenance-vendors-compliance.md",
+        "line": 12
+      },
+      "heading_trail": [
+        "Maintenance, vendors, and compliance",
+        "36. Maintainability and long-term operability"
+      ],
+      "primary_packet_id": "docs-checklists-08-maintenance-vendors-compliance-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Build and test command documentation has exact presence and nonempty command predicates; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Build and test commands are documented.",
+          "checker_family": "structured_document",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-36-005",
+      "revision": 1,
+      "semantic_sha256": "3167b39ef583515650422605009268ca19cdf4b0c8536d692178a1358443b6d1",
+      "statement": "Coding, review, testing, and release conventions are documented.",
+      "source": {
+        "path": "docs/checklists/08-maintenance-vendors-compliance.md",
+        "line": 13
+      },
+      "heading_trail": [
+        "Maintenance, vendors, and compliance",
+        "36. Maintainability and long-term operability"
+      ],
+      "primary_packet_id": "docs-checklists-08-maintenance-vendors-compliance-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The four named convention areas can be required in versioned project documentation; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Coding, review, testing, and release conventions are documented.",
+          "checker_family": "structured_document",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-36-011",
+      "revision": 1,
+      "semantic_sha256": "93b6558176b2c7defb603c30df466f55c130f7f0d953ef0452cbe8b2450a204b",
+      "statement": "Dependency-update ownership and cadence exist.",
+      "source": {
+        "path": "docs/checklists/08-maintenance-vendors-compliance.md",
+        "line": 19
+      },
+      "heading_trail": [
+        "Maintenance, vendors, and compliance",
+        "36. Maintainability and long-term operability"
+      ],
+      "primary_packet_id": "docs-checklists-08-maintenance-vendors-compliance-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "A dependency-update policy can be checked for current owner and explicit cadence fields; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Dependency-update ownership and cadence exist.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-36-012",
+      "revision": 1,
+      "semantic_sha256": "0ce4a0f99b469d52a380f64d9f31bdb33dbc8793cd55d760f6d94adff324c15b",
+      "statement": "Runtime and platform end-of-support dates are tracked.",
+      "source": {
+        "path": "docs/checklists/08-maintenance-vendors-compliance.md",
+        "line": 20
+      },
+      "heading_trail": [
+        "Maintenance, vendors, and compliance",
+        "36. Maintainability and long-term operability"
+      ],
+      "primary_packet_id": "docs-checklists-08-maintenance-vendors-compliance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Complete runtime and platform version inventory can be joined to authoritative end-of-support dates; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Runtime and platform end-of-support dates are tracked.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "external_registry"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-36-014",
+      "revision": 1,
+      "semantic_sha256": "0ffee804686cf724a063ad451c68e9ed41e9ccabd32968c253623c8fbefd7c96",
+      "statement": "Temporary workarounds have owners and expiry dates.",
+      "source": {
+        "path": "docs/checklists/08-maintenance-vendors-compliance.md",
+        "line": 22
+      },
+      "heading_trail": [
+        "Maintenance, vendors, and compliance",
+        "36. Maintainability and long-term operability"
+      ],
+      "primary_packet_id": "docs-checklists-08-maintenance-vendors-compliance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Every declared temporary workaround can be joined to an authenticated owner and expiry date; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Temporary workarounds have owners and expiry dates.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-36-015",
+      "revision": 1,
+      "semantic_sha256": "8df3b9e80af5e4040dbf9e4ba79e27cdc990eab2091c53686aa7f73cdaf7e205",
+      "statement": "Feature flags and compatibility shims have removal plans.",
+      "source": {
+        "path": "docs/checklists/08-maintenance-vendors-compliance.md",
+        "line": 23
+      },
+      "heading_trail": [
+        "Maintenance, vendors, and compliance",
+        "36. Maintainability and long-term operability"
+      ],
+      "primary_packet_id": "docs-checklists-08-maintenance-vendors-compliance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Every inventoried feature flag and compatibility shim can be joined to a versioned removal plan; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Feature flags and compatibility shims have removal plans.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-36-016",
+      "revision": 1,
+      "semantic_sha256": "ade2d5f9127b20d163eb28426cd1f95eca225f18eda6de107fbf993ca7200bfa",
+      "statement": "API and data deprecation policies exist.",
+      "source": {
+        "path": "docs/checklists/08-maintenance-vendors-compliance.md",
+        "line": 24
+      },
+      "heading_trail": [
+        "Maintenance, vendors, and compliance",
+        "36. Maintainability and long-term operability"
+      ],
+      "primary_packet_id": "docs-checklists-08-maintenance-vendors-compliance-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "API and data deprecation policy records have exact presence and version predicates; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "API and data deprecation policies exist.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-36-021",
+      "revision": 1,
+      "semantic_sha256": "ee8311a5f5d8e17701f9e77b73ed3fadeb4f77774fcf483c5a33e8e4034f91d9",
+      "statement": "Support access to customer data is restricted and audited.",
+      "source": {
+        "path": "docs/checklists/08-maintenance-vendors-compliance.md",
+        "line": 29
+      },
+      "heading_trail": [
+        "Maintenance, vendors, and compliance",
+        "36. Maintainability and long-term operability"
+      ],
+      "primary_packet_id": "docs-checklists-08-maintenance-vendors-compliance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Effective support access can be compared with the approved customer-data policy and every access joined to an audit event; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Support access to customer data is restricted and audited.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-36-024",
+      "revision": 1,
+      "semantic_sha256": "af7b84abf3b6f9d6041dfc56b2c2393a8a19b31a2abc232b8111c7e0dcd882f7",
+      "statement": "Maintenance windows and status communications are defined.",
+      "source": {
+        "path": "docs/checklists/08-maintenance-vendors-compliance.md",
+        "line": 32
+      },
+      "heading_trail": [
+        "Maintenance, vendors, and compliance",
+        "36. Maintainability and long-term operability"
+      ],
+      "primary_packet_id": "docs-checklists-08-maintenance-vendors-compliance-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Maintenance windows and status communication rules can be required as explicit policy fields; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Maintenance windows and status communications are defined.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-36-027",
+      "revision": 1,
+      "semantic_sha256": "894a3a34f2b40d53d9c9e6c897f36ebe7a53b743c8e071edc413ada2c386143e",
+      "statement": "Decommissioning, data export, retention, and secure deletion have a documented lifecycle plan.",
+      "source": {
+        "path": "docs/checklists/08-maintenance-vendors-compliance.md",
+        "line": 35
+      },
+      "heading_trail": [
+        "Maintenance, vendors, and compliance",
+        "36. Maintainability and long-term operability"
+      ],
+      "primary_packet_id": "docs-checklists-08-maintenance-vendors-compliance-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The four named decommissioning and data lifecycle topics can be required in a versioned plan; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Decommissioning, data export, retention, and secure deletion have a documented lifecycle plan.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-37-002",
+      "revision": 1,
+      "semantic_sha256": "4884d1405cd8e3cc4d980d85d65437cbe99fcc4c39e746318ff73a52e0554f57",
+      "statement": "Record each provider’s purpose, owner, data access, permissions, regions, and criticality.",
+      "source": {
+        "path": "docs/checklists/08-maintenance-vendors-compliance.md",
+        "line": 42
+      },
+      "heading_trail": [
+        "Maintenance, vendors, and compliance",
+        "37. Third-party and vendor readiness"
+      ],
+      "primary_packet_id": "docs-checklists-08-maintenance-vendors-compliance-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Every provider in the authoritative inventory can be checked for the six explicitly named record fields; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Record each provider’s purpose, owner, data access, permissions, regions, and criticality.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-37-007",
+      "revision": 1,
+      "semantic_sha256": "615fc9f0627ace1f99a75287de60c846f2fce6563ac17928f26319333ffe24f8",
+      "statement": "Sandbox and production accounts are separated.",
+      "source": {
+        "path": "docs/checklists/08-maintenance-vendors-compliance.md",
+        "line": 47
+      },
+      "heading_trail": [
+        "Maintenance, vendors, and compliance",
+        "37. Third-party and vendor readiness"
+      ],
+      "primary_packet_id": "docs-checklists-08-maintenance-vendors-compliance-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Authoritative provider account identifiers and environment bindings can prove sandbox and production separation; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Sandbox and production accounts are separated.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-37-008",
+      "revision": 1,
+      "semantic_sha256": "b13d450ce1d9d1ef21f96c199ff955991f06a4e53fa096cb3ded65750d7bb0fc",
+      "statement": "Integration secrets are rotatable.",
+      "source": {
+        "path": "docs/checklists/08-maintenance-vendors-compliance.md",
+        "line": 48
+      },
+      "heading_trail": [
+        "Maintenance, vendors, and compliance",
+        "37. Third-party and vendor readiness"
+      ],
+      "primary_packet_id": "docs-checklists-08-maintenance-vendors-compliance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "An isolated rotation exercise can replace an integration secret and verify old-secret rejection and continued operation; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Integration secrets are rotatable.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-37-012",
+      "revision": 1,
+      "semantic_sha256": "42b0394159ad28e97720df98a7a056fa0b8509b5805c1c1dae50c21cf76c63af",
+      "statement": "Provider responses are treated as untrusted input.",
+      "source": {
+        "path": "docs/checklists/08-maintenance-vendors-compliance.md",
+        "line": 52
+      },
+      "heading_trail": [
+        "Maintenance, vendors, and compliance",
+        "37. Third-party and vendor readiness"
+      ],
+      "primary_packet_id": "docs-checklists-08-maintenance-vendors-compliance-md-part-001",
+      "primary_route": "local_static",
+      "primary_reason": "Supported provider-response data flows can be checked for validation at the declared untrusted boundary; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Provider responses are treated as untrusted input.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-37-013",
+      "revision": 1,
+      "semantic_sha256": "99bad2a81a346d5abc4d17f0484f97d26536397cf0b3942f3c06f530fa227e8e",
+      "statement": "Webhooks and callbacks are authenticated and replay-protected.",
+      "source": {
+        "path": "docs/checklists/08-maintenance-vendors-compliance.md",
+        "line": 53
+      },
+      "heading_trail": [
+        "Maintenance, vendors, and compliance",
+        "37. Third-party and vendor readiness"
+      ],
+      "primary_packet_id": "docs-checklists-08-maintenance-vendors-compliance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Provider callback inventory permits exact authentication, signature, and replay-rejection tests; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Webhooks and callbacks are authenticated and replay-protected.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-37-014",
+      "revision": 1,
+      "semantic_sha256": "fff23e3bcbfee937a6bfe5a578d34ce47b443cc5d67c62ac4b05047c24d4add5",
+      "statement": "Provider API versions and deprecation dates are monitored.",
+      "source": {
+        "path": "docs/checklists/08-maintenance-vendors-compliance.md",
+        "line": 54
+      },
+      "heading_trail": [
+        "Maintenance, vendors, and compliance",
+        "37. Third-party and vendor readiness"
+      ],
+      "primary_packet_id": "docs-checklists-08-maintenance-vendors-compliance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Provider version inventory can be joined to authoritative deprecation sources and active monitoring records; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Provider API versions and deprecation dates are monitored.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "external_registry"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-37-015",
+      "revision": 1,
+      "semantic_sha256": "c7c525245f1f3b17a7c29406d10d6d56d7796ed322e117776ead6ac4e33caabd",
+      "statement": "Breaking-change notifications reach an accountable owner.",
+      "source": {
+        "path": "docs/checklists/08-maintenance-vendors-compliance.md",
+        "line": 55
+      },
+      "heading_trail": [
+        "Maintenance, vendors, and compliance",
+        "37. Third-party and vendor readiness"
+      ],
+      "primary_packet_id": "docs-checklists-08-maintenance-vendors-compliance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A signed provider breaking-change event can objectively verify delivery to the authenticated owner; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Breaking-change notifications reach an accountable owner.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-37-017",
+      "revision": 1,
+      "semantic_sha256": "9408c4b94f6d58500cf664d884dfa7c6a349bf1a9cda3c700c34951c60f88e54",
+      "statement": "Provider data-use changes are monitored.",
+      "source": {
+        "path": "docs/checklists/08-maintenance-vendors-compliance.md",
+        "line": 57
+      },
+      "heading_trail": [
+        "Maintenance, vendors, and compliance",
+        "37. Third-party and vendor readiness"
+      ],
+      "primary_packet_id": "docs-checklists-08-maintenance-vendors-compliance-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Approved provider policy sources can be checked for current subscriptions and ingested data-use change events; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Provider data-use changes are monitored.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-37-018",
+      "revision": 1,
+      "semantic_sha256": "42155e6dc6f2f69c4d432c97a8b43b43b689ab562bc66b8b1b2c46e4a7a00dab",
+      "statement": "A kill switch can disable a compromised or harmful integration.",
+      "source": {
+        "path": "docs/checklists/08-maintenance-vendors-compliance.md",
+        "line": 58
+      },
+      "heading_trail": [
+        "Maintenance, vendors, and compliance",
+        "37. Third-party and vendor readiness"
+      ],
+      "primary_packet_id": "docs-checklists-08-maintenance-vendors-compliance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A bounded kill-switch exercise can disable the named integration and verify calls and data flow stop; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "A kill switch can disable a compromised or harmful integration.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-37-019",
+      "revision": 1,
+      "semantic_sha256": "0e4068561436cecd8f62d9d4aaffd649af19e6bfa3cbae45c53d93c4fbb4a3f8",
+      "statement": "A replacement, exit, or data-export plan exists for critical providers.",
+      "source": {
+        "path": "docs/checklists/08-maintenance-vendors-compliance.md",
+        "line": 59
+      },
+      "heading_trail": [
+        "Maintenance, vendors, and compliance",
+        "37. Third-party and vendor readiness"
+      ],
+      "primary_packet_id": "docs-checklists-08-maintenance-vendors-compliance-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Every provider declared critical can be checked for a versioned replacement, exit, or data-export plan; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "A replacement, exit, or data-export plan exists for critical providers.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-37-020",
+      "revision": 1,
+      "semantic_sha256": "847db25206538b159fa7d53d5f495a22fd33df5cf60c5d0817c813a07394938f",
+      "statement": "The app can identify records affected by a provider incident.",
+      "source": {
+        "path": "docs/checklists/08-maintenance-vendors-compliance.md",
+        "line": 60
+      },
+      "heading_trail": [
+        "Maintenance, vendors, and compliance",
+        "37. Third-party and vendor readiness"
+      ],
+      "primary_packet_id": "docs-checklists-08-maintenance-vendors-compliance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A known provider incident identifier can be traced through retained lineage to an exact affected-record set; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The app can identify records affected by a provider incident.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-37-021",
+      "revision": 1,
+      "semantic_sha256": "ac07e507a4f6fccb27b35437985f43acfb9e336998e5459258aed7010f459d31",
+      "statement": "Provider status and escalation contacts are included in incident runbooks.",
+      "source": {
+        "path": "docs/checklists/08-maintenance-vendors-compliance.md",
+        "line": 61
+      },
+      "heading_trail": [
+        "Maintenance, vendors, and compliance",
+        "37. Third-party and vendor readiness"
+      ],
+      "primary_packet_id": "docs-checklists-08-maintenance-vendors-compliance-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Every provider can be joined to status and escalation contact entries in the incident runbook; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Provider status and escalation contacts are included in incident runbooks.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-37-022",
+      "revision": 1,
+      "semantic_sha256": "b7f22c3f5d153baa208c7691d7e274a27b5d7d8e556336c27fa15420183b9304",
+      "statement": "Terminated providers lose credentials and data access.",
+      "source": {
+        "path": "docs/checklists/08-maintenance-vendors-compliance.md",
+        "line": 62
+      },
+      "heading_trail": [
+        "Maintenance, vendors, and compliance",
+        "37. Third-party and vendor readiness"
+      ],
+      "primary_packet_id": "docs-checklists-08-maintenance-vendors-compliance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Provider termination status can be joined to effective credential and data-access queries to prove revocation; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Terminated providers lose credentials and data access.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-38-032",
+      "revision": 1,
+      "semantic_sha256": "a45e1c3da592afaa209bb0856d01c592da6e5c99f3a77d11e1abfa2630dc1a74",
+      "statement": "Renewal, review, and filing deadlines are tracked after launch.",
+      "source": {
+        "path": "docs/checklists/08-maintenance-vendors-compliance.md",
+        "line": 103
+      },
+      "heading_trail": [
+        "Maintenance, vendors, and compliance",
+        "38. Legal and compliance applicability"
+      ],
+      "primary_packet_id": "docs-checklists-08-maintenance-vendors-compliance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Approved renewal, review, and filing obligations can be joined to tracked deadlines and current status; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Renewal, review, and filing deadlines are tracked after launch.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1131 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-engineering-02-product-and-requirements-md-part-001-part-001",
+  "primary_packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 44,
+  "controls": [
+    {
+      "control_id": "USEQ-13EC8AE3",
+      "revision": 1,
+      "semantic_sha256": "13ec8ae3578d486e1db16b94446b5791004cfb6c433fe836f88e3fe54c360cfd",
+      "statement": "The problem, intended users, release scope, non-goals, and deferred features are documented.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 15
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product and Business Readiness",
+        "Product definition"
+      ],
+      "primary_packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The five product-definition elements are explicit document fields whose presence and version binding can be checked mechanically.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The product definition contains problem, intended users, release scope, non-goals, and deferred-feature sections.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9DBA28BF",
+      "revision": 1,
+      "semantic_sha256": "9dba28bf6223b4f3449911743501d4faa81021bd3795326d2ece44c01c0598d3",
+      "statement": "Critical journeys cover onboarding, normal use, error recovery, account recovery, cancellation, and data/account deletion where applicable.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 17
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product and Business Readiness",
+        "Product definition"
+      ],
+      "primary_packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "A declared capability matrix makes applicability finite, allowing exact coverage checks for the six named critical-journey classes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The critical-journey register contains onboarding, normal-use, error-recovery, account-recovery, cancellation, and deletion journeys or explicit inapplicability records.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AFDBA1B7",
+      "revision": 1,
+      "semantic_sha256": "afdba1b7a4277b001791a3602e7a53a9ba6a2617f5e1deedf1cce88d2fc6c080",
+      "statement": "Behavior is specified for unavailable dependencies, partial failures, empty data, malformed data, incomplete data, stale data, and conflicting data.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 18
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product and Business Readiness",
+        "Product definition"
+      ],
+      "primary_packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The seven dependency and data conditions are a finite specification checklist whose behavior references can be validated.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The product specification defines behavior for unavailable dependencies, partial failures, empty, malformed, incomplete, stale, and conflicting data.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-42AA91B8",
+      "revision": 1,
+      "semantic_sha256": "42aa91b8c0503f9d7027038dd77d855e57b3957d8c23b3430e3e5267fdba6b45",
+      "statement": "Define measurable launch success, failure, stop, and rollback criteria.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 25
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product and Business Readiness",
+        "Launch objectives"
+      ],
+      "primary_packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Measurable launch criteria are fixed structured predicates, so success, failure, stop, and rollback fields can be checked before launch.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The launch plan defines metric, operator, threshold, window, and action for success, failure, stop, and rollback criteria.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E84CA4EA",
+      "revision": 1,
+      "semantic_sha256": "e84ca4ea8988c17d5992adedf7dc99d2e323d553762597d6dcb2b6cec8750f05",
+      "statement": "Define who may pause, continue, expand, or roll back the launch.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 27
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product and Business Readiness",
+        "Launch objectives"
+      ],
+      "primary_packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Launch actions and authorized identities form a finite authority matrix with exact membership checks.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The launch plan assigns authorized roles for pause, continue, expand, and rollback actions.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B636D78E",
+      "revision": 1,
+      "semantic_sha256": "b636d78e6875ae9c737b6abd9d80766e91cf00796d4cbde5dcc84ce2ff1cbf61",
+      "statement": "Establish whether launch is internal, private, regional, percentage-based, invitation-only, or public.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 28
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product and Business Readiness",
+        "Launch objectives"
+      ],
+      "primary_packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Launch mode is a closed set and can be required as one exact value with any regional or percentage parameters.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The launch plan declares internal, private, regional, percentage-based, invitation-only, or public mode and its required parameters.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CD424A12",
+      "revision": 1,
+      "semantic_sha256": "cd424a12febb497dd9d6d8cb66b3cc5fe941dd2fa7a47e1f3cd83353ae03ba42",
+      "statement": "Ensure product, marketing, sales, support, and operations use the same release date and scope.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 29
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product and Business Readiness",
+        "Launch objectives"
+      ],
+      "primary_packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Versioned organization release records can be compared for exact date and scope agreement across the five named functions.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Product, marketing, sales, support, and operations records reference one canonical release identifier.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "All five records match the canonical release date and scope digest.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E1BD3483",
+      "revision": 1,
+      "semantic_sha256": "e1bd34839efa482e090c0a253f42b73f64900c44f33cf51823f7e346593d29b5",
+      "statement": "Define the intended outcome and observable evidence that the problem is reduced.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 41
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Strategy, Vision, and Outcomes",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Intended outcome and observable evidence are explicit strategy fields whose metric bindings can be checked.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The strategy defines an intended outcome plus observable measure, data source, window, and change criterion showing problem reduction.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-66F98F70",
+      "revision": 1,
+      "semantic_sha256": "66f98f700995ce99cde1d8d28db405876a05715a9def76ab02d5089c4eed920f",
+      "statement": "Define strategic non-goals and choices to prevent unbounded scope.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 42
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Strategy, Vision, and Outcomes",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Strategic non-goals and scope-limiting choices are explicit versioned record fields.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The strategy contains non-goals and explicit scope choices with owners and effective dates.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F06D1CFF",
+      "revision": 1,
+      "semantic_sha256": "f06d1cffa04f03b157ed88f9d20dcd83c35f87a91da2bcee4306d4a8e03294cb",
+      "statement": "Describe the value exchange, including what users provide in money, data, attention, effort, or lock-in.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 44
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Strategy, Vision, and Outcomes",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The named forms of user contribution are explicit value-exchange fields with declared applicability.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The product strategy describes money, data, attention, effort, and lock-in contributions or records explicit inapplicability for each.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1BF8A0A2",
+      "revision": 1,
+      "semantic_sha256": "1bf8a0a2a153c8195627f66148a105bf0505ae66500f2bc1304fe94c27cd2bfe",
+      "statement": "Specify assumptions about demand, willingness, behavior, channels, support, and unit economics.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 48
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Strategy, Vision, and Outcomes",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The seven assumption classes are explicit strategy-record fields with measurable values or hypotheses.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The strategy records assumptions for demand, willingness, behavior, channels, support, and unit economics with identifiers and expected values.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-43785162",
+      "revision": 1,
+      "semantic_sha256": "43785162418d4874ef19497c57fd66ef6e61da6d4a692da0aa95b755d25d7a0b",
+      "statement": "Use multiple evidence sources rather than relying on stakeholder opinion or a single research method.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 60
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Discovery and Problem Validation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Evidence-source and method identifiers allow an exact minimum-diversity check that excludes a single stakeholder opinion or method.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Each discovery conclusion cites at least two independent evidence sources using at least two research methods.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0ED90387",
+      "revision": 1,
+      "semantic_sha256": "0ed903879d1f2b7911313e2d3a7258c0e5c5390380c26ad0b623a423ccfe0213",
+      "statement": "Separate observed behavior from stated preference and researcher interpretation.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 62
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Discovery and Problem Validation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Observed behavior, stated preference, and researcher interpretation are three explicit provenance labels that can be required on research findings.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every research finding labels content separately as observed behavior, stated preference, and researcher interpretation.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1EC01EEF",
+      "revision": 1,
+      "semantic_sha256": "1ec01eefd536139154c4de071a41dd0532eb4753e26f8438d5a6ca8f863e6c68",
+      "statement": "Document research questions, sampling, methods, consent, limitations, and analysis approach.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 63
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Discovery and Problem Validation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The research-plan elements are an exact finite set of required record fields.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every research record contains questions, sampling plan, methods, consent, limitations, and analysis approach.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AA7C1D23",
+      "revision": 1,
+      "semantic_sha256": "aa7c1d23a60eba1b0dcdeecd9f0d47d994e1009fff42eee435402b581415fd87",
+      "statement": "Triangulate qualitative findings with behavioral, operational, market, and support evidence.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 70
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Discovery and Problem Validation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Triangulation can be represented as a required multi-source evidence graph with the five named evidence classes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Each material qualitative finding links to behavioral, operational, market, and support evidence or explicit inapplicability rationales.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-82E8E2F9",
+      "revision": 1,
+      "semantic_sha256": "82e8e2f967be8782b7ad4e46b8a8e873bdcf83b1f43f2bdc6786b765c97357e1",
+      "statement": "Translate validated findings into traceable requirements, design constraints, and measurable outcomes.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 74
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Discovery and Problem Validation",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Validated finding identifiers and traceability links make translation into requirements, constraints, and measurable outcomes mechanically checkable.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every validated finding links to a requirement or design constraint and to a measurable outcome definition.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7B2F50E9",
+      "revision": 1,
+      "semantic_sha256": "7b2f50e91bd36a8cf8f3145dc053d9c7274b529bd9acba080a09920c638389f9",
+      "statement": "Distinguish needs, goals, constraints, functional requirements, quality requirements, interface requirements, and design decisions.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 83
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Requirements Engineering",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Requirement artifacts can use an exact type enumeration, making category distinction mechanically decidable.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every requirements record is labeled need, goal, constraint, functional requirement, quality requirement, interface requirement, or design decision.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-639F791F",
+      "revision": 1,
+      "semantic_sha256": "639f791f3223f920f039a0b44a7445e54b92d7a8b46b9d1d30808f703fcaa439",
+      "statement": "State the subject, required behavior or property, conditions, thresholds, units, and tolerances.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 85
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Requirements Engineering",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The seven requirement elements are explicit typed fields whose presence and units or tolerance relationships can be validated.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every requirement states subject, required behavior or property, conditions, thresholds, units, and tolerances.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-00B1BC4F",
+      "revision": 1,
+      "semantic_sha256": "00b1bc4f45c943dabfc556795e341fd141fc6541ac1d4f9af9d55d7921c90998",
+      "statement": "Define normal, alternate, exception, degraded, recovery, and prohibited behavior.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 87
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Requirements Engineering",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The six behavior categories form an exact specification checklist with applicability decisions.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Each feature specification defines normal, alternate, exception, degraded, recovery, and prohibited behavior or an explicit inapplicability rationale.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3640A26A",
+      "revision": 1,
+      "semantic_sha256": "3640a26a5a65741d47c132eae6983d2c532923ec6fcb839b12657bb2d74c8cb7",
+      "statement": "Specify data, state, timing, ordering, concurrency, retention, and authorization semantics.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 88
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Requirements Engineering",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The named semantic dimensions are explicit requirement fields and can be checked for presence and type.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Each applicable requirement specifies data, state, timing, ordering, concurrency, retention, and authorization semantics.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-15B9169F",
+      "revision": 1,
+      "semantic_sha256": "15b9169fef2c609e45f5c0b609d1a30e05b7172a9b258bc944362a8463b0edcb",
+      "statement": "Link every approved requirement to acceptance criteria and planned verification.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 92
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Requirements Engineering",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Approved requirement identifiers can be joined exactly to acceptance-criteria and planned-verification records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every approved requirement links to at least one acceptance criterion and one planned verification method.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-52E6B01C",
+      "revision": 1,
+      "semantic_sha256": "52e6b01c8cb2199bff747c07c9d872bac9397f64bf9aeab7cca22260168d112d",
+      "statement": "Preserve history and effective dates; do not silently rewrite accepted requirements.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 94
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Requirements Engineering",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+      "primary_route": "artifact_verification",
+      "primary_reason": "Append-only versions, effective dates, and immutable accepted revisions can prove history preservation and detect silent rewrites.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every accepted requirement revision remains retrievable by digest with its effective date and successor links.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CAAD1092",
+      "revision": 1,
+      "semantic_sha256": "caad1092d72040537da956dab7797d0942652252885a5766649f8832ceece4f2",
+      "statement": "Identify derived requirements and the assumptions from which they follow.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 95
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Requirements Engineering",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Derived-requirement labels and assumption provenance are exact traceability relationships.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every derived requirement links to the assumptions and source requirements from which it follows.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-92888739",
+      "revision": 1,
+      "semantic_sha256": "92888739b98b86fc1d93be6ff768ca1de1b6c632ac3fdbe6b162859fa8740528",
+      "statement": "Use explicit criteria such as user impact, strategic fit, risk reduction, urgency, learning value, cost, reversibility, and dependency value.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 110
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Prioritization, Roadmaps, and Scope Control",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "An explicit prioritization model can be required to name and score the stated decision criteria with versioned definitions.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The prioritization record defines user impact, strategic fit, risk reduction, urgency, learning value, cost, reversibility, and dependency value criteria.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D0EAD736",
+      "revision": 1,
+      "semantic_sha256": "d0ead736d7ffe62b0846324d9006eb8558c77319866f2339b8a41da6943e8c4b",
+      "statement": "Include reliability, security, privacy, accessibility, maintenance, support, and debt work in the same prioritization system.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 111
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Prioritization, Roadmaps, and Scope Control",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The prioritization registry can be checked for entries from every named non-feature work category.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Reliability, security, privacy, accessibility, maintenance, support, and debt work use the same prioritization registry as feature work.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1CA42AE8",
+      "revision": 1,
+      "semantic_sha256": "1ca42ae88a1da8f260b16c9fab745971fdc3237042459ee0d2d1138d3b5b0c1f",
+      "statement": "Make stakeholder influence and mandatory obligations visible rather than hiding them inside scores.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 112
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Prioritization, Roadmaps, and Scope Control",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Separate influence and obligation fields make hidden inclusion inside aggregate scores mechanically detectable.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every priority item records stakeholder influence and mandatory obligations outside its aggregate score.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-137336BA",
+      "revision": 1,
+      "semantic_sha256": "137336ba9d23f989f0e84d1d8c81a88112bb9e67138efbd1fc7714524ecfe3d9",
+      "statement": "Represent uncertainty and sensitivity instead of treating prioritization scores as objective truth.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 113
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Prioritization, Roadmaps, and Scope Control",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Uncertainty, sensitivity, and interpretation warnings are explicit prioritization-record fields.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Each prioritization result records uncertainty, sensitivity analysis, and a statement that the score is decision support rather than objective truth.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-79915E9D",
+      "revision": 1,
+      "semantic_sha256": "79915e9d752bb4260e5f3ff33d26bee9557a1e3aa1dc3804ffcc19238892304b",
+      "statement": "Identify prerequisites, sequencing constraints, migration needs, and operational readiness work.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 114
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Prioritization, Roadmaps, and Scope Control",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Prerequisites, sequencing, migrations, and operational-readiness work are explicit dependency-graph node and edge types.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every roadmap item records applicable prerequisites, sequence constraints, migration needs, and operational-readiness work.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5E98FA21",
+      "revision": 1,
+      "semantic_sha256": "5e98fa218ea57ab4b74a6325ed26ef6cf2b4fedf97977ac6f3f795f44c0f3caf",
+      "statement": "Distinguish committed obligations from targets, options, and exploratory work.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 118
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Prioritization, Roadmaps, and Scope Control",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Roadmap work states form a closed classification whose explicit values can be validated.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every roadmap item is labeled committed obligation, target, option, or exploratory work.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-01BD0F61",
+      "revision": 1,
+      "semantic_sha256": "01bd0f6179d72138189dc2637caf39b17ab49b4088dd46edc0328c2b9297b805",
+      "statement": "Define entry and exit criteria for roadmap stages.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 119
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Prioritization, Roadmaps, and Scope Control",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Roadmap stage entry and exit criteria are exact required structured predicates.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every roadmap stage defines versioned entry and exit criteria.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-10689ED1",
+      "revision": 1,
+      "semantic_sha256": "10689ed1ef91c55a9213fc01a2463fb0dfb21c90845ad894ed126a382981a265",
+      "statement": "Document who made material priority decisions and why.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 123
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Prioritization, Roadmaps, and Scope Control",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Material priority decisions can be required to record decision-maker identity and rationale.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every priority decision marked material contains authenticated decision-maker identity and nonempty rationale.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D470C55C",
+      "revision": 1,
+      "semantic_sha256": "d470c55c8f3d808b01e1ca5a45cc8909000a584841c706793d05743b1a515ee4",
+      "statement": "Define event semantics and data-quality requirements before instrumenting them.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 133
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Metrics, Experimentation, and Learning",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Event contracts, quality rules, and timestamps can be compared with instrumentation introduction dates.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every instrumented event has versioned semantics and data-quality requirements effective before the instrumentation version.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9C795830",
+      "revision": 1,
+      "semantic_sha256": "9c795830fb7ee46a551774c6fcb399f18a520f28c552fa7b7d93a327e02e6da4",
+      "statement": "Pre-register experiment hypothesis, population, unit, allocation, duration, primary measure, guardrails, and stopping rules.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 135
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Metrics, Experimentation, and Learning",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The experiment fields and preregistration timestamp are explicit and can be validated before allocation begins.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Before exposure starts, the experiment record fixes hypothesis, population, unit, allocation, duration, primary measure, guardrails, and stopping rules.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-11E13BB4",
+      "revision": 1,
+      "semantic_sha256": "11e13bb4e1485d7d182ac7624ad2f851541c8364c66af08de7ebee38eca37767",
+      "statement": "Preserve experiment configuration, code, data lineage, analysis, and decision records.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 141
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Metrics, Experimentation, and Learning",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+      "primary_route": "artifact_verification",
+      "primary_reason": "Immutable experiment manifests and lineage references can prove preservation of configuration, code, data, analysis, and decision records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every experiment preserves versioned configuration, code digest, data-lineage graph, analysis artifact, and decision record.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-883443BC",
+      "revision": 1,
+      "semantic_sha256": "883443bc99d9bc0f6b7ade4d35df701dd71fa6ca943a6a41f1112ec53e487ff4",
+      "statement": "Define feature-flag cleanup, long-term holdout, and post-launch validation plans.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 143
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Metrics, Experimentation, and Learning",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Cleanup, holdout, and validation plans are three explicit feature-flag lifecycle artifacts.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every experiment feature flag has versioned cleanup, long-term holdout, and post-launch validation plans or explicit inapplicability decisions.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0B5ECDD2",
+      "revision": 1,
+      "semantic_sha256": "0b5ecdd278ca0dd3a4dda1948cc56290b9e92cef1364beaf177fbd18fcb9fba4",
+      "statement": "Define lifecycle states and entry, support, maintenance, deprecation, and retirement criteria.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 153
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Lifecycle, Deprecation, and Retirement",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Lifecycle states and the five transition or service criteria groups are explicit versioned schema elements.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The lifecycle policy defines states plus entry, support, maintenance, deprecation, and retirement criteria.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E028DE12",
+      "revision": 1,
+      "semantic_sha256": "e028de120fcdd5fafbf25bab14a27dd513e11e091e3df0ac3c53f1b6db38bc77",
+      "statement": "Track adoption, usage, critical customers, integrations, dependencies, and data before deprecation.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 155
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Lifecycle, Deprecation, and Retirement",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The six deprecation input classes are finite inventory and measurement fields with a before-deprecation timestamp requirement.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Before deprecation approval, the record contains adoption, usage, critical-customer, integration, dependency, and data inventories.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-33C4E64B",
+      "revision": 1,
+      "semantic_sha256": "33c4e64bb0c4984710586f690810b6e2129f39a3d99cf4964c68754e65eeb2a0",
+      "statement": "Define how defects and vulnerabilities are handled during maintenance and extended-support periods.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 158
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Lifecycle, Deprecation, and Retirement",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Maintenance and extended-support handling rules are explicit policy fields for defects and vulnerabilities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The lifecycle policy defines intake, severity, response, fix, disclosure, and exception handling for defects and vulnerabilities in each support period.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B5593A92",
+      "revision": 1,
+      "semantic_sha256": "b5593a922245df73383ae43ffd93055d113b7a289522225faf96d58839ac3682",
+      "statement": "Prevent new dependencies on components already marked for retirement.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 159
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Lifecycle, Deprecation, and Retirement",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Retirement status and dependency graphs are structured, allowing new dependency edges to retired components to be blocked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every component marked for retirement has an effective retirement-state timestamp.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "No dependency edge created after that timestamp targets the retiring component.",
+          "checker_family": "inventory_fact",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B7C71F97",
+      "revision": 1,
+      "semantic_sha256": "b7c71f97d06b256d920d14b58f9d3beb31e4bae2d069afddeee41db5a52ea878",
+      "statement": "Measure migration progress and contact customers at risk of disruption.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 160
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Lifecycle, Deprecation, and Retirement",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A migration population, progress state, risk rule, and notification log provide fixed coverage and delivery checks.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every migration subject has a current progress state and an evaluated disruption-risk status.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Every subject marked at risk has authenticated contact evidence through the declared channel.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-65B667B8",
+      "revision": 1,
+      "semantic_sha256": "65b667b8967f1e45b3c46fead9299139439d167270f00c71c3d6c9007b2d0b0e",
+      "statement": "Keep old and new versions interoperable for the documented transition where required.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 161
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Lifecycle, Deprecation, and Retirement",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A documented transition matrix and applicability decisions create finite old-new version pairs with exact interoperability expectations.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every version pair required during the documented transition has a current successful interoperability test result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BD2D6F7B",
+      "revision": 1,
+      "semantic_sha256": "bd2d6f7b3a1432772e9c70b067620214dd38dea9b9d2ef494a37307366b502b0",
+      "statement": "Define final data export, retention, deletion, legal hold, and backup behavior.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 162
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Lifecycle, Deprecation, and Retirement",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The six final data-handling behaviors are explicit retirement-plan fields with applicability decisions.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The retirement plan defines final export, retention, deletion, legal-hold, and backup behavior for every applicable data class.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CD275A7D",
+      "revision": 1,
+      "semantic_sha256": "cd275a7d69d938ad7f8df722e017a6fcbde00f088d2ba68ad9808bee9c11af62",
+      "statement": "Revoke credentials, domains, certificates, endpoints, jobs, queues, infrastructure, and supplier access during retirement.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 163
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Lifecycle, Deprecation, and Retirement",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A retirement resource inventory and authenticated provider or environment state can prove revocation for each finite item.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The retirement manifest enumerates credentials, domains, certificates, endpoints, jobs, queues, infrastructure, and supplier access.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Every inventoried item is revoked, disabled, or removed in authenticated current environment state.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0151D776",
+      "revision": 1,
+      "semantic_sha256": "0151d776181cf67c9ede9e93254211bd76671a4566ee4273a9757f595184d189",
+      "statement": "Verify that retired assets are no longer reachable, billed, monitored as active, or processing data.",
+      "source": {
+        "path": "docs/engineering/02-product-and-requirements.md",
+        "line": 165
+      },
+      "heading_trail": [
+        "Product and requirements",
+        "Product Lifecycle, Deprecation, and Retirement",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "A finite retired-asset inventory supports exact reachability, billing, monitor-state, and data-processing queries.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every retired asset is unreachable, absent from active billing, disabled in active-monitor inventories, and produces no data-processing events.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    }
+  ]
+}

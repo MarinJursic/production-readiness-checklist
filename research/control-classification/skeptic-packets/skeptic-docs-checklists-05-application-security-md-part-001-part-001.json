@@ -1,0 +1,2106 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-checklists-05-application-security-md-part-001-part-001",
+  "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 87,
+  "controls": [
+    {
+      "control_id": "PRC-15-004",
+      "revision": 1,
+      "semantic_sha256": "5d8d1e8247e08dfc39fe9bf67bf70ee10b416f7a9d54cc76df6d6a5e36e09312",
+      "statement": "Authentication is enforced on every protected operation.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 12
+      },
+      "heading_trail": [
+        "Application security",
+        "15. APIs, web services, and integrations"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A complete protected-operation inventory and authentication conformance matrix provide exact positive and negative outcomes; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authentication is enforced on every protected operation.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-15-006",
+      "revision": 1,
+      "semantic_sha256": "d051605f9c96310ce0102dc6ad1f260a76c35866253c82e7495b5d14b083fe51",
+      "statement": "Input is validated against an explicit schema.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 14
+      },
+      "heading_trail": [
+        "Application security",
+        "15. APIs, web services, and integrations"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Explicit schemas and complete input-boundary validation bindings can be parsed and exercised without reviewer judgment; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Input is validated against an explicit schema.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-15-008",
+      "revision": 1,
+      "semantic_sha256": "458bacc010349817937fd134aa90ca676139e2e1fea77e53cde52d55a1df32ef",
+      "statement": "Content types and character encodings are constrained.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 16
+      },
+      "heading_trail": [
+        "Application security",
+        "15. APIs, web services, and integrations"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "local_static",
+      "primary_reason": "Declared content-type and encoding allowlists give exact constraints for every inventoried operation; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Content types and character encodings are constrained.",
+          "checker_family": "structured_document",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-15-009",
+      "revision": 1,
+      "semantic_sha256": "0e5dced1191996886311f105633e6dcb6d3611f6eb12c70eb82a5adc95bac3c0",
+      "statement": "Request body, URL, header, nesting, field, query, and batch sizes are bounded.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 17
+      },
+      "heading_trail": [
+        "Application security",
+        "15. APIs, web services, and integrations"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Named project limits and a complete request-shape matrix make every listed size bound measurable; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Request body, URL, header, nesting, field, query, and batch sizes are bounded.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-15-014",
+      "revision": 1,
+      "semantic_sha256": "6eb482e9eabf94ba3dd63cac5e59a4dde5a557a8976d1b260f7c51d11b2d7f7d",
+      "statement": "HTTP methods have correct and consistent semantics.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 22
+      },
+      "heading_trail": [
+        "Application security",
+        "15. APIs, web services, and integrations"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A versioned HTTP semantics profile and complete method-operation matrix yield objective conformance results; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "HTTP methods have correct and consistent semantics.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-15-017",
+      "revision": 1,
+      "semantic_sha256": "c416a11fa595ae78b83b26cef1f34c00d24796ab25d9135e9492eb12f997dc29",
+      "statement": "Timeouts exist for all outbound calls.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 25
+      },
+      "heading_trail": [
+        "Application security",
+        "15. APIs, web services, and integrations"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A complete outbound-call inventory can be compared with explicit timeout configuration, with unsupported call construction returning Blocked; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Timeouts exist for all outbound calls.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-15-018",
+      "revision": 1,
+      "semantic_sha256": "478da9b8fab18fb52896755a855e7fb54cd6d0b6b1d13d3b4028737e2d6c6f00",
+      "statement": "Retries are bounded and use backoff and jitter.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 26
+      },
+      "heading_trail": [
+        "Application security",
+        "15. APIs, web services, and integrations"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "local_static",
+      "primary_reason": "Retry count, delay, backoff, and jitter configuration have exact policy predicates; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Retries are bounded and use backoff and jitter.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-15-026",
+      "revision": 1,
+      "semantic_sha256": "a64e4362027b7daa301aff078baacc5b1b8005e95da76db8f4ab42501b269035",
+      "statement": "Credentialed cross-origin requests do not use wildcard origins.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 34
+      },
+      "heading_trail": [
+        "Application security",
+        "15. APIs, web services, and integrations"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Credentialed cross-origin response headers have an exact rule forbidding wildcard origins; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Credentialed cross-origin requests do not use wildcard origins.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-15-032",
+      "revision": 1,
+      "semantic_sha256": "8b795333fff84a4e9c0a84a81a61e1f98dd230c25016d6b112923a9bdb0bdd69",
+      "statement": "Host-header and forwarded-header trust is explicitly configured.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 40
+      },
+      "heading_trail": [
+        "Application security",
+        "15. APIs, web services, and integrations"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "local_static",
+      "primary_reason": "Host and forwarded-header trust declarations have exact presence, source, and allowed-proxy predicates; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Host-header and forwarded-header trust is explicitly configured.",
+          "checker_family": "structured_document",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-15-034",
+      "revision": 1,
+      "semantic_sha256": "90adaef9195897c56b5da65e2807f10244a1f3088352a5f0114c1c21e2031adb",
+      "statement": "Webhooks are authenticated or signed.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 42
+      },
+      "heading_trail": [
+        "Application security",
+        "15. APIs, web services, and integrations"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Every inventoried webhook endpoint can be exercised for required authentication or cryptographic signature verification; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Webhooks are authenticated or signed.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-15-035",
+      "revision": 1,
+      "semantic_sha256": "75eab81af81f61f831641305aab5edf70cb15bcb4090974946055f2edbc99115",
+      "statement": "Webhooks include replay protection.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 43
+      },
+      "heading_trail": [
+        "Application security",
+        "15. APIs, web services, and integrations"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A versioned replay window and repeated-event test produce an objective rejection or deduplication result; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Webhooks include replay protection.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-15-036",
+      "revision": 1,
+      "semantic_sha256": "c1c0a93fe17c4c8780cc53998f1b5012765856e944d7af5eb96b3f817410d67b",
+      "statement": "Webhook consumers are idempotent.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 44
+      },
+      "heading_trail": [
+        "Application security",
+        "15. APIs, web services, and integrations"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Repeating the same authenticated webhook event can be compared against an exact side-effect equivalence policy; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Webhook consumers are idempotent.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-15-037",
+      "revision": 1,
+      "semantic_sha256": "0967a56d03ed880c77ef8e270cd8a99b3b699674bced676e62c0753f06061e65",
+      "statement": "Webhook retries, ordering, failure, and reconciliation are defined.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 45
+      },
+      "heading_trail": [
+        "Application security",
+        "15. APIs, web services, and integrations"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The four named webhook behaviors can be required as explicit fields in a versioned interface contract; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Webhook retries, ordering, failure, and reconciliation are defined.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-15-041",
+      "revision": 1,
+      "semantic_sha256": "792e136bf388b442902d2fc385dc3b40dc82087f836ee80ee2f191b2cfba29ef",
+      "statement": "Breaking-change and deprecation policies exist.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 49
+      },
+      "heading_trail": [
+        "Application security",
+        "15. APIs, web services, and integrations"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control asks only for authenticated breaking-change and deprecation policy records to exist; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Breaking-change and deprecation policies exist.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-15-042",
+      "revision": 1,
+      "semantic_sha256": "c51f2467cdb3ba95be63db9bb5703d069de13d5f7f622c0a2bb8f408fdba89d5",
+      "statement": "Old versions have retirement dates and monitoring.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 50
+      },
+      "heading_trail": [
+        "Application security",
+        "15. APIs, web services, and integrations"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A complete old-version inventory can be joined to required retirement dates and active monitoring records; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Old versions have retirement dates and monitoring.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-15-043",
+      "revision": 1,
+      "semantic_sha256": "f87bda21d542910a19c04d130cea74932359c18ce6c10ef471d6d127e766220d",
+      "statement": "Contract tests cover external providers and consumers.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 51
+      },
+      "heading_trail": [
+        "Application security",
+        "15. APIs, web services, and integrations"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The complete provider-consumer contract inventory can be joined to successful bound contract-test executions; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Contract tests cover external providers and consumers.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-15-046",
+      "revision": 1,
+      "semantic_sha256": "91ca7f792581c0c7941c4081b4e6de502d0af256348928ee9a444de55aa741e2",
+      "statement": "Graph-based APIs limit depth, breadth, recursion, aliases, batching, and computational cost.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 57
+      },
+      "heading_trail": [
+        "Application security",
+        "15. APIs, web services, and integrations",
+        "15.1 Conditional interface checks"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Named graph limits and a versioned cost policy permit exact boundary and over-limit execution tests; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Graph-based APIs limit depth, breadth, recursion, aliases, batching, and computational cost.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-15-049",
+      "revision": 1,
+      "semantic_sha256": "be2b907e344b818fdfbe7be7df69870c45baa3b4c8e7dba6a13c1e4d139a7ccc",
+      "statement": "Streaming connections verify origin where browser initiated.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 60
+      },
+      "heading_trail": [
+        "Application security",
+        "15. APIs, web services, and integrations",
+        "15.1 Conditional interface checks"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Browser-initiated applicability and the approved origin set yield exact acceptance and rejection tests; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Streaming connections verify origin where browser initiated.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-15-050",
+      "revision": 1,
+      "semantic_sha256": "ba76c4848d925f75f2dba9b0eeccc08071c8e6ab8625269c52298b568fa81c90",
+      "statement": "Authorization changes and logout invalidate long-lived connections.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 61
+      },
+      "heading_trail": [
+        "Application security",
+        "15. APIs, web services, and integrations",
+        "15.1 Conditional interface checks"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A connection lifecycle test can change authorization or logout state and observe exact invalidation; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authorization changes and logout invalidate long-lived connections.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-16-009",
+      "revision": 1,
+      "semantic_sha256": "660bdb6439ae66e40c332514a0fd1194d610b4fe5d16031830f96205937efcd9",
+      "statement": "Passwords are not silently truncated or transformed unexpectedly.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 81
+      },
+      "heading_trail": [
+        "Application security",
+        "16. Identity, authentication, and account recovery"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A versioned password corpus can objectively detect truncation and transformations not declared by policy; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Passwords are not silently truncated or transformed unexpectedly.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-16-010",
+      "revision": 1,
+      "semantic_sha256": "0cf44c4cc97405de0bd824e1bcf55e64f0f3e2da30360fbc568853029e420dfc",
+      "statement": "Common and compromised passwords are rejected where password authentication is used.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 82
+      },
+      "heading_trail": [
+        "Application security",
+        "16. Identity, authentication, and account recovery"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Password-authentication applicability and authoritative common or compromised-password lists yield exact rejection results; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Common and compromised passwords are rejected where password authentication is used.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "external_registry"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-16-011",
+      "revision": 1,
+      "semantic_sha256": "79a114de0eeba554f870d0a23c330caf3a6bdf91bf9bde8de72cab73ea473698",
+      "statement": "Password managers and paste are supported.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 83
+      },
+      "heading_trail": [
+        "Application security",
+        "16. Identity, authentication, and account recovery"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Paste and password-manager autofill support have observable browser interaction outcomes; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Password managers and paste are supported.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-16-017",
+      "revision": 1,
+      "semantic_sha256": "b5278064516f203c499c1ae8345118870e3b3821c05ec811c5f7927de596563f",
+      "statement": "Recovery cannot be redirected through an unverified channel.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 89
+      },
+      "heading_trail": [
+        "Application security",
+        "16. Identity, authentication, and account recovery"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The approved recovery-channel inventory permits exact rejection tests for every unverified channel transition; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Recovery cannot be redirected through an unverified channel.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-16-023",
+      "revision": 1,
+      "semantic_sha256": "af79cee548423326b50f2c576183a2594ef839f9badef45d1b2ef38747ee26de",
+      "statement": "Default credentials are absent.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 95
+      },
+      "heading_trail": [
+        "Application security",
+        "16. Identity, authentication, and account recovery"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A complete product credential inventory and clean-install execution can detect known or active default credentials; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Default credentials are absent.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-16-024",
+      "revision": 1,
+      "semantic_sha256": "090c680a7cb64c8b5b20e7dcd5c3031bf1fa27c4d6509a3e6dc3a30b958a2816",
+      "statement": "Test, dormant, abandoned, and terminated accounts are disabled.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 96
+      },
+      "heading_trail": [
+        "Application security",
+        "16. Identity, authentication, and account recovery"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Authoritative lifecycle status can be joined to the complete account inventory to find accounts that remain enabled; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Test, dormant, abandoned, and terminated accounts are disabled.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-16-026",
+      "revision": 1,
+      "semantic_sha256": "5fe1258afef11db4dedfdc42ab6ea784ea9015e61079c1f90471cd7842b65721",
+      "statement": "Authentication events are audited.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 98
+      },
+      "heading_trail": [
+        "Application security",
+        "16. Identity, authentication, and account recovery"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A versioned authentication-event inventory can be compared with complete audit records and required fields; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authentication events are audited.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-16-027",
+      "revision": 1,
+      "semantic_sha256": "50850ef2b3e19bc8103d0f637795aa3711ae1190821ed015cee990a14afc87ac",
+      "statement": "Suspicious authentication can trigger step-up controls or investigation.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 99
+      },
+      "heading_trail": [
+        "Application security",
+        "16. Identity, authentication, and account recovery"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A versioned suspicious-event policy and injected event can objectively show step-up or investigation creation; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Suspicious authentication can trigger step-up controls or investigation.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-16-032",
+      "revision": 1,
+      "semantic_sha256": "22236ad81f187947a3e13d141640df1a692d4560f714656d5587705355a40dba",
+      "statement": "Social-engineering resistance is included in support procedures.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 104
+      },
+      "heading_trail": [
+        "Application security",
+        "16. Identity, authentication, and account recovery"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The support-procedure record can be checked for explicit social-engineering resistance steps and version binding; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Social-engineering resistance is included in support procedures.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-16-033",
+      "revision": 1,
+      "semantic_sha256": "6e4252d1df460c59ce09c65356dd08c8642a82349537e5c4fd02ab05e59cfc1a",
+      "statement": "Issuer, audience, signature, algorithm, expiration, nonce, and state are validated.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 108
+      },
+      "heading_trail": [
+        "Application security",
+        "16. Identity, authentication, and account recovery",
+        "16.1 Federation and delegated authorization"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A versioned federation protocol profile gives exact valid and invalid cases for every named field; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Issuer, audience, signature, algorithm, expiration, nonce, and state are validated.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-16-034",
+      "revision": 1,
+      "semantic_sha256": "45ec13c429001690c91e77d4c3cf9201fc38aecbdd0dd00f0e6b04550b680881",
+      "statement": "Redirect URIs are matched exactly according to the protocol’s security requirements.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 109
+      },
+      "heading_trail": [
+        "Application security",
+        "16. Identity, authentication, and account recovery",
+        "16.1 Federation and delegated authorization"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The selected protocol defines exact redirect matching, allowing objective accepted and rejected URI tests; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Redirect URIs are matched exactly according to the protocol’s security requirements.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-16-036",
+      "revision": 1,
+      "semantic_sha256": "4b0641edcfadd0c40f5cb534b3022ae5552b49d02f51e02b4f8f688428394ee9",
+      "statement": "Deprecated or insecure delegated-authorization flows are not used.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 111
+      },
+      "heading_trail": [
+        "Application security",
+        "16. Identity, authentication, and account recovery",
+        "16.1 Federation and delegated authorization"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A versioned approved-flow policy can be compared exactly with every configured delegated-authorization flow; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Deprecated or insecure delegated-authorization flows are not used.",
+          "checker_family": "structured_document",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-16-045",
+      "revision": 1,
+      "semantic_sha256": "eccf21fe7cfb547073396b71b43e5792b79edb0898f977a93137359238f5c5fa",
+      "statement": "Identity claims are not trusted beyond their documented assurance.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 120
+      },
+      "heading_trail": [
+        "Application security",
+        "16. Identity, authentication, and account recovery",
+        "16.1 Federation and delegated authorization"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Each consumed identity claim can be compared with its documented assurance and allowed-use policy; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Identity claims are not trusted beyond their documented assurance.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-17-001",
+      "revision": 1,
+      "semantic_sha256": "e6a32e339bbe678b2ba6bfcaaee594f38584520d7898f739f8c42e3b2d85366e",
+      "statement": "Authorization is denied by default.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 127
+      },
+      "heading_trail": [
+        "Application security",
+        "17. Authorization, privileges, and tenant isolation"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A complete authorization boundary inventory can exercise missing-policy and unknown-action cases for default denial; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authorization is denied by default.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-17-003",
+      "revision": 1,
+      "semantic_sha256": "e7726023bc9e6704c8fd41dcbe89ba799975c88c29837c902f2c0ba534372df3",
+      "statement": "A current role-permission-resource matrix exists.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 129
+      },
+      "heading_trail": [
+        "Application security",
+        "17. Authorization, privileges, and tenant isolation"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "A versioned freshness policy and schema objectively determine whether the role-permission-resource matrix is current; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "A current role-permission-resource matrix exists.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-17-004",
+      "revision": 1,
+      "semantic_sha256": "872bbb1ef0380f793dbf8a43156d39443f60699ee896526ac31a766908c8b0d2",
+      "statement": "Every endpoint and action maps to a required permission.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 130
+      },
+      "heading_trail": [
+        "Application security",
+        "17. Authorization, privileges, and tenant isolation"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A complete endpoint and action inventory can be joined exactly to required permission declarations; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every endpoint and action maps to a required permission.",
+          "checker_family": "structured_document",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-17-005",
+      "revision": 1,
+      "semantic_sha256": "3d0bd2bfbe6d3d08225d5e9ab6d888d5d4838e847310df08d978c84325b7a1e4",
+      "statement": "Access checks use the current user, tenant, resource, and operation.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 131
+      },
+      "heading_trail": [
+        "Application security",
+        "17. Authorization, privileges, and tenant isolation"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "local_static",
+      "primary_reason": "Supported authorization call sites can be checked for current user, tenant, resource, and operation inputs, with unknown flows Blocked; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Access checks use the current user, tenant, resource, and operation.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-17-013",
+      "revision": 1,
+      "semantic_sha256": "ffefba73ca9f7dfcbbb68bc975037632cc339e3d4dffc2e731412ecff367b6b9",
+      "statement": "Removed users lose access to shared resources.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 139
+      },
+      "heading_trail": [
+        "Application security",
+        "17. Authorization, privileges, and tenant isolation"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A complete shared-resource inventory and removal event allow exact post-removal access-denial tests; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Removed users lose access to shared resources.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-17-015",
+      "revision": 1,
+      "semantic_sha256": "35116b4ea36a1c6d6444e9aea6524a0948d129d328dd871655d892f64ff31502",
+      "statement": "Temporary permissions expire automatically.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 141
+      },
+      "heading_trail": [
+        "Application security",
+        "17. Authorization, privileges, and tenant isolation"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Temporary permission expiry timestamps and current effective access are objectively queryable; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Temporary permissions expire automatically.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-17-018",
+      "revision": 1,
+      "semantic_sha256": "d2d574257a499a1d5012bda91f5ab5901c0af5bc6915dc3d2e9831bac655b36d",
+      "statement": "Administrative, support, and impersonation actions require reason, authorization, visible indication, and audit.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 144
+      },
+      "heading_trail": [
+        "Application security",
+        "17. Authorization, privileges, and tenant isolation"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The complete privileged-action inventory can be tested for required reason, authorization, user indication, and audit records; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Administrative, support, and impersonation actions require reason, authorization, visible indication, and audit.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-17-020",
+      "revision": 1,
+      "semantic_sha256": "2fb8f9521d943d8eaf1ec179a71f73d2633845632db2efd9235fc37440e5e911",
+      "statement": "Emergency access is time-bounded and reviewed.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 146
+      },
+      "heading_trail": [
+        "Application security",
+        "17. Authorization, privileges, and tenant isolation"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Approved maximum duration and review-record requirements make every emergency-access grant objectively checkable; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Emergency access is time-bounded and reviewed.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-17-028",
+      "revision": 1,
+      "semantic_sha256": "59d2cba96b97c265a50519771156742722e64082a8b715c190e87d7b2326be88",
+      "statement": "Resource identifiers alone are never treated as authorization.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 154
+      },
+      "heading_trail": [
+        "Application security",
+        "17. Authorization, privileges, and tenant isolation"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "local_static",
+      "primary_reason": "A complete supported authorization data-flow analysis can reject any decision based solely on a resource identifier; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Resource identifiers alone are never treated as authorization.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-18-001",
+      "revision": 1,
+      "semantic_sha256": "75adefdd0111322af25667c0318665841886984822316d22e5bbbe900fcbc2ed",
+      "statement": "Session identifiers have sufficient unpredictability.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 162
+      },
+      "heading_trail": [
+        "Application security",
+        "18. Sessions, cookies, and tokens"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A named unpredictability threshold and sealed identifier sample yield a repeatable statistical result; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Session identifiers have sufficient unpredictability.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-18-002",
+      "revision": 1,
+      "semantic_sha256": "f5a3868c57b22b246bd538690314127a984019f85fcd47cf5a342be2c4ae93c6",
+      "statement": "Session identifiers are generated using a cryptographically secure source.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 163
+      },
+      "heading_trail": [
+        "Application security",
+        "18. Sessions, cookies, and tokens"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "local_static",
+      "primary_reason": "A versioned approved cryptographic random-source list can be compared with every supported identifier generation site; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Session identifiers are generated using a cryptographically secure source.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-18-004",
+      "revision": 1,
+      "semantic_sha256": "591119735ace95b4c7f3a83b780bb520baae3350af43c9a0050dc034f05e3498",
+      "statement": "Browser cookies use `Secure` where transmitted over HTTPS.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 165
+      },
+      "heading_trail": [
+        "Application security",
+        "18. Sessions, cookies, and tokens"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Every HTTPS cookie response has an exact Secure-attribute predicate; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Browser cookies use `Secure` where transmitted over HTTPS.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-18-009",
+      "revision": 1,
+      "semantic_sha256": "db77aed316c00a3b6aaeaa28371490a575fcf19cd2b8e116e15461c33e0b5f16",
+      "statement": "Session identifiers rotate after login and privilege changes.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 170
+      },
+      "heading_trail": [
+        "Application security",
+        "18. Sessions, cookies, and tokens"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Login and privilege-change events permit exact before-and-after session identifier comparisons; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Session identifiers rotate after login and privilege changes.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-18-012",
+      "revision": 1,
+      "semantic_sha256": "0fac68d57f9c26a2d9b7851fbc63679a9245f8228d07e8efa65396f7404136f3",
+      "statement": "Logout invalidates the server-side session or otherwise revokes access.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 173
+      },
+      "heading_trail": [
+        "Application security",
+        "18. Sessions, cookies, and tokens"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Logout can be followed by exact reuse tests against the server-side session or access credential; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Logout invalidates the server-side session or otherwise revokes access.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-18-014",
+      "revision": 1,
+      "semantic_sha256": "858bb937a8f9233c63d8b32058f5050ed3ae6adf48f9e66e5b4d2564679f94ee",
+      "statement": "Concurrent-session policy is defined.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 175
+      },
+      "heading_trail": [
+        "Application security",
+        "18. Sessions, cookies, and tokens"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The statement asks only for a versioned concurrent-session policy record to be defined; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Concurrent-session policy is defined.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-18-018",
+      "revision": 1,
+      "semantic_sha256": "78064112a0d080dd19d4ea9fe8d1aa644880fda34abfd5d5413d606c9719ea2b",
+      "statement": "Tokens validate issuer, audience, subject, type, signature, algorithm, expiry, and not-before values.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 179
+      },
+      "heading_trail": [
+        "Application security",
+        "18. Sessions, cookies, and tokens"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A token profile gives exact valid and invalid values for every named claim and cryptographic field; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Tokens validate issuer, audience, subject, type, signature, algorithm, expiry, and not-before values.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-18-019",
+      "revision": 1,
+      "semantic_sha256": "e2fd30726ad080e7a905f652d07fe3c0edb2001bd7a6faec3cba9ca81f86114c",
+      "statement": "A token intended for one purpose cannot be accepted for another.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 180
+      },
+      "heading_trail": [
+        "Application security",
+        "18. Sessions, cookies, and tokens"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A versioned token-purpose matrix allows exact cross-purpose rejection tests; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "A token intended for one purpose cannot be accepted for another.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-19-002",
+      "revision": 1,
+      "semantic_sha256": "be8209e501b9650b2d22871b87ff768762fa8b45c8be609db7979fe2cf70157d",
+      "statement": "Validation occurs at the trusted server-side boundary.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 193
+      },
+      "heading_trail": [
+        "Application security",
+        "19. Input validation, encoding, injection, and unsafe processing"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "local_static",
+      "primary_reason": "Supported input data flows can be checked for validation at the declared trusted server-side boundary, with unknown flows Blocked; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validation occurs at the trusted server-side boundary.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-19-003",
+      "revision": 1,
+      "semantic_sha256": "dff28ee87a423f9db95d0a883ee094900d59e1825846d81ec3dc6833e68b5ef3",
+      "statement": "Inputs are validated for type, syntax, range, length, structure, and allowed values.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 194
+      },
+      "heading_trail": [
+        "Application security",
+        "19. Input validation, encoding, injection, and unsafe processing"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Explicit input schemas and project limits give exact predicates for every listed validation dimension; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Inputs are validated for type, syntax, range, length, structure, and allowed values.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-19-004",
+      "revision": 1,
+      "semantic_sha256": "7eb6cbee68de343138a171ac9d98e7b5d2ebd375b39c4adc021e46b7bcf62493",
+      "statement": "Canonicalization and normalization occur before security-sensitive comparisons.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 195
+      },
+      "heading_trail": [
+        "Application security",
+        "19. Input validation, encoding, injection, and unsafe processing"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "local_static",
+      "primary_reason": "Supported data-flow ordering can prove canonicalization or normalization precedes each security-sensitive comparison; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Canonicalization and normalization occur before security-sensitive comparisons.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-19-006",
+      "revision": 1,
+      "semantic_sha256": "7a0b8114de197b33b2b0d57ed4a59f3840ed5f25cf9fc6d2b125d63d1001d068",
+      "statement": "Database operations use safe parameter binding.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 197
+      },
+      "heading_trail": [
+        "Application security",
+        "19. Input validation, encoding, injection, and unsafe processing"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "local_static",
+      "primary_reason": "Supported database call sites have an exact parameter-binding versus string-construction predicate; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Database operations use safe parameter binding.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-19-007",
+      "revision": 1,
+      "semantic_sha256": "61834079b4034fe6c688d4cd2aa438c8a472b10a761931b472711e6bcde52d39",
+      "statement": "Operating-system operations avoid command construction from untrusted input.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 198
+      },
+      "heading_trail": [
+        "Application security",
+        "19. Input validation, encoding, injection, and unsafe processing"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "local_static",
+      "primary_reason": "Supported operating-system call sites can be checked for untrusted data entering command construction; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Operating-system operations avoid command construction from untrusted input.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-19-012",
+      "revision": 1,
+      "semantic_sha256": "24e608f7379158dd74f76c08e60e60984ccfeab186d1e14cc8fddd61132ba59c",
+      "statement": "Dynamic evaluation of untrusted input is absent.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 203
+      },
+      "heading_trail": [
+        "Application security",
+        "19. Input validation, encoding, injection, and unsafe processing"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "local_static",
+      "primary_reason": "A complete supported AST inventory has an exact predicate for dynamic evaluation receiving untrusted data; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Dynamic evaluation of untrusted input is absent.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-19-014",
+      "revision": 1,
+      "semantic_sha256": "c46eddacde68cc5ab4386aeeb4f74de68b1e33bacd182dc2bdd3cda27d535de2",
+      "statement": "Deserialization permits only expected types and bounded structures.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 205
+      },
+      "heading_trail": [
+        "Application security",
+        "19. Input validation, encoding, injection, and unsafe processing"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Explicit allowed-type schemas and named structure limits can be compared with every supported deserialization site; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Deserialization permits only expected types and bounded structures.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-20-002",
+      "revision": 1,
+      "semantic_sha256": "60b6248b786f554d8a225df1ce898c0819988011371b511a6929e7e5959121f2",
+      "statement": "Maximum file size is enforced before excessive processing.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 223
+      },
+      "heading_trail": [
+        "Application security",
+        "20. File upload, download, and content processing"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A named maximum and instrumented over-limit upload test can prove rejection before excessive processing; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Maximum file size is enforced before excessive processing.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-20-003",
+      "revision": 1,
+      "semantic_sha256": "6311a834a1f4b0ffc8d2e8ed65562fdbf046d6b692b384876cdb5cf16e4fa093",
+      "statement": "File count, archive depth, expanded size, dimensions, page count, and processing time are bounded.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 224
+      },
+      "heading_trail": [
+        "Application security",
+        "20. File upload, download, and content processing"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Named limits and boundary tests give exact results for count, depth, expansion, dimensions, pages, and time; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "File count, archive depth, expanded size, dimensions, page count, and processing time are bounded.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-20-004",
+      "revision": 1,
+      "semantic_sha256": "9699ba718ffd43c2bf4286dbb0edaa1eccbf7037ac6dc9e3078e947559005d5b",
+      "statement": "File type is checked using content, structure, and expected extension rather than user-supplied metadata alone.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 225
+      },
+      "heading_trail": [
+        "Application security",
+        "20. File upload, download, and content processing"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A controlled file corpus can prove decisions use content, structure, and extension rather than metadata alone; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "File type is checked using content, structure, and expected extension rather than user-supplied metadata alone.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-20-005",
+      "revision": 1,
+      "semantic_sha256": "6b5c83efad7764201ac321e2a1216bc2603ffbfcc2a6cee6d75b5c0774dc61f8",
+      "statement": "Allowed types are explicitly listed.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 226
+      },
+      "heading_trail": [
+        "Application security",
+        "20. File upload, download, and content processing"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "local_static",
+      "primary_reason": "The rule asks for an explicit allowed-type list whose presence and values are objectively parseable; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Allowed types are explicitly listed.",
+          "checker_family": "structured_document",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-20-008",
+      "revision": 1,
+      "semantic_sha256": "1fbcf049858a644e1ebac770761c1da61e332fd86f989e05752cc682fe6a60e1",
+      "statement": "Files remain quarantined until required validation completes.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 229
+      },
+      "heading_trail": [
+        "Application security",
+        "20. File upload, download, and content processing"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A versioned validation-stage inventory and state-transition test can prove release occurs only after required completion; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Files remain quarantined until required validation completes.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-20-009",
+      "revision": 1,
+      "semantic_sha256": "7e5440288a6b0852d864e63ac3e365ceded86a52cc9bfa27815d98a33fa3787b",
+      "statement": "User-provided filenames are not used as trusted filesystem paths.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 230
+      },
+      "heading_trail": [
+        "Application security",
+        "20. File upload, download, and content processing"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "local_static",
+      "primary_reason": "Supported path-construction flows can prove user filenames never become trusted filesystem paths; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "User-provided filenames are not used as trusted filesystem paths.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-20-011",
+      "revision": 1,
+      "semantic_sha256": "7c4f2d93bb2a2eec18611e32d643e3af9892c0d56ae9db19b7709e48b8261136",
+      "statement": "Upload storage is non-executable.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 232
+      },
+      "heading_trail": [
+        "Application security",
+        "20. File upload, download, and content processing"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Effective storage mount and execution-policy evidence gives an exact non-executable predicate; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Upload storage is non-executable.",
+          "checker_family": "container_iac",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-20-013",
+      "revision": 1,
+      "semantic_sha256": "1ad07298ee1e1376612fa2a91b6f1c2d23ea23da6d335300bf00e1ba291bdf9f",
+      "statement": "Access control is checked when files are uploaded, listed, previewed, transformed, and downloaded.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 234
+      },
+      "heading_trail": [
+        "Application security",
+        "20. File upload, download, and content processing"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A complete file-operation matrix can exercise authorization on upload, list, preview, transform, and download; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Access control is checked when files are uploaded, listed, previewed, transformed, and downloaded.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-20-015",
+      "revision": 1,
+      "semantic_sha256": "94a3562b8b6b89125e1034a76573047a7b4eb76cb9cf378e146f0db1c02ea900",
+      "statement": "Browser content sniffing is prevented.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 236
+      },
+      "heading_trail": [
+        "Application security",
+        "20. File upload, download, and content processing"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Download response headers and a browser test have an exact no-sniffing outcome; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Browser content sniffing is prevented.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-20-016",
+      "revision": 1,
+      "semantic_sha256": "0cc9eecf36442e44a2be902e6bd214a60d09bafa77a661f8c786750f41610caa",
+      "statement": "Archive extraction prevents traversal, symbolic-link abuse, and resource exhaustion.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 237
+      },
+      "heading_trail": [
+        "Application security",
+        "20. File upload, download, and content processing"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Named extraction limits and a fixed malicious archive corpus yield objective traversal, symlink, and exhaustion results; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Archive extraction prevents traversal, symbolic-link abuse, and resource exhaustion.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-20-019",
+      "revision": 1,
+      "semantic_sha256": "509ecb87fd2537b62099986c8381e508abb6241388d6a591d5c3be4003c5c5bf",
+      "statement": "Generated exports escape spreadsheet formulas and other active content.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 240
+      },
+      "heading_trail": [
+        "Application security",
+        "20. File upload, download, and content processing"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A fixed export corpus can objectively test formula and active-content escaping in generated files; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Generated exports escape spreadsheet formulas and other active content.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-20-020",
+      "revision": 1,
+      "semantic_sha256": "07c6bc5c56d0a9d59509eae6511aad7c6ccb5dbceda6289c58f3d9ac6a2ef3b7",
+      "statement": "Temporary files have restricted permissions and reliable deletion.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 241
+      },
+      "heading_trail": [
+        "Application security",
+        "20. File upload, download, and content processing"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Named permission and cleanup deadlines give exact temporary-file creation and deletion tests; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Temporary files have restricted permissions and reliable deletion.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-20-021",
+      "revision": 1,
+      "semantic_sha256": "2ff5e1d4942b4e2d26be76fad51c48cad40e57ff757485ac6bc84017ba3e87cd",
+      "statement": "Abandoned, failed, and orphaned uploads are cleaned up.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 242
+      },
+      "heading_trail": [
+        "Application security",
+        "20. File upload, download, and content processing"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Defined upload terminal states and age limits allow exact queries for abandoned, failed, or orphaned content; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Abandoned, failed, and orphaned uploads are cleaned up.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-20-022",
+      "revision": 1,
+      "semantic_sha256": "233bcc641a02b776f8c5c192b8b29b92d69de041766ba6c277d5c5185fe263b8",
+      "statement": "Retention and deletion rules apply to stored files and derived versions.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 243
+      },
+      "heading_trail": [
+        "Application security",
+        "20. File upload, download, and content processing"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The approved retention policy and complete original-derived file graph permit exact age and deletion comparisons; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Retention and deletion rules apply to stored files and derived versions.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-21-001",
+      "revision": 1,
+      "semantic_sha256": "e4007e1c8857891dc65fd843c773b43e3e972151707c1dd55ec15760544a5687",
+      "statement": "All user and administrative traffic uses an approved encrypted transport configuration.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 253
+      },
+      "heading_trail": [
+        "Application security",
+        "21. Transport, browser security, DNS, and network exposure"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A complete endpoint and traffic-path inventory can be compared with the approved encrypted transport profile; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "All user and administrative traffic uses an approved encrypted transport configuration.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-21-003",
+      "revision": 1,
+      "semantic_sha256": "b155ef8bcb6435dd8d067524065ff8f15e034d9885d3e778abc1a39cdd1cc4b8",
+      "statement": "Certificates cover the correct names and trust chains.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 255
+      },
+      "heading_trail": [
+        "Application security",
+        "21. Transport, browser security, DNS, and network exposure"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Endpoint names, certificate identities, validity, and trust-chain verification have exact protocol predicates; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Certificates cover the correct names and trust chains.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-21-004",
+      "revision": 1,
+      "semantic_sha256": "444520a1e6f2c3d19f8f536eedf31d9e846ab99bd903ea5fc3ac6515797e4081",
+      "statement": "Certificate issuance, renewal, expiration, and revocation are monitored.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 256
+      },
+      "heading_trail": [
+        "Application security",
+        "21. Transport, browser security, DNS, and network exposure"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Certificate inventory and lifecycle-event monitoring records can be queried for every named stage; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Certificate issuance, renewal, expiration, and revocation are monitored.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-21-012",
+      "revision": 1,
+      "semantic_sha256": "826d735f1f3dbfbc8f8172635631d38e3aa262241bc1bf56ffd56ec984c295b9",
+      "statement": "Framing is restricted to intended parents.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 264
+      },
+      "heading_trail": [
+        "Application security",
+        "21. Transport, browser security, DNS, and network exposure"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "An approved parent-origin inventory and frame-policy tests yield exact allowed and rejected embedding results; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Framing is restricted to intended parents.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-21-013",
+      "revision": 1,
+      "semantic_sha256": "6d63d92b876ecf82cd19208a2b467992b91c2a4ae09980135905af1fa7fb1d68",
+      "statement": "MIME sniffing is disabled.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 265
+      },
+      "heading_trail": [
+        "Application security",
+        "21. Transport, browser security, DNS, and network exposure"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Every applicable browser response has an exact anti-sniffing header and observed no-sniff behavior predicate; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "MIME sniffing is disabled.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-21-020",
+      "revision": 1,
+      "semantic_sha256": "890a9d8c5e8cbaf72f2b2e879d77b021d22090e5bb7514c07caece2f9f2827ad",
+      "statement": "Security headers are present on normal, error, redirect, authentication, and static responses as applicable.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 272
+      },
+      "heading_trail": [
+        "Application security",
+        "21. Transport, browser security, DNS, and network exposure"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A complete response-class inventory and versioned header profile permit exact normal and exceptional response tests; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Security headers are present on normal, error, redirect, authentication, and static responses as applicable.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-21-024",
+      "revision": 1,
+      "semantic_sha256": "0634b42797891d2823a66cb350fd752b62696bc609b464346982371d03ef0750",
+      "statement": "Proxy and load-balancer header trust is configured explicitly.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 276
+      },
+      "heading_trail": [
+        "Application security",
+        "21. Transport, browser security, DNS, and network exposure"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Effective proxy and load-balancer trusted-header sources can be queried against an explicit approved configuration; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Proxy and load-balancer header trust is configured explicitly.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-21-025",
+      "revision": 1,
+      "semantic_sha256": "c527194e35d3821b4b44c926a27799de807980c30b1399eb1aaefa7a940f3cbe",
+      "statement": "The origin cannot be bypassed unintentionally when a CDN, WAF, or reverse proxy is relied upon.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 277
+      },
+      "heading_trail": [
+        "Application security",
+        "21. Transport, browser security, DNS, and network exposure"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Authoritative DNS, routing, firewall, and origin access evidence can prove that unapproved direct origin paths fail; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The origin cannot be bypassed unintentionally when a CDN, WAF, or reverse proxy is relied upon.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-21-028",
+      "revision": 1,
+      "semantic_sha256": "bd1bac7d89da3c43b4aeebdfe6c28d08f52942b0c4a6721cb0239227880be119",
+      "statement": "Production networks do not trust development or office networks implicitly.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 280
+      },
+      "heading_trail": [
+        "Application security",
+        "21. Transport, browser security, DNS, and network exposure"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "The effective network trust and routing graph can prove there is no implicit development or office trust edge into production; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Production networks do not trust development or office networks implicitly.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-21-029",
+      "revision": 1,
+      "semantic_sha256": "7e952770fd53f26ca51780c93bab08481bac3ca19dbd0b2d5f0f2a42a565e9fb",
+      "statement": "Domain ownership is documented.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 281
+      },
+      "heading_trail": [
+        "Application security",
+        "21. Transport, browser security, DNS, and network exposure"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The statement asks for an authenticated domain ownership record to be documented; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Domain ownership is documented.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-21-031",
+      "revision": 1,
+      "semantic_sha256": "afe472a791bda9159a1b837a5bfd05c93ac442466852e571753734f1549d19f5",
+      "statement": "Domain transfer and modification protections are enabled.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 283
+      },
+      "heading_trail": [
+        "Application security",
+        "21. Transport, browser security, DNS, and network exposure"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Registrar lock, transfer protection, and modification protection states are objectively queryable; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Domain transfer and modification protections are enabled.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-21-032",
+      "revision": 1,
+      "semantic_sha256": "1eba6fe868e4da650e9b7161c980be1878d7338d75d1d2e7cd9d71065e9fef9c",
+      "statement": "DNS records are inventoried.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 284
+      },
+      "heading_trail": [
+        "Application security",
+        "21. Transport, browser security, DNS, and network exposure"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Authoritative DNS zones provide a complete machine-readable record inventory for the assessed domains; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "DNS records are inventoried.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-21-033",
+      "revision": 1,
+      "semantic_sha256": "7611c329920e4d44cad1def96a49b8fb295974a191382d58d3f82ee626c1166a",
+      "statement": "Dangling DNS records and abandoned hosted resources are removed.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 285
+      },
+      "heading_trail": [
+        "Application security",
+        "21. Transport, browser security, DNS, and network exposure"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "DNS targets can be joined to provider resource inventories to identify records pointing to absent or abandoned resources; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Dangling DNS records and abandoned hosted resources are removed.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-21-035",
+      "revision": 1,
+      "semantic_sha256": "2af8fa0773b24a1f0792946722bbda55441ec87f53bd6abe5d2e151b43d7cd88",
+      "statement": "DNS changes, TTLs, failover, and recovery are documented.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 287
+      },
+      "heading_trail": [
+        "Application security",
+        "21. Transport, browser security, DNS, and network exposure"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The four named DNS operational topics can be required as fields in a versioned documentation record; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "DNS changes, TTLs, failover, and recovery are documented.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-21-038",
+      "revision": 1,
+      "semantic_sha256": "d3b4856ac2c573d158900109c32631bde6136e43dfc414c4a6b11a1c0230851a",
+      "statement": "External attack-surface monitoring detects newly exposed hosts and services.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 290
+      },
+      "heading_trail": [
+        "Application security",
+        "21. Transport, browser security, DNS, and network exposure"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A complete known external surface, monitoring configuration, and injected canary exposure can objectively prove detection; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "External attack-surface monitoring detects newly exposed hosts and services.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-22-002",
+      "revision": 1,
+      "semantic_sha256": "1b1cc31e9cd22f3fd57f46db081b37441ef4d419d173c1f8477cf0b3e2b38fda",
+      "statement": "Only approved, maintained algorithms and protocol implementations are used.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 297
+      },
+      "heading_trail": [
+        "Application security",
+        "22. Cryptography and key management"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A versioned approved algorithm list, implementation inventory, and authoritative maintenance status yield exact comparisons; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Only approved, maintained algorithms and protocol implementations are used.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-22-005",
+      "revision": 1,
+      "semantic_sha256": "dff7e4a06bd665cf1cc78784ad5fc5df4e6948d926a6f5540a53f1d5b4adc95e",
+      "statement": "Passwords use a current adaptive one-way password-hashing method.",
+      "source": {
+        "path": "docs/checklists/05-application-security.md",
+        "line": 300
+      },
+      "heading_trail": [
+        "Application security",
+        "22. Cryptography and key management"
+      ],
+      "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A versioned password-hashing policy and supported call-site inventory give exact algorithm and parameter predicates; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Passwords use a current adaptive one-way password-hashing method.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    }
+  ]
+}

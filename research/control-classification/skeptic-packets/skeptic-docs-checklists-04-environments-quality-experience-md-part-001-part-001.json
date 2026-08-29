@@ -1,0 +1,1595 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-checklists-04-environments-quality-experience-md-part-001-part-001",
+  "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 57,
+  "controls": [
+    {
+      "control_id": "PRC-10-002",
+      "revision": 1,
+      "semantic_sha256": "856ccb73a7cf99893803fca6e8d464e2e7dca6097f39f551679197438f1d3df8",
+      "statement": "Production credentials do not work in non-production environments.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 12
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.1 Environment separation"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A complete approved credential inventory and fixed authentication tests can prove that each production credential is rejected by every non-production environment.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The approved secret and identity inventories enumerate every production credential and every non-production authentication boundary.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "Each inventoried production credential receives a current rejected result at every non-production boundary without exposing the credential in evidence.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-10-003",
+      "revision": 1,
+      "semantic_sha256": "8bfbe1c72d3a9f36b92383676fda4b08b7871a2120c7a2f43b454d15d0a7ad9b",
+      "statement": "Non-production users cannot reach production control planes.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 13
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.1 Environment separation"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Complete identity and production-control-plane inventories permit fixed authorization queries or denial tests for every non-production user and group.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Approved identity and control-plane inventories enumerate all non-production principals and production control-plane authorization targets.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "Every inventoried non-production principal is denied access to every production control-plane target by current policy evaluation or bounded tests.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-10-007",
+      "revision": 1,
+      "semantic_sha256": "64f19b9f2f577ae505dde43acaa32300058a0b530ebf7f3dc3cba9d1720e11e8",
+      "statement": "Non-production email, payment, notifications, and webhooks cannot accidentally contact real users.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 17
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.1 Environment separation"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Approved integration and recipient inventories plus fixed sink and egress policies can prove that non-production messages cannot reach real-user destinations.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The approved environment inventory enumerates every non-production email, payment, notification, and webhook integration and every prohibited real-user destination class.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "Current configuration and bounded delivery tests route every inventoried non-production integration only to approved test sinks.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-10-008",
+      "revision": 1,
+      "semantic_sha256": "a248d40d12235924bc671850682e4d4597891d50c68013110c0814ffbea90998",
+      "statement": "Environment boundaries are documented and tested.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 18
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.1 Environment separation"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The exact fact is the existence of current boundary documentation and successful fixed boundary tests for the approved environment inventory.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authenticated environment record documents each approved environment boundary, identity domain, network boundary, and data boundary.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Every documented boundary has a current successful isolation test bound to the assessed configurations.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-10-009",
+      "revision": 1,
+      "semantic_sha256": "c068c200af6f565d36d9731fa5e940d712f45e132dfd9201f7dd502a1e410523",
+      "statement": "Production access is logged and periodically reviewed.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 19
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.1 Environment separation"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A versioned review interval, production-access log, and authenticated review records make logging coverage and review freshness objectively decidable.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every production access event in the approved identity and control-plane scope produces an immutable audit event with principal, target, action, and time.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "Authenticated access-review records cover all events and principals within the policy-defined review interval.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-10-010",
+      "revision": 1,
+      "semantic_sha256": "88c12c23054b0d6c7dfe013fc033ea5bfb10fd1d207711e46a505a61b5cbc7ab",
+      "statement": "Configuration is version-controlled or otherwise auditable.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 23
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.2 Configuration"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Version history or an append-only audit trail can deterministically prove that every configuration revision has an immutable identity and recorded change history.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every production configuration item has an immutable version history or authenticated audit trail linking its prior and current values.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-10-011",
+      "revision": 1,
+      "semantic_sha256": "8aca668b583977d2d8a72d465ebc07685a70c72d8ee723690bc56323f0b06d12",
+      "statement": "Configuration changes require review and approval.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 24
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.2 Configuration"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "An approved change policy and authenticated workflow events can prove that no configuration change became effective without the required review and approval.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The versioned configuration policy defines required reviewer and approver roles for every configuration class.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Every effective configuration change has matching authenticated review and approval events that satisfy the bound policy.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-10-012",
+      "revision": 1,
+      "semantic_sha256": "7479777fa3092494c85113666145e1f21e14fbb779a3da5b38c5071c52f2af6c",
+      "statement": "Configuration has schema and type validation.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 25
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.2 Configuration"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A declared configuration schema and fixed parser can validate field types and constraints against every sealed configuration instance without interpretation.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every inventoried configuration instance validates successfully against its version-bound schema and type constraints.",
+          "checker_family": "structured_document",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-10-015",
+      "revision": 1,
+      "semantic_sha256": "02df9cd6d9d0a6303881c50cce435b0c0e6ad4cbc3653c63d20b52703f1dc755",
+      "statement": "Environment-specific values are explicit.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 28
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.2 Configuration"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "A schema can require every value whose semantics vary by environment to be explicitly bound per environment rather than inherited implicitly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every configuration field marked environment-specific in the approved schema has an explicit value or explicit not-applicable state for each environment.",
+          "checker_family": "structured_document",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-10-016",
+      "revision": 1,
+      "semantic_sha256": "c1f8baf6e36c152cf4d6ecf91381058f7875e0e072807a904339d6eaacd6790a",
+      "statement": "Configuration drift is detected.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 29
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.2 Configuration"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "A desired configuration snapshot and read-only observed configuration can be normalized and compared exactly to produce fixed drift results.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every inventoried environment configuration is compared with its approved desired version and all differences are reported as current drift evidence.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-10-017",
+      "revision": 1,
+      "semantic_sha256": "b1f484b10bb4cb979f7d61cafd759f2e98f3a88074466ad4375fb712c103a086",
+      "statement": "Production configuration can be reconstructed.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 30
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.2 Configuration"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A sealed reconstruction recipe can be executed in isolation and its resulting normalized configuration compared exactly with the approved production snapshot.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The approved reconstruction procedure produces a complete configuration whose normalized digest matches the production configuration digest.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-10-018",
+      "revision": 1,
+      "semantic_sha256": "c9f49045898dda4e9278d5aa187d3c8fbc524c39d8415a4a2437493a0068bdce",
+      "statement": "Configuration rollback is tested.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 31
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.2 Configuration"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A version-bound rollback procedure with fixed expected state permits an isolated rollback test and exact post-rollback configuration comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Current execution evidence shows the approved configuration rollback procedure restores the complete expected configuration and service state.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-10-021",
+      "revision": 1,
+      "semantic_sha256": "3d9b0a42ffaeb2209e7a98a5c9a26c008010312787880904bccf66d08cf0a7bd",
+      "statement": "Time synchronization is monitored.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 34
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.2 Configuration"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "An approved clock-skew threshold and current monitoring configuration and observations make time-synchronization monitoring objectively verifiable.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every production host or workload in the approved inventory reports clock synchronization and skew to monitoring with a current result inside the policy threshold.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-10-022",
+      "revision": 1,
+      "semantic_sha256": "c0b6c6053e83e5aba330f709752a27c203fd74d9ee1524f8245a9a721a9117bc",
+      "statement": "Resource limits and timeouts are explicitly configured.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 35
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.2 Configuration"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A complete workload and client inventory can be compared with approved typed resource-limit and timeout policies without inventing universal values.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The approved policy defines required resource-limit and timeout fields, units, and ranges for each inventoried component class.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Every applicable component has explicit resource limits and timeouts that validate against its bound policy.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-10-024",
+      "revision": 1,
+      "semantic_sha256": "376207272c9a18fc370eebacb8743b124e5eb7afb6390dd6b9fa7d2bb5e83920",
+      "statement": "Configuration ownership and expiration dates are recorded.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 37
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.2 Configuration"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Configuration ownership identities and expiration timestamps are typed record fields whose presence, validity, scope, and freshness are objectively checkable.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every configuration item has a current accountable owner identity and an explicit expiration date or approved non-expiring classification.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-10-025",
+      "revision": 1,
+      "semantic_sha256": "d02116b2612db18f52abd3dc520d25f96c01f0d8301a4d4ce4c75a9403f7f916",
+      "statement": "Emergency configuration changes are captured and reviewed.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 38
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.2 Configuration"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Emergency changes can be identified from authenticated change events and checked for capture and policy-timely independent review.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every emergency configuration change is present in the authenticated change ledger with exact configuration identity, actor, values, and time.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "Each emergency change has a completed review record within the policy-defined interval.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-10-026",
+      "revision": 1,
+      "semantic_sha256": "09e99487ad177869fdb34f6ec5d2c138830f588f68d476168dc42a565eee3441",
+      "statement": "Every flag has an owner.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 42
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.3 Feature flags"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The flag service provides a finite inventory that can be compared with an authenticated ownership record for one current owner per flag.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "A read-only query returns the complete current feature-flag inventory for the declared project scope.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "Every inventoried feature flag has one current accountable owner identity in the flag record.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-10-027",
+      "revision": 1,
+      "semantic_sha256": "be6e342e9c71281667ef39ac2fd2a32eae888c2ef25ffac718189fc5b0892f99",
+      "statement": "Every flag has a documented purpose.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 43
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.3 Feature flags"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The requirement asks for documentation, so a nonempty purpose field bound to every inventoried flag is a fixed record-validation fact.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every inventoried feature flag has a nonempty versioned purpose field in its authenticated record.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-10-029",
+      "revision": 1,
+      "semantic_sha256": "af9c1e5e7ec8c87d3072a2939b13828a1b935191fd15dd885f5ce50762d7fca1",
+      "statement": "Flag state is included in release and incident records.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 45
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.3 Feature flags"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Flag services and release or incident record schemas expose finite state snapshots that can be compared by identity and time.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The exact feature-flag state snapshot is captured with the release identity and every incident start and material state-change time.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "Each required release and incident record references the matching authenticated flag-state snapshot digest.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-10-030",
+      "revision": 1,
+      "semantic_sha256": "232a8a3640327cd5d9ae153aa012b4b7a0c9d4aba35306cc0eddcae2e4415c38",
+      "statement": "Access to change high-impact flags is restricted and audited.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 46
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.3 Feature flags"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "An approved high-impact flag inventory, IAM policy, and audit log permit exact authorization and logging checks for every change.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The approved policy identifies high-impact flags and the principals authorized to change each one.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Current IAM state restricts each high-impact flag to its approved principals and every change produces a complete audit event.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-10-034",
+      "revision": 1,
+      "semantic_sha256": "1179805e850866edce2bc12e79de8e151f33ae75e9805e1dffb064af6c1f538f",
+      "statement": "Temporary flags have removal dates.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 50
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.3 Feature flags"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The flag inventory, temporary classification, and typed removal date make this a finite schema and date validation.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every feature flag classified as temporary has a valid removal date and current owner in its authenticated record.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-10-036",
+      "revision": 1,
+      "semantic_sha256": "93671be0b8735fe176aef491a6bae0ffd70cc5cfde5d705c7963229065c93862",
+      "statement": "Secrets are stored in an approved secret-management system.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 55
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.4 Secrets"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "An approved secret-manager list and complete credential inventory can be compared to observed storage locations without judging secret quality.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The versioned policy enumerates approved secret-management systems and the complete credential scope.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Every inventoried production secret is stored only in an approved secret-management system.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-10-038",
+      "revision": 1,
+      "semantic_sha256": "7eaf037769aa9b47ef542c1ca0c085933adbaa65ba34c69fbcf48911ceee4009",
+      "statement": "Secrets are unique across environments.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 57
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.4 Secrets"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Privacy-preserving secret fingerprints from complete environment-specific inventories can be compared for equality without revealing secret values.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The approved secret managers return a complete scoped inventory whose keyed fingerprints show no credential value reused across environments.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-10-039",
+      "revision": 1,
+      "semantic_sha256": "24e5ed4b189c55a4dbc6f188b4d8013128ce627d53a4619bf2520411457c8d52",
+      "statement": "Each workload uses its own scoped identity or credential.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 58
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.4 Secrets"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Complete workload and credential inventories permit exact one-to-one identity mapping and detection of credentials shared by multiple workloads.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The approved runtime inventory enumerates every workload and every identity or credential it uses.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "Each workload maps to its own identity or credential and no scoped credential is shared outside its approved workload set.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-10-042",
+      "revision": 1,
+      "semantic_sha256": "b1e9bec7200dfbd0fa7943b0b2a3441db057809825418fc6b0b906ac6f94254d",
+      "statement": "Secret retrieval and use are audited.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 61
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.4 Secrets"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "A complete secret-manager and workload inventory can be checked for immutable retrieval and use audit events with required fields and retention.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every secret retrieval and supported use event in the approved scope produces a current authenticated audit record with principal, secret identity, action, and time.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-10-043",
+      "revision": 1,
+      "semantic_sha256": "2829746df8d6225ff83c0367cd4e47a29bbb8b08c179122d028e2bd7bd852882",
+      "statement": "Secret rotation has been tested.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 62
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.4 Secrets"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A version-bound rotation procedure has fixed preconditions and expected old and new credential states that can be tested in isolation.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Current execution evidence shows each credential class in the approved rotation plan rotates successfully and preserves required workload access.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-10-044",
+      "revision": 1,
+      "semantic_sha256": "acf91cff73293135034a0a8140fa93dae6f99776057590bd2aa116b69032f789",
+      "statement": "Emergency revocation has been tested.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 63
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.4 Secrets"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A version-bound revocation procedure can be exercised against test credentials with fixed denial and service-continuity expectations.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Current execution evidence shows emergency revocation invalidates the target credential and produces every policy-required continuity and audit outcome.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-10-045",
+      "revision": 1,
+      "semantic_sha256": "c172e10c825b0abe4c897db0fed6d26cf32bb2bfcd9dcb1d9db049b85209f2c0",
+      "statement": "Credential expiry and rotation failures are monitored.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 64
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.4 Secrets"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "An approved alert policy and current monitors can be queried for expiry and rotation-failure coverage across the complete credential inventory.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every credential class has active monitoring for expiry and rotation failures with alert thresholds and destinations matching approved policy.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-10-046",
+      "revision": 1,
+      "semantic_sha256": "c470b2e70c98eba087ece9884f15bef074c0a169e1bf67769a9af1fe6bd6a0e8",
+      "statement": "Old credentials are invalidated after rotation.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 65
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.4 Secrets"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Rotation events identify predecessor credentials, and current authentication state can prove each predecessor is invalid after the policy transition point.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For every completed rotation, the predecessor credential is disabled or rejected after the policy-defined transition window.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-10-049",
+      "revision": 1,
+      "semantic_sha256": "ee1c9f023a113f18333e76baab20d15e681f9ae56bace63be5d8a373f3894460",
+      "statement": "No default or vendor-supplied credentials remain.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 68
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.4 Secrets"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A complete deployed-product inventory and authoritative vendor default-credential catalog allow fixed comparison and rejection tests.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every deployed product with supplied credentials is matched to an authoritative catalog of its vendor default identities and values.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "external_registry"
+        },
+        {
+          "statement": "No cataloged default credential authenticates to the corresponding deployed product and none remains enabled in current identity state.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-10-050",
+      "revision": 1,
+      "semantic_sha256": "529c55b86dde52addb3bdf4695d61038bc611dc1f180a47ed27d88befd970449",
+      "statement": "Suspected historical secret exposure has been addressed by rotation, not merely deletion from source.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 69
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.4 Secrets"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Authenticated exposure records and credential lineage make it possible to require and verify a subsequent rotation rather than accepting source deletion.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every suspected historical exposure record identifies all affected credential versions and exposure time.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Each affected credential has a later completed rotation and its exposed version is invalid in current identity state.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-11-001",
+      "revision": 1,
+      "semantic_sha256": "3f7727e84a5e83a20dff7c78fd32fa31b82aca13c4368a2bd8fbbe2d7e6b02f1",
+      "statement": "Every requirement maps to at least one verification activity.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 75
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "11. Functional correctness and business logic"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A complete versioned requirements inventory and authenticated verification-plan links permit an exact check that every requirement has at least one activity.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The approved release requirements record provides a complete set of stable requirement identities.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Every requirement identity is referenced by at least one current verification activity bound to the assessed release.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-11-010",
+      "revision": 1,
+      "semantic_sha256": "f2da0c8c906c912a4f5c5818f3e750c0cfd91a6e3f70795687daa1f5e206ca0d",
+      "statement": "State transitions reject invalid orderings.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 84
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "11. Functional correctness and business logic"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A complete versioned state-machine model gives a finite transition inventory, and fixed tests can prove every prohibited ordering is rejected.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The approved state model enumerates every valid state and transition and derives the complete set of invalid orderings in scope.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Every invalid ordering in the bounded state model is rejected by current execution evidence for the assessed artifact.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-11-011",
+      "revision": 1,
+      "semantic_sha256": "4915c28bd4066c617528ab1a3b089ee3a5be88a3390ab72651c9b6bfc22f15e7",
+      "statement": "Operations that must be idempotent are demonstrably idempotent.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 85
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "11. Functional correctness and business logic"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "An approved idempotent-operation inventory and explicit effect model allow repeated execution and exact comparison of resulting effects.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The approved operation contract identifies every operation required to be idempotent and its observable effect identity.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Repeated execution of each inventoried operation produces exactly one approved effect under the bounded idempotency protocol.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-11-013",
+      "revision": 1,
+      "semantic_sha256": "a8e01e85d003ca6c20495b42ef8bc074bd882bb5c2ca2cf9be5f475ccf9339af",
+      "statement": "Transactions are atomic where required.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 87
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "11. Functional correctness and business logic"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "An approved transaction inventory and atomicity boundary define exact invariants that bounded fault and concurrency tests can evaluate.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The approved data contract identifies every operation requiring atomicity and the complete commit or rollback invariant for each.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Each required transaction preserves its atomicity invariant under the approved success, fault, and concurrency tests.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-11-014",
+      "revision": 1,
+      "semantic_sha256": "f7a7a215185fcb666ffb68f0c9e478cea154eaa80a812c2cd93bf92978f923da",
+      "statement": "Eventually consistent operations expose correct pending and completion states.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 88
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "11. Functional correctness and business logic"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A versioned eventual-consistency contract can define finite pending, failed, and completed states and fixed observations for every declared operation.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The approved operation model defines pending, completion, failure, and timeout states for every eventually consistent operation.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Current tests for each inventoried operation expose only the allowed states and reach the expected terminal state within its approved bound.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-11-015",
+      "revision": 1,
+      "semantic_sha256": "d3445257884a37599bb69266536bad78ed728e14cf163b5009c922cc22fa40b2",
+      "statement": "Reconciliation detects missing, duplicated, or mismatched records.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 89
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "11. Functional correctness and business logic"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Injected missing, duplicate, and mismatched records with exact identities and expected findings make reconciliation detection objectively testable.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The approved reconciliation contract enumerates every record relation in scope and mechanically defines missing, duplicate, and mismatch cases for each relation.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Each reconciliation implementation detects every seeded missing, duplicated, and mismatched record in the approved fixture set without losing fixture identity.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-11-016",
+      "revision": 1,
+      "semantic_sha256": "698ee40e1fbb354ece9101a412af9e1591c79280a75f9e31044008ab6ce964a3",
+      "statement": "Numeric precision and rounding are correct.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 90
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "11. Functional correctness and business logic"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Versioned numeric rules define representations, precision, and rounding boundaries, allowing exact property and boundary comparison for each calculation.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The approved calculation contract defines numeric type, precision, rounding mode, scale, and boundary behavior for every calculation in scope.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Every inventoried calculation passes exact boundary and property tests against its bound numeric contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-11-020",
+      "revision": 1,
+      "semantic_sha256": "8d5eb455f927c7d179426cb743dd3b17a51e7926b2fd340a9d3399a98bf3335f",
+      "statement": "Limits and quotas are enforced server-side.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 94
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "11. Functional correctness and business logic"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A complete approved limit inventory and request-surface inventory permit server-side enforcement tests that bypass every client control.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The approved policy enumerates each limit and quota, its numeric threshold, subject, reset behavior, and server endpoint scope.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Direct server requests at and beyond every limit produce the exact approved enforcement outcome independent of client behavior.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-11-026",
+      "revision": 1,
+      "semantic_sha256": "81f986d88a7cfa13330e551e38f24a05438fac23b59abfebb734e33e5bbb60a1",
+      "statement": "Scheduled jobs handle missed runs, overlapping runs, retries, and duplicate execution.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 100
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "11. Functional correctness and business logic"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A complete scheduled-job inventory and versioned execution contract define exact missed, overlap, retry, and duplicate scenarios with measurable state outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The approved scheduler inventory defines each job and its expected missed-run, overlap, retry, and duplicate-execution behavior.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Every inventoried job passes bounded execution tests for all four required scenario classes.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-11-027",
+      "revision": 1,
+      "semantic_sha256": "5c90624fbafa87ba8effc7d1eb69f555c945b5e43d0aa0fa3f02708efe345179",
+      "statement": "Background jobs preserve user, authorization, and tenant context.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 101
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "11. Functional correctness and business logic"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A complete background-job inventory and explicit context contract allow execution tests to compare user, authorization, and tenant identities end to end.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The approved job contract identifies required user, authorization, and tenant context fields for every background operation.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Every inventoried job preserves the exact required context values through enqueue, execution, retry, and completion tests.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-11-029",
+      "revision": 1,
+      "semantic_sha256": "c0ae4616280e9eebcb59551ce2b11a9ad2d22e1e59646b4f574846a94a6844e2",
+      "statement": "Administrative actions produce the intended effect and audit trail.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 103
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "11. Functional correctness and business logic"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Versioned administrative action contracts define intended state changes and required audit fields, permitting exact execution and log comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The approved administrative-action catalog defines the expected state transition and audit-event fields for every action.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Each action produces its declared state transition and matching authenticated audit event under current execution tests.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-12-009",
+      "revision": 1,
+      "semantic_sha256": "958ba41f97381833e98c37ee139b15c74fbbbe62c606fc62ba3694ece3d37bb3",
+      "statement": "Test failures cannot be dismissed without evidence.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 123
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "12. Testing strategy and evidence"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A versioned test-gate policy and authenticated disposition history can prove that every failure remains blocking until supported by the required evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The approved gate policy defines the evidence and approver fields required to dismiss each test-failure class.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Every dismissed test failure has a complete authenticated evidence record satisfying its bound gate policy.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-12-011",
+      "revision": 1,
+      "semantic_sha256": "6cab14ddf979ef9eede438bc3f0b6b0d2c7da3587df9059e8a2061dd5ecf9ce9",
+      "statement": "Contract tests cover internal and external interfaces.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 125
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "12. Testing strategy and evidence"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A complete approved interface inventory can be compared exactly with current contract-test identities and results for each internal and external interface.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The approved release scope provides a complete stable inventory of internal and external interfaces requiring contract tests.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Every inventoried interface has a current successful contract-test result bound to the assessed producer and consumer versions.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-12-012",
+      "revision": 1,
+      "semantic_sha256": "479d49ab187feb15377074d1cb001c566a090e4b045803cd8a61a62cab6b540b",
+      "statement": "Compatibility tests cover supported clients and versions.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 126
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "12. Testing strategy and evidence"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The approved support matrix is a finite policy input, allowing exact comparison with current compatibility-test coverage and outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The approved support record lists every supported client and version combination for the release.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Every supported client-version combination has a current compatibility-test result against the assessed release.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-12-013",
+      "revision": 1,
+      "semantic_sha256": "07366106329540126e5c011a9cc917449e4002226ab1b08d4c1483be9080e410",
+      "statement": "Migration, upgrade, mixed-version, downgrade, rollback, and roll-forward scenarios are tested.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 127
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "12. Testing strategy and evidence"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "An approved release-transition matrix defines applicable scenarios, and each finite scenario can be matched with current execution evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The versioned transition policy identifies which migration, upgrade, mixed-version, downgrade, rollback, and roll-forward scenarios apply.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Every applicable transition scenario has a current execution result bound to the exact source and target versions.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-12-014",
+      "revision": 1,
+      "semantic_sha256": "acb4fedf039b3ab33dfee8d14a72c73f164958e34413cb06a13a8210f7eee466",
+      "statement": "Performance tests cover load, stress, spike, endurance, and capacity limits.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 128
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "12. Testing strategy and evidence"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Approved workload profiles and capacity limits provide fixed inputs, so required load, stress, spike, endurance, and capacity executions can be verified.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The approved performance plan defines numeric profiles, durations, limits, and expected outcomes for all five required test classes.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Every approved performance case has a current execution result bound to the assessed artifact and production-like environment.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-12-017",
+      "revision": 1,
+      "semantic_sha256": "1a6ffbdf7ddc9b6faafbddf96e77bd295b70e8f9deae23ce5fc1d3240bee9ad0",
+      "statement": "Accessibility testing combines automation with manual keyboard and assistive-technology checks.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 131
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "12. Testing strategy and evidence"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The statement requires the presence of three test modes, which can be established by authenticated automated, manual-keyboard, and assistive-technology execution records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "A current automated accessibility scan result is bound to the assessed interface snapshot and tool version.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        },
+        {
+          "statement": "Current manual keyboard and assistive-technology test records identify tester, journey, environment, combination, and result.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-12-021",
+      "revision": 1,
+      "semantic_sha256": "fd7e8b9e91ddc43ef2d4dfdb54d71a53ed7881eea7dd73bfc20bd27ac02896a6",
+      "statement": "Tests verify the actual artifact intended for production.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 135
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "12. Testing strategy and evidence"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "artifact_verification",
+      "primary_reason": "The test evidence artifact digest can be compared directly with the immutable digest of the artifact named in the production release record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every required test result identifies an artifact digest exactly equal to the intended production artifact digest.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-12-022",
+      "revision": 1,
+      "semantic_sha256": "c9cd7b6b94196135be62c13e60fa8e3caaed7abecb8ba428ed4874025ca9eab1",
+      "statement": "Evidence identifies test version, data, environment, build, and result.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 136
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "12. Testing strategy and evidence"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Test version, data, environment, build, and result are explicit typed evidence fields whose presence and identity bindings are objectively validatable.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every test-evidence record contains test version, data-set identity, environment identity, build or artifact digest, and structured outcome.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-12-023",
+      "revision": 1,
+      "semantic_sha256": "a1c9a44674017a2008f2c56773fc466aca2d7bb2e45f0a0a7efca20d5474642e",
+      "statement": "Failed tests are linked to fixes and successful retests.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 137
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "12. Testing strategy and evidence"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Stable failure identities and authenticated change and retest records permit exact linkage from each failure through a fix to a later successful retest.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every failed required test has a linked change record identifying the attempted fix and affected source or artifact identity.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Each linked fix has a later successful retest of the same test identity against the resulting artifact.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-13-001",
+      "revision": 1,
+      "semantic_sha256": "6a073ff5a22efd4c7c880047922f987099ffbef22bbde5ea0fbba2eef9cf1e9c",
+      "statement": "A supported browser and device matrix is documented.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 147
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "13. Frontend, usability, and browser behavior"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The requirement is documentation of an intended support policy, so explicit browser, version, device, and viewport entries are fixed record facts.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authenticated support record contains a versioned browser and device matrix with explicit versions, form factors, and policy status.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-13-030",
+      "revision": 1,
+      "semantic_sha256": "938ccd754bc3d060b61f9b3a06756cf33d429b42e7e0744e899c06de224a63a7",
+      "statement": "Client and server validation produce consistent outcomes.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 176
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "13. Frontend, usability, and browser behavior"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A finite approved validation-case inventory allows the same inputs to be submitted to client and server validators and their normalized outcomes compared exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The approved validation contract enumerates input cases and normalized expected outcome fields for every client-server validated operation.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Client and server validators return equal normalized outcomes for every inventoried case.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-14-001",
+      "revision": 1,
+      "semantic_sha256": "a12fb3f060eec13649d598fb6eaaddf146022f935fab16787f13779ea05abb4f",
+      "statement": "The required WCAG version and conformance level are documented.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 186
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "14. Accessibility"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The required WCAG edition and conformance level are explicit versioned policy fields whose presence and recognized values are objectively validatable.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authenticated accessibility policy records one recognized WCAG version and required conformance level for the assessed product scope.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-14-002",
+      "revision": 1,
+      "semantic_sha256": "ff9cd46e78285d4a7728c064ee7ece39c68e6c4607b3acb9253eff8bcbfd6fad",
+      "statement": "Automated accessibility scans pass within the accepted threshold.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 187
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "14. Accessibility"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control explicitly uses an accepted threshold, so pinned automated scan results can be compared exactly to its versioned numeric failure policy.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The approved accessibility policy binds a scanner identity and version, scan scope, accepted severity or count threshold, and evidence freshness.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "A current automated accessibility scan covers the bound scope and its normalized findings satisfy every accepted threshold.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-14-037",
+      "revision": 1,
+      "semantic_sha256": "e2cd7cd454bc1d8220d357463d022e24162ef9666d9b24cfc297c46561fac73b",
+      "statement": "An accessibility statement and issue-reporting path exist.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 222
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "14. Accessibility"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The exact requirement is existence of two public resources, which can be discovered and schema-checked without deciding full accessibility conformance.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "A current accessibility statement exists at an approved public location and identifies the assessed product or service.",
+          "checker_family": "structured_document",
+          "evidence_authority": "repository"
+        },
+        {
+          "statement": "A working public accessibility issue-reporting path is linked from the statement and accepts a bounded non-submitting reachability check.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-14-039",
+      "revision": 1,
+      "semantic_sha256": "03ae0b35081102be25c9d4116e348275639a8c8d2040fe5544d230873dd2e8a3",
+      "statement": "Accessibility remains part of regression testing after launch.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 224
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "14. Accessibility"
+      ],
+      "primary_packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Current CI policy and test history can prove that the approved accessibility regression suite remains configured and executes after launch changes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The approved post-launch regression profile identifies the required accessibility test suite and applicable change triggers.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Current CI configuration runs the bound accessibility suite for every applicable trigger and retains its latest result.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    }
+  ]
+}

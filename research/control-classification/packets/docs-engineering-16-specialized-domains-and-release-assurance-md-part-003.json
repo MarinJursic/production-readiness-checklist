@@ -1,0 +1,341 @@
+{
+  "schema_version": "prc.control-classification-packet/v0.1",
+  "packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-003",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "source_path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+  "control_count": 22,
+  "controls": [
+    {
+      "control_id": "USEQ-E8034D11",
+      "revision": 1,
+      "semantic_sha256": "e8034d1133b9795ae21cbd44f32141f1e50ff8c1c826b6af245266878e00020a",
+      "statement": "Verify exported or printed representations do not misstate signature validity.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 715
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Electronic signatures, seals, timestamps, and trust services"
+      ]
+    },
+    {
+      "control_id": "USEQ-E071C3CF",
+      "revision": 1,
+      "semantic_sha256": "e071c3cf949bc40150080fa32a81a822f09a5cac922d8681e10f6b1280fdbd8d",
+      "statement": "Perform privacy and human-rights assessment for credential ecosystems that can enable tracking, exclusion, or surveillance.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 719
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Privacy, unlinkability, accessibility, and inclusion"
+      ]
+    },
+    {
+      "control_id": "USEQ-79ED6733",
+      "revision": 1,
+      "semantic_sha256": "79ed6733facfed54a1fe00149cd5f26f6afc53a50dcfd9b070e5717fb5cf858c",
+      "statement": "Avoid central logs of every credential presentation unless strictly necessary and authorized.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 720
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Privacy, unlinkability, accessibility, and inclusion"
+      ]
+    },
+    {
+      "control_id": "USEQ-4D4D7C2A",
+      "revision": 1,
+      "semantic_sha256": "4d4d7c2a70463f7820bb4d3f1b8ba94ea508445f0fce2107f8464d8ba1c5d629",
+      "statement": "Limit verifier requests to claims necessary for a declared purpose.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 721
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Privacy, unlinkability, accessibility, and inclusion"
+      ]
+    },
+    {
+      "control_id": "USEQ-B8DDA406",
+      "revision": 1,
+      "semantic_sha256": "b8dda4068f1524e457c22ff9f460937dedcabc917f14598c7c50559409a10e5e",
+      "statement": "Prevent status checks from revealing holder activity unnecessarily.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 722
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Privacy, unlinkability, accessibility, and inclusion"
+      ]
+    },
+    {
+      "control_id": "USEQ-BCE7A5A9",
+      "revision": 1,
+      "semantic_sha256": "bce7a5a915020fe26471f14f7e35a63e302f725a2c9121f485a85c1a1aa4ce9a",
+      "statement": "Provide alternatives for people without compatible devices, stable connectivity, official documents, biometrics, or particular abilities.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 723
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Privacy, unlinkability, accessibility, and inclusion"
+      ]
+    },
+    {
+      "control_id": "USEQ-9CEB51E5",
+      "revision": 1,
+      "semantic_sha256": "9ceb51e5d4b7749f3c80cd891dbf7c931ccf6471cf4d205706123e54b53202ed",
+      "statement": "Ensure loss of a device or credential does not permanently exclude a legitimate person.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 724
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Privacy, unlinkability, accessibility, and inclusion"
+      ]
+    },
+    {
+      "control_id": "USEQ-F3DD21EB",
+      "revision": 1,
+      "semantic_sha256": "f3dd21eba884dfe4616d495ba110c533d548b68be6e448b1cc0bcb4cb7305c12",
+      "statement": "Provide accessible enrollment, presentation, recovery, support, and dispute processes.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 725
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Privacy, unlinkability, accessibility, and inclusion"
+      ]
+    },
+    {
+      "control_id": "USEQ-C016832D",
+      "revision": 1,
+      "semantic_sha256": "c016832d207e3eddbb8807974378184f924c438096a30177566562c34cc477c3",
+      "statement": "Test names, scripts, addresses, family structures, and identity situations across intended populations.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 726
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Privacy, unlinkability, accessibility, and inclusion"
+      ]
+    },
+    {
+      "control_id": "USEQ-271DE6C6",
+      "revision": 1,
+      "semantic_sha256": "271de6c660fb738c510515e655a12084563a0de949a048a4e93235f93b5c2e39",
+      "statement": "Prevent automated decisions from treating inability to present one credential format as evidence of ineligibility when alternatives are required.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 727
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Privacy, unlinkability, accessibility, and inclusion"
+      ]
+    },
+    {
+      "control_id": "USEQ-DA631250",
+      "revision": 1,
+      "semantic_sha256": "da631250736044c410e87a4311767e49b1b3adad562e272d5ed2aaf941a72318",
+      "statement": "Publish understandable information about data flows, retention, trust, status, and remedies.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 728
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Privacy, unlinkability, accessibility, and inclusion"
+      ]
+    },
+    {
+      "control_id": "USEQ-A48D2BAD",
+      "revision": 1,
+      "semantic_sha256": "a48d2bad32f7176544d8edcb51f0879dc2fcdd51e85ff79f7aeac1a48b67aaaf",
+      "statement": "Inventory algorithms, keys, certificates, identifiers, proofs, status mechanisms, registries, and trust anchors used by the ecosystem.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 732
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Cryptographic agility, continuity, and assurance"
+      ]
+    },
+    {
+      "control_id": "USEQ-FD3F890D",
+      "revision": 1,
+      "semantic_sha256": "fd3f890d9206fdcef870fe6a52c1302cba121d7a25aefbe737e0f8d78e9f396d",
+      "statement": "Define migration before an algorithm, format, provider, registry, or issuer becomes obsolete.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 733
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Cryptographic agility, continuity, and assurance"
+      ]
+    },
+    {
+      "control_id": "USEQ-FB095D6A",
+      "revision": 1,
+      "semantic_sha256": "fb095d6a025b0439d7fbcf0e982535112c03d2a3eb4d5c794b6395cfdf17e926",
+      "statement": "Support key rotation without invalidating legitimate credentials unnecessarily.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 734
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Cryptographic agility, continuity, and assurance"
+      ]
+    },
+    {
+      "control_id": "USEQ-5E18FC51",
+      "revision": 1,
+      "semantic_sha256": "5e18fc51514c08d6f7f820e699f7bb71dc2ce821f7f754ce5420a594cfc59023",
+      "statement": "Test compromise, revocation, offline verification, registry outage, wallet loss, and issuer retirement.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 735
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Cryptographic agility, continuity, and assurance"
+      ]
+    },
+    {
+      "control_id": "USEQ-BEB1A131",
+      "revision": 1,
+      "semantic_sha256": "beb1a13110a7aebf8dde4b835054492878ace578e1ef37780447771c931bd4ae",
+      "statement": "Preserve evidence needed to validate long-lived credentials and signatures after ordinary services change.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 736
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Cryptographic agility, continuity, and assurance"
+      ]
+    },
+    {
+      "control_id": "USEQ-942AB317",
+      "revision": 1,
+      "semantic_sha256": "942ab317c010be2f45302ff68c43297ed89b08b58d375dce6be15631fa5c757f",
+      "statement": "Prevent downgrade to weaker proof or status behavior.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 737
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Cryptographic agility, continuity, and assurance"
+      ]
+    },
+    {
+      "control_id": "USEQ-1B9B5CDF",
+      "revision": 1,
+      "semantic_sha256": "1b9b5cdf8b6b0fbbfc0ba0894fedb819b7eeeaa21ba46aae77794ea96d275a4f",
+      "statement": "Verify independent implementations interoperate against the declared profile.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 738
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Cryptographic agility, continuity, and assurance"
+      ]
+    },
+    {
+      "control_id": "USEQ-137674FC",
+      "revision": 1,
+      "semantic_sha256": "137674fc913d0fdf4c84af77ba20319b210f4c39915cb153de8b321198a52de7",
+      "statement": "Perform security, privacy, accessibility, usability, conformance, and abuse testing.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 739
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Cryptographic agility, continuity, and assurance"
+      ]
+    },
+    {
+      "control_id": "USEQ-48D94432",
+      "revision": 1,
+      "semantic_sha256": "48d944328d0dad86cef3524f279f996d9f93ced1cd7131f1c7adc502591c93b2",
+      "statement": "Monitor issuance anomalies, verification failures, replay, fraud, mass correlation, and support burden.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 740
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Cryptographic agility, continuity, and assurance"
+      ]
+    },
+    {
+      "control_id": "USEQ-07A28D8C",
+      "revision": 1,
+      "semantic_sha256": "07a28d8c2fff69fd6f98641eda276530d27d66233f1330b634c1e98536920b73",
+      "statement": "Maintain incident coordination among issuers, wallets, verifiers, trust services, and governance authorities.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 741
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Cryptographic agility, continuity, and assurance"
+      ]
+    },
+    {
+      "control_id": "USEQ-87B20C17",
+      "revision": 1,
+      "semantic_sha256": "87b20c17b72e48bfa4d3a6538251adf42d4455ba3a5e0217abcfdd57ef5d948b",
+      "statement": "Treat ambiguous semantics, unverifiable status, inaccessible presentation, compromised issuer keys, or missing recovery as no-go conditions when material.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 742
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Cryptographic agility, continuity, and assurance"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/control-check-program-definitions.schema.json",
+  "title": "Reviewed clause-specific deterministic program definitions",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "scope", "source_binding_catalog_sha256", "definition_count", "definitions"],
+  "properties": {
+    "schema_version": {"const": "prc.control-check-program-definitions/v0.1"},
+    "scope": {"enum": ["structured_record", "non_structured"]},
+    "source_binding_catalog_sha256": {"$ref": "#/$defs/digest"},
+    "definition_count": {"type": "integer", "minimum": 1, "maximum": 765},
+    "definitions": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 765,
+      "items": {"$ref": "#/$defs/definition"}
+    }
+  },
+  "$defs": {
+    "digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "control_id": {"type": "string", "pattern": "^(PRC-[0-9]{2}-[0-9]{3}|USEQ-[A-F0-9]{8})$"},
+    "fact_id": {"type": "string", "minLength": 3, "maxLength": 128, "pattern": "^[A-Za-z0-9_.-]+$"},
+    "bounded_text": {"type": "string", "minLength": 20, "maxLength": 12000},
+    "fact_type": {"enum": ["identity", "schema", "digest", "state", "string", "boolean", "number", "time", "string_set", "identity_map", "schema_map", "digest_map", "state_map", "string_map", "boolean_map", "number_map", "time_map", "directed_graph"]},
+    "authority": {"enum": ["repository", "artifact", "executed", "environment", "external_registry", "structured_record"]},
+    "checker_family": {"enum": ["inventory_fact", "structured_document", "package_metadata", "ci_policy", "container_iac", "source_ast", "artifact_integrity", "analysis_adapter", "execution_evidence", "environment_evidence", "structured_record"]},
+    "raw_fact_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fact_id", "fact_type", "authority", "raw_value_semantics", "source_requirement", "complete_required"],
+      "properties": {
+        "fact_id": {"$ref": "#/$defs/fact_id"},
+        "fact_type": {"$ref": "#/$defs/fact_type"},
+        "authority": {"$ref": "#/$defs/authority"},
+        "raw_value_semantics": {"$ref": "#/$defs/bounded_text"},
+        "source_requirement": {"$ref": "#/$defs/bounded_text"},
+        "complete_required": {"const": true}
+      }
+    },
+    "parameter_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["parameter_id", "parameter_type", "value_origin", "source_requirement"],
+      "properties": {
+        "parameter_id": {"$ref": "#/$defs/fact_id"},
+        "parameter_type": {"$ref": "#/$defs/fact_type"},
+        "value_origin": {"enum": ["scanner_inventory", "independently_authenticated_policy", "independently_authenticated_context"]},
+        "source_requirement": {"$ref": "#/$defs/bounded_text"}
+      }
+    },
+    "collector_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["collector_id", "required_sources", "inventory_contract", "normalization_contract", "completeness_contract", "freshness_contract", "provider_status"],
+      "properties": {
+        "collector_id": {"type": "string", "minLength": 8, "maxLength": 200, "pattern": "^prc\\.collect\\.[a-z0-9.-]+@[0-9]+\\.[0-9]+$"},
+        "required_sources": {"type": "array", "minItems": 1, "maxItems": 20, "uniqueItems": true, "items": {"$ref": "#/$defs/bounded_text"}},
+        "inventory_contract": {"$ref": "#/$defs/bounded_text"},
+        "normalization_contract": {"$ref": "#/$defs/bounded_text"},
+        "completeness_contract": {"$ref": "#/$defs/bounded_text"},
+        "freshness_contract": {"$ref": "#/$defs/bounded_text"},
+        "provider_status": {"const": "unregistered"}
+      }
+    },
+    "fixture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["description", "parameters", "facts", "expected_outcome"],
+      "properties": {
+        "description": {"$ref": "#/$defs/bounded_text"},
+        "parameters": {"type": "object", "maxProperties": 512, "additionalProperties": {"type": "object"}},
+        "facts": {"type": "object", "maxProperties": 512, "additionalProperties": {"type": "object"}},
+        "expected_outcome": {"enum": ["pass", "fail", "blocked"]}
+      }
+    },
+    "fixtures": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pass", "fail", "blocked", "counterexample"],
+      "properties": {
+        "pass": {"allOf": [{"$ref": "#/$defs/fixture"}, {"properties": {"expected_outcome": {"const": "pass"}}}]},
+        "fail": {"allOf": [{"$ref": "#/$defs/fixture"}, {"properties": {"expected_outcome": {"const": "fail"}}}]},
+        "blocked": {"allOf": [{"$ref": "#/$defs/fixture"}, {"properties": {"expected_outcome": {"const": "blocked"}}}]},
+        "counterexample": {"allOf": [{"$ref": "#/$defs/fixture"}, {"properties": {"expected_outcome": {"const": "fail"}}}]}
+      }
+    },
+    "definition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "control_id", "control_revision", "control_semantic_sha256", "clause_ordinal", "clause_id", "clause_statement",
+        "checker_family", "required_authority", "corrected_checker_family", "corrected_required_authority",
+        "classification_status", "classification_error_reason", "raw_fact_contracts", "sealed_parameter_contracts",
+        "predicate", "required_runtime_ops", "collector_contract", "fixtures", "review_reason", "counterexample_analysis"
+      ],
+      "properties": {
+        "control_id": {"$ref": "#/$defs/control_id"},
+        "control_revision": {"type": "integer", "minimum": 1},
+        "control_semantic_sha256": {"$ref": "#/$defs/digest"},
+        "clause_ordinal": {"type": "integer", "minimum": 1, "maximum": 50},
+        "clause_id": {"$ref": "#/$defs/digest"},
+        "clause_statement": {"type": "string", "minLength": 1, "maxLength": 2000},
+        "checker_family": {"$ref": "#/$defs/checker_family"},
+        "required_authority": {"$ref": "#/$defs/authority"},
+        "corrected_checker_family": {"$ref": "#/$defs/checker_family"},
+        "corrected_required_authority": {"$ref": "#/$defs/authority"},
+        "classification_status": {"enum": ["exact_predicate", "classification_error"]},
+        "classification_error_reason": {"type": ["string", "null"], "minLength": 20, "maxLength": 12000},
+        "raw_fact_contracts": {"type": "array", "maxItems": 128, "items": {"$ref": "#/$defs/raw_fact_contract"}},
+        "sealed_parameter_contracts": {"type": "array", "maxItems": 128, "items": {"$ref": "#/$defs/parameter_contract"}},
+        "predicate": {"type": ["object", "null"]},
+        "required_runtime_ops": {"type": "array", "maxItems": 32, "uniqueItems": true, "items": {"type": "string", "minLength": 2, "maxLength": 128, "pattern": "^[a-z][a-z0-9_]*$"}},
+        "collector_contract": {"$ref": "#/$defs/collector_contract"},
+        "fixtures": {"$ref": "#/$defs/fixtures"},
+        "review_reason": {"$ref": "#/$defs/bounded_text"},
+        "counterexample_analysis": {"$ref": "#/$defs/bounded_text"}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"classification_status": {"const": "exact_predicate"}}},
+          "then": {
+            "properties": {
+              "classification_error_reason": {"type": "null"},
+              "raw_fact_contracts": {"minItems": 1},
+              "predicate": {"type": "object"}
+            }
+          },
+          "else": {
+            "properties": {
+              "classification_error_reason": {"type": "string", "minLength": 20},
+              "predicate": {"type": "null"}
+            }
+          }
+        }
+      ]
+    }
+  }
+}

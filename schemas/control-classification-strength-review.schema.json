@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/control-classification-strength-review.schema.json",
+  "title": "Semantic-strength review of deterministic control classifications",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "review_id", "methodology_sha256", "registry_version",
+    "registry_sha256", "control_count", "controls"
+  ],
+  "properties": {
+    "schema_version": {"const": "prc.control-classification-strength-review/v0.1"},
+    "review_id": {"type": "string", "pattern": "^deterministic-strength-part-[0-9]{3}$"},
+    "methodology_sha256": {"$ref": "#/$defs/digest"},
+    "registry_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "registry_sha256": {"$ref": "#/$defs/digest"},
+    "control_count": {"type": "integer", "minimum": 1, "maximum": 250},
+    "controls": {"type": "array", "minItems": 1, "maxItems": 250, "items": {"$ref": "#/$defs/review"}}
+  },
+  "$defs": {
+    "digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "control_id": {"type": "string", "pattern": "^(PRC-[0-9]{2}-[0-9]{3}|USEQ-[A-F0-9]{8})$"},
+    "route": {
+      "enum": [
+        "local_static", "artifact_verification", "bounded_execution", "external_readonly_query",
+        "structured_record_validation", "deterministic_composite", "contextual_judgment",
+        "accountable_human_decision", "specialist_or_legal_judgment",
+        "empirical_protocol_undefined", "contract_incomplete", "mixed", "unbounded_claim"
+      ]
+    },
+    "reason_code": {
+      "enum": [
+        "contextual_judgment", "human_accountability", "legal_or_specialist_authority",
+        "undefined_protocol", "undefined_scope", "undefined_threshold",
+        "mixed_with_nondeterministic_child", "unbounded_scope", "classification_not_approved"
+      ]
+    },
+    "clause": {
+      "type": "object", "additionalProperties": false,
+      "required": ["statement", "checker_family", "evidence_authority"],
+      "properties": {
+        "statement": {"type": "string", "minLength": 20, "maxLength": 4000},
+        "checker_family": {"enum": ["inventory_fact", "structured_document", "package_metadata", "ci_policy", "container_iac", "source_ast", "artifact_integrity", "analysis_adapter", "execution_evidence", "environment_evidence", "structured_record"]},
+        "evidence_authority": {"enum": ["repository", "artifact", "executed", "environment", "external_registry", "structured_record"]}
+      }
+    },
+    "review": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "control_id", "revision", "semantic_sha256", "original_statement", "old_deterministic_clauses",
+        "verdict", "route", "reason", "deterministic_clauses", "nondeterministic_reason_codes",
+        "counterexample_analysis", "review_status", "row_sha256"
+      ],
+      "properties": {
+        "control_id": {"$ref": "#/$defs/control_id"},
+        "revision": {"type": "integer", "minimum": 1},
+        "semantic_sha256": {"$ref": "#/$defs/digest"},
+        "original_statement": {"type": "string", "minLength": 1, "maxLength": 4000},
+        "old_deterministic_clauses": {"type": "array", "minItems": 1, "maxItems": 50, "items": {"$ref": "#/$defs/clause"}},
+        "verdict": {"enum": ["strength_audit_confirmed", "strength_audit_reclassified"]},
+        "route": {"$ref": "#/$defs/route"},
+        "reason": {"type": "string", "minLength": 20, "maxLength": 8000},
+        "deterministic_clauses": {"type": "array", "maxItems": 50, "items": {"$ref": "#/$defs/clause"}},
+        "nondeterministic_reason_codes": {"type": "array", "maxItems": 9, "uniqueItems": true, "items": {"$ref": "#/$defs/reason_code"}},
+        "counterexample_analysis": {"type": "string", "minLength": 20, "maxLength": 8000},
+        "review_status": {"const": "strength_audited"},
+        "row_sha256": {"$ref": "#/$defs/digest"}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"verdict": {"const": "strength_audit_confirmed"}}},
+          "then": {
+            "properties": {
+              "route": {"enum": ["local_static", "artifact_verification", "bounded_execution", "external_readonly_query", "structured_record_validation", "deterministic_composite"]},
+              "deterministic_clauses": {"minItems": 1},
+              "nondeterministic_reason_codes": {"maxItems": 0}
+            }
+          },
+          "else": {
+            "properties": {
+              "route": {"enum": ["contextual_judgment", "accountable_human_decision", "specialist_or_legal_judgment", "empirical_protocol_undefined", "contract_incomplete", "mixed", "unbounded_claim"]},
+              "deterministic_clauses": {"maxItems": 0},
+              "nondeterministic_reason_codes": {"minItems": 1}
+            }
+          }
+        }
+      ]
+    }
+  }
+}

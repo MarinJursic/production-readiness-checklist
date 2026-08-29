@@ -1,0 +1,851 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-engineering-08-security-and-cryptography-md-part-004-part-001",
+  "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-004",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 33,
+  "controls": [
+    {
+      "control_id": "USEQ-150EFE9C",
+      "revision": 1,
+      "semantic_sha256": "150efe9c5b32d7bf6718893c20172a92f3a3adde8fc696c180c5b87164fc412b",
+      "statement": "Block release when production artifacts cannot be traced to reviewed source, trusted build inputs, provenance, SBOM, signatures or attestations, tests, and approval.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 992
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security release blockers and required assurance evidence"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Block release when production artifacts cannot be traced to reviewed source, trusted build inputs, provenance, SBOM, signatures or attestations, tests, and approval.” combines exact artifact, configuration, execution, or release-record bindings that can be checked across bounded authoritative evidence without making a general security claim.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Verify immutable artifact or configuration identities, signatures, provenance links, and approved policy bindings required by this control.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        },
+        {
+          "statement": "Validate the associated authorized review, test, inventory, lifecycle, or release record contains each explicitly required field and successful evidence reference.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5564D5C2",
+      "revision": 1,
+      "semantic_sha256": "5564d5c2e49b91c24a938d6351957cd4436ed613fa821afdeda18c8de3bf6369",
+      "statement": "Retain the threat model, security requirements, design reviews, code and configuration analysis, penetration results, dependency findings, SBOM, provenance, attestations, VEX, advisory decisions, exceptions, and retest evidence with the release.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 998
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security release blockers and required assurance evidence"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-004",
+      "primary_route": "artifact_verification",
+      "primary_reason": "The control “Retain the threat model, security requirements, design reviews, code and configuration analysis, penetration results, dependency findings, SBOM, provenance, attestations, VEX, advisory decisions, exceptions, and retest evidence with the release.” requires a bounded release, record-retention, or contract artifact whose presence, immutable identity, required sections, and evidence bindings can be verified exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Verify the declared artifact exists in the authorized evidence set, has an immutable identity and provenance, and contains or links every record category or responsibility named by this control.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F5B1ADD7",
+      "revision": 1,
+      "semantic_sha256": "f5b1add764a22169101deb70e5d41d5f08d1f21bf0ffda326046e1d6473f72ca",
+      "statement": "Record the exact tools, versions, rules, configurations, environments, test identities, test data, coverage limitations, false-positive decisions, and assessment dates.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 999
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security release blockers and required assurance evidence"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Record the exact tools, versions, rules, configurations, environments, test identities, test data, coverage limitations, false-positive decisions, and assessment dates.” defines explicit ownership, inventory, boundary, procedure, evidence-chain, safeguard, or response-record content that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized security or physical-control record contains the named fields, roles, states, procedures, or linked events, satisfies its schema, and binds to the declared asset or scope.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E95CE966",
+      "revision": 1,
+      "semantic_sha256": "e95ce966c7567a8e639104ffb7a1ca50ed52dd8174717f1bbef5a542bee5a7ed",
+      "statement": "Verify that security findings have owners, severity rationale, affected versions, remediation targets, customer impact, and completed retests.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1001
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security release blockers and required assurance evidence"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Verify that security findings have owners, severity rationale, affected versions, remediation targets, customer impact, and completed retests.” combines exact artifact, configuration, execution, or release-record bindings that can be checked across bounded authoritative evidence without making a general security claim.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Verify immutable artifact or configuration identities, signatures, provenance links, and approved policy bindings required by this control.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        },
+        {
+          "statement": "Validate the associated authorized review, test, inventory, lifecycle, or release record contains each explicitly required field and successful evidence reference.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-436929D1",
+      "revision": 1,
+      "semantic_sha256": "436929d1536dca83aa3e11f02b4d06afd71f3dcad1296bb6f877408f4d82caaf",
+      "statement": "Assign accountable ownership for physical safeguards, environmental resilience, endpoint protection, and media handling.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1013
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Physical and environmental security governance"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Assign accountable ownership for physical safeguards, environmental resilience, endpoint protection, and media handling.” defines explicit ownership, inventory, boundary, procedure, evidence-chain, safeguard, or response-record content that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized security or physical-control record contains the named fields, roles, states, procedures, or linked events, satisfies its schema, and binds to the declared asset or scope.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1ECA2092",
+      "revision": 1,
+      "semantic_sha256": "1eca20926e00643ad1b92076233cccea7347344dd4ea2c205ea6368c9b60794b",
+      "statement": "Consider theft, tampering, espionage, coercion, vandalism, fire, water, temperature, humidity, dust, vibration, electromagnetic effects, power loss, utility failure, and natural hazards.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1015
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Physical and environmental security governance"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Consider theft, tampering, espionage, coercion, vandalism, fire, water, temperature, humidity, dust, vibration, electromagnetic effects, power loss, utility failure, and natural hazards.” defines explicit ownership, inventory, boundary, procedure, evidence-chain, safeguard, or response-record content that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized security or physical-control record contains the named fields, roles, states, procedures, or linked events, satisfies its schema, and binds to the declared asset or scope.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B58755E9",
+      "revision": 1,
+      "semantic_sha256": "b58755e966cde98a7b062b989334884bd25db8a6f53fdfdae1d270fcd4e4641a",
+      "statement": "Define minimum safeguards for offices, data facilities, laboratories, warehouses, support centers, remote workplaces, and temporary locations.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1017
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Physical and environmental security governance"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define minimum safeguards for offices, data facilities, laboratories, warehouses, support centers, remote workplaces, and temporary locations.” defines explicit ownership, inventory, boundary, procedure, evidence-chain, safeguard, or response-record content that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized security or physical-control record contains the named fields, roles, states, procedures, or linked events, satisfies its schema, and binds to the declared asset or scope.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A6B0DBB3",
+      "revision": 1,
+      "semantic_sha256": "a6b0dbb39e74748de53e8fa8e595b87c011adf01c8bb7be5a41502e8ee05fca8",
+      "statement": "Preserve design, inspection, maintenance, access, incident, and exception records.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1021
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Physical and environmental security governance"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-004",
+      "primary_route": "artifact_verification",
+      "primary_reason": "The control “Preserve design, inspection, maintenance, access, incident, and exception records.” requires a bounded release, record-retention, or contract artifact whose presence, immutable identity, required sections, and evidence bindings can be verified exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Verify the declared artifact exists in the authorized evidence set, has an immutable identity and provenance, and contains or links every record category or responsibility named by this control.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AEFC981A",
+      "revision": 1,
+      "semantic_sha256": "aefc981affbb9f8a92d0dfa9369bab6229be137e6de571d878d28134832af4b4",
+      "statement": "Monitor forced entry, door faults, and abnormal access patterns.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1040
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Site boundaries, zones, and secure areas"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-004",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "The control “Monitor forced entry, door faults, and abnormal access patterns.” names concrete monitoring, asset-date, or endpoint-policy state that can be read from an authorized management environment and compared with the approved configuration.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Read the authorized management system and verify every in-scope asset has the named monitor, lifecycle date, or endpoint policy with current evidence and an immutable query timestamp.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DD6F57F6",
+      "revision": 1,
+      "semantic_sha256": "dd6f57f67d8ac38b90727cfe2e001f626881422a5935ae697c5acca2d8c196d7",
+      "statement": "Test emergency access and evacuation without normal credentials.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1042
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Site boundaries, zones, and secure areas"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-004",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Test emergency access and evacuation without normal credentials.” requires a finite drill, alarm path, failure exercise, integrity comparison, management capability, or reconciliation whose declared result can be observed exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Run the registered bounded protocol and verify authenticated evidence records the declared input identities, named scenario, expected transitions, observed result, and successful completion.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E9BE9155",
+      "revision": 1,
+      "semantic_sha256": "e9be91554e36a6adf3393a36eb86597cc470e0ec9405d907dc21ec1d164388f3",
+      "statement": "Monitor loss of camera, sensor, alarm, or access-control coverage.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1054
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Surveillance and physical monitoring"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-004",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "The control “Monitor loss of camera, sensor, alarm, or access-control coverage.” names concrete monitoring, asset-date, or endpoint-policy state that can be read from an authorized management environment and compared with the approved configuration.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Read the authorized management system and verify every in-scope asset has the named monitor, lifecycle date, or endpoint policy with current evidence and an immutable query timestamp.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4DE99E21",
+      "revision": 1,
+      "semantic_sha256": "4de99e21f3c93fc2c853249a13ba34de203be5862ae87a9438a6840d22c7e461",
+      "statement": "Test whether monitored events reach a responder who can act.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1055
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Surveillance and physical monitoring"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-004",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Test whether monitored events reach a responder who can act.” requires a finite drill, alarm path, failure exercise, integrity comparison, management capability, or reconciliation whose declared result can be observed exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Run the registered bounded protocol and verify authenticated evidence records the declared input identities, named scenario, expected transitions, observed result, and successful completion.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-786A384B",
+      "revision": 1,
+      "semantic_sha256": "786a384b90658eb471c8ebfccc1d6118c5ab9b150ec45b9d7c619a58ae701388",
+      "statement": "Identify environmental operating ranges and failure thresholds for critical equipment.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1062
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Environmental resilience and utilities"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Identify environmental operating ranges and failure thresholds for critical equipment.” defines explicit ownership, inventory, boundary, procedure, evidence-chain, safeguard, or response-record content that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized security or physical-control record contains the named fields, roles, states, procedures, or linked events, satisfies its schema, and binds to the declared asset or scope.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CB3996AE",
+      "revision": 1,
+      "semantic_sha256": "cb3996aeb1d269d0999dd58e85aeae08ce10989141dcb557d55f00ca7a28fc29",
+      "statement": "Monitor fuel, battery health, transfer switching, and backup-power maintenance.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1069
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Environmental resilience and utilities"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-004",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "The control “Monitor fuel, battery health, transfer switching, and backup-power maintenance.” names concrete monitoring, asset-date, or endpoint-policy state that can be read from an authorized management environment and compared with the approved configuration.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Read the authorized management system and verify every in-scope asset has the named monitor, lifecycle date, or endpoint policy with current evidence and an immutable query timestamp.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4E6F02EA",
+      "revision": 1,
+      "semantic_sha256": "4e6f02ea0a308de99a5293b9239837615c5abef669e672250227c202e0e46453",
+      "statement": "Test response to utility and environmental failures.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1075
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Environmental resilience and utilities"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-004",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Test response to utility and environmental failures.” requires a finite drill, alarm path, failure exercise, integrity comparison, management capability, or reconciliation whose declared result can be observed exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Run the registered bounded protocol and verify authenticated evidence records the declared input identities, named scenario, expected transitions, observed result, and successful completion.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C293DC97",
+      "revision": 1,
+      "semantic_sha256": "c293dc9793e24abe3d4421416faa7bf396575ba0511575197b7b7b7145b78920",
+      "statement": "Record make, model, serial or asset identifier, support status, configuration, custody, and lifecycle state.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1082
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Equipment siting, protection, and maintenance"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Record make, model, serial or asset identifier, support status, configuration, custody, and lifecycle state.” defines explicit ownership, inventory, boundary, procedure, evidence-chain, safeguard, or response-record content that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized security or physical-control record contains the named fields, roles, states, procedures, or linked events, satisfies its schema, and binds to the declared asset or scope.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1BDCE2BA",
+      "revision": 1,
+      "semantic_sha256": "1bdce2ba2947a4fc63016e48c8fca6942b90d932ddfc480310f2ef65aec06352",
+      "statement": "Monitor warranty, support, calibration, certification, and end-of-life dates.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1093
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Equipment siting, protection, and maintenance"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-004",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "The control “Monitor warranty, support, calibration, certification, and end-of-life dates.” names concrete monitoring, asset-date, or endpoint-policy state that can be read from an authorized management environment and compared with the approved configuration.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Read the authorized management system and verify every in-scope asset has the named monitor, lifecycle date, or endpoint policy with current evidence and an immutable query timestamp.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8B90B653",
+      "revision": 1,
+      "semantic_sha256": "8b90b653365766afa09274c17db46679cf4ed29a48ed8ddf10adf57a34ce00f8",
+      "statement": "Inventory removable and portable media permitted to store or transfer organizational information.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1099
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Storage media and removable devices"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Inventory removable and portable media permitted to store or transfer organizational information.” defines explicit ownership, inventory, boundary, procedure, evidence-chain, safeguard, or response-record content that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized security or physical-control record contains the named fields, roles, states, procedures, or linked events, satisfies its schema, and binds to the declared asset or scope.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D900ABFB",
+      "revision": 1,
+      "semantic_sha256": "d900abfb42df330298a9b3a8f339a13f24e9c15e7033eb94c85107c6d59eb78c",
+      "statement": "Maintain chain of custody for evidentiary or highly sensitive media.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1108
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Storage media and removable devices"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Maintain chain of custody for evidentiary or highly sensitive media.” defines explicit ownership, inventory, boundary, procedure, evidence-chain, safeguard, or response-record content that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized security or physical-control record contains the named fields, roles, states, procedures, or linked events, satisfies its schema, and binds to the declared asset or scope.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1B5D8BB0",
+      "revision": 1,
+      "semantic_sha256": "1b5d8bb03c06b0580da6513147107d90b260a53cbfa19e84184ce9a263b616bf",
+      "statement": "Verify copied data integrity before deleting the source.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1109
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Storage media and removable devices"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-004",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Verify copied data integrity before deleting the source.” requires a finite drill, alarm path, failure exercise, integrity comparison, management capability, or reconciliation whose declared result can be observed exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Run the registered bounded protocol and verify authenticated evidence records the declared input identities, named scenario, expected transitions, observed result, and successful completion.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CFDCEDCE",
+      "revision": 1,
+      "semantic_sha256": "cfdcedce619c62e0b5b81e37c2e0ef66f6f418c0df2b97a754763b8b33ab7e03",
+      "statement": "Define which organization-managed, personally owned, shared, kiosk, contractor, and temporary devices may access each data and service class.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1117
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Endpoints and user-controlled devices"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define which organization-managed, personally owned, shared, kiosk, contractor, and temporary devices may access each data and service class.” defines explicit ownership, inventory, boundary, procedure, evidence-chain, safeguard, or response-record content that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized security or physical-control record contains the named fields, roles, states, procedures, or linked events, satisfies its schema, and binds to the declared asset or scope.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D360DB0F",
+      "revision": 1,
+      "semantic_sha256": "d360db0febab920c7a3e64f49b34b99a00ee7cedde93eca34eb42b1fb2776080",
+      "statement": "Maintain device inventory, ownership, user assignment, support status, and last-seen information.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1119
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Endpoints and user-controlled devices"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Maintain device inventory, ownership, user assignment, support status, and last-seen information.” defines explicit ownership, inventory, boundary, procedure, evidence-chain, safeguard, or response-record content that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized security or physical-control record contains the named fields, roles, states, procedures, or linked events, satisfies its schema, and binds to the declared asset or scope.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-06F85D38",
+      "revision": 1,
+      "semantic_sha256": "06f85d386e9e2510764c1ebbcbed52330a7ea3c270a4f2dba9ad5af36c29b32b",
+      "statement": "Require screen locking and reauthentication after inactivity.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1123
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Endpoints and user-controlled devices"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-004",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "The control “Require screen locking and reauthentication after inactivity.” names concrete monitoring, asset-date, or endpoint-policy state that can be read from an authorized management environment and compared with the approved configuration.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Read the authorized management system and verify every in-scope asset has the named monitor, lifecycle date, or endpoint policy with current evidence and an immutable query timestamp.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7BAA8F5C",
+      "revision": 1,
+      "semantic_sha256": "7baa8f5c8e0f71574048a1f363efc5906637f2cd90b2aab744329f340f9f3772",
+      "statement": "Support remote lock, credential revocation, and managed data removal for lost or stolen devices.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1130
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Endpoints and user-controlled devices"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-004",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Support remote lock, credential revocation, and managed data removal for lost or stolen devices.” requires a finite drill, alarm path, failure exercise, integrity comparison, management capability, or reconciliation whose declared result can be observed exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Run the registered bounded protocol and verify authenticated evidence records the declared input identities, named scenario, expected transitions, observed result, and successful completion.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CC395625",
+      "revision": 1,
+      "semantic_sha256": "cc395625479070b950cf20568b7fe713feb396666d1ccb1cd321caccb89cddfd",
+      "statement": "Define minimum physical, privacy, network, and device safeguards for remote work.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1139
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Remote and home working"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define minimum physical, privacy, network, and device safeguards for remote work.” defines explicit ownership, inventory, boundary, procedure, evidence-chain, safeguard, or response-record content that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized security or physical-control record contains the named fields, roles, states, procedures, or linked events, satisfies its schema, and binds to the declared asset or scope.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E3AC41A5",
+      "revision": 1,
+      "semantic_sha256": "e3ac41a5b40e18b3cb7814912dc83fa11069c87a8843124b028cb07e03160f91",
+      "statement": "Define travel and border-crossing safeguards for high-risk devices, accounts, and data.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1148
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Remote and home working"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define travel and border-crossing safeguards for high-risk devices, accounts, and data.” defines explicit ownership, inventory, boundary, procedure, evidence-chain, safeguard, or response-record content that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized security or physical-control record contains the named fields, roles, states, procedures, or linked events, satisfies its schema, and binds to the declared asset or scope.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-465CC386",
+      "revision": 1,
+      "semantic_sha256": "465cc38686f13f76a568a4813157f944fd0afa00256417d3e81c1b7103e73770",
+      "statement": "Establish emergency contact and equipment-recovery procedures.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1150
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Remote and home working"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Establish emergency contact and equipment-recovery procedures.” defines explicit ownership, inventory, boundary, procedure, evidence-chain, safeguard, or response-record content that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized security or physical-control record contains the named fields, roles, states, procedures, or linked events, satisfies its schema, and binds to the declared asset or scope.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AD748413",
+      "revision": 1,
+      "semantic_sha256": "ad748413cac77ac8691323a924f40e4eb69ed898d69ad220d7525a3595e29169",
+      "statement": "Reconcile shipped and received quantities, serials, seals, and custody records.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1159
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Physical supply chain, transport, and custody"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-004",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Reconcile shipped and received quantities, serials, seals, and custody records.” requires a finite drill, alarm path, failure exercise, integrity comparison, management capability, or reconciliation whose declared result can be observed exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Run the registered bounded protocol and verify authenticated evidence records the declared input identities, named scenario, expected transitions, observed result, and successful completion.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1F63DE21",
+      "revision": 1,
+      "semantic_sha256": "1f63de211aed98e608dfc8c6a465b4aa2a86b6e427812d87f9b7a037ed48fbbf",
+      "statement": "Define responsibility for loss, theft, tampering, delay, and incident notification in contracts.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1162
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Physical supply chain, transport, and custody"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-004",
+      "primary_route": "artifact_verification",
+      "primary_reason": "The control “Define responsibility for loss, theft, tampering, delay, and incident notification in contracts.” requires a bounded release, record-retention, or contract artifact whose presence, immutable identity, required sections, and evidence bindings can be verified exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Verify the declared artifact exists in the authorized evidence set, has an immutable identity and provenance, and contains or links every record category or responsibility named by this control.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-42525193",
+      "revision": 1,
+      "semantic_sha256": "4252519333c01ff9907dca3fa855fc6119e45af9bf5e54f8ff8738b8c26c5f1f",
+      "statement": "Define reporting and response procedures for unauthorized entry, theft, loss, tampering, environmental failure, and suspicious surveillance.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1169
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Physical-security incidents and assurance"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define reporting and response procedures for unauthorized entry, theft, loss, tampering, environmental failure, and suspicious surveillance.” defines explicit ownership, inventory, boundary, procedure, evidence-chain, safeguard, or response-record content that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized security or physical-control record contains the named fields, roles, states, procedures, or linked events, satisfies its schema, and binds to the declared asset or scope.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F717D036",
+      "revision": 1,
+      "semantic_sha256": "f717d0360b5f1471810ee124daa598b915648b9da06a10a20f83a8660e14332d",
+      "statement": "Exercise site loss, device theft, utility outage, and inaccessible-facility scenarios.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1175
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Physical-security incidents and assurance"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-004",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Exercise site loss, device theft, utility outage, and inaccessible-facility scenarios.” requires a finite drill, alarm path, failure exercise, integrity comparison, management capability, or reconciliation whose declared result can be observed exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Run the registered bounded protocol and verify authenticated evidence records the declared input identities, named scenario, expected transitions, observed result, and successful completion.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D4F126CC",
+      "revision": 1,
+      "semantic_sha256": "d4f126cc6849c1e633fcaf9ec7294531ec8437be7995973ae8e9003c6bebe33f",
+      "statement": "Test physical access controls, alarms, backup power, environmental sensors, and emergency procedures periodically.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1176
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Physical-security incidents and assurance"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Test physical access controls, alarms, backup power, environmental sensors, and emergency procedures periodically.” combines exact artifact, configuration, execution, or release-record bindings that can be checked across bounded authoritative evidence without making a general security claim.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Verify immutable artifact or configuration identities, signatures, provenance links, and approved policy bindings required by this control.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        },
+        {
+          "statement": "Validate the associated authorized review, test, inventory, lifecycle, or release record contains each explicitly required field and successful evidence reference.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CFD5C8F4",
+      "revision": 1,
+      "semantic_sha256": "cfd5c8f49fa49eed98acbb46b45d41df8ef0fe9ba345361fe1f420534c138bf3",
+      "statement": "Track defects, exceptions, compensating controls, owners, and remediation dates.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 1178
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Final Gap Closure — Physical, Environmental, Endpoint, and Media Security",
+        "Physical-security incidents and assurance"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Track defects, exceptions, compensating controls, owners, and remediation dates.” defines explicit ownership, inventory, boundary, procedure, evidence-chain, safeguard, or response-record content that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized security or physical-control record contains the named fields, roles, states, procedures, or linked events, satisfies its schema, and binds to the declared asset or scope.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    }
+  ]
+}

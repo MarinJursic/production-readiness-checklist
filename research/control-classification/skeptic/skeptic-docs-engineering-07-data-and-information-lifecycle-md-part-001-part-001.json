@@ -1,0 +1,748 @@
+{
+  "schema_version": "prc.control-classification-skeptic-review/v0.1",
+  "packet_id": "skeptic-docs-engineering-07-data-and-information-lifecycle-md-part-001-part-001",
+  "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "controls": [
+    {
+      "control_id": "USEQ-BC1488EE",
+      "revision": 1,
+      "semantic_sha256": "bc1488ee75f989812af60103befc3671518057b7a651e20cfa54cbf3d33d6ee7",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because measurement records do not define representative migration scale, instruments, duration boundaries, repeatability, or acceptable impact.",
+      "counterexample_analysis": "Counterexample: A tiny staging migration reports low locks and load, while production cardinality causes hours of blocking; all fields pass.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope",
+        "undefined_threshold"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-C449239F",
+      "revision": 1,
+      "semantic_sha256": "c449239f7ebdb81bd925ba4652a928d052b37626f2daf90f8f0a8b3edfe76f5c",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed bounded_execution check does not fully decide this rule because automation identity can be compared, but complete migrations, production-like inputs, environment, timing, and success oracles are not bounded.",
+      "counterexample_analysis": "Counterexample: The same script is rehearsed on empty data and passes, then fails on a production-only duplicate key.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-507DCCE5",
+      "revision": 1,
+      "semantic_sha256": "507dcce5ddbe02058308cbdcbc904babc54bd41a9ae7d2035f8e9339414165cc",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because the import-surface inventory and semantic accuracy of formats, schemas, limits, encodings, and versions are not established by records.",
+      "counterexample_analysis": "Counterexample: An undocumented partner import accepts a legacy encoding, while all registered import records have every field.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-847FF844",
+      "revision": 1,
+      "semantic_sha256": "847ff8449554a399351714efc3e8fa32a5a01c7d50c8f96977350258b0f8c93a",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because identifier roles and complete identifier discovery cannot be inferred from taxonomy fields alone.",
+      "counterexample_analysis": "Counterexample: A tenant ID is reused as a display ID in an unregistered export, while catalogued identifiers have distinct labels.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-1264F0CD",
+      "revision": 1,
+      "semantic_sha256": "1264f0cdc15181ce18d32d0c81f5ff6ff551f5e89994674b5d1c3c800ee6eb1d",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because named states can be documented yet collapse semantically or disagree with storage, APIs, and consumer interpretation.",
+      "counterexample_analysis": "Counterexample: Unknown and not-applicable both serialize as null despite distinct record descriptions; all fields pass.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-0EB7A9E0",
+      "revision": 1,
+      "semantic_sha256": "0eb7a9e05bbe3a7661af40b688b3d4029fe26776784d6b58ef0d4b4907b02062",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because constraint fields do not prove complete relationships, valid temporal and lifecycle rules, or actual enforcement.",
+      "counterexample_analysis": "Counterexample: An application-only cross-store reference is omitted and can dangle, while registered constraints have complete definitions.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-5AC48987",
+      "revision": 1,
+      "semantic_sha256": "5ac489870a337e4bfe3ce43cbd1437ad0decb314f73d1e3e128f36524d4409d7",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed deterministic_composite check does not fully decide this rule because immutable version identity is objective, but complete producers and consumers and true compatibility require semantic execution and judgment.",
+      "counterexample_analysis": "Counterexample: A schema version is immutable and documented compatible, but an omitted consumer fails on a changed enum value.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-2D08184E",
+      "revision": 1,
+      "semantic_sha256": "2d08184e7b55df2708e48f3b30041063a818837a088827b87c2e158b95093ec3",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because explicit bulk-operation text does not establish complete semantics, consistency across channels, or correct behavior.",
+      "counterexample_analysis": "Counterexample: Export says complete but omits soft-deleted records, while all four operation sections are populated.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-EB05E76F",
+      "revision": 1,
+      "semantic_sha256": "eb05e76fd371d42a694ab08e027195e90cb27bdd97c69bff194bfad10441cd55",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because data-condition labels do not prove complete detection or correct distinction across all pipelines and fields.",
+      "counterexample_analysis": "Counterexample: Late duplicated data is labeled merely invalid in an unregistered stream, while registered rules distinguish eight states.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-A4DEB1F3",
+      "revision": 1,
+      "semantic_sha256": "a4deb1f359f0cc85cb3ef5d569ccd4390a15202b9078482853e392878aeae98a",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because procedure presence does not prove quarantine, correction, replay, and backfill are safe, complete, and executable.",
+      "counterexample_analysis": "Counterexample: A backfill procedure replays without deduplication and creates duplicates, although all four procedures exist.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-219C5F63",
+      "revision": 1,
+      "semantic_sha256": "219c5f63ad736a8f991244b15b7fca618860bfbd7abe80f245791470eb46149c",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because failed-rule completeness, accountable ownership, and appropriate response objectives require organizational and risk judgment.",
+      "counterexample_analysis": "Counterexample: A critical quality failure is assigned to a departed owner with a one-year objective; record fields pass.",
+      "nondeterministic_route": "accountable_human_decision",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment",
+        "undefined_threshold"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-5D148E5D",
+      "revision": 1,
+      "semantic_sha256": "5d148e5d1f68fd31965f0ba7f6e132115741413869cabb441db39d758105dfa2",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed bounded_execution check does not fully decide this rule because malformed and timing data spaces, pipeline states, combinations, and correctness oracles are not exhausted by approved fixtures.",
+      "counterexample_analysis": "Counterexample: Listed malformed rows reject, but duplicated late partial updates corrupt aggregates under an omitted combination.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-E18F00AC",
+      "revision": 1,
+      "semantic_sha256": "e18f00acb507af180d4ecf677752146344b07992843a8cd0febde50825a73301",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because dataset and copy completeness plus true source, consumers, sensitivity, residency, retention, quality, and support status are not proven.",
+      "counterexample_analysis": "Counterexample: A shadow analyst export is absent, while all catalogued datasets have ten populated fields.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-0A167C3B",
+      "revision": 1,
+      "semantic_sha256": "0a167c3b108c74bfd3bf1dc3e6bb5fc4f3f32df1e09416eed84555cc31b945e0",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because metadata retention and retirement require legal, evidentiary, consumer, and operational judgment beyond policy fields.",
+      "counterexample_analysis": "Counterexample: The record sets immediate metadata deletion despite an audit duty and lineage need; definition fields pass.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-37837369",
+      "revision": 1,
+      "semantic_sha256": "37837369615e304e1aaf4c7af8c95ca358f61356b88fcbcfd7ee194af7e38982",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because catalog ground truth, coverage denominator, meaningful use, stale ownership, and issue completeness are not supplied by measurements.",
+      "counterexample_analysis": "Counterexample: Coverage is calculated only over catalogued assets, yielding 100 percent while an entire warehouse is missing.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-5FDAB7FB",
+      "revision": 1,
+      "semantic_sha256": "5fdab7fbf91a1d034c95537860ca9c718a511c59acc4a0b04164f942ed6c8284",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because estimate validity needs representative data, workload, topology, confidence, and recovery assumptions not present in fields.",
+      "counterexample_analysis": "Counterexample: A zero-row rehearsal estimates minutes and no lag, but production indexes and replicas make the migration take hours.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_threshold",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-D9C07812",
+      "revision": 1,
+      "semantic_sha256": "d9c0781217bc0877a9126f476ba1937ea099d4a986ab236b3b33c363633f1369",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed artifact_verification check does not fully decide this rule because artifact identity and predating are objective, but successful verification does not prove a complete and usable recovery point without a restoration oracle.",
+      "counterexample_analysis": "Counterexample: A checksum-valid snapshot restores one database in the approved test but omits an object store needed for recovery.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-71D3AA4E",
+      "revision": 1,
+      "semantic_sha256": "71d3aa4ecef3e098e06fec367b4f22dedb5c8a044dc1c94a4b2b69ec52a37a35",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed bounded_execution check does not fully decide this rule because dry-run identity does not prove preview completeness, production equivalence, side effects, or every bulk-repair path.",
+      "counterexample_analysis": "Counterexample: The preview counts rows but omits downstream notifications, which fire massively in production.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-EF110B0C",
+      "revision": 1,
+      "semantic_sha256": "ef110b0c441fad764f3540011726c0b13feb650a581f74a17383c1fad854893f",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed external_readonly_query check does not fully decide this rule because monitor existence and values do not prove complete execution coverage, correct signals, alert delivery, or meaningful thresholds.",
+      "counterexample_analysis": "Counterexample: Locks on an omitted replica cause failure while registered error, lag, lock, saturation, and quality metrics stay green.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope",
+        "undefined_threshold"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-E1AC670A",
+      "revision": 1,
+      "semantic_sha256": "e1ac670a621b9b5d39d66abe2d875cde6cb66879a2f0e5ddbae1b9aef472b384",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because all metric fields can be populated while formula, population, source, time basis, exclusions, and decision purpose are wrong.",
+      "counterexample_analysis": "Counterexample: A churn metric excludes failed users and uses a stale source, yet every required field exists.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-BE717543",
+      "revision": 1,
+      "semantic_sha256": "be717543821b59c242ba3821d223ea5f8c661f981b8142ed5d74c731372a9b1c",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because data purpose and use determine operational, financial, experimental, forecast, and exploratory classification, not record labels.",
+      "counterexample_analysis": "Counterexample: Financial settlement data is labeled exploratory to avoid controls; the classification field passes.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-C9C31A30",
+      "revision": 1,
+      "semantic_sha256": "c9c31a309728432e0323927ec633b04a5e9d51e299c4af369b04850fad0f86bc",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because complete producers and consumers, approved status, role authority, support ownership, and change authority are not proven by fields.",
+      "counterexample_analysis": "Counterexample: An unlisted consumer receives data and a powerless account is named change authority; the contract record passes.",
+      "nondeterministic_route": "accountable_human_decision",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-18AD2497",
+      "revision": 1,
+      "semantic_sha256": "18ad249763bd76d124aa8247dc60ecaf82b84e8f4aa46f13b11bc16a3483f0de",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because field definitions do not prove complete schema coverage or correct meanings, constraints, units, precision, formats, and examples.",
+      "counterexample_analysis": "Counterexample: A price field is documented in dollars but produced in cents; every schema attribute is present.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-A553302B",
+      "revision": 1,
+      "semantic_sha256": "a553302b93d5339d8b045dcaddd84e79b27341c87ec8e724570c1026229e77dc",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because named semantic sections do not define all combinations, concurrency, retries, and actual record and event behavior.",
+      "counterexample_analysis": "Counterexample: The update section omits a delete arriving after a late correction, producing inconsistent consumers despite complete headings.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-B5A21EC4",
+      "revision": 1,
+      "semantic_sha256": "b5a21ec4c9be2a942f81a8b259a8a5935ec9d26ccadffaa141ed38cfbc179680",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because where time dimensions are relevant and their correct clock, zone, validity, and precision semantics require domain judgment.",
+      "counterexample_analysis": "Counterexample: A billing event records UTC processing time as local effective time; all relevant fields are populated.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-31C5E44E",
+      "revision": 1,
+      "semantic_sha256": "31c5e44e2dcbffe8dff91ee1d5a37a405bad88d0a94179a89560df5cd6d11252",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because quality objectives and acceptable loss thresholds require consequence, population, and measurement judgment.",
+      "counterexample_analysis": "Counterexample: The contract allows 40 percent loss and defines accuracy from self-reported inputs; every objective exists.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_threshold",
+        "human_accountability"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-3B112125",
+      "revision": 1,
+      "semantic_sha256": "3b11212553aef126bbaf6fc9c917f33a8f101e398fe75814de72ed7a7099b28a",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because delivery objectives can be numeric while infeasible, incomplete, internally inconsistent, or measured against the wrong population.",
+      "counterexample_analysis": "Counterexample: Availability excludes peak hours and replay has no integrity target, yet all nine objective fields are filled.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_threshold",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-E729AA07",
+      "revision": 1,
+      "semantic_sha256": "e729aa0727dcc426d629c30520a44f9bb72aa77a83d68d6d46fff58644e5736a",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because source authority, lineage completeness, and valid transformation and derivation expectations require semantic and organizational judgment.",
+      "counterexample_analysis": "Counterexample: A derived dataset names an outdated replica as authority and omits a manual spreadsheet step; record fields pass.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "human_accountability"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-8E555230",
+      "revision": 1,
+      "semantic_sha256": "8e5552306441db8452b0d66912eee8ed133d46a38bb6df39e4c1d81c875dd203",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because error-behavior text does not prove safe, complete, consistent handling of combinations and downstream consequences.",
+      "counterexample_analysis": "Counterexample: Partial acceptance plus retry duplicates accepted rows, a combination omitted while all eight sections exist.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-29044E1F",
+      "revision": 1,
+      "semantic_sha256": "29044e1fff033737757bdf3104e1289990a6f549792ed0a168fec2ceb8c930b8",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because consumer completeness, credible compatibility promises, migration help, and termination conditions require product and governance judgment.",
+      "counterexample_analysis": "Counterexample: An offline consumer is omitted and breaks at termination, while registered versions and periods pass.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "human_accountability",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-AD01F86C",
+      "revision": 1,
+      "semantic_sha256": "ad01f86cac92cdb56ebbc3476018c7fef401bbba24062446cab971df9f7071b5",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed deterministic_composite check does not fully decide this rule because immutable identifiers and history are objective, but complete contract inventory and genuine review and ownership authority are not.",
+      "counterexample_analysis": "Counterexample: A production data contract exists only in email, while every registered contract has version, review, owner, history, and ID.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "human_accountability",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-231C09BC",
+      "revision": 1,
+      "semantic_sha256": "231c09bc8fdcf9d47b2a5345b631de29663da323f646ca1021d408f93c40b58a",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because affected-consumer completeness and feasible migration, rollout, rollback, observation, and evidence cannot be proven by proposal fields.",
+      "counterexample_analysis": "Counterexample: A contract change omits one batch consumer and links to an empty rollback plan; all fields pass.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "human_accountability"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F730C612",
+      "revision": 1,
+      "semantic_sha256": "f730c612311f5e64dc33abd8b54822dd1101310e97f894c6d03faa177f3f38d2",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because identifier scope and complete merge, split, alias, supersession, and retirement semantics require domain coverage and consistency.",
+      "counterexample_analysis": "Counterexample: A merge creates reused identifiers in an omitted legacy path, while all documented behaviors have fields.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-ED2A5112",
+      "revision": 1,
+      "semantic_sha256": "ed2a51125ddc5c881a736719822544b01f8fd3b3ad8370e9ef4690ff2395c5bb",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because correct currency sources, effective-time rules, precision, rounding, and minor units require financial and jurisdictional meaning.",
+      "counterexample_analysis": "Counterexample: A currency rounds taxes incorrectly and uses a stale rate source, while every monetary field is documented.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-2FBAE1B8",
+      "revision": 1,
+      "semantic_sha256": "2fbae1b801a35ffd501c6b3f1624966e65f2fa22edf0c7d8896180ca5c227a4d",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because date, recurrence, calendar, locale, and daylight-saving behavior includes open-ended regional and historical cases beyond headings.",
+      "counterexample_analysis": "Counterexample: A yearly event shifts twice at a DST boundary in one locale, while all semantics fields exist.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-336A10C7",
+      "revision": 1,
+      "semantic_sha256": "336a10c731456e8e79d37d1e437a4560869c86037634a5cd806edfb856d54e5e",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because state distinctions in a record do not prove distinct storage, transport, display, and consumer interpretation.",
+      "counterexample_analysis": "Counterexample: Withheld and not-yet-observed both serialize as empty string although marked distinct in the schema record.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-17062C73",
+      "revision": 1,
+      "semantic_sha256": "17062c73baea5da793d3e04f7cee679cd626afc57e7286fbaa8f664c4c20da39",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because code-set completeness, owner authority, mappings, hierarchy validity, unknown handling, and localization are semantic facts.",
+      "counterexample_analysis": "Counterexample: A deprecated medical code maps to the wrong parent, while all seven fields are populated.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "human_accountability"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-3F9D0214",
+      "revision": 1,
+      "semantic_sha256": "3f9d0214ef0c05b1cc244d5303c50b7382d55b0cd1ce0819efa7e4b8ac6228e3",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because Unicode, collation, script, direction, case, transliteration, and comparison behavior need exhaustive locale and runtime semantics.",
+      "counterexample_analysis": "Counterexample: Turkish case comparison merges distinct identifiers even though all nine behavior fields are documented.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-5504E2F7",
+      "revision": 1,
+      "semantic_sha256": "5504e2f7b1a85909d3283abc6d8e32e0e71ccfe0368fb737861069a76a0f567d",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because metric population, denominator, weighting, suppression, and aggregation rules can be complete in form yet biased or inconsistent.",
+      "counterexample_analysis": "Counterexample: A safety rate excludes failed cases from its denominator, while every documentation field exists.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "undefined_threshold"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-C349FEF7",
+      "revision": 1,
+      "semantic_sha256": "c349fef7f59ae82fcf387d4cbd46ee4eb2f8fc7c0b36c0d2f87b39292e34f4d0",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because provenance classes of values are not proven by labels and may be lost or falsified across transformations.",
+      "counterexample_analysis": "Counterexample: An imputed value is emitted as measured after an unlisted transform, while catalogued values have distinct states.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-553684CD",
+      "revision": 1,
+      "semantic_sha256": "553684cdb68e0e4e31cce363ec66c7b34935e8ec5e6cfd7f6a0f06f584dcdb0d",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because compatibility and mapping strategy presence does not establish complete mappings, semantic equivalence, migration safety, or consumer readiness.",
+      "counterexample_analysis": "Counterexample: A new vocabulary maps two distinct old codes to one without loss handling; the strategy document passes.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-E4039352",
+      "revision": 1,
+      "semantic_sha256": "e403935208379c23f513a52296537696ea46b7da20c16058781d0c6777b00bb9",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because published fields do not prove access methods work, authorization is correct, formats are usable, or service expectations are adequate.",
+      "counterexample_analysis": "Counterexample: Documentation advertises an authorized API but a public endpoint bypasses auth and the SLA is meaningless; fields pass.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment",
+        "human_accountability"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-C50F0C7E",
+      "revision": 1,
+      "semantic_sha256": "c50f0c7ef24b2803a48578f0f9dd794f38216538b6b30bdf99889a94a15c5ca3",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because coverage values require complete source discovery and accurate spatial, temporal, language, jurisdictional, and subject interpretation.",
+      "counterexample_analysis": "Counterexample: A dataset claims national coverage but excludes one region; all five coverage fields exist.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-A970B216",
+      "revision": 1,
+      "semantic_sha256": "a970b2164982ea083a8c83976c149d572ff90295ce03620de117f6ca235ce7fa",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because authority, derivation, anonymization, synthetic status, and lifecycle classification require truthful semantic evidence.",
+      "counterexample_analysis": "Counterexample: Direct customer data is labeled anonymized sample data; the required status field passes.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "human_accountability",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-343A79D3",
+      "revision": 1,
+      "semantic_sha256": "343a79d312aca205c144ed05daf0494eaa96001af6a22c23b07a653155deba14",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because catalog coverage ground truth, metadata correctness, search-intent success, owner freshness, and unresolved-question completeness lack complete oracles.",
+      "counterexample_analysis": "Counterexample: Coverage uses the catalog as its own denominator and search tests only known titles, so all measures pass while assets remain undiscoverable.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-DF1A54E5",
+      "revision": 1,
+      "semantic_sha256": "df1a54e50956e27f56ef3e0f12c790e267ad87579f3284888cb33f04550d0533",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because origin, generator identity, collection authority, and complete transformation history depend on truthful external and legal evidence.",
+      "counterexample_analysis": "Counterexample: A purchased dataset records consent as authority without proof and omits a spreadsheet transform; all provenance fields pass.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "human_accountability",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-C16864A9",
+      "revision": 1,
+      "semantic_sha256": "c16864a90f2e9fb83d2e12266ab9f5d38453ebeb06b31ff4748efa9fb0d49a0e",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because provenance type labels do not prove every custody transfer, computation, business meaning, and decision use is captured or correct.",
+      "counterexample_analysis": "Counterexample: An analyst manually changes data outside the lineage system, while registered provenance records distinguish all five types.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-48D5EED4",
+      "revision": 1,
+      "semantic_sha256": "48d5eed49c8c11d7dad212bac92bf6321ce965f45bae10235fbd4085c6a5e431",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because material derivation scope and complete code, query, configuration, parameters, environment, inputs, outputs, and identity are not established.",
+      "counterexample_analysis": "Counterexample: A manual production spreadsheet derivation is labeled immaterial and omitted; registered derivations have every field.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment",
+        "human_accountability"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-0BDC155E",
+      "revision": 1,
+      "semantic_sha256": "0bdc155e75554afe70b58b877b29cd8ceb3414c56c88626e9b67ae45f64848ad",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because consistent graph structure does not prove truthful roles, timestamps, attribution, derivation, generation, and invalidation across all events.",
+      "counterexample_analysis": "Counterexample: A transformation record attributes output to the wrong source but conforms to the provenance schema.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-957B905F",
+      "revision": 1,
+      "semantic_sha256": "957b905f49778c97229ac4454f71bfbf04406ab037b7060340458f85fff2dd59",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed bounded_execution check does not fully decide this rule because one known-source trace cannot prove complete downstream assets and consumers, edge accuracy, or impact-analysis behavior for other changes.",
+      "counterexample_analysis": "Counterexample: The test source reaches all registered nodes, but an unlisted export consumer is absent and would be missed.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-442BB18D",
+      "revision": 1,
+      "semantic_sha256": "442bb18d6ac6d444163782f71c137cc179709fa202cf4c5ab47b150be7c64f9c",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed bounded_execution check does not fully decide this rule because declared inputs and a successful rebuild do not prove all hidden sources and environment state, semantic equivalence, or justified tolerances.",
+      "counterexample_analysis": "Counterexample: A rebuild matches totals within a loose tolerance while individual records differ because an undeclared timezone changed.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_threshold",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    }
+  ]
+}

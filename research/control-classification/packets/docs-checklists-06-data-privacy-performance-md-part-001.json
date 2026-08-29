@@ -1,0 +1,1902 @@
+{
+  "schema_version": "prc.control-classification-packet/v0.1",
+  "packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "source_path": "docs/checklists/06-data-privacy-performance.md",
+  "control_count": 134,
+  "controls": [
+    {
+      "control_id": "PRC-23-001",
+      "revision": 1,
+      "semantic_sha256": "85e4d065b6efec29a722c5ba981e104322165c45235f6d13ae96602540868d66",
+      "statement": "Every data set has an owner and classification.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 9
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-23-002",
+      "revision": 1,
+      "semantic_sha256": "11f7db03aad016b43d6633c323a19bf7e116d1ac0d904c8e61222c16e3b2e626",
+      "statement": "The data model enforces required constraints.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 10
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-23-003",
+      "revision": 1,
+      "semantic_sha256": "e7e3b80f8810440f8b9b40d51c9e4db1998b8baadd56e3a03ef6852f6bfe90ae",
+      "statement": "Required fields cannot silently become absent.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 11
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-23-004",
+      "revision": 1,
+      "semantic_sha256": "073d0d8f1ca03028f117c10bcada35a9b15f316e536855aee59d862defc2edd7",
+      "statement": "Uniqueness rules are enforced at the correct consistency boundary.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 12
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-23-005",
+      "revision": 1,
+      "semantic_sha256": "a90f6cc9498b6604cfbc95e6f74aab63d28e772bbfb6ceb3f0f914a9f1b14018",
+      "statement": "Referential integrity is enforced or continuously checked.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 13
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-23-006",
+      "revision": 1,
+      "semantic_sha256": "d50c53a60dc434ce1a35c9bd0f48abcaa8eba38c95dd022d0738594f9a7f5e71",
+      "statement": "Transactions cover all operations requiring atomicity.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 14
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-23-007",
+      "revision": 1,
+      "semantic_sha256": "9a1e6f49556fe1cc710a7b37094cf467534ae6fbbd8bbd8488e61d0dda362355",
+      "statement": "Locking and concurrency strategies are documented.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 15
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-23-008",
+      "revision": 1,
+      "semantic_sha256": "ac42dad6319e5a5737d49d11e0f350d0c208dc090b0a48b44beacf49b2fec364",
+      "statement": "Lost updates and write races are prevented.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 16
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-23-009",
+      "revision": 1,
+      "semantic_sha256": "d0b99ea99d6325f01a7039df4faa50bbca5e8800fcf2e2dbfbf874cc1f646e72",
+      "statement": "Duplicate events and messages are handled safely.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 17
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-23-010",
+      "revision": 1,
+      "semantic_sha256": "00ef6e6823973e8d64de33727a50a40fe7d29cfbfcb152f138f0024a4777e593",
+      "statement": "Queue delivery semantics are understood.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 18
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-23-011",
+      "revision": 1,
+      "semantic_sha256": "6ddd2713bc4bbc388edfafe2129df6f46d9f59be4cf10b0d9e204232a37188bd",
+      "statement": "Consumers are idempotent where messages may be redelivered.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 19
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-23-012",
+      "revision": 1,
+      "semantic_sha256": "9ce78d7a4d2715dc930dd9d919864d1b650e93812f253858e6bb4d64d76dc80c",
+      "statement": "Ordering assumptions are explicit and tested.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 20
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-23-013",
+      "revision": 1,
+      "semantic_sha256": "e0c8e9b4d2b5a34faf50c8503f40eb357a67a088dfdd73c826f03c3122336a17",
+      "statement": "Poison messages cannot block an entire queue indefinitely.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 21
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-23-014",
+      "revision": 1,
+      "semantic_sha256": "a9404ecd78abe6415edb0dcfd254efee827ee7c901d3a87835b130bf578a684e",
+      "statement": "Dead-letter queues have monitoring, ownership, and safe replay procedures.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 22
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-23-015",
+      "revision": 1,
+      "semantic_sha256": "9e5729fca17783acfdba82879eb48ede7dcfed6ad698dc54572078cc209d15be",
+      "statement": "Batch jobs checkpoint and resume safely.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 23
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-23-016",
+      "revision": 1,
+      "semantic_sha256": "a8078dc4962d46be17479773422c90fe6fd1ba1f0b1cdf14eff164e023e84176",
+      "statement": "Reconciliation detects dropped, duplicated, or inconsistent records.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 24
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-23-017",
+      "revision": 1,
+      "semantic_sha256": "db4a9d07affdcca19ac47250c940134ab55ff72daff162fde605dfc42632b234",
+      "statement": "Integrity checks or checksums exist where corruption risk warrants them.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 25
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-23-018",
+      "revision": 1,
+      "semantic_sha256": "687f72d0d4fc4b834400d3c45920bdcdac91fbbc11341a5233844260002d532d",
+      "statement": "Replication lag is measured and accounted for.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 26
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-23-019",
+      "revision": 1,
+      "semantic_sha256": "947841cb7606005de49a3329efa5737a1846e1c3c3af447f05f18283167acfac",
+      "statement": "Read-after-write behavior matches user expectations.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 27
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-23-020",
+      "revision": 1,
+      "semantic_sha256": "e7162720ad4e6d020c742918d18007de1d247d194cd8eb6bc7e15386134b60cd",
+      "statement": "Failover does not create split-brain or conflicting writes.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 28
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-23-021",
+      "revision": 1,
+      "semantic_sha256": "2ab8a444ec2c725dc05704f47f9e7313f56045d6f425d41dfe7b2bb9483892df",
+      "statement": "Cache keys include every required identity, tenant, locale, permission, and variant dimension.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 29
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-23-022",
+      "revision": 1,
+      "semantic_sha256": "fbdd76bcdeed20b0103ee4cb2f201ea639f5452a0fbe9c727d8519f63181aefe",
+      "statement": "Cache invalidation is correct for security and correctness-sensitive data.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 30
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-23-023",
+      "revision": 1,
+      "semantic_sha256": "69f8b0c855607134a8eb59c036680c121bfbadacd2e64176b4ffef3f0f41939f",
+      "statement": "Cache failure does not disclose data or violate invariants.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 31
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-23-024",
+      "revision": 1,
+      "semantic_sha256": "3e578d66e919adb85f1409e47c4f18685622cef6646593ae7809c9e56425fb30",
+      "statement": "Search indexes enforce access controls and deletion.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 32
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-23-025",
+      "revision": 1,
+      "semantic_sha256": "11648ae9b4ff7ca8d08448b6628955ac900452a80676faa20566ec9925405ade",
+      "statement": "Search-index freshness and reconciliation are monitored.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 33
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-23-026",
+      "revision": 1,
+      "semantic_sha256": "0bee5ebc5b1497b3201c059c56e1ac7845f7c227ce9ce5f83a958f7c735c598c",
+      "statement": "Character encoding, collation, case, normalization, and sorting are intentional.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 34
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-23-027",
+      "revision": 1,
+      "semantic_sha256": "fc92575ee07384fc2faa016b028c7e27083c191f22f62bfcdfd0fcf199426410",
+      "statement": "Date and time values use an unambiguous storage representation.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 35
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-23-028",
+      "revision": 1,
+      "semantic_sha256": "c52ffd1e8e854a7ec77204bc1dab5cb8074d9709a196dea92688f1968ec3809d",
+      "statement": "Data quality indicators cover completeness, validity, consistency, timeliness, and duplication.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 36
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-23-029",
+      "revision": 1,
+      "semantic_sha256": "b971c3732f88b7e8b63001d233a566a468afbebf2fd92ce1ce6731db859f2855",
+      "statement": "Orphaned data and references are detected.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 37
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-23-030",
+      "revision": 1,
+      "semantic_sha256": "85687c78c6a6c580599ca17239cbb269ab8c5e3c949e5feb7fee0fd74b6e8e87",
+      "statement": "Data repair procedures are reviewed, reversible where possible, and audited.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 38
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-23-031",
+      "revision": 1,
+      "semantic_sha256": "06da45aa5e8a37eb3072f0218a09fbb9b46b96ded5ffeec620274126bd54beb4",
+      "statement": "Manual production data changes require authorization and an audit trail.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 39
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-23-032",
+      "revision": 1,
+      "semantic_sha256": "77c1797dba0877a5bad0804388f2ae16b68970351c49959aecbbb4b85188bfaa",
+      "statement": "Every migration has a reviewed plan.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 43
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity",
+        "23.1 Schema changes and migrations"
+      ]
+    },
+    {
+      "control_id": "PRC-23-033",
+      "revision": 1,
+      "semantic_sha256": "9b66fc42201ea9e59116a6ad2a9e1c7297ebb8dd851f613f6cb0ca32b014014e",
+      "statement": "Migration behavior is tested against representative data volume and shape.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 44
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity",
+        "23.1 Schema changes and migrations"
+      ]
+    },
+    {
+      "control_id": "PRC-23-034",
+      "revision": 1,
+      "semantic_sha256": "10ac628adbaabff08749e78d873244fae6eaabb721e6814f034d9f5380ca82d6",
+      "statement": "Migration duration and resource consumption are measured.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 45
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity",
+        "23.1 Schema changes and migrations"
+      ]
+    },
+    {
+      "control_id": "PRC-23-035",
+      "revision": 1,
+      "semantic_sha256": "0ca8e457fa20682b3979e3a76d06dd6bac5a6851c398ec703b1878b3097db2c0",
+      "statement": "Online migrations avoid unacceptable locking and downtime.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 46
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity",
+        "23.1 Schema changes and migrations"
+      ]
+    },
+    {
+      "control_id": "PRC-23-036",
+      "revision": 1,
+      "semantic_sha256": "615bd376d2572c2f018308a0c01e14c1eb0f3fc8589997c0ce2a9cc9899e0897",
+      "statement": "Application and schema changes are backward- and forward-compatible during mixed-version deployment where required.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 47
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity",
+        "23.1 Schema changes and migrations"
+      ]
+    },
+    {
+      "control_id": "PRC-23-037",
+      "revision": 1,
+      "semantic_sha256": "3ada1cc5d8c95d1e25731cc49f65f7632762c0560b578e01924069b281741517",
+      "statement": "Old and new application versions can coexist safely during rollout.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 48
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity",
+        "23.1 Schema changes and migrations"
+      ]
+    },
+    {
+      "control_id": "PRC-23-038",
+      "revision": 1,
+      "semantic_sha256": "a471a819385d1011dded1cc88a60bc039bef0687ea4498b5834d8e5c0a1a139f",
+      "statement": "A backup or recovery point exists before destructive changes.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 49
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity",
+        "23.1 Schema changes and migrations"
+      ]
+    },
+    {
+      "control_id": "PRC-23-039",
+      "revision": 1,
+      "semantic_sha256": "05bfea898a339605815865a65357611bc8e7fbc46b7083f46cc5803c69960d86",
+      "statement": "Migration preconditions are validated.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 50
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity",
+        "23.1 Schema changes and migrations"
+      ]
+    },
+    {
+      "control_id": "PRC-23-040",
+      "revision": 1,
+      "semantic_sha256": "7896748dd5d51c0b9a466f5396b7853ff11c05709c2ac8059efb58b1b6d6b258",
+      "statement": "Migration progress and failures are observable.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 51
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity",
+        "23.1 Schema changes and migrations"
+      ]
+    },
+    {
+      "control_id": "PRC-23-041",
+      "revision": 1,
+      "semantic_sha256": "258df63cd5f76076a5a9abbf8f4b0adeffc1564827e60bcf272d5afc1a11c35f",
+      "statement": "Partial migration can resume or recover safely.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 52
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity",
+        "23.1 Schema changes and migrations"
+      ]
+    },
+    {
+      "control_id": "PRC-23-042",
+      "revision": 1,
+      "semantic_sha256": "5760c95e9075d6e6cab42c0d0dfa032b196408c6ef0924f3dfbb9b77e3dea2cb",
+      "statement": "Row counts, totals, constraints, checksums, and business invariants are verified afterward.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 53
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity",
+        "23.1 Schema changes and migrations"
+      ]
+    },
+    {
+      "control_id": "PRC-23-043",
+      "revision": 1,
+      "semantic_sha256": "b69a541bba262a95930e5a73d423cb2497b0e5cd57bfeb342be0e69f72c5c1ae",
+      "statement": "Rollback feasibility is documented honestly.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 54
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity",
+        "23.1 Schema changes and migrations"
+      ]
+    },
+    {
+      "control_id": "PRC-23-044",
+      "revision": 1,
+      "semantic_sha256": "9d6e7c9671ab4812c08daffe0c0ffd565a2425defbe89ea2ce1b602b04598e2f",
+      "statement": "When rollback is unsafe, a tested roll-forward recovery exists.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 55
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity",
+        "23.1 Schema changes and migrations"
+      ]
+    },
+    {
+      "control_id": "PRC-23-045",
+      "revision": 1,
+      "semantic_sha256": "73800dbfda2882fc8b9ce9c08092edef3624acdbd0947bf7e3a061018c8ff7de",
+      "statement": "Deprecated columns, data, and indexes are removed only after all consumers have migrated.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 56
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity",
+        "23.1 Schema changes and migrations"
+      ]
+    },
+    {
+      "control_id": "PRC-23-046",
+      "revision": 1,
+      "semantic_sha256": "c3d014421490e144b6f6415e8e3c91901e5239128d497c05bcf2de681c57a193",
+      "statement": "Data migrations are rehearsed using the same automation used for production.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 57
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity",
+        "23.1 Schema changes and migrations"
+      ]
+    },
+    {
+      "control_id": "PRC-24-001",
+      "revision": 1,
+      "semantic_sha256": "b614b61d4c87569c8f8ee9fa9850d6dd80a881030760d87b1e496efe68c381ec",
+      "statement": "Maintain an inventory of personal and sensitive data.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 65
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "24. Privacy and data protection"
+      ]
+    },
+    {
+      "control_id": "PRC-24-002",
+      "revision": 1,
+      "semantic_sha256": "ce90596a5d63a735e6ed6d0313c8454d8fcc20398cbc255f4d68951dd3ce967d",
+      "statement": "Record the source, purpose, lawful basis or authorization, recipients, location, retention, and deletion method for each category.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 66
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "24. Privacy and data protection"
+      ]
+    },
+    {
+      "control_id": "PRC-24-003",
+      "revision": 1,
+      "semantic_sha256": "9c902a62cbee4340832d8ddc20c44a4c50210c2730d5a86058e0ab8a00e03891",
+      "statement": "Collect only data necessary for the documented purpose.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 67
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "24. Privacy and data protection"
+      ]
+    },
+    {
+      "control_id": "PRC-24-004",
+      "revision": 1,
+      "semantic_sha256": "2c2ff50670191c66badd893eca195b11d48c791f397196463e80b737e7cc89b8",
+      "statement": "Privacy-protective defaults are used.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 68
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "24. Privacy and data protection"
+      ]
+    },
+    {
+      "control_id": "PRC-24-005",
+      "revision": 1,
+      "semantic_sha256": "83be3ac7074b781a4caa7864b3e7389b6adfa9594616af920fc934415a338925",
+      "statement": "Product behavior matches the published privacy notice.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 69
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "24. Privacy and data protection"
+      ]
+    },
+    {
+      "control_id": "PRC-24-006",
+      "revision": 1,
+      "semantic_sha256": "b6b1da6c96529730d4346e24a0d0f8f2ab2ca7a4b0c5e19694f3f4c60078d3ab",
+      "statement": "New data uses have undergone privacy review.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 70
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "24. Privacy and data protection"
+      ]
+    },
+    {
+      "control_id": "PRC-24-007",
+      "revision": 1,
+      "semantic_sha256": "282d4be076de5d82cafeb44d1ce254867202b97b85af0a8a6a11b78863773e42",
+      "statement": "Consent is used only where appropriate.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 71
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "24. Privacy and data protection"
+      ]
+    },
+    {
+      "control_id": "PRC-24-008",
+      "revision": 1,
+      "semantic_sha256": "130abb444833ace3be5eb06f79f13abd4b5ba540bf48a264421791bf710c8d60",
+      "statement": "Consent is specific, informed, granular, recorded, and withdrawable.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 72
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "24. Privacy and data protection"
+      ]
+    },
+    {
+      "control_id": "PRC-24-009",
+      "revision": 1,
+      "semantic_sha256": "ebb37e523509916f56f1b61ecf5d4fe2aa184926d8c3423ddcadf79a2ce33e37",
+      "statement": "Refusing nonessential consent does not improperly block the service.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 73
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "24. Privacy and data protection"
+      ]
+    },
+    {
+      "control_id": "PRC-24-010",
+      "revision": 1,
+      "semantic_sha256": "906a87fcd99332ae7cec44747e4ea4d8d71235585413b07037d35586db1b93a3",
+      "statement": "Nonessential trackers are prevented from operating before valid permission where required.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 74
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "24. Privacy and data protection"
+      ]
+    },
+    {
+      "control_id": "PRC-24-011",
+      "revision": 1,
+      "semantic_sha256": "5d04e6a704fe51f607dc7b11d0dde7868d7c82b47781d138407544f1c9b746d0",
+      "statement": "Cookie and tracker inventories match actual production behavior.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 75
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "24. Privacy and data protection"
+      ]
+    },
+    {
+      "control_id": "PRC-24-012",
+      "revision": 1,
+      "semantic_sha256": "94dc394d53de028b3e8fa8106fd17f52f9d918afc175f190e5c32955075e5b07",
+      "statement": "Analytics, advertising, attribution, session replay, and experimentation tools receive only approved data.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 76
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "24. Privacy and data protection"
+      ]
+    },
+    {
+      "control_id": "PRC-24-013",
+      "revision": 1,
+      "semantic_sha256": "850ac30a49dbc9870cd4e88ade893bae1f7b40811730affbb0168b6cf14b337d",
+      "statement": "Sensitive fields are redacted from logs, monitoring, support tools, recordings, and analytics.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 77
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "24. Privacy and data protection"
+      ]
+    },
+    {
+      "control_id": "PRC-24-014",
+      "revision": 1,
+      "semantic_sha256": "36b5e2dfd66e21e674642bf5bd5e18f516a174335e00fbd37704c82080cc0ba6",
+      "statement": "Access, correction, deletion, restriction, objection, and portability workflows exist where applicable.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 78
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "24. Privacy and data protection"
+      ]
+    },
+    {
+      "control_id": "PRC-24-015",
+      "revision": 1,
+      "semantic_sha256": "2537daef01a7e85fcc4c3a3eb72e754ebe1765fac34beaf0145a0ef44d90088f",
+      "statement": "Rights requests cover downstream systems and processors.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 79
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "24. Privacy and data protection"
+      ]
+    },
+    {
+      "control_id": "PRC-24-016",
+      "revision": 1,
+      "semantic_sha256": "3b8c4293a52cda32f8cb40e8f263adcf6795766f1e339b8f69361de5de533be2",
+      "statement": "Requester identity verification is proportionate and does not collect excessive additional data.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 80
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "24. Privacy and data protection"
+      ]
+    },
+    {
+      "control_id": "PRC-24-017",
+      "revision": 1,
+      "semantic_sha256": "f83cb7d8d8b20e74f2e8d10ad0f87e23bf07ab9aa0edb077afffa35712d104e4",
+      "statement": "Rights-response deadlines are tracked.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 81
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "24. Privacy and data protection"
+      ]
+    },
+    {
+      "control_id": "PRC-24-018",
+      "revision": 1,
+      "semantic_sha256": "70808493441c48a277324f60fdfc455fe0bbb1a79a2435877f3702f770dd8923",
+      "statement": "Retention periods are explicit.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 82
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "24. Privacy and data protection"
+      ]
+    },
+    {
+      "control_id": "PRC-24-019",
+      "revision": 1,
+      "semantic_sha256": "1bcb4b5207b24ba32104aca1e3ff17c65939c71db8df446eab14136c045fa203",
+      "statement": "Deletion occurs across primary data, caches, indexes, derived data, and downstream systems.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 83
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "24. Privacy and data protection"
+      ]
+    },
+    {
+      "control_id": "PRC-24-020",
+      "revision": 1,
+      "semantic_sha256": "fdc3bf3dd96c93c9c7767ad71aabc12c9dc481a109b89deac0dae7169e154ecc",
+      "statement": "Backup deletion behavior is documented and legally acceptable.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 84
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "24. Privacy and data protection"
+      ]
+    },
+    {
+      "control_id": "PRC-24-021",
+      "revision": 1,
+      "semantic_sha256": "64acea189c5aea42cc07fc28dc61475c07f6985c5ed9dce8687d2c03b11fd634",
+      "statement": "Legal holds override deletion only through a controlled process.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 85
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "24. Privacy and data protection"
+      ]
+    },
+    {
+      "control_id": "PRC-24-022",
+      "revision": 1,
+      "semantic_sha256": "c267a5666c850b8ccf99e610e9aac0d470bd3eca3e47664e1405c51a339dd67d",
+      "statement": "Pseudonymization or anonymization claims have been validated.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 86
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "24. Privacy and data protection"
+      ]
+    },
+    {
+      "control_id": "PRC-24-023",
+      "revision": 1,
+      "semantic_sha256": "8faaa91a27fe8e000852d77cc724e4778d905c028171f95aa0b2a252ff66c334",
+      "statement": "Reidentification risk has been assessed.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 87
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "24. Privacy and data protection"
+      ]
+    },
+    {
+      "control_id": "PRC-24-024",
+      "revision": 1,
+      "semantic_sha256": "8c85b6300b16fb188481c9e019fed66e593290347bc85a00ee867fe2940e44b3",
+      "statement": "Data export does not expose other users’ or tenants’ information.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 88
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "24. Privacy and data protection"
+      ]
+    },
+    {
+      "control_id": "PRC-24-025",
+      "revision": 1,
+      "semantic_sha256": "046c9a5050b6884c03700a5803dac70cb8f6fe3a6101abd3ee7538193e1f6f7f",
+      "statement": "High-risk processing has an appropriate privacy-impact assessment.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 89
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "24. Privacy and data protection"
+      ]
+    },
+    {
+      "control_id": "PRC-24-026",
+      "revision": 1,
+      "semantic_sha256": "21c41f731e16aeb5fe50d9a08f5ab118124144b0dfa724f750ae6befb2f48acd",
+      "statement": "Children’s, biometric, health, precise-location, communications, financial, and other sensitive data trigger enhanced review.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 90
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "24. Privacy and data protection"
+      ]
+    },
+    {
+      "control_id": "PRC-24-027",
+      "revision": 1,
+      "semantic_sha256": "47e2175bc41ce809937c16a3e9ff288c9cc532ae3e96b88b5ace91efd22dba2a",
+      "statement": "Cross-border transfers and data-residency commitments are documented.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 91
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "24. Privacy and data protection"
+      ]
+    },
+    {
+      "control_id": "PRC-24-028",
+      "revision": 1,
+      "semantic_sha256": "d3ef1205954d0249057c65f5b94a8a12883d1b5b4fab5c896ed976496947c2ac",
+      "statement": "Processor and subprocessor contracts cover permitted use, security, deletion, assistance, and breach notification.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 92
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "24. Privacy and data protection"
+      ]
+    },
+    {
+      "control_id": "PRC-24-029",
+      "revision": 1,
+      "semantic_sha256": "0186789c6350137c7f1ff430484d58611f16b63c3381577a0579d6d0f405a659",
+      "statement": "Privacy contacts and escalation paths exist.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 93
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "24. Privacy and data protection"
+      ]
+    },
+    {
+      "control_id": "PRC-24-030",
+      "revision": 1,
+      "semantic_sha256": "9bacfc5a5bf6047276c7064a28452f36a21a37bfe8cc4b42e54df11caa6cfdb9",
+      "statement": "A personal-data incident can be identified, scoped, and reported within applicable deadlines.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 94
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "24. Privacy and data protection"
+      ]
+    },
+    {
+      "control_id": "PRC-24-031",
+      "revision": 1,
+      "semantic_sha256": "2806497d7dd6ed630b6598ae92cd64021b6b9d7e6122035f478af7437ee4bc77",
+      "statement": "Production support access to personal data is minimized and audited.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 95
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "24. Privacy and data protection"
+      ]
+    },
+    {
+      "control_id": "PRC-24-032",
+      "revision": 1,
+      "semantic_sha256": "9b47fc9911b548e5b8b3b5677466b2cc090b22c82deeac5e99451bf14be43df7",
+      "statement": "Synthetic or masked data is used outside production.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 96
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "24. Privacy and data protection"
+      ]
+    },
+    {
+      "control_id": "PRC-24-033",
+      "revision": 1,
+      "semantic_sha256": "0bcc908be0a7a7253e9c93a6c18589a5af55f95cd2e17977377ba7ed82cfa6bb",
+      "statement": "Test accounts and deleted users do not remain indefinitely in downstream tools.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 97
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "24. Privacy and data protection"
+      ]
+    },
+    {
+      "control_id": "PRC-24-034",
+      "revision": 1,
+      "semantic_sha256": "7c690bc32e88015b5d7bbfc60816e4c4730fc1c794da60095d757d83d8a542b9",
+      "statement": "Interfaces avoid manipulative consent, cancellation, or privacy choices.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 98
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "24. Privacy and data protection"
+      ]
+    },
+    {
+      "control_id": "PRC-25-001",
+      "revision": 1,
+      "semantic_sha256": "575d41c086d7ea1f52cdc4c570c9ef1edecea56e91b86852d00a3209e8908267",
+      "statement": "Performance objectives are defined per critical user journey.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 106
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "25. Performance and user experience efficiency"
+      ]
+    },
+    {
+      "control_id": "PRC-25-002",
+      "revision": 1,
+      "semantic_sha256": "ff664b4038c6aa64536ab4bc9f2df33f6f1d76ffb0be4ed39c1bb7b622eff850",
+      "statement": "Objectives use relevant percentiles, not averages alone.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 107
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "25. Performance and user experience efficiency"
+      ]
+    },
+    {
+      "control_id": "PRC-25-003",
+      "revision": 1,
+      "semantic_sha256": "b93b7363c883edb5024a82919ee27ffc2def27f614b6321e192bc1451f82be3d",
+      "statement": "Frontend and backend budgets are documented.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 108
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "25. Performance and user experience efficiency"
+      ]
+    },
+    {
+      "control_id": "PRC-25-004",
+      "revision": 1,
+      "semantic_sha256": "3d52538edf434086ff89a3b728cc308fd46d872d3f9cf18df72d991ccc159c48",
+      "statement": "Baseline performance is recorded before launch.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 109
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "25. Performance and user experience efficiency"
+      ]
+    },
+    {
+      "control_id": "PRC-25-005",
+      "revision": 1,
+      "semantic_sha256": "2b9cc7307fa2b98ae65665c429d06b1d5b04b8469e24b482504a131f79552ae5",
+      "statement": "Laboratory tests and real-user measurements are both used where applicable.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 110
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "25. Performance and user experience efficiency"
+      ]
+    },
+    {
+      "control_id": "PRC-25-006",
+      "revision": 1,
+      "semantic_sha256": "ba328e34a3a741ed80986a95c442a9d01fe8780c2162fe17e7d651dc967a3a4f",
+      "statement": "Public pages meet approved loading, interaction, and visual-stability targets.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 111
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "25. Performance and user experience efficiency"
+      ]
+    },
+    {
+      "control_id": "PRC-25-007",
+      "revision": 1,
+      "semantic_sha256": "4141620a22ed5d9b3b3d26ff3b0e7266a100551b4666fcbf158dfe3d1648f8ce",
+      "statement": "API latency targets are defined per endpoint or journey.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 112
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "25. Performance and user experience efficiency"
+      ]
+    },
+    {
+      "control_id": "PRC-25-008",
+      "revision": 1,
+      "semantic_sha256": "99b884076ef6ec3000e9f6f55bfe87665394678dfac76000836760455e703e27",
+      "statement": "Database-query latency and volume are measured.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 113
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "25. Performance and user experience efficiency"
+      ]
+    },
+    {
+      "control_id": "PRC-25-009",
+      "revision": 1,
+      "semantic_sha256": "3c739b96f3d9857ce054ad7a5f8d3e6e890bbc59a5300da3df014b7a7fe1d62d",
+      "statement": "Excessive query patterns and repeated fetches have been eliminated.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 114
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "25. Performance and user experience efficiency"
+      ]
+    },
+    {
+      "control_id": "PRC-25-010",
+      "revision": 1,
+      "semantic_sha256": "f1a6a9f50bcfe2a6cee2fca916a346134dd5c345422ef4a938f993a49b7efc30",
+      "statement": "Payload sizes are bounded.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 115
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "25. Performance and user experience efficiency"
+      ]
+    },
+    {
+      "control_id": "PRC-25-011",
+      "revision": 1,
+      "semantic_sha256": "35c9350d70a5192d5cd3f5a708977d5f4fc6fda5f201f4bb941377ebc707c514",
+      "statement": "Compression is enabled appropriately.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 116
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "25. Performance and user experience efficiency"
+      ]
+    },
+    {
+      "control_id": "PRC-25-012",
+      "revision": 1,
+      "semantic_sha256": "13cd88fec194c8c8ba4e4a6c099ba997d40c3fae2096e974ec321dd8812b8f7e",
+      "statement": "Images, fonts, scripts, and styles are delivered efficiently.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 117
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "25. Performance and user experience efficiency"
+      ]
+    },
+    {
+      "control_id": "PRC-25-013",
+      "revision": 1,
+      "semantic_sha256": "f5bb8bf339046c4e4feffe1f71f11e52feb62be2652bd5d790cfbe43872d443a",
+      "statement": "Critical resources are prioritized.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 118
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "25. Performance and user experience efficiency"
+      ]
+    },
+    {
+      "control_id": "PRC-25-014",
+      "revision": 1,
+      "semantic_sha256": "56502cc9b6bc2ab903800f186a554ec8bce0faf778c633f95921a8a2d3f80a48",
+      "statement": "Noncritical work is deferred without harming accessibility or correctness.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 119
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "25. Performance and user experience efficiency"
+      ]
+    },
+    {
+      "control_id": "PRC-25-015",
+      "revision": 1,
+      "semantic_sha256": "28ff979adcf85b0fd25fbd47b11201c734994bb1e045943629ee2adbf01ffbba",
+      "statement": "Cache and CDN behavior has been validated.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 120
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "25. Performance and user experience efficiency"
+      ]
+    },
+    {
+      "control_id": "PRC-25-016",
+      "revision": 1,
+      "semantic_sha256": "1b0e4b4ea56b084ab6a2fb198d637b8651810927c09d927a63da299cceda31ce",
+      "statement": "Cold-start performance is acceptable.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 121
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "25. Performance and user experience efficiency"
+      ]
+    },
+    {
+      "control_id": "PRC-25-017",
+      "revision": 1,
+      "semantic_sha256": "2d1238143dd034b0727d0cfea48def1f4faffbe158b993c2c4f8ec7a40acbff6",
+      "statement": "Connection and thread pools are sized and monitored.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 122
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "25. Performance and user experience efficiency"
+      ]
+    },
+    {
+      "control_id": "PRC-25-018",
+      "revision": 1,
+      "semantic_sha256": "fde82dae254440226bbcce9132cde8bbe61c5ed97ff1705d7083e5f18cd2175f",
+      "statement": "Memory, CPU, file-descriptor, connection, and storage leaks have been investigated.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 123
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "25. Performance and user experience efficiency"
+      ]
+    },
+    {
+      "control_id": "PRC-25-019",
+      "revision": 1,
+      "semantic_sha256": "065a3556edfe7197d20e3f99d1b92a19a04b7cea7d7e7f4364ead0f5f0a48029",
+      "statement": "Long-running or resource-intensive requests have limits.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 124
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "25. Performance and user experience efficiency"
+      ]
+    },
+    {
+      "control_id": "PRC-25-020",
+      "revision": 1,
+      "semantic_sha256": "cf69c11bd12560fc69dd27082e3a17b96759473ad8710ba232178ac2035ab78b",
+      "statement": "Performance is tested with realistic authentication, authorization, data volume, and cache state.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 125
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "25. Performance and user experience efficiency"
+      ]
+    },
+    {
+      "control_id": "PRC-25-021",
+      "revision": 1,
+      "semantic_sha256": "a24e66996db7b3504218ba214b4f9e19fafb368e2c9b1927248a05d251b7ee79",
+      "statement": "Performance is tested on representative mobile devices and slower networks where relevant.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 126
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "25. Performance and user experience efficiency"
+      ]
+    },
+    {
+      "control_id": "PRC-25-022",
+      "revision": 1,
+      "semantic_sha256": "9dbf9629df8933a557cb794853664bee673e96029a6ba6dc4e399eba09c040b4",
+      "statement": "Third-party script and service impact is measured.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 127
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "25. Performance and user experience efficiency"
+      ]
+    },
+    {
+      "control_id": "PRC-25-023",
+      "revision": 1,
+      "semantic_sha256": "db458bd0a56ac092626763346f30714293e8054abab547be86f8f56f8749fe91",
+      "statement": "Performance degradation during partial dependency failure is acceptable.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 128
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "25. Performance and user experience efficiency"
+      ]
+    },
+    {
+      "control_id": "PRC-25-024",
+      "revision": 1,
+      "semantic_sha256": "37e95f6c6f01dc2828423501c76979da42e2bc05fc67e4717eaf53b8ac73fe15",
+      "statement": "Performance regressions have automated release thresholds.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 129
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "25. Performance and user experience efficiency"
+      ]
+    },
+    {
+      "control_id": "PRC-25-025",
+      "revision": 1,
+      "semantic_sha256": "5177ad764396b7e777be637bf3c80b9ef0620865513c4c09e338b595678bc663",
+      "statement": "Client telemetry does not itself materially harm performance.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 130
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "25. Performance and user experience efficiency"
+      ]
+    },
+    {
+      "control_id": "PRC-25-026",
+      "revision": 1,
+      "semantic_sha256": "29c5730c2ed190eb976e96cc26d45fbc3c81625e2ec2ea36b93bec6ef635fe2f",
+      "statement": "Performance objectives are connected to user and business outcomes.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 131
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "25. Performance and user experience efficiency"
+      ]
+    },
+    {
+      "control_id": "PRC-26-001",
+      "revision": 1,
+      "semantic_sha256": "642505b6148729138d3fee43a7dfbe18c85cea8d3137efb3ec8303ea2b0cdfde",
+      "statement": "Forecast normal, peak, burst, launch, seasonal, and abuse traffic.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 137
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "26. Capacity, scalability, and overload control"
+      ]
+    },
+    {
+      "control_id": "PRC-26-002",
+      "revision": 1,
+      "semantic_sha256": "5f42c9ac839c44127975fa0dcf7d9a6c61ff157981bac26a34fefe870d54e2f0",
+      "statement": "Forecast data, file, index, queue, log, and backup growth.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 138
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "26. Capacity, scalability, and overload control"
+      ]
+    },
+    {
+      "control_id": "PRC-26-003",
+      "revision": 1,
+      "semantic_sha256": "cf9008962c112f014a916db9c5632ca4aa10e3393fbdca9952adc07457507cea",
+      "statement": "Identify the maximum safe capacity of each critical component.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 139
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "26. Capacity, scalability, and overload control"
+      ]
+    },
+    {
+      "control_id": "PRC-26-004",
+      "revision": 1,
+      "semantic_sha256": "77bfa2e8de02ceee45347e8236841c4af6a66b5759dac8f5783868ee598c7cd3",
+      "statement": "Load tests use realistic request mixes and data distributions.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 140
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "26. Capacity, scalability, and overload control"
+      ]
+    },
+    {
+      "control_id": "PRC-26-005",
+      "revision": 1,
+      "semantic_sha256": "748865a0e7fa8ad6f8fb506ecdcca41f56633311835988d18e5254bf2beb331e",
+      "statement": "Load tests include authentication and authorization overhead.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 141
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "26. Capacity, scalability, and overload control"
+      ]
+    },
+    {
+      "control_id": "PRC-26-006",
+      "revision": 1,
+      "semantic_sha256": "4fe1b2dacf83c6d5dfcd250f0aa046308ea7fad1c3bc0873df5b2b8e72eb9f18",
+      "statement": "Load tests include external dependency behavior.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 142
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "26. Capacity, scalability, and overload control"
+      ]
+    },
+    {
+      "control_id": "PRC-26-007",
+      "revision": 1,
+      "semantic_sha256": "bbfb533cdc6c7450ab6ae953258d2b5376ae5abed7bc60ceb0fa0904d966e070",
+      "statement": "Stress testing identifies how the system fails beyond capacity.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 143
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "26. Capacity, scalability, and overload control"
+      ]
+    },
+    {
+      "control_id": "PRC-26-008",
+      "revision": 1,
+      "semantic_sha256": "b185a6352e6fe9731e55055457e7b4765b99f69b3e808542059df0e302700766",
+      "statement": "Spike testing covers sudden surges.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 144
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "26. Capacity, scalability, and overload control"
+      ]
+    },
+    {
+      "control_id": "PRC-26-009",
+      "revision": 1,
+      "semantic_sha256": "61aa3302c6133a5fcf1165bfdb1efa08b238202bab449cc80519485058535fdc",
+      "statement": "Endurance testing identifies leaks and gradual degradation.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 145
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "26. Capacity, scalability, and overload control"
+      ]
+    },
+    {
+      "control_id": "PRC-26-010",
+      "revision": 1,
+      "semantic_sha256": "278c09f4393c2c1be7bd01272a4c5b70195153c62b9b5da283424485be436350",
+      "statement": "Capacity testing includes the largest expected tenant or customer.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 146
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "26. Capacity, scalability, and overload control"
+      ]
+    },
+    {
+      "control_id": "PRC-26-011",
+      "revision": 1,
+      "semantic_sha256": "3bd2a4e74544dfccc3b863b550b592f197a3bfed9b5a1a1edff5ac083ddff248",
+      "statement": "Provider quotas and account limits have been reviewed.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 147
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "26. Capacity, scalability, and overload control"
+      ]
+    },
+    {
+      "control_id": "PRC-26-012",
+      "revision": 1,
+      "semantic_sha256": "fad3657b35d359cb663b6401427670ee697b11b2d9a9ed3873330c55b67d2762",
+      "statement": "Database connections, locks, storage, replicas, and I/O have sufficient headroom.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 148
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "26. Capacity, scalability, and overload control"
+      ]
+    },
+    {
+      "control_id": "PRC-26-013",
+      "revision": 1,
+      "semantic_sha256": "252794821d9f8b455524c3c6350c19e5daf68d11b5c817ff84e3a126fbcac57a",
+      "statement": "Queue, cache, load-balancer, network, and worker capacity have sufficient headroom.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 149
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "26. Capacity, scalability, and overload control"
+      ]
+    },
+    {
+      "control_id": "PRC-26-014",
+      "revision": 1,
+      "semantic_sha256": "319a3983f5a71e06d3c198dade77cbcf8b5a331a28a7000e6a30593d61d2ebe7",
+      "statement": "Autoscaling minimums, maximums, triggers, cooldowns, and scale-down behavior are validated.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 150
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "26. Capacity, scalability, and overload control"
+      ]
+    },
+    {
+      "control_id": "PRC-26-015",
+      "revision": 1,
+      "semantic_sha256": "8ed9379f1005be550dae5e596272b598491306bad557b9738b6acb0c4d285669",
+      "statement": "Scaling does not overload a database or dependency.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 151
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "26. Capacity, scalability, and overload control"
+      ]
+    },
+    {
+      "control_id": "PRC-26-016",
+      "revision": 1,
+      "semantic_sha256": "d6deaa269d5621b0e8502e45fea4802a6dfb43a4767725c93e7ae21096ed1861",
+      "statement": "Capacity remains sufficient during a zone, node, or region failure according to the design.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 152
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "26. Capacity, scalability, and overload control"
+      ]
+    },
+    {
+      "control_id": "PRC-26-017",
+      "revision": 1,
+      "semantic_sha256": "0a998b8351534c110f2b4d38e05677fbdbd70d7bad1d12282bf6e97b11c4ba5e",
+      "statement": "Rate limits protect shared capacity fairly.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 153
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "26. Capacity, scalability, and overload control"
+      ]
+    },
+    {
+      "control_id": "PRC-26-018",
+      "revision": 1,
+      "semantic_sha256": "0a70f7371be51edb14c362dc0860ae39da310dc6b3dcad294b7721db0911c88b",
+      "statement": "Per-user and per-tenant quotas prevent noisy-neighbor failure.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 154
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "26. Capacity, scalability, and overload control"
+      ]
+    },
+    {
+      "control_id": "PRC-26-019",
+      "revision": 1,
+      "semantic_sha256": "ef5fedb8d874d7537914c144672cf15fad0fc4a146bcc0a52f8a44c5e56cce08",
+      "statement": "Backpressure propagates safely.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 155
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "26. Capacity, scalability, and overload control"
+      ]
+    },
+    {
+      "control_id": "PRC-26-020",
+      "revision": 1,
+      "semantic_sha256": "96fa6e752a40a337509fce591eee6aebd5bd45866858fa894bfe48004def3039",
+      "statement": "Queues are bounded or have explicit overload behavior.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 156
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "26. Capacity, scalability, and overload control"
+      ]
+    },
+    {
+      "control_id": "PRC-26-021",
+      "revision": 1,
+      "semantic_sha256": "43e7baa783b01877310edae321f9918b1580f1f09aa43b78f3c06e879c11ce8a",
+      "statement": "Load shedding preserves the most important operations.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 157
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "26. Capacity, scalability, and overload control"
+      ]
+    },
+    {
+      "control_id": "PRC-26-022",
+      "revision": 1,
+      "semantic_sha256": "2dc289ac440600b824b40392fb433d04d7c8f15c778380090efe5dad319df1f7",
+      "statement": "Retry storms are prevented.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 158
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "26. Capacity, scalability, and overload control"
+      ]
+    },
+    {
+      "control_id": "PRC-26-023",
+      "revision": 1,
+      "semantic_sha256": "17f0ba1535cc1bd905961d9945cd46e7fd09ddfae22cfabd9eba6d5d90df3dda",
+      "statement": "Expensive optional functionality can degrade or disable safely.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 159
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "26. Capacity, scalability, and overload control"
+      ]
+    },
+    {
+      "control_id": "PRC-26-024",
+      "revision": 1,
+      "semantic_sha256": "619784c2b92ebe9a97a41d2044b6ff4044058bc7f517b34c9cae4ecf679681f9",
+      "statement": "DDoS scenarios and provider protections have been reviewed.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 160
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "26. Capacity, scalability, and overload control"
+      ]
+    },
+    {
+      "control_id": "PRC-26-025",
+      "revision": 1,
+      "semantic_sha256": "3ae15f229dedf2e9849f18506bd801f94f5a9cfd5747c7f621e41e424b5eb0e7",
+      "statement": "Capacity-related alert thresholds provide enough time to act.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 161
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "26. Capacity, scalability, and overload control"
+      ]
+    },
+    {
+      "control_id": "PRC-26-026",
+      "revision": 1,
+      "semantic_sha256": "d2a4d8ff8a78322d1195f727475cd0c942acbec6f8c3875d27c921a98722c694",
+      "statement": "The cost of expected and peak operation has been modeled.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 162
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "26. Capacity, scalability, and overload control"
+      ]
+    },
+    {
+      "control_id": "PRC-26-027",
+      "revision": 1,
+      "semantic_sha256": "3a2ddaa97cf96eed81e51dd27f623e6a9e3698f0c45067602dfb79957dc3c73c",
+      "statement": "Cost limits do not silently terminate essential operation.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 163
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "26. Capacity, scalability, and overload control"
+      ]
+    },
+    {
+      "control_id": "PRC-26-028",
+      "revision": 1,
+      "semantic_sha256": "0f2f6e70b44b24af85f3369507d8cb84a37626646c4e2b87e6cbc49f02393998",
+      "statement": "Capacity assumptions have owners and review dates.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 164
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "26. Capacity, scalability, and overload control"
+      ]
+    }
+  ]
+}

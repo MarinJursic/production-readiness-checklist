@@ -1,0 +1,1367 @@
+{
+  "schema_version": "prc.control-classification-skeptic-review/v0.1",
+  "packet_id": "skeptic-docs-engineering-06-application-services-and-apis-md-part-001-part-001",
+  "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "controls": [
+    {
+      "control_id": "USEQ-AD050959",
+      "revision": 1,
+      "semantic_sha256": "ad050959076c28b99856cb2b77d020276823c7fbd08382e363bef74e1c898b38",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A declared API inventory cannot prove completeness across dynamic routes, gateways, webhooks, jobs, partner endpoints, and shadow integrations.",
+      "counterexample_analysis": "Every listed API can be current while an undocumented callback or legacy endpoint remains. The record passes but the inventory is incomplete.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-A87B5F2B",
+      "revision": 1,
+      "semantic_sha256": "a87b5f2b69ea04fe674e8f4c6e50aa07b138bdc634111bce8e843469034fc496",
+      "verdict": "rejected_nondeterministic",
+      "reason": "API inventories and consumer lists can omit entries, while accountable ownership and complete behavioral documentation require human and semantic judgment.",
+      "counterexample_analysis": "Listed APIs can name nominal owners and schemas while an unlisted consumer relies on undocumented behavior. Fields pass but the rule is unmet.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-4ECE79C1",
+      "revision": 1,
+      "semantic_sha256": "4ece79c1b68a6606214023f2dc0fd99d5e4edc15d179567eda1e167cb5463978",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Whether unknown-field handling is safe depends on protocol, security, and compatibility context; documentation alone does not prove runtime behavior.",
+      "counterexample_analysis": "A contract can say ignore unknown fields while an authorization field is silently discarded. The record passes but handling is unsafe.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-E87054DC",
+      "revision": 1,
+      "semantic_sha256": "e87054dc12ec57264e043341d1a5f7bcac88c300c7ade833643cc1e081169e11",
+      "verdict": "confirmed_deterministic",
+      "reason": "The nine request dimensions are explicit typed policy bounds with units and finite values, making whether each is bounded objectively decidable.",
+      "counterexample_analysis": "A missing, unlimited, malformed, or conflicting content, size, nesting, count, complexity, or batch bound fails.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-BBED00FD",
+      "revision": 1,
+      "semantic_sha256": "bbed00fd21ffd9e83c2bf83094c805fb11b6a911d0ab7ba48777a1e928999ba7",
+      "verdict": "confirmed_deterministic",
+      "reason": "CORS configuration can be checked for explicit trusted-origin membership and the exact prohibition on wildcard origins with credentials.",
+      "counterexample_analysis": "Any credentialed wildcard or origin outside the versioned allowlist fails; explicit allowed origins pass.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-89E3635B",
+      "revision": 1,
+      "semantic_sha256": "89e3635b2b44617e8ccfd6b9f150238a92b3ab93931f171cb7cd132901efd480",
+      "verdict": "rejected_nondeterministic",
+      "reason": "State-changing browser routes and CSRF attack forms are not completely inventoried by selected tests.",
+      "counterexample_analysis": "Listed forms can require tokens while an unlisted JSON endpoint accepts cross-site credentialed requests. Tests pass but CSRF remains.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-DEAA8863",
+      "revision": 1,
+      "semantic_sha256": "deaa8863f7bc47e9c48f5c45093a8cf979dc780b0636699f7acaa170615a5512",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Redirect and callback inputs include encoding, parser, scheme, host, and normalization variants not exhausted by fixtures.",
+      "counterexample_analysis": "Known malicious URLs can fail while a double-encoded external destination bypasses validation. The suite passes but validation is not strict.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-E0FB8D9E",
+      "revision": 1,
+      "semantic_sha256": "e0fb8d9e182cdf5921a37ca1eeaa7c217776c05879dc6de7f860aaeb8fb68252",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Consistent parsing and explicit proxy trust require complete deployment paths and semantic agreement among libraries, gateways, and applications.",
+      "counterexample_analysis": "Configured proxies can pass while one framework interprets duplicate forwarded headers differently. Records pass but parsing is inconsistent.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-31202793",
+      "revision": 1,
+      "semantic_sha256": "312027938f2f0be98ffe446dd03e00d4e888883c92fb12f5a8b9f358b8c049af",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Signed webhook fixtures do not exhaust key rotation, timestamp windows, replay stores, concurrency, and alternate delivery paths.",
+      "counterexample_analysis": "A normal replay is rejected while concurrent duplicates race before nonce storage. Tests pass but replay protection fails.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-8C1E3CB4",
+      "revision": 1,
+      "semantic_sha256": "8c1e3cb452eddc2d20066b5a0e10e4c0317f4b12c64a9891fc07ec1f24b9d428",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Documentation does not prove consumer idempotency, and retry, ordering, failure, and reconciliation need complete effect and crash oracles.",
+      "counterexample_analysis": "Sequential retries can pass while a crash duplicates a charge. Fields exist but webhook behavior is unsafe.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-4667AD11",
+      "revision": 1,
+      "semantic_sha256": "4667ad1165e54a164de56e936b4ebe9eb29ee348f92caf858b7ef42c725a7d49",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Scope adequacy, attribution, rotation, and revocation must work across every key and authorization target, not just appear in metadata.",
+      "counterexample_analysis": "A unique key can be labeled scoped while holding administrator rights or remain accepted by a replica after revocation. Records pass but the key is unsafe.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-5184C8B1",
+      "revision": 1,
+      "semantic_sha256": "5184c8b1c9774586cf96273103c00ec38dc5a7706c89fc654d11096915962508",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Policy presence and selected tests do not prove compatibility across all consumer behaviors and version combinations.",
+      "counterexample_analysis": "All documented examples can pass while an old client breaks on an untested additive field. Policies exist but compatibility is unproven.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F1736D64",
+      "revision": 1,
+      "semantic_sha256": "f1736d64ed76a6f07b795cc81beb25befd0b90e53e5305f36f307c93ad6e4e13",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Provider and consumer inventories plus contract-test cases can omit operations, states, errors, and versions.",
+      "counterexample_analysis": "Each registered consumer can pass a health contract while a retry error shape breaks it. Coverage records pass but behavior is not covered.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-EB908BF8",
+      "revision": 1,
+      "semantic_sha256": "eb908bf82309d52f493312913e9316cdd7a24423ea7895429078af88ef26f22a",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Graph query cost can arise from combinations, fragments, resolvers, aliases, and data-dependent expansion beyond tested bounds.",
+      "counterexample_analysis": "Depth and alias fixtures can pass while a shallow query triggers unbounded resolver work. Tests pass but computational cost is not bounded.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-9115A638",
+      "revision": 1,
+      "semantic_sha256": "9115a63855f35f39ac92f0d39388be6e9d6697fd67c6178cfd683ed6150b8c05",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Long-lived connection types, authorization changes, races, caches, and reconnection states are not exhausted by selected scenarios.",
+      "counterexample_analysis": "Logout can close one websocket while an SSE or resumed connection retains access. Tests pass but authorization remains stale.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-79910F4D",
+      "revision": 1,
+      "semantic_sha256": "79910f4d77e9ab61ba44111f2130f54b3c0ccfc2ec598d55f364f75f7c6d8411",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Abuse-control adequacy, useful policy, and valid security contact require risk and governance judgment; public API inventory may be incomplete.",
+      "counterexample_analysis": "An API can publish vague limits and a dead contact address while all fields exist. The rule is not substantively met.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-C8EED75F",
+      "revision": 1,
+      "semantic_sha256": "c8eed75fdd5a599c3939dbf8679d19baa74e0951f537d9f5ec14ae08ba27df25",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Short-lived and unpredictable need authorized thresholds and cryptographic evidence, while storage and single-use behavior span races and replicas.",
+      "counterexample_analysis": "Tokens can pass nominal tests while concurrent redemption succeeds twice or entropy is weak. Fixtures pass but recovery tokens are unsafe.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-7AD37548",
+      "revision": 1,
+      "semantic_sha256": "7ad375486df066f943f2e13fe2d7858f0b4fffa835575505cf6ba4e835d1fb3e",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Correct policy handling depends on account classification, lifecycle, data, access, and complete account inventory.",
+      "counterexample_analysis": "Listed dormant accounts can transition correctly while an abandoned service account is omitted. Records pass but policy is not applied universally.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-E27BE14A",
+      "revision": 1,
+      "semantic_sha256": "e27be14aa9ef35dc065385a0b957c6e67d5ec3e72c7e0d636428be0546c04160",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Audit completeness and suspicious-event classification are unbounded; investigation and step-up triggers require security judgment.",
+      "counterexample_analysis": "Known login events can log while token refresh attacks remain invisible or never trigger. Monitoring records pass but suspicious authentication is missed.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-C6C9BCF9",
+      "revision": 1,
+      "semantic_sha256": "c6c9bcf9158f22dc7b9f070ddd340589d7dd0201dcb9d8b7c3e8be67025b305c",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Recovery-code protection, single use, and secure regeneration involve storage, races, entropy, invalidation, and replicas beyond happy paths.",
+      "counterexample_analysis": "One code can be consumed once in tests while concurrent use succeeds twice. The suite passes but codes are not single-use.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-52AF78CA",
+      "revision": 1,
+      "semantic_sha256": "52af78caff160ce27960dffa28928364d30bcec3f2997e1d22446815308eb066",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Which protocol fields are required and how they bind to flows is contextual; a validation record does not prove runtime enforcement.",
+      "counterexample_analysis": "A flow can omit nonce as not required or validate state without session binding. Fields pass but protocol validation is unsafe.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-36E65D58",
+      "revision": 1,
+      "semantic_sha256": "36e65d582a55f08f46e3cc8a40bc3fcd5a842834e2516b4f9e4b5d87bb46f03b",
+      "verdict": "confirmed_deterministic",
+      "reason": "Versioned protocol rules define exact redirect-identifier normalization and equality, making strict identifier matching a bounded comparison property.",
+      "counterexample_analysis": "Prefix, wildcard, normalization-changing, or nonexact matches fail; exact permitted identifiers pass.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-15527916",
+      "revision": 1,
+      "semantic_sha256": "1552791681a161b63b87cb3e33ab31256930ad647037ca224f89cd9139e836db",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Five scenario labels do not define provider states, timing, caches, sessions, key propagation, and complete outcome oracles.",
+      "counterexample_analysis": "Key rotation can pass one fixture while old sessions accept retired keys. Tests exist but behavior is incomplete.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-FC13E22C",
+      "revision": 1,
+      "semantic_sha256": "fc13e22c5e19684e21626808569d8e3f016e1a0a8adba2999a16a8f4687b71e3",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A secure-source label does not prove implementation entropy or sufficient unpredictability, whose threshold and empirical method are unspecified.",
+      "counterexample_analysis": "An identifier generator can call a secure API but truncate output to a guessable value. Records pass but sessions are predictable.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "undefined_threshold",
+        "undefined_protocol",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-931DDFC8",
+      "revision": 1,
+      "semantic_sha256": "931ddfc85fc045f470b0b45545aa6a5a6c4d094f0d34898b0591f8312b28d47d",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Authentication and privilege-change routes, concurrency, session stores, and token types are not fully covered by selected rotation tests.",
+      "counterexample_analysis": "Web login can rotate while an API privilege elevation reuses the identifier. Tests pass but session fixation remains.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-A784E8C1",
+      "revision": 1,
+      "semantic_sha256": "a784e8c109c48c3994df3dc6a17fd208916b66fa147c78cd031e33a4b61d4e7a",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Server-side access spans sessions, refresh tokens, caches, devices, and replicas not exhausted by one logout fixture.",
+      "counterexample_analysis": "The tested cookie is revoked while a refresh token or replica remains valid. Logout appears successful but access continues.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-92AF7C8C",
+      "revision": 1,
+      "semantic_sha256": "92af7c8cd3569b8f5135f1fab75688207abec7d074a07c04752b488b59bea60a",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Browser operation inventories can omit state-changing endpoints and alternate methods, so CSRF tests are partial.",
+      "counterexample_analysis": "Listed POST forms can reject cross-site requests while a GET-like mutation or JSON endpoint accepts them. Tests pass but CSRF remains.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-7255F599",
+      "revision": 1,
+      "semantic_sha256": "7255f599b76b7724f19961891a36a5e38659a9d024ee67c89c679b894ae76f51",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Required token fields and subject applicability depend on protocol context, and documented validation does not prove every runtime path enforces it.",
+      "counterexample_analysis": "One token path can check all fields while a refresh path skips audience or type. Records pass but tokens are accepted unsafely.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-685621E2",
+      "revision": 1,
+      "semantic_sha256": "685621e224acb7f4eb4ab1190bbb2d594b5643c83ede10a06d8c65d3f33c3aa1",
+      "verdict": "confirmed_deterministic",
+      "reason": "The seven upload dimensions are explicit numeric policy bounds with units and applicability, so boundedness is exactly checkable.",
+      "counterexample_analysis": "Any missing, unlimited, malformed, or contradictory size, count, depth, dimension, page, or time limit fails.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-2C48ADF4",
+      "revision": 1,
+      "semantic_sha256": "2c48adf4173e6f196f5027fa5d99ab58ff8c4b9d17bcfcc757a432321449c74c",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Content-based type detection faces polyglots, malformed structures, parser differences, and nested files beyond finite fixtures.",
+      "counterexample_analysis": "Known spoofed extensions can fail while a polyglot bypasses detection. Tests pass but user metadata still influences unsafe classification.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-43F66C3F",
+      "revision": 1,
+      "semantic_sha256": "43f66c3f3e64dcf54d9359614a8b4aaf5d60f40d739e9c096f352dcffdadf668",
+      "verdict": "confirmed_deterministic",
+      "reason": "An explicit versioned file-type allowlist is a finite structured policy fact.",
+      "counterexample_analysis": "Absent, wildcard, implicit, or malformed allowed-type definitions fail; an explicit list passes.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-8F094721",
+      "revision": 1,
+      "semantic_sha256": "8f0947214eac141cd2e9adfaf74e8a7c1d4d649aeeefcc937ecfe9afafe4dd75",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Filesystem path attacks include encoding, separators, links, archives, races, and platform-specific normalization beyond selected names.",
+      "counterexample_analysis": "Basic traversal strings can fail while a symlink or alternate separator escapes the directory. Tests pass but filenames remain trusted as paths.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-0EEFF2CC",
+      "revision": 1,
+      "semantic_sha256": "0eeff2cc7e37f090abc96504d91862950692a8c6a2d0651711db21538a7f4bec",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Safe download type, disposition, and sniffing policy depends on content and browser behavior across every served file.",
+      "counterexample_analysis": "Known PDFs can pass while an uploaded HTML file is served inline without nosniff. Fixtures pass but a download executes content.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-9C66FEF7",
+      "revision": 1,
+      "semantic_sha256": "9c66fef7358a7063c8c7ff27a5f10f4d662cdcc8ab6d6d47e90be1b7fa742786",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Parser failures and internal error paths are numerous and can include library-generated details absent from fixtures.",
+      "counterexample_analysis": "Known malformed files return generic errors while a rare parser exception leaks a path. Tests pass but details are exposed.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-AEE95887",
+      "revision": 1,
+      "semantic_sha256": "aee958878cba4aa93eafc1f809c02e42afffd4fbb4112975e192a28f9083055e",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Support-access authorization, legitimate purpose, appropriate visibility, and audit adequacy require governance and complete route coverage.",
+      "counterexample_analysis": "A support agent can enter arbitrary purpose text and access through an unaudited tool. Fixtures pass but tenant access lacks valid controls.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-08FE86F1",
+      "revision": 1,
+      "semantic_sha256": "08fe86f10db9b5c999da56c712e8477e586e4c259c7c9347498d543792e2ca24",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Administrative-interface inventories can omit surfaces, and a threat-model document does not prove adequate threat analysis.",
+      "counterexample_analysis": "Listed consoles can have threat-model files while an internal support endpoint is omitted. Records pass but coverage is incomplete.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-BB90D77D",
+      "revision": 1,
+      "semantic_sha256": "bb90d77dca787478c9a1a23ced6f62dad60853cdaf1599ae30c7fe6af9745813",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Confirmation, scope preview, authorization, and audit must be semantically correct across bulk effects and failure paths.",
+      "counterexample_analysis": "A preview can omit records or authorization can be checked before scope expands. Tests pass while a bulk change affects unauthorized data.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-17D96426",
+      "revision": 1,
+      "semantic_sha256": "17d9642621d89dd650bdcaf375d7091e1de7a197d59b4f6d4b2103cc93ffa24c",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A triggered review record does not prove independent accountable review or complete capture of break-glass uses.",
+      "counterexample_analysis": "Recorded events can produce automatic checkbox reviews while an unlogged emergency credential is used. The test passes but review is invalid.",
+      "nondeterministic_route": "accountable_human_decision",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-C2F34517",
+      "revision": 1,
+      "semantic_sha256": "c2f3451759bede084172f7d56716eb976650963c2eed476ebf0bd983c7626dc6",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Unusual privileged activity and adequate monitoring require security judgment; activity and control inventories can omit paths.",
+      "counterexample_analysis": "Dashboards can cover known exports while a direct database bulk read is unlogged. Records pass but unusual activity is missed.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-447370B0",
+      "revision": 1,
+      "semantic_sha256": "447370b0fd2c1973791c15a4838f60d35ac71d6e5151079de9bff3d910e02372",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Enterprise identity workflows and providers can be omitted from a declared inventory, especially shadow or legacy synchronization paths.",
+      "counterexample_analysis": "All listed federation flows can exist while an old provisioning connector is absent. The record passes but inventory is incomplete.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-52027B79",
+      "revision": 1,
+      "semantic_sha256": "52027b7926080eaa29743144dd35a84a611358c28aa8d855336548dc5f7b254e",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Hijack resistance is an adversarial universal claim across DNS, email, federation, transfers, races, and recovery paths.",
+      "counterexample_analysis": "Normal claims can verify ownership while a stale DNS or support recovery path lets an attacker claim the domain. Tests pass but hijacking remains possible.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-FFAB6C6F",
+      "revision": 1,
+      "semantic_sha256": "ffab6c6fc3d9afe4f803ded6f1fa1135f8671133ec5280f1fe20c5c8848e1a88",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Verified administrative control depends on authoritative organizational proof and every federation setup path.",
+      "counterexample_analysis": "One admin flow can verify DNS while a support-assisted setup accepts an unauthorized requester. Fixtures pass but control is not always verified.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "undefined_protocol",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-ECFAF330",
+      "revision": 1,
+      "semantic_sha256": "ecfaf3302f3a0162b6eeb20edb78bdb74622899095be62a16c02e8599b5c4b4b",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Promptly lacks an approved bound, and deprovisioning spans sessions, tokens, keys, devices, jobs, caches, and replicas.",
+      "counterexample_analysis": "Known sessions can disable quickly while a background credential remains active for hours. Tests pass but access is not promptly revoked.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_threshold"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-FA59F542",
+      "revision": 1,
+      "semantic_sha256": "fa59f542a89408b94fc335718d384213cd52fc8b4bae9d2583545c400f1e2d73",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Deterministic mapping syntax does not prove correct role semantics, valid review, or resistance to escalation across nested groups.",
+      "counterexample_analysis": "Fixtures can map known groups while a cyclic or spoofed group grants admin. Records pass but privilege escalation remains.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "undefined_protocol",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-3BB3C453",
+      "revision": 1,
+      "semantic_sha256": "3bb3c453361643a5b8fd1f3637233a781e7ff03eeec73546dc9db08584e7edc7",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Break-glass existence and monitor configuration do not prove usable outage access or effective accountable monitoring.",
+      "counterexample_analysis": "A credential can exist but be expired, or its alert destination be dead. Records pass while outage access or monitoring fails.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "undefined_protocol",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-9BD8A2CC",
+      "revision": 1,
+      "semantic_sha256": "9bd8a2cc67a23c75f96b87345d18c02cd1f51b967e3a6346e922b259be480186",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Contractual commitments and residency, retention, export, and administrative-control conformance require legal interpretation and complete evidence.",
+      "counterexample_analysis": "Records can claim compliance while logs reside in a forbidden region. Schema checks pass but the contract is breached.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-1CC90997",
+      "revision": 1,
+      "semantic_sha256": "1cc90997236ff94f12c73927416747d3e512c15b498e1bc6f7e1230f842c2cc3",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Cohesive capability, data authority, consumers, ownership, and meaningful objectives require architecture and governance judgment.",
+      "counterexample_analysis": "A service can list vague capability and nominal owner while sharing authority with another service. Fields pass but the boundary is not cohesive.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-ED684D68",
+      "revision": 1,
+      "semantic_sha256": "ed684d6858fee47e853fd8dbca6cfc3cbb68fb482c20245e5331b72539ddf4f7",
+      "verdict": "confirmed_deterministic",
+      "reason": "Request, command, query, event, and error contract artifacts form a finite versioned schema set for each declared interface.",
+      "counterexample_analysis": "Missing or implicit contract classes, unversioned schemas, and dangling references fail; runtime conformance is separate.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-1CE1D773",
+      "revision": 1,
+      "semantic_sha256": "1ce1d773ac4dff84ce0b941ee966da55ead7543098bfe51b4b3174720ef2178e",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Retryable writes, crash points, concurrency, and side effects are not exhausted by selected idempotency fixtures.",
+      "counterexample_analysis": "Sequential retries can deduplicate while a crash after effect before key persistence duplicates a charge. Tests pass but writes are unsafe.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-41F351E9",
+      "revision": 1,
+      "semantic_sha256": "41f351e914159abf46a5755265e736a63ce7c4e460fa96e0bb361d8e2c482a62",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Correct timeout, retry, cancellation, backpressure, and overload behavior depends on operation semantics and complete dependency inventories.",
+      "counterexample_analysis": "Fields can exist while a non-idempotent request is retried or overload drops critical work. Definition shape passes but behavior is unsafe.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-271D3DFF",
+      "revision": 1,
+      "semantic_sha256": "271d3dffd082d988d4a6850d733aaa5a1a21dc5a3fff86282dcf0f355a123648",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Telemetry presence does not prove complete user/business attribution, useful schemas, or coverage of every operation.",
+      "counterexample_analysis": "Known requests can emit logs while asynchronous outcomes lose user context. Records pass but observability is incomplete.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-4265879C",
+      "revision": 1,
+      "semantic_sha256": "4265879c85a0d123286b165b3f95565c328591c671056164d1f16c407a37278c",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Readiness, liveness, shutdown, and work acceptance race across protocols, instances, load balancers, and queues.",
+      "counterexample_analysis": "HTTP fixtures can pass while websocket or queue workers accept work after readiness drops. Tests pass but shutdown behavior is wrong.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-2D916DB0",
+      "revision": 1,
+      "semantic_sha256": "2d916db02067463eb1f7e2c20b3c8eb03801d185550275070666eba201c5ca8b",
+      "verdict": "confirmed_deterministic",
+      "reason": "Immutable configuration, secret-version, schema, and deployment identifiers with referential links make traceability an exact record property.",
+      "counterexample_analysis": "Missing, mutable, conflicting, or dangling version links fail; secrecy of values is preserved.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-A88B60B7",
+      "revision": 1,
+      "semantic_sha256": "a88b60b76d74f6f2e232303f22ad5e11a8db37ec12c9c7a1e7887e0e775d4503",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Seven document references do not prove complete, accurate, or executable support, capacity, backup, recovery, and retirement obligations.",
+      "counterexample_analysis": "Every heading can exist while backup obligations omit a data store. Records pass but service obligations are incomplete.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-16F68399",
+      "revision": 1,
+      "semantic_sha256": "16f68399287f938bcb5a3c77623523c7a6c8860fd56e72e8aa2af5a70eb93095",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Job and queue inventories can omit runtime assets, and active identities do not establish accountable ownership.",
+      "counterexample_analysis": "All listed schedules can name owners while an unlisted dead-letter stream has none. Records pass but ownership is incomplete.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-5918958F",
+      "revision": 1,
+      "semantic_sha256": "5918958ff4435dcc194dde0626fb271eef752f42898ccc9ab6a60e477120ae06",
+      "verdict": "confirmed_deterministic",
+      "reason": "The nine job-contract dimensions are explicit typed fields with units, identities, and state definitions, so contract completeness is bounded.",
+      "counterexample_analysis": "A missing trigger, schema, context, priority, deadline, retry, ordering, or completion field fails; implementation is tested separately.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-DA5D8874",
+      "revision": 1,
+      "semantic_sha256": "da5d88749ba88c3c2a3f3a1d374758b0b3c664926cd002e489c41c0915d1b5cc",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Side-effecting job inventories, crash points, concurrency, and duplicate effects are not exhausted by happy-path deduplication tests.",
+      "counterexample_analysis": "A job can deduplicate retries except after a crash between effect and key write. Tests pass but the effect repeats.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-4B1B01AF",
+      "revision": 1,
+      "semantic_sha256": "4b1b01af641a0ce164541cfe26b273e3948493d83a293ee9e6a27e0306be31aa",
+      "verdict": "confirmed_deterministic",
+      "reason": "The seven job-resource dimensions are explicit numeric policy limits, making whether each is bounded objectively decidable.",
+      "counterexample_analysis": "Missing, unlimited, malformed, or conflicting attempt, age, time, concurrency, queue, payload, or resource bounds fail.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-56F9433C",
+      "revision": 1,
+      "semantic_sha256": "56f9433c6a18ce076edcf25e6ec8b1c3e113e1ae2af0a9f9f30b8a305dc10a5a",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Backoff and jitter distributions plus synchronization behavior across fleets, clocks, failures, and resets need statistical and concurrency protocols.",
+      "counterexample_analysis": "Small fixtures can show random delay while thousands of workers still synchronize after restart. Tests pass but retry storms remain.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-CDCA58F2",
+      "revision": 1,
+      "semantic_sha256": "cdca58f208c7f25e90d301405cb24b9ea8b9a23ba20b204f7bed4530191c0183",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Correct classification of dependency, validation, authorization, and business failures depends on semantics and complete error inventories.",
+      "counterexample_analysis": "A business rejection can be mislabeled retryable and pass enum validation. Categories exist but retry behavior is wrong.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-13ECE301",
+      "revision": 1,
+      "semantic_sha256": "13ece30194790284e2ddbc87455dab9425fd57e538c4ea682b2a628d230656c9",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Whether business ordering is required and how partitioning or rebalancing affects it requires domain and messaging architecture judgment.",
+      "counterexample_analysis": "A financial stream can declare no ordering needed while rebalancing reorders debits. Fields pass but business semantics are violated.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-CC43CE3C",
+      "revision": 1,
+      "semantic_sha256": "cc43ce3cc9c7bd6a176d4af43079b19472c5e8386ea09ee5a63772fb4b99cdae",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Overlap and missed-run handling spans timing, scheduler failures, partial effects, retries, and state combinations beyond selected scenarios.",
+      "counterexample_analysis": "A basic overlap test can pass while a crash and catch-up duplicates charges. Tests pass but scheduled runs are unsafe.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-E679A7AF",
+      "revision": 1,
+      "semantic_sha256": "e679a7af8ae79a40fb46bc56211875279a9c5b2123a2d087412609618c465c72",
+      "verdict": "confirmed_deterministic",
+      "reason": "Clock, timezone, daylight-saving, calendar, and catch-up are a fixed five-part schedule policy schema with explicit versioned rules.",
+      "counterexample_analysis": "Missing, implicit, or conflicting time behavior fails; actual scheduler conformance is tested separately.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-66D9DF06",
+      "revision": 1,
+      "semantic_sha256": "66d9df063f39d71cca8484a7cd65f6410dfb76fd09a1deed3cadbb2c7b7c17a8",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Context propagation across all job types, retries, queues, errors, and components is not exhaustively covered by selected traces.",
+      "counterexample_analysis": "Normal jobs can preserve tenant context while dead-letter replay loses classification or identity. Tests pass but propagation is incomplete.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-BAE577C3",
+      "revision": 1,
+      "semantic_sha256": "bae577c3a56494f12e07282e9b800678e4007eb4e145fe0bc87c7ae47cee36ca",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Authorization and current-state revalidation varies by delayed job, identity, policy revision, resource state, and race.",
+      "counterexample_analysis": "A fixture can revoke one role while another job uses stale cached authorization. Tests pass but delayed work executes without current checks.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-84A401CA",
+      "revision": 1,
+      "semantic_sha256": "84a401caa2bf464342261a8df93d9227835b0a3cd7530a6390322e2f79cc3024",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Configured seven-signal monitors do not prove query correctness, meaningful thresholds, alert delivery, or complete queue inventory.",
+      "counterexample_analysis": "Dashboards can exist while business completion query is broken or alerts never fire. Monitoring fields pass but operation is unseen.",
+      "nondeterministic_route": "contract_incomplete",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_threshold"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-6A7C0140",
+      "revision": 1,
+      "semantic_sha256": "6a7c014085d859e3e7ee4f9390c35f5ee50587530d47c3a3a1c7e254e7508e15",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Authoritative outcome and job inventories, matching keys, timing windows, and loss or duplication oracles are not fully bounded.",
+      "counterexample_analysis": "Sample records can reconcile while a paginated or delayed outcome is silently lost. Tests pass but reconciliation misses defects.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-FA365A87",
+      "revision": 1,
+      "semantic_sha256": "fa365a87a9ae2a69c8de3f199009b3c39dd40d7888a7a0604f19c65c29dfc2ea",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Correct classification and complete cache/index inventory require data-authority and architecture judgment.",
+      "counterexample_analysis": "An authoritative index can be labeled disposable or a hidden cache omitted. Enum validation passes but classification is wrong.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-27109AA1",
+      "revision": 1,
+      "semantic_sha256": "27109aa1808615f1d39f3dd9aadbca6ddd5906a8127705733e6402a58ba70d21",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Source of truth, keys, freshness, expiry, invalidation, consistency, and reconstruction must reflect domain behavior, not just fields.",
+      "counterexample_analysis": "A tenant cache can omit tenant key or name the wrong authority while all fields exist. The contract passes but behavior is unsafe.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-64AE632C",
+      "revision": 1,
+      "semantic_sha256": "64ae632c826c12e7724ddae96d3032c71d49dcd7a4455abdd741795cf33076c5",
+      "verdict": "confirmed_deterministic",
+      "reason": "Memory, disk, entry size, result size, query complexity, and retention are six explicit numeric bounds with units.",
+      "counterexample_analysis": "Any missing, unlimited, malformed, or contradictory bound fails deterministically.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-569D6922",
+      "revision": 1,
+      "semantic_sha256": "569d69229377deb160270f6ed0d7d71c9ecc9d64194ac2bf068da7416574635a",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Seven configured metrics do not prove complete cache/index inventory, correct queries, useful thresholds, or alert delivery.",
+      "counterexample_analysis": "All dashboards can exist while partial-update failures are never detected. Records pass but monitoring is ineffective.",
+      "nondeterministic_route": "contract_incomplete",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_threshold"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-31CA65E1",
+      "revision": 1,
+      "semantic_sha256": "31ca65e18d4aead6ce8598c0b7207bab05e15fefcb957df9f56fdc5070814465",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Procedure existence does not prove cache bypass and index rebuild are executable, safe, complete, or suitable during incidents.",
+      "counterexample_analysis": "A runbook can say clear cache and rebuild while losing data or lacking credentials. Presence passes but incident procedures fail.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-86A0C9B1",
+      "revision": 1,
+      "semantic_sha256": "86a0c9b140a45863bf6b626853cb0e85f991810c12a7dcc58753440f2e60072c",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Six scenario labels do not define datasets, concurrency, failures, consistency, and complete output oracles.",
+      "counterexample_analysis": "Small fixtures can pass while concurrent invalidation loses updates under production load. The suite passes but cache behavior is wrong.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-305C6668",
+      "revision": 1,
+      "semantic_sha256": "305c6668471e8acc32032ef7118741127e83b7c27992dd2512974e145d7a6a85",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Reconciliation records cannot prove complete authoritative populations, semantic equality, or every count, document, and permission case.",
+      "counterexample_analysis": "Sample counts can match while a hidden tenant permission is stale. Tests pass but derived data disagrees.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-DD834B76",
+      "revision": 1,
+      "semantic_sha256": "dd834b76dfb83a8b3b56303e617d600b9d35878a377090f2ae76f1205d3a24dc",
+      "verdict": "confirmed_deterministic",
+      "reason": "Schema and ranking-behavior version identifiers plus rollout compatibility ranges are exact release metadata facts.",
+      "counterexample_analysis": "Unversioned schemas, unbound ranking changes, or incompatible rollout ranges fail; ranking quality is separate.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-5C56E75A",
+      "revision": 1,
+      "semantic_sha256": "5c56e75a870a9e05a29f9d7dd1484aee87f1a29c4c49d8cb292666eb0e8d92cf",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Obsolete index and cache inventories can omit representations, while cleanup probes cannot prove absence across replicas, billing, and storage.",
+      "counterexample_analysis": "Listed indexes can be deleted while an old regional replica remains active. Tests pass but retirement is incomplete.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-660DB940",
+      "revision": 1,
+      "semantic_sha256": "660db940a1e5153d7c933ba357cb282295c95cf2a3dcb843da8ce7e2bc92f871",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Integration objectives, boundaries, ownership, assumptions, constraints, and acceptance criteria require architecture and governance meaning.",
+      "counterexample_analysis": "All fields can exist while a supplier boundary or critical assumption is omitted. The plan passes but integration definition is incomplete.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-8852E1D3",
+      "revision": 1,
+      "semantic_sha256": "8852e1d32e7a8e3f04ed6d02c6ec0deaa890b4574a4fe938022f7bc0a818a879",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Diagram presence does not prove complete systems, interfaces, trust boundaries, flows, timing, and failure dependencies.",
+      "counterexample_analysis": "A diagram can omit a webhook or trust crossing while every section exists. Records pass but architecture is inaccurate.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-3E2BB651",
+      "revision": 1,
+      "semantic_sha256": "3e2bb65103ae1c3130cd3722fbe14fa65ff3cba4428ae4a4f4294f559e52bc91",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Organizations, suppliers, teams, environments, and approvals can be omitted, while needed approval authority requires governance judgment.",
+      "counterexample_analysis": "Listed parties can be complete on paper while a regulator or provider approval is missing. The record passes but integration cannot succeed.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "human_accountability"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-674F61EC",
+      "revision": 1,
+      "semantic_sha256": "674f61ecae0f02ccf1faebb5b055b0ef87b86ba86e66ca0d689ad3e1cad209a3",
+      "verdict": "rejected_nondeterministic",
+      "reason": "One identity field does not prove accepted accountability or authority to coordinate cross-component decisions.",
+      "counterexample_analysis": "An inactive coordinator can be named and resolve successfully while no one has decision authority.",
+      "nondeterministic_route": "accountable_human_decision",
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-C08FFD88",
+      "revision": 1,
+      "semantic_sha256": "c08ffd886bf30b1456fb42a9526ab89697c86a0eb2c909fb782598931c45eb80",
+      "verdict": "confirmed_deterministic",
+      "reason": "Integration stages, order, entry and exit predicates, evidence fields, and rollback points are a finite versioned plan schema.",
+      "counterexample_analysis": "Missing, unordered, unevaluable, or unbound stage data fails; whether the strategy is wise is separate.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-2BBED8CB",
+      "revision": 1,
+      "semantic_sha256": "2bbed8cbe8a83c9b220f78753392f99fe03029c0bb78d8e22fad9f8867a49c6c",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Dependency and interface registers cannot prove completeness across dynamic, transitive, external, and shadow connections.",
+      "counterexample_analysis": "All cataloged interfaces can be current while an unlisted runtime callback remains. The inventory passes but is incomplete.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F711E12E",
+      "revision": 1,
+      "semantic_sha256": "f711e12e3f43b7120da083c9e6015495f3024dc00e955e040b880559acb0f70a",
+      "verdict": "rejected_nondeterministic",
+      "reason": "External assumptions can be omitted, and linked contract, observation, or test evidence may not actually verify them.",
+      "counterexample_analysis": "An ordering assumption can link to a health check. Records pass but external behavior is unverified.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-E200032F",
+      "revision": 1,
+      "semantic_sha256": "e200032f14b3217715c2d1012250448365ac7a6922728f78e20450b2ef4db8a9",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Security, privacy, accessibility, records, licensing, continuity, and support requirements need specialist applicability and substantive planning.",
+      "counterexample_analysis": "Seven headings can exist while licensing or privacy obligations are wrong. Presence passes but planning is invalid.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-3978ACE8",
+      "revision": 1,
+      "semantic_sha256": "3978ace8e4ffd013d4f874eb59008f0066e2b28c57a07a65800b99c880beaac6",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Cross-boundary defect responsibility requires organizational authority and complete boundary inventories, not a role field.",
+      "counterexample_analysis": "A policy can assign a team without its agreement or omit a supplier boundary. Records pass but responsibility is unresolved.",
+      "nondeterministic_route": "accountable_human_decision",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-69CD0910",
+      "revision": 1,
+      "semantic_sha256": "69cd09101087ed7bfceb07110d6f453b65229575531b2b2238b22558218a623f",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Process documentation does not prove controlled, fair, authorized, and effective resolution of incompatible requirements.",
+      "counterexample_analysis": "A process can say manager decides without evidence or appeal. The record passes but interface disputes are not properly controlled.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-13208C54",
+      "revision": 1,
+      "semantic_sha256": "13208c549c492e7e17f69365652dde53cdc4254c2c0a1667a4ee004ec6f3594a",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Interface inventories can omit paths, and a document called testable does not prove complete controlled semantics.",
+      "counterexample_analysis": "Listed interfaces can have contracts while a dynamic webhook is undocumented. Records pass but not every interface is controlled.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-BA6C0A5B",
+      "revision": 1,
+      "semantic_sha256": "ba6c0a5b3ac04c68d9d70fba88a0299d915afac4bb20129b268d1dfb08063296",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Eleven field headings do not prove complete syntax, semantics, units, ordering, security, or lifecycle behavior.",
+      "counterexample_analysis": "A contract can omit tenant meaning or use wrong units while every field exists. The schema passes but specification is false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-739ACF5A",
+      "revision": 1,
+      "semantic_sha256": "739acf5a2ab92772c9e9862997298c38b91da7c838adf814f4a2fe373f859de2",
+      "verdict": "confirmed_deterministic",
+      "reason": "Required, optional, deprecated, experimental, and vendor-specific form a closed behavior-status taxonomy with explicit versioned labels.",
+      "counterexample_analysis": "Missing, multiple, or unknown classifications fail; valid labels pass without inferring behavior.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-3522D60E",
+      "revision": 1,
+      "semantic_sha256": "3522d60ec15ee0c478fcbdbc30426bc88a6e3082c99110552123a758bbbb791a",
+      "verdict": "confirmed_deterministic",
+      "reason": "Unknown fields, values, message types, and versions are a fixed four-part compatibility-policy schema.",
+      "counterexample_analysis": "Missing or implicit handling for any class fails; explicit versioned behavior passes.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-9F07F0E0",
+      "revision": 1,
+      "semantic_sha256": "9f07f0e0a31456edb641d844e4cab048f5a5abb9675f4098b04d67376913c7ee",
+      "verdict": "confirmed_deterministic",
+      "reason": "Backward, forward, and mixed-version compatibility expectations are three explicit versioned contract fields.",
+      "counterexample_analysis": "Missing, contradictory, or unbound expectations fail; implementation is tested separately.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-FD88BE68",
+      "revision": 1,
+      "semantic_sha256": "fd88be681f97fcb4b2cf5ddcf86b6ac70766975ad58daa9964fc49ac098ed997",
+      "verdict": "confirmed_deterministic",
+      "reason": "Additive-change tolerance and the declared breaking-change set are exact compatibility-policy facts.",
+      "counterexample_analysis": "An absent tolerance rule or undefined breaking categories fail; explicit policy passes.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-A0DC3EDA",
+      "revision": 1,
+      "semantic_sha256": "a0dc3eda5f2d6e3966ec5c48196722007c6703018a38f7a3ea66830cbdd46d4f",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Whether a change is externally observable or merely implementation detail requires semantic consumer judgment.",
+      "counterexample_analysis": "An output-order change can be mislabeled internal and avoid versioning. Records pass but the contract changed externally.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-65E9E99B",
+      "revision": 1,
+      "semantic_sha256": "65e9e99bf43045b80277fbc2d4c2b27f26c11a165d496e2993ef3f322327febd",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Documentation, schemas, examples, tests, and deployed behavior cover large semantic and runtime spaces not proven synchronized by selected comparisons.",
+      "counterexample_analysis": "Examples and schemas can match while one production error shape differs. Checks pass but artifacts are not synchronized.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-FF1FAB9E",
+      "revision": 1,
+      "semantic_sha256": "ff1fab9e7258a8825d185bd2ed12cad1562c2e6052572d4d48e351446b417cea",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Contract-side inventories can omit parties, and identity fields do not prove accountable ownership.",
+      "counterexample_analysis": "Every listed side can name an owner while a downstream consumer side is omitted or the owner denies responsibility.",
+      "nondeterministic_route": "accountable_human_decision",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-1EB62A00",
+      "revision": 1,
+      "semantic_sha256": "1eb62a0025dbbbdaaa84cbbf90d444d0b89ea8b20e09e579ee44a86be93c2986",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Reliance on undocumented quirks, ordering, defaults, and error text can be indirect, dynamic, and semantically hidden.",
+      "counterexample_analysis": "Static checks can pass while a client branches on undocumented error wording. The system still relies on an incidental detail.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-3DB5F3D9",
+      "revision": 1,
+      "semantic_sha256": "3db5f3d9a45d3bff58e00c3edc8f2adafa0fba971a98655a7c06b2ca08a4b19e",
+      "verdict": "confirmed_deterministic",
+      "reason": "Timeout, retry, idempotency, deduplication, backpressure, and cancellation form a fixed six-part interface-behavior schema.",
+      "counterexample_analysis": "Missing, implicit, or conflicting definitions fail; runtime conformance is tested separately.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-C4FD51B8",
+      "revision": 1,
+      "semantic_sha256": "c4fd51b8f6a56c7bbed1276f4d87fa1c36a5be19e17fde68213a3ba997dc1169",
+      "verdict": "confirmed_deterministic",
+      "reason": "Consistency, freshness, durability, and reconciliation are a fixed four-part expectation schema with typed levels and bounds.",
+      "counterexample_analysis": "Missing or unbound expectations fail; the checker does not invent their values.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-2AE36742",
+      "revision": 1,
+      "semantic_sha256": "2ae367420d07d34d7b4f933e65d00b4fc0504fdc7424407a527d0f61558eba42",
+      "verdict": "confirmed_deterministic",
+      "reason": "Authentication, authorization, identity propagation, tenant context, and audit are five explicit contract-requirement fields.",
+      "counterexample_analysis": "An omitted or implicit security dimension fails; actual policy correctness is reviewed separately.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-29EADE04",
+      "revision": 1,
+      "semantic_sha256": "29eade04ab93c4acc03571c230db730cbafdfdef726aaf21a4fc78b526d8d914",
+      "verdict": "confirmed_deterministic",
+      "reason": "Data classification, minimization, retention, deletion, and residency are five explicit constraint fields with authoritative policy references.",
+      "counterexample_analysis": "Missing or unbound constraints fail; legal applicability comes from the approved policy input rather than checker inference.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    }
+  ]
+}

@@ -1,0 +1,3761 @@
+{
+  "schema_version": "prc.control-classification-packet/v0.1",
+  "packet_id": "docs-engineering-10-verification-and-testing-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "source_path": "docs/engineering/10-verification-and-testing.md",
+  "control_count": 250,
+  "controls": [
+    {
+      "control_id": "USEQ-62B6FFE6",
+      "revision": 1,
+      "semantic_sha256": "62b6ffe6e11ae06883e23be940ebbb15351ff5a1dacfcc8eaa123553894eaa5f",
+      "statement": "A documented test strategy exists for the release's risk level.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 15
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Strategy and Evidence",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-B2D342EF",
+      "revision": 1,
+      "semantic_sha256": "b2d342efcaec6b0e7ac96d01e356c7bc317fda16edb2f00927ea4b29e344f0cd",
+      "statement": "Unit, component, integration, contract, system, end-to-end, smoke, and regression testing are included where appropriate.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 16
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Strategy and Evidence",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-20EF5A60",
+      "revision": 1,
+      "semantic_sha256": "20ef5a60b1e4abd44dbd59aa3c4575089965319f2050321e8ff9e582e00d2eff",
+      "statement": "Testing prioritizes critical and high-risk behavior rather than relying on aggregate code coverage.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 17
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Strategy and Evidence",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-10FA9C47",
+      "revision": 1,
+      "semantic_sha256": "10fa9c474bbc892ffbfc899313be864bdd3241355c1a3e1eb474817b4bcb41af",
+      "statement": "Test data represents realistic size, shape, encoding, and edge conditions.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 18
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Strategy and Evidence",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-7B4C2AB9",
+      "revision": 1,
+      "semantic_sha256": "7b4c2ab91e3a91948344fcaffa720cf2f8c5b0aba0db6144c26ecf5e58c51504",
+      "statement": "Personal and confidential test data is synthetic, masked, or properly authorized.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 19
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Strategy and Evidence",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-80A6223A",
+      "revision": 1,
+      "semantic_sha256": "80a6223ad1a3bbf3146631895bf7b064b1f05cd41b1a0f75f798c3724fd24bcb",
+      "statement": "Release-gating tests are sufficiently deterministic.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 20
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Strategy and Evidence",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-876F7B66",
+      "revision": 1,
+      "semantic_sha256": "876f7b6696052f6041f1f5311f9d89398a10eb9e7fdd537beca5c52fd62aa585",
+      "statement": "Flaky tests are fixed or formally quarantined with a reviewed risk record.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 21
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Strategy and Evidence",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-B818C295",
+      "revision": 1,
+      "semantic_sha256": "b818c295bb55bd22e1e59a08cad004067dbdbfc4ab76ad78a6560746233f3561",
+      "statement": "Migration, upgrade, mixed-version, downgrade where supported, rollback, and roll-forward scenarios are tested.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 22
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Strategy and Evidence",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-8D7753F8",
+      "revision": 1,
+      "semantic_sha256": "8d7753f88b4c976227f5a82e7100f878edb83fe89ac245ca6734097073583165",
+      "statement": "Performance testing covers load, stress, spike, endurance, and capacity limits.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 23
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Strategy and Evidence",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-5C6A77E1",
+      "revision": 1,
+      "semantic_sha256": "5c6a77e15632e88864601bfd290d2b2a6c1ed2ab5f28120fe28ff8ebbde1f509",
+      "statement": "Security tests cover source, dependencies, deployed behavior, infrastructure, configuration, and business logic.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 24
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Strategy and Evidence",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-55DBD644",
+      "revision": 1,
+      "semantic_sha256": "55dbd6441b1368b66382e2a5b4b5f6446293f8c13c6c448d80d4e2b90707dd21",
+      "statement": "Critical calculations use independent verification or reconciliation.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 25
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Strategy and Evidence",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-E01F5F5B",
+      "revision": 1,
+      "semantic_sha256": "e01f5f5b0142ec0c784f204f6d14da9a1f41e71553557cdcf9d79896ca443954",
+      "statement": "Tests verify the exact artifact intended for production.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 26
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Strategy and Evidence",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-BA5EE5B3",
+      "revision": 1,
+      "semantic_sha256": "ba5ee5b3d050c901a00f39266af4f9c5a11a0ce47acd17870407f21be0d7917d",
+      "statement": "Independent penetration testing is completed where risk, contract, or regulation warrants it.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 27
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Strategy and Evidence",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-92EEEDDD",
+      "revision": 1,
+      "semantic_sha256": "92eeeddd78fd260c3aead7b379a32065b0eba55feea26aaf5800ecc48c269dd4",
+      "statement": "Define the unit or component boundary around cohesive behavior rather than arbitrary files or methods.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 35
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Unit and Component Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-5410EA72",
+      "revision": 1,
+      "semantic_sha256": "5410ea72dafbe32aef74e2063e915975da95c3d06ac80791de45be1cf39f2017",
+      "statement": "Test externally meaningful behavior and invariants rather than incidental implementation sequence.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 36
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Unit and Component Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-2FCE8AAC",
+      "revision": 1,
+      "semantic_sha256": "2fce8aac2d09ddb6314dbf36d3dd5857441b10f3ddab12cfc5ce01ea61d7d18a",
+      "statement": "Cover representative equivalence classes, boundaries, invalid inputs, state transitions, and error paths.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 37
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Unit and Component Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-FB830B78",
+      "revision": 1,
+      "semantic_sha256": "fb830b78f95dcce2db5cea59a3f8ed7be1494d17129242868f64ad13c32850d1",
+      "statement": "Test pure logic across all material branches and rules.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 38
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Unit and Component Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-C964A6AD",
+      "revision": 1,
+      "semantic_sha256": "c964a6adf75d1de96c5325d62f5826e5e667b75389440ede92b7f6df01c82e83",
+      "statement": "Test serialization, precision, time, locale, normalization, and identifier edge cases where relevant.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 39
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Unit and Component Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-F843BEDE",
+      "revision": 1,
+      "semantic_sha256": "f843bedee1db23eddff9fa022c648a2115db8b48723368717d56c5ddc9f4d42a",
+      "statement": "Control time, randomness, scheduling, environment, and external effects for determinism.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 40
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Unit and Component Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-554CBC58",
+      "revision": 1,
+      "semantic_sha256": "554cbc5855d1d1977ad1c07af23315cd63756c8a4044306035624ba9702477ac",
+      "statement": "Use real domain values and builders that create valid data by default.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 41
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Unit and Component Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-C56D105D",
+      "revision": 1,
+      "semantic_sha256": "c56d105df337332f4544c168f596b304f6e2c60bf118911f1fedcd293d3d4bc9",
+      "statement": "Keep each test independent and safe to run in any order and in parallel.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 42
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Unit and Component Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-F0E6FA63",
+      "revision": 1,
+      "semantic_sha256": "f0e6fa6390dc8cb0e5de745f9bff284462ee3041b404f9bd090197ad21e4f3fa",
+      "statement": "Make test names describe condition, behavior, and expected outcome.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 43
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Unit and Component Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-BCD4E731",
+      "revision": 1,
+      "semantic_sha256": "bcd4e7315276c60711a757615989a54aef488e7c974e9f951dc2ba174f9a6224",
+      "statement": "Ensure assertions prove the intended behavior and fail when that behavior is broken.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 44
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Unit and Component Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-BEA54B0C",
+      "revision": 1,
+      "semantic_sha256": "bea54b0cf94c9523fd3d6bfbf25b53a978ca0b0c2e5bdbb67b41769e985d42eb",
+      "statement": "Avoid excessive mocking that merely repeats implementation or permits impossible behavior.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 45
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Unit and Component Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-48C6DC0C",
+      "revision": 1,
+      "semantic_sha256": "48c6dc0cdf771c611b5fde73b10326d474381137ad88c6d7164d6481fe5a27dc",
+      "statement": "Use contract-constrained fakes for external boundaries where appropriate.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 46
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Unit and Component Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-2241BCAB",
+      "revision": 1,
+      "semantic_sha256": "2241bcab6f71be9c123862a3a25a25bde6bd4d9cc487a380702eb433abcba015",
+      "statement": "Test resource cleanup, cancellation, retry, and idempotency locally where owned.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 47
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Unit and Component Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-AE1A5D9B",
+      "revision": 1,
+      "semantic_sha256": "ae1a5d9b107b3e8a4c3f8d6010ccad2ea0e0372181b34b7429b52d6eb0f0be52",
+      "statement": "Use property-based, generative, mutation, or model-based testing for high-risk combinatorial logic.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 48
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Unit and Component Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-5D8DD5E5",
+      "revision": 1,
+      "semantic_sha256": "5d8dd5e57934cef75ec7ae21c854f1dfb91bb95d1ef0f3d19c942e741d9f9f54",
+      "statement": "Keep tests fast enough for frequent feedback without sacrificing meaningful coverage.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 49
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Unit and Component Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-A567F4BA",
+      "revision": 1,
+      "semantic_sha256": "a567f4ba857115003bfa0f293883fde4ad674fad32a86bc59f8f223d0a826f10",
+      "statement": "Measure critical behavior and mutation sensitivity rather than treating line coverage as the goal.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 50
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Unit and Component Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-913335AC",
+      "revision": 1,
+      "semantic_sha256": "913335ac323d86d10160986579a3d1d738cef5fdf349724e31fd87cca05c804b",
+      "statement": "Refactor brittle tests when harmless internal change causes widespread failure.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 51
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Unit and Component Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-3DD8385B",
+      "revision": 1,
+      "semantic_sha256": "3dd8385b32cf5fbacae2e609184f1fdd8c37a292661874fda3a734c009ee8426",
+      "statement": "Do not expose production internals solely to satisfy tests without a design benefit.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 52
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Unit and Component Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-263390BE",
+      "revision": 1,
+      "semantic_sha256": "263390becad2989fdcd2f43c0688aafea9685783c8b646f4cc1f16292876aa5a",
+      "statement": "Review skipped, quarantined, or flaky tests with owner and expiry.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 53
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Unit and Component Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-C4149EA3",
+      "revision": 1,
+      "semantic_sha256": "c4149ea3a785ebe9d494d4c62fb4a69d503c511bfe90f606a7c2f3c8e6193ea1",
+      "statement": "Convert escaped local defects into focused regression tests.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 54
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Unit and Component Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-28F1E368",
+      "revision": 1,
+      "semantic_sha256": "28f1e36869feae4dd564ec9899adce198c82f5643bf63fac62891f548cfaf8db",
+      "statement": "Identify every material internal and external boundary and its contract owner.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 62
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Integration and Contract Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-14D0AB33",
+      "revision": 1,
+      "semantic_sha256": "14d0ab33743660cf29b7e13abf9efb276e8325e725f169ced5601d05687fd17d",
+      "statement": "Test request, response, event, file, database, authentication, authorization, and error schemas.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 63
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Integration and Contract Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-EF768482",
+      "revision": 1,
+      "semantic_sha256": "ef7684825adb305f3645fe3fe00d403a7c7dc1bcc1a61a3f944381222a3b4e60",
+      "statement": "Verify serialization, encoding, precision, ordering, pagination, null, optional, and unknown-field behavior.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 64
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Integration and Contract Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-B0707D0F",
+      "revision": 1,
+      "semantic_sha256": "b0707d0f3b72884c3be4434a81113aca8f5dcec82bf87c4bb2c254040cfb3d06",
+      "statement": "Test provider and consumer expectations independently to support compatible evolution.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 65
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Integration and Contract Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D044F47B",
+      "revision": 1,
+      "semantic_sha256": "d044f47b89f7266d1da9e7d76e63f2d3c245ae187cd6e47eb80e7252209a66c1",
+      "statement": "Run contract tests against faithful provider implementations or approved simulators.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 66
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Integration and Contract Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-DF85751F",
+      "revision": 1,
+      "semantic_sha256": "df85751fc68e414a8a602725a6c760a4ae46f20d37b046e977acfc417d2c3bf0",
+      "statement": "Test persistence constraints, transactions, isolation, migrations, and query behavior using representative engines and settings.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 67
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Integration and Contract Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-A20F1BCD",
+      "revision": 1,
+      "semantic_sha256": "a20f1bcdeab9efae1f0838ab32c5bdec57ddff53db1c517df0294ed187f84123",
+      "statement": "Test authentication, authorization, tenant, quota, and rate behavior across boundaries.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 68
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Integration and Contract Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-09FC670C",
+      "revision": 1,
+      "semantic_sha256": "09fc670ca219cb197fe797950a1452bf60560ec156e763e211345662f70b2cd4",
+      "statement": "Inject timeout, throttling, malformed, partial, duplicate, reordered, stale, and unavailable dependency responses.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 69
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Integration and Contract Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-122F73E2",
+      "revision": 1,
+      "semantic_sha256": "122f73e2781af4c97e1e7605330682daef37614be004dd42ac9ccb1b3e7701f1",
+      "statement": "Verify retry, idempotency, circuit breaking, fallback, reconciliation, and observability.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 70
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Integration and Contract Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-1FEBE72F",
+      "revision": 1,
+      "semantic_sha256": "1febe72fbcaa2669a9fb0afbe193c46d7e496b8d6dbc1497b38613bb3f10f4a0",
+      "statement": "Test webhook signature, replay, ordering, retry, and duplicate delivery.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 71
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Integration and Contract Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-597ABA9E",
+      "revision": 1,
+      "semantic_sha256": "597aba9ec844e170820b0062f2c4cf0fd701ca84f9866c86ccb07f5a160be051",
+      "statement": "Test protocol and schema version negotiation and mixed-version operation.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 72
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Integration and Contract Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-24D28788",
+      "revision": 1,
+      "semantic_sha256": "24d287887b32bf00cf4ad59b5bf58a8c84c974eb4a73df5247c7ea56ddf2d0b2",
+      "statement": "Prevent shared mutable test environments from causing cross-test contamination.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 73
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Integration and Contract Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-786C6BF4",
+      "revision": 1,
+      "semantic_sha256": "786c6bf4dcb91fdd49641a6d1e4e1af54e77a26131f46d26911c5cb5b1b03dd9",
+      "statement": "Use isolated data and cleanup with evidence that cleanup cannot delete another test's resources.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 74
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Integration and Contract Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-C013247E",
+      "revision": 1,
+      "semantic_sha256": "c013247e585b3d54a20ea22cf6bebb55f2e194876a8cf058d2c45cd237b4aa2b",
+      "statement": "Do not hide provider incompatibility behind mocks that are more permissive than reality.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 75
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Integration and Contract Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-09078504",
+      "revision": 1,
+      "semantic_sha256": "090785042cf691d35fae5bea0634b0576336b225282584cb8244850d19effa0f",
+      "statement": "Run a controlled subset against real third-party sandboxes or conformance endpoints where available.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 76
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Integration and Contract Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-82DB4AE3",
+      "revision": 1,
+      "semantic_sha256": "82db4ae3427d9211f2d5c29075ea382a1bd5025645e37da6360081094fe8a0d8",
+      "statement": "Record provider version and configuration with results.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 77
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Integration and Contract Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-0029BEB2",
+      "revision": 1,
+      "semantic_sha256": "0029beb28d19751cb6c33c7514fb7376adfad2bb4ded378893321bea636b23c6",
+      "statement": "Monitor contract failures as release blockers for affected consumers.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 78
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Integration and Contract Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-5A2F54E4",
+      "revision": 1,
+      "semantic_sha256": "5a2f54e46a46fb030c3379d68e2285e6a22e1a45381d3c29fea252026449e863",
+      "statement": "Coordinate breaking changes through published migration and deprecation.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 79
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Integration and Contract Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D2C62906",
+      "revision": 1,
+      "semantic_sha256": "d2c6290634b9cbbf6ac09edf2e43292b48c408b1b2706f708fb38daa30e7a179",
+      "statement": "Test data residency, privacy, and logging at integration boundaries.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 80
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Integration and Contract Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-AD3AD837",
+      "revision": 1,
+      "semantic_sha256": "ad3ad837f8e4be454c047db1708e2bb847e29b93b61d7639466a52e691fb7dc5",
+      "statement": "Convert production integration failures into reproducible contract cases.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 81
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Integration and Contract Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-804A9C95",
+      "revision": 1,
+      "semantic_sha256": "804a9c954a0daaec0ca01fadefca4d651fd15d99ca4ba7d57c542eb7e0142d33",
+      "statement": "Prioritize critical user and operator journeys by impact rather than attempting exhaustive UI-path enumeration.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 89
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "System, End-to-End, and Acceptance Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-59137891",
+      "revision": 1,
+      "semantic_sha256": "59137891541d4ffc500be719c6948effc7e97f6210e8218969aef06a7b8599a3",
+      "statement": "Trace each acceptance test to approved requirements and business outcomes.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 90
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "System, End-to-End, and Acceptance Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-738ED752",
+      "revision": 1,
+      "semantic_sha256": "738ed752c642993d8953db33d7c785123d88133613104f8b2eaa3a80eec55dd6",
+      "statement": "Use production-like topology, configuration, identity, data shape, integrations, and artifact builds.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 91
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "System, End-to-End, and Acceptance Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-08D8D136",
+      "revision": 1,
+      "semantic_sha256": "08d8d13618fa05df29eef23caab9d4a658c2af0b74f6087509404a110040122a",
+      "statement": "Test onboarding, normal use, permission variation, recovery, cancellation, deletion, support, and administration as applicable.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 92
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "System, End-to-End, and Acceptance Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-7F711C38",
+      "revision": 1,
+      "semantic_sha256": "7f711c3823825022f91763263557e34a0096089c69ca228009722ccda570237f",
+      "statement": "Test alternate, error, degraded, offline, timeout, retry, and partial-success journeys.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 93
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "System, End-to-End, and Acceptance Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-C50D762D",
+      "revision": 1,
+      "semantic_sha256": "c50d762dd4f82a9a7974d43911bae9ae5305f4674bf5a171d37f3509faf3994f",
+      "statement": "Verify business invariants, notifications, background work, analytics, audit, and downstream effects.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 94
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "System, End-to-End, and Acceptance Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-618DC5B8",
+      "revision": 1,
+      "semantic_sha256": "618dc5b8289b49b78fc2aba1d27dece6e32e685b6b3926f8dd72ffbf164a2854",
+      "statement": "Use multiple roles, tenants, accounts, locales, devices, browsers, and accessibility contexts.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 95
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "System, End-to-End, and Acceptance Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-ED737106",
+      "revision": 1,
+      "semantic_sha256": "ed737106d9fce8b690b44aa6b5a2c00bfd10326c59a4f1f14df24c3d59f0ed5e",
+      "statement": "Validate actual external boundaries where safe and use contract-tested substitutes otherwise.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 96
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "System, End-to-End, and Acceptance Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-3368AA1A",
+      "revision": 1,
+      "semantic_sha256": "3368aa1a92e52fca726b121571ba015aefde5ab191745cbcae8acc4c03ece277",
+      "statement": "Keep test setup and teardown deterministic, isolated, and observable.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 97
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "System, End-to-End, and Acceptance Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-ADC0AFF5",
+      "revision": 1,
+      "semantic_sha256": "adc0aff5df2498938e367dc02ac5ab34662df5c694df95626449653fdb6ab0fc",
+      "statement": "Avoid making every detailed rule dependent on slow end-to-end tests.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 98
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "System, End-to-End, and Acceptance Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-3F958D15",
+      "revision": 1,
+      "semantic_sha256": "3f958d153175da4e449bb8f3f5e6734f4a013f36322286378f6bda18e479f51e",
+      "statement": "Use stable semantic selectors and user-observable synchronization rather than implementation timing.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 99
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "System, End-to-End, and Acceptance Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-110F3E80",
+      "revision": 1,
+      "semantic_sha256": "110f3e803a05470b2aa79954e6f1a05b731c30d1d49fa7b484f1bcd534a6c6d8",
+      "statement": "Record artifacts sufficient to diagnose failure across services.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 100
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "System, End-to-End, and Acceptance Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-3A691B37",
+      "revision": 1,
+      "semantic_sha256": "3a691b37991c70684f982188c8e05ac3d1a2cf6c6285d84a98f6c3919aa483a8",
+      "statement": "Separate product acceptance from mere technical execution success.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 101
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "System, End-to-End, and Acceptance Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-1A04F649",
+      "revision": 1,
+      "semantic_sha256": "1a04f649b31a84af1e4a1095aa3d62ffe753746459bb26376e60d3e86d60bc3e",
+      "statement": "Include support and operational acceptance for runbooks, monitoring, capacity, and recovery.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 102
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "System, End-to-End, and Acceptance Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-A8C0F294",
+      "revision": 1,
+      "semantic_sha256": "a8c0f294ca6b60e040e430035a3d6f0ba8342a2a4c1a9f66582e587b9fa40ce9",
+      "statement": "Verify data created, updated, exported, corrected, and deleted across all relevant stores.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 103
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "System, End-to-End, and Acceptance Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-05687BCB",
+      "revision": 1,
+      "semantic_sha256": "05687bcbb60032536d283fa03b1f035bae50965e92bd1d2241f00e7144799fc4",
+      "statement": "Test deployment, mixed-version, migration, rollback, and post-deployment smoke behavior.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 104
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "System, End-to-End, and Acceptance Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-A587AD05",
+      "revision": 1,
+      "semantic_sha256": "a587ad05c8ee5f4a82defe64552dc7ca5e436e7bcd29def939c4bdd104812276",
+      "statement": "Manage flaky tests as defects with owner, cause, and expiry.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 105
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "System, End-to-End, and Acceptance Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-F7B75AC7",
+      "revision": 1,
+      "semantic_sha256": "f7b75ac7b06d3c0725ddb0572d875d3c76139e5c3c1331825bfab91e51006b40",
+      "statement": "Run production-safe synthetic journeys for critical paths after launch.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 106
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "System, End-to-End, and Acceptance Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-B4A1B852",
+      "revision": 1,
+      "semantic_sha256": "b4a1b8524063408fc14d55663c3a6c5ef68cc1598274a81aa4f1a2ae32c05813",
+      "statement": "Obtain qualified stakeholder acceptance for high-impact requirements.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 107
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "System, End-to-End, and Acceptance Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-9665D391",
+      "revision": 1,
+      "semantic_sha256": "9665d391603d966dee94613f58a8d65127c7fb5997da9c0d189ade3b58b8292d",
+      "statement": "Convert escaped journey defects into the lowest reliable regression layer plus an end-to-end sentinel when valuable.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 108
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "System, End-to-End, and Acceptance Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-A9DFA5B1",
+      "revision": 1,
+      "semantic_sha256": "a9dfa5b18109854dc94fcbfa7dd7d58ffed7f47dc63677c7bc3c5556f5496ad0",
+      "statement": "Analyze change impact across requirements, modules, data, interfaces, consumers, dependencies, environments, and operations.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 116
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Regression, Change-Impact, and Compatibility Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-02AF9A1D",
+      "revision": 1,
+      "semantic_sha256": "02af9a1da63895f899d8d533008b4df6a8851c706236cb3273f1a52d1d78c52f",
+      "statement": "Select regression tests from risk and dependency evidence, not only changed files.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 117
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Regression, Change-Impact, and Compatibility Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D3436F27",
+      "revision": 1,
+      "semantic_sha256": "d3436f27b6556106065acdd591f4b49cbd031b4ab18cedfd082d507a8fa3eb4e",
+      "statement": "Maintain a stable critical regression suite that represents business, security, privacy, accessibility, and reliability invariants.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 118
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Regression, Change-Impact, and Compatibility Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-5258BB43",
+      "revision": 1,
+      "semantic_sha256": "5258bb43d044e3de0ca0ee92b84b14a0137cb4f335b1475bff33de1d7b2ae67c",
+      "statement": "Test backward, forward, mixed-version, schema, protocol, browser, device, and data compatibility as applicable.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 119
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Regression, Change-Impact, and Compatibility Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-36EFB529",
+      "revision": 1,
+      "semantic_sha256": "36efb5291fea338e07cd13ffb3df1e31eca15e48547d6d7f5ae579749cf7474f",
+      "statement": "Test changed defaults, configuration, flags, permissions, quotas, and feature combinations.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 120
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Regression, Change-Impact, and Compatibility Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-4A9B0A0E",
+      "revision": 1,
+      "semantic_sha256": "4a9b0a0eaa20e4e96218bb80421dfafba687f4ebcba37775a4e3666918316729",
+      "statement": "Include known defect regressions and historically fragile areas.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 121
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Regression, Change-Impact, and Compatibility Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-C2E84396",
+      "revision": 1,
+      "semantic_sha256": "c2e84396ddaf9867903bc6b9ae81d5747714828f7ec50f3540d5e3196dc42235",
+      "statement": "Use differential or golden-master comparison carefully where behavior is large but not fully specified.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 122
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Regression, Change-Impact, and Compatibility Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-B7BBB198",
+      "revision": 1,
+      "semantic_sha256": "b7bbb1987ec9e22ba607e92d48b8f803c4ec8f7812ac9df1465f2471732b2fc0",
+      "statement": "Review intended behavior changes so they do not appear as unexplained regression failures.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 123
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Regression, Change-Impact, and Compatibility Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-5D5B4D27",
+      "revision": 1,
+      "semantic_sha256": "5d5b4d2706e47c6c52c0f4ed8b4a991fc1e114e1ad43af9bc3487e235d67251e",
+      "statement": "Run broad regression before irreversible or high-blast-radius changes.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 124
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Regression, Change-Impact, and Compatibility Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-821187B8",
+      "revision": 1,
+      "semantic_sha256": "821187b8f1e5c7e8053f2c9000910e945f5f465f438e2dc5a34353dca9511d1d",
+      "statement": "Use production-representative data distributions and older valid records.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 125
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Regression, Change-Impact, and Compatibility Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-1DA0B1A4",
+      "revision": 1,
+      "semantic_sha256": "1da0b1a41124b837665adf3feda7745b528b81e7357359c89af736690615a24d",
+      "statement": "Test upgrades from every supported version and supported downgrade or roll-forward path.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 126
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Regression, Change-Impact, and Compatibility Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-48F4A75B",
+      "revision": 1,
+      "semantic_sha256": "48f4a75b9bce7b85cc841986ac7000d7cf3adeba60bff0244da8ea377e8b8409",
+      "statement": "Verify client and server caching does not preserve incompatible state.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 127
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Regression, Change-Impact, and Compatibility Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-1B98C843",
+      "revision": 1,
+      "semantic_sha256": "1b98c843fed9af30a7521215f4154df758fc3d65ab502133779592d656306ef2",
+      "statement": "Measure regression effectiveness through escaped defects and mutation or fault sensitivity.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 128
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Regression, Change-Impact, and Compatibility Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-F1DECC35",
+      "revision": 1,
+      "semantic_sha256": "f1decc35a4ee3ecdc77716962c8e1a8cef8fdea083926a903bb2f87645b92e17",
+      "statement": "Retire obsolete tests only after confirming the protected behavior or risk no longer exists.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 129
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Regression, Change-Impact, and Compatibility Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-20F430F8",
+      "revision": 1,
+      "semantic_sha256": "20f430f8f101fac9e0a17a05e5ea4813000ca84ae7eb9d5a2d40e6d1b877f418",
+      "statement": "Avoid allowing test-suite duration to grow without architecture and selection strategy.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 130
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Regression, Change-Impact, and Compatibility Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-42745DA4",
+      "revision": 1,
+      "semantic_sha256": "42745da4712a194b5f5617f638b0f9c0b48ea16720697eefa25222fa9e633d03",
+      "statement": "Use staged test selection with mandatory high-risk gates and broader asynchronous evidence before final approval.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 131
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Regression, Change-Impact, and Compatibility Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-54517178",
+      "revision": 1,
+      "semantic_sha256": "54517178559734a01b62386c669143a17688d7c7786517fe89a9622eaa24edff",
+      "statement": "Verify the final artifact after packaging and deployment transformation.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 132
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Regression, Change-Impact, and Compatibility Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-1EBA61FD",
+      "revision": 1,
+      "semantic_sha256": "1eba61fde777f3d587d605a0d528a9c77704f037f94615c959583e185f4eb2d8",
+      "statement": "Include security control and observability regression.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 133
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Regression, Change-Impact, and Compatibility Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-EE8433B8",
+      "revision": 1,
+      "semantic_sha256": "ee8433b80db74a0953e8e079276d28fda4cb5553bf976fddbc4a209a41e6b306",
+      "statement": "Preserve a known-good baseline and explain material differences.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 134
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Regression, Change-Impact, and Compatibility Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-4826FE5C",
+      "revision": 1,
+      "semantic_sha256": "4826fe5c458c62fba407413be2b51c43b80be1226c0ccb29a6c0bc5b1845e313",
+      "statement": "Convert incidents caused by interaction effects into cross-component regression coverage.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 135
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Regression, Change-Impact, and Compatibility Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-CECAF01C",
+      "revision": 1,
+      "semantic_sha256": "cecaf01cd93f425106f7bf280e18a4a65a285fd14ed54702e04cd62c01aafdbe",
+      "statement": "Automate checks that are repeatable, valuable, and sufficiently deterministic.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 143
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Automation Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-FA8213FA",
+      "revision": 1,
+      "semantic_sha256": "fa8213faa9fe39b9e0cc3859dfe8d1eb38efe091e72e8081369972dd873bf5c6",
+      "statement": "Keep automation code to production-quality standards for review, versioning, security, and maintenance.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 144
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Automation Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-43C3E4B8",
+      "revision": 1,
+      "semantic_sha256": "43c3e4b8c0b5a2f5a5db61562ddc1c6b617a7701d74a39da59bf1970a4132131",
+      "statement": "Make failures identify the violated expectation, actual result, context, and evidence.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 145
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Automation Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-CC168172",
+      "revision": 1,
+      "semantic_sha256": "cc1681721a53f13beafe97c0d2f0b0045b07720aafd45c8e2e61edeac0654e6b",
+      "statement": "Keep tests independent and safe for parallel or repeated execution.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 146
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Automation Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-F21A03D2",
+      "revision": 1,
+      "semantic_sha256": "f21a03d2d5247d299f44fbe74c32c33427705995d1a4ff5d4caaa1189d30ac53",
+      "statement": "Control time, randomness, external dependencies, and data where practical.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 147
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Automation Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-74328706",
+      "revision": 1,
+      "semantic_sha256": "74328706c70c699ddebe5dfd00ff1f964f805258c8192fbf0360d344dca07c48",
+      "statement": "Use retries only to diagnose known infrastructure instability, never to convert flaky failures into passes.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 148
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Automation Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-7247BFD2",
+      "revision": 1,
+      "semantic_sha256": "7247bfd237f7e686c6e100578c672ea59d9a63a12f4c26a227e91ec2fce9271c",
+      "statement": "Track flakiness, quarantine duration, ownership, and business risk.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 149
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Automation Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-9A51EF4B",
+      "revision": 1,
+      "semantic_sha256": "9a51ef4bca0729350c841cec973543ee25c20a776fa5a5215da3ad40906d930e",
+      "statement": "Prevent test credentials, personal data, and secrets from leaking through fixtures and reports.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 150
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Automation Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-256B9A15",
+      "revision": 1,
+      "semantic_sha256": "256b9a1537ab4811b5ea4533740af756e9b029f4bc7a335f8ec0dd249d91bc9e",
+      "statement": "Version test data, simulators, schemas, baselines, and expected results with compatible production behavior.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 151
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Automation Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-57E6BCF0",
+      "revision": 1,
+      "semantic_sha256": "57e6bcf09640ed6fef7ae64c86aa2b6e10848a565315012c63c3f29f5f3e8759",
+      "statement": "Validate test tools and custom matchers against known passing and failing examples.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 152
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Automation Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-0CDDDBAD",
+      "revision": 1,
+      "semantic_sha256": "0cdddbad426c539da49528763b5712cbe834161d9369e8e8807c628f776c6a9d",
+      "statement": "Ensure negative tests fail for the intended reason rather than an earlier setup problem.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 153
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Automation Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-B339ABB5",
+      "revision": 1,
+      "semantic_sha256": "b339abb5b0a67464e1a046f47964d82dffa9058a4d0059bcae7ac630f9510c21",
+      "statement": "Use layered tests to balance speed, fidelity, and diagnosis.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 154
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Automation Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-33111C22",
+      "revision": 1,
+      "semantic_sha256": "33111c22dd7da7409abecc5d4c8662d48873e080540ec2ae434886e0d894428b",
+      "statement": "Avoid duplicated tests that add cost without new risk coverage.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 155
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Automation Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-CC741332",
+      "revision": 1,
+      "semantic_sha256": "cc741332e4b77627662398a285dfbb498b1efe1820f94e4724bff43589737928",
+      "statement": "Make environment and prerequisite failures distinct from product failures.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 156
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Automation Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-3F834ADF",
+      "revision": 1,
+      "semantic_sha256": "3f834adfcda391fde54dfca1fa39d358ec49e7a361a5a550f899e8206589a69d",
+      "statement": "Preserve logs, traces, screenshots, videos, diffs, and seed values as appropriate.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 157
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Automation Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-949E24F8",
+      "revision": 1,
+      "semantic_sha256": "949e24f82a20ae1e9db8eeab4aaea999aeb2eb6e6cd93cdb6940281db4d7923a",
+      "statement": "Review disabled, skipped, expected-failure, and muted tests before release.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 158
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Automation Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-3073031B",
+      "revision": 1,
+      "semantic_sha256": "3073031bb016193f99802565ed1b782888e74016f08a2fc8bea0d3ca83785b83",
+      "statement": "Measure suite duration, reliability, fault detection, maintenance cost, and escape rate.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 159
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Automation Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D53E745C",
+      "revision": 1,
+      "semantic_sha256": "d53e745cc752bbc0925163b83c6336b84b1ca09c604c7791d74f4c16cc7ad2c2",
+      "statement": "Refactor automation when product implementation details make tests brittle.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 160
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Automation Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-34A3D75D",
+      "revision": 1,
+      "semantic_sha256": "34a3d75d34b26305608a335c342bfd3ff5a18de683f8f0f375c1043ae9920171",
+      "statement": "Protect CI workers and test environments from untrusted code and cross-run contamination.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 161
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Automation Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-9993C108",
+      "revision": 1,
+      "semantic_sha256": "9993c108dd4d75301e0d11ffcba1b1085272e927fd692a74c2ed2743dfccf580",
+      "statement": "Periodically test that release gates actually block a deliberately failing change.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 162
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Automation Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-8E3B0906",
+      "revision": 1,
+      "semantic_sha256": "8e3b0906db46093d937ca4ab45c61a4486edc6ae161cf4a1e5b1c4bb65ec94d6",
+      "statement": "Define the production characteristics that each test environment must reproduce and those intentionally simulated.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 170
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Data and Test Environments",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-E0D9E9AC",
+      "revision": 1,
+      "semantic_sha256": "e0d9e9ac39545413b57af0256f16cafc888b8212c1761e173f89a068465f486f",
+      "statement": "Version infrastructure, configuration, schemas, dependencies, feature flags, and seed data.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 171
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Data and Test Environments",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-173F222D",
+      "revision": 1,
+      "semantic_sha256": "173f222d661246f0dfcb46d87e198cdcab902890e7ad84fe8a6786080a7afbd2",
+      "statement": "Use synthetic data by default and authorize, minimize, mask, isolate, and expire production-derived data.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 172
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Data and Test Environments",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D350CA89",
+      "revision": 1,
+      "semantic_sha256": "d350ca89efd8d78fdfe53a34fed9bb5dfa63ddc4a747c02ae9f3f014066b4f4a",
+      "statement": "Preserve referential, statistical, temporal, locale, encoding, and edge-case characteristics needed for valid tests.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 173
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Data and Test Environments",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-AD7590EE",
+      "revision": 1,
+      "semantic_sha256": "ad7590eec8c603977b93a9a7bfa473e412313e26510276e14f4d7806df9085e3",
+      "statement": "Include large, sparse, skewed, duplicate, malformed, legacy, deleted, and sensitive-shape records without exposing real identities.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 174
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Data and Test Environments",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-CFC1A943",
+      "revision": 1,
+      "semantic_sha256": "cfc1a94323ccd3462b66a1d3698eb5306a965b44ff8b97e4011fb88813ec8d73",
+      "statement": "Assign unique test identities, tenants, namespaces, and resources to prevent cross-run interference.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 175
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Data and Test Environments",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-337C90B2",
+      "revision": 1,
+      "semantic_sha256": "337c90b2f7d199a62818033ca2d45e5d50401823d519e4f13124da60cedada81",
+      "statement": "Prevent nonproduction notifications, payments, webhooks, and integrations from affecting real users or systems.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 176
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Data and Test Environments",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-60E233B7",
+      "revision": 1,
+      "semantic_sha256": "60e233b76511bf17d17c0a19f299f593d394079565b56d74aa97d19577909933",
+      "statement": "Use deterministic setup and teardown and detect orphaned resources.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 177
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Data and Test Environments",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-1A1BC247",
+      "revision": 1,
+      "semantic_sha256": "1a1bc24738064f5ccf0d980c027408d255983b835a9550c2c45c72e2688fcc49",
+      "statement": "Reset environments from reproducible automation rather than manual undocumented repair.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 178
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Data and Test Environments",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-5A7D89CD",
+      "revision": 1,
+      "semantic_sha256": "5a7d89cd8df9c161a6917cee08e97045acf61ac9b4ad72d1c50fb5335126c4f0",
+      "statement": "Detect drift between intended and actual environment configuration.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 179
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Data and Test Environments",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-DDA5AB90",
+      "revision": 1,
+      "semantic_sha256": "dda5ab904e12586f5358ce1822d204963d5e173f028fea622bdd3ef96003461e",
+      "statement": "Protect test environments according to the sensitivity of code, credentials, and data they contain.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 180
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Data and Test Environments",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D0CF0FA3",
+      "revision": 1,
+      "semantic_sha256": "d0cf0fa3fba708e2c22d70a74445b0fec9b2f4aa6fe0428c4c1a352f9db03bb1",
+      "statement": "Keep production secrets and trust relationships out of lower environments.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 181
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Data and Test Environments",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-32F22082",
+      "revision": 1,
+      "semantic_sha256": "32f22082d5a016dcbf74636b3b0f03522c13aba71bd7b88dd302f28b91166583",
+      "statement": "Simulate dependency latency, error, throttling, and outage realistically.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 182
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Data and Test Environments",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-5C661F9B",
+      "revision": 1,
+      "semantic_sha256": "5c661f9bc5269a0530371404bbcef938465a913c7c6d8ccc6255c79b255bcd40",
+      "statement": "Measure whether environment limitations invalidate test conclusions.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 183
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Data and Test Environments",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-8CF5D4A8",
+      "revision": 1,
+      "semantic_sha256": "8cf5d4a886af227b977427f0a5f2b5639701fb2e9a1c6086358705494c20e042",
+      "statement": "Maintain capacity sufficient for representative performance and concurrency tests.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 184
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Data and Test Environments",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-03A1613E",
+      "revision": 1,
+      "semantic_sha256": "03a1613ea3c780443516bc53b34c2cbb501a2380cd4a7a1ab0d0405798e594de",
+      "statement": "Record environment version and health with every material result.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 185
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Data and Test Environments",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-F5919ABA",
+      "revision": 1,
+      "semantic_sha256": "f5919aba4d1d23ff5e7a513708eb87a9289e853479dceccc5cf641c0a0e72aae",
+      "statement": "Prevent shared long-lived environments from hiding order dependence and contamination.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 186
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Data and Test Environments",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-2B8B156B",
+      "revision": 1,
+      "semantic_sha256": "2b8b156ba2a4200d8170efe877cc59b075f74d36fb864b375dbd44b1c0d7b1dd",
+      "statement": "Test migration from realistic older schemas and data.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 187
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Data and Test Environments",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-56252FA6",
+      "revision": 1,
+      "semantic_sha256": "56252fa6e28d2a034a4ee5e6f696f5ed54a509c3702431e9caeba161f1389b72",
+      "statement": "Review access and remove dormant test accounts, keys, data, and infrastructure.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 188
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Data and Test Environments",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D49F972C",
+      "revision": 1,
+      "semantic_sha256": "d49f972c538c7d822a6c3b6e371e6f51508ad112ff8a238f02faae89be6a685c",
+      "statement": "Destroy or sanitize environments and data when their purpose ends.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 189
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Test Data and Test Environments",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-31B70C01",
+      "revision": 1,
+      "semantic_sha256": "31b70c016b09c0ccd369bee29df5e608de230a2e27b3879f4ea9587df2e16423",
+      "statement": "Translate every material quality attribute into measurable scenarios with stimulus, environment, response, and threshold.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 197
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Nonfunctional and Quality-Attribute Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-B4739B5B",
+      "revision": 1,
+      "semantic_sha256": "b4739b5bc2a573550011d43e48e6abde375775f1bfd74217fe529c0798049088",
+      "statement": "Use representative workloads, data, users, topology, dependencies, devices, and failure conditions.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 198
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Nonfunctional and Quality-Attribute Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-B72AA355",
+      "revision": 1,
+      "semantic_sha256": "b72aa355b23ccc77c27a6d6098f847d2322f269b6dc29f42b08f03c188d79ed2",
+      "statement": "Test latency distributions, throughput, saturation, resource use, and efficiency together.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 199
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Nonfunctional and Quality-Attribute Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-4CCCEA59",
+      "revision": 1,
+      "semantic_sha256": "4cccea599ac07078c54dc45d63d55a4c2b0e17c9c3e52029b8a6f5a3bcd2e7c6",
+      "statement": "Test availability and correctness under dependency, node, zone, network, storage, and control-plane failure.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 200
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Nonfunctional and Quality-Attribute Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-BC77A6BC",
+      "revision": 1,
+      "semantic_sha256": "bc77a6bc4bc20bc2724910b2b61573975c9f32418722602b334185cde91b9173",
+      "statement": "Test recovery time, recovery point, data integrity, failover, failback, and restored operation.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 201
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Nonfunctional and Quality-Attribute Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-A3A36C12",
+      "revision": 1,
+      "semantic_sha256": "a3a36c126d2b421b54944ac47e467d73c9924776b22abf805647d8820bd31b30",
+      "statement": "Test security and privacy controls through adversarial and misuse scenarios.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 202
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Nonfunctional and Quality-Attribute Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-5BA95FC4",
+      "revision": 1,
+      "semantic_sha256": "5ba95fc425dbb548f025a787ffd341da9b9d77e293d2b062ccb99e161037f921",
+      "statement": "Test accessibility through automation, keyboard, assistive technology, zoom, reflow, and human evaluation.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 203
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Nonfunctional and Quality-Attribute Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-0D1CBEE3",
+      "revision": 1,
+      "semantic_sha256": "0d1cbee37e3d7a03e22696aa1e806d909e72c48a0ba920d431c5f2477f645756",
+      "statement": "Test usability with representative tasks and users.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 204
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Nonfunctional and Quality-Attribute Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-BF03BCAF",
+      "revision": 1,
+      "semantic_sha256": "bf03bcaf192b9db5a5c09c1ba51f2425f673c0f2bbb75abaa1dc453827afb066",
+      "statement": "Test compatibility across supported clients, versions, formats, locales, and environments.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 205
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Nonfunctional and Quality-Attribute Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-0CC6633E",
+      "revision": 1,
+      "semantic_sha256": "0cc6633e1c224ab6ba77bb3254c6f8af0c694458ecae465b35284c6dc5d79b77",
+      "statement": "Test maintainability through change exercises, diagnostics, upgrade, and operator tasks where impact warrants it.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 206
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Nonfunctional and Quality-Attribute Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-B5C10C88",
+      "revision": 1,
+      "semantic_sha256": "b5c10c88b29559acfcef2ca0b331dd055272427354e9c34dc124260ab5224af5",
+      "statement": "Test scalability and overload beyond expected peak to identify safe failure limits.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 207
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Nonfunctional and Quality-Attribute Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-C97F0266",
+      "revision": 1,
+      "semantic_sha256": "c97f0266cc312f66370f9ff245eb31a7a62e595864f88818c4be5affd2797599",
+      "statement": "Test long-duration operation for leaks, drift, backlog, and degradation.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 208
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Nonfunctional and Quality-Attribute Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-98EB3ECC",
+      "revision": 1,
+      "semantic_sha256": "98eb3ecca021d46c4d586583a0823d5e65de5ffd11a8f1ca3966280152ca1caf",
+      "statement": "Test sustainability and cost under representative workload where material.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 209
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Nonfunctional and Quality-Attribute Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-CC592135",
+      "revision": 1,
+      "semantic_sha256": "cc592135226f72c323097e1292c88827ef9f2476c57145a62268af9f33cbab9a",
+      "statement": "Verify monitoring and alerts during each quality test.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 210
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Nonfunctional and Quality-Attribute Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-E5A00B61",
+      "revision": 1,
+      "semantic_sha256": "e5a00b6172da732df4821e39e5f6daf808d0d4a2428c96c96f1cb0bb2b121211",
+      "statement": "Record limitations, confidence, and conditions under which results do not apply.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 211
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Nonfunctional and Quality-Attribute Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-DE808721",
+      "revision": 1,
+      "semantic_sha256": "de808721dd6a623ca37fbd2419c760f1b229b1f98f3817633452f991f1ba86c0",
+      "statement": "Use independent review for high-impact thresholds and results.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 212
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Nonfunctional and Quality-Attribute Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-C2C6C7E0",
+      "revision": 1,
+      "semantic_sha256": "c2c6c7e05cdcbd25268f7588ba3b83904ce43bab3e997dfb609f32b7099177ec",
+      "statement": "Do not extrapolate beyond measured scale without an explicit model and uncertainty.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 213
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Nonfunctional and Quality-Attribute Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-4861ED7B",
+      "revision": 1,
+      "semantic_sha256": "4861ed7bbfef13d5e3fa7e8ff5ea4a417ab7599665908f2c9d73ccc9ae09da26",
+      "statement": "Repeat tests after material architecture, dependency, data, configuration, or infrastructure change.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 214
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Nonfunctional and Quality-Attribute Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-E12B5B11",
+      "revision": 1,
+      "semantic_sha256": "e12b5b11b2d3a0e8f9035de254518d5b8115b64a18f0f66df686243b1bac08fe",
+      "statement": "Compare results to baselines and approved budgets.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 215
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Nonfunctional and Quality-Attribute Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-2C0ECEB2",
+      "revision": 1,
+      "semantic_sha256": "2c0eceb24563d12c8753fe57717f557e32527043dda03ee09504a61d493d5f8a",
+      "statement": "Block release when a critical quality objective lacks valid evidence.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 216
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Nonfunctional and Quality-Attribute Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-7879005A",
+      "revision": 1,
+      "semantic_sha256": "7879005a0be8f3fe2d27ff2ea0a8db2a0b9e4fd078a95ac994fa95c1f3e2c4dd",
+      "statement": "Prioritize charters by user harm, business impact, novelty, complexity, change, defect history, and uncertainty.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 224
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Exploratory, Risk-Based, and Usability Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-519085DD",
+      "revision": 1,
+      "semantic_sha256": "519085ddcb8f6a70a5171d7c536bd8883251613a9a6c2ae3d9c93b4c989d5e7b",
+      "statement": "Define a mission and scope while preserving freedom to follow evidence.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 225
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Exploratory, Risk-Based, and Usability Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-399DA6B9",
+      "revision": 1,
+      "semantic_sha256": "399da6b9fe359791360506c174d25885c54d56a2a2c64a8eddc6f0e1d0f77c2a",
+      "statement": "Use skilled testers with domain, user, technical, accessibility, security, and operational context as appropriate.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 226
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Exploratory, Risk-Based, and Usability Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-AF91B7B7",
+      "revision": 1,
+      "semantic_sha256": "af91b7b72bded7e1314deb8901db9c472e1d21709dd4bc7a9f46706d8d2d8f07",
+      "statement": "Vary data, sequence, timing, concurrency, roles, devices, networks, locales, and interruption.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 227
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Exploratory, Risk-Based, and Usability Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-BBF7C191",
+      "revision": 1,
+      "semantic_sha256": "bbf7c19152008740245e6d0403b95da22059e78889b923fadfc41c877689a7d7",
+      "statement": "Investigate inconsistencies, ambiguous feedback, unexpected state, and recovery difficulty.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 228
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Exploratory, Risk-Based, and Usability Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-341F2D0F",
+      "revision": 1,
+      "semantic_sha256": "341f2d0f661f33f3c259b1a5660e2efb9a8994d769ea984d0c08a1592b3f0c57",
+      "statement": "Explore complete workflows and cross-channel transitions rather than isolated screens.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 229
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Exploratory, Risk-Based, and Usability Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D0D46EA6",
+      "revision": 1,
+      "semantic_sha256": "d0d46ea62e343f3abc90e419cac0a844e5f73ee6ed9964244373b3668ea33baf",
+      "statement": "Use heuristics, models, tours, personas, abuse stories, and past incidents to generate tests.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 230
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Exploratory, Risk-Based, and Usability Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-FE154839",
+      "revision": 1,
+      "semantic_sha256": "fe154839b79e670a29d6eae5ab19ef47a9f355b68d3637e8f3c89d63be66c36a",
+      "statement": "Capture concise notes, evidence, coverage, questions, risks, and follow-up.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 231
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Exploratory, Risk-Based, and Usability Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-014C3738",
+      "revision": 1,
+      "semantic_sha256": "014c3738e924e02ae3cf86acdb81f59d618367db86e8db9393e29fcc86d1fb18",
+      "statement": "Distinguish observations, hypotheses, defects, design concerns, and user research findings.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 232
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Exploratory, Risk-Based, and Usability Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-35B2FB35",
+      "revision": 1,
+      "semantic_sha256": "35b2fb3534fffe3c0aa4c9a1daa90753d97de145ce63926a24f347642044d227",
+      "statement": "Reproduce and reduce defects to the smallest useful case.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 233
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Exploratory, Risk-Based, and Usability Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-04D07FE1",
+      "revision": 1,
+      "semantic_sha256": "04d07fe119194ac214a876b7ba3be36d3ea602c3dda3f8db06b02acaa6d4886d",
+      "statement": "Pair with developers, designers, support, operators, or users for high-context investigation.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 234
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Exploratory, Risk-Based, and Usability Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-F9EE8DA8",
+      "revision": 1,
+      "semantic_sha256": "f9ee8da8ba6e1ab2c7e6705ec0009c796219002e64db1ea8c3c603fbdecdf4b1",
+      "statement": "Include users with disabilities and representative assistive technologies.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 235
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Exploratory, Risk-Based, and Usability Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-7BA8AA27",
+      "revision": 1,
+      "semantic_sha256": "7ba8aa2788c83efb98b4709993d6534ce624bc36d016f5b6ecf353333844b0e1",
+      "statement": "Avoid treating scripted checks as a replacement for exploration.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 236
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Exploratory, Risk-Based, and Usability Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-BDF47008",
+      "revision": 1,
+      "semantic_sha256": "bdf47008d65af7b01da24110e72dcaf551504ef2124f89a1afb716b4d10e4c45",
+      "statement": "Time-box sessions and review whether additional exploration changes decisions.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 237
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Exploratory, Risk-Based, and Usability Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-DE9F6640",
+      "revision": 1,
+      "semantic_sha256": "de9f6640d72e89d503a7a38ec86976c4991fed2be66f61e22c205b15f7dc2868",
+      "statement": "Feed discoveries into requirements, automated regression, design, support, and risk records.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 238
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Exploratory, Risk-Based, and Usability Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-03907FCF",
+      "revision": 1,
+      "semantic_sha256": "03907fcfc2d450cf817b9bd3d1fbe4a28f7b1e5b6d53fdec2adb968f2271e4a5",
+      "statement": "Track untested areas and session limitations.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 239
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Exploratory, Risk-Based, and Usability Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-EE9B03CE",
+      "revision": 1,
+      "semantic_sha256": "ee9b03ce0e21f6a847be425fef3c207172ae6b472fc8a7898755bfc0b9c5950a",
+      "statement": "Use production-like or production-safe environments without exposing real users or data.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 240
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Exploratory, Risk-Based, and Usability Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-F427D041",
+      "revision": 1,
+      "semantic_sha256": "f427d041950ad2767e81cbad5a63ef68f2654e631352168746abd59f6d714b17",
+      "statement": "Review quality across competing attributes rather than optimizing one path.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 241
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Exploratory, Risk-Based, and Usability Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D103850E",
+      "revision": 1,
+      "semantic_sha256": "d103850ea7c8ebbe04d52b4775e61308262dfe25c21c23f968a1604be7bbf44b",
+      "statement": "Measure escaped defect themes and charter effectiveness qualitatively.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 242
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Exploratory, Risk-Based, and Usability Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-A346C21D",
+      "revision": 1,
+      "semantic_sha256": "a346c21d27498a36eb6e0ede92621f2349ba2a2addf276472d0cc2cee16eaa01",
+      "statement": "Preserve psychological safety so testers can challenge accepted behavior.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 243
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Exploratory, Risk-Based, and Usability Testing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-187751E3",
+      "revision": 1,
+      "semantic_sha256": "187751e34bacda6d812f41c8390dbf2760b68182fb731a99206e3148099fbdd7",
+      "statement": "Select techniques according to consequence, defect class, language semantics, and system complexity.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 251
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Static Analysis, Formal Methods, and Verification",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-180F046B",
+      "revision": 1,
+      "semantic_sha256": "180f046b3c7241d4ee265e40d856cddfcc259ffee54d2a1034eb1149db89d8bf",
+      "statement": "Enable compiler, type, lint, security, dependency, secret, and configuration checks appropriate to the codebase.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 252
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Static Analysis, Formal Methods, and Verification",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-1AE136B6",
+      "revision": 1,
+      "semantic_sha256": "1ae136b6b0cf0d8df2021743d5f10b15252434bcb522cfb987ff5432fbda1af1",
+      "statement": "Treat warnings according to a documented baseline and prevent uncontrolled growth.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 253
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Static Analysis, Formal Methods, and Verification",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-2BEC6E57",
+      "revision": 1,
+      "semantic_sha256": "2bec6e57ebc9dcde0665fdf5a8afe16ed95541e2f6c6d07ea881c12e6cd4319f",
+      "statement": "Use sound or high-confidence analyses for critical properties where available.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 254
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Static Analysis, Formal Methods, and Verification",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-2C055DE5",
+      "revision": 1,
+      "semantic_sha256": "2c055de55088f2be2253aaf7e18db2e875061ca625a3e166e91299867aa77cfb",
+      "statement": "Encode domain invariants in types, schemas, contracts, assertions, and model constraints.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 255
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Static Analysis, Formal Methods, and Verification",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D20DCA2A",
+      "revision": 1,
+      "semantic_sha256": "d20dca2ae13e4e240c563462c30c8d09a90f7b6f9fea37504b850e84f099a1d2",
+      "statement": "Use model checking or state-machine verification for high-risk concurrency, protocol, and workflow behavior where practical.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 256
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Static Analysis, Formal Methods, and Verification",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-1E45D431",
+      "revision": 1,
+      "semantic_sha256": "1e45d43157e9f74d648eaa8089a46ebb18db38713b1187ab3572dcad80b46735",
+      "statement": "Use property-based and symbolic methods for parsers, numerical logic, authorization, and combinatorial inputs.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 257
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Static Analysis, Formal Methods, and Verification",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-5A042057",
+      "revision": 1,
+      "semantic_sha256": "5a042057bf0edf3029ece0384ed368b4f00a68529987ba51aa19810d95505fc3",
+      "statement": "Review false-positive suppressions with scope, rationale, owner, and expiry.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 258
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Static Analysis, Formal Methods, and Verification",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-E6197F5B",
+      "revision": 1,
+      "semantic_sha256": "e6197f5b5c05353816d739f35dbda96d07e3834470773b31d9b7e6e5a1dce54e",
+      "statement": "Do not suppress findings globally when a narrow exception is possible.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 259
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Static Analysis, Formal Methods, and Verification",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-857E50CE",
+      "revision": 1,
+      "semantic_sha256": "857e50ce65c8cb5e1b57b474308acb5b5614f62073cf73ac18992d10a4824fdc",
+      "statement": "Validate custom rules against known defects and safe examples.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 260
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Static Analysis, Formal Methods, and Verification",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-566068B3",
+      "revision": 1,
+      "semantic_sha256": "566068b341dcd3d042ac7ec51f60bd9c7b55fa5d94dc7236fe23367b9c213b1a",
+      "statement": "Protect analyzers and plugins as supply-chain dependencies.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 261
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Static Analysis, Formal Methods, and Verification",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-0C558F2C",
+      "revision": 1,
+      "semantic_sha256": "0c558f2cf5ad79e9b1d4b4b5c9681f5d191df664b7e9ddb25163ffef7a4aa6fb",
+      "statement": "Run analysis on generated code, infrastructure, migrations, and configuration where relevant.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 262
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Static Analysis, Formal Methods, and Verification",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-C5555A64",
+      "revision": 1,
+      "semantic_sha256": "c5555a648afb454aac905df4a868bb7040fb1b72aca84b0e5588d024dc36733c",
+      "statement": "Use reproducible tool versions and rule sets.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 263
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Static Analysis, Formal Methods, and Verification",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-3A2F1122",
+      "revision": 1,
+      "semantic_sha256": "3a2f1122ad81f13ab799a7f8c22bdd40521617b525f387dbeae4a0591d567c1c",
+      "statement": "Track introduced findings separately from inherited debt.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 264
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Static Analysis, Formal Methods, and Verification",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-CB6715F0",
+      "revision": 1,
+      "semantic_sha256": "cb6715f05b451e4e4dabbdd8d1f831a5656c1a90d0a738b511f3248fe40b3441",
+      "statement": "Require higher assurance for cryptography, safety, identity, authorization, and irreversible financial logic.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 265
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Static Analysis, Formal Methods, and Verification",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-E903DE38",
+      "revision": 1,
+      "semantic_sha256": "e903de38d8110101c490f2a6f4e93c5fc5639b4bea2c02b29eb1ac82a81b94a5",
+      "statement": "Use formal claims only within explicitly stated assumptions and model boundaries.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 266
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Static Analysis, Formal Methods, and Verification",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-B0A6D650",
+      "revision": 1,
+      "semantic_sha256": "b0a6d6503cc047c1c9cc324ec062f710c01514964c9a782aa455732ebf45d554",
+      "statement": "Complement static proof with runtime, integration, and operational evidence.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 267
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Static Analysis, Formal Methods, and Verification",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-F267C2FC",
+      "revision": 1,
+      "semantic_sha256": "f267c2fccbd196602921519b212d99dcedb2ee8007dae82f58f7a91c9934118c",
+      "statement": "Review whether code transformations and optimizations preserve verified properties.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 268
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Static Analysis, Formal Methods, and Verification",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-468A609C",
+      "revision": 1,
+      "semantic_sha256": "468a609c1beeb0236ca0f78f3cd7b8bd82f1079634246ac0cb03d451fa053acf",
+      "statement": "Archive models, tool versions, assumptions, results, and review decisions.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 269
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Static Analysis, Formal Methods, and Verification",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-27C19FEA",
+      "revision": 1,
+      "semantic_sha256": "27c19feaccd84f82935c61148c3e015c9aa5fe940c4a8f0cc96a5f469b289316",
+      "statement": "Convert recurring escaped defects into machine-enforced rules where reliable.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 270
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Static Analysis, Formal Methods, and Verification",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-57E0618C",
+      "revision": 1,
+      "semantic_sha256": "57e0618c82c00ee78ae29eeae621ca33d7c47fa7e21dacf779bb0eb5472fb86e",
+      "statement": "Provide clear channels for users, support, monitoring, security, testing, and suppliers to report defects.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 278
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Defect Management and Root-Cause Improvement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-4F3E2904",
+      "revision": 1,
+      "semantic_sha256": "4f3e2904ccda10d464ca165642588133818aac3cfb2ef4a0796963a293414bb4",
+      "statement": "Capture affected user, journey, environment, version, data, time, symptoms, impact, and evidence.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 279
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Defect Management and Root-Cause Improvement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-1981A1CF",
+      "revision": 1,
+      "semantic_sha256": "1981a1cfd5c3f2cc7b0e4967308745b8aef1d89772dc112f144e0595e88df98b",
+      "statement": "Classify severity by harm, reach, integrity, security, privacy, financial, legal, and recoverability impact.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 280
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Defect Management and Root-Cause Improvement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-C3398A1B",
+      "revision": 1,
+      "semantic_sha256": "c3398a1b7022cd391881f458f2b01db0e08299a8939b0ef3cada15d4d4ceebef",
+      "statement": "Separate severity from scheduling priority and make both explicit.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 281
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Defect Management and Root-Cause Improvement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-5C76863C",
+      "revision": 1,
+      "semantic_sha256": "5c76863c91f9b5c54aa24803e7636b0646ad3d6ffa2e1ef008381abfe0265fc8",
+      "statement": "Triage duplicates without losing affected-user evidence or recurrence count.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 282
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Defect Management and Root-Cause Improvement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-B9CD2703",
+      "revision": 1,
+      "semantic_sha256": "b9cd2703656b6f02faae9c694e5b87b3f73dabf4be8c5b1162ed7153cf489ab4",
+      "statement": "Contain high-impact defects before waiting for permanent correction.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 283
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Defect Management and Root-Cause Improvement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-AFC1B6A5",
+      "revision": 1,
+      "semantic_sha256": "afc1b6a597c6189ea724cb17f13d237f96c682741bf40e476febe66557c38465",
+      "statement": "Identify the earliest point at which the defect could have been prevented or detected.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 284
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Defect Management and Root-Cause Improvement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-12B340B5",
+      "revision": 1,
+      "semantic_sha256": "12b340b5581bb4b19031fa3d4f7f5823c3b97e77827516642cd093ca9350552e",
+      "statement": "Analyze contributing technical, process, organizational, incentive, interface, and knowledge factors.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 285
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Defect Management and Root-Cause Improvement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-E51510AC",
+      "revision": 1,
+      "semantic_sha256": "e51510ace3941c9f9e55c984290e2fda5482b8c62899333e557ed7983eb14b69",
+      "statement": "Avoid stopping at individual error or a single proximate cause.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 286
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Defect Management and Root-Cause Improvement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D480EB7C",
+      "revision": 1,
+      "semantic_sha256": "d480eb7ce6bafdbfe1b69878df78b3b7dd57eb2926f6adb43e735f96837ab7c4",
+      "statement": "Correct corrupted or inconsistent data and reconcile downstream effects.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 287
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Defect Management and Root-Cause Improvement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-AD42951B",
+      "revision": 1,
+      "semantic_sha256": "ad42951b920273c1cbeb418d12c37c05979b2acb679ba22c43b8a186a755eb50",
+      "statement": "Verify fixes against the original failure, adjacent cases, alternate paths, and regression risk.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 288
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Defect Management and Root-Cause Improvement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-520E6677",
+      "revision": 1,
+      "semantic_sha256": "520e6677eb395ec0c799763fe5f289488650c19ed51bdf1bbf1734f15dbece85",
+      "statement": "Monitor after deployment for recurrence and unintended consequences.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 289
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Defect Management and Root-Cause Improvement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-8C0B0798",
+      "revision": 1,
+      "semantic_sha256": "8c0b07981fe9ac5f560343fc792740184bcc4228f6ae86c3c819886a69a1046f",
+      "statement": "Communicate known impact, workarounds, and resolution accurately to affected stakeholders.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 290
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Defect Management and Root-Cause Improvement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-23336C87",
+      "revision": 1,
+      "semantic_sha256": "23336c875239f17422c1ff910b79df1b6ab48010a9f00ffe7d36b45541f93542",
+      "statement": "Use time-bounded risk acceptance only with owner and compensating controls.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 291
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Defect Management and Root-Cause Improvement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-5827E80F",
+      "revision": 1,
+      "semantic_sha256": "5827e80fcc820758fa89c618a025d014c96b56c276818b6842de0cc1acf5fdf6",
+      "statement": "Track aging, recurrence, escape phase, detection source, and corrective-action effectiveness.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 292
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Defect Management and Root-Cause Improvement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-23DEB246",
+      "revision": 1,
+      "semantic_sha256": "23deb2467546525b26544887b4901bbfdfc27f6668896194815f018a7908bdaa",
+      "statement": "Prioritize systemic fixes that eliminate classes of defects.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 293
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Defect Management and Root-Cause Improvement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-1E7A9936",
+      "revision": 1,
+      "semantic_sha256": "1e7a9936daadb5b8f2ff3e763d8fec2e3d59d13cdfa04ea48801a83b977b84db",
+      "statement": "Update requirements, design, tests, monitoring, documentation, training, and review guidance.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 294
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Defect Management and Root-Cause Improvement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-2B757A11",
+      "revision": 1,
+      "semantic_sha256": "2b757a11496a5b2bc09906a3c35eefbf3bb2117f5023a2f81a97fe72c53e85c3",
+      "statement": "Close defects only when completion criteria and evidence are satisfied.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 295
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Defect Management and Root-Cause Improvement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-AE77FE17",
+      "revision": 1,
+      "semantic_sha256": "ae77fe17af44d2c04e4639c05c5db52dd901d922c922af926a0e6162b17b8f47",
+      "statement": "Preserve incident and defect history for trend analysis.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 296
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Defect Management and Root-Cause Improvement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-92037A06",
+      "revision": 1,
+      "semantic_sha256": "92037a06144afc0e4fd6e97a2994c2d0317607fb67a6680fc368915921ba0e16",
+      "statement": "Review recurring low-severity defects whose aggregate burden is material.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 297
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Defect Management and Root-Cause Improvement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-CE5D5E0A",
+      "revision": 1,
+      "semantic_sha256": "ce5d5e0aebfae659e7b2d8fc6b2fba97b48596c0f151ab711dcdae3a0e6c9c33",
+      "statement": "Define an assurance strategy that connects product risks, quality attributes, requirements, architecture, implementation, deployment, operations, and evidence rather than treating testing as an isolated phase.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 305
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Assurance strategy, scope, and independence"
+      ]
+    },
+    {
+      "control_id": "USEQ-27F0F898",
+      "revision": 1,
+      "semantic_sha256": "27f0f89819a2fede12623019caf4bf1b8f70f3bffb8c900103fdce51adc54a42",
+      "statement": "Identify every system boundary, user group, role, tenant, device, interface, dependency, environment, data class, operational mode, and failure mode included in the assurance scope.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 306
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Assurance strategy, scope, and independence"
+      ]
+    },
+    {
+      "control_id": "USEQ-D148EDEA",
+      "revision": 1,
+      "semantic_sha256": "d148edeab36c35be5661d276d5d7a7415245773c3261559909cfc8414ba9eb0e",
+      "statement": "Identify material exclusions, assumptions, test limitations, unavailable environments, inaccessible supplier components, and residual uncertainty.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 307
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Assurance strategy, scope, and independence"
+      ]
+    },
+    {
+      "control_id": "USEQ-0511465F",
+      "revision": 1,
+      "semantic_sha256": "0511465fb185ba6de6dde3aad9012aabca85f7f8cc8fd6b30fa8fefad1e84b78",
+      "statement": "Rank features and components by potential harm, change frequency, complexity, defect history, exposure, reversibility, detectability, and recovery difficulty.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 308
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Assurance strategy, scope, and independence"
+      ]
+    },
+    {
+      "control_id": "USEQ-D5BDAE4B",
+      "revision": 1,
+      "semantic_sha256": "d5bdae4b8bd4815643e3933e19eb1b0d7f765ac2cea8631fa167243a42fb34a8",
+      "statement": "Allocate deeper and more independent assurance to high-risk, safety-related, security-sensitive, privacy-sensitive, financially consequential, or widely reused components.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 309
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Assurance strategy, scope, and independence"
+      ]
+    },
+    {
+      "control_id": "USEQ-C807D350",
+      "revision": 1,
+      "semantic_sha256": "c807d350a6ac60d4163fb776e870e140bf2257f0ce34dd055e6324d74356514e",
+      "statement": "Separate test design, implementation, execution, result interpretation, and release approval sufficiently to reduce confirmation bias for material controls.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 310
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Assurance strategy, scope, and independence"
+      ]
+    },
+    {
+      "control_id": "USEQ-63C4A075",
+      "revision": 1,
+      "semantic_sha256": "63c4a075862b46cfc4109dbc67f19f5d8c3bd380000f4288610b592e60da6265",
+      "statement": "Ensure the test organization can stop a release without commercial or schedule retaliation when release criteria are not met.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 311
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Assurance strategy, scope, and independence"
+      ]
+    },
+    {
+      "control_id": "USEQ-3C8C8565",
+      "revision": 1,
+      "semantic_sha256": "3c8c8565aab8207a325e73ff5e2c62d64b85bdbdc178ae84f510f17b9b46c39c",
+      "statement": "Define the required evidence for each lifecycle stage and quality attribute before implementation begins.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 312
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Assurance strategy, scope, and independence"
+      ]
+    },
+    {
+      "control_id": "USEQ-2FBAD908",
+      "revision": 1,
+      "semantic_sha256": "2fbad9086952ce814bb3abd24f594e7996730b78675ea5b152b958b53c56d574",
+      "statement": "Specify which assurance activities are automated, manually performed, independently witnessed, formally verified, externally assessed, or continuously monitored.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 313
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Assurance strategy, scope, and independence"
+      ]
+    },
+    {
+      "control_id": "USEQ-600C7E40",
+      "revision": 1,
+      "semantic_sha256": "600c7e40477b55092aca04d03536f12815a3f6b665bf4e1af51361372ef5cda7",
+      "statement": "Use multiple complementary verification methods for critical claims rather than relying on one tool or test layer.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 314
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Assurance strategy, scope, and independence"
+      ]
+    },
+    {
+      "control_id": "USEQ-F76F8CFD",
+      "revision": 1,
+      "semantic_sha256": "f76f8cfdc9dc0fbfabeb02e530d7679433a36d393428d943786c8cc4959cb747",
+      "statement": "Review the assurance strategy after material changes in architecture, risk, regulation, suppliers, users, deployment model, incident history, or threat landscape.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 315
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Assurance strategy, scope, and independence"
+      ]
+    },
+    {
+      "control_id": "USEQ-7D51BFD7",
+      "revision": 1,
+      "semantic_sha256": "7d51bfd77ac1a2d06c86215d2a126ab76de974df67847fac484791e6b4641c3c",
+      "statement": "Maintain competence requirements for people designing, performing, and reviewing specialized testing.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 316
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Assurance strategy, scope, and independence"
+      ]
+    },
+    {
+      "control_id": "USEQ-62725A3B",
+      "revision": 1,
+      "semantic_sha256": "62725a3bb3f51db62cfac354c1c336aaef703468c127e183d99c25cd94b6d845",
+      "statement": "Treat supplier test reports, certifications, and attestations as inputs requiring scope and freshness validation rather than unquestioned proof.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 317
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Assurance strategy, scope, and independence"
+      ]
+    },
+    {
+      "control_id": "USEQ-A0245E21",
+      "revision": 1,
+      "semantic_sha256": "a0245e210b03c36cb64acf987487ccbe28dd4ae8a2d78e64843cb212e92fcf9b",
+      "statement": "Align assurance depth with the required confidence and consequence of failure, not simply project size.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 318
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Assurance strategy, scope, and independence"
+      ]
+    },
+    {
+      "control_id": "USEQ-70949753",
+      "revision": 1,
+      "semantic_sha256": "70949753c934b1fa95b1d1f3f3f3be3ce4a7abc3f9c75529a5d1ea007f38d809",
+      "statement": "Document the conditions under which production evidence may supplement preproduction testing and the controls that make such testing safe.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 319
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Assurance strategy, scope, and independence"
+      ]
+    },
+    {
+      "control_id": "USEQ-BCD4F01B",
+      "revision": 1,
+      "semantic_sha256": "bcd4f01bb9b4ce499318afb8d0cb2381c987986a75d70cff327b16927e42da01",
+      "statement": "Identify the authoritative test basis for every behavior, including requirements, user needs, contracts, standards, policies, architecture decisions, threat models, data rules, and operational objectives.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 323
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Test basis, requirements traceability, and executable acceptance"
+      ]
+    },
+    {
+      "control_id": "USEQ-5A0ADC36",
+      "revision": 1,
+      "semantic_sha256": "5a0adc362ac98db1e759a1f4320dfaae358aad6765837be11b7fae6cb275cb31",
+      "statement": "Resolve ambiguous, contradictory, untestable, unverifiable, or missing requirements before relying on test execution.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 324
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Test basis, requirements traceability, and executable acceptance"
+      ]
+    },
+    {
+      "control_id": "USEQ-22497A56",
+      "revision": 1,
+      "semantic_sha256": "22497a56bb49ac03f65d41a15e56069dfd9ea6469bc031378affc3e58502dad2",
+      "statement": "Express critical requirements with measurable acceptance criteria, observable outcomes, tolerances, preconditions, and failure behavior.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 325
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Test basis, requirements traceability, and executable acceptance"
+      ]
+    },
+    {
+      "control_id": "USEQ-506562A9",
+      "revision": 1,
+      "semantic_sha256": "506562a9871180cd927e72ed26bcbb76c2b7611ef64a5b8ca731032b2283cd20",
+      "statement": "Trace every critical requirement and risk to one or more verification activities and every verification result back to the requirement or risk it addresses.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 326
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Test basis, requirements traceability, and executable acceptance"
+      ]
+    },
+    {
+      "control_id": "USEQ-BD7F03F5",
+      "revision": 1,
+      "semantic_sha256": "bd7f03f5be2769ee6bd298022e224ed6c3ac085c8f01289bea3c3189e39844b0",
+      "statement": "Trace tests to the exact product version, configuration, feature flags, schema, data state, dependency versions, and environment evaluated.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 327
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Test basis, requirements traceability, and executable acceptance"
+      ]
+    },
+    {
+      "control_id": "USEQ-2460BD77",
+      "revision": 1,
+      "semantic_sha256": "2460bd772c8fc693700e40feb34121d274a71dd677e924bfd1593db62d86a9ee",
+      "statement": "Identify requirements that cannot be fully tested and define alternative analysis, review, proof, monitoring, or operational controls.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 328
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Test basis, requirements traceability, and executable acceptance"
+      ]
+    },
+    {
+      "control_id": "USEQ-87D05822",
+      "revision": 1,
+      "semantic_sha256": "87d05822130f9995c16450ec973fa39f18e6da0d43bfc99f6d8ac3dfbaac640b",
+      "statement": "Include negative requirements and prohibited states, not only desired behavior.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 329
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Test basis, requirements traceability, and executable acceptance"
+      ]
+    },
+    {
+      "control_id": "USEQ-A6BEC6D1",
+      "revision": 1,
+      "semantic_sha256": "a6bec6d17650a7abc45c44ed3613946b467c1679adcd4f7922c2471368cd8fa7",
+      "statement": "Include invariants that must remain true across operations, concurrency, retries, recovery, migration, and partial failure.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 330
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Test basis, requirements traceability, and executable acceptance"
+      ]
+    },
+    {
+      "control_id": "USEQ-ADEFDCCF",
+      "revision": 1,
+      "semantic_sha256": "adefdccf28a5d02f6f4966aa3cfd80fbeed53a438dc78ed46ba7eafb52e602a0",
+      "statement": "Include quantitative tolerances for accuracy, latency, capacity, availability, reliability, numerical error, and data quality where relevant.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 331
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Test basis, requirements traceability, and executable acceptance"
+      ]
+    },
+    {
+      "control_id": "USEQ-38D4FA5F",
+      "revision": 1,
+      "semantic_sha256": "38d4fa5f73a1fbbda048386ea83fb25e868549c0d24c6296be43c6fe2fcbf22a",
+      "statement": "Include accessibility, privacy, security, interoperability, supportability, and recoverability in acceptance criteria rather than treating them as optional audits.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 332
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Test basis, requirements traceability, and executable acceptance"
+      ]
+    },
+    {
+      "control_id": "USEQ-94DBFEBA",
+      "revision": 1,
+      "semantic_sha256": "94dbfeba8fedf78d5e0b20f8aa07cd75ac07a4adf1a0f15a106d00674bf4127a",
+      "statement": "Keep acceptance criteria independent of one implementation when the requirement is intended to remain technology-neutral.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 333
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Test basis, requirements traceability, and executable acceptance"
+      ]
+    },
+    {
+      "control_id": "USEQ-ED0E5F15",
+      "revision": 1,
+      "semantic_sha256": "ed0e5f157eace402f738cb29018d3f415bccae9db47bc6372c285126b3bb2599",
+      "statement": "Version and review the test basis so that requirement changes invalidate affected test evidence.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 334
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Test basis, requirements traceability, and executable acceptance"
+      ]
+    },
+    {
+      "control_id": "USEQ-FD79CE2B",
+      "revision": 1,
+      "semantic_sha256": "fd79ce2b4e2aa01363d2fba16c6b5937dd5b382b8befc27fe1110bc8c179496b",
+      "statement": "Ensure examples and mockups do not silently replace normative behavior unless explicitly approved.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 335
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Test basis, requirements traceability, and executable acceptance"
+      ]
+    },
+    {
+      "control_id": "USEQ-C15B6052",
+      "revision": 1,
+      "semantic_sha256": "c15b6052136775c4aaceac0918bbf4451c284e05b4fa7e6087c41fb6584ed0ea",
+      "statement": "Record unresolved questions and assumptions with owners and deadlines.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 336
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Test basis, requirements traceability, and executable acceptance"
+      ]
+    },
+    {
+      "control_id": "USEQ-3407C631",
+      "revision": 1,
+      "semantic_sha256": "3407c63174c69432342a45abcee7c44e95984b5b653c13d32e57fcdf39691456",
+      "statement": "Require business, engineering, operations, security, privacy, accessibility, and data stakeholders to approve material acceptance criteria within their remit.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 337
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Test basis, requirements traceability, and executable acceptance"
+      ]
+    },
+    {
+      "control_id": "USEQ-9262DCB4",
+      "revision": 1,
+      "semantic_sha256": "9262dcb4f7bb65a786b48c78ac47586f15041cb89bdc353dfb2d1a0ddb88a2e8",
+      "statement": "Define how each test determines correctness rather than assuming that successful execution implies a correct result.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 341
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Test-oracle design and correctness of expected results"
+      ]
+    },
+    {
+      "control_id": "USEQ-43727413",
+      "revision": 1,
+      "semantic_sha256": "43727413cb83244b84aaa361c4abd986493dd8b1a0f3a6d45819b4d9d7f730e5",
+      "statement": "Use independent reference calculations, authoritative data, specifications, invariants, models, or alternative implementations for high-impact outcomes.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 342
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Test-oracle design and correctness of expected results"
+      ]
+    },
+    {
+      "control_id": "USEQ-0F70FDC0",
+      "revision": 1,
+      "semantic_sha256": "0f70fdc0316cb044af0415642b3d3a87390386a3e6115a387e8ce367c96e8159",
+      "statement": "Avoid generating expected results with the same logic or defect-prone implementation being tested.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 343
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Test-oracle design and correctness of expected results"
+      ]
+    },
+    {
+      "control_id": "USEQ-44FB8B29",
+      "revision": 1,
+      "semantic_sha256": "44fb8b29496573a2cc89a3fd6f69d6e76de50f02725a3f3bc8faaf1cd9178960",
+      "statement": "Validate test oracles themselves through review, known examples, cross-checks, and controlled faults.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 344
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Test-oracle design and correctness of expected results"
+      ]
+    },
+    {
+      "control_id": "USEQ-E9D5AC04",
+      "revision": 1,
+      "semantic_sha256": "e9d5ac04ba7cd9dac8e685581c2af34068761cb5e20b17d7717f027887394e85",
+      "statement": "Distinguish exact expected values from acceptable ranges, statistical distributions, temporal bounds, eventual outcomes, and qualitative judgments.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 345
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Test-oracle design and correctness of expected results"
+      ]
+    },
+    {
+      "control_id": "USEQ-C33A820B",
+      "revision": 1,
+      "semantic_sha256": "c33a820b6c47ec7f6b78b75f890c43817e1a15dd3a9d03f2adf832588ba86b1b",
+      "statement": "Define oracles for intermediate state, side effects, messages, logs, external calls, audit records, notifications, and resource changes, not only final user-visible output.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 346
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Test-oracle design and correctness of expected results"
+      ]
+    },
+    {
+      "control_id": "USEQ-352EFEBC",
+      "revision": 1,
+      "semantic_sha256": "352efebcfdf6570b8d4ad92e0c13c89d51c70adcde39350cfdf7044c2f6466bb",
+      "statement": "Verify that expected error type, message class, retryability, status, and recovery behavior are correct.",
+      "source": {
+        "path": "docs/engineering/10-verification-and-testing.md",
+        "line": 347
+      },
+      "heading_trail": [
+        "Verification and testing",
+        "Advanced Testing, Conformance, and Continuous Assurance",
+        "Test-oracle design and correctness of expected results"
+      ]
+    }
+  ]
+}

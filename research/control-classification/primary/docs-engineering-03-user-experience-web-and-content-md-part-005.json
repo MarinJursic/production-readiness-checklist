@@ -1,0 +1,691 @@
+{
+  "schema_version": "prc.control-classification-review/v0.1",
+  "packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-005",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "source_path": "docs/engineering/03-user-experience-web-and-content.md",
+  "controls": [
+    {
+      "control_id": "USEQ-B6DF1544",
+      "revision": 1,
+      "semantic_sha256": "b6df15441887e1708632bb15a4c380b9b56f0c7e168d97155f5aa41f00375616",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The control “Distinguish mandatory steps from optional guidance.” defines a bounded procedure, exercise, evaluation, monitoring, deviation, risk, or assurance record whose explicit fields can be checked exactly.",
+      "deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit step type, scenario, method, role, metric, deviation, risk link, owner, expiry, or assurance binding named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-10C48526",
+      "revision": 1,
+      "semantic_sha256": "10c48526307b967a7c9dab6903a1187aa52a0e4ba719ef8097388ae3f88946b9",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The control “Explain the purpose and hazard controlled by critical steps.” defines a bounded procedure, exercise, evaluation, monitoring, deviation, risk, or assurance record whose explicit fields can be checked exactly.",
+      "deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit step type, scenario, method, role, metric, deviation, risk link, owner, expiry, or assurance binding named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-3B4727FD",
+      "revision": 1,
+      "semantic_sha256": "3b4727fd251123266b09cd4100f3ff22834a4d0f78e3039af0db14aec40e4608",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Validate procedures through realistic walkthroughs and simulations.” has a separable record, configuration, or bounded exercise portion, but full pass status also depends on realism, competence, accessibility, safety, effectiveness, representativeness, or materiality judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated records or bounded exercise evidence expose the named scenario, participant, channel, configuration, action, or result without treating contextual adequacy or complete coverage as proven.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-5E37EAFF",
+      "revision": 1,
+      "semantic_sha256": "5e37eaff24f8af664679cffc23c18fd90b59f68382ff9a6dca143762f602e99e",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The control “Train personnel on abnormal, degraded, emergency, and recovery conditions, not only routine success paths.” can be decided by exact joins across authoritative role, change, training, environment, interface, evaluation, and review evidence with stable identifiers and times.",
+      "deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope role, change, training requirement, practice environment, interface, or high-impact evaluation subject.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound authenticated evidence satisfies every exact isolation, timing, revision, participant, reassessment, or independent-review condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-A4F91F23",
+      "revision": 1,
+      "semantic_sha256": "a4f91f23b85b7051ac0e1bf1dc547669996603d87bc24fa35ba57f803a9158db",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Assess demonstrated competence rather than attendance alone.” has a separable record, configuration, or bounded exercise portion, but full pass status also depends on realism, competence, accessibility, safety, effectiveness, representativeness, or materiality judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated records or bounded exercise evidence expose the named scenario, participant, channel, configuration, action, or result without treating contextual adequacy or complete coverage as proven.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F11266F2",
+      "revision": 1,
+      "semantic_sha256": "f11266f2c9261c131238bde4ed005843563d72c55353ac1682ab6c1efa281d0d",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The control “Refresh training when the system, threat, procedure, or role materially changes.” can be decided by exact joins across authoritative role, change, training, environment, interface, evaluation, and review evidence with stable identifiers and times.",
+      "deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope role, change, training requirement, practice environment, interface, or high-impact evaluation subject.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound authenticated evidence satisfies every exact isolation, timing, revision, participant, reassessment, or independent-review condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-0AA2E884",
+      "revision": 1,
+      "semantic_sha256": "0aa2e8843aae2163391e38143a2e5e5fd76b30f2a3f4dffd28d13b68748d9952",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Provide safe practice environments for high-impact operations.” has a separable record, configuration, or bounded exercise portion, but full pass status also depends on realism, competence, accessibility, safety, effectiveness, representativeness, or materiality judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated records or bounded exercise evidence expose the named scenario, participant, channel, configuration, action, or result without treating contextual adequacy or complete coverage as proven.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-C691A030",
+      "revision": 1,
+      "semantic_sha256": "c691a0309a4b2344f5fd7a49c45ca310f126a83659752ab29c96710e28232a13",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The control “Ensure simulations cannot affect production data or users.” can be decided by exact joins across authoritative role, change, training, environment, interface, evaluation, and review evidence with stable identifiers and times.",
+      "deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope role, change, training requirement, practice environment, interface, or high-impact evaluation subject.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound authenticated evidence satisfies every exact isolation, timing, revision, participant, reassessment, or independent-review condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-9754BE06",
+      "revision": 1,
+      "semantic_sha256": "9754be0673689188fa2a87fea06b22e582d4bc87e7bd38b9d7ba133429ddb524",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The control “Include communication, escalation, evidence preservation, and customer impact in exercises.” defines a bounded procedure, exercise, evaluation, monitoring, deviation, risk, or assurance record whose explicit fields can be checked exactly.",
+      "deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit step type, scenario, method, role, metric, deviation, risk link, owner, expiry, or assurance binding named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-C5B812F6",
+      "revision": 1,
+      "semantic_sha256": "c5b812f6f42821b17bdbbf47a4c06378383359bccb8dbfb48516558637b0d89e",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Capture exercise findings and verify corrective-action effectiveness.” has a separable record, configuration, or bounded exercise portion, but full pass status also depends on realism, competence, accessibility, safety, effectiveness, representativeness, or materiality judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated records or bounded exercise evidence expose the named scenario, participant, channel, configuration, action, or result without treating contextual adequacy or complete coverage as proven.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-56926CF3",
+      "revision": 1,
+      "semantic_sha256": "56926cf36db647779c3e679dab8ce4fe50a7e55fdc73519559addc429f4d671c",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The control “Avoid procedures so complex or lengthy that compliance is unrealistic under actual conditions.” depends on realistic complexity, language, culture, inclusion, workload, or incentive effects with no project-independent pass rule.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-141DC9C4",
+      "revision": 1,
+      "semantic_sha256": "141dc9c4ae2568f8760ea5341f1dff6e5c53136a205a72be62b818793ce244a0",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The control “Provide concise checklists for infrequent high-risk tasks while preserving detailed supporting guidance.” depends on realistic complexity, language, culture, inclusion, workload, or incentive effects with no project-independent pass rule.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-BD879838",
+      "revision": 1,
+      "semantic_sha256": "bd8798389c89228c7380540370508277413c6cd6d176cf00282cbc63f89704ad",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "A versioned critical-task protocol can directly observe whether new personnel complete each approved task without undocumented assistance, making the bounded result objective.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated execution evidence records each approved critical task, the new participant, prohibited assistance conditions, observed assistance, and terminal outcome.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-0484AE31",
+      "revision": 1,
+      "semantic_sha256": "0484ae31435f90f56e74952ab83d8515a0e9b0ac6877f7dd8b1dbbc59a5f98c1",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Make internal and administrative tools meet an explicit accessibility target proportionate to their importance.” has a separable record, configuration, or bounded exercise portion, but full pass status also depends on realism, competence, accessibility, safety, effectiveness, representativeness, or materiality judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated records or bounded exercise evidence expose the named scenario, participant, channel, configuration, action, or result without treating contextual adequacy or complete coverage as proven.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-7E095AAC",
+      "revision": 1,
+      "semantic_sha256": "7e095aacf60c929a814b1410da42633a5fcca5dfadcd28f0b9f94b10148085be",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The control “Include workers with disabilities in evaluation of critical tools and procedures.” can be decided by exact joins across authoritative role, change, training, environment, interface, evaluation, and review evidence with stable identifiers and times.",
+      "deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope role, change, training requirement, practice environment, interface, or high-impact evaluation subject.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound authenticated evidence satisfies every exact isolation, timing, revision, participant, reassessment, or independent-review condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-32C2F9AE",
+      "revision": 1,
+      "semantic_sha256": "32c2f9aedbbfe4a9e44ce6b9916e11761a4e0ad32d75c6eac303f06d5dcd0f34",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Provide alternatives to audio, visual, fine-motor, memory, speech, and biometric interaction where appropriate.” has a separable record, configuration, or bounded exercise portion, but full pass status also depends on realism, competence, accessibility, safety, effectiveness, representativeness, or materiality judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated records or bounded exercise evidence expose the named scenario, participant, channel, configuration, action, or result without treating contextual adequacy or complete coverage as proven.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-0CA3DF0E",
+      "revision": 1,
+      "semantic_sha256": "0ca3df0e2c26e2607f0878597d6e28e1eb0edb3fdeb3c3141ec14011826f99d7",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Ensure emergency and security procedures are accessible.” has a separable record, configuration, or bounded exercise portion, but full pass status also depends on realism, competence, accessibility, safety, effectiveness, representativeness, or materiality judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated records or bounded exercise evidence expose the named scenario, participant, channel, configuration, action, or result without treating contextual adequacy or complete coverage as proven.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-BC3E5A49",
+      "revision": 1,
+      "semantic_sha256": "bc3e5a4978c10f7d75b85b6ecac36d7dda0f2c6b46549942cd76bf5b36a55e00",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The control “Avoid role requirements that exclude people unnecessarily when the barrier can be removed by design or accommodation.” requires accessibility, accommodation, discrimination, safety, or employment-specialist judgment that a generic scanner cannot authoritatively decide.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-0AC37768",
+      "revision": 1,
+      "semantic_sha256": "0ac377684b80af15b7a71246d455c51e320e28444b76531e921fe9df8813c2b4",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The control “Support language, literacy, cultural, and domain-knowledge differences among intended operators.” depends on realistic complexity, language, culture, inclusion, workload, or incentive effects with no project-independent pass rule.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-2370BDFB",
+      "revision": 1,
+      "semantic_sha256": "2370bdfb92154e9fc290f4fbc992729832c5890d233e68f9740dd68f67c729ee",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The control “Use terminology consistently across interfaces, documentation, alerts, and training.” depends on realistic complexity, language, culture, inclusion, workload, or incentive effects with no project-independent pass rule.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-58670489",
+      "revision": 1,
+      "semantic_sha256": "586704893cb4dcfad11283e914f50aec5c7161a4f584a8475904c9108202bdd3",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The control “Avoid humor, idiom, abbreviations, and culturally specific assumptions in safety- or security-critical instructions.” depends on realistic complexity, language, culture, inclusion, workload, or incentive effects with no project-independent pass rule.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-0946EC5B",
+      "revision": 1,
+      "semantic_sha256": "0946ec5b94ef4d97e3a07444a80d7214d40bb354db3bd35424ff975b1dce4626",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The control “Provide accessible accommodations without weakening accountability or security.” requires accessibility, accommodation, discrimination, safety, or employment-specialist judgment that a generic scanner cannot authoritatively decide.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-E4E1E40D",
+      "revision": 1,
+      "semantic_sha256": "e4e1e40da1ccd957ab906340a8fad55787e0e951be62bf86b237f375325d7785",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Protect health, disability, and accommodation information from unnecessary disclosure.” has a separable record, configuration, or bounded exercise portion, but full pass status also depends on realism, competence, accessibility, safety, effectiveness, representativeness, or materiality judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated records or bounded exercise evidence expose the named scenario, participant, channel, configuration, action, or result without treating contextual adequacy or complete coverage as proven.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-511286BE",
+      "revision": 1,
+      "semantic_sha256": "511286bee898bebca1a45b234d1c583c20769c56ab86dab4019d34fc8b10affd",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The control “Evaluate whether productivity metrics penalize accessibility needs, careful review, mentoring, or incident-prevention work.” depends on realistic complexity, language, culture, inclusion, workload, or incentive effects with no project-independent pass rule.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-CF9A3C7A",
+      "revision": 1,
+      "semantic_sha256": "cf9a3c7aa8482459332e2438d946f5346d883bc262edf4adb34201d8e2c60754",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Provide accessible reporting, escalation, and support channels.” has a separable record, configuration, or bounded exercise portion, but full pass status also depends on realism, competence, accessibility, safety, effectiveness, representativeness, or materiality judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated records or bounded exercise evidence expose the named scenario, participant, channel, configuration, action, or result without treating contextual adequacy or complete coverage as proven.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-BB1DA3B6",
+      "revision": 1,
+      "semantic_sha256": "bb1da3b6ee05b5fdf273d759ef58c7cdcae7093e3524bf5217ece0ee86225c02",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The control “Define representative tasks, roles, environments, data, devices, and stress conditions for evaluation.” defines a bounded procedure, exercise, evaluation, monitoring, deviation, risk, or assurance record whose explicit fields can be checked exactly.",
+      "deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit step type, scenario, method, role, metric, deviation, risk link, owner, expiry, or assurance binding named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-FA348CF7",
+      "revision": 1,
+      "semantic_sha256": "fa348cf787c3a48533ee8c0824718a6c708a64bc6a3121ad404cd68c78aa7557",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The control “Combine observation, task-performance measures, interviews, workload assessment, error analysis, and production evidence.” defines a bounded procedure, exercise, evaluation, monitoring, deviation, risk, or assurance record whose explicit fields can be checked exactly.",
+      "deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit step type, scenario, method, role, metric, deviation, risk link, owner, expiry, or assurance binding named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-1FA1F50C",
+      "revision": 1,
+      "semantic_sha256": "1fa1f50c583e06fa160cc5ee5cae71c7f0dbbfbd511025cbc999f19b21f1103f",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Include novice, experienced, occasional, and substitute users where their behavior differs materially.” has a separable record, configuration, or bounded exercise portion, but full pass status also depends on realism, competence, accessibility, safety, effectiveness, representativeness, or materiality judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated records or bounded exercise evidence expose the named scenario, participant, channel, configuration, action, or result without treating contextual adequacy or complete coverage as proven.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-8E0AE768",
+      "revision": 1,
+      "semantic_sha256": "8e0ae768bb79537f05f5d9bbc28e0bb3f5478e0b3f0abdf559ec77fc1aa2c347",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The control “Evaluate critical tasks using the exact production interface and configuration.” can be decided by exact joins across authoritative role, change, training, environment, interface, evaluation, and review evidence with stable identifiers and times.",
+      "deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope role, change, training requirement, practice environment, interface, or high-impact evaluation subject.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound authenticated evidence satisfies every exact isolation, timing, revision, participant, reassessment, or independent-review condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-5B8BCABC",
+      "revision": 1,
+      "semantic_sha256": "5b8bcabc3fab66f9d15b9b610e0bb753e5ae68696a0dc676c89b3cc038f803cc",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The control “Record deviations between test conditions and real operation.” defines a bounded procedure, exercise, evaluation, monitoring, deviation, risk, or assurance record whose explicit fields can be checked exactly.",
+      "deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit step type, scenario, method, role, metric, deviation, risk link, owner, expiry, or assurance binding named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-FE495998",
+      "revision": 1,
+      "semantic_sha256": "fe4959987d3bf472719af81292f8edb6e5375bd12d20c69fa1a698c1bae8d37b",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "Determining that approval was based solely on trained designers or developers requires interpreting the decision-maker’s reasons and remains an accountable human governance judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-EE93F582",
+      "revision": 1,
+      "semantic_sha256": "ee93f58273ab6a2342fcce5e5327dba6fb183bb52cc3baf7ee0683801d0ae1f8",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Treat repeated confusion, unsafe workaround, alarm dismissal, or recovery failure as a release blocker when impact is material.” has a separable record, configuration, or bounded exercise portion, but full pass status also depends on realism, competence, accessibility, safety, effectiveness, representativeness, or materiality judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated records or bounded exercise evidence expose the named scenario, participant, channel, configuration, action, or result without treating contextual adequacy or complete coverage as proven.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-CA8D6F84",
+      "revision": 1,
+      "semantic_sha256": "ca8d6f84b7d7938b0510ff0e971c73ab2d0f7bc20d3c8c1a52699d97773dce52",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The control “Re-evaluate human performance after major interface, staffing, automation, or process changes.” can be decided by exact joins across authoritative role, change, training, environment, interface, evaluation, and review evidence with stable identifiers and times.",
+      "deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope role, change, training requirement, practice environment, interface, or high-impact evaluation subject.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound authenticated evidence satisfies every exact isolation, timing, revision, participant, reassessment, or independent-review condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-15D04E70",
+      "revision": 1,
+      "semantic_sha256": "15d04e70df560811193f0465e4067f77fbfb9c1df1874d8e91e993eb9fef505b",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The control “Monitor task failure, support demand, near misses, overrides, abandonment, and recovery after launch.” defines a bounded procedure, exercise, evaluation, monitoring, deviation, risk, or assurance record whose explicit fields can be checked exactly.",
+      "deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit step type, scenario, method, role, metric, deviation, risk link, owner, expiry, or assurance binding named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-1364D5A3",
+      "revision": 1,
+      "semantic_sha256": "1364d5a3f4276c746d47ddaa097ec6b9f8ae062a22ea971a9c60b4c8168630c2",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The control “Preserve a human-factors risk register and link unresolved risks to owners, monitoring, and expiry.” defines a bounded procedure, exercise, evaluation, monitoring, deviation, risk, or assurance record whose explicit fields can be checked exactly.",
+      "deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit step type, scenario, method, role, metric, deviation, risk link, owner, expiry, or assurance binding named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-C01D9ECD",
+      "revision": 1,
+      "semantic_sha256": "c01d9ecdbce47e7a28f40e22e38f46d98fbde999da67efacda1513dd3ff814dd",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The control “Require independent review when human error could create catastrophic or systemic harm.” can be decided by exact joins across authoritative role, change, training, environment, interface, evaluation, and review evidence with stable identifiers and times.",
+      "deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope role, change, training requirement, practice environment, interface, or high-impact evaluation subject.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound authenticated evidence satisfies every exact isolation, timing, revision, participant, reassessment, or independent-review condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-33BC0B54",
+      "revision": 1,
+      "semantic_sha256": "33bc0b54b607d709f85fb32f362e4a1fb4afe709da3096e57e5ba1d176aa9dfe",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The control “Include human-factors evidence in production-readiness and assurance cases.” defines a bounded procedure, exercise, evaluation, monitoring, deviation, risk, or assurance record whose explicit fields can be checked exactly.",
+      "deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit step type, scenario, method, role, metric, deviation, risk link, owner, expiry, or assurance binding named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    }
+  ]
+}

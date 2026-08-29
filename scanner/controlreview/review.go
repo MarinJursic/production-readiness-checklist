@@ -28,9 +28,22 @@ const (
 	maximumCachedOutput     = 1024 * 1024
 )
 
-// Apply runs an explicitly authorized advisory review for every selected active
-// control. Repository content is copied, screened, and embedded as untrusted
-// context; provider tools never receive the source workspace path.
+var reviewedDeterministicRoutes = map[string]bool{
+	"local_static": true, "artifact_verification": true, "bounded_execution": true,
+	"external_readonly_query": true, "structured_record_validation": true,
+	"deterministic_composite": true,
+}
+
+var reviewedNondeterministicRoutes = map[string]bool{
+	"contextual_judgment": true, "accountable_human_decision": true,
+	"specialist_or_legal_judgment": true, "empirical_protocol_undefined": true,
+	"contract_incomplete": true, "mixed": true, "unbounded_claim": true,
+}
+
+// Apply runs an explicitly authorized advisory review for every selected,
+// active, reviewed nondeterministic control. Repository content is copied,
+// screened, and embedded as untrusted context; provider tools never receive
+// the source workspace path.
 func Apply(ctx context.Context, run model.RunResult, options Options) (model.RunResult, Summary, error) {
 	started := time.Now()
 	if run.ControlCatalog == nil || len(run.ControlResults) == 0 {
@@ -40,6 +53,11 @@ func Apply(ctx context.Context, run model.RunResult, options Options) (model.Run
 		return model.RunResult{}, Summary{}, fmt.Errorf("AI review requires explicit --allow-remote-source-processing acknowledgement")
 	}
 	if err := normalizeOptions(&options); err != nil {
+		return model.RunResult{}, Summary{}, err
+	}
+	// Reject legacy, unknown, and explicitly deterministic selections before
+	// copying any source context or creating resumable state.
+	if _, _, err := selectReviewControls(run, options.ControlIDs); err != nil {
 		return model.RunResult{}, Summary{}, err
 	}
 	snapshot, err := createSnapshot(run.Inventory)
@@ -84,6 +102,7 @@ func Apply(ctx context.Context, run model.RunResult, options Options) (model.Run
 	}
 	baseProgress := Progress{
 		Phase: "prepared", Provider: options.Provider, Model: options.Model,
+		ReviewDepth:    options.ReviewDepth,
 		StateDirectory: stateDirectory, Workers: options.Workers,
 		TotalBatches: len(tasks), CompletedBatches: reused, ReusedBatches: reused,
 		TotalControls: totalControls, CompletedControls: reusedControls,
@@ -92,15 +111,15 @@ func Apply(ctx context.Context, run model.RunResult, options Options) (model.Run
 	if options.Progress != nil {
 		options.Progress(baseProgress)
 	}
-	statistics, err := runPendingBatches(
+	statistics, batchErr := runPendingBatches(
 		ctx, runner, tasks, pending, outputs, stateDirectory, options.Workers,
 		options.Progress, baseProgress, started,
 	)
-	if err != nil {
-		return model.RunResult{}, Summary{}, err
-	}
 	reviews := map[string]Review{}
 	for _, output := range outputs {
+		if output.SchemaVersion == "" {
+			continue
+		}
 		for _, review := range output.Reviews {
 			if _, exists := reviews[review.ControlID]; exists {
 				return model.RunResult{}, Summary{}, fmt.Errorf("provider repeated advisory review for %s", review.ControlID)
@@ -119,9 +138,15 @@ func Apply(ctx context.Context, run model.RunResult, options Options) (model.Run
 		}
 		run.ControlResults[index].AIReview = &model.AIControlReview{
 			Provider: options.Provider, Model: options.Model,
+			ReviewDepth:            options.ReviewDepth,
 			AssessmentCandidate:    review.AssessmentCandidate,
 			ApplicabilityCandidate: review.ApplicabilityCandidate,
-			Confidence:             review.Confidence, Reason: review.Reason, Advice: review.Advice,
+			Confidence:             review.Confidence, Priority: review.Priority,
+			Reason: review.Reason, Challenge: review.Challenge,
+			RiskIfIgnored: review.RiskIfIgnored, Advice: review.Advice,
+			RemediationSteps:     append([]string{}, review.RemediationSteps...),
+			VerificationSteps:    append([]string{}, review.VerificationSteps...),
+			EvidenceNeeded:       append([]string{}, review.EvidenceNeeded...),
 			Evidence:             append([]model.FindingLocation{}, review.Evidence...),
 			Limitations:          append([]string{}, review.Limitations...),
 			CitationVerification: citationVerification(review.Evidence),
@@ -131,9 +156,12 @@ func Apply(ctx context.Context, run model.RunResult, options Options) (model.Run
 	}
 	run.ControlCatalog.AIReviewProvider = options.Provider
 	run.ControlCatalog.AIReviewModel = options.Model
+	run.ControlCatalog.AIReviewDepth = options.ReviewDepth
 	run.ControlCatalog.AIReviewedCount = len(reviews)
 	run.ControlCatalog.AIAdvisoryFailCount = advisoryFailures
-	if focused {
+	if batchErr != nil {
+		run.ControlCatalog.AIReviewState = "partial"
+	} else if focused {
 		run.ControlCatalog.AIReviewState = "focused"
 	} else {
 		run.ControlCatalog.AIReviewState = "complete"
@@ -142,14 +170,19 @@ func Apply(ctx context.Context, run model.RunResult, options Options) (model.Run
 	if err != nil {
 		return model.RunResult{}, Summary{}, err
 	}
-	return run, Summary{
-		Provider: options.Provider, Model: options.Model, ReviewedControls: len(reviews),
+	summary := Summary{
+		Provider: options.Provider, Model: options.Model, ReviewDepth: options.ReviewDepth,
+		ReviewedControls: len(reviews),
 		AdvisoryFailures: advisoryFailures, ReusedBatches: reused,
-		CompletedBatches: len(tasks), StateDirectory: stateDirectory, Focused: focused,
+		CompletedBatches: reused + statistics.CompletedBatches, StateDirectory: stateDirectory, Focused: focused,
 		TokenUsage: statistics.TokenUsage, TokenUsageBatches: statistics.TokenUsageBatches,
 		EstimatedCostUSD: statistics.EstimatedCostUSD, EstimatedCostBatches: statistics.EstimatedCostBatches,
 		MaxCostUSD: options.MaxCostUSD, Duration: time.Since(started),
-	}, nil
+	}
+	if batchErr != nil {
+		return run, summary, batchErr
+	}
+	return run, summary, nil
 }
 
 func citationVerification(evidence []model.FindingLocation) string {
@@ -174,6 +207,12 @@ func normalizeOptions(options *Options) error {
 	}
 	if options.Provider == "claude" && options.ReasoningEffort != "high" {
 		return fmt.Errorf("claude AI review supports high reasoning effort; xhigh is Codex-only")
+	}
+	if options.ReviewDepth == "" {
+		options.ReviewDepth = "standard"
+	}
+	if options.ReviewDepth != "standard" && options.ReviewDepth != "deep" {
+		return fmt.Errorf("AI review depth must be standard or deep")
 	}
 	if options.BatchSize == 0 {
 		options.BatchSize = 8
@@ -234,29 +273,12 @@ func pathInside(root, path string) bool {
 }
 
 func buildTasks(run model.RunResult, snapshot reviewSnapshot, options Options) ([]Task, bool, error) {
-	selected := map[string]bool{}
-	for _, id := range options.ControlIDs {
-		if selected[id] {
-			return nil, false, fmt.Errorf("duplicate --review-control %s", id)
-		}
-		selected[id] = true
+	if options.ReviewDepth == "" {
+		options.ReviewDepth = "standard"
 	}
-	focusedRequested := len(selected) > 0
-	controls := make([]model.ControlResult, 0, len(run.ControlResults))
-	for _, control := range run.ControlResults {
-		if control.Disposition == "retired" || focusedRequested && !selected[control.ControlID] {
-			continue
-		}
-		controls = append(controls, control)
-		delete(selected, control.ControlID)
-	}
-	if len(selected) > 0 {
-		unknown := make([]string, 0, len(selected))
-		for id := range selected {
-			unknown = append(unknown, id)
-		}
-		sort.Strings(unknown)
-		return nil, false, fmt.Errorf("unknown or retired --review-control values: %s", strings.Join(unknown, ", "))
+	controls, focusedRequested, err := selectReviewControls(run, options.ControlIDs)
+	if err != nil {
+		return nil, false, err
 	}
 	assertions := map[string]model.AssertionResult{}
 	for _, result := range run.Results {
@@ -268,14 +290,18 @@ func buildTasks(run model.RunResult, snapshot reviewSnapshot, options Options) (
 		task := Task{
 			SchemaVersion: TaskSchema, InventoryDigest: run.Inventory.Digest,
 			RegistrySHA256: run.ControlCatalog.RegistrySHA256, Provider: options.Provider,
-			RequireOneSubagentPerRule: true, Controls: []TaskControl{},
+			ReviewDepth: options.ReviewDepth, RequireOneSubagentPerRule: true,
+			RequireBatchSkeptic: options.ReviewDepth == "deep", Controls: []TaskControl{},
 		}
 		for _, control := range controls[start:end] {
 			item := TaskControl{
 				ControlID: control.ControlID, Statement: control.Statement,
 				ChecklistSource: control.Source, CurrentDisposition: control.Disposition,
 				ContractSHA256: control.ContractSHA256, ContractStatus: control.ContractStatus,
-				CanonicalControlID: control.CanonicalControlID, EvaluationClass: control.EvaluationClass,
+				Classification: control.Classification, ClassificationRoute: control.ClassificationRoute,
+				ClassificationDecisionBasis: control.ClassificationDecisionBasis,
+				ClassificationRowSHA256:     control.ClassificationRowSHA256,
+				CanonicalControlID:          control.CanonicalControlID, EvaluationClass: control.EvaluationClass,
 				AutomationClass: control.AutomationClass, ApplicabilityClass: control.ApplicabilityClass,
 				Atomicity: control.Atomicity, CompleteInventory: control.CompleteInventoryRequired,
 				NegativeCondition: control.NegativeCondition, ProjectThresholds: control.ProjectThresholdsRequired,
@@ -300,7 +326,77 @@ func buildTasks(run model.RunResult, snapshot reviewSnapshot, options Options) (
 		}
 		tasks = append(tasks, sealed)
 	}
-	return tasks, len(controls) < run.ControlCatalog.ActiveControlCount, nil
+	return tasks, focusedRequested, nil
+}
+
+func selectReviewControls(run model.RunResult, requested []string) ([]model.ControlResult, bool, error) {
+	selected := map[string]bool{}
+	for _, id := range requested {
+		if selected[id] {
+			return nil, false, fmt.Errorf("duplicate --review-control %s", id)
+		}
+		selected[id] = true
+	}
+	focusedRequested := len(selected) > 0
+	controls := make([]model.ControlResult, 0, len(run.ControlResults))
+	seen := make(map[string]bool, len(run.ControlResults))
+	for _, control := range run.ControlResults {
+		if control.ControlID == "" || seen[control.ControlID] {
+			return nil, false, fmt.Errorf("AI review control results contain a missing or duplicate control ID %q", control.ControlID)
+		}
+		seen[control.ControlID] = true
+		classification, err := reviewedClassification(control)
+		if err != nil {
+			return nil, false, err
+		}
+		requestedControl := selected[control.ControlID]
+		if requestedControl && classification == "deterministic" {
+			return nil, false, fmt.Errorf("--review-control %s is reviewed deterministic and cannot receive an AI advisory verdict", control.ControlID)
+		}
+		if control.Disposition == "retired" || focusedRequested && !requestedControl {
+			continue
+		}
+		if requestedControl {
+			delete(selected, control.ControlID)
+		}
+		if classification == "nondeterministic" {
+			controls = append(controls, control)
+		}
+	}
+	if len(selected) > 0 {
+		unknown := make([]string, 0, len(selected))
+		for id := range selected {
+			unknown = append(unknown, id)
+		}
+		sort.Strings(unknown)
+		return nil, false, fmt.Errorf("unknown or retired --review-control values: %s", strings.Join(unknown, ", "))
+	}
+	return controls, focusedRequested, nil
+}
+
+func reviewedClassification(control model.ControlResult) (string, error) {
+	if control.ContractStatus != "reviewed" {
+		return "", fmt.Errorf("AI review requires a reviewed control contract for %s; contract status %q is not accepted", control.ControlID, control.ContractStatus)
+	}
+	if !lowerHexDigest(control.ClassificationRowSHA256) {
+		return "", fmt.Errorf("AI review requires reviewed classification data for %s; classification row digest is missing or invalid", control.ControlID)
+	}
+	switch control.Classification {
+	case "deterministic":
+		if !reviewedDeterministicRoutes[control.ClassificationRoute] || control.ClassificationDecisionBasis != "strength_audit_confirmed" {
+			return "", fmt.Errorf("AI review requires reviewed classification data for %s; deterministic route or decision basis is invalid", control.ControlID)
+		}
+	case "nondeterministic":
+		if !reviewedNondeterministicRoutes[control.ClassificationRoute] ||
+			(control.ClassificationDecisionBasis != "primary_nondeterministic" &&
+				control.ClassificationDecisionBasis != "skeptically_rejected" &&
+				control.ClassificationDecisionBasis != "strength_audit_reclassified") {
+			return "", fmt.Errorf("AI review requires reviewed classification data for %s; nondeterministic route or decision basis is invalid", control.ControlID)
+		}
+	default:
+		return "", fmt.Errorf("AI review requires reviewed classification data for %s; classification %q is missing or unknown", control.ControlID, control.Classification)
+	}
+	return control.Classification, nil
 }
 
 func boundedPaths(paths []string, limitations []string) ([]string, []string) {
@@ -556,6 +652,9 @@ enqueue:
 	wait.Wait()
 	if firstErr != nil {
 		return statistics, firstErr
+	}
+	if statistics.CompletedBatches == len(pending) {
+		return statistics, nil
 	}
 	return statistics, ctx.Err()
 }

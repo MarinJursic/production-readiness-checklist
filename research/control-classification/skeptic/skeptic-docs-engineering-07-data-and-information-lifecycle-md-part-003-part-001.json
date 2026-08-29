@@ -1,0 +1,1383 @@
+{
+  "schema_version": "prc.control-classification-skeptic-review/v0.1",
+  "packet_id": "skeptic-docs-engineering-07-data-and-information-lifecycle-md-part-003-part-001",
+  "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-003",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "controls": [
+    {
+      "control_id": "USEQ-0B4C02A3",
+      "revision": 1,
+      "semantic_sha256": "0b4c02a398312b9f9bcc8ac06d3230152fdcf6d13fac701664506b1dffdeab24",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed composite for “Monitor duplicate, orphaned, conflicting, and unmapped identifiers.” does not define exhaustive datasets, failure states, copies, timing, or a complete correctness oracle; a bounded result is only partial evidence.",
+      "counterexample_analysis": "A happy-path fixture can pass for the listed data while an omitted replica, edge record, partial failure, or later processing path still breaks “Monitor duplicate, orphaned, conflicting, and unmapped identifiers.”. The proposed execution therefore Passes while the original claim is false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-092595F5",
+      "revision": 1,
+      "semantic_sha256": "092595f5270d050513a65c26ed21b57356f29c4e3e9a6f4644a8e79e99aed563",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The complete meaning of “Distinguish facts, commands, events, snapshots, projections, and audit records.” depends on data semantics, authority, correctness, or fitness that the proposed record fields merely relabel rather than objectively prove.",
+      "counterexample_analysis": "A record can contain every required heading or enum while using the wrong source of truth, classification, rule, or business meaning. The contract Passes, but “Distinguish facts, commands, events, snapshots, projections, and audit records.” is substantively false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-D8311858",
+      "revision": 1,
+      "semantic_sha256": "d8311858ee033e22d0d4957aa23af0c9248b62659b7e445c4529113bccad4c48",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The complete meaning of “Enforce required uniqueness, referential integrity, valid ranges, and state constraints at reliable boundaries.” depends on data semantics, authority, correctness, or fitness that the proposed record fields merely relabel rather than objectively prove.",
+      "counterexample_analysis": "A record can contain every required heading or enum while using the wrong source of truth, classification, rule, or business meaning. The contract Passes, but “Enforce required uniqueness, referential integrity, valid ranges, and state constraints at reliable boundaries.” is substantively false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F4B2A123",
+      "revision": 1,
+      "semantic_sha256": "f4b2a123385fcde78328544d5d93cab4b86bb5ed320a433c7d971cace70299ee",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The complete meaning of “Use transactions for operations that require atomicity and define boundaries explicitly.” depends on data semantics, authority, correctness, or fitness that the proposed record fields merely relabel rather than objectively prove.",
+      "counterexample_analysis": "A record can contain every required heading or enum while using the wrong source of truth, classification, rule, or business meaning. The contract Passes, but “Use transactions for operations that require atomicity and define boundaries explicitly.” is substantively false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-331C3046",
+      "revision": 1,
+      "semantic_sha256": "331c304664d792a027deeb17e900dfecc58709484624995b6741a02a7ef2194e",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed composite for “Document isolation level, concurrency behavior, lost-update prevention, and conflict resolution.” does not define exhaustive datasets, failure states, copies, timing, or a complete correctness oracle; a bounded result is only partial evidence.",
+      "counterexample_analysis": "A happy-path fixture can pass for the listed data while an omitted replica, edge record, partial failure, or later processing path still breaks “Document isolation level, concurrency behavior, lost-update prevention, and conflict resolution.”. The proposed execution therefore Passes while the original claim is false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-B512CB86",
+      "revision": 1,
+      "semantic_sha256": "b512cb869c5ea50f8ab5eeae478942dfea5dbbcea352b7141914423a40ff9420",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The complete meaning of “Define consistency requirements for replicas, caches, indexes, data lakes, warehouses, and derived views.” depends on data semantics, authority, correctness, or fitness that the proposed record fields merely relabel rather than objectively prove.",
+      "counterexample_analysis": "A record can contain every required heading or enum while using the wrong source of truth, classification, rule, or business meaning. The contract Passes, but “Define consistency requirements for replicas, caches, indexes, data lakes, warehouses, and derived views.” is substantively false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-22F7572F",
+      "revision": 1,
+      "semantic_sha256": "22f7572fc1880e3240f17c0c523b6c5f13bffdf161b0f465aacab6870fd71cbf",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The complete meaning of “Distinguish event time, processing time, ingestion time, effective time, and recorded time.” depends on data semantics, authority, correctness, or fitness that the proposed record fields merely relabel rather than objectively prove.",
+      "counterexample_analysis": "A record can contain every required heading or enum while using the wrong source of truth, classification, rule, or business meaning. The contract Passes, but “Distinguish event time, processing time, ingestion time, effective time, and recorded time.” is substantively false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-BAA2572C",
+      "revision": 1,
+      "semantic_sha256": "baa2572cd9f49384315999b24b866e209470d144079b177423563f1b98bf9dfa",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The complete meaning of “Define correction behavior without erasing required history or duplicating current state.” depends on data semantics, authority, correctness, or fitness that the proposed record fields merely relabel rather than objectively prove.",
+      "counterexample_analysis": "A record can contain every required heading or enum while using the wrong source of truth, classification, rule, or business meaning. The contract Passes, but “Define correction behavior without erasing required history or duplicating current state.” is substantively false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-413EC892",
+      "revision": 1,
+      "semantic_sha256": "413ec892cd35f0bccf68408b883259a2643059c2c4233014890e16bc99f16a5c",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The complete meaning of “Use constraints and checks close to the data rather than relying entirely on application convention.” depends on data semantics, authority, correctness, or fitness that the proposed record fields merely relabel rather than objectively prove.",
+      "counterexample_analysis": "A record can contain every required heading or enum while using the wrong source of truth, classification, rule, or business meaning. The contract Passes, but “Use constraints and checks close to the data rather than relying entirely on application convention.” is substantively false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-2C8FC339",
+      "revision": 1,
+      "semantic_sha256": "2c8fc339a39926e52bec1095d9df136d5443e01ba1cf67d54890089bc937e71c",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposal turns legal, rights, consent, or policy meaning in “Model deletion, redaction, retention, legal hold, and archival states explicitly where relevant.” into record presence without authoritative specialist applicability or a complete data-subject and processor scope.",
+      "counterexample_analysis": "A partial register can satisfy the configured fields while an omitted dataset, downstream processor, subject, or governing obligation still violates “Model deletion, redaction, retention, legal hold, and archival states explicitly where relevant.”. The checker Passes although the real legal or data duty remains unmet.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-69B5C63D",
+      "revision": 1,
+      "semantic_sha256": "69b5c63d4663f86176fa28f5f4e24749dc6cb12b850232c57cca9d2369eb21ed",
+      "verdict": "confirmed_deterministic",
+      "reason": "Schema, transformation, and migration-logic version identities are exact immutable metadata facts with objective referential integrity.",
+      "counterexample_analysis": "An unversioned, mutable, missing, or conflicting schema, transformation, or migration identifier cannot pass the bound version check.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-789C8367",
+      "revision": 1,
+      "semantic_sha256": "789c83676b4a74517b60a6bcb85b4e5e51fb12026db8efc1ca8a2e9324440804",
+      "verdict": "confirmed_deterministic",
+      "reason": "Lock, compute, I/O, replication, storage, and duration are six explicit measured quantities with typed units and execution bindings.",
+      "counterexample_analysis": "A missing, malformed, or unbound measurement fails; the rule asks to measure impact rather than judge an acceptable threshold.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-D8E756A2",
+      "revision": 1,
+      "semantic_sha256": "d8e756a29b174c1f02c31e744e250ded3e9283ba6de1e2fff465b17eb5eb45e9",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The complete meaning of “Make migrations resumable, idempotent, observable, and safe after partial failure.” depends on data semantics, authority, correctness, or fitness that the proposed record fields merely relabel rather than objectively prove.",
+      "counterexample_analysis": "A record can contain every required heading or enum while using the wrong source of truth, classification, rule, or business meaning. The contract Passes, but “Make migrations resumable, idempotent, observable, and safe after partial failure.” is substantively false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-62764F79",
+      "revision": 1,
+      "semantic_sha256": "62764f795494d4e8ccac94cce046ca523773c1198d1b7f507d1306b212b4536d",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed composite for “Define preconditions, checkpoints, postconditions, validation, rollback feasibility, and roll-forward recovery.” does not define exhaustive datasets, failure states, copies, timing, or a complete correctness oracle; a bounded result is only partial evidence.",
+      "counterexample_analysis": "A happy-path fixture can pass for the listed data while an omitted replica, edge record, partial failure, or later processing path still breaks “Define preconditions, checkpoints, postconditions, validation, rollback feasibility, and roll-forward recovery.”. The proposed execution therefore Passes while the original claim is false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-B8372734",
+      "revision": 1,
+      "semantic_sha256": "b8372734d2b4cba0f50672e0c0bd97a75a8e2cbc7c1829969c760dc664f51737",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed composite for “Create a recovery point before destructive or high-risk changes.” does not define exhaustive datasets, failure states, copies, timing, or a complete correctness oracle; a bounded result is only partial evidence.",
+      "counterexample_analysis": "A happy-path fixture can pass for the listed data while an omitted replica, edge record, partial failure, or later processing path still breaks “Create a recovery point before destructive or high-risk changes.”. The proposed execution therefore Passes while the original claim is false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-D86FD28C",
+      "revision": 1,
+      "semantic_sha256": "d86fd28cc5e5e46209436a0cf7d0bd880a111ecdf4aca98752c2a18ae8eb8fba",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed composite for “Verify row counts, checksums, constraints, totals, balances, relationships, samples, and business invariants after migration.” does not define exhaustive datasets, failure states, copies, timing, or a complete correctness oracle; a bounded result is only partial evidence.",
+      "counterexample_analysis": "A happy-path fixture can pass for the listed data while an omitted replica, edge record, partial failure, or later processing path still breaks “Verify row counts, checksums, constraints, totals, balances, relationships, samples, and business invariants after migration.”. The proposed execution therefore Passes while the original claim is false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-0B1BEE26",
+      "revision": 1,
+      "semantic_sha256": "0b1bee260c8e9dfc0a6061c93c0493ec68bed9ed9529547006303e01a5f06d55",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed composite for “Keep old and new representations synchronized only for a bounded, monitored transition.” does not define exhaustive datasets, failure states, copies, timing, or a complete correctness oracle; a bounded result is only partial evidence.",
+      "counterexample_analysis": "A happy-path fixture can pass for the listed data while an omitted replica, edge record, partial failure, or later processing path still breaks “Keep old and new representations synchronized only for a bounded, monitored transition.”. The proposed execution therefore Passes while the original claim is false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-7902EC23",
+      "revision": 1,
+      "semantic_sha256": "7902ec2390f15bdd668b43b3db52be1fa3ec865297e1091b401f6d1785d9c3d0",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed composite for “Treat backfills as production changes with authorization, rate controls, monitoring, and incident readiness.” does not define exhaustive datasets, failure states, copies, timing, or a complete correctness oracle; a bounded result is only partial evidence.",
+      "counterexample_analysis": "A happy-path fixture can pass for the listed data while an omitted replica, edge record, partial failure, or later processing path still breaks “Treat backfills as production changes with authorization, rate controls, monitoring, and incident readiness.”. The proposed execution therefore Passes while the original claim is false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-833B7C73",
+      "revision": 1,
+      "semantic_sha256": "833b7c73903e87ed2dfcc380a48f76d31bbe25eaf6b147fe1a83588272a4f01e",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The complete meaning of “Distinguish repairs from falsification; preserve who changed what, why, when, and based on which evidence.” depends on data semantics, authority, correctness, or fitness that the proposed record fields merely relabel rather than objectively prove.",
+      "counterexample_analysis": "A record can contain every required heading or enum while using the wrong source of truth, classification, rule, or business meaning. The contract Passes, but “Distinguish repairs from falsification; preserve who changed what, why, when, and based on which evidence.” is substantively false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-61FAD800",
+      "revision": 1,
+      "semantic_sha256": "61fad800e184ade90d3d69b7a6acc50cb2e286e063f99897673fb1d7a915db8a",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed composite for “Rehearse the exact automation intended for production.” does not define exhaustive datasets, failure states, copies, timing, or a complete correctness oracle; a bounded result is only partial evidence.",
+      "counterexample_analysis": "A happy-path fixture can pass for the listed data while an omitted replica, edge record, partial failure, or later processing path still breaks “Rehearse the exact automation intended for production.”. The proposed execution therefore Passes while the original claim is false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-6421ECBB",
+      "revision": 1,
+      "semantic_sha256": "6421ecbb9b88e37042ad5c56eb1c71ae496efef48a5d7b159f4c6269082e6b7c",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposal turns legal, rights, consent, or policy meaning in “Define purpose, recipient, legal basis or authorization, fields, frequency, format, security, retention, and deletion for every material exchange.” into record presence without authoritative specialist applicability or a complete data-subject and processor scope.",
+      "counterexample_analysis": "A partial register can satisfy the configured fields while an omitted dataset, downstream processor, subject, or governing obligation still violates “Define purpose, recipient, legal basis or authorization, fields, frequency, format, security, retention, and deletion for every material exchange.”. The checker Passes although the real legal or data duty remains unmet.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-B086FE62",
+      "revision": 1,
+      "semantic_sha256": "b086fe628f0d8c5ef835fea92619ffe85e0073d3187aff584272b120f5c5c4f7",
+      "verdict": "confirmed_deterministic",
+      "reason": "Schemas, media types, encodings, language tags, units, identifiers, and time semantics form a finite explicit exchange-contract schema.",
+      "counterexample_analysis": "Any missing, implicit, conflicting, or unversioned field fails; runtime conformance is assessed separately.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-2D1F4C4C",
+      "revision": 1,
+      "semantic_sha256": "2d1f4c4c1dc09f9a814a832a57bd5e21e2b938de5af906a96421440617606738",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed composite for “Validate inbound data as untrusted and outbound data against the contract.” does not define exhaustive datasets, failure states, copies, timing, or a complete correctness oracle; a bounded result is only partial evidence.",
+      "counterexample_analysis": "A happy-path fixture can pass for the listed data while an omitted replica, edge record, partial failure, or later processing path still breaks “Validate inbound data as untrusted and outbound data against the contract.”. The proposed execution therefore Passes while the original claim is false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-E18571A1",
+      "revision": 1,
+      "semantic_sha256": "e18571a109f92aa950316b21427d03cde9b60f45eb30e9a725909d1d296fb81b",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The complete meaning of “Authenticate and authorize producers and consumers.” depends on data semantics, authority, correctness, or fitness that the proposed record fields merely relabel rather than objectively prove.",
+      "counterexample_analysis": "A record can contain every required heading or enum while using the wrong source of truth, classification, rule, or business meaning. The contract Passes, but “Authenticate and authorize producers and consumers.” is substantively false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-1D063B03",
+      "revision": 1,
+      "semantic_sha256": "1d063b0323543c78c97d1cdfff1b791acef51ad786a022b171660bb9cdc37276",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The complete meaning of “Use idempotency, sequence, checksums, manifests, and acknowledgments where delivery integrity requires them.” depends on data semantics, authority, correctness, or fitness that the proposed record fields merely relabel rather than objectively prove.",
+      "counterexample_analysis": "A record can contain every required heading or enum while using the wrong source of truth, classification, rule, or business meaning. The contract Passes, but “Use idempotency, sequence, checksums, manifests, and acknowledgments where delivery integrity requires them.” is substantively false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-66C674E8",
+      "revision": 1,
+      "semantic_sha256": "66c674e8a5ababce27a54f56d455caaa2c0252696cef464b989b1753664aa233",
+      "verdict": "confirmed_deterministic",
+      "reason": "Duplicate, missing, out-of-order, late, partial, and rejected-file outcomes form a fixed six-class behavior-definition schema.",
+      "counterexample_analysis": "Missing or contradictory treatment for any named class fails; an explicit versioned contract passes without inventing behavior.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-AD5B6E3C",
+      "revision": 1,
+      "semantic_sha256": "ad5b6e3c85c87491197613aa77718c32b1cd2ced389a1f3355877a0f45148d44",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed composite for “Reconcile both sides of critical exchanges.” does not define exhaustive datasets, failure states, copies, timing, or a complete correctness oracle; a bounded result is only partial evidence.",
+      "counterexample_analysis": "A happy-path fixture can pass for the listed data while an omitted replica, edge record, partial failure, or later processing path still breaks “Reconcile both sides of critical exchanges.”. The proposed execution therefore Passes while the original claim is false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-476CDA79",
+      "revision": 1,
+      "semantic_sha256": "476cda79ed1df986bf7fed997ecb210873c5810d436f213380afc688ce6c33ad",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed composite for “Prevent spreadsheet formula injection, active content, unsafe macros, and ambiguous formatting in exports.” does not define exhaustive datasets, failure states, copies, timing, or a complete correctness oracle; a bounded result is only partial evidence.",
+      "counterexample_analysis": "A happy-path fixture can pass for the listed data while an omitted replica, edge record, partial failure, or later processing path still breaks “Prevent spreadsheet formula injection, active content, unsafe macros, and ambiguous formatting in exports.”. The proposed execution therefore Passes while the original claim is false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-3FB36668",
+      "revision": 1,
+      "semantic_sha256": "3fb36668187166604a45b0f6a82e09bdb0f0bce297c533a3e0cfb40c21ebf7ef",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The complete meaning of “Document format and API deprecation and retain parsers only for supported versions.” depends on data semantics, authority, correctness, or fitness that the proposed record fields merely relabel rather than objectively prove.",
+      "counterexample_analysis": "A record can contain every required heading or enum while using the wrong source of truth, classification, rule, or business meaning. The contract Passes, but “Document format and API deprecation and retain parsers only for supported versions.” is substantively false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-3A11E515",
+      "revision": 1,
+      "semantic_sha256": "3a11e515f2b76d32c80f42ce49392eaeb903249a59276d71b8a0de1e017c93bf",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed composite for “Ensure termination of a relationship revokes access and triggers required return or deletion.” does not define exhaustive datasets, failure states, copies, timing, or a complete correctness oracle; a bounded result is only partial evidence.",
+      "counterexample_analysis": "A happy-path fixture can pass for the listed data while an omitted replica, edge record, partial failure, or later processing path still breaks “Ensure termination of a relationship revokes access and triggers required return or deletion.”. The proposed execution therefore Passes while the original claim is false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-8DFEBE9C",
+      "revision": 1,
+      "semantic_sha256": "8dfebe9c8c9bea5b744f5ff073c26b8bc800ab8654d505289af1fddf4358ea78",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The complete meaning of “Capture records at the point the business activity occurs or as soon as reliably possible.” depends on data semantics, authority, correctness, or fitness that the proposed record fields merely relabel rather than objectively prove.",
+      "counterexample_analysis": "A record can contain every required heading or enum while using the wrong source of truth, classification, rule, or business meaning. The contract Passes, but “Capture records at the point the business activity occurs or as soon as reliably possible.” is substantively false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-D145D470",
+      "revision": 1,
+      "semantic_sha256": "d145d470cf16313a9555e992b2c0148071f3faf384d98facd1f3861026bfc689",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The complete meaning of “Preserve content, context, structure, identity, time, relationships, and necessary metadata.” depends on data semantics, authority, correctness, or fitness that the proposed record fields merely relabel rather than objectively prove.",
+      "counterexample_analysis": "A record can contain every required heading or enum while using the wrong source of truth, classification, rule, or business meaning. The contract Passes, but “Preserve content, context, structure, identity, time, relationships, and necessary metadata.” is substantively false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-4978DF17",
+      "revision": 1,
+      "semantic_sha256": "4978df17bcbd20c8ee5cfe0d3d6d93e1a28a54c6f8cf4d141df4a4cfe3f95033",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The complete meaning of “Preserve version and amendment history where a record can change.” depends on data semantics, authority, correctness, or fitness that the proposed record fields merely relabel rather than objectively prove.",
+      "counterexample_analysis": "A record can contain every required heading or enum while using the wrong source of truth, classification, rule, or business meaning. The contract Passes, but “Preserve version and amendment history where a record can change.” is substantively false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-BF076338",
+      "revision": 1,
+      "semantic_sha256": "bf07633874e3aeab361267ebfc1e2720f4062a7d857de29ac6c46067de7540a3",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposal assumes a complete organizational data, copy, subject, system, or processor inventory for “Distinguish records from transient working data, convenience copies, caches, and backups.” but provides no authoritative evidence that the universe is fully enumerated.",
+      "counterexample_analysis": "All declared rows can satisfy the acceptance contract while one shadow dataset, convenience copy, supplier system, or derived representation is omitted. “Distinguish records from transient working data, convenience copies, caches, and backups.” remains violated even though the checker Passes.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F09291DC",
+      "revision": 1,
+      "semantic_sha256": "f09291dc06f1cc559d77d34fe05dee237c8032bb8c00cc57652d706901b9c2b0",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The complete meaning of “Record access, export, amendment, hold, disposition, and administrative actions when required.” depends on data semantics, authority, correctness, or fitness that the proposed record fields merely relabel rather than objectively prove.",
+      "counterexample_analysis": "A record can contain every required heading or enum while using the wrong source of truth, classification, rule, or business meaning. The contract Passes, but “Record access, export, amendment, hold, disposition, and administrative actions when required.” is substantively false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-4B91F6F1",
+      "revision": 1,
+      "semantic_sha256": "4b91f6f1b20982bdf19cfbb275fe55bef27018594065453cd67dc352cc3a5f21",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed composite for “Ensure electronic signatures and approvals retain identity, intent, scope, time, and verification evidence.” does not define exhaustive datasets, failure states, copies, timing, or a complete correctness oracle; a bounded result is only partial evidence.",
+      "counterexample_analysis": "A happy-path fixture can pass for the listed data while an omitted replica, edge record, partial failure, or later processing path still breaks “Ensure electronic signatures and approvals retain identity, intent, scope, time, and verification evidence.”. The proposed execution therefore Passes while the original claim is false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-D41732CE",
+      "revision": 1,
+      "semantic_sha256": "d41732cee56286adc3096e8fb0bc7268196c8faf0bb1b5ad67b4342bbd790fc8",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The complete meaning of “Preserve relationships between a record and attachments, referenced policies, source data, and approvals.” depends on data semantics, authority, correctness, or fitness that the proposed record fields merely relabel rather than objectively prove.",
+      "counterexample_analysis": "A record can contain every required heading or enum while using the wrong source of truth, classification, rule, or business meaning. The contract Passes, but “Preserve relationships between a record and attachments, referenced policies, source data, and approvals.” is substantively false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-CCB936EC",
+      "revision": 1,
+      "semantic_sha256": "ccb936eccf1f8df65719b34133030b49cc1bba9d283515b3f8d5aa05099e4abb",
+      "verdict": "confirmed_deterministic",
+      "reason": "A retention-period start event is a versioned event identity and trigger rule, making whether each declared period has an explicit start objectively decidable.",
+      "counterexample_analysis": "A missing, ambiguous, or unbound start event fails; one exact authorized trigger passes.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-34751429",
+      "revision": 1,
+      "semantic_sha256": "34751429bf8f1ae6a9a2552b1f9fc3d25a1e147aad2ef77e0dd0eeaa18c24431",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The complete meaning of “Automate retention and disposition where rules are deterministic and preserve review for exceptions.” depends on data semantics, authority, correctness, or fitness that the proposed record fields merely relabel rather than objectively prove.",
+      "counterexample_analysis": "A record can contain every required heading or enum while using the wrong source of truth, classification, rule, or business meaning. The contract Passes, but “Automate retention and disposition where rules are deterministic and preserve review for exceptions.” is substantively false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-D23C610B",
+      "revision": 1,
+      "semantic_sha256": "d23c610b72c297e2f365d0b64dcdc8316892204f7760cc2f2a65362b85aac13e",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The complete meaning of “Record hold scope, authority, owner, start, review, release, and affected systems.” depends on data semantics, authority, correctness, or fitness that the proposed record fields merely relabel rather than objectively prove.",
+      "counterexample_analysis": "A record can contain every required heading or enum while using the wrong source of truth, classification, rule, or business meaning. The contract Passes, but “Record hold scope, authority, owner, start, review, release, and affected systems.” is substantively false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-562793D2",
+      "revision": 1,
+      "semantic_sha256": "562793d216efa2bab2080212489783c1a05ba3f0679e1d25e37ce76cd2f63f34",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The complete meaning of “Release holds formally and resume the correct retention schedule.” depends on data semantics, authority, correctness, or fitness that the proposed record fields merely relabel rather than objectively prove.",
+      "counterexample_analysis": "A record can contain every required heading or enum while using the wrong source of truth, classification, rule, or business meaning. The contract Passes, but “Release holds formally and resume the correct retention schedule.” is substantively false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-4EBFFEDF",
+      "revision": 1,
+      "semantic_sha256": "4ebffedf0dfb67d8157a8fbcdf3189c92a5d2c55c57aec5e8cead550ae4fe9a7",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The complete meaning of “Document how immutable backups and archives handle expired or deleted data.” depends on data semantics, authority, correctness, or fitness that the proposed record fields merely relabel rather than objectively prove.",
+      "counterexample_analysis": "A record can contain every required heading or enum while using the wrong source of truth, classification, rule, or business meaning. The contract Passes, but “Document how immutable backups and archives handle expired or deleted data.” is substantively false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-1CF079B2",
+      "revision": 1,
+      "semantic_sha256": "1cf079b27411cf4af1629153cc31fd4474b8baa966794a9954742fbc48f83550",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The complete meaning of “Retain disposition logs without retaining the disposed sensitive content unnecessarily.” depends on data semantics, authority, correctness, or fitness that the proposed record fields merely relabel rather than objectively prove.",
+      "counterexample_analysis": "A record can contain every required heading or enum while using the wrong source of truth, classification, rule, or business meaning. The contract Passes, but “Retain disposition logs without retaining the disposed sensitive content unnecessarily.” is substantively false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-EE767AA5",
+      "revision": 1,
+      "semantic_sha256": "ee767aa5fd54d861e6e31012a264df05ab08da56e5fff82016c2604451b54483",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed composite for “Distinguish backup for recovery from archival preservation for long-term authenticity and usability.” does not define exhaustive datasets, failure states, copies, timing, or a complete correctness oracle; a bounded result is only partial evidence.",
+      "counterexample_analysis": "A happy-path fixture can pass for the listed data while an omitted replica, edge record, partial failure, or later processing path still breaks “Distinguish backup for recovery from archival preservation for long-term authenticity and usability.”. The proposed execution therefore Passes while the original claim is false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-61987E09",
+      "revision": 1,
+      "semantic_sha256": "61987e092c3fbcd2a421c3ac105cef9ddcfecbdda6495a9d7d1ff260e71342dd",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposal turns legal, rights, consent, or policy meaning in “Preserve content, metadata, provenance, rights, context, representation information, and relationships.” into record presence without authoritative specialist applicability or a complete data-subject and processor scope.",
+      "counterexample_analysis": "A partial register can satisfy the configured fields while an omitted dataset, downstream processor, subject, or governing obligation still violates “Preserve content, metadata, provenance, rights, context, representation information, and relationships.”. The checker Passes although the real legal or data duty remains unmet.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-3307E3AE",
+      "revision": 1,
+      "semantic_sha256": "3307e3ae41adcf19f7c308dd22068e095788ec029bec807906c6acca007cd1b3",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The complete meaning of “Keep format, software, dependency, encoding, compression, and rendering information needed for future access.” depends on data semantics, authority, correctness, or fitness that the proposed record fields merely relabel rather than objectively prove.",
+      "counterexample_analysis": "A record can contain every required heading or enum while using the wrong source of truth, classification, rule, or business meaning. The contract Passes, but “Keep format, software, dependency, encoding, compression, and rendering information needed for future access.” is substantively false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-4488AC37",
+      "revision": 1,
+      "semantic_sha256": "4488ac378bf1b5b35bbbf78553eeef7292f7d21c25997dd0f70d84920705d2ab",
+      "verdict": "confirmed_deterministic",
+      "reason": "Cryptographic fixity values and repeat comparisons make bit-level corruption detection an exact artifact-integrity property.",
+      "counterexample_analysis": "Changed bytes with an unchanged trusted baseline fail, while matching verified digests pass; missing evidence blocks.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-936A5306",
+      "revision": 1,
+      "semantic_sha256": "936a53064f49e6e99c1665fddcb2c4d0450f86f1e101150c3aa96458be9370b6",
+      "verdict": "confirmed_deterministic",
+      "reason": "Preservation event, agent, rights, object, transformation, validation, and failure fields are a finite versioned event-record schema.",
+      "counterexample_analysis": "A missing, malformed, or dangling preservation-event field fails; using PREMIS is optional as the statement says where appropriate.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-952007B8",
+      "revision": 1,
+      "semantic_sha256": "952007b86bfda022bcf9692ba6ed3d4e63d630b3207bb790406593eccbdcba13",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The complete meaning of “Preserve original objects when policy requires them, even after normalized or migrated versions are created.” depends on data semantics, authority, correctness, or fitness that the proposed record fields merely relabel rather than objectively prove.",
+      "counterexample_analysis": "A record can contain every required heading or enum while using the wrong source of truth, classification, rule, or business meaning. The contract Passes, but “Preserve original objects when policy requires them, even after normalized or migrated versions are created.” is substantively false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-AC0E1928",
+      "revision": 1,
+      "semantic_sha256": "ac0e19281e0210a2ff375a59ffefa9a889c90f195f3ee58dbda95ee9de2a5a46",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The complete meaning of “Use individual or workload identities and prohibit shared access where accountability matters.” depends on data semantics, authority, correctness, or fitness that the proposed record fields merely relabel rather than objectively prove.",
+      "counterexample_analysis": "A record can contain every required heading or enum while using the wrong source of truth, classification, rule, or business meaning. The contract Passes, but “Use individual or workload identities and prohibit shared access where accountability matters.” is substantively false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-7C5BDF9F",
+      "revision": 1,
+      "semantic_sha256": "7c5bdf9fd74af533d50f69d2e18bcf2f7f07a52f9fc25a321437048f5b1889e3",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The complete meaning of “Mask, tokenize, pseudonymize, aggregate, or synthesize data where full fidelity is unnecessary.” depends on data semantics, authority, correctness, or fitness that the proposed record fields merely relabel rather than objectively prove.",
+      "counterexample_analysis": "A record can contain every required heading or enum while using the wrong source of truth, classification, rule, or business meaning. The contract Passes, but “Mask, tokenize, pseudonymize, aggregate, or synthesize data where full fidelity is unnecessary.” is substantively false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-5A5A6DAF",
+      "revision": 1,
+      "semantic_sha256": "5a5a6daf9cd182173246cc45d51fd0197dfb7313840b7098367e41a28924bd9d",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The complete meaning of “Assess reidentification and linkage risk before releasing deidentified data.” depends on data semantics, authority, correctness, or fitness that the proposed record fields merely relabel rather than objectively prove.",
+      "counterexample_analysis": "A record can contain every required heading or enum while using the wrong source of truth, classification, rule, or business meaning. The contract Passes, but “Assess reidentification and linkage risk before releasing deidentified data.” is substantively false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-B178EA24",
+      "revision": 1,
+      "semantic_sha256": "b178ea246ff267dcea9d4bd4bd9481cdbb4e93fdd9827c0c16d9652161c61e3a",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed composite for “Encrypt data and backups according to classification and key-management requirements.” does not define exhaustive datasets, failure states, copies, timing, or a complete correctness oracle; a bounded result is only partial evidence.",
+      "counterexample_analysis": "A happy-path fixture can pass for the listed data while an omitted replica, edge record, partial failure, or later processing path still breaks “Encrypt data and backups according to classification and key-management requirements.”. The proposed execution therefore Passes while the original claim is false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-93B7958E",
+      "revision": 1,
+      "semantic_sha256": "93b7958e69eb7f90c62199a4d64dae06cb2bad44c7584890d2b79655a5b6ab76",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The complete meaning of “Review new purposes and secondary uses before processing existing data.” depends on data semantics, authority, correctness, or fitness that the proposed record fields merely relabel rather than objectively prove.",
+      "counterexample_analysis": "A record can contain every required heading or enum while using the wrong source of truth, classification, rule, or business meaning. The contract Passes, but “Review new purposes and secondary uses before processing existing data.” is substantively false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-08199A24",
+      "revision": 1,
+      "semantic_sha256": "08199a2452120cb45eaae52d8e8eb39a80e16ab1794619bbaf63bf535035a4a9",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposal turns legal, rights, consent, or policy meaning in “Ensure users can exercise applicable access, correction, deletion, restriction, objection, and portability rights across downstream systems.” into record presence without authoritative specialist applicability or a complete data-subject and processor scope.",
+      "counterexample_analysis": "A partial register can satisfy the configured fields while an omitted dataset, downstream processor, subject, or governing obligation still violates “Ensure users can exercise applicable access, correction, deletion, restriction, objection, and portability rights across downstream systems.”. The checker Passes although the real legal or data duty remains unmet.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-05BD5FB0",
+      "revision": 1,
+      "semantic_sha256": "05bd5fb07e1b0bcf94f155fc724bcebf9ddacd3ee34c3c1aada714a72497a3e8",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposal turns legal, rights, consent, or policy meaning in “Do not use apparent data availability as evidence of permission or ethical acceptability.” into record presence without authoritative specialist applicability or a complete data-subject and processor scope.",
+      "counterexample_analysis": "A partial register can satisfy the configured fields while an omitted dataset, downstream processor, subject, or governing obligation still violates “Do not use apparent data availability as evidence of permission or ethical acceptability.”. The checker Passes although the real legal or data duty remains unmet.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-EDE596A0",
+      "revision": 1,
+      "semantic_sha256": "ede596a00c24016d6e4935aa73d09ccb22fee892bb3210636ec48b0055f0390d",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed composite for “Notify affected owners and consumers when data confidentiality, integrity, availability, or provenance is compromised.” does not define exhaustive datasets, failure states, copies, timing, or a complete correctness oracle; a bounded result is only partial evidence.",
+      "counterexample_analysis": "A happy-path fixture can pass for the listed data while an omitted replica, edge record, partial failure, or later processing path still breaks “Notify affected owners and consumers when data confidentiality, integrity, availability, or provenance is compromised.”. The proposed execution therefore Passes while the original claim is false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-823B644E",
+      "revision": 1,
+      "semantic_sha256": "823b644ef23370b5792beea2b014b9b02100fc7d92299a3ddbd1abae6b5d9013",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The complete meaning of “Define the decision or user outcome each metric, report, dashboard, or experiment supports.” depends on data semantics, authority, correctness, or fitness that the proposed record fields merely relabel rather than objectively prove.",
+      "counterexample_analysis": "A record can contain every required heading or enum while using the wrong source of truth, classification, rule, or business meaning. The contract Passes, but “Define the decision or user outcome each metric, report, dashboard, or experiment supports.” is substantively false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-00A52128",
+      "revision": 1,
+      "semantic_sha256": "00a52128a203a5cb7cbaa97196b900f1a9872346c1a6b7d75d758d21010ef157",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed composite for “Reconcile critical reports with source systems and independent totals.” does not define exhaustive datasets, failure states, copies, timing, or a complete correctness oracle; a bounded result is only partial evidence.",
+      "counterexample_analysis": "A happy-path fixture can pass for the listed data while an omitted replica, edge record, partial failure, or later processing path still breaks “Reconcile critical reports with source systems and independent totals.”. The proposed execution therefore Passes while the original claim is false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-E2D57064",
+      "revision": 1,
+      "semantic_sha256": "e2d57064bb0a59e2cd9a5a15dd58d14b73a0efeb598d5ea2ee2bb17e48c31663",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The complete meaning of “Protect experimentation from sample-ratio mismatch, interference, assignment leakage, and premature stopping.” depends on data semantics, authority, correctness, or fitness that the proposed record fields merely relabel rather than objectively prove.",
+      "counterexample_analysis": "A record can contain every required heading or enum while using the wrong source of truth, classification, rule, or business meaning. The contract Passes, but “Protect experimentation from sample-ratio mismatch, interference, assignment leakage, and premature stopping.” is substantively false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-4E23A195",
+      "revision": 1,
+      "semantic_sha256": "4e23a195b27e0984aa8794c9a8a2fa548a172aa5f8ed37edecf034bbe5d7a5f9",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The complete meaning of “Preserve experiment hypothesis, design, assignment, exposure, analysis, results, and decision history.” depends on data semantics, authority, correctness, or fitness that the proposed record fields merely relabel rather than objectively prove.",
+      "counterexample_analysis": "A record can contain every required heading or enum while using the wrong source of truth, classification, rule, or business meaning. The contract Passes, but “Preserve experiment hypothesis, design, assignment, exposure, analysis, results, and decision history.” is substantively false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-24B4D0EC",
+      "revision": 1,
+      "semantic_sha256": "24b4d0ec7b580b5ff33abeca5a5dc7fadf85774914ae55e8b7fc0c98dc5952ca",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed composite for “Ensure downstream decisions can be traced to the data and model versions used.” does not define exhaustive datasets, failure states, copies, timing, or a complete correctness oracle; a bounded result is only partial evidence.",
+      "counterexample_analysis": "A happy-path fixture can pass for the listed data while an omitted replica, edge record, partial failure, or later processing path still breaks “Ensure downstream decisions can be traced to the data and model versions used.”. The proposed execution therefore Passes while the original claim is false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-BC0C13E1",
+      "revision": 1,
+      "semantic_sha256": "bc0c13e1e95653f6fb9a71dccce5012272f88ecf33f4d2e9247c6dd9426f888a",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The complete meaning of “Provide correction and appeal routes for high-impact data-driven decisions where appropriate.” depends on data semantics, authority, correctness, or fitness that the proposed record fields merely relabel rather than objectively prove.",
+      "counterexample_analysis": "A record can contain every required heading or enum while using the wrong source of truth, classification, rule, or business meaning. The contract Passes, but “Provide correction and appeal routes for high-impact data-driven decisions where appropriate.” is substantively false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-66275973",
+      "revision": 1,
+      "semantic_sha256": "662759732950e5605f7a46035e450025201ad05e7fdff1510e877157fec2a299",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The complete meaning of “Review whether metrics create harmful incentives or encourage manipulation.” depends on data semantics, authority, correctness, or fitness that the proposed record fields merely relabel rather than objectively prove.",
+      "counterexample_analysis": "A record can contain every required heading or enum while using the wrong source of truth, classification, rule, or business meaning. The contract Passes, but “Review whether metrics create harmful incentives or encourage manipulation.” is substantively false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-EB53C881",
+      "revision": 1,
+      "semantic_sha256": "eb53c881e8e4aea8eb0073301cd7cf834b6d4c5ffcf69d007dd007cb7fe9d985",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed composite for “Prevent train-test contamination and evaluation leakage.” does not define exhaustive datasets, failure states, copies, timing, or a complete correctness oracle; a bounded result is only partial evidence.",
+      "counterexample_analysis": "A happy-path fixture can pass for the listed data while an omitted replica, edge record, partial failure, or later processing path still breaks “Prevent train-test contamination and evaluation leakage.”. The proposed execution therefore Passes while the original claim is false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-B17BB267",
+      "revision": 1,
+      "semantic_sha256": "b17bb267ba486f7f2d7ecf8fa53b1181648f69bfecca4a9f045087b7f8bb7fad",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The complete meaning of “Assess coverage, imbalance, historical bias, label uncertainty, adversarial contamination, and distribution shift.” depends on data semantics, authority, correctness, or fitness that the proposed record fields merely relabel rather than objectively prove.",
+      "counterexample_analysis": "A record can contain every required heading or enum while using the wrong source of truth, classification, rule, or business meaning. The contract Passes, but “Assess coverage, imbalance, historical bias, label uncertainty, adversarial contamination, and distribution shift.” is substantively false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-1F4A0CFC",
+      "revision": 1,
+      "semantic_sha256": "1f4a0cfc1f410447575536e557a917156c29921568002c22d6a6af50ad663bc8",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposal turns legal, rights, consent, or policy meaning in “Remove or protect secrets, personal data, copyrighted material, and regulated information according to approved use.” into record presence without authoritative specialist applicability or a complete data-subject and processor scope.",
+      "counterexample_analysis": "A partial register can satisfy the configured fields while an omitted dataset, downstream processor, subject, or governing obligation still violates “Remove or protect secrets, personal data, copyrighted material, and regulated information according to approved use.”. The checker Passes although the real legal or data duty remains unmet.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-00D122F0",
+      "revision": 1,
+      "semantic_sha256": "00d122f0cb0b55d212a2b304e43365d7820b64f4a803712f1bcb9a534ef4f190",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The complete meaning of “Define deletion and correction propagation into derived datasets, indexes, embeddings, and retraining workflows.” depends on data semantics, authority, correctness, or fitness that the proposed record fields merely relabel rather than objectively prove.",
+      "counterexample_analysis": "A record can contain every required heading or enum while using the wrong source of truth, classification, rule, or business meaning. The contract Passes, but “Define deletion and correction propagation into derived datasets, indexes, embeddings, and retraining workflows.” is substantively false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-874DCDFD",
+      "revision": 1,
+      "semantic_sha256": "874dcdfdfabd1e552f616232ce9371fee143cd6b8c3776f2e5f5584092ed4f06",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The complete meaning of “Use provenance sufficient to reproduce or explain model behavior and evaluations.” depends on data semantics, authority, correctness, or fitness that the proposed record fields merely relabel rather than objectively prove.",
+      "counterexample_analysis": "A record can contain every required heading or enum while using the wrong source of truth, classification, rule, or business meaning. The contract Passes, but “Use provenance sufficient to reproduce or explain model behavior and evaluations.” is substantively false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-2B72FFCA",
+      "revision": 1,
+      "semantic_sha256": "2b72ffcac0e1a6b6304e2b0937c9b7ed9c360b7f2bf5689f53692f402b98c63f",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The complete meaning of “Keep human labeling instructions, qualifications, disagreement, quality review, and working conditions documented.” depends on data semantics, authority, correctness, or fitness that the proposed record fields merely relabel rather than objectively prove.",
+      "counterexample_analysis": "A record can contain every required heading or enum while using the wrong source of truth, classification, rule, or business meaning. The contract Passes, but “Keep human labeling instructions, qualifications, disagreement, quality review, and working conditions documented.” is substantively false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-3EDB888F",
+      "revision": 1,
+      "semantic_sha256": "3edb888f951645787d380c5afd27644d2d8ed6d4a9baf5f433f1bad158900eab",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed composite for “Monitor production input and output drift against approved operating bounds.” does not define exhaustive datasets, failure states, copies, timing, or a complete correctness oracle; a bounded result is only partial evidence.",
+      "counterexample_analysis": "A happy-path fixture can pass for the listed data while an omitted replica, edge record, partial failure, or later processing path still breaks “Monitor production input and output drift against approved operating bounds.”. The proposed execution therefore Passes while the original claim is false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F0CEE610",
+      "revision": 1,
+      "semantic_sha256": "f0cee610ac44347d47365465cda40f583227a5aba3e998d65aeec8d12a276701",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The complete meaning of “Preserve model cards, data cards, evaluation evidence, and deployment context for high-impact systems.” depends on data semantics, authority, correctness, or fitness that the proposed record fields merely relabel rather than objectively prove.",
+      "counterexample_analysis": "A record can contain every required heading or enum while using the wrong source of truth, classification, rule, or business meaning. The contract Passes, but “Preserve model cards, data cards, evaluation evidence, and deployment context for high-impact systems.” is substantively false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-40113369",
+      "revision": 1,
+      "semantic_sha256": "401133695b820860ce2804ff2e31be7826da61467be7acedc9c67fe17c201f00",
+      "verdict": "confirmed_deterministic",
+      "reason": "Recovery-point and recovery-time objectives are two explicit numeric policy values with units, scope, and version bindings.",
+      "counterexample_analysis": "Missing, malformed, unbounded, or conflicting RPO or RTO values fail; achievement is tested by another control.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-553211DF",
+      "revision": 1,
+      "semantic_sha256": "553211df1a33fc9fd979cdd1fda6f63a76d991c7fe7766bf3cc9bf9c21e7dc54",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed composite for “Encrypt and isolate backups from ordinary production compromise.” does not define exhaustive datasets, failure states, copies, timing, or a complete correctness oracle; a bounded result is only partial evidence.",
+      "counterexample_analysis": "A happy-path fixture can pass for the listed data while an omitted replica, edge record, partial failure, or later processing path still breaks “Encrypt and isolate backups from ordinary production compromise.”. The proposed execution therefore Passes while the original claim is false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-496019E2",
+      "revision": 1,
+      "semantic_sha256": "496019e2e6f3fd00688dec4d29d2f101694182a1cdcd9bf52976bb62a4b6569e",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed composite for “Monitor backup completion, size, integrity, retention, and deletion.” does not define exhaustive datasets, failure states, copies, timing, or a complete correctness oracle; a bounded result is only partial evidence.",
+      "counterexample_analysis": "A happy-path fixture can pass for the listed data while an omitted replica, edge record, partial failure, or later processing path still breaks “Monitor backup completion, size, integrity, retention, and deletion.”. The proposed execution therefore Passes while the original claim is false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-41E9E282",
+      "revision": 1,
+      "semantic_sha256": "41e9e2825894a0ce24ad525ce51180c4f7ba39a9bb5d1b694fbcc44f456671c4",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed composite for “Reconcile restored data with external systems and events that occurred after the recovery point.” does not define exhaustive datasets, failure states, copies, timing, or a complete correctness oracle; a bounded result is only partial evidence.",
+      "counterexample_analysis": "A happy-path fixture can pass for the listed data while an omitted replica, edge record, partial failure, or later processing path still breaks “Reconcile restored data with external systems and events that occurred after the recovery point.”. The proposed execution therefore Passes while the original claim is false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-27CFB60F",
+      "revision": 1,
+      "semantic_sha256": "27cfb60f6190a951c3280d05fb5c80f46ddac9a08ed297cbc6f69dc218234b79",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The complete meaning of “Document which data can be reconstructed and which must be backed up.” depends on data semantics, authority, correctness, or fitness that the proposed record fields merely relabel rather than objectively prove.",
+      "counterexample_analysis": "A record can contain every required heading or enum while using the wrong source of truth, classification, rule, or business meaning. The contract Passes, but “Document which data can be reconstructed and which must be backed up.” is substantively false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-E43E0612",
+      "revision": 1,
+      "semantic_sha256": "e43e06129e0d9306db0b82e69105ffe3abc3e4232453cc09d1534d6d86559e79",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed composite for “Ensure archives are not used as an undocumented production dependency.” does not define exhaustive datasets, failure states, copies, timing, or a complete correctness oracle; a bounded result is only partial evidence.",
+      "counterexample_analysis": "A happy-path fixture can pass for the listed data while an omitted replica, edge record, partial failure, or later processing path still breaks “Ensure archives are not used as an undocumented production dependency.”. The proposed execution therefore Passes while the original claim is false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-9849FEA2",
+      "revision": 1,
+      "semantic_sha256": "9849fea2dd74da99b84883fcd7cb8a81c3eee39791d2851ade8b6943dfb0a1b3",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed composite for “Ensure backups are not treated as permanent archives without preservation metadata and usability validation.” does not define exhaustive datasets, failure states, copies, timing, or a complete correctness oracle; a bounded result is only partial evidence.",
+      "counterexample_analysis": "A happy-path fixture can pass for the listed data while an omitted replica, edge record, partial failure, or later processing path still breaks “Ensure backups are not treated as permanent archives without preservation metadata and usability validation.”. The proposed execution therefore Passes while the original claim is false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-72023963",
+      "revision": 1,
+      "semantic_sha256": "7202396354cc3422313628563260c76a4f593d4556b9007f31f1c3b384a4da34",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed composite for “Block release when data access, export, or sharing exceeds approved purpose or authorization.” does not define exhaustive datasets, failure states, copies, timing, or a complete correctness oracle; a bounded result is only partial evidence.",
+      "counterexample_analysis": "A happy-path fixture can pass for the listed data while an omitted replica, edge record, partial failure, or later processing path still breaks “Block release when data access, export, or sharing exceeds approved purpose or authorization.”. The proposed execution therefore Passes while the original claim is false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F8A6115D",
+      "revision": 1,
+      "semantic_sha256": "f8a6115dc3406af0b1d12ec51bb9b0a147e03eabc28acb8d34eb979ea1f5b031",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed composite for “Attach schemas, contracts, lineage, quality results, migration evidence, reconciliation, access review, retention rules, and recovery tests to release evidence.” does not define exhaustive datasets, failure states, copies, timing, or a complete correctness oracle; a bounded result is only partial evidence.",
+      "counterexample_analysis": "A happy-path fixture can pass for the listed data while an omitted replica, edge record, partial failure, or later processing path still breaks “Attach schemas, contracts, lineage, quality results, migration evidence, reconciliation, access review, retention rules, and recovery tests to release evidence.”. The proposed execution therefore Passes while the original claim is false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-37F5668B",
+      "revision": 1,
+      "semantic_sha256": "37f5668bda3921fd958ade300e82d9bc58e211ae76091e40cdd96f6796bfcce1",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The complete meaning of “Require data-owner sign-off for changes to authoritative definitions, high-impact reports, sensitive sharing, or irreversible transformation.” depends on data semantics, authority, correctness, or fitness that the proposed record fields merely relabel rather than objectively prove.",
+      "counterexample_analysis": "A record can contain every required heading or enum while using the wrong source of truth, classification, rule, or business meaning. The contract Passes, but “Require data-owner sign-off for changes to authoritative definitions, high-impact reports, sensitive sharing, or irreversible transformation.” is substantively false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-9EA79399",
+      "revision": 1,
+      "semantic_sha256": "9ea79399f1766800400f65c3e93c104d3b058c309a7fe3f4c069c584aa149201",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed composite for “Convert incidents into contract, validation, lineage, monitoring, and governance improvements.” does not define exhaustive datasets, failure states, copies, timing, or a complete correctness oracle; a bounded result is only partial evidence.",
+      "counterexample_analysis": "A happy-path fixture can pass for the listed data while an omitted replica, edge record, partial failure, or later processing path still breaks “Convert incidents into contract, validation, lineage, monitoring, and governance improvements.”. The proposed execution therefore Passes while the original claim is false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-1147F53E",
+      "revision": 1,
+      "semantic_sha256": "1147f53e1df9c57a159aaefead3b0b28cd3bc720f531519b34b6bb5df83b1191",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposal turns legal, rights, consent, or policy meaning in “Reassess data controls after material source, model, consumer, or regulatory change.” into record presence without authoritative specialist applicability or a complete data-subject and processor scope.",
+      "counterexample_analysis": "A partial register can satisfy the configured fields while an omitted dataset, downstream processor, subject, or governing obligation still violates “Reassess data controls after material source, model, consumer, or regulatory change.”. The checker Passes although the real legal or data duty remains unmet.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-3A8E697F",
+      "revision": 1,
+      "semantic_sha256": "3a8e697fa7b8d3d411e7ff2b902aa7684227690c144ca15eac6588a8ba0cfa09",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The complete meaning of “Assign governing-body or executive accountability for material data, records, analytics, and information risks.” depends on data semantics, authority, correctness, or fitness that the proposed record fields merely relabel rather than objectively prove.",
+      "counterexample_analysis": "A record can contain every required heading or enum while using the wrong source of truth, classification, rule, or business meaning. The contract Passes, but “Assign governing-body or executive accountability for material data, records, analytics, and information risks.” is substantively false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-7DD055FC",
+      "revision": 1,
+      "semantic_sha256": "7dd055fcd90a13da4a9339bd7040099e0e94a52328ef65b87c3b09d5c656fc01",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposal turns legal, rights, consent, or policy meaning in “Define delegated authority for data ownership, stewardship, custodianship, privacy, security, records, and analytics decisions.” into record presence without authoritative specialist applicability or a complete data-subject and processor scope.",
+      "counterexample_analysis": "A partial register can satisfy the configured fields while an omitted dataset, downstream processor, subject, or governing obligation still violates “Define delegated authority for data ownership, stewardship, custodianship, privacy, security, records, and analytics decisions.”. The checker Passes although the real legal or data duty remains unmet.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-D6AAEE4D",
+      "revision": 1,
+      "semantic_sha256": "d6aaee4db0d44fa448a9cb0e35de8401fb842d3301b06888262ce0362662430a",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposal assumes a complete organizational data, copy, subject, system, or processor inventory for “Maintain an authoritative inventory of material data assets, systems of record, records classes, custodians, processors, and repositories.” but provides no authoritative evidence that the universe is fully enumerated.",
+      "counterexample_analysis": "All declared rows can satisfy the acceptance contract while one shadow dataset, convenience copy, supplier system, or derived representation is omitted. “Maintain an authoritative inventory of material data assets, systems of record, records classes, custodians, processors, and repositories.” remains violated even though the checker Passes.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-54F0B304",
+      "revision": 1,
+      "semantic_sha256": "54f0b304b2d154830ce65384161fe2e8561189adb43ef433ece77c99826722b6",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposal turns legal, rights, consent, or policy meaning in “Classify data according to confidentiality, integrity, availability, privacy, evidentiary, safety, financial, and societal impact.” into record presence without authoritative specialist applicability or a complete data-subject and processor scope.",
+      "counterexample_analysis": "A partial register can satisfy the configured fields while an omitted dataset, downstream processor, subject, or governing obligation still violates “Classify data according to confidentiality, integrity, availability, privacy, evidentiary, safety, financial, and societal impact.”. The checker Passes although the real legal or data duty remains unmet.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-59260332",
+      "revision": 1,
+      "semantic_sha256": "59260332cb552f823eb8f7f09be7968f27b77a5b1e97f83393f5551404e09198",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The complete meaning of “Preserve records of material data decisions, assumptions, evidence, dissent, and approvals.” depends on data semantics, authority, correctness, or fitness that the proposed record fields merely relabel rather than objectively prove.",
+      "counterexample_analysis": "A record can contain every required heading or enum while using the wrong source of truth, classification, rule, or business meaning. The contract Passes, but “Preserve records of material data decisions, assumptions, evidence, dissent, and approvals.” is substantively false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-00EEEE2B",
+      "revision": 1,
+      "semantic_sha256": "00eeee2bc3e52b0ef69bfd44741f13b28d95c807d43c964a641ba64dc8a5879b",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposal turns legal, rights, consent, or policy meaning in “Identify systems that can contain records or information relevant to disputes, investigations, audits, or lawful requests.” into record presence without authoritative specialist applicability or a complete data-subject and processor scope.",
+      "counterexample_analysis": "A partial register can satisfy the configured fields while an omitted dataset, downstream processor, subject, or governing obligation still violates “Identify systems that can contain records or information relevant to disputes, investigations, audits, or lawful requests.”. The checker Passes although the real legal or data duty remains unmet.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-EC109500",
+      "revision": 1,
+      "semantic_sha256": "ec109500209d6559633b6efc2868078b407db8d9b68b8539d55a0e63ecb8dbc5",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The complete meaning of “Include collaboration tools, email, messaging, tickets, source control, logs, cloud storage, endpoints, mobile devices, backups, archives, analytics, AI systems, and supplier systems as applicable.” depends on data semantics, authority, correctness, or fitness that the proposed record fields merely relabel rather than objectively prove.",
+      "counterexample_analysis": "A record can contain every required heading or enum while using the wrong source of truth, classification, rule, or business meaning. The contract Passes, but “Include collaboration tools, email, messaging, tickets, source control, logs, cloud storage, endpoints, mobile devices, backups, archives, analytics, AI systems, and supplier systems as applicable.” is substantively false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-FC0EAAB7",
+      "revision": 1,
+      "semantic_sha256": "fc0eaab70e174feba0f266d0c1ae3191128979f32889b85706d66cb2cd18a591",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The complete meaning of “Record repository owners, administrators, locations, formats, retention behavior, search capability, export capability, and access controls.” depends on data semantics, authority, correctness, or fitness that the proposed record fields merely relabel rather than objectively prove.",
+      "counterexample_analysis": "A record can contain every required heading or enum while using the wrong source of truth, classification, rule, or business meaning. The contract Passes, but “Record repository owners, administrators, locations, formats, retention behavior, search capability, export capability, and access controls.” is substantively false.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-A831DD6E",
+      "revision": 1,
+      "semantic_sha256": "a831dd6e0bca1b4a49ebbeca5ae5c12d641fe8eedde0295945e457c4a4e15ea1",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed composite for “Identify ephemeral, encrypted, compressed, proprietary, deleted, versioned, or dynamically generated information.” does not define exhaustive datasets, failure states, copies, timing, or a complete correctness oracle; a bounded result is only partial evidence.",
+      "counterexample_analysis": "A happy-path fixture can pass for the listed data while an omitted replica, edge record, partial failure, or later processing path still breaks “Identify ephemeral, encrypted, compressed, proprietary, deleted, versioned, or dynamically generated information.”. The proposed execution therefore Passes while the original claim is false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-ADC96CBD",
+      "revision": 1,
+      "semantic_sha256": "adc96cbd075fa466f436142a28367e4fb83f573cfe94bc25c6a4f150a0ce758c",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposal assumes a complete organizational data, copy, subject, system, or processor inventory for “Identify where data is replicated, cached, indexed, transformed, summarized, or embedded.” but provides no authoritative evidence that the universe is fully enumerated.",
+      "counterexample_analysis": "All declared rows can satisfy the acceptance contract while one shadow dataset, convenience copy, supplier system, or derived representation is omitted. “Identify where data is replicated, cached, indexed, transformed, summarized, or embedded.” remains violated even though the checker Passes.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-2015A1C9",
+      "revision": 1,
+      "semantic_sha256": "2015a1c9c82bbbef76dbde063488ff48f0ce98a949a7a48e17b8b854394b34e0",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposal assumes a complete organizational data, copy, subject, system, or processor inventory for “Map custodians and organizational roles to systems and data sources.” but provides no authoritative evidence that the universe is fully enumerated.",
+      "counterexample_analysis": "All declared rows can satisfy the acceptance contract while one shadow dataset, convenience copy, supplier system, or derived representation is omitted. “Map custodians and organizational roles to systems and data sources.” remains violated even though the checker Passes.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-CDF23B7C",
+      "revision": 1,
+      "semantic_sha256": "cdf23b7c4a5a62c206278db34da6ee33986748aa8d63969f0def50190874e7dd",
+      "verdict": "confirmed_deterministic",
+      "reason": "Time-zone, clock, identity, naming, and identifier conventions are five explicit correlation-policy fields with versioned values.",
+      "counterexample_analysis": "Missing, conflicting, or implicit conventions fail; exact recorded conventions pass without judging downstream use.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-69EDB129",
+      "revision": 1,
+      "semantic_sha256": "69edb1291be7ce2d0191104d76e8bb4ab8fc125e91a53fcb43c477e651c30dec",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposal assumes a complete organizational data, copy, subject, system, or processor inventory for “Distinguish authoritative records from convenience copies and derived views.” but provides no authoritative evidence that the universe is fully enumerated.",
+      "counterexample_analysis": "All declared rows can satisfy the acceptance contract while one shadow dataset, convenience copy, supplier system, or derived representation is omitted. “Distinguish authoritative records from convenience copies and derived views.” remains violated even though the checker Passes.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-2C6A80AE",
+      "revision": 1,
+      "semantic_sha256": "2c6a80aebf0c8c9e93b94cf4073005b8ca21c0ff3570dbfb834be87b795bbfa7",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposal turns legal, rights, consent, or policy meaning in “Document supplier assistance, contractual rights, fees, deadlines, and technical constraints for collection.” into record presence without authoritative specialist applicability or a complete data-subject and processor scope.",
+      "counterexample_analysis": "A partial register can satisfy the configured fields while an omitted dataset, downstream processor, subject, or governing obligation still violates “Document supplier assistance, contractual rights, fees, deadlines, and technical constraints for collection.”. The checker Passes although the real legal or data duty remains unmet.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-B55ED826",
+      "revision": 1,
+      "semantic_sha256": "b55ed826592c6fa19c62ef27e280d89da01c91d97a91c6ad75dc3cc0194abc77",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed composite for “Test whether required information can be found and exported before an urgent matter occurs.” does not define exhaustive datasets, failure states, copies, timing, or a complete correctness oracle; a bounded result is only partial evidence.",
+      "counterexample_analysis": "A happy-path fixture can pass for the listed data while an omitted replica, edge record, partial failure, or later processing path still breaks “Test whether required information can be found and exported before an urgent matter occurs.”. The proposed execution therefore Passes while the original claim is false.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-A82DB616",
+      "revision": 1,
+      "semantic_sha256": "a82db616068342ad7d4f56e85ad26c0511e13a858cbbe0dbb8931375d4b35dc1",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposal assumes a complete organizational data, copy, subject, system, or processor inventory for “Keep the discovery-readiness inventory current through system onboarding, change, and retirement.” but provides no authoritative evidence that the universe is fully enumerated.",
+      "counterexample_analysis": "All declared rows can satisfy the acceptance contract while one shadow dataset, convenience copy, supplier system, or derived representation is omitted. “Keep the discovery-readiness inventory current through system onboarding, change, and retirement.” remains violated even though the checker Passes.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    }
+  ]
+}

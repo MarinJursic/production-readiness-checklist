@@ -1,0 +1,1279 @@
+{
+  "schema_version": "prc.control-classification-skeptic-review/v0.1",
+  "packet_id": "skeptic-docs-engineering-08-security-and-cryptography-md-part-001-part-001",
+  "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "controls": [
+    {
+      "control_id": "USEQ-CD388C32",
+      "revision": 1,
+      "semantic_sha256": "cd388c32bcdfbe2f8403d8f36a24cd68f881ccfad93624f255609de7f177e6a2",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed artifact_verification check does not fully decide this rule because the release registry cannot prove it contains every artifact distributed through manual, mirror, regional, and emergency paths.",
+      "counterexample_analysis": "Counterexample: An emergency artifact is copied directly to one region without entering the release ledger; every registered digest has one SBOM.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-26843351",
+      "revision": 1,
+      "semantic_sha256": "26843351f2ac14b96b028f704fa2be8e41e0b23a02c34922fa098f0a2fc2dc86",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because component completeness, source truth, license interpretation, relationships, and required notices are not proven by populated fields.",
+      "counterexample_analysis": "Counterexample: A vendored library is omitted and a listed component has the wrong license and notices; all seven fields pass.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-91621C41",
+      "revision": 1,
+      "semantic_sha256": "91621c416d2284813dad3843d005b2a6827505f78da3cab2eb48e006f27eb63e",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed artifact_verification check does not fully decide this rule because artifact-to-SBOM binding does not prove the component inventory finds embedded, vendored, generated, and dynamically fetched content.",
+      "counterexample_analysis": "Counterexample: A statically linked library is absent from the SBOM, while listed components match the final package and digest.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-93206DB8",
+      "revision": 1,
+      "semantic_sha256": "93206db8a89649c9fe23a55e8ddb1a0244c16ffccd6104bdece188677c8dd3c0",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed artifact_verification check does not fully decide this rule because resolved-dependency completeness and intended publisher and registry authority are not established by an approved identity list.",
+      "counterexample_analysis": "Counterexample: A build script fetches an unlisted binary from a lookalike publisher, while lock-resolved packages match approved publishers.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "human_accountability"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-9CB28275",
+      "revision": 1,
+      "semantic_sha256": "9cb282755bf4b259150db955341929f265b698c3c13f46c12bb4a8198ce8b22f",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed external_readonly_query check does not fully decide this rule because approved advisory sources and component inventories cannot cover unpublished compromises, aliases, forks, and every authoritative upstream.",
+      "counterexample_analysis": "Counterexample: A vendored fork is omitted and its compromise appears only in a maintainer notice outside approved feeds.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-D2C8D527",
+      "revision": 1,
+      "semantic_sha256": "d2c8d527a4fa34b26a29ec072075f7a83ed0801cc956b802dba698573d760a06",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because procedure fields do not prove authority, clean replacement sources, safe verification, feasibility, or timely emergency deployment.",
+      "counterexample_analysis": "Counterexample: The process names steps but its only replacement registry is also compromised; the record passes.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "human_accountability",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-3D9B945D",
+      "revision": 1,
+      "semantic_sha256": "3d9b945df81833482e73877c3974e2ce5f8f093824f76095b71f8ad5a967e3d0",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because vendored and patched component completeness plus genuine accountable ownership and capability are not proven by records.",
+      "counterexample_analysis": "Counterexample: A copied patched library is unregistered and a departed employee owns another; listed component rows pass.",
+      "nondeterministic_route": "accountable_human_decision",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-E5774CFB",
+      "revision": 1,
+      "semantic_sha256": "e5774cfb9d0383394f5b1aca53c1b85ce3767335ea8a4d16deaa57c6bd6c9983",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed artifact_verification check does not fully decide this rule because the historical-release inventory and every mirror and retention store are not independently complete.",
+      "counterexample_analysis": "Counterexample: An old customer-specific release is absent, while every registered historical digest references a retrievable SBOM.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-7437D577",
+      "revision": 1,
+      "semantic_sha256": "7437d57757cf9516aca01d46cd9d7a3d6915451db1ea9e501866234a26bf1510",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed bounded_execution check does not fully decide this rule because all TLS endpoints, names, SNI paths, trust stores, client classes, intermediate chains, and time states are not exhausted.",
+      "counterexample_analysis": "Counterexample: A legacy hostname serves the wrong certificate to one client trust store, while registered endpoints pass.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-6A0D1D7E",
+      "revision": 1,
+      "semantic_sha256": "6a0d1d7e670bd56da0f94395036a5704c48c305bd5668a5c73cefcd3d8ab50f5",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed deterministic_composite check does not fully decide this rule because certificate inventory and issuance, renewal, expiry, and revocation paths plus failure combinations lack complete tests.",
+      "counterexample_analysis": "Counterexample: Renewal succeeds normally but fails for one alternate CA during partial DNS outage outside the matrix.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-433F17DA",
+      "revision": 1,
+      "semantic_sha256": "433f17da1efdd8d74827f70de9d5a30216e131a5ac3d38a9dae32e128fae74f9",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because ingress inventory and explicit configuration do not prove every proxy path, header parser, host alias, and runtime trust behavior.",
+      "counterexample_analysis": "Counterexample: An unregistered sidecar trusts any forwarded host, while declared ingress configs enumerate approved trust.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-CCB23489",
+      "revision": 1,
+      "semantic_sha256": "ccb23489db63e6f219e68b53123218d9731d02fc3088897ddb4ac435599c0e0f",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed bounded_execution check does not fully decide this rule because origin addresses, protocols, routes, credentials, IPv6 paths, tunnels, and proxy-bypass techniques are not exhaustively tested.",
+      "counterexample_analysis": "Counterexample: A forgotten IPv6 origin accepts direct requests while registered IPv4 bypass cases reject.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-FA0BCE37",
+      "revision": 1,
+      "semantic_sha256": "fa0bce374a0185f7444d63cff4482c6ed25ef0bd1664547a0e99e009a7cf9434",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed bounded_execution check does not fully decide this rule because every production network path and nonproduction source class, transitive trust, identity, and least privilege are not bounded.",
+      "counterexample_analysis": "Counterexample: An office VPN reaches a production admin sidecar omitted from tests, while listed source classes are denied.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-69F5FCA9",
+      "revision": 1,
+      "semantic_sha256": "69f5fca93fcc45ef82cb606e87dccbdd86628b695e40cdad7849e732457c20b7",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed external_readonly_query check does not fully decide this rule because production property completeness and external observation from all regions, protocols, and timing windows are not established.",
+      "counterexample_analysis": "Counterexample: A newly exposed regional admin port is on an unregistered domain and absent from the monitor.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-EEE7D855",
+      "revision": 1,
+      "semantic_sha256": "eee7d855a6dc1ba087d895c49d96144bd3b28be7006e3fd953caa4cec18e4307",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed deterministic_composite check does not fully decide this rule because cryptographic-use discovery and approved and maintained status across embedded implementations and protocol negotiation are not complete.",
+      "counterexample_analysis": "Counterexample: A vendored legacy cipher is invoked by fallback code but omitted; registered algorithms resolve to maintained entries.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-CF133A7A",
+      "revision": 1,
+      "semantic_sha256": "cf133a7a4382f31be086a3f24b7272bc6c7f2117bb8181f823ad224265702ea1",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed bounded_execution check does not fully decide this rule because historical-data fixtures, required-data scope, key versions, corruption, partial rotation, and recovery integrity oracles are incomplete.",
+      "counterexample_analysis": "Counterexample: Approved fixtures decrypt after rotation, but archived tenant data encrypted by an omitted key version is unrecoverable.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-1C8FFFBF",
+      "revision": 1,
+      "semantic_sha256": "1c8fffbf8f80ec7d2bf909b95aecbd36f36312f2b212ddd48e3421dc3fcd2ac5",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because defined deletion and erasure fields do not prove legal sufficiency, complete copies, key destruction, or effective cryptographic erasure.",
+      "counterexample_analysis": "Counterexample: A key is marked deleted while a backup copy remains and retained ciphertext is still recoverable.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-66A51D5D",
+      "revision": 1,
+      "semantic_sha256": "66a51d5d6a60f735c68d94f6fd98a96f44e071f5e18c707af4bf65bc62646a65",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because complete certificate and key discovery plus owner authority, competence, and continued accountability are not proven.",
+      "counterexample_analysis": "Counterexample: An embedded webhook key is omitted and a departed contractor owns a signing key; registered rows pass.",
+      "nondeterministic_route": "accountable_human_decision",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-7FAB83B4",
+      "revision": 1,
+      "semantic_sha256": "7fab83b4ecf47865a135d8559a8573bb0c28079cd96f3b908b689ad5079706a0",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed bounded_execution check does not fully decide this rule because algorithm, key, encoding, parser, library, token, and confusion input spaces are not exhausted by an approved matrix.",
+      "counterexample_analysis": "Counterexample: Listed malformed signatures reject, but a duplicate-header encoding triggers algorithm confusion outside fixtures.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-A9032C59",
+      "revision": 1,
+      "semantic_sha256": "a9032c598e2628ebbb52e764a4c46f71d27dfe52b1a0aa35c9983668476e66b3",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because result bindings prove analyses ran, not that component and license inventories, tools, rules, or findings are complete and correct.",
+      "counterexample_analysis": "Counterexample: All three reports bind to the artifact, but the SBOM analyzer ignores a bundled executable and its license.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-6EB61A35",
+      "revision": 1,
+      "semantic_sha256": "6eb61a352f744b03d77816ff15280f5eeffca7d90724c8fee8bf2afe35213047",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because current-change and approved-history scans do not bound all repository rewrites, artifacts, branches, generated files, or secret encodings.",
+      "counterexample_analysis": "Counterexample: A secret exists in a deleted remote branch outside the approved range, while the recorded scan succeeds.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-212AE882",
+      "revision": 1,
+      "semantic_sha256": "212ae882e0ad4df9e051942088c24ff479d0519dc2cbe96c0c708bb9baf7a513",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because infrastructure, configuration, and policy asset completeness and analyzer semantic coverage are not proven by report presence.",
+      "counterexample_analysis": "Counterexample: An unregistered cloud account has a public bucket; all scanned configurations produce current reports.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-E111813C",
+      "revision": 1,
+      "semantic_sha256": "e111813c676944f68fa77e8e2224b834374ed85d304adf0fe40b6d5819d270ef",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because deployed application and API surface, auth states, business logic, adversarial inputs, and security oracles are not exhaustive.",
+      "counterexample_analysis": "Counterexample: A regional GraphQL endpoint is omitted and allows cross-tenant data access while registered API tests pass.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-A54FFC98",
+      "revision": 1,
+      "semantic_sha256": "a54ffc98bd39631f6058e9b3a635ffdf2db176f1bccbee502c2f1ce2f0906c1d",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because identity flows, roles, tenants, recovery paths, sessions, races, and authorization states are not fully enumerated.",
+      "counterexample_analysis": "Counterexample: A support impersonation flow crosses tenants outside the matrix, while all named test suites ran.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-65F8195D",
+      "revision": 1,
+      "semantic_sha256": "65f8195d071a1155ad9030b36d901f24cf349b7f715fecef3fd7b2533e9a7149",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because finding completeness, risk rating, accountable ownership, target adequacy, and retest sufficiency require expert judgment.",
+      "counterexample_analysis": "Counterexample: A critical flaw is rated low, assigned to a powerless owner, and retested with the original weak fixture; fields pass.",
+      "nondeterministic_route": "accountable_human_decision",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-D6455092",
+      "revision": 1,
+      "semantic_sha256": "d64550925ed7080664a74c462c2e2b20bbda16f4549cab77f76d9ce7a374dfe1",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because unsupported component discovery and treatment feasibility, timing, compensation, and acceptance are not proven by plan links.",
+      "counterexample_analysis": "Counterexample: An unlisted end-of-life library remains, while another plan says accept forever and passes structurally.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "human_accountability"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-376AA3EF",
+      "revision": 1,
+      "semantic_sha256": "376aa3ef8b319446d38bdc41a420f604b33a94924bda9a646cc1db63707f93c7",
+      "verdict": "confirmed_deterministic",
+      "reason": "A versioned public disclosure policy can be fetched and the reporting endpoint is exercised with a bound test report, exactly deciding the two existence and reachability facts stated.",
+      "counterexample_analysis": "I tried a missing policy, stale URL, unreachable form, wrong reporting destination, and rejected test submission. Each fails publication or the authenticated channel exercise; response quality is a separate control.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-8C2B79FA",
+      "revision": 1,
+      "semantic_sha256": "8c2b79fa4389ed51e72df9f985aa0b000b275ac0f2c58e54e8f29227983b92f0",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed external_readonly_query check does not fully decide this rule because active monitor labels do not prove complete event sources, detection accuracy, fraud and abuse meaning, or adversarial coverage.",
+      "counterexample_analysis": "Counterexample: An account-takeover path through recovery is unlogged, while each required monitor category is configured and green.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-B5A25CFD",
+      "revision": 1,
+      "semantic_sha256": "b5a25cfdc697a91a5ab0aeb1abec70b8d64f49401450dde86d7805c3d2dbacff",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because severity semantics and genuine declaration authority, competence, independence, and availability are organizational judgments.",
+      "counterexample_analysis": "Counterexample: A low-level employee is listed authorized to declare critical incidents but lacks actual authority; policy fields pass.",
+      "nondeterministic_route": "accountable_human_decision",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-2EDD7F91",
+      "revision": 1,
+      "semantic_sha256": "2edd7f913b270d16faa680e694259cf99a2f85af8b53317b9669916e348e7579",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because procedure headings do not prove correct, feasible, coordinated detection, containment, recovery, verification, and closure.",
+      "counterexample_analysis": "Counterexample: Containment instructs responders to delete evidence before verification; all seven stages are present.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-EFB31A9B",
+      "revision": 1,
+      "semantic_sha256": "efb31a9b521a3e055411236c88274a6c6c1f1d23c55655a065b8ee759db4cc09",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because event categories and boundaries depend on security, privacy, fraud, safety, and data-integrity specialist meaning.",
+      "counterexample_analysis": "Counterexample: A privacy breach is classified outage only, while the procedure lists all six distinct categories.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-E4837A19",
+      "revision": 1,
+      "semantic_sha256": "e4837a19c0f5e9b746055e0ada063a797c0de23298b591e073ea6f303670e5ba",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed bounded_execution check does not fully decide this rule because approved compromise scenarios do not cover every build, dependency, propagation path, persistence, clean source, and replacement oracle.",
+      "counterexample_analysis": "Counterexample: A compromised compiler persists into the rebuilt replacement, while package and runner scenarios pass.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-E968A368",
+      "revision": 1,
+      "semantic_sha256": "e968a368f5e95e4cb513192fc852ea320e1723a9b5e5640673c3bd38e874779c",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because metric names do not define valid timing origins, impact, customer harm, recurrence, completeness, or comparable populations.",
+      "counterexample_analysis": "Counterexample: Detection starts at declaration rather than compromise and harm excludes churn, yet every metric field exists.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-191DAB9C",
+      "revision": 1,
+      "semantic_sha256": "191dab9cc800b8f0a696ecde424b0d139c8afdb968dbc048644c7cc488f2e422",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed bounded_execution check does not fully decide this rule because simultaneous and partial outages, independent recovery resources, identities, communications, documentation, and success oracles are not exhausted.",
+      "counterexample_analysis": "Counterexample: Each system outage is tested alone, but identity and chat failing together makes the workflow impossible.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-D4E90196",
+      "revision": 1,
+      "semantic_sha256": "d4e90196659d00fc87ce859c33913cd1b0200aab229b6cb9b9e84739f6cc0754",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed external_readonly_query check does not fully decide this rule because anonymous endpoint completeness and safe size, rate, cost, frequency, and resource bounds are not established.",
+      "counterexample_analysis": "Counterexample: An unregistered image-transform endpoint has no cost cap, while registered endpoints enforce all five declared limits.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_threshold"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-B8EC811C",
+      "revision": 1,
+      "semantic_sha256": "b8ec811c8dc980837a061c2206c98c61ccaa357a1609f2025a2b47219fcc7ded",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed bounded_execution check does not fully decide this rule because all protected operations and ways a challenge is absent, bypassed, replayed, or degraded are not exhaustively tested.",
+      "counterexample_analysis": "Counterexample: A mobile recovery path treats challenge success as authorization, while registered operations retain separate decisions.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-97A2A4F4",
+      "revision": 1,
+      "semantic_sha256": "97a2a4f44701487c2f22d579d21e389f750bd96e24e7ac9f7364959ce51edaab",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed external_readonly_query check does not fully decide this rule because abuse and false-positive ground truth, appeal completeness, manual-review quality, and monitoring thresholds are not bounded.",
+      "counterexample_analysis": "Counterexample: Blocked legitimate users never appeal through the monitored channel, so false positives stay invisible and dashboards pass.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-6DE0A64D",
+      "revision": 1,
+      "semantic_sha256": "6de0a64d01e7a3d212b0ef9258287363297a741df9f9ffe6eae34139df835ab8",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because complete asset and control scope plus one genuinely accountable, authorized, competent owner cannot be proven by fields.",
+      "counterexample_analysis": "Counterexample: A shadow service has no owner and a powerless account owns a critical identity; registered categories pass.",
+      "nondeterministic_route": "accountable_human_decision",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-543BE90B",
+      "revision": 1,
+      "semantic_sha256": "543be90b8fe894f994089c9f0883e074e1b4925661ddbc868332b8b3c628c9a6",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because threat completeness, likelihood, impact, control effectiveness, residual risk, and ownership require specialist judgment.",
+      "counterexample_analysis": "Counterexample: A major threat is omitted and another risk assigns negligible likelihood without evidence; all fields pass.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_threshold",
+        "human_accountability"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-D1B6C513",
+      "revision": 1,
+      "semantic_sha256": "d1b6c513f5dbec1cbab818b14a8459b2e082d38402422f0bf93d6a5abd1ee321",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because policy versus guidance meaning, justified tailoring, approval authority, and safety of deviations require governance judgment.",
+      "counterexample_analysis": "Counterexample: A mandatory control is relabeled guidance and waived with boilerplate approval; document structure passes.",
+      "nondeterministic_route": "accountable_human_decision",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-1B6BE375",
+      "revision": 1,
+      "semantic_sha256": "1b6be3751a62a1af8e6f266ee00a7943449ee112ec0da34aed9afcb63bf219af",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because minimum baseline completeness and adequacy for products, environments, suppliers, identities, endpoints, and data classes require risk judgment.",
+      "counterexample_analysis": "Counterexample: A critical production baseline permits public admin access, while all six categories have entries.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "undefined_threshold"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-514A892D",
+      "revision": 1,
+      "semantic_sha256": "514a892dc4eae69a18b9fdf0bf17e7dd36cdc5f4f9f80210ac269c6fd667f081",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed deterministic_composite check does not fully decide this rule because exception completeness and effective compensation and monitoring are not proven by dates and automatic state changes.",
+      "counterexample_analysis": "Counterexample: An out-of-band standing bypass is unregistered and a listed exception cites disabled monitoring; expiry fields pass.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-5EE950A3",
+      "revision": 1,
+      "semantic_sha256": "5ee950a3d8b0f21df513e8a5b84221aacee5cbf7211daa32f2d026c04291a68d",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because process existence does not prove accessible disclosure, safe researcher communication, coordinated ownership, or effective remediation.",
+      "counterexample_analysis": "Counterexample: The researcher channel is ignored and remediation has no authority, while all three process documents exist.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "human_accountability",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-A4C4F453",
+      "revision": 1,
+      "semantic_sha256": "a4c4f4532fd4eb208b89a57599646c8bae8c6d2de5426f8f5dfe341f44fb5ebc",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because threat and objective completeness, semantic traceability, and verification sufficiency are not established by links.",
+      "counterexample_analysis": "Counterexample: An omitted abuse scenario has no requirement, while listed threats link to shallow field-presence tests.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-9BE73656",
+      "revision": 1,
+      "semantic_sha256": "9be736565ee5d353c1567ba69eb35bb22fe7dcc0a4a406caa2c14307ee47be80",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed deterministic_composite check does not fully decide this rule because scan reports cannot prove complete source and artifact inventories, analyzer support, relevant rules, or maintained semantic coverage.",
+      "counterexample_analysis": "Counterexample: A generated binary is unsupported and omitted while each scan category uses a current rule version.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-8C8E061F",
+      "revision": 1,
+      "semantic_sha256": "8c8e061f8485bc49f5dc785a6ec8fe18fd63054c9ef3ee13baf8457f185c9472",
+      "verdict": "confirmed_deterministic",
+      "reason": "Security verification evidence is cryptographically bound to the exact immutable release digest and exact configuration version, directly deciding that verification targeted the release rather than only a source branch.",
+      "counterexample_analysis": "I tried a branch-only report, rebuilt artifact, post-test configuration change, mutable tag, and copied result. Each lacks the required digest or configuration binding and fails; test adequacy remains a separate control.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-7C42AB74",
+      "revision": 1,
+      "semantic_sha256": "7c42ab743d372ecd6cf2d9f3fa4999c82e4a1db78cd7a479e3ca34ef4bb3c71f",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed artifact_verification check does not fully decide this rule because artifact-bound attachments do not prove complete provenance and dependency inventories, valid signatures, successful tests, or authorized approvals.",
+      "counterexample_analysis": "Counterexample: All six evidence types are attached, but an unregistered build input is absent and approval is from an unauthorized account.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-7BE3DC3E",
+      "revision": 1,
+      "semantic_sha256": "7be3dc3e85d7a61ad26685d302a12a76d98534bd2c01fad2f72c5110e7e80167",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed deterministic_composite check does not fully decide this rule because emergency path availability, complete source and build trace, meaningful tests, and authenticated independent review are not fully bounded.",
+      "counterexample_analysis": "Counterexample: A path exists but a service account self-approves and a hidden build input is omitted; registered trace fields pass.",
+      "nondeterministic_route": "accountable_human_decision",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-A8038EF0",
+      "revision": 1,
+      "semantic_sha256": "a8038ef08168dc59b8d443c4c94c7e64d959fe133f47e41d7800ed09bc841ea7",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed external_readonly_query check does not fully decide this rule because released-component completeness and every authoritative compromise source, alias, owner change, and vulnerability disclosure are not bounded.",
+      "counterexample_analysis": "Counterexample: A vendored component is omitted and its supplier compromise appears outside approved monitors.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-A4E69FA6",
+      "revision": 1,
+      "semantic_sha256": "a4e69fa69775d07e1944a1bf692a77bded22d08bb4ecc3acb3a5c9bdcf714ed2",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because procedure fields do not prove clean sources, authority, feasibility, containment, replacement, and safe recovery for each compromise.",
+      "counterexample_analysis": "Counterexample: The signing-key plan cannot revoke already trusted signatures but all four scenarios are documented.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol",
+        "human_accountability"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-C62DB062",
+      "revision": 1,
+      "semantic_sha256": "c62db0624440db2ceb2ed2827c8f5317e1adba86f248483374dfde6d09d342cc",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because complete security requirements and correct linkage through every lifecycle path, data copy, and credential cleanup are not established.",
+      "counterexample_analysis": "Counterexample: A retired tenant export and credential are omitted, while all registered requirements have cleanup evidence links.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-242A5671",
+      "revision": 1,
+      "semantic_sha256": "242a5671d503c5d131e1b3caddf0b527c304aebe5268e03b9a77b9d540ad1cf6",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because unresolved threat completeness, accountable ownership, and appropriate deadlines require risk discovery and judgment.",
+      "counterexample_analysis": "Counterexample: A critical threat is omitted and another has a ten-year deadline; record fields pass.",
+      "nondeterministic_route": "accountable_human_decision",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-C3393B74",
+      "revision": 1,
+      "semantic_sha256": "c3393b744e6070a933b50fece7171f3df9fbbb9e3bc0d75dd9976b8b3030a1ec",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because identity completeness, uniqueness, purpose truth, and genuinely accountable owner authority are not proven.",
+      "counterexample_analysis": "Counterexample: A shared automation identity is unregistered and a departed employee owns another; all inventoried identities pass.",
+      "nondeterministic_route": "accountable_human_decision",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-32615AD6",
+      "revision": 1,
+      "semantic_sha256": "32615ad6ecc0767c37f3a49a6adea29ddb6d9ce85c65f9560cf4ce447d3f78cb",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed deterministic_composite check does not fully decide this rule because workload and credential completeness, approved lifetime and scope adequacy, and every embedded-secret path are not bounded.",
+      "counterexample_analysis": "Counterexample: An unlisted startup script embeds a long-lived token while registered workload credentials meet policy.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_threshold"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-C3D28E99",
+      "revision": 1,
+      "semantic_sha256": "c3d28e991cb2e04938a94e49b18383aa632558d12befee5def303d623e460531",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed bounded_execution check does not fully decide this rule because token encodings, duplicate claims, parser variants, algorithms, key states, time boundaries, nonce stores, and replay paths are not exhaustive.",
+      "counterexample_analysis": "Counterexample: A duplicate audience claim bypasses one parser outside the approved invalid-token matrix.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-182E040C",
+      "revision": 1,
+      "semantic_sha256": "182e040c817d4ef9ca5b162a68dcc53890fb265a9a7107f638b6f0306e69f679",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed deterministic_composite check does not fully decide this rule because all break-glass paths, protection adequacy, alert delivery, test realism, and substantive retrospective authority are not proven.",
+      "counterexample_analysis": "Counterexample: An unregistered recovery account creates no alert, while the documented account passes its test and review links.",
+      "nondeterministic_route": "accountable_human_decision",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-6BFA62B6",
+      "revision": 1,
+      "semantic_sha256": "6bfa62b64a67005d8eaf26793a031cfeac04fa4b2e7d2e7313d63a1493fa1378",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed external_readonly_query check does not fully decide this rule because event-source and identity-flow completeness plus authenticated tamper-evident logging and field correctness are not established.",
+      "counterexample_analysis": "Counterexample: A support impersonation action uses an unlogged endpoint, while registered event categories produce audit rows.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-4CCBD31C",
+      "revision": 1,
+      "semantic_sha256": "4ccbd31c53f1ef393a6e2cb992e7db44e5b9e51c5bb0c350f1eca4e51569364c",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed deterministic_composite check does not fully decide this rule because detector trigger tests do not prove complete attack paths, low-and-slow behavior, anomaly meaning, false negatives, or evasion resistance.",
+      "counterexample_analysis": "Counterexample: A distributed low-rate stuffing attack stays below each detector threshold while approved triggers fire successfully.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope",
+        "undefined_threshold"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-9D9A377E",
+      "revision": 1,
+      "semantic_sha256": "9d9a377ef4b2ac25f2681d9c5cfaed6eb53df16841d329b2342d889354455c9b",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because high impact, independence, destination scope, approver authority, and complete grants are governance judgments.",
+      "counterexample_analysis": "Counterexample: A high-impact export destination is labeled routine and approved by the requester using another account.",
+      "nondeterministic_route": "accountable_human_decision",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-ABB424A2",
+      "revision": 1,
+      "semantic_sha256": "abb424a205a9c33b4cabab3936c582edbe01acf35cd715eb8d96c14a04811153",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because secret discovery and true owner, consumer, purpose, scope, environment, lifecycle, rotation, and revocation semantics are not proven.",
+      "counterexample_analysis": "Counterexample: A copied token in a notebook is omitted, while every catalogued secret has nine fields.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-4FECA33F",
+      "revision": 1,
+      "semantic_sha256": "4feca33f6daa12c3c20b6181d58247cfe41f231969944bc8da44811ca5a946a9",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed external_readonly_query check does not fully decide this rule because every secret copy and delivery path plus actual access control, audit, and lifecycle management are not bounded by approved-system records.",
+      "counterexample_analysis": "Counterexample: A secret is copied from the vault to plaintext build logs, while its vault entry satisfies all configured controls.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-088D659E",
+      "revision": 1,
+      "semantic_sha256": "088d659e18fd548aef39b7f2ae5fe71e12ff5d65494e8f8bf7908b63a35d006b",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed deterministic_composite check does not fully decide this rule because complete secret consumers, identities, transit routes, storage copies, encryption modes, and key handling are not established.",
+      "counterexample_analysis": "Counterexample: An unlisted sidecar receives a secret over plaintext localhost, while registered consumers and vault storage meet policy.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-B886B94F",
+      "revision": 1,
+      "semantic_sha256": "b886b94fef5280e12e30d804f08dcbe5564b312a28b875a0b5fb9688295a6738",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed external_readonly_query check does not fully decide this rule because monitor labels do not prove complete retrieval paths, anomaly models, stale-version detection, delivery, and drift thresholds.",
+      "counterexample_analysis": "Counterexample: A cached stale secret is used by an unmonitored worker, while all vault monitor categories are active.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope",
+        "undefined_threshold"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-0726DF71",
+      "revision": 1,
+      "semantic_sha256": "0726df717505e41c062e581ae8e5ebc138f6c2b0e7c73ec984b35565b3b46e57",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because approved content and history ranges cannot cover all branches, artifacts, logs, backups, encodings, and rewritten history.",
+      "counterexample_analysis": "Counterexample: A secret remains in a build artifact and deleted remote branch outside scan scope; current scan passes.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-5819670C",
+      "revision": 1,
+      "semantic_sha256": "5819670c84874eb29734546a6dbd83467de5a2b6603290ec0974751f431cbf2c",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because exposure completeness and actual rotation or revocation across copies and consumers are not proven by a terminal record state.",
+      "counterexample_analysis": "Counterexample: A leaked key is marked rotated but one consumer still accepts the old value; every exposed-secret row passes.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "human_accountability"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-797135EE",
+      "revision": 1,
+      "semantic_sha256": "797135eed2188664e3983cfe036b1e926817346033d13d6d116af765308eb0d7",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because break-glass secret completeness, genuinely separate controls, reviewer authority, and review quality are not proven.",
+      "counterexample_analysis": "Counterexample: A recovery secret shares the normal admin policy but is labeled separate; review evidence exists.",
+      "nondeterministic_route": "accountable_human_decision",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-B740DAFC",
+      "revision": 1,
+      "semantic_sha256": "b740dafc72cdbe7e25245871ce3cfc94395cedb940e1fd3f15bdf06027e28696",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed external_readonly_query check does not fully decide this rule because human and machine consumer identities and indirect sharing through aliases, copies, sessions, and derived credentials are not complete.",
+      "counterexample_analysis": "Counterexample: A human and job use copied values under different IDs, while registered secret identifiers are uniquely assigned.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-27196AF2",
+      "revision": 1,
+      "semantic_sha256": "27196af267b87bfa7a82db9f934511e2ab673035603f6f5828e5cec5cf6f47da",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed bounded_execution check does not fully decide this rule because credential and signing-key compromise paths, blast radii, persistence, external verifiers, and recovery oracles are not exhausted.",
+      "counterexample_analysis": "Counterexample: The exercise revokes one key but an offline signer and downstream cache continue trusting it.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-D0B3EF17",
+      "revision": 1,
+      "semantic_sha256": "d0b3ef17351e374038dcf3ee9674fb45baa2162169cbaf60a3c87fa48f2d33cf",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed deterministic_composite check does not fully decide this rule because trusted-release scope, authentic review authority, complete source, and all pipeline modification paths are not fully bounded.",
+      "counterexample_analysis": "Counterexample: A pipeline includes an unreviewed remote template while registered revision and local definition pass review policies.",
+      "nondeterministic_route": "accountable_human_decision",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-92BFE01F",
+      "revision": 1,
+      "semantic_sha256": "92bfe01f81ea4119446e5495a329a5a8b0af4ea6f45fc9076c9eefd4f4c9553b",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed bounded_execution check does not fully decide this rule because untrusted workflow and trusted-builder object inventories, indirect scheduling, cache poisoning, artifacts, identities, and secret paths are not exhaustive.",
+      "counterexample_analysis": "Counterexample: A pull request modifies a shared cache consumed by the trusted builder although direct secret and scheduler tests deny access.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-647E3B49",
+      "revision": 1,
+      "semantic_sha256": "647e3b49d72a63b33748a7793ccf30ea123a3ff25d50e3f45f8954f50ef2df93",
+      "verdict": "confirmed_deterministic",
+      "reason": "Every resolved build input is compared to a pinned immutable identity and integrity digest, so unexpected substitution changes a bound value and fails deterministically.",
+      "counterexample_analysis": "I tried mutable tags, mirror substitution, transitive build tools, base images, generated downloads, and renamed files. Under the complete resolved-input trace each has an identity and digest; any changed bytes fail, while identical pinned bytes satisfy the rule.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-C7DF41EB",
+      "revision": 1,
+      "semantic_sha256": "c7df41eb71eeb34bc39237122370966dad66187bfe8e12a695c2c34f9cabc722",
+      "verdict": "confirmed_deterministic",
+      "reason": "The artifact receives an immutable digest and signed provenance that references exact source and every exact build-input identity, directly deciding the stated identity and provenance fact.",
+      "counterexample_analysis": "I tried a different commit, undeclared build input, changed toolchain, rebuilt bytes, and detached attestation. Each changes the digest or breaks a signed provenance edge; quality and trust of approved inputs are separate controls.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-2F8BE0DD",
+      "revision": 1,
+      "semantic_sha256": "2f8be0dd51fb9d4e07fc529bbb6a9c2995a91ffcf6dfcbd6d193eed40f950269",
+      "verdict": "confirmed_deterministic",
+      "reason": "Signed or attested release identity plus authenticated promotion and deployment event ordering exactly decides whether verification occurred before both transitions.",
+      "counterexample_analysis": "I tried unsigned promotion, verification after deployment, signature over a different digest, expired attestation, and bypass deployment. Each fails signature binding or event order; a valid bound artifact verified first satisfies the rule.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-C55F21C3",
+      "revision": 1,
+      "semantic_sha256": "c55f21c3c34d683da979738aacbc689c185b40149e9159646468e9ec778225f3",
+      "verdict": "confirmed_deterministic",
+      "reason": "The same immutable artifact digest is compared across the one build event and every promotion environment, fully deciding build-once promotion identity.",
+      "counterexample_analysis": "I tried environment rebuilds, repackaging, injected configuration bytes, mutable tags, and regional image substitutions. Each changes the promoted digest and fails; equal sealed digests prove the same artifact was promoted.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-CE0ED010",
+      "revision": 1,
+      "semantic_sha256": "ce0ed01077f967e0a6da051cdf31ad620f41d350ca63de4a4cede7aaf836da9a",
+      "verdict": "confirmed_deterministic",
+      "reason": "A complete sealed-artifact inventory is compared exactly with the declared input manifest and rejects every unmatched file and dependency, deciding the bounded content fact.",
+      "counterexample_analysis": "I tried an extra binary, hidden file, vendored library, statically included package, and renamed dependency. Each appears in sealed content without a matching manifest identity and fails; semantic safety of declared inputs is separate.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-E19478CB",
+      "revision": 1,
+      "semantic_sha256": "e19478cb4547bcdb8462fbc6788c74d66cd678a8adff2748e43462a04caadd27",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed bounded_execution check does not fully decide this rule because cache keys, namespaces, trust levels, eviction states, concurrency, stale entries, and poisoning methods are not exhausted.",
+      "counterexample_analysis": "Counterexample: Direct poison fixtures reject, but an untrusted job primes a shared redirect cache key used by a trusted build.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-B3EBD693",
+      "revision": 1,
+      "semantic_sha256": "b3ebd693076de2b265c47d97d67d6d953939e23b607e5c5df2a774ee8977ca25",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed bounded_execution check does not fully decide this rule because trusted release-state objects and every indirect mutation path, identity, cache, artifact, and scheduler interaction are not bounded.",
+      "counterexample_analysis": "Counterexample: A pull request changes a shared artifact index used by release, while registered release-state objects deny writes.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-7F151E96",
+      "revision": 1,
+      "semantic_sha256": "7f151e964e3f3e578247bde6138eb70dfe0f1d50775cbac16ae40f374d5a2553",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed external_readonly_query check does not fully decide this rule because dependency and build-component completeness plus compromise, vulnerability, and ownership sources are not exhaustive.",
+      "counterexample_analysis": "Counterexample: An embedded build plugin is omitted and its owner changes through an unmonitored registry event.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-CB1C22C1",
+      "revision": 1,
+      "semantic_sha256": "cb1c22c11c23d62ab647188dda52b6a31c41e778dddcbb2ad008af6cfe420f2c",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed deterministic_composite check does not fully decide this rule because artifact and input retention completeness, rebuild environment, nondeterminism, and digest equality across time are not fully bounded.",
+      "counterexample_analysis": "Counterexample: A retained build passes now, but an undeclared remote timestamp makes later rebuilds differ; registered artifacts stay retrievable.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-C42CB7AE",
+      "revision": 1,
+      "semantic_sha256": "c42cb7ae4300bd6074db36c6e607fd9d3670d1f67d7caed667e5ae691d59e078",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because procedure names do not prove valid authority, complete audiences, feasible rebuild and resigning, or effective revocation and redistribution.",
+      "counterexample_analysis": "Counterexample: A plan cannot revoke an offline signature or identify customers, while every procedure section exists.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "legal_or_specialist_authority",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-52B43AE6",
+      "revision": 1,
+      "semantic_sha256": "52b43ae6a6807d61b2c2bd073772a170b83088348fed6e0feebe9fba0aee651c",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed bounded_execution check does not fully decide this rule because four scenario labels do not cover compromise persistence, propagation, simultaneous failures, external trust, and recovery oracles.",
+      "counterexample_analysis": "Counterexample: A compromised runner poisons a registry cache and signing step together, an omitted combined scenario.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-609A80DF",
+      "revision": 1,
+      "semantic_sha256": "609a80df7ec0415913e0168aade08658aa729a442926c011e5d7d21875d3f623",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed artifact_verification check does not fully decide this rule because a tamper-evident provenance graph cannot prove every hidden build, transfer, repackage, approval, and deployment step is represented.",
+      "counterexample_analysis": "Counterexample: An unrecorded repackaging step injects a file before deployment while the signed recorded chain remains internally valid.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "human_accountability"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-5F926D02",
+      "revision": 1,
+      "semantic_sha256": "5f926d0284ac8a553d3d2868c2262d9b2ce4de121a01410c24e0f12dccbe3973",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because applicable security requirements, complete mappings, procedure adequacy, and evidence sufficiency require specialist authority.",
+      "counterexample_analysis": "Counterexample: A relevant regulatory requirement is marked not applicable, while listed requirements link to weak procedures and current evidence.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-CF82BB56",
+      "revision": 1,
+      "semantic_sha256": "cf82bb562383d6c20a5d7c67d400323af590654e64635d4520405a6726d207c0",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because analysis category presence does not prove complementary coverage, supported languages, complete surfaces, or useful findings.",
+      "counterexample_analysis": "Counterexample: Seven report types exist but all ignore the same generated authorization layer.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-FD9D76B6",
+      "revision": 1,
+      "semantic_sha256": "fd9d76b6bc238f610e2a3ccdf78c4dc95da6071c4073d81ab804ecc463e04705",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because record fields do not prove representative environment, correct accounts and data, valid methods, complete limitations, or authentic evidence.",
+      "counterexample_analysis": "Counterexample: A security test uses admin-only accounts and synthetic data but claims production coverage; every field is populated.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-0424B2D7",
+      "revision": 1,
+      "semantic_sha256": "0424b2d7ed0ede79521ededa8921c85d25b2a5434495fb0dd384a80f19168310",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because escape and recurrence require complete ground truth, causal linkage, stable denominators, and comparable observation windows.",
+      "counterexample_analysis": "Counterexample: Only scanner-found defects form the denominator, so undetected escapes vanish and reported rates improve.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-907F3DE0",
+      "revision": 1,
+      "semantic_sha256": "907f3de0cd39b2219f7d7a1f016905d252500af3fe5763381d135151544205f7",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because security-event completeness and truthful actor, tenant, reason, correlation, and release context are not proven by schema fields.",
+      "counterexample_analysis": "Counterexample: An unlogged admin action occurs and another event records the service account rather than human actor; registered rows pass.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-A0B84E24",
+      "revision": 1,
+      "semantic_sha256": "a0b84e247cc173d2c4637cbd76c2b9bc13887a93aa9e51c1ae24cedb7f5cae82",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed deterministic_composite check does not fully decide this rule because telemetry pipelines, integrity attacks, access paths, retention copies, time sources, partitions, and availability scenarios are not exhausted.",
+      "counterexample_analysis": "Counterexample: A regional clock drifts and logs are deleted through an unregistered admin path while configured controls and uptime checks pass.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope",
+        "undefined_threshold"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-69FBE0AB",
+      "revision": 1,
+      "semantic_sha256": "69fbe0ab2b4b6fb4d45dd9031cab746b0ed4e87738ff47cdf4aca276ea8dde89",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because expected false-positive and false-negative rates need labeled ground truth, representative populations, confidence, and valid coverage definitions.",
+      "counterexample_analysis": "Counterexample: A detector declares zero false negatives based only on alerts it produced; all four expected fields exist.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_threshold",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-9CB52172",
+      "revision": 1,
+      "semantic_sha256": "9cb5217212d26d525906cecc5577e84d9abcbc99af900aaba42f83c47133b583",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The proposed external_readonly_query check does not fully decide this rule because complete alerts, accountable responder authority and availability, severity truth, context adequacy, and runbook actionability are not proven.",
+      "counterexample_analysis": "Counterexample: A critical alert routes to a departed owner and a dead runbook link while all routing fields exist.",
+      "nondeterministic_route": "accountable_human_decision",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    }
+  ]
+}

@@ -1,0 +1,153 @@
+{
+  "schema_version": "prc.control-classification-skeptic-review/v0.1",
+  "packet_id": "skeptic-docs-engineering-01-governance-and-foundations-md-part-001-part-002",
+  "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "controls": [
+    {
+      "control_id": "USEQ-24066ACE",
+      "revision": 1,
+      "semantic_sha256": "24066acec973bd3e8f982a725807cd5f266bb33fce79a3d6f32fb428ffcfa4b6",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Exact heading presence does not prove that the category file actually states a purpose, applicability rule, universal controls, evidence expectations, and interpretation boundaries.",
+      "counterexample_analysis": "A file can contain five correctly named but empty sections and pass the parser. It has the headings, yet none of the required substantive category guidance is present.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-C6F40249",
+      "revision": 1,
+      "semantic_sha256": "c6f4024993a31ceaa721d0917747db206e263bfafb3f714a4dc1da2b9d655fcb",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Defined metric fields do not prove that corpus use, ambiguity, Not Applicable patterns, recurring exceptions, and escaped defects are measured from complete authoritative populations.",
+      "counterexample_analysis": "A dashboard can record counts from one team while omitting other assessments and production defects. Every named metric exists, but the corpus program is not measuring the full required phenomena.",
+      "nondeterministic_route": "contract_incomplete",
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-8C84BDA1",
+      "revision": 1,
+      "semantic_sha256": "8c84bda1ad3c69b792c56f6ac07df67ab511ad484f2b17ca9083191167a2d588",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The production-service inventory is assumed complete, and active directory identities do not establish that business and engineering ownership was accepted and is accountable.",
+      "counterexample_analysis": "Every listed service can name two active users while an unlisted production worker has no owners, or the named users deny responsibility. The clause passes but the rule is unmet.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-C8627A8D",
+      "revision": 1,
+      "semantic_sha256": "c8627a8d19305dd388e72f68f68f389acbdb93bfc30a2b1e9820588b42e3a842",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Approved asset inventories can omit integrations and operational processes, and an active identity field does not prove real ownership.",
+      "counterexample_analysis": "All cataloged dashboards and jobs can name owners while a separately deployed scheduler and alert are absent, or a nominal owner has no responsibility. Cardinality passes without ownership of every asset.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-8272E813",
+      "revision": 1,
+      "semantic_sha256": "8272e813100529b059b86ee88e6c9a737fc48cf1a57f5ebd7da5ca459697dd07",
+      "verdict": "confirmed_deterministic",
+      "reason": "The six escalation contact categories and resolvable identity or provider references form a closed required field set with objective validation.",
+      "counterexample_analysis": "Any missing category, dangling identity, or unreachable provider reference fails or blocks; a complete path with valid references passes without judging response quality.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-4B9CB799",
+      "revision": 1,
+      "semantic_sha256": "4b9cb799873fd23601b76e27d2b0d54f2992ef39eca441b92b739fd24a95d3f3",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The approved register cannot prove every real risk is included, while likelihood, impact, treatment, evidence sufficiency, and accountable ownership require risk judgment.",
+      "counterexample_analysis": "All registered risks can have populated fields while a known risk is omitted, or an implausible likelihood and irrelevant evidence are entered. The schema passes but every risk is not properly governed.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-0B8D7893",
+      "revision": 1,
+      "semantic_sha256": "0b8d7893706782fbb6d97e0d87bc4bcce125a13baf684e7abf9963d37f7c5e60",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Authentication and authorization references do not prove that residual-risk acceptance was made by legitimately authorized accountable people or that all accepted risk is recorded.",
+      "counterexample_analysis": "An improperly granted approver role can sign a record, or an informal acceptance can be omitted. The fields pass while authorized people did not validly accept every recorded residual risk.",
+      "nondeterministic_route": "accountable_human_decision",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "classification_not_approved"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-9843CD0A",
+      "revision": 1,
+      "semantic_sha256": "9843cd0a5a7f5e6ffe1e9a92a8a0a9d76a8a0246a850d9576cb275ebb0d87c76",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Automatic expiry is bounded, but a current successful test record does not prove that compensating controls work across the exception's actual risk conditions.",
+      "counterexample_analysis": "An exception can expire correctly while its compensating rate limit passes one simple test but fails during a relevant distributed burst. Both clauses pass although the compensating control is not adequately tested.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-0C8F7443",
+      "revision": 1,
+      "semantic_sha256": "0c8f7443355f347f918937e2601962bc7efb44bf156e18b8a621881797ffba60",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Resolvable criterion links do not prove that each accessibility control correctly maps to the selected conformance target; that semantic mapping requires accessibility expertise.",
+      "counterexample_analysis": "A keyboard-navigation control can link to an unrelated color-contrast criterion and pass referential checks. The graph is complete but the accessibility mapping is wrong.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-2C632814",
+      "revision": 1,
+      "semantic_sha256": "2c632814f85b351e3676d76e523caf891608850797906cb285cddbd2d35c86dd",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Registered conflict links and signatures do not prove complete conflict capture, meaningful trade-off documentation, or valid accountable approval.",
+      "counterexample_analysis": "An important unregistered conflict can be omitted, while a listed conflict uses decided as its trade-off and an unauthorized signer. The clause passes although resolutions, tradeoffs, and approvals are not properly documented.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    }
+  ]
+}

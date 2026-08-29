@@ -1,0 +1,39 @@
+{
+  "schema_version": "prc.control-classification-skeptic-review/v0.1",
+  "packet_id": "skeptic-docs-engineering-12-operations-sre-and-support-md-part-002-part-002",
+  "primary_packet_id": "docs-engineering-12-operations-sre-and-support-md-part-002",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "controls": [
+    {
+      "control_id": "USEQ-BFBBB220",
+      "revision": 1,
+      "semantic_sha256": "bfbbb220705bcdacd74073caef8c8382fb9db00faeb4bae87883620c15cc5b71",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The bounded exercise does not exhaust control-plane failure modes or prove the supposedly independent update path lacks shared identity, DNS, network, device, and provider dependencies.",
+      "counterexample_analysis": "A simulated application control-plane outage allows a status update, but a real identity-plus-DNS failure disables both the control plane and the status publisher. The approved exercise passes while customer-facing information cannot be updated during that control-plane failure.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-0BFDE64A",
+      "revision": 1,
+      "semantic_sha256": "0bfde64ac70c4c35200d9a13074b5823d6bd1450717aafd4a85e5724788d30c4",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Required-role scope, intended service hours, risk-driven coverage, competence, availability, authority, and sustainable staffing are accountable organizational judgments, not roster joins.",
+      "counterexample_analysis": "Every listed shift has a named person, but a critical recovery role is omitted and the overnight assignee lacks the access and competence to perform it. The schedule check passes while required operational staffing is not ready for the intended risk.",
+      "nondeterministic_route": "accountable_human_decision",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    }
+  ]
+}

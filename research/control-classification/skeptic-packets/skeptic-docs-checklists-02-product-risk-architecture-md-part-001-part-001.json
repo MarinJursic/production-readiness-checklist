@@ -1,0 +1,640 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-checklists-02-product-risk-architecture-md-part-001-part-001",
+  "primary_packet_id": "docs-checklists-02-product-risk-architecture-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 22,
+  "controls": [
+    {
+      "control_id": "PRC-04-018",
+      "revision": 1,
+      "semantic_sha256": "6b20b7a97bb258a91562d0916d9dcc428531bdf47f9fca8ece73ce7901a66d6d",
+      "statement": "Define the observation period before declaring the launch complete.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 31
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "4. Product and business readiness",
+        "4.2 Launch objectives"
+      ],
+      "primary_packet_id": "docs-checklists-02-product-risk-architecture-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control asks for a defined observation period, which can be decided exactly from an authenticated release-bound record with finite start and end semantics.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The launch record defines a finite observation start and end, or a finite duration with an objective start event.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-04-019",
+      "revision": 1,
+      "semantic_sha256": "1bb48e06cac914b87c1da7d1392e99c38b6a32c4d73b74cbd9cd37cca89590b3",
+      "statement": "Define who has authority to pause, continue, expand, or roll back the launch.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 32
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "4. Product and business readiness",
+        "4.2 Launch objectives"
+      ],
+      "primary_packet_id": "docs-checklists-02-product-risk-architecture-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Authority for the four listed launch actions is an exact record fact that can be validated against an authenticated release authority matrix.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "An authenticated release authority record assigns authorized roles or identities for pause, continue, expand, and rollback actions.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-04-020",
+      "revision": 1,
+      "semantic_sha256": "36c2860810a696965a36c91e5b5fc397be9c91e620dd2b73d48bdc126e350eba",
+      "statement": "Establish expected traffic and customer cohorts.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 33
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "4. Product and business readiness",
+        "4.2 Launch objectives"
+      ],
+      "primary_packet_id": "docs-checklists-02-product-risk-architecture-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Establishing expected traffic and cohorts can be checked as a release-bound forecast record with bounded numeric traffic values and objective cohort selectors.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The release forecast records expected traffic using bounded numeric units and defines customer cohorts with objective selectors.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-04-021",
+      "revision": 1,
+      "semantic_sha256": "614379a7f628448876e7aa41d29fb900c088718425a41e1b3948ce01841a0b10",
+      "statement": "Establish whether the launch is internal, private, regional, percentage-based, invitation-only, or public.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 34
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "4. Product and business readiness",
+        "4.2 Launch objectives"
+      ],
+      "primary_packet_id": "docs-checklists-02-product-risk-architecture-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The launch exposure type is an exact release configuration fact and can be validated from a version-bound record using the allowed launch-mode vocabulary.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The release record declares one or more launch modes from internal, private, regional, percentage-based, invitation-only, or public.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-04-022",
+      "revision": 1,
+      "semantic_sha256": "b6e518c21c60160e64c0f96672d39466103172673d89a47488220ad8711eac0b",
+      "statement": "Ensure marketing, sales, support, and operations use the same release date and scope.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 35
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "4. Product and business readiness",
+        "4.2 Launch objectives"
+      ],
+      "primary_packet_id": "docs-checklists-02-product-risk-architecture-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "With a complete inventory of the four named functions and authenticated release records, their release date and scope values can be compared exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Marketing, sales, support, and operations each have an authenticated record for the same release identity.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "The release date and scope fields are identical across the four function records.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-05-001",
+      "revision": 1,
+      "semantic_sha256": "133105c2cd2a3353d9f6cc73f542c4d75acb420b7ef9a405efc2a6ceb4811272",
+      "statement": "Every production service has a named business owner.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 45
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.1 Ownership"
+      ],
+      "primary_packet_id": "docs-checklists-02-product-risk-architecture-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A complete production-service inventory can be joined exactly to authenticated ownership records to find any service lacking a named business owner.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The current environment evidence provides a complete inventory of production services in assessment scope.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "Every inventoried production service maps to one active named business owner in the ownership registry.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-05-002",
+      "revision": 1,
+      "semantic_sha256": "43d4cd6335a5d38dd84ebe1ae8ba13435a0ea46944d28071b5e695743da87bce",
+      "statement": "Every production service has a named engineering owner.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 46
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.1 Ownership"
+      ],
+      "primary_packet_id": "docs-checklists-02-product-risk-architecture-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A complete production-service inventory can be joined exactly to authenticated ownership records to find any service lacking a named engineering owner.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The current environment evidence provides a complete inventory of production services in assessment scope.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "Every inventoried production service maps to one active named engineering owner in the ownership registry.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-05-003",
+      "revision": 1,
+      "semantic_sha256": "fdf4e4c59be6aa1ac1a47cd110462e14f24b02358f00f78bd1e81aaa18f957f0",
+      "statement": "Every data set has an accountable data owner.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 47
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.1 Ownership"
+      ],
+      "primary_packet_id": "docs-checklists-02-product-risk-architecture-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Given a complete scoped data-set inventory, the presence and current identity of an accountable data owner is an exact registry comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The current data catalog provides a complete inventory of in-scope data sets.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "Every inventoried data set maps to an active accountable data owner in the ownership registry.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-05-004",
+      "revision": 1,
+      "semantic_sha256": "502e8c10247ab4bee7822891589033131f3b369f5b8d95cb7b5e796bad75ae24",
+      "statement": "Every security-sensitive component has a security contact.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 48
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.1 Ownership"
+      ],
+      "primary_packet_id": "docs-checklists-02-product-risk-architecture-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Security sensitivity may be supplied by an approved classification record; every component so classified can then be checked exactly for an active security contact.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The component inventory includes an authoritative security-sensitivity classification for every in-scope component.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Every component classified security-sensitive maps to an active security contact.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-05-005",
+      "revision": 1,
+      "semantic_sha256": "c1237a7444ca2bea9220c97e071688255476382fbda4dd5e4667daf51908a555",
+      "statement": "Every third-party integration has an owner.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 49
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.1 Ownership"
+      ],
+      "primary_packet_id": "docs-checklists-02-product-risk-architecture-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A complete integration inventory and authenticated ownership registry allow an exact anti-join for third-party integrations without an active owner.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The current release evidence provides a complete inventory of third-party integrations.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "Every inventoried third-party integration maps to an active owner in the ownership registry.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-05-006",
+      "revision": 1,
+      "semantic_sha256": "2cffa0b68341b894bd9d13a3952eef40af2f139010a70c40f916591aec28d8a2",
+      "statement": "Every operational dashboard, alert, and runbook has an owner.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 50
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.1 Ownership"
+      ],
+      "primary_packet_id": "docs-checklists-02-product-risk-architecture-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Complete inventories of dashboards, alerts, and runbooks can be joined to authenticated ownership records with no semantic judgment in the final result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Current monitoring and repository evidence inventories every in-scope dashboard, alert, and runbook.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "Every inventoried dashboard, alert, and runbook maps to an active owner.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-05-007",
+      "revision": 1,
+      "semantic_sha256": "5e239980b917dfb3b94a58f63306ba0ee938eb9d778a04b22eb76d8414891e02",
+      "statement": "Every scheduled job and background process has an owner.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 51
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.1 Ownership"
+      ],
+      "primary_packet_id": "docs-checklists-02-product-risk-architecture-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A complete scheduler and process inventory can be compared exactly with current ownership records for missing or inactive owners.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Current environment evidence inventories every scheduled job and background process in scope.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "Every inventoried scheduled job and background process maps to an active owner.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-05-009",
+      "revision": 1,
+      "semantic_sha256": "e8b86f6d8f3d3a381bd08f7ecbcc245cad2ffc93f20fcddfc899cd54779a56da",
+      "statement": "Escalation paths include primary, secondary, management, security, privacy/legal, and provider escalation contacts.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 53
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.1 Ownership"
+      ],
+      "primary_packet_id": "docs-checklists-02-product-risk-architecture-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The statement names required escalation categories, so authenticated escalation records and provider applicability can be validated without inventing additional categories.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The escalation record contains active primary, secondary, management, security, and privacy or legal contacts.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Every inventoried external provider has an active provider escalation contact when provider escalation is applicable.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-05-021",
+      "revision": 1,
+      "semantic_sha256": "1e4a6306fd4eb4bc3fe326c9882e132f9bf326fab1e69cf8ee48433302b0789c",
+      "statement": "Maintain a release-specific risk register.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 68
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.2 Risk assessment"
+      ],
+      "primary_packet_id": "docs-checklists-02-product-risk-architecture-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control asks for a release-specific risk register; an authenticated current register bound to the exact release identity is an objectively verifiable record fact.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "An authenticated risk register exists and is bound to the assessed release identity, scope digest, and current revision.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-05-022",
+      "revision": 1,
+      "semantic_sha256": "d35e460a556ed8c44d885b197c4b7158d878c957d6ca40f4c261958c1f988089",
+      "statement": "Give each risk an owner, likelihood, impact, treatment, evidence, and review date.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 69
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.2 Risk assessment"
+      ],
+      "primary_packet_id": "docs-checklists-02-product-risk-architecture-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Given the complete release risk register, the seven named fields can be validated for every risk record without judging the chosen values.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every risk record has nonempty owner, likelihood, impact, treatment, evidence reference, and finite review-date fields.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-05-023",
+      "revision": 1,
+      "semantic_sha256": "3e17c81007580adda2c23bf0d682a76c36f58e4042f8cb009ac7937fd655ea23",
+      "statement": "Record accepted residual risk and the person authorized to accept it.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 70
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.2 Risk assessment"
+      ],
+      "primary_packet_id": "docs-checklists-02-product-risk-architecture-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control concerns recording an acceptance and authorized accepter, both of which can be validated against signed risk decisions and the authority registry.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every accepted residual-risk record identifies the risk, decision, timestamp, release scope, and accepting identity.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "The accepting identity held the required risk-acceptance authority at the recorded decision time.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "external_registry"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-05-024",
+      "revision": 1,
+      "semantic_sha256": "7553d5fa90c5f69886198b51208db58c684eda57fe7fbce1af3b86928cf0ab2a",
+      "statement": "Review high-impact assumptions with independent subject-matter experts.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 71
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.2 Risk assessment"
+      ],
+      "primary_packet_id": "docs-checklists-02-product-risk-architecture-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The occurrence, scope, reviewer identity, subject-matter role, and independence of required reviews can be checked from assumption and organization records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every assumption classified high-impact has a signed review record bound to the assumption and release.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Each reviewer has the required subject-matter role and is independent under the approved organization policy.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "external_registry"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-05-026",
+      "revision": 1,
+      "semantic_sha256": "ac9af55ef86d5a15c388801cee2b580f34c2dc91922a1531a5168d6aa26367bb",
+      "statement": "Ensure risk exceptions cannot remain open indefinitely.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 73
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.2 Risk assessment"
+      ],
+      "primary_packet_id": "docs-checklists-02-product-risk-architecture-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "An exception cannot remain open indefinitely when every open record has a finite enforced expiry and expired exceptions are objectively rejected.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every open risk exception has a finite expiry timestamp and a current accountable owner.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "No exception remains open after its recorded expiry timestamp.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-05-027",
+      "revision": 1,
+      "semantic_sha256": "281b6d7bf4f37a78177257fd450a59772716b1e4722b0693441b63678b88f9f2",
+      "statement": "Ensure compensating controls are tested rather than merely described.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 74
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.2 Risk assessment"
+      ],
+      "primary_packet_id": "docs-checklists-02-product-risk-architecture-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A complete compensating-control register can be checked for current executed test evidence, which distinguishes an actual test from a written description.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every declared compensating control references a current executed test result bound to its implementation and release scope.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        },
+        {
+          "statement": "No compensating control relies only on descriptive repository or record evidence in place of an executed result.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-05-035",
+      "revision": 1,
+      "semantic_sha256": "08aa2edc9b20e193a2e2f279b3c50fa0b446bb8a0e1c7e1626cccd8cdb08c8ac",
+      "statement": "Apply separation of duties to high-impact changes and approvals.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 85
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "5. Governance, ownership, and risk",
+        "5.3 Control framework"
+      ],
+      "primary_packet_id": "docs-checklists-02-product-risk-architecture-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "With an approved definition of high-impact changes, complete change records, and identity data, actor separation can be evaluated exactly for every change and approval.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every change classified high-impact has authenticated implementer and approver identities.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "No prohibited identity or role overlap exists between implementation and approval under the versioned separation policy.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "external_registry"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-06-005",
+      "revision": 1,
+      "semantic_sha256": "f395ef9dc54f674464ef5ed93aa1a0a83b8391569ec3d0e54f364c9fbd0e0178",
+      "statement": "Mark Internet-facing and externally reachable interfaces.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 96
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "6. Architecture and system understanding"
+      ],
+      "primary_packet_id": "docs-checklists-02-product-risk-architecture-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Given authoritative reachable-interface inventory and a structured architecture model, every externally reachable interface can be compared exactly with its marker.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Current environment evidence provides a complete inventory of Internet-facing and externally reachable interfaces.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "Every inventoried externally reachable interface is present and explicitly marked in the structured architecture record.",
+          "checker_family": "structured_document",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-06-040",
+      "revision": 1,
+      "semantic_sha256": "e61cfba8cf94957f718d71016cb5a6070caaca1634f875a232468ddd50f66100",
+      "statement": "Obtain independent review for high-value or high-risk systems.",
+      "source": {
+        "path": "docs/checklists/02-product-risk-architecture.md",
+        "line": 134
+      },
+      "heading_trail": [
+        "Product, risk, and architecture",
+        "6. Architecture and system understanding",
+        "6.1 Threat and abuse modeling"
+      ],
+      "primary_packet_id": "docs-checklists-02-product-risk-architecture-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Applicability can come from the approved value or risk tier, while signed review and reviewer independence can be validated from current authoritative records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The approved risk record objectively marks whether the system is high-value or high-risk under the versioned organizational policy.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Every applicable system has a signed independent-review record bound to the release and an identity independent under the approved policy.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "external_registry"
+        }
+      ]
+    }
+  ]
+}

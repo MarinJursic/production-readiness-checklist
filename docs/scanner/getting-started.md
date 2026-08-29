@@ -14,12 +14,12 @@ prc
 
 Bare `prc` runs the 40 core local checks. Use `prc /path/to/project` to scan a
 different directory, `prc quick` for an 18-check screen, or `prc full codex`
-for the core scan plus advisory AI review of all controls. `prc full claude`
-selects Claude Code instead. The commands do not fix files or execute project
-code. They print a summary and create a private, standalone HTML report outside
-the target. Click the exact path printed as `Detailed report:` in a supported
-terminal, or open the same plain path normally, to review verified findings and
-every incomplete or manual result. `quick` still includes every
+for the core scan plus advisory AI review of all 9,356 reviewed nondeterministic
+controls. `prc full claude` selects Claude Code instead. The commands do not fix
+files or execute project code. They print a summary and create a private,
+standalone HTML report outside the target. Click the exact path printed as
+`Detailed report:` in a supported terminal, or open the same plain path normally,
+to review verified findings and every incomplete or manual result. `quick` still includes every
 control in that report; it only runs fewer local assertions.
 
 The profile evaluator can consume a live, sandboxed adapter execution only when
@@ -217,10 +217,20 @@ Replace `codex` with `claude` for Claude Code. `prc auth` shows whether each
 private scanner login is ready, and `prc logout codex` or `prc logout claude`
 removes it. A supported API-key environment variable remains an alternative.
 
-Remove `--review-control` to review every active control. The coordinator is
-required to assign each control to a separate subagent inside a sealed batch.
-Completed batches resume from private state outside the target. This full run can take a long time and use many
-tokens. The provider receives bounded, secret-screened excerpts but no target
+The short full command reviews all 9,356 reviewed nondeterministic controls.
+The 686 reviewed deterministic controls are never decided by AI. A supported
+exact program can produce a verified result from sealed authoritative evidence;
+all remaining controls stay Blocked until their required collector and evidence
+are available. The first shipped exact collector recognizes a root Node
+`package.json` with usable `build` and `test` scripts and proves that both public
+commands appear in inventoried Markdown code. It does not run either command.
+The coordinator must assign every nondeterministic control to a separate primary
+subagent inside a sealed batch. Deep mode also runs one independent skeptical
+subagent for the batch, then keeps the strongest objection in the structured
+result instead of hiding disagreement. Four batches run in parallel, and Codex
+uses `xhigh` reasoning. Completed batches resume from private state outside the
+target. This full run can take a long time and use many tokens. The provider
+receives bounded, secret-screened excerpts but no target
 workspace path or source-reading, shell, write, install, web, browser, or MCP
 tools. Its result stays advisory and never turns a control into a verified
 Pass. A cited path and line are checked against the exact screened snapshot,
@@ -234,6 +244,9 @@ batch and control progress with elapsed time. New Codex batches show provider-
 reported token totals when available. New Claude batches show the provider's
 client-side cost estimate, plus any enforced per-batch limit you selected.
 Cached batches are clearly counted but their old usage is not guessed.
+If a later batch fails, the scanner still writes a clearly marked partial
+report, returns exit code `4`, and keeps the valid completed batches. Repeating
+the same command checks and reuses those batches before continuing.
 
 ## Preserve evidence and history
 

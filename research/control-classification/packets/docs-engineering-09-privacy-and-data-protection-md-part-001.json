@@ -1,0 +1,2051 @@
+{
+  "schema_version": "prc.control-classification-packet/v0.1",
+  "packet_id": "docs-engineering-09-privacy-and-data-protection-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "source_path": "docs/engineering/09-privacy-and-data-protection.md",
+  "control_count": 136,
+  "controls": [
+    {
+      "control_id": "USEQ-362ADF8D",
+      "revision": 1,
+      "semantic_sha256": "362adf8d103ce241644082ce05d4a5c57b43c6c77b245a7fb005a84773033cc2",
+      "statement": "Product behavior matches published privacy notices and user choices.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 15
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy and Data Protection",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-375E775E",
+      "revision": 1,
+      "semantic_sha256": "375e775ef4cfc7442d6be8990416a069844a7d9873671efde709b5ba47b7e4b8",
+      "statement": "New data uses undergo privacy review.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 16
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy and Data Protection",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-46C19961",
+      "revision": 1,
+      "semantic_sha256": "46c199619c11b8b28118b2bf96afa75214ddae0a4295f7bc331a8beaf38b6d83",
+      "statement": "Consent is used only where appropriate and is specific, informed, granular, recorded, and withdrawable.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 17
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy and Data Protection",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-26C38E0D",
+      "revision": 1,
+      "semantic_sha256": "26c38e0d521f366bbb08cd1517f861c88d804d95d3efdc1ae352b93ee90d8052",
+      "statement": "Cookie, tracker, analytics, advertising, attribution, session-replay, and experimentation inventories match production behavior.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 18
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy and Data Protection",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-68E3287E",
+      "revision": 1,
+      "semantic_sha256": "68e3287e05740e6dbb6d555910ce5e33fd1f9c171252942608daab6efc334ac0",
+      "statement": "Third-party tools receive only approved data.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 19
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy and Data Protection",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-85394A39",
+      "revision": 1,
+      "semantic_sha256": "85394a3963ce59e7c51b2d1f934a9ae79713bef32f99433d492c5c442a560d82",
+      "statement": "Sensitive fields are redacted from logs, monitoring, support tools, recordings, analytics, and error reports.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 20
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy and Data Protection",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-1917583D",
+      "revision": 1,
+      "semantic_sha256": "1917583dd858b3cc8b00e644fc7bc9b870a9b9e58c8acba33e6fb2315441051d",
+      "statement": "Requester verification is proportionate and does not collect excessive additional data.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 21
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy and Data Protection",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-06C60675",
+      "revision": 1,
+      "semantic_sha256": "06c606756531aaf758b547bdc77cd3fa2d16ef72c876427ba7361e601ff488b0",
+      "statement": "Retention periods are explicit and enforced.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 22
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy and Data Protection",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-51B2160E",
+      "revision": 1,
+      "semantic_sha256": "51b2160e9e7262df7ae4a6c900e704708bb91a75f5054807714351d0b50d0f42",
+      "statement": "Deletion covers primary data, caches, indexes, derived data, exports, and downstream systems.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 23
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy and Data Protection",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-5CCD452D",
+      "revision": 1,
+      "semantic_sha256": "5ccd452d99785957e574d3ef375986922d831cef7f28345a11cf805fcdcc2f32",
+      "statement": "Pseudonymization and anonymization claims are validated.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 24
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy and Data Protection",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-D295EBB5",
+      "revision": 1,
+      "semantic_sha256": "d295ebb506c9af777c306566a3e507a05e2635c4499d28affee729de10f38544",
+      "statement": "Reidentification risk is assessed.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 25
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy and Data Protection",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-19407D75",
+      "revision": 1,
+      "semantic_sha256": "19407d75ef8fdf846cc90122c187f3dda924d680245f70841575855f0963bd9a",
+      "statement": "Data export cannot expose other users' or tenants' information.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 26
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy and Data Protection",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-EDE4FE5C",
+      "revision": 1,
+      "semantic_sha256": "ede4fe5cafc61c9a3592d2eaa545b9311c7f768f3816c98b30b56c589b76e1f0",
+      "statement": "Children's, biometric, health, precise-location, communications, financial, identity, and other sensitive data trigger enhanced review.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 27
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy and Data Protection",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-FE438B01",
+      "revision": 1,
+      "semantic_sha256": "fe438b01af21c3b84a280469e2edf79836ba34926e6b83a4cccd40dff9dd92e4",
+      "statement": "Processor and subprocessor contracts cover permitted use, security, deletion, assistance, audit, and incident notification.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 28
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy and Data Protection",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-0CA8AE68",
+      "revision": 1,
+      "semantic_sha256": "0ca8ae68b232f0551e4c9d5896476e02d66a5dc56821abeefe6868d11a2ed5f5",
+      "statement": "A personal-data incident can be identified, scoped, contained, and reported within applicable deadlines.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 29
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy and Data Protection",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-009AD2AD",
+      "revision": 1,
+      "semantic_sha256": "009ad2ad202f93e043ffd70651f3c092a8cc942aa8295bcafb172314cb8cbb62",
+      "statement": "Interfaces avoid manipulative consent, cancellation, and privacy choices.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 30
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy and Data Protection",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-E171ADC5",
+      "revision": 1,
+      "semantic_sha256": "e171adc531a9d2ce91ce737472987822de7556c706dd84907ab920d71b36a771",
+      "statement": "Assign accountable privacy owners and data stewards for every product and processing purpose.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 38
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Governance and Engineering",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-2B4BFFCE",
+      "revision": 1,
+      "semantic_sha256": "2b4bffce0d037e1409cef113cdfa71246724d6842981cae48d46c406e79d80ec",
+      "statement": "Maintain an inventory of personal data, sources, purposes, lawful basis or authorization, recipients, locations, retention, and deletion.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 39
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Governance and Engineering",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-178B5045",
+      "revision": 1,
+      "semantic_sha256": "178b50453ec888438011e6ea47f6d28f6fcb4059dfca3abc20f9a5b93b350aaf",
+      "statement": "Map personal-data flows across clients, services, logs, analytics, support, suppliers, backups, models, and exports.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 40
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Governance and Engineering",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-BDE2681A",
+      "revision": 1,
+      "semantic_sha256": "bde2681aa25b0d1b85c24ef6d9b0b46a8564ba5ba4631439a8ffd1ef9069e85d",
+      "statement": "Apply privacy-protective defaults and collect only what is necessary for the stated purpose.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 41
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Governance and Engineering",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-44C28E2D",
+      "revision": 1,
+      "semantic_sha256": "44c28e2dfc7ebc5f92cdb1d0401833b9e46217864deaa5caeeb9e6bfcd57a9c5",
+      "statement": "Separate mandatory processing from optional processing and communicate the difference.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 42
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Governance and Engineering",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-EBEB9674",
+      "revision": 1,
+      "semantic_sha256": "ebeb96743c76208355b9752bad58b8a093affe857235cbfd278e8c3683adc884",
+      "statement": "Assess privacy risk before new collection, inference, combination, sharing, monitoring, or automated decision use.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 43
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Governance and Engineering",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-C82F78B9",
+      "revision": 1,
+      "semantic_sha256": "c82f78b9806d4e087edb63d243f8447df44fb9973d637b191921b27271ff63cd",
+      "statement": "Translate privacy principles into technical requirements, data models, access, retention, UI, telemetry, and tests.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 44
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Governance and Engineering",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-79A3CEBF",
+      "revision": 1,
+      "semantic_sha256": "79a3cebf0dc8bbfdc12f50f34ee1dfd927aeadd4c3a4e69f9d98cc4dd518e45b",
+      "statement": "Use purpose limitation and access controls to prevent unauthorized secondary use.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 45
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Governance and Engineering",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-2CDD7FC7",
+      "revision": 1,
+      "semantic_sha256": "2cdd7fc78a9a5abb768afb58d39dcf75b7859f9c1e39b551afa95a591be31367",
+      "statement": "Minimize identifiers and linkability across contexts.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 46
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Governance and Engineering",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D84D7490",
+      "revision": 1,
+      "semantic_sha256": "d84d74904a9fb7f47d792771921dec457fb9e1b04bb2aa504831d942a7ee9819",
+      "statement": "Use pseudonymization, aggregation, isolation, or on-device processing where they meaningfully reduce risk.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 47
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Governance and Engineering",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-2B0B18B4",
+      "revision": 1,
+      "semantic_sha256": "2b0b18b4d53baf7ec752fea31545a52be85b491b5767759bec9296900f6c7a90",
+      "statement": "Include privacy threats such as reidentification, inference, surveillance, coercion, exclusion, and loss of autonomy.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 48
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Governance and Engineering",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-C8E8FC88",
+      "revision": 1,
+      "semantic_sha256": "c8e8fc884676c1334f97bcd5a899a0a11714198f227de44c9c67d28a27d728ac",
+      "statement": "Review suppliers for permitted use, location, retention, deletion, security, subprocessing, and incident duties.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 49
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Governance and Engineering",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-C5D655EE",
+      "revision": 1,
+      "semantic_sha256": "c5d655ee6e62bbb22251a054288343deac497981a1460644206aaa1269e83313",
+      "statement": "Keep privacy records and notices consistent with deployed behavior.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 50
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Governance and Engineering",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-A637D569",
+      "revision": 1,
+      "semantic_sha256": "a637d569552d6980b3f5af67dc87a2eb04bd3c3063fb558739177258cc5c1676",
+      "statement": "Monitor data flows and trackers for unauthorized change.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 51
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Governance and Engineering",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-8B9E2BD8",
+      "revision": 1,
+      "semantic_sha256": "8b9e2bd82798659cbf0d44c1eddc646159df176b0483e9ccb8ada47872eeef60",
+      "statement": "Provide privacy review for high-risk processing and material product changes.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 52
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Governance and Engineering",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-0978812C",
+      "revision": 1,
+      "semantic_sha256": "0978812cf54574c4b1f1229b1433d0342ff9aab33e2067d7b1dd167e072406af",
+      "statement": "Treat privacy incidents and user complaints as design feedback.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 53
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Governance and Engineering",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-E3F0E7D9",
+      "revision": 1,
+      "semantic_sha256": "e3f0e7d9d7691c718c864a1222877eabfc899cdb60dab09cea2a2eee2e0eb173",
+      "statement": "Measure rights completion, deletion effectiveness, access minimization, unexpected collection, and risk reduction.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 54
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Governance and Engineering",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-FF1E023B",
+      "revision": 1,
+      "semantic_sha256": "ff1e023b89813504a841158567017ddd896b78dcaf5fe6e4c6b9b4f73f89e1aa",
+      "statement": "Train role-appropriate personnel before granting personal-data access.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 55
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Governance and Engineering",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-58593369",
+      "revision": 1,
+      "semantic_sha256": "585933696e99b206045d501503bbe495cc494b6b6f15087e355d43a90a32d4ab",
+      "statement": "Define privacy behavior through deprecation, migration, backup, and retirement.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 56
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Governance and Engineering",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-9DE0E53C",
+      "revision": 1,
+      "semantic_sha256": "9de0e53cdf6dfc54d1b66e72bcd1d4280b7ceb5668c3c1978c621372b91a48a9",
+      "statement": "Do not claim anonymization, consent, or compliance without evidence supporting the exact processing.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 57
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Governance and Engineering",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-87EEAE5A",
+      "revision": 1,
+      "semantic_sha256": "87eeae5a08335aa35a93cca80e71a8782dfb87555eb506e653dc542c425e5b69",
+      "statement": "Describe what data is collected, why, from whom, how used, shared, retained, protected, and controlled.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 65
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Notices, Consent, and Preferences",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-B15DD85E",
+      "revision": 1,
+      "semantic_sha256": "b15dd85e184a01a7142d89baa58561492ac76d3529dff82ba138092a30b75446",
+      "statement": "Use concise contextual notice at the point of decision with access to complete detail.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 66
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Notices, Consent, and Preferences",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-2144F9CE",
+      "revision": 1,
+      "semantic_sha256": "2144f9ce2eec586575a3354886e29616ccc3775d85f3346c70ecaaa1b042b440",
+      "statement": "Keep notice language accurate for actual production data flows and suppliers.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 67
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Notices, Consent, and Preferences",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-CFA62DF6",
+      "revision": 1,
+      "semantic_sha256": "cfa62df64f3092cf489f993ff4c8e1b03a149eca32bd54b75aca6fdcce24b19c",
+      "statement": "Distinguish required processing from optional analytics, personalization, advertising, sharing, or communication.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 68
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Notices, Consent, and Preferences",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-EDB93290",
+      "revision": 1,
+      "semantic_sha256": "edb93290119431ba28b3996523d64fd3ae9eb49ffafb779bd7e1e9c77427a83a",
+      "statement": "Use consent only when it is an appropriate legal and ethical basis.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 69
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Notices, Consent, and Preferences",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-5F4C0EE4",
+      "revision": 1,
+      "semantic_sha256": "5f4c0ee469e7335f9b0dd959dfcbe2d4db2c6fad5a93679abcfedd15b612327e",
+      "statement": "Make consent specific, informed, unambiguous, granular, freely given, and recorded where required.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 70
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Notices, Consent, and Preferences",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-BB6D6EB2",
+      "revision": 1,
+      "semantic_sha256": "bb6d6eb24e6be165369c1b7dfd26278823c01aeadc2fe8dfa6f536f41c03e14d",
+      "statement": "Do not bundle unrelated purposes or condition service on unnecessary consent.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 71
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Notices, Consent, and Preferences",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-19FC62D9",
+      "revision": 1,
+      "semantic_sha256": "19fc62d9ca152699ba82f0a12800ed1588d05808a1edea76d01ee0388848f05c",
+      "statement": "Prevent nonessential processing before valid permission where required.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 72
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Notices, Consent, and Preferences",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-3AB0815F",
+      "revision": 1,
+      "semantic_sha256": "3ab0815f4370d1d7390b471adf5949ae41307da5b664d1355ebcce87e1bfd353",
+      "statement": "Make refusal and withdrawal as easy and understandable as acceptance.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 73
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Notices, Consent, and Preferences",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-215CE910",
+      "revision": 1,
+      "semantic_sha256": "215ce910161b0a95e6e31cb07d9aa6e534183e3477ee296367522a5733514291",
+      "statement": "Propagate preference changes promptly to all relevant systems, suppliers, caches, and future processing.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 74
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Notices, Consent, and Preferences",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-539BFF83",
+      "revision": 1,
+      "semantic_sha256": "539bff8326b16c68f46548dd59bff833e2b496458bc659941e07e56ccd6a3a32",
+      "statement": "Define behavior for previously collected data after withdrawal.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 75
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Notices, Consent, and Preferences",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-3B78A945",
+      "revision": 1,
+      "semantic_sha256": "3b78a9451947508dcfcb156734e69e58837ab3136fef3899f23587ee27015fde",
+      "statement": "Record notice version, purpose, choice, time, context, and proof without collecting excessive evidence.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 76
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Notices, Consent, and Preferences",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-BCD2092F",
+      "revision": 1,
+      "semantic_sha256": "bcd2092fd6982f1bd1a054fcd6ceb6d813569c8c97278e38e62b716fe7f4d33d",
+      "statement": "Allow users to review and change preferences through an accessible interface.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 77
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Notices, Consent, and Preferences",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-5BF23D4C",
+      "revision": 1,
+      "semantic_sha256": "5bf23d4cca97b7e4a19627ff2863ef40aef402256908bf00987d3b4e9a2e4946",
+      "statement": "Avoid manipulative hierarchy, preselection, repeated nagging, misleading toggles, or false necessity.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 78
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Notices, Consent, and Preferences",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-3E3BB1A3",
+      "revision": 1,
+      "semantic_sha256": "3e3bb1a32149d191d4c6989165a292d300cdd22e638b6d39726630cc174acf83",
+      "statement": "Test comprehension and operation with representative users and assistive technologies.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 79
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Notices, Consent, and Preferences",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-379AB97F",
+      "revision": 1,
+      "semantic_sha256": "379ab97fae718fc5c362cc53d78b29f75d4641433e6722aabfd96de269fc2585",
+      "statement": "Re-consent only when purpose or processing materially changes and the basis requires it.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 80
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Notices, Consent, and Preferences",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-379D10F1",
+      "revision": 1,
+      "semantic_sha256": "379d10f1ee5debfe748b627ce63e8f9744fb4c7fabe695ffe83231c0c50f6922",
+      "statement": "Avoid using inactivity as agreement.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 81
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Notices, Consent, and Preferences",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-4DA9C46D",
+      "revision": 1,
+      "semantic_sha256": "4da9c46d78c743f63dfa55d6f75ef00cec580be3523feb2f0cc58f2dcf91c774",
+      "statement": "Handle conflicting preferences across devices, accounts, organizations, and channels explicitly.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 82
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Notices, Consent, and Preferences",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-B2092183",
+      "revision": 1,
+      "semantic_sha256": "b209218311e071f6782a24bafda43230222635b8bc35cd37f1e5c53b07981af7",
+      "statement": "Monitor preference enforcement and investigate processing that contradicts user choice.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 83
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Notices, Consent, and Preferences",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-80938132",
+      "revision": 1,
+      "semantic_sha256": "80938132ed43565d575356c59072f8371e3b912c54c914ad06081406e8c757f6",
+      "statement": "Retire obsolete consent records according to retention and audit needs.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 84
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Privacy Notices, Consent, and Preferences",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-849F8B32",
+      "revision": 1,
+      "semantic_sha256": "849f8b3295d6acf49d3dcb0519f501fd59a9df41a2874c3dc4dd93fe9b3121d1",
+      "statement": "Determine which rights and response timelines apply to each user, data category, and jurisdiction.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 92
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Data Rights, Retention, Deletion, and Portability",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-09FCED67",
+      "revision": 1,
+      "semantic_sha256": "09fced67b40282ff5ab214d85002e50e6ff76cd0da1c7b15a1562c42c1adb70f",
+      "statement": "Provide accessible request channels and avoid unnecessary barriers.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 93
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Data Rights, Retention, Deletion, and Portability",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-7F3E7E81",
+      "revision": 1,
+      "semantic_sha256": "7f3e7e8187e0fd99558a2edaf6d5cdce8d18bbc5aedd333b02da396e2dc2e5e7",
+      "statement": "Verify requester identity proportionately without collecting excessive new personal data.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 94
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Data Rights, Retention, Deletion, and Portability",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-7D31E28F",
+      "revision": 1,
+      "semantic_sha256": "7d31e28f0ca06029f9b8268ef4f07d4c76f3e0ff75d7de5ce8e0919847f97fe8",
+      "statement": "Search all relevant primary, derived, archived, support, analytics, model, supplier, and export systems.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 95
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Data Rights, Retention, Deletion, and Portability",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-5525702D",
+      "revision": 1,
+      "semantic_sha256": "5525702d4a9cd0ef887ea9a9683956981ad40806b565920716689f7f24d40129",
+      "statement": "Prevent disclosure of another person's or tenant's data in access and portability responses.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 96
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Data Rights, Retention, Deletion, and Portability",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-E19DD9C1",
+      "revision": 1,
+      "semantic_sha256": "e19dd9c177f4be56fdca910a9d7f281f4daa623664bfd16faca53ffd93c8ee27",
+      "statement": "Provide data in understandable and machine-usable form where required.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 97
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Data Rights, Retention, Deletion, and Portability",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-6C6EDCD8",
+      "revision": 1,
+      "semantic_sha256": "6c6edcd81f81a55d482c41f7101c79aea95b40b4b3cdb4b70e81d6d66676d696",
+      "statement": "Correct inaccurate data and propagate material corrections downstream.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 98
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Data Rights, Retention, Deletion, and Portability",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-94E79DB4",
+      "revision": 1,
+      "semantic_sha256": "94e79db48c6a5a968bdd75a0eb0765bb532f5e2f4dd981a8ec2d883b6efd01e6",
+      "statement": "Apply restriction and objection to future processing, not merely visible UI.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 99
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Data Rights, Retention, Deletion, and Portability",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-966E836A",
+      "revision": 1,
+      "semantic_sha256": "966e836a4516ce4e8397bbc57d1ec08dd22f4ac6e14d1b9b12d0a8f371212862",
+      "statement": "Define retention from purpose, law, contract, dispute, security, and operational need.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 100
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Data Rights, Retention, Deletion, and Portability",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-E1AD559F",
+      "revision": 1,
+      "semantic_sha256": "e1ad559f77f7f47eab6bec79d756548c9f3dff107ff6b009380fd85297eebe59",
+      "statement": "Delete or irreversibly deidentify data when retention expires unless a documented hold applies.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 101
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Data Rights, Retention, Deletion, and Portability",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-86610CCA",
+      "revision": 1,
+      "semantic_sha256": "86610cca3a34147da1c884b1a00957e26a00b45356f6031f7623e32ab067246c",
+      "statement": "Propagate deletion to caches, indexes, replicas, derived data, exports, test copies, and processors.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 102
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Data Rights, Retention, Deletion, and Portability",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-0B8FCCA8",
+      "revision": 1,
+      "semantic_sha256": "0b8fcca80c7650cf5820871997db8a58ecb9037882535d72bc56b205f99c4738",
+      "statement": "Document backup deletion behavior and prevent restored backups from silently resurrecting deleted use.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 103
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Data Rights, Retention, Deletion, and Portability",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-B61915BC",
+      "revision": 1,
+      "semantic_sha256": "b61915bcbd818ecf179556d69738b02a95037785bf864f5933f39a5685c9e090",
+      "statement": "Record legal holds with scope, authority, owner, review, and release.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 104
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Data Rights, Retention, Deletion, and Portability",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-0A64E949",
+      "revision": 1,
+      "semantic_sha256": "0a64e9498cb4a6ad78dc7eb009ff348368cb7acc42fd24369c85ccb606f1c9ae",
+      "statement": "Track requests, deadlines, exceptions, decisions, and completion evidence.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 105
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Data Rights, Retention, Deletion, and Portability",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-F10C6116",
+      "revision": 1,
+      "semantic_sha256": "f10c61162ee44c164a03cbd292ea8d807807fc45229ac6a969a0d4c7fb2d1e04",
+      "statement": "Notify relevant recipients of correction or deletion where required.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 106
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Data Rights, Retention, Deletion, and Portability",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-2D7549DE",
+      "revision": 1,
+      "semantic_sha256": "2d7549de4deff8cd526bc12950c4b35e1d5984cff34578bcdfd48e38fa33e94d",
+      "statement": "Test rights workflows end to end using representative accounts and complex data relationships.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 107
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Data Rights, Retention, Deletion, and Portability",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-855E3643",
+      "revision": 1,
+      "semantic_sha256": "855e3643562685654dd7cb2e929a399b59450db100bf66c763ea7913d38cfba2",
+      "statement": "Prevent account deletion from becoming a deceptive cancellation substitute or vice versa.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 108
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Data Rights, Retention, Deletion, and Portability",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-BAFDDC4B",
+      "revision": 1,
+      "semantic_sha256": "bafddc4b159fdc9b0f6621af2959bb9aa25ab03c9c20fc51fd2b503c6275e6e0",
+      "statement": "Preserve minimum evidence needed to demonstrate completion without recreating deleted profiles.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 109
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Data Rights, Retention, Deletion, and Portability",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-16CE0274",
+      "revision": 1,
+      "semantic_sha256": "16ce0274f9fb8bff147db962892c6ba39490c08c8021553f159d12f763c66dcc",
+      "statement": "Measure timeliness, completeness, error, rework, and downstream propagation.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 110
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Data Rights, Retention, Deletion, and Portability",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-7C6F29CF",
+      "revision": 1,
+      "semantic_sha256": "7c6f29cfd9667560918f28df985a5136f267b5d7ea5b1679addbcad2ab02488c",
+      "statement": "Review edge cases involving minors, joint accounts, employers, organizations, fraud, and litigation.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 111
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Data Rights, Retention, Deletion, and Portability",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-45B3FEAE",
+      "revision": 1,
+      "semantic_sha256": "45b3feae6fbbf057d4a7bf88bb02255d2e1d7f32f6644efab7d10e66bc7d75cc",
+      "statement": "Define the intended threat model, recipients, data context, linkage sources, and acceptable reidentification risk.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 119
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "De-Identification, Pseudonymization, and Anonymization",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-56568A68",
+      "revision": 1,
+      "semantic_sha256": "56568a68fa288dd83388acf4ce5c4da4116b0011ff21b8eb2ba04d6ecb15d6e7",
+      "statement": "Distinguish masking, tokenization, pseudonymization, aggregation, synthetic data, and anonymization accurately.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 120
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "De-Identification, Pseudonymization, and Anonymization",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D923770C",
+      "revision": 1,
+      "semantic_sha256": "d923770c5edf1933e3f2bf7d4d49662a89929fe0e6bd70002d8082d68e69d56c",
+      "statement": "Do not treat removal of direct identifiers as sufficient anonymization.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 121
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "De-Identification, Pseudonymization, and Anonymization",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-69EB450F",
+      "revision": 1,
+      "semantic_sha256": "69eb450f4b765f31a90b1d3fd0eb283de03f9959c91d3eddfafc04a376438484",
+      "statement": "Assess uniqueness, sparsity, rare combinations, free text, location, time, device, and behavioral linkage risk.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 122
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "De-Identification, Pseudonymization, and Anonymization",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-52C69AFA",
+      "revision": 1,
+      "semantic_sha256": "52c69afaf8db82c21871f09384b5ad7a12a0627a26a04e950db60a460ce40aed",
+      "statement": "Minimize attributes and precision before applying complex transformation.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 123
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "De-Identification, Pseudonymization, and Anonymization",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-BAB3D94B",
+      "revision": 1,
+      "semantic_sha256": "bab3d94b4571f4144ffa92f188842c2c534e7418df808951c076e8a327424b99",
+      "statement": "Keep reidentification keys separate, access-controlled, audited, and purpose-limited.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 124
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "De-Identification, Pseudonymization, and Anonymization",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-15335623",
+      "revision": 1,
+      "semantic_sha256": "153356235663c89ffd49ed1a7ac3da21236ee6b4c95110ce18dda28c385343a7",
+      "statement": "Use different pseudonyms across contexts when cross-context linkage is unnecessary.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 125
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "De-Identification, Pseudonymization, and Anonymization",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D7788ABA",
+      "revision": 1,
+      "semantic_sha256": "d7788aba5f3914bc1d65577372b9ef3cb666bc30585ebafc1fb101ad9f3759f7",
+      "statement": "Protect mappings and quasi-identifiers with controls appropriate to the original sensitivity.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 126
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "De-Identification, Pseudonymization, and Anonymization",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-F26B6FC0",
+      "revision": 1,
+      "semantic_sha256": "f26b6fc0463f1d22828b365695ef3425ba7bf7e6cb6ccc330e8fe42a2a9a7eb5",
+      "statement": "Evaluate attacks using realistic auxiliary information and motivated recipients.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 127
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "De-Identification, Pseudonymization, and Anonymization",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-6F3EE651",
+      "revision": 1,
+      "semantic_sha256": "6f3ee651f19611b97c733c4da81581586d8052be73650578e81c4b828522ee97",
+      "statement": "Measure utility and privacy together and document the trade-off.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 128
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "De-Identification, Pseudonymization, and Anonymization",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-A8E1D86B",
+      "revision": 1,
+      "semantic_sha256": "a8e1d86bca432510c6f8d0cb8ed599d686055ce337e89ba792cbdfa3b97aaab2",
+      "statement": "Apply contractual and policy prohibitions on reidentification in addition to technical controls.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 129
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "De-Identification, Pseudonymization, and Anonymization",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-A75CE960",
+      "revision": 1,
+      "semantic_sha256": "a75ce960ad8de54bcb0364c06fb368b4d15b694613ef55c9d060a712eea88cba",
+      "statement": "Review outputs, small groups, outliers, queries, and repeated releases for differencing risk.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 130
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "De-Identification, Pseudonymization, and Anonymization",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-51D461F5",
+      "revision": 1,
+      "semantic_sha256": "51d461f5583ada775e6b4861181f55c7db24900dc917d8a312a9acf28cea0846",
+      "statement": "Use privacy-preserving query controls, noise, thresholds, or aggregation where appropriate.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 131
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "De-Identification, Pseudonymization, and Anonymization",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-A496904D",
+      "revision": 1,
+      "semantic_sha256": "a496904de078a989f640c1653af2fc0ae6ca9357bcd1d560bab57efe53692009",
+      "statement": "Validate synthetic data for memorization, leakage, bias, and unrealistic artifacts.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 132
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "De-Identification, Pseudonymization, and Anonymization",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-5B9EFCA5",
+      "revision": 1,
+      "semantic_sha256": "5b9efca52149bc2f78ccfd0fc231c10fe3b2d90173d28441440e976c2f08e3ac",
+      "statement": "Reassess risk when new data sources, recipients, methods, or public information appear.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 133
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "De-Identification, Pseudonymization, and Anonymization",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-0B0862CD",
+      "revision": 1,
+      "semantic_sha256": "0b0862cdad558b1d8a3bb4e372b425457477c78f8701710198079edbd7a26e1c",
+      "statement": "Avoid irreversible public release unless risk is demonstrably acceptable.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 134
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "De-Identification, Pseudonymization, and Anonymization",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-FBD875B1",
+      "revision": 1,
+      "semantic_sha256": "fbd875b119fd97a48433b7c74b79f28abb30158e5e2eefdfb082e7c972e37ebe",
+      "statement": "Label transformed data and permitted uses clearly.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 135
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "De-Identification, Pseudonymization, and Anonymization",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-7759F06C",
+      "revision": 1,
+      "semantic_sha256": "7759f06ce2b2741dd545dfd4f86ecace7f3ef754738db4923b9244907c92fe86",
+      "statement": "Monitor misuse and downstream redistribution.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 136
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "De-Identification, Pseudonymization, and Anonymization",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-09D0C73F",
+      "revision": 1,
+      "semantic_sha256": "09d0c73f6094a0f2af39f484e133dbb208427126d66deecb19f8581693dea53d",
+      "statement": "Delete or rotate mappings according to purpose and retention.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 137
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "De-Identification, Pseudonymization, and Anonymization",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-2CDB3A37",
+      "revision": 1,
+      "semantic_sha256": "2cdb3a376d4014103a9a521a8393e34deb91426a4eb335e9edfa32d54e0903f1",
+      "statement": "Make every anonymization claim bounded to context and supported by current evidence.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 138
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "De-Identification, Pseudonymization, and Anonymization",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-EFA1156D",
+      "revision": 1,
+      "semantic_sha256": "efa1156dd446c5d712280dad6f6f344bd0174bf504aa63170e217a33b86d9c3a",
+      "statement": "Inventory every destination country, provider, subprocessor, recipient, support location, backup region, and remote-access path.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 146
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Cross-Border Transfers, Processors, and Data Sharing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-E4AB060F",
+      "revision": 1,
+      "semantic_sha256": "e4ab060f8e77613baf3842e90e005c5921f2f6e5c9a27b985bf529aea6d60733",
+      "statement": "Determine legal, contractual, residency, localization, and government-access constraints before transfer.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 147
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Cross-Border Transfers, Processors, and Data Sharing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-BF01DCD0",
+      "revision": 1,
+      "semantic_sha256": "bf01dcd0de6811f6ccc517573fa1ec1d1c9da00503d42bb53fbe753620b490cf",
+      "statement": "Document the purpose, data categories, frequency, security, retention, and onward-transfer rights.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 148
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Cross-Border Transfers, Processors, and Data Sharing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-DFD1BBE8",
+      "revision": 1,
+      "semantic_sha256": "dfd1bbe889581d8805534ada13c0a5288f2ba1ed0c856c365be5ea29ed6ca80a",
+      "statement": "Transfer only the minimum data required for the approved purpose.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 149
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Cross-Border Transfers, Processors, and Data Sharing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-E8F7E7D4",
+      "revision": 1,
+      "semantic_sha256": "e8f7e7d42c0850134d9ee8067e0f67d57d26c46eabca37bc2cf78d92da66f85c",
+      "statement": "Use contracts that restrict use, require security, control subprocessors, support rights, require deletion, and define incident notification.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 150
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Cross-Border Transfers, Processors, and Data Sharing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D90C9EFB",
+      "revision": 1,
+      "semantic_sha256": "d90c9efb165dacc20463449f8585de3afc6fe6e804f49d08c98a6c27186813a9",
+      "statement": "Assess provider technical, organizational, legal, and jurisdictional risk proportionate to sensitivity.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 151
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Cross-Border Transfers, Processors, and Data Sharing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-CD9A1808",
+      "revision": 1,
+      "semantic_sha256": "cd9a1808844e48f2ddb3dd716b4f41eaf64efdaaa65a677883fee2b1ec5aedcb",
+      "statement": "Encrypt transfers and stored data where required by risk.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 152
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Cross-Border Transfers, Processors, and Data Sharing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-3919B6AF",
+      "revision": 1,
+      "semantic_sha256": "3919b6afd78c20c3a5ac46b260aa338027a2ea097cabf1e334c96a42cbf97e56",
+      "statement": "Restrict provider and support access through least privilege and audited workflows.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 153
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Cross-Border Transfers, Processors, and Data Sharing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-FF7405F1",
+      "revision": 1,
+      "semantic_sha256": "ff7405f125328f5d2a5730ed21ef2bc4de83b635f5dbb84e79a79c0d5bce9100",
+      "statement": "Monitor provider, subprocessor, region, terms, and data-use changes.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 154
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Cross-Border Transfers, Processors, and Data Sharing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-0BA5E8E2",
+      "revision": 1,
+      "semantic_sha256": "0ba5e8e2725c0d8c109ba48a15f123d491fa8f4830ac2a76e334adc009fc5187",
+      "statement": "Prevent suppliers from using customer data for unrelated analytics, advertising, or model training without authorization.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 155
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Cross-Border Transfers, Processors, and Data Sharing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-B806C61C",
+      "revision": 1,
+      "semantic_sha256": "b806c61ce0d9cc0c8f3037fb5fe41eef524c06c644a30fa3f37bb2229a0b00ce",
+      "statement": "Provide data-subject and customer transparency where required.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 156
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Cross-Border Transfers, Processors, and Data Sharing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-5E302DDE",
+      "revision": 1,
+      "semantic_sha256": "5e302ddef26aa063fbf4f0ad2e3490cd8a8e37740b0aa4fb20a5c66d08064e03",
+      "statement": "Ensure deletion, correction, restriction, and consent changes propagate to processors.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 157
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Cross-Border Transfers, Processors, and Data Sharing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-234514B3",
+      "revision": 1,
+      "semantic_sha256": "234514b34297a66b28077a14d15de85767cc4464056460392223329a8bf23a50",
+      "statement": "Maintain export and return capability for provider transition.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 158
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Cross-Border Transfers, Processors, and Data Sharing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-5402DD1F",
+      "revision": 1,
+      "semantic_sha256": "5402dd1fcd0e83dfc789197aa718dfe51b65e7811980a86fe210bdc834d5e991",
+      "statement": "Define retention and verified deletion at contract end.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 159
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Cross-Border Transfers, Processors, and Data Sharing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-65334F09",
+      "revision": 1,
+      "semantic_sha256": "65334f09274c6b6d29ea9454f235570b968e6d862ebe107fa12d97bc57eb5703",
+      "statement": "Revoke credentials, integrations, network access, and keys on termination.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 160
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Cross-Border Transfers, Processors, and Data Sharing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-3C8EBF98",
+      "revision": 1,
+      "semantic_sha256": "3c8ebf9811ee792baebc62cb69087afd6447845bb9f1150e9a810da0a89be302",
+      "statement": "Test provider outage, breach, data recovery, and exit procedures.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 161
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Cross-Border Transfers, Processors, and Data Sharing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-8A899654",
+      "revision": 1,
+      "semantic_sha256": "8a89965402e6c7ba8d209ad7002a6490754f40100c70081890f38998a1cd2022",
+      "statement": "Review bulk exports and human-readable support access as transfers.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 162
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Cross-Border Transfers, Processors, and Data Sharing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-27E1C5E3",
+      "revision": 1,
+      "semantic_sha256": "27e1c5e35fa8bbcce95d1f3d1f7e44b93050e225ccb76d5645a25f0946af0f19",
+      "statement": "Maintain evidence of transfer assessments, contracts, and supplementary controls.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 163
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Cross-Border Transfers, Processors, and Data Sharing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-F9E745E7",
+      "revision": 1,
+      "semantic_sha256": "f9e745e7c4e4ec6e6509d6ca8b1e962f4896c7bc5ced0be392977c2831198cb0",
+      "statement": "Reassess when law, provider ownership, infrastructure, processing purpose, or data sensitivity changes.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 164
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Cross-Border Transfers, Processors, and Data Sharing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-0135FDA3",
+      "revision": 1,
+      "semantic_sha256": "0135fda3897ab7590ce879376c371c437d6064ca975db84f4be2a7cbca453e8d",
+      "statement": "Stop transfer when required safeguards cannot be maintained.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 165
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Cross-Border Transfers, Processors, and Data Sharing",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-71E5442B",
+      "revision": 1,
+      "semantic_sha256": "71e5442b580ed8f4f2beb86bb15865fcf148a97c4be4892b8ab0e401b0f0d041",
+      "statement": "Identify sensitive categories by jurisdiction, context, user expectation, harm, and inference—not labels alone.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 173
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Children’s, Sensitive, and High-Risk Data",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-7A4F495F",
+      "revision": 1,
+      "semantic_sha256": "7a4f495fb11481a9b24f8dac247209ff872b0f6ce09d6ede48af4a48ac9a6195",
+      "statement": "Avoid collecting sensitive data unless it is necessary for a documented high-value purpose.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 174
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Children’s, Sensitive, and High-Risk Data",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-6231CEB2",
+      "revision": 1,
+      "semantic_sha256": "6231ceb247b199ef560548f0e6341dd2c47f7f366cfdb158ea3f2d721e2ba8da",
+      "statement": "Use age-appropriate design and language when children may use or be affected by the service.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 175
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Children’s, Sensitive, and High-Risk Data",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-4B4EEF3F",
+      "revision": 1,
+      "semantic_sha256": "4b4eef3f3579b0bbecb8564fcb5835c49d6bd4fbfde40a8705ffd2720608a14a",
+      "statement": "Determine age assurance, parental authorization, and child autonomy requirements proportionately.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 176
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Children’s, Sensitive, and High-Risk Data",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-092E7F6B",
+      "revision": 1,
+      "semantic_sha256": "092e7f6bd717cf7d132ed411c06603b157590d84c80fca0175df5276c68f99e1",
+      "statement": "Do not use dark patterns to encourage disclosure or extended engagement by children.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 177
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Children’s, Sensitive, and High-Risk Data",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-7EAF6F92",
+      "revision": 1,
+      "semantic_sha256": "7eaf6f9229c36d024e7c6000babc22fcd38c862870e297d367aae577b68f69be",
+      "statement": "Disable unnecessary profiling, advertising, location, contact discovery, and public visibility by default for minors.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 178
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Children’s, Sensitive, and High-Risk Data",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-B3F64417",
+      "revision": 1,
+      "semantic_sha256": "b3f64417d1ad43e13b7c287489e13198805a93dac7880078c369c68d0684200b",
+      "statement": "Protect biometric templates, health data, precise location, communications, identity documents, and financial data with enhanced access and encryption.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 179
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Children’s, Sensitive, and High-Risk Data",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-E1B3DE1D",
+      "revision": 1,
+      "semantic_sha256": "e1b3de1dd85b8fcb5c69c730e6054eb55d49276b5121d2d0f7131af1d6ac59b5",
+      "statement": "Avoid deriving sensitive traits from ordinary behavior unless explicitly justified and governed.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 180
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Children’s, Sensitive, and High-Risk Data",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-A3672E68",
+      "revision": 1,
+      "semantic_sha256": "a3672e68b8b8cdea125d438c1d3a0ae322db3649c724787aca6c7b10f90a17c9",
+      "statement": "Limit retention and secondary use more strictly than ordinary data.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 181
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Children’s, Sensitive, and High-Risk Data",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-C1A114B0",
+      "revision": 1,
+      "semantic_sha256": "c1a114b08ef4800313bbcf04e18832e537b38f90b1df0c513706689b7ffdc53d",
+      "statement": "Prevent support, analytics, logs, and test systems from receiving unnecessary sensitive values.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 182
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Children’s, Sensitive, and High-Risk Data",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-19E31877",
+      "revision": 1,
+      "semantic_sha256": "19e31877922c2f615a94896d33b968e06e9baca5e8b4a50b5e68943984e7249c",
+      "statement": "Require independent review for new sensitive-data processing or sharing.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 183
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Children’s, Sensitive, and High-Risk Data",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-15A125C3",
+      "revision": 1,
+      "semantic_sha256": "15a125c337c698919ffc223e6439e3b2532d58c31d3a206f37993be252e4e0ed",
+      "statement": "Provide meaningful alternatives where refusal is possible.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 184
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Children’s, Sensitive, and High-Risk Data",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-6D30DBF0",
+      "revision": 1,
+      "semantic_sha256": "6d30dbf0c8c675a9db162188818788d20864ee730be96df81c8117db7c466094",
+      "statement": "Design for family, guardian, school, employer, and joint-account conflicts without assuming one actor always represents the user.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 185
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Children’s, Sensitive, and High-Risk Data",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-C241B622",
+      "revision": 1,
+      "semantic_sha256": "c241b622bca60b8c6d687a15017cdda98b6f5b93907def7d0c9f38b018f698df",
+      "statement": "Test disclosure, inference, enumeration, coercion, stalking, and account-recovery risks.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 186
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Children’s, Sensitive, and High-Risk Data",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-DD1AEB92",
+      "revision": 1,
+      "semantic_sha256": "dd1aeb924af8403378e3582a9af6784c4b464dc17766a85c6c51a6cbcdc454b8",
+      "statement": "Provide rapid revocation, correction, deletion, and safety escalation.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 187
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Children’s, Sensitive, and High-Risk Data",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-FE82D430",
+      "revision": 1,
+      "semantic_sha256": "fe82d43083790633ef1863e8f0772737a64d2085a71e1eaa0369c05ca2503aa6",
+      "statement": "Monitor for misuse, scraping, trafficking, discrimination, and harmful targeting.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 188
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Children’s, Sensitive, and High-Risk Data",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-F8676A18",
+      "revision": 1,
+      "semantic_sha256": "f8676a184cd4c28ac56c4351bf4395e06baa3f1d36e009f6976560c5a260e1cb",
+      "statement": "Avoid public or permanent identifiers for minors and vulnerable users.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 189
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Children’s, Sensitive, and High-Risk Data",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-474C667C",
+      "revision": 1,
+      "semantic_sha256": "474c667c64fd5deefbcf22860b4c72f953a03f61df3bc0ddd7977ddd54363e8f",
+      "statement": "Use vendors with appropriate contractual and technical safeguards.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 190
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Children’s, Sensitive, and High-Risk Data",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-01769764",
+      "revision": 1,
+      "semantic_sha256": "017697644500e1c2f8952be611b00f204c3f3d45ec36d8057edf7edc50c9afd1",
+      "statement": "Review safety and privacy as users age or their legal status changes.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 191
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Children’s, Sensitive, and High-Risk Data",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-A9BDCB7D",
+      "revision": 1,
+      "semantic_sha256": "a9bdcb7d49700ac9b905d393b05345377bb3043332c424533b533e182b22ead5",
+      "statement": "Stop processing when harm cannot be reduced below approved tolerance.",
+      "source": {
+        "path": "docs/engineering/09-privacy-and-data-protection.md",
+        "line": 192
+      },
+      "heading_trail": [
+        "Privacy and data protection",
+        "Children’s, Sensitive, and High-Risk Data",
+        "Category-specific universal rules"
+      ]
+    }
+  ]
+}

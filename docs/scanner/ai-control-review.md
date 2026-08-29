@@ -1,12 +1,14 @@
-# Safe AI review of all controls
+# Safe AI review of nondeterministic controls
 
 `prc scan` always puts all 10,042 controls in the report. By default it checks
 only facts that the local scanner can prove safely. Broad questions stay
 `needs_review` instead of being guessed.
 
-An optional AI review can add advice for those broad questions. You choose
-Codex or Claude Code. The AI result is extra information; it cannot change the
-scanner's real pass, fail, blocked, or review state, and it never fixes files.
+An optional AI review can add advice for the 9,356 controls whose reviewed
+classification is nondeterministic. The 686 deterministic controls are not
+handed to AI for a verdict. You choose Codex or Claude Code. The AI result is
+extra information; it cannot change the scanner's real pass, fail, blocked, or
+review state, and it never fixes files.
 
 ## Before you start
 
@@ -48,9 +50,10 @@ The shortest full-review command is:
 prc full codex
 ```
 
-Use `prc full claude` for Claude Code. `prc scan --ai codex|claude` remains an
-equivalent advanced-friendly spelling. To test only one control first, use the
-advanced form:
+Use `prc full claude` for Claude Code. `prc scan --ai codex|claude` uses the
+same guarded review engine but keeps the advanced defaults of standard depth,
+one worker, and high reasoning. To test only one control first, use the advanced
+form:
 
 ```bash
 prc scan /path/to/project \
@@ -74,7 +77,9 @@ normal scanner state is still present. The AI section separately shows:
 - its suggested result;
 - whether it thinks the rule applies;
 - confidence;
-- reason and advice;
+- priority, reason, risk, and advice;
+- ordered remediation and independent verification steps;
+- evidence still needed and the strongest skeptical challenge;
 - exact excerpt lines it used;
 - separate citation-location and claim verification states; and
 - what it could not prove.
@@ -84,31 +89,39 @@ screened snapshot bound to the task. It does not mean the line supports the AI
 sentence. The claim therefore remains `advisory_unverified` until an independent
 typed verifier or a qualified person proves it.
 
-## Review all 10,042 controls
+## Review all 9,356 nondeterministic controls
 
-The short commands review all active controls:
+The short commands review all active controls whose reviewed classification is
+nondeterministic. All 10,042 controls still appear in the report, but the 686
+deterministic controls never receive an AI verdict. They remain Blocked until
+their exact program gets complete authoritative evidence.
 
 ```bash
 prc full codex
 prc full claude
 ```
 
-Use the advanced form only when changing defaults, for example Codex `xhigh`
-effort:
+The short `prc full` path is quality-first: it uses deep review, four parallel
+provider workers, and Codex `xhigh` reasoning. The advanced form can choose
+different settings, for example a one-control standard review:
 
 ```bash
 prc scan /path/to/project \
   --review-provider codex \
-  --review-effort xhigh \
+  --review-control PRC-02-001 \
+  --review-depth standard \
   --allow-remote-source-processing
 ```
 
 This is deliberately slow and expensive. The scanner makes batches of at most
 eight controls. For each batch, it tells the top AI process to create exactly
-one separate subagent per control, wait for all of them, and return exactly one
-result per control. With 10,042 active controls and the default batch size,
-expect about 1,256 provider calls and 10,042 subagent reviews. The exact token
-and money cost depends on the chosen provider and model.
+one separate primary subagent per control. Deep mode also creates one separate
+skeptical subagent for the batch, runs the independent work concurrently, and
+requires the coordinator to preserve the strongest objection or counterexample
+for every result. With 9,356 nondeterministic controls and the default batch
+size, expect about 1,170 provider calls, 9,356 primary rule reviews, and about
+1,170 batch-skeptic reviews. The exact token and money cost depends on the
+chosen provider and model.
 
 Before the first provider call, the terminal shows the exact number of controls,
 batches, cached batches, workers, and the private resume directory. Small
@@ -137,9 +150,12 @@ treat claimed orchestration as evidence. A provider that skips a requested
 subagent can at most produce untrusted advisory text, never a verified Pass.
 
 Completed batches are stored privately outside the target project. If a later
-batch fails or the run is stopped, run the same command again. Matching finished
-batches are checked and reused. The report is written only after every requested
-batch has a valid result.
+batch fails or the run is stopped, the scanner writes a partial report with all
+completed, schema-checked reviews, returns an execution error, and leaves the
+target unchanged. Run the same command again: matching finished batches are
+checked and reused, and only unfinished work is sent again. A partial report is
+never labeled complete and no partial AI result can change a control's real
+disposition.
 
 ## What is sent to the provider
 
@@ -202,6 +218,7 @@ language, build system, size, boundaries, and conventions.
 | `--review-provider` | `none` | Choose `codex` or `claude`. No AI starts by default. |
 | `--review-control ID` | all active | Review one named control; repeat for a small test set. |
 | `--review-batch-size` | `8` | Provider calls contain 1–8 controls; every control still gets its own subagent. |
+| `--review-depth` | `standard` | `standard` uses one primary subagent per rule; `deep` also adds an independent skeptical subagent per batch. `prc full` selects `deep`. |
 | `--review-workers` | `1` | Run 1–4 provider calls at once. One is safer for cost and rate limits. |
 | `--review-timeout` | `30m` | Limit for each resumable batch. |
 | `--review-effort` | `high` | Codex supports `high` or `xhigh`; Claude uses `high`. |
@@ -211,7 +228,9 @@ language, build system, size, boundaries, and conventions.
 
 More workers can finish sooner but increase simultaneous cost and the chance of
 provider rate limits. More controls per call reduce top-level calls but make the
-coordinator's job larger. The defaults favor correctness and easy resuming.
+coordinator's job larger. Advanced `prc scan` defaults to one worker and
+standard depth. The simple `prc full` command deliberately selects four workers
+and deep review because it is the quality-first path.
 
 ## What stops the run
 
@@ -224,5 +243,6 @@ The run stops with an execution error if:
   a path or line outside the screened copy; or
 - a saved batch does not match its sealed task.
 
-Valid completed batches remain saved. No target file is changed, and no partial
-AI result is allowed to make a scanner rule pass.
+Valid completed batches remain saved and appear in a clearly marked partial
+report. No target file is changed, and no partial AI result is allowed to make
+a scanner rule pass.

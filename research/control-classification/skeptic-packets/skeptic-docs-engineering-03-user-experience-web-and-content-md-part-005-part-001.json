@@ -1,0 +1,471 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-engineering-03-user-experience-web-and-content-md-part-005-part-001",
+  "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-005",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 17,
+  "controls": [
+    {
+      "control_id": "USEQ-B6DF1544",
+      "revision": 1,
+      "semantic_sha256": "b6df15441887e1708632bb15a4c380b9b56f0c7e168d97155f5aa41f00375616",
+      "statement": "Distinguish mandatory steps from optional guidance.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1279
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Procedures, training, and competence in use"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-005",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Distinguish mandatory steps from optional guidance.” defines a bounded procedure, exercise, evaluation, monitoring, deviation, risk, or assurance record whose explicit fields can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit step type, scenario, method, role, metric, deviation, risk link, owner, expiry, or assurance binding named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-10C48526",
+      "revision": 1,
+      "semantic_sha256": "10c48526307b967a7c9dab6903a1187aa52a0e4ba719ef8097388ae3f88946b9",
+      "statement": "Explain the purpose and hazard controlled by critical steps.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1280
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Procedures, training, and competence in use"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-005",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Explain the purpose and hazard controlled by critical steps.” defines a bounded procedure, exercise, evaluation, monitoring, deviation, risk, or assurance record whose explicit fields can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit step type, scenario, method, role, metric, deviation, risk link, owner, expiry, or assurance binding named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5E37EAFF",
+      "revision": 1,
+      "semantic_sha256": "5e37eaff24f8af664679cffc23c18fd90b59f68382ff9a6dca143762f602e99e",
+      "statement": "Train personnel on abnormal, degraded, emergency, and recovery conditions, not only routine success paths.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1282
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Procedures, training, and competence in use"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-005",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Train personnel on abnormal, degraded, emergency, and recovery conditions, not only routine success paths.” can be decided by exact joins across authoritative role, change, training, environment, interface, evaluation, and review evidence with stable identifiers and times.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope role, change, training requirement, practice environment, interface, or high-impact evaluation subject.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound authenticated evidence satisfies every exact isolation, timing, revision, participant, reassessment, or independent-review condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F11266F2",
+      "revision": 1,
+      "semantic_sha256": "f11266f2c9261c131238bde4ed005843563d72c55353ac1682ab6c1efa281d0d",
+      "statement": "Refresh training when the system, threat, procedure, or role materially changes.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1284
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Procedures, training, and competence in use"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-005",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Refresh training when the system, threat, procedure, or role materially changes.” can be decided by exact joins across authoritative role, change, training, environment, interface, evaluation, and review evidence with stable identifiers and times.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope role, change, training requirement, practice environment, interface, or high-impact evaluation subject.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound authenticated evidence satisfies every exact isolation, timing, revision, participant, reassessment, or independent-review condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C691A030",
+      "revision": 1,
+      "semantic_sha256": "c691a0309a4b2344f5fd7a49c45ca310f126a83659752ab29c96710e28232a13",
+      "statement": "Ensure simulations cannot affect production data or users.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1286
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Procedures, training, and competence in use"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-005",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Ensure simulations cannot affect production data or users.” can be decided by exact joins across authoritative role, change, training, environment, interface, evaluation, and review evidence with stable identifiers and times.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope role, change, training requirement, practice environment, interface, or high-impact evaluation subject.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound authenticated evidence satisfies every exact isolation, timing, revision, participant, reassessment, or independent-review condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9754BE06",
+      "revision": 1,
+      "semantic_sha256": "9754be0673689188fa2a87fea06b22e582d4bc87e7bd38b9d7ba133429ddb524",
+      "statement": "Include communication, escalation, evidence preservation, and customer impact in exercises.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1287
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Procedures, training, and competence in use"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-005",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Include communication, escalation, evidence preservation, and customer impact in exercises.” defines a bounded procedure, exercise, evaluation, monitoring, deviation, risk, or assurance record whose explicit fields can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit step type, scenario, method, role, metric, deviation, risk link, owner, expiry, or assurance binding named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BD879838",
+      "revision": 1,
+      "semantic_sha256": "bd8798389c89228c7380540370508277413c6cd6d176cf00282cbc63f89704ad",
+      "statement": "Test whether new personnel can perform critical tasks without undocumented assistance.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1291
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Procedures, training, and competence in use"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-005",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A versioned critical-task protocol can directly observe whether new personnel complete each approved task without undocumented assistance, making the bounded result objective.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated execution evidence records each approved critical task, the new participant, prohibited assistance conditions, observed assistance, and terminal outcome.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7E095AAC",
+      "revision": 1,
+      "semantic_sha256": "7e095aacf60c929a814b1410da42633a5fcca5dfadcd28f0b9f94b10148085be",
+      "statement": "Include workers with disabilities in evaluation of critical tools and procedures.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1296
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Inclusive operator and workforce experience"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-005",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Include workers with disabilities in evaluation of critical tools and procedures.” can be decided by exact joins across authoritative role, change, training, environment, interface, evaluation, and review evidence with stable identifiers and times.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope role, change, training requirement, practice environment, interface, or high-impact evaluation subject.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound authenticated evidence satisfies every exact isolation, timing, revision, participant, reassessment, or independent-review condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BB1DA3B6",
+      "revision": 1,
+      "semantic_sha256": "bb1da3b6ee05b5fdf273d759ef58c7cdcae7093e3524bf5217ece0ee86225c02",
+      "statement": "Define representative tasks, roles, environments, data, devices, and stress conditions for evaluation.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1310
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Human-factors assurance and release gates"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-005",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define representative tasks, roles, environments, data, devices, and stress conditions for evaluation.” defines a bounded procedure, exercise, evaluation, monitoring, deviation, risk, or assurance record whose explicit fields can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit step type, scenario, method, role, metric, deviation, risk link, owner, expiry, or assurance binding named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FA348CF7",
+      "revision": 1,
+      "semantic_sha256": "fa348cf787c3a48533ee8c0824718a6c708a64bc6a3121ad404cd68c78aa7557",
+      "statement": "Combine observation, task-performance measures, interviews, workload assessment, error analysis, and production evidence.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1311
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Human-factors assurance and release gates"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-005",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Combine observation, task-performance measures, interviews, workload assessment, error analysis, and production evidence.” defines a bounded procedure, exercise, evaluation, monitoring, deviation, risk, or assurance record whose explicit fields can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit step type, scenario, method, role, metric, deviation, risk link, owner, expiry, or assurance binding named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8E0AE768",
+      "revision": 1,
+      "semantic_sha256": "8e0ae768bb79537f05f5d9bbc28e0bb3f5478e0b3f0abdf559ec77fc1aa2c347",
+      "statement": "Evaluate critical tasks using the exact production interface and configuration.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1313
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Human-factors assurance and release gates"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-005",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Evaluate critical tasks using the exact production interface and configuration.” can be decided by exact joins across authoritative role, change, training, environment, interface, evaluation, and review evidence with stable identifiers and times.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope role, change, training requirement, practice environment, interface, or high-impact evaluation subject.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound authenticated evidence satisfies every exact isolation, timing, revision, participant, reassessment, or independent-review condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5B8BCABC",
+      "revision": 1,
+      "semantic_sha256": "5b8bcabc3fab66f9d15b9b610e0bb753e5ae68696a0dc676c89b3cc038f803cc",
+      "statement": "Record deviations between test conditions and real operation.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1314
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Human-factors assurance and release gates"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-005",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Record deviations between test conditions and real operation.” defines a bounded procedure, exercise, evaluation, monitoring, deviation, risk, or assurance record whose explicit fields can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit step type, scenario, method, role, metric, deviation, risk link, owner, expiry, or assurance binding named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CA8D6F84",
+      "revision": 1,
+      "semantic_sha256": "ca8d6f84b7d7938b0510ff0e971c73ab2d0f7bc20d3c8c1a52699d97773dce52",
+      "statement": "Re-evaluate human performance after major interface, staffing, automation, or process changes.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1317
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Human-factors assurance and release gates"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-005",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Re-evaluate human performance after major interface, staffing, automation, or process changes.” can be decided by exact joins across authoritative role, change, training, environment, interface, evaluation, and review evidence with stable identifiers and times.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope role, change, training requirement, practice environment, interface, or high-impact evaluation subject.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound authenticated evidence satisfies every exact isolation, timing, revision, participant, reassessment, or independent-review condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-15D04E70",
+      "revision": 1,
+      "semantic_sha256": "15d04e70df560811193f0465e4067f77fbfb9c1df1874d8e91e993eb9fef505b",
+      "statement": "Monitor task failure, support demand, near misses, overrides, abandonment, and recovery after launch.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1318
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Human-factors assurance and release gates"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-005",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Monitor task failure, support demand, near misses, overrides, abandonment, and recovery after launch.” defines a bounded procedure, exercise, evaluation, monitoring, deviation, risk, or assurance record whose explicit fields can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit step type, scenario, method, role, metric, deviation, risk link, owner, expiry, or assurance binding named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1364D5A3",
+      "revision": 1,
+      "semantic_sha256": "1364d5a3f4276c746d47ddaa097ec6b9f8ae062a22ea971a9c60b4c8168630c2",
+      "statement": "Preserve a human-factors risk register and link unresolved risks to owners, monitoring, and expiry.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1319
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Human-factors assurance and release gates"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-005",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Preserve a human-factors risk register and link unresolved risks to owners, monitoring, and expiry.” defines a bounded procedure, exercise, evaluation, monitoring, deviation, risk, or assurance record whose explicit fields can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit step type, scenario, method, role, metric, deviation, risk link, owner, expiry, or assurance binding named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C01D9ECD",
+      "revision": 1,
+      "semantic_sha256": "c01d9ecdbce47e7a28f40e22e38f46d98fbde999da67efacda1513dd3ff814dd",
+      "statement": "Require independent review when human error could create catastrophic or systemic harm.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1320
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Human-factors assurance and release gates"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-005",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Require independent review when human error could create catastrophic or systemic harm.” can be decided by exact joins across authoritative role, change, training, environment, interface, evaluation, and review evidence with stable identifiers and times.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope role, change, training requirement, practice environment, interface, or high-impact evaluation subject.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound authenticated evidence satisfies every exact isolation, timing, revision, participant, reassessment, or independent-review condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-33BC0B54",
+      "revision": 1,
+      "semantic_sha256": "33bc0b54b607d709f85fb32f362e4a1fb4afe709da3096e57e5ba1d176aa9dfe",
+      "statement": "Include human-factors evidence in production-readiness and assurance cases.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1321
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Human-factors assurance and release gates"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-005",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Include human-factors evidence in production-readiness and assurance cases.” defines a bounded procedure, exercise, evaluation, monitoring, deviation, risk, or assurance record whose explicit fields can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit step type, scenario, method, role, metric, deviation, risk link, owner, expiry, or assurance binding named by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    }
+  ]
+}

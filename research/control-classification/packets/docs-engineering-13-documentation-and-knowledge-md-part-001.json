@@ -1,0 +1,3626 @@
+{
+  "schema_version": "prc.control-classification-packet/v0.1",
+  "packet_id": "docs-engineering-13-documentation-and-knowledge-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "source_path": "docs/engineering/13-documentation-and-knowledge.md",
+  "control_count": 241,
+  "controls": [
+    {
+      "control_id": "USEQ-482D2055",
+      "revision": 1,
+      "semantic_sha256": "482d2055012b74e50582cf8ac9ec1171a49c9dbbbc9f6b51c51ae85eaeac1b51",
+      "statement": "Define required information products by audience, decision, task, risk, and lifecycle stage.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 15
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Documentation Governance",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-3223AD64",
+      "revision": 1,
+      "semantic_sha256": "3223ad64ad765d87ba9acbe5edf5bc3ace09e2a43ac46031750b207fa0ffb949",
+      "statement": "Assign an owner, reviewers, source of truth, status, effective version, and review date to each material document.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 16
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Documentation Governance",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-02294CB7",
+      "revision": 1,
+      "semantic_sha256": "02294cb7b6d06639262ba42ee60f9ef8151aff8bec499545f1d88021398115de",
+      "statement": "Store documentation where intended users can discover and access it during normal work and incidents.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 17
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Documentation Governance",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-A84035BD",
+      "revision": 1,
+      "semantic_sha256": "a84035bd5a7d08192b681e473c55de658cc1f424cf11a16764f7b5e13fe6f091",
+      "statement": "Use version control or equivalent history for material technical and operational information.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 18
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Documentation Governance",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-987B8A80",
+      "revision": 1,
+      "semantic_sha256": "987b8a80e72a97c94be6c5af2846c3d3921007ef7047654861c692917244e681",
+      "statement": "Link documentation to the product, service, release, interface, data set, control, or process it describes.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 19
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Documentation Governance",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-ED3A1441",
+      "revision": 1,
+      "semantic_sha256": "ed3a1441097727618a00d101d4368409c61173b0d821c83ce9165d33f65d5080",
+      "statement": "Separate normative requirements from guidance, examples, history, and opinion.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 20
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Documentation Governance",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-0404C9C9",
+      "revision": 1,
+      "semantic_sha256": "0404c9c951a296e9fbcf732d5b65dfd23c493d04e846261ce4b1855aa74103d9",
+      "statement": "Use consistent templates where they improve completeness without forcing irrelevant content.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 21
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Documentation Governance",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-2DB92982",
+      "revision": 1,
+      "semantic_sha256": "2db92982ef98a54a9da677d9c8e60bf389483fc9555c1194b7356e69e5d60cbf",
+      "statement": "Write in clear language appropriate to the audience and define unavoidable terminology.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 22
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Documentation Governance",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-832F56DB",
+      "revision": 1,
+      "semantic_sha256": "832f56db51059f28dda1aba73ddd4a3b9359c985ae7cfba64d416ac7742d74bc",
+      "statement": "Make documentation accessible, searchable, navigable, and usable on supported devices.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 23
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Documentation Governance",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-0916418C",
+      "revision": 1,
+      "semantic_sha256": "0916418ce83f1af64434079990f79236ae50a997784554fd287578c8907c7743",
+      "statement": "Protect secrets, personal data, vulnerabilities, customer information, and privileged procedures.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 24
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Documentation Governance",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-FCEFDDB5",
+      "revision": 1,
+      "semantic_sha256": "fcefddb5c0b4d318bdd0625697aa8a5f0d869e5243739052f7d12d94b52711a5",
+      "statement": "Review documentation as part of the same change that alters behavior.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 25
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Documentation Governance",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-EA8D292A",
+      "revision": 1,
+      "semantic_sha256": "ea8d292a8286767740dd089da2bf998c3f34178ac2e084a21ca1d3655e4080f6",
+      "statement": "Detect and label stale, draft, experimental, deprecated, superseded, and archived information.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 26
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Documentation Governance",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-1F28B445",
+      "revision": 1,
+      "semantic_sha256": "1f28b445efab81ce04eb6276baff82fd94de3d2cf6431275bb57242de19dcb7b",
+      "statement": "Provide feedback and correction channels.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 27
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Documentation Governance",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-46DF4D23",
+      "revision": 1,
+      "semantic_sha256": "46df4d2327016d73dd3bc760d0929021384d2e470b3c7f067111211fbb34e930",
+      "statement": "Use executable examples, generated references, schema extraction, or validation where they reduce drift.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 28
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Documentation Governance",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-91A9954E",
+      "revision": 1,
+      "semantic_sha256": "91a9954e4a07478851d5fc7d2396550b7382535cd91be469e751199441394ed0",
+      "statement": "Do not generate documentation automatically when the result cannot be trusted or reviewed.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 29
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Documentation Governance",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-BFCB0797",
+      "revision": 1,
+      "semantic_sha256": "bfcb0797c5172dff81c30e70d3d6185733060c84167aba8a17d777381d22ca9d",
+      "statement": "Retain decision and audit records according to legal and operational needs.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 30
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Documentation Governance",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-A055B3FA",
+      "revision": 1,
+      "semantic_sha256": "a055b3fa670d90d81c96398eb63096a2c4923ac125183587bdbc0d68d7c7cfc0",
+      "statement": "Remove duplicate and contradictory sources of truth.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 31
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Documentation Governance",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D2AFE23D",
+      "revision": 1,
+      "semantic_sha256": "d2afe23dbc6f94fc994e06cd7a0fb7668862f992e5e30fcd0f9e286afb7fab4b",
+      "statement": "Measure findability, task success, freshness, support deflection, errors, and user feedback.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 32
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Documentation Governance",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-3ECAC2EB",
+      "revision": 1,
+      "semantic_sha256": "3ecac2ebbe97cf85d1f0e3c7e4102de1c8670eaee30f51a3e34d8b15c9ab9591",
+      "statement": "Preserve essential documentation outside a single provider or identity failure domain.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 33
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Documentation Governance",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-C069FDB5",
+      "revision": 1,
+      "semantic_sha256": "c069fdb509eeb00dd191438e9cd92a0f251bd27d72c6a9bff2b50470a77d489a",
+      "statement": "Retire information when the supported product or obligation ends.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 34
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Documentation Governance",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-EDE4A090",
+      "revision": 1,
+      "semantic_sha256": "ede4a09023090ccd17d6e2c1200274d749acd93e869f6d4f6ebf7f83cd01a95a",
+      "statement": "Document product purpose, target users, affected parties, outcomes, non-goals, constraints, and assumptions.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 42
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Product, Requirements, and Decision Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-A9393FF5",
+      "revision": 1,
+      "semantic_sha256": "a9393ff58eb638cbbae745c687cba2868807d487362280317cb03c907cf61e35",
+      "statement": "Preserve research methods, participant context, findings, limitations, and consent handling.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 43
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Product, Requirements, and Decision Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-FDD0B29E",
+      "revision": 1,
+      "semantic_sha256": "fdd0b29e663d4fc73c8e271b0d4dd6b3f00cdbb0e96990e7645abf47fd18d454",
+      "statement": "Record requirements with identifiers, source, priority, rationale, acceptance criteria, status, and traceability.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 44
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Product, Requirements, and Decision Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-A8E8FB02",
+      "revision": 1,
+      "semantic_sha256": "a8e8fb0276bded05a669ffe39e2b92ca8579926ae1221e117cd0652f4ba2386f",
+      "statement": "Separate user need, requirement, design choice, implementation task, and test evidence.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 45
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Product, Requirements, and Decision Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-8B2B337A",
+      "revision": 1,
+      "semantic_sha256": "8b2b337aea1ce5ae6b80cd278014b84618c115dc38c0efea8e693e62307cc0fb",
+      "statement": "Document conflicting requirements and the authority and rationale for resolution.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 46
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Product, Requirements, and Decision Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-F6971DAB",
+      "revision": 1,
+      "semantic_sha256": "f6971dab06171ce7d7a2d53f8a24565453e68df6ccedfdf350e7544f238e7712",
+      "statement": "Record roadmap confidence, dependencies, commitments, options, and change history.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 47
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Product, Requirements, and Decision Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-CCDB14AF",
+      "revision": 1,
+      "semantic_sha256": "ccdb14af4544d8db98631db3c0cb13232fb7b238fa5d049c4eb7280158e9e330",
+      "statement": "Document experiment hypothesis, population, metrics, guardrails, duration, analysis, limitations, and decision.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 48
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Product, Requirements, and Decision Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-7AC80095",
+      "revision": 1,
+      "semantic_sha256": "7ac800955b27b7032b66e2effedab1d4ca87ce58bcf19c5065d4c3f3d59aaaa8",
+      "statement": "Preserve product decisions with alternatives, evidence, trade-offs, consequences, owner, and review trigger.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 49
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Product, Requirements, and Decision Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-C3ABA651",
+      "revision": 1,
+      "semantic_sha256": "c3aba651f36e5affc5a8d5c52148801a6ebf5e629b85c3fbebac98064a7bf157",
+      "statement": "Record legal, privacy, accessibility, security, safety, and reliability constraints in product artifacts.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 50
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Product, Requirements, and Decision Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D5861A2B",
+      "revision": 1,
+      "semantic_sha256": "d5861a2b74cd87952afa92328b9145d6ffd83fcae107d7cdf475862fc78acb9b",
+      "statement": "Keep pricing, entitlement, cancellation, retention, and support behavior documented consistently.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 51
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Product, Requirements, and Decision Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-B0A0C709",
+      "revision": 1,
+      "semantic_sha256": "b0a0c709b4d48cea3398ef4966311ea64b1616db9888eaaa8747bc0bb0b409a2",
+      "statement": "Link acceptance evidence to the exact release and requirement.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 52
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Product, Requirements, and Decision Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-19C10937",
+      "revision": 1,
+      "semantic_sha256": "19c109374fa065c65a0c3b57f7a8b63385a9c80c0af81d3957ae24ab7badce2a",
+      "statement": "Record known limitations, deferred scope, residual risk, and customer impact honestly.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 53
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Product, Requirements, and Decision Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-27C3E4F4",
+      "revision": 1,
+      "semantic_sha256": "27c3e4f4692d6eb56701da7a76035d15afd8a8360e9e9a5a0a7fec13b65293c9",
+      "statement": "Update product and support documentation when behavior changes.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 54
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Product, Requirements, and Decision Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-5303F9AF",
+      "revision": 1,
+      "semantic_sha256": "5303f9af05f5bd5289f4b9348d00cda54ff5474e1ee20fd3a0d21251096d6ca5",
+      "statement": "Preserve rejected alternatives when their rationale may prevent repeated analysis.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 55
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Product, Requirements, and Decision Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-6065823A",
+      "revision": 1,
+      "semantic_sha256": "6065823a0ad3a873d18f235a3479bf4b675f76bc03ad0092bff917f13837f387",
+      "statement": "Make sensitive research and commercial strategy access-controlled.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 56
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Product, Requirements, and Decision Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-38F7FBD9",
+      "revision": 1,
+      "semantic_sha256": "38f7fbd95e9f616e0191da4badb1eab242940110571972f5557a7443a92566ec",
+      "statement": "Use diagrams, examples, scenarios, and state models where text alone is ambiguous.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 57
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Product, Requirements, and Decision Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-75CA82FD",
+      "revision": 1,
+      "semantic_sha256": "75ca82fd75a621ab67c67bbbca4568a49b105a2f79cd60d9439cba48f0817911",
+      "statement": "Ensure documentation is understandable to engineering, design, quality, operations, support, legal, and leadership.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 58
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Product, Requirements, and Decision Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-53A776EA",
+      "revision": 1,
+      "semantic_sha256": "53a776ead2ffd40bb8c33bfbe9a0e221daa47b0c7269f821515435ec20ba9dbb",
+      "statement": "Do not treat backlog items as complete requirements documentation by default.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 59
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Product, Requirements, and Decision Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-80892063",
+      "revision": 1,
+      "semantic_sha256": "808920635bcff1c8b2af3b83a9024c28679bd9cecf2670b16be476ab948bc086",
+      "statement": "Archive superseded plans while retaining effective history.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 60
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Product, Requirements, and Decision Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-6017DF2F",
+      "revision": 1,
+      "semantic_sha256": "6017df2fa127c8d3be2026f27f3f53b5442ed48d51fa4b32485b85446c232a6e",
+      "statement": "Review whether delivered outcomes match the documented strategy and assumptions.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 61
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Product, Requirements, and Decision Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-9F4859B3",
+      "revision": 1,
+      "semantic_sha256": "9f4859b32524cb7d78cabde2bf57b540a4a1ce5721b0eedf3e127e473dca941e",
+      "statement": "Identify the system of interest, environment, stakeholders, concerns, and scope of each architecture description.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 69
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Architecture and ADR Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-C331A72F",
+      "revision": 1,
+      "semantic_sha256": "c331a72fddcf89ced360beb82f497b673f504c2f0e9e662eddc02a94316ff6da",
+      "statement": "Maintain context, container or component, deployment, data-flow, trust-boundary, and operational views as applicable.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 70
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Architecture and ADR Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-1294BBC5",
+      "revision": 1,
+      "semantic_sha256": "1294bbc543f8e8f5ddf42f70af90faacb686ec0d64a94ac855e3f0a58b5f031a",
+      "statement": "Document interfaces, dependencies, protocols, ownership, service objectives, and failure assumptions.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 71
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Architecture and ADR Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-8CB4B293",
+      "revision": 1,
+      "semantic_sha256": "8cb4b2930a128abd0f17bb1158dc8413179c4ebc985c6edaa25ec6b6d0389727",
+      "statement": "Mark authoritative data, stateful components, consistency boundaries, and recovery paths.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 72
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Architecture and ADR Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-25A500F5",
+      "revision": 1,
+      "semantic_sha256": "25a500f51a2821f2dc245af60e2358474203c8bd928cc953e3c6a1af82c8d97f",
+      "statement": "Show identity, authorization, encryption, secret, privacy, and tenant boundaries.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 73
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Architecture and ADR Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-58746DC8",
+      "revision": 1,
+      "semantic_sha256": "58746dc8c097dac96c4d8ea2e5303de2aa77f92289d64047d46688d5aac426ec",
+      "statement": "Show queues, asynchronous workflows, scheduled work, caches, search, analytics, and third-party transfers.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 74
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Architecture and ADR Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-38FEC5D8",
+      "revision": 1,
+      "semantic_sha256": "38fec5d802ae6836b91e8b4097601da928b3573f4ca89555826a8df24632b508",
+      "statement": "Document quality-attribute scenarios and architectural tactics.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 75
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Architecture and ADR Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-6C132BDE",
+      "revision": 1,
+      "semantic_sha256": "6c132bde0f4ab8c2ac5f8348cceb665b70ba8ae61b1d95ba9804f327f8f0a932",
+      "statement": "Record architecture decisions with context, options, forces, evidence, decision, consequences, owner, status, and revisit trigger.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 76
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Architecture and ADR Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-F7ACB1C5",
+      "revision": 1,
+      "semantic_sha256": "f7acb1c52535dfa6eb2585efc7f3bc2c43a76d0f2587a9dd5245d0a0580253aa",
+      "statement": "Link decisions to requirements, threats, experiments, benchmarks, migrations, and incidents.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 77
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Architecture and ADR Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-51CB6303",
+      "revision": 1,
+      "semantic_sha256": "51cb6303ee56411ed81732a789c9333f0c2b0b674cf6d3aa384dc6326c7c0f33",
+      "statement": "Keep diagrams and descriptions consistent with deployed reality.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 78
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Architecture and ADR Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-CD43693B",
+      "revision": 1,
+      "semantic_sha256": "cd43693ba80a95902a571429c99a8c635a24e202629e870f8bbbfb15f65423a3",
+      "statement": "Use stable names and legends and avoid diagrams that require undocumented tribal knowledge.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 79
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Architecture and ADR Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-78AF3880",
+      "revision": 1,
+      "semantic_sha256": "78af3880f6067a01088da7e32288eef410e8847d2ce097bb045be3a00933d08e",
+      "statement": "Separate current, target, transitional, and historical architecture.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 80
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Architecture and ADR Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-906B5632",
+      "revision": 1,
+      "semantic_sha256": "906b5632edb2b47c4627997976dbba6f94115c354ba0e277536e12b8cef61f5a",
+      "statement": "Document intentional constraint violations and remediation plans.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 81
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Architecture and ADR Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-A8C8399B",
+      "revision": 1,
+      "semantic_sha256": "a8c8399b23ea6a6c7e5d7f14faa33f7194703ab5d29a7c7eb652f1f2ad7b7eee",
+      "statement": "Include operational and recovery dependencies that are often omitted from functional diagrams.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 82
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Architecture and ADR Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-407E94C2",
+      "revision": 1,
+      "semantic_sha256": "407e94c2ab382214d4672ae793697387dd716536cc8736520438e366cfd4d3b9",
+      "statement": "Make architecture discoverable to implementers and responders.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 83
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Architecture and ADR Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-0EA4D9A7",
+      "revision": 1,
+      "semantic_sha256": "0ea4d9a7013d175e56f9807b6d539afdd4e95c635ef31701660c495f2ad3ad9e",
+      "statement": "Protect sensitive topology and security details while keeping necessary knowledge available.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 84
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Architecture and ADR Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-16B42B20",
+      "revision": 1,
+      "semantic_sha256": "16b42b20c7839d1a0ef328b958fbaeb7f237b32c37a0dc5b3edfef7d3169d19a",
+      "statement": "Automate conformance or drift checks for critical invariants where practical.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 85
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Architecture and ADR Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-3520DA55",
+      "revision": 1,
+      "semantic_sha256": "3520da558390e84e32cb6f51de028133754579bad49d7fdc3de303aebd7341eb",
+      "statement": "Retire superseded decisions without deleting rationale.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 86
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Architecture and ADR Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-606151BB",
+      "revision": 1,
+      "semantic_sha256": "606151bb55175ee9834b8a7ae0803cc99a475c828b25861a124882dd9ea366b4",
+      "statement": "Review after material change and at planned intervals.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 87
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Architecture and ADR Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-84233857",
+      "revision": 1,
+      "semantic_sha256": "8423385778a21ec3327983c05d413fab9e11eef0bbec1fb2e8a6759a5f25bdbe",
+      "statement": "Test documentation usefulness during onboarding, design review, and incident response.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 88
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Architecture and ADR Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D4D4DA52",
+      "revision": 1,
+      "semantic_sha256": "d4d4da52087356e476d86f57fbe41bd0ae10cf6eb1f9eb03c1f9d8db24de7fa1",
+      "statement": "Provide a reliable entry point explaining purpose, ownership, prerequisites, setup, build, test, run, and support.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 96
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Code, API, and Data Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-A69B684D",
+      "revision": 1,
+      "semantic_sha256": "a69b684dece0916303ea8dc700b2d79ce20935fe51b33679dd8e3e7d66c244ba",
+      "statement": "Document public modules, interfaces, functions, commands, events, and configuration according to consumer need.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 97
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Code, API, and Data Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-6D750AA3",
+      "revision": 1,
+      "semantic_sha256": "6d750aa339114d8d13a7e7063381b1f13f8028b5cedde335c8decf87a35339ef",
+      "statement": "State inputs, outputs, units, formats, errors, side effects, authorization, idempotency, ordering, and resource behavior.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 98
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Code, API, and Data Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-2CFFD683",
+      "revision": 1,
+      "semantic_sha256": "2cffd683062bcd28fd80e960731975cacd388c97bdc0c42f80e1de867bc1673c",
+      "statement": "Document API authentication, schemas, pagination, filtering, rate, quota, versioning, deprecation, and examples.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 99
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Code, API, and Data Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-CA239954",
+      "revision": 1,
+      "semantic_sha256": "ca2399545ec4c0762b78764e46557784f816f1d8dd0ea5887e9b11917b7a1101",
+      "statement": "Use generated API and schema references only when enriched with semantic and failure guidance.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 100
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Code, API, and Data Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-9EA30976",
+      "revision": 1,
+      "semantic_sha256": "9ea309767f8258103f6dc1c8b7381472849dc41b33da799385f4ab8158e39e91",
+      "statement": "Keep examples executable or automatically validated.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 101
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Code, API, and Data Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-06617A33",
+      "revision": 1,
+      "semantic_sha256": "06617a335d8a6b95fb8c86da11d5f6c6ece10fa971288dca93c772c0d5e76fb7",
+      "statement": "Never include real secrets, credentials, personal data, or unsafe production endpoints in examples.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 102
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Code, API, and Data Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-DD2CC11E",
+      "revision": 1,
+      "semantic_sha256": "dd2cc11e57d51615ae5fa710d59f3838f8331768a1302b037dc2fe84d7edc555",
+      "statement": "Document data entities, fields, identifiers, null semantics, units, quality, source, lineage, retention, and ownership.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 103
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Code, API, and Data Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-F4E837FE",
+      "revision": 1,
+      "semantic_sha256": "f4e837fe7cb937467bf118491b91ff15cd920a59c0674ccb8b7359b174886214",
+      "statement": "Document migrations, backward compatibility, mixed-version behavior, and consumer actions.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 104
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Code, API, and Data Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-DF76D73B",
+      "revision": 1,
+      "semantic_sha256": "df76d73b50b2e917380b9c5cd6c4a17095a0d7e21a1d2f89217403eb58b7dbf5",
+      "statement": "Explain non-obvious algorithms, invariants, concurrency, performance, and security constraints.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 105
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Code, API, and Data Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-4A0C3F91",
+      "revision": 1,
+      "semantic_sha256": "4a0c3f9185693cfe484e183a0a4c1eb93143df4b9c81f12a4ba7e15462e9f0ed",
+      "statement": "Keep comments near code for local reasoning and external documentation for stable consumer contracts.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 106
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Code, API, and Data Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-21E0B53A",
+      "revision": 1,
+      "semantic_sha256": "21e0b53a551c0a5a56a8f79496f25e1468d8b95ea28e5d987c4f9637d69a1128",
+      "statement": "Link runbooks and troubleshooting for operationally significant components.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 107
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Code, API, and Data Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-B2599C93",
+      "revision": 1,
+      "semantic_sha256": "b2599c93c61c6f3ea0bf32b0eebd8ce7bae17e42a636e31447843f3ce668f8ba",
+      "statement": "Document extension and contribution rules for reusable components.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 108
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Code, API, and Data Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-71737F7A",
+      "revision": 1,
+      "semantic_sha256": "71737f7ae6fdf66cb4057bdec7af930998ab6ff9becd716d0e906eab40df2924",
+      "statement": "Label experimental, internal, unstable, deprecated, and unsupported interfaces clearly.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 109
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Code, API, and Data Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-C42FEE7F",
+      "revision": 1,
+      "semantic_sha256": "c42fee7f7a38eaff2b62bb7f187efc52066385ca6fff04915bc4193cdf63f203",
+      "statement": "Provide change logs for consumer-relevant behavior.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 110
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Code, API, and Data Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-0BA694D6",
+      "revision": 1,
+      "semantic_sha256": "0ba694d6be6ebac1ee7f5fd73cdad3ce565e2617068111f6afc50a2a62e53594",
+      "statement": "Avoid duplicating the same normative contract in multiple manually maintained locations.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 111
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Code, API, and Data Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-319F5870",
+      "revision": 1,
+      "semantic_sha256": "319f58701a0ac1abed7891518d9000016b66323dedfcaa4f052038e1f10f798a",
+      "statement": "Test documentation from a clean consumer environment.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 112
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Code, API, and Data Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-4989E2A5",
+      "revision": 1,
+      "semantic_sha256": "4989e2a5e85c18d30363667819e65162d73d229cdf20b6bb943ff4d630b0b04e",
+      "statement": "Record supported toolchain and platform versions.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 113
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Code, API, and Data Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D6EFE595",
+      "revision": 1,
+      "semantic_sha256": "d6efe595445807702c84de5c1b727da39598573d979b00bb3eacf7511e0b7229",
+      "statement": "Provide a security contact and vulnerability-reporting path for public packages or APIs.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 114
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Code, API, and Data Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-9FC49F3D",
+      "revision": 1,
+      "semantic_sha256": "9fc49f3d0c08dfc44044c86a2e0745abb1458a5bf7a1807bdc7be1c3b081ba66",
+      "statement": "Review documentation during code and release review.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 115
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Code, API, and Data Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-51331060",
+      "revision": 1,
+      "semantic_sha256": "51331060023f2b50ed43b83175508cc887cf3ab6975ab608196418f7a797cc45",
+      "statement": "Base content on user tasks, context, knowledge, risk, language, and support needs.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 123
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "User Help, Training, and Support Content",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D3ACA67F",
+      "revision": 1,
+      "semantic_sha256": "d3aca67fd3fbe5466c77f46f00b39a7029b88ffd6db1431c7abdcb4b84c98b86",
+      "statement": "Provide concise in-context guidance before forcing users to leave the task.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 124
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "User Help, Training, and Support Content",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-280A2D3E",
+      "revision": 1,
+      "semantic_sha256": "280a2d3ef21b838cd9944ad6b9413447484d75eec444a30aa13a6860b3f09675",
+      "statement": "Explain prerequisites, permissions, cost, privacy, consequences, and expected outcomes.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 125
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "User Help, Training, and Support Content",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-02E9D4BC",
+      "revision": 1,
+      "semantic_sha256": "02e9d4bc13f6624295c6adb266cdded9da708b504e28398a1c30f84cb32f9f32",
+      "statement": "Use step sequences that match current product labels and behavior.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 126
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "User Help, Training, and Support Content",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-20D1BA9B",
+      "revision": 1,
+      "semantic_sha256": "20d1ba9b9943f89e7a1f16dba2009c9f0411b768b4d5aa2e7753b02106c539a9",
+      "statement": "Cover normal use, errors, recovery, cancellation, deletion, accessibility, security, and support escalation.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 127
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "User Help, Training, and Support Content",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-A17A56AB",
+      "revision": 1,
+      "semantic_sha256": "a17a56ab7e15613352c00db35f4df0c2546580a97210cd87c7588235bcff5b60",
+      "statement": "Use screenshots and media only when maintained, accessible, localized, and genuinely helpful.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 128
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "User Help, Training, and Support Content",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D5C35624",
+      "revision": 1,
+      "semantic_sha256": "d5c35624625815530e3bfef3f59dfc9bc9d143faf4ca09bd151e560833f83294",
+      "statement": "Provide text alternatives, captions, transcripts, headings, landmarks, and accessible document formats.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 129
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "User Help, Training, and Support Content",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-93775EA6",
+      "revision": 1,
+      "semantic_sha256": "93775ea64765c3111b00b49e05009272dcc7022ebcd61a2aa5717eb26d76cd63",
+      "statement": "Avoid making critical instructions available only through video, image, color, or hover.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 130
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "User Help, Training, and Support Content",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-E10C9176",
+      "revision": 1,
+      "semantic_sha256": "e10c91760e7c7da93b59e1d90d3018cfd7fdb39d59d140815b7a7591d5093f5c",
+      "statement": "Write troubleshooting from symptoms to safe diagnosis and recovery.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 131
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "User Help, Training, and Support Content",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-BFA3670F",
+      "revision": 1,
+      "semantic_sha256": "bfa3670fd706d82360bff2e00bf3fd7daa1cdb9601e57c8a9dd14f53ed6046df",
+      "statement": "Distinguish user-actionable issues from incidents that require support or operator intervention.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 132
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "User Help, Training, and Support Content",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-7A1E53B9",
+      "revision": 1,
+      "semantic_sha256": "7a1e53b9557b5800a9fa1ee7c413123b8dc77847d71d3ad4cfd9fefbfb1609ac",
+      "statement": "Warn before destructive, irreversible, or security-sensitive actions.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 133
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "User Help, Training, and Support Content",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-94EB3B4A",
+      "revision": 1,
+      "semantic_sha256": "94eb3b4a2ceb0bb361c2ae15df5987f379ddea32962f434b493114f6d1cde6cf",
+      "statement": "Avoid exposing internal diagnostics, secrets, or unsafe workarounds.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 134
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "User Help, Training, and Support Content",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-6056DDE7",
+      "revision": 1,
+      "semantic_sha256": "6056dde784f6d2e8df21c4c4db39ee4471765252af3d915d8545ef184fecbff2",
+      "statement": "Define content version, product version, locale, owner, and review date.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 135
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "User Help, Training, and Support Content",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-F5953572",
+      "revision": 1,
+      "semantic_sha256": "f5953572e23db7e05f7163f182cd40439e62bf4d96ee110b9c70905f208dfdc2",
+      "statement": "Test instructions with representative users in a clean environment.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 136
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "User Help, Training, and Support Content",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-EC281E9C",
+      "revision": 1,
+      "semantic_sha256": "ec281e9cc8f34ee04bf7daed81d80fb519a1a85ed0a53782d494a07de15e4750",
+      "statement": "Track failed searches, abandonment, support contacts, and feedback to improve content.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 137
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "User Help, Training, and Support Content",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-EC821EEE",
+      "revision": 1,
+      "semantic_sha256": "ec821eeed24d90e98ba33ecf6315c37154a8a8bd1d3b6e58c526faaa57e2940e",
+      "statement": "Keep legal, pricing, privacy, and security statements aligned with authoritative policy.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 138
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "User Help, Training, and Support Content",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-F2B8BABF",
+      "revision": 1,
+      "semantic_sha256": "f2b8babfcc33e0d1e5d70f64e7f6f4ca01fe7e8f94cf64074131620fcf9bc6f6",
+      "statement": "Provide offline or alternate access for information needed during outages where appropriate.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 139
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "User Help, Training, and Support Content",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-11BCC1E3",
+      "revision": 1,
+      "semantic_sha256": "11bcc1e382b7410ac3d57b30ee044ca4e86d4234095f8451c17fcb741c2ddb77",
+      "statement": "Archive obsolete content and remove it from search recommendations.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 140
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "User Help, Training, and Support Content",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-10AFC3D2",
+      "revision": 1,
+      "semantic_sha256": "10afc3d2d16e899644195d523791cebfa00971367ce56f698f17cbec66afdd35",
+      "statement": "Coordinate release notes, in-product guidance, support scripts, and knowledge articles.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 141
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "User Help, Training, and Support Content",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-41A50E2B",
+      "revision": 1,
+      "semantic_sha256": "41a50e2bf78a8363a7779bdb8db27d354fe81e38ae856549fd273b472bbfaa86",
+      "statement": "Use training assessment to verify competence for high-impact tasks.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 142
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "User Help, Training, and Support Content",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-69C45485",
+      "revision": 1,
+      "semantic_sha256": "69c454856e99f1b4a22638a82569d9fcff70f58196b76851456abaa85236e6cf",
+      "statement": "Provide runbooks for every paging alert, critical dependency, common failure, recovery operation, and high-risk manual task.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 150
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Operations, Runbooks, Release, and Incident Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-02EBD336",
+      "revision": 1,
+      "semantic_sha256": "02ebd33665f4bd0e47cf814e51b1c15d7d6abe5df3a3ffb1ed6bcb971495f6f6",
+      "statement": "State purpose, trigger, prerequisites, access, safety warnings, expected evidence, and escalation.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 151
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Operations, Runbooks, Release, and Incident Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-30B49FB6",
+      "revision": 1,
+      "semantic_sha256": "30b49fb6f8ee0cdc2444b23d2b8524a050ee339e68267c122aedcea2113bda15",
+      "statement": "Use commands and queries that are reviewed, scoped, idempotent where possible, and clearly mark destructive steps.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 152
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Operations, Runbooks, Release, and Incident Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-BA28ABA4",
+      "revision": 1,
+      "semantic_sha256": "ba28aba4237a881b55a867867996c9741c7617816626e65f516b66614b3cc397",
+      "statement": "Include diagnosis, containment, mitigation, rollback, roll-forward, recovery, validation, and communication.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 153
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Operations, Runbooks, Release, and Incident Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-6AF3EC1F",
+      "revision": 1,
+      "semantic_sha256": "6af3ec1f62743570d0e617111f6179e209a98043ee02ac1e586e42e8c1b804d9",
+      "statement": "Define stop conditions and when to declare or escalate an incident.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 154
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Operations, Runbooks, Release, and Incident Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-95A45226",
+      "revision": 1,
+      "semantic_sha256": "95a452262de93834fb7906cd2340ba7b1aa7d5b9cc0d5699b5e599ec82b369ab",
+      "statement": "Keep contact, supplier, status, and alternate communication information current.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 155
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Operations, Runbooks, Release, and Incident Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-6CDA3BBC",
+      "revision": 1,
+      "semantic_sha256": "6cda3bbc7df05ca55aa182b52e2e0b6a8fd02f10b2df13d09ca26b48db4f433b",
+      "statement": "Document deployment artifacts, configuration, migrations, flags, health gates, rollback, and post-deployment verification.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 156
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Operations, Runbooks, Release, and Incident Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-642AD6F8",
+      "revision": 1,
+      "semantic_sha256": "642ad6f8b9b92781ef9746633a68406ce56d1db4052a81843892aa7f05c53876",
+      "statement": "Record releases with source, digest, approvals, changes, known issues, risk, and support impact.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 157
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Operations, Runbooks, Release, and Incident Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-E1D5C77F",
+      "revision": 1,
+      "semantic_sha256": "e1d5c77f06cb856e4d9ce0d265e6781691e14117d8addea4be6a854e86513673",
+      "statement": "Maintain incident timelines, hypotheses, decisions, actions, impact, evidence, communications, and recovery verification.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 158
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Operations, Runbooks, Release, and Incident Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-2BDDA007",
+      "revision": 1,
+      "semantic_sha256": "2bdda007bdd3735f4850644773fb159326ba54cf9726383a1e328a9a89708ab2",
+      "statement": "Separate real-time incident notes from the later reviewed postmortem.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 159
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Operations, Runbooks, Release, and Incident Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-461D6C18",
+      "revision": 1,
+      "semantic_sha256": "461d6c1802c7a27407243ee0650e5357c2be4ff11c16fef85627b4620e296504",
+      "statement": "Preserve evidence and sensitive information with appropriate access and retention.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 160
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Operations, Runbooks, Release, and Incident Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-29CFDA1F",
+      "revision": 1,
+      "semantic_sha256": "29cfda1fa0468e35880f374ee7e2569f16e82aedf9a8a29ae82464e42e806a93",
+      "statement": "Test runbooks through drills and actual use and capture corrections.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 161
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Operations, Runbooks, Release, and Incident Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-9444CDD3",
+      "revision": 1,
+      "semantic_sha256": "9444cdd3f91de6a02b089428d3829d9fd9829b596b53aa5c744d5a5881e5363a",
+      "statement": "Avoid requiring unavailable systems, identities, or networks during disaster recovery.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 162
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Operations, Runbooks, Release, and Incident Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-4EA55BD1",
+      "revision": 1,
+      "semantic_sha256": "4ea55bd19b4f9726305bc6bfc5be146925e9e4b8a9ee27df663f19ec00679e1e",
+      "statement": "Make time-sensitive procedures usable under stress through concise structure and verified automation.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 163
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Operations, Runbooks, Release, and Incident Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-C13E3C06",
+      "revision": 1,
+      "semantic_sha256": "c13e3c0638fafe7e17f785d625957b221ee6b22187571de706163c4dbc07f9af",
+      "statement": "Provide data repair and reconciliation procedures with safeguards.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 164
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Operations, Runbooks, Release, and Incident Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D97EB15E",
+      "revision": 1,
+      "semantic_sha256": "d97eb15e3120f32d2adbbc77ee09feb33fd74cf58a3b18ed08ee48c5e4d610c3",
+      "statement": "Document backup restoration, failover, failback, and clean-environment recovery.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 165
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Operations, Runbooks, Release, and Incident Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-381295F2",
+      "revision": 1,
+      "semantic_sha256": "381295f211c32798ebf5de5d19af27cbc8e513f1f278f64d7cd77597978a7e79",
+      "statement": "Keep runbooks aligned with current architecture and permissions.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 166
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Operations, Runbooks, Release, and Incident Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-44B2EFFA",
+      "revision": 1,
+      "semantic_sha256": "44b2effa962982d7afda3e0c349ab4c40012fe9e9f4cf4da1c24306e3d6f21c9",
+      "statement": "Record temporary incident changes and ensure cleanup.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 167
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Operations, Runbooks, Release, and Incident Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-BCD83655",
+      "revision": 1,
+      "semantic_sha256": "bcd83655186ae1774e440c6ba81fe566e93ac29a32bf9a39c6fbc0940bf02295",
+      "statement": "Track corrective actions to verified completion.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 168
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Operations, Runbooks, Release, and Incident Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-02E3B3DC",
+      "revision": 1,
+      "semantic_sha256": "02e3b3dc85922749dd3b8399cf32e0e130b7d145efec30c7e667a77199839dd4",
+      "statement": "Retire obsolete runbooks and redirect users to the effective procedure.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 169
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Operations, Runbooks, Release, and Incident Documentation",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-37E3F8D7",
+      "revision": 1,
+      "semantic_sha256": "37e3f8d75d8444d438fba04419916f586846940c73648e2809500a4fecd394be",
+      "statement": "Define which knowledge is critical to product value, engineering, operation, security, privacy, compliance, support, and continuity.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 177
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Knowledge-management governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-70E7772F",
+      "revision": 1,
+      "semantic_sha256": "70e7772f3f79d8e0cc4c164e766b2a869f959f47ac1d892d211017493d02e23a",
+      "statement": "Assign accountable owners for knowledge domains and authoritative sources.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 178
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Knowledge-management governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-C14D3998",
+      "revision": 1,
+      "semantic_sha256": "c14d39988f82f82e7e07a375d8269706a519a77d16c5e334ea9d71b84bb8edd7",
+      "statement": "Establish objectives for knowledge creation, capture, validation, sharing, reuse, protection, retention, and retirement.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 179
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Knowledge-management governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-41D9395F",
+      "revision": 1,
+      "semantic_sha256": "41d9395f2bad8c7da6c287d39f5ae59644e272b4ad8b7ad336fa5c339bd262d5",
+      "statement": "Align knowledge management with organizational strategy, risk, lifecycle, and user needs.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 180
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Knowledge-management governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-145DDFF2",
+      "revision": 1,
+      "semantic_sha256": "145ddff292fe2787ec1a537662ce6c0d979b278050b34f08f7806f312fe8f3b2",
+      "statement": "Include employees, contractors, suppliers, partners, customers, and communities where they create or rely on critical knowledge.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 181
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Knowledge-management governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-FC217284",
+      "revision": 1,
+      "semantic_sha256": "fc217284ac73ee83d3eebfe6a34dba8e660ee4c883a93a092239a3bcffb2a789",
+      "statement": "Distinguish public, internal, confidential, restricted, personal, customer-owned, legally privileged, and export-controlled knowledge.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 182
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Knowledge-management governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-18C257FA",
+      "revision": 1,
+      "semantic_sha256": "18c257fa7121baa2de4d6bd0bfddb67ae172d8cbd7b8aa8f13dd3c245c5295b3",
+      "statement": "Ensure knowledge practices respect intellectual property, privacy, security, competition, and employment obligations.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 183
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Knowledge-management governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-415D2615",
+      "revision": 1,
+      "semantic_sha256": "415d2615d34ae624dbd38807d5256727bec699cc314070bee1eff63ba5bfcf2d",
+      "statement": "Provide resources, roles, tools, and incentives for maintaining knowledge, not merely producing new artifacts.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 184
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Knowledge-management governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-633F8CDB",
+      "revision": 1,
+      "semantic_sha256": "633f8cdb3ae1b515996a79078459324b7bf84c5633d996cf7e22b3c935e3bc31",
+      "statement": "Measure whether people can find, understand, trust, and apply needed knowledge.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 185
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Knowledge-management governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-D40AFC25",
+      "revision": 1,
+      "semantic_sha256": "d40afc252e9f888cf3c0ee19deef125be89c1ece6c8fb6a3f5e9b359142e69cb",
+      "statement": "Review the knowledge-management system after incidents, reorganizations, acquisitions, supplier changes, and key-person departures.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 186
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Knowledge-management governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-8EEF087F",
+      "revision": 1,
+      "semantic_sha256": "8eef087f1908b38f318aeada1b54b10064978a6d1ea4149c54a8f4472b46da84",
+      "statement": "Identify knowledge whose loss, inaccuracy, or inaccessibility could cause material failure or delay.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 190
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Critical-knowledge inventory and risk"
+      ]
+    },
+    {
+      "control_id": "USEQ-2A3A7103",
+      "revision": 1,
+      "semantic_sha256": "2a3a7103ad3654bd0103265f79b536f28449a40cfc00af5e8bc14e7d16ef0420",
+      "statement": "Include architecture rationale, domain rules, data semantics, security assumptions, operational procedures, supplier knowledge, and historical constraints.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 191
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Critical-knowledge inventory and risk"
+      ]
+    },
+    {
+      "control_id": "USEQ-1EDE2DA3",
+      "revision": 1,
+      "semantic_sha256": "1ede2da36bc1fa99831f39e798789bf37fe998e57d7e753fb9fab81784bb3aea",
+      "statement": "Identify tacit knowledge held by one person or a small group.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 192
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Critical-knowledge inventory and risk"
+      ]
+    },
+    {
+      "control_id": "USEQ-27857C7E",
+      "revision": 1,
+      "semantic_sha256": "27857c7e4f6ad8e502a16ca934b81f6084b6f5e64bdbf0d1f2387db47ae384a8",
+      "statement": "Identify knowledge dependent on one vendor, proprietary tool, unsupported format, inaccessible repository, or expiring credential.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 193
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Critical-knowledge inventory and risk"
+      ]
+    },
+    {
+      "control_id": "USEQ-C13A3455",
+      "revision": 1,
+      "semantic_sha256": "c13a3455c5a5ad68fde407139a0882d042008f2b6ea02502d11a3cb83235fa67",
+      "statement": "Assess knowledge concentration, obsolescence, misinformation, confidentiality, and availability risks.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 194
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Critical-knowledge inventory and risk"
+      ]
+    },
+    {
+      "control_id": "USEQ-D2F9BDB2",
+      "revision": 1,
+      "semantic_sha256": "d2f9bdb2365487e30a992182c161dff88077147de3814ab6a05262facbb46d21",
+      "statement": "Record the owner, audience, source, validation method, location, sensitivity, dependencies, and review cycle.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 195
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Critical-knowledge inventory and risk"
+      ]
+    },
+    {
+      "control_id": "USEQ-9EB594E8",
+      "revision": 1,
+      "semantic_sha256": "9eb594e8fa4dd6a68e088ad58ee636dba35af03ad5b374197a9a1c788d4905e9",
+      "statement": "Prioritize continuity actions according to impact and replacement difficulty.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 196
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Critical-knowledge inventory and risk"
+      ]
+    },
+    {
+      "control_id": "USEQ-EF4FC8D9",
+      "revision": 1,
+      "semantic_sha256": "ef4fc8d94465cf8ad3374eef64ba6bbdc26517fe7d473814a24f0aed01e66984",
+      "statement": "Track key-person and key-supplier risk explicitly.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 197
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Critical-knowledge inventory and risk"
+      ]
+    },
+    {
+      "control_id": "USEQ-126AA834",
+      "revision": 1,
+      "semantic_sha256": "126aa83447d7f942f404808115ad25c525a70154fc348d543c56aa199b12a7f1",
+      "statement": "Reassess critical knowledge when systems, markets, obligations, or organizational structures change.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 198
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Critical-knowledge inventory and risk"
+      ]
+    },
+    {
+      "control_id": "USEQ-43FCA7C7",
+      "revision": 1,
+      "semantic_sha256": "43fca7c7efb1cbfdd8d7574025deaa71c167dc54ae17c35aa4c10f6da517e5d2",
+      "statement": "Capture decisions, rationale, alternatives, assumptions, and consequences at the time they are made.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 202
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Creation, capture, and validation"
+      ]
+    },
+    {
+      "control_id": "USEQ-6D7905EF",
+      "revision": 1,
+      "semantic_sha256": "6d7905ef367c1f3c93c5313ec2fb4748c517000b1882734a1b9e6cd72fc28c2d",
+      "statement": "Capture lessons from design, implementation, testing, incidents, support, migrations, audits, and retirement.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 203
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Creation, capture, and validation"
+      ]
+    },
+    {
+      "control_id": "USEQ-43428C3C",
+      "revision": 1,
+      "semantic_sha256": "43428c3c33780e2c6860e623580538ea272ed7ab5073d038b804638c43856599",
+      "statement": "Convert tacit knowledge into usable artifacts, demonstrations, mentoring, automation, or shared practice where appropriate.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 204
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Creation, capture, and validation"
+      ]
+    },
+    {
+      "control_id": "USEQ-237035A5",
+      "revision": 1,
+      "semantic_sha256": "237035a515e7856c4f1ab61a174a7798eefdc4eba48802a4ce2a72c2977595f0",
+      "statement": "Avoid documenting only ideal procedures while omitting real constraints and known workarounds.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 205
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Creation, capture, and validation"
+      ]
+    },
+    {
+      "control_id": "USEQ-21FFD735",
+      "revision": 1,
+      "semantic_sha256": "21ffd73596c86595c75c980276ffd1296a376bbe393a4166d5471f9beb17bf3c",
+      "statement": "Record the evidence and authority supporting material statements.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 206
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Creation, capture, and validation"
+      ]
+    },
+    {
+      "control_id": "USEQ-2A391824",
+      "revision": 1,
+      "semantic_sha256": "2a391824d656528a8020427880daa50b38676d76e13db3580c79dd821ef161fd",
+      "statement": "Distinguish fact, decision, opinion, hypothesis, draft, obsolete guidance, and unresolved question.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 207
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Creation, capture, and validation"
+      ]
+    },
+    {
+      "control_id": "USEQ-9E8B3204",
+      "revision": 1,
+      "semantic_sha256": "9e8b32049ca3a0fd59315e0495be05dddae10f7ff766eff5b3846c4234cb7661",
+      "statement": "Validate critical knowledge through peer review, execution, testing, or independent confirmation.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 208
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Creation, capture, and validation"
+      ]
+    },
+    {
+      "control_id": "USEQ-D49EE764",
+      "revision": 1,
+      "semantic_sha256": "d49ee764fff43190979c4c7ae8305eff064dbea2de0c5bc349cc1f6a4b6d5d90",
+      "statement": "Include authorship, ownership, version, date, scope, status, and review date.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 209
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Creation, capture, and validation"
+      ]
+    },
+    {
+      "control_id": "USEQ-916C3F57",
+      "revision": 1,
+      "semantic_sha256": "916c3f5776e6aa43cd9ff482f1a1dbb8ae66984478407c20a74bc871b91e1a2f",
+      "statement": "Preserve links to source requirements, systems, incidents, changes, and evidence.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 210
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Creation, capture, and validation"
+      ]
+    },
+    {
+      "control_id": "USEQ-D67C717E",
+      "revision": 1,
+      "semantic_sha256": "d67c717ea3a396b618848c28680fa810135092501455b09911fc0d941bbf6a8b",
+      "statement": "Avoid creating documentation solely to satisfy a gate when nobody can use or maintain it.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 211
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Creation, capture, and validation"
+      ]
+    },
+    {
+      "control_id": "USEQ-25471447",
+      "revision": 1,
+      "semantic_sha256": "254714474e703188664c4930b529af3d7a3ee5d8886db0e6161ebab2ab45341e",
+      "statement": "Provide one discoverable entry point or catalog for authoritative engineering and operational knowledge.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 215
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Findability, access, and usability"
+      ]
+    },
+    {
+      "control_id": "USEQ-5EB04CC7",
+      "revision": 1,
+      "semantic_sha256": "5eb04cc72e88f90273bc9082b84bdea7f6574230ad1d39740647d1d004e12298",
+      "statement": "Use consistent titles, terminology, taxonomy, tags, identifiers, and ownership metadata.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 216
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Findability, access, and usability"
+      ]
+    },
+    {
+      "control_id": "USEQ-F92EB50C",
+      "revision": 1,
+      "semantic_sha256": "f92eb50c43d70336630502871e42396bae14c34624469e666d4a732628c99ded",
+      "statement": "Make search return authoritative and current material before duplicates and obsolete copies.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 217
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Findability, access, and usability"
+      ]
+    },
+    {
+      "control_id": "USEQ-7786CD26",
+      "revision": 1,
+      "semantic_sha256": "7786cd267e609f7d8c8b5503d16611a9344f068803f7256e1b65bc9d74c6d191",
+      "statement": "Clearly mark superseded, draft, experimental, and archived content.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 218
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Findability, access, and usability"
+      ]
+    },
+    {
+      "control_id": "USEQ-82735880",
+      "revision": 1,
+      "semantic_sha256": "827358802e356df1022479bfe2577d7165b555ec19b0c23e0c37d866c7351a9b",
+      "statement": "Redirect or link from obsolete locations to current guidance where practical.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 219
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Findability, access, and usability"
+      ]
+    },
+    {
+      "control_id": "USEQ-1D316628",
+      "revision": 1,
+      "semantic_sha256": "1d316628c41f22e3c6b1ed8a318d208dc0af66e9faa6c8618ffc0495c15db492",
+      "statement": "Keep access no broader than necessary but no narrower than legitimate work requires.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 220
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Findability, access, and usability"
+      ]
+    },
+    {
+      "control_id": "USEQ-CEA15543",
+      "revision": 1,
+      "semantic_sha256": "cea155436339982d48fc8ed9d69aa3044ed053edd406b6736906cdd2cd2e3c65",
+      "statement": "Ensure critical procedures remain available during network, identity, collaboration-tool, or provider failure.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 221
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Findability, access, and usability"
+      ]
+    },
+    {
+      "control_id": "USEQ-2DD8ED47",
+      "revision": 1,
+      "semantic_sha256": "2dd8ed475028814874777af4c7dbf34d21781e9971c263e54133171c7cf24288",
+      "statement": "Provide offline or alternate access to emergency information where appropriate.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 222
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Findability, access, and usability"
+      ]
+    },
+    {
+      "control_id": "USEQ-BEE02B64",
+      "revision": 1,
+      "semantic_sha256": "bee02b64503df40cdb8ae5ac14112d85527c97d463e39d62e19f862f15bce664",
+      "statement": "Make knowledge accessible to people with disabilities.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 223
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Findability, access, and usability"
+      ]
+    },
+    {
+      "control_id": "USEQ-2D68989A",
+      "revision": 1,
+      "semantic_sha256": "cc6135083ef81e0910aa1a4973f4df7b62774ec40294a1d680eae196808f1eaf",
+      "statement": "Use language, examples, and structure appropriate to the intended audience’s competence.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 224
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Findability, access, and usability"
+      ]
+    },
+    {
+      "control_id": "USEQ-0CE9689B",
+      "revision": 1,
+      "semantic_sha256": "0ce9689b63434c27dfce848b25b7ba7afa0cf9c4d616383793fa491ecf8f398d",
+      "statement": "Provide multilingual material where operational or customer obligations require it.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 225
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Findability, access, and usability"
+      ]
+    },
+    {
+      "control_id": "USEQ-C362DCCB",
+      "revision": 1,
+      "semantic_sha256": "c362dccb81606969530aa8374fb5b77cebd44230391eceb539b757b6ddf37ef5",
+      "statement": "Avoid hidden knowledge in private messages, personal notes, local devices, or inaccessible meeting recordings.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 226
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Findability, access, and usability"
+      ]
+    },
+    {
+      "control_id": "USEQ-DD8E42D2",
+      "revision": 1,
+      "semantic_sha256": "dd8e42d2e1fd61294767a3edc9ee92892f9975a72781a33320e56a25c4f7f1c4",
+      "statement": "Ensure machine-readable knowledge does not replace necessary human-understandable explanation.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 227
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Findability, access, and usability"
+      ]
+    },
+    {
+      "control_id": "USEQ-331D2821",
+      "revision": 1,
+      "semantic_sha256": "331d2821cdd7d100b45a42465c919d6152671fa6cea2e5a321569a97377a06a4",
+      "statement": "Assign review intervals based on criticality and rate of change.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 231
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Maintenance, freshness, and retirement"
+      ]
+    },
+    {
+      "control_id": "USEQ-76C53F97",
+      "revision": 1,
+      "semantic_sha256": "76c53f97785fcaa60c91371ea58f90065d98fe966e407d9c070cc3514d7240f2",
+      "statement": "Trigger review after material product, architecture, supplier, policy, incident, or regulatory change.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 232
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Maintenance, freshness, and retirement"
+      ]
+    },
+    {
+      "control_id": "USEQ-90E787BB",
+      "revision": 1,
+      "semantic_sha256": "90e787bb20da72c4b7cf9106e76009a2d8d934b00c2d434a46892fe585256d6f",
+      "statement": "Detect broken links, missing owners, expired review dates, inaccessible repositories, and conflicting guidance.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 233
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Maintenance, freshness, and retirement"
+      ]
+    },
+    {
+      "control_id": "USEQ-2210FD4E",
+      "revision": 1,
+      "semantic_sha256": "2210fd4ecdf963253e1aa02e0974a7d1bf95d05d82a0ea0c2217ca2460840ca7",
+      "statement": "Make documentation change part of the same workflow as the product or process change.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 234
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Maintenance, freshness, and retirement"
+      ]
+    },
+    {
+      "control_id": "USEQ-0FA18749",
+      "revision": 1,
+      "semantic_sha256": "0fa18749947a5258082541ed8729e1c178490bd4804dc6efff32ac954cede566",
+      "statement": "Test critical runbooks and instructions rather than relying on editorial review alone.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 235
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Maintenance, freshness, and retirement"
+      ]
+    },
+    {
+      "control_id": "USEQ-74890670",
+      "revision": 1,
+      "semantic_sha256": "7489067033a7970e4cbb3fa849edfaa8cfe5c227fd2be495b7fcab541e3ddf4d",
+      "statement": "Remove or archive obsolete knowledge promptly enough to prevent unsafe use.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 236
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Maintenance, freshness, and retirement"
+      ]
+    },
+    {
+      "control_id": "USEQ-A2D587D9",
+      "revision": 1,
+      "semantic_sha256": "a2d587d9192f394ddec58f04073ffa38531812380694e7a95754880df3ceb218",
+      "statement": "Preserve historical versions needed for support, audit, legal, research, and incident reconstruction.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 237
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Maintenance, freshness, and retirement"
+      ]
+    },
+    {
+      "control_id": "USEQ-435CCB76",
+      "revision": 1,
+      "semantic_sha256": "435ccb76e0381362a0d89fc9acab4291c1cd397d1f9ba5df7748ee374a117954",
+      "statement": "Record why material guidance was changed or retired.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 238
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Maintenance, freshness, and retirement"
+      ]
+    },
+    {
+      "control_id": "USEQ-D0AA1A12",
+      "revision": 1,
+      "semantic_sha256": "d0aa1a122a3467a52c673143922ca9ee31ef51483b0cb66c40095bdb4993e475",
+      "statement": "Ensure redirects, references, training, and automation are updated when authoritative knowledge moves.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 239
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Maintenance, freshness, and retirement"
+      ]
+    },
+    {
+      "control_id": "USEQ-2C8DAAB6",
+      "revision": 1,
+      "semantic_sha256": "2c8daab617697b60253f88976861825f6f8672c10242e689d0218a8567c63f7c",
+      "statement": "Prevent generated or imported knowledge from bypassing review and ownership.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 240
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Maintenance, freshness, and retirement"
+      ]
+    },
+    {
+      "control_id": "USEQ-7BE1905F",
+      "revision": 1,
+      "semantic_sha256": "7be1905f86f19ab80f5b06b81c41c49cc51003c9439b5120a22e87d17d1208c4",
+      "statement": "Define required knowledge, skills, judgment, authorization, and experience for each material role.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 244
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Competence models and role readiness"
+      ]
+    },
+    {
+      "control_id": "USEQ-BD044858",
+      "revision": 1,
+      "semantic_sha256": "bd044858ecfa44548fb814bf1d5c762fa562f3aaab405e9c0eed3880f4824746",
+      "statement": "Distinguish awareness, working competence, specialist competence, and authority to approve or act.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 245
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Competence models and role readiness"
+      ]
+    },
+    {
+      "control_id": "USEQ-A1E84D31",
+      "revision": 1,
+      "semantic_sha256": "a1e84d31c362ba05b36f96fedeef086c27704cccf69b3bd571742585416ce51f",
+      "statement": "Assess current competence against role requirements.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 246
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Competence models and role readiness"
+      ]
+    },
+    {
+      "control_id": "USEQ-C5984409",
+      "revision": 1,
+      "semantic_sha256": "c59844096f8c05421e1cddc9b6b6cd242c72452b6798528ea2e4b77810c8842b",
+      "statement": "Create development plans for material gaps.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 247
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Competence models and role readiness"
+      ]
+    },
+    {
+      "control_id": "USEQ-E80FC077",
+      "revision": 1,
+      "semantic_sha256": "e80fc07712872663ff2590765acad76124282b35c595643dceac18dc73163e48",
+      "statement": "Verify competence through demonstrated performance, not attendance or self-report alone.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 248
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Competence models and role readiness"
+      ]
+    },
+    {
+      "control_id": "USEQ-3097646C",
+      "revision": 1,
+      "semantic_sha256": "3097646c5a7be6a9f7cc48630b7285bf8640f8067630bedafdd1289ff9ec1595",
+      "statement": "Use realistic tasks, simulations, reviews, supervised practice, or certification where appropriate.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 249
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Competence models and role readiness"
+      ]
+    },
+    {
+      "control_id": "USEQ-2E8AFDED",
+      "revision": 1,
+      "semantic_sha256": "2e8afdedc66e24b21e231423dd075491d3829a5da9590f83ace8a28ebb0a4768",
+      "statement": "Reassess competence after long absence, role change, major system change, or serious error.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 250
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Competence models and role readiness"
+      ]
+    },
+    {
+      "control_id": "USEQ-C0F7014C",
+      "revision": 1,
+      "semantic_sha256": "c0f7014c87a9c8a1960227a103ba73b5e541516b74064d6dbb7d1d3339ee4854",
+      "statement": "Restrict high-impact actions to people with current competence and authority.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 251
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Competence models and role readiness"
+      ]
+    },
+    {
+      "control_id": "USEQ-FEA30171",
+      "revision": 1,
+      "semantic_sha256": "fea30171375ed6feba7ead8b2efc1f4a49e8a7801cbf4889aac404fdb0a5e04e",
+      "statement": "Avoid creating artificial credential barriers unrelated to actual role capability.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 252
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Competence models and role readiness"
+      ]
+    },
+    {
+      "control_id": "USEQ-952AFCF1",
+      "revision": 1,
+      "semantic_sha256": "952afcf1e520b6b2488de70d4f0573b9e1940f9a57090e50c10067ab9871c9d6",
+      "statement": "Recognize accessibility accommodations and different learning pathways without reducing outcome requirements.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 253
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Competence models and role readiness"
+      ]
+    },
+    {
+      "control_id": "USEQ-4BC23A67",
+      "revision": 1,
+      "semantic_sha256": "4bc23a67c0b9e66660617fa996781b232ac752cb73d6a6a1a5b5e5f6f1fe72af",
+      "statement": "Track competence expiry where skills degrade or external credentials lapse.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 254
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Competence models and role readiness"
+      ]
+    },
+    {
+      "control_id": "USEQ-27B4D8D1",
+      "revision": 1,
+      "semantic_sha256": "27b4d8d1e20504df994625df5a98fc77dd1be6779860b811d3fe7612d9e267df",
+      "statement": "Include suppliers and contractors in competence requirements.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 255
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Competence models and role readiness"
+      ]
+    },
+    {
+      "control_id": "USEQ-8B67E945",
+      "revision": 1,
+      "semantic_sha256": "8b67e945e07f9bf9a38aeca4318b06d2d5ece1f593010f553947f3505b472af8",
+      "statement": "Provide role-specific onboarding that covers purpose, users, architecture, data, security, privacy, quality, operations, and support.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 259
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Onboarding, role changes, and offboarding"
+      ]
+    },
+    {
+      "control_id": "USEQ-6DD88B91",
+      "revision": 1,
+      "semantic_sha256": "6dd88b91edb27a760e7a4b9143f3a8268cb7643adc029fad4ba6d6c6d63fca6b",
+      "statement": "Give new personnel a clear map of systems, owners, authoritative knowledge, decision rights, and escalation paths.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 260
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Onboarding, role changes, and offboarding"
+      ]
+    },
+    {
+      "control_id": "USEQ-FEAB4A25",
+      "revision": 1,
+      "semantic_sha256": "feab4a250d79acbac76e80b66cd0b02c065aa2291481d7b0049612c2096b4b70",
+      "statement": "Provide a safe environment and bounded tasks before granting high-impact production authority.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 261
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Onboarding, role changes, and offboarding"
+      ]
+    },
+    {
+      "control_id": "USEQ-C0FE3EC3",
+      "revision": 1,
+      "semantic_sha256": "c0fe3ec3dc4b4f152378803808134d4fdab581d7b428373af13d88c7cbae6df8",
+      "statement": "Assess onboarding effectiveness by time to safe independent contribution and error patterns.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 262
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Onboarding, role changes, and offboarding"
+      ]
+    },
+    {
+      "control_id": "USEQ-C8406B27",
+      "revision": 1,
+      "semantic_sha256": "c8406b27047b7d43f1d7d8970d7d039541aebb0780d643a27241c41243311b31",
+      "statement": "Update access, training, responsibilities, and knowledge when roles change.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 263
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Onboarding, role changes, and offboarding"
+      ]
+    },
+    {
+      "control_id": "USEQ-DE657E35",
+      "revision": 1,
+      "semantic_sha256": "de657e35b1e5b572fca900e298072871a377c71e91785fc024c1d27cfadea334",
+      "statement": "Conduct structured knowledge transfer before planned departures.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 264
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Onboarding, role changes, and offboarding"
+      ]
+    },
+    {
+      "control_id": "USEQ-7508DA74",
+      "revision": 1,
+      "semantic_sha256": "7508da74491158b873c11dc25dc537789528841656beaac0e3c892dc97b7f6be",
+      "statement": "Capture unresolved work, decisions, risks, contacts, credentials custody, and supplier context.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 265
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Onboarding, role changes, and offboarding"
+      ]
+    },
+    {
+      "control_id": "USEQ-4EDCE1DB",
+      "revision": 1,
+      "semantic_sha256": "4edce1dbe78bc6bfd0284da1aa167ab25d0157f39a0344b8d83b5bdefb736d5c",
+      "statement": "Recover organizational assets and revoke access during offboarding.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 266
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Onboarding, role changes, and offboarding"
+      ]
+    },
+    {
+      "control_id": "USEQ-4277B789",
+      "revision": 1,
+      "semantic_sha256": "4277b78923053947f342c5570f251b38fd4540e109c5e9f1fd12b2fc2ae86db4",
+      "statement": "Preserve necessary knowledge without retaining personal data or private material unnecessarily.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 267
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Onboarding, role changes, and offboarding"
+      ]
+    },
+    {
+      "control_id": "USEQ-8BCF9F5F",
+      "revision": 1,
+      "semantic_sha256": "8bcf9f5f5e8af55953435c63355251ab4bc2fbce71ee32de5c0a5bcc33552a01",
+      "statement": "Review whether a departure creates unacceptable single-person dependency or support gap.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 268
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Onboarding, role changes, and offboarding"
+      ]
+    },
+    {
+      "control_id": "USEQ-4BC7BCDC",
+      "revision": 1,
+      "semantic_sha256": "4bc7bcdc916728dcefa3279e22c053257deb2e8c95ffa3a8ce2ef4f93468102b",
+      "statement": "Establish communities of practice for domains where consistency and learning materially improve outcomes.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 272
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Mentoring, communities, and shared practice"
+      ]
+    },
+    {
+      "control_id": "USEQ-6077092C",
+      "revision": 1,
+      "semantic_sha256": "6077092cf64b4e175e193c1438875d3b29f78fb1a55df93a0846488a58085211",
+      "statement": "Give communities clear purpose, sponsorship, decision boundaries, and time to operate.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 273
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Mentoring, communities, and shared practice"
+      ]
+    },
+    {
+      "control_id": "USEQ-8C107E0D",
+      "revision": 1,
+      "semantic_sha256": "8c107e0d5caaa369c78aa38d9edac1b288a1004bef7da671e802b74988275f29",
+      "statement": "Encourage mentoring, pairing, review, rotation, and shadowing for critical skills.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 274
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Mentoring, communities, and shared practice"
+      ]
+    },
+    {
+      "control_id": "USEQ-4D3A335F",
+      "revision": 1,
+      "semantic_sha256": "4d3a335fb62cbc2443ecd2ed81be63aa24a2f85b78803811c026d7724db17b5e",
+      "statement": "Avoid using informal communities as a substitute for accountable ownership and maintained standards.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 275
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Mentoring, communities, and shared practice"
+      ]
+    },
+    {
+      "control_id": "USEQ-07FB1FF5",
+      "revision": 1,
+      "semantic_sha256": "07fb1ff51d3f4e4e8df0b618c728f25bd6ed6dc149244092be3d65761dc8d8a1",
+      "statement": "Capture reusable outcomes from discussions without recording sensitive conversation unnecessarily.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 276
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Mentoring, communities, and shared practice"
+      ]
+    },
+    {
+      "control_id": "USEQ-9328A714",
+      "revision": 1,
+      "semantic_sha256": "9328a714c1ee15b82452bcb86b54867485e930333eccefb14b1d61d5b27404b2",
+      "statement": "Share incident and defect learning across teams that face similar risks.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 277
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Mentoring, communities, and shared practice"
+      ]
+    },
+    {
+      "control_id": "USEQ-CE78EF77",
+      "revision": 1,
+      "semantic_sha256": "ce78ef779759c7944dd83010ecbc4ce2b721ca14d7f55a1172108378ac122b06",
+      "statement": "Encourage challenge, questions, and dissent without status-based suppression.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 278
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Mentoring, communities, and shared practice"
+      ]
+    },
+    {
+      "control_id": "USEQ-47E26039",
+      "revision": 1,
+      "semantic_sha256": "47e26039852aab441a16ce9d371d5abc4c5a8afb2eb452c06db3d4a347a1ed18",
+      "statement": "Recognize teaching, documentation, review, and community maintenance as valuable work.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 279
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Mentoring, communities, and shared practice"
+      ]
+    },
+    {
+      "control_id": "USEQ-F062AD31",
+      "revision": 1,
+      "semantic_sha256": "f062ad31b5db59362f25272d0ed9b5907868b782adde8583086024fcc2677565",
+      "statement": "Evaluate whether communities improve consistency, reuse, onboarding, and problem resolution.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 280
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Mentoring, communities, and shared practice"
+      ]
+    },
+    {
+      "control_id": "USEQ-B30208C6",
+      "revision": 1,
+      "semantic_sha256": "b30208c643e844dafcac837f7a28524783c8373ba39fbdb7bdc2020ef425da11",
+      "statement": "Retire or redesign communities that no longer produce useful outcomes.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 281
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Mentoring, communities, and shared practice"
+      ]
+    },
+    {
+      "control_id": "USEQ-25BCCC4A",
+      "revision": 1,
+      "semantic_sha256": "25bccc4a6629ff2a87db4eb73d241db83ba266472ec15b23e16dc3e2766f854b",
+      "statement": "Create feedback loops from production, support, testing, audits, user research, and business outcomes into engineering knowledge.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 285
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Learning from work, incidents, and evidence"
+      ]
+    },
+    {
+      "control_id": "USEQ-0EAA2DD8",
+      "revision": 1,
+      "semantic_sha256": "0eaa2dd8d2310657615ec4f194d00a30b8fc0a2bcc156b36dec7df874c184d9f",
+      "statement": "Analyze near misses, recovered errors, rejected changes, and successful prevention as well as incidents.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 286
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Learning from work, incidents, and evidence"
+      ]
+    },
+    {
+      "control_id": "USEQ-2B75385B",
+      "revision": 1,
+      "semantic_sha256": "2b75385bf519e5fd960d03e9cca450ba9529fdc475475366b86bfcfb9b4e5fa6",
+      "statement": "Distinguish local mistake from systemic incentives, tooling, design, workload, or knowledge failure.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 287
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Learning from work, incidents, and evidence"
+      ]
+    },
+    {
+      "control_id": "USEQ-9B52148F",
+      "revision": 1,
+      "semantic_sha256": "9b52148f5009350f77bb381549c3e59eac53cd01a54a0315e094aa17be71cc48",
+      "statement": "Convert lessons into changed requirements, code, tests, controls, procedures, training, and ownership.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 288
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Learning from work, incidents, and evidence"
+      ]
+    },
+    {
+      "control_id": "USEQ-E9DAF617",
+      "revision": 1,
+      "semantic_sha256": "e9daf6174df380488d4efe658dab9ec9dd3854953777c8cf0764ae0dc554d594",
+      "statement": "Verify that corrective actions changed outcomes rather than merely creating documents.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 289
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Learning from work, incidents, and evidence"
+      ]
+    },
+    {
+      "control_id": "USEQ-F86DE0A9",
+      "revision": 1,
+      "semantic_sha256": "f86de0a96e4148635563f384b552625197bec68d84bcd513580f0a71bfcad5a7",
+      "statement": "Share lessons proportionately without exposing personal, customer, privileged, or security-sensitive information.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 290
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Learning from work, incidents, and evidence"
+      ]
+    },
+    {
+      "control_id": "USEQ-F50CD9BA",
+      "revision": 1,
+      "semantic_sha256": "f50cd9ba1ba41df2e2803db0ef820e16df179fdd4777591226ef1718e97af30e",
+      "statement": "Track recurring lessons that have not produced effective change.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 291
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Learning from work, incidents, and evidence"
+      ]
+    },
+    {
+      "control_id": "USEQ-D4161A24",
+      "revision": 1,
+      "semantic_sha256": "d4161a24864df76d3406dfffe7ab6b1a8f5db9ad0f2ea52db2059657f411aaec",
+      "statement": "Preserve incident chronology, decisions, evidence, and uncertainty for future learning.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 292
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Learning from work, incidents, and evidence"
+      ]
+    },
+    {
+      "control_id": "USEQ-0BCCB40A",
+      "revision": 1,
+      "semantic_sha256": "0bccb40ab4117a1db6f9585c4bd25390aa3e583526f053322372551b8e2e0702",
+      "statement": "Revisit old decisions when new evidence invalidates assumptions.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 293
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Learning from work, incidents, and evidence"
+      ]
+    },
+    {
+      "control_id": "USEQ-918085CF",
+      "revision": 1,
+      "semantic_sha256": "918085cfe7d6d853dd40e7613085738fee184bbd8de138338d30a7339c54d792",
+      "statement": "Measure whether known problems recur after declared remediation.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 294
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Learning from work, incidents, and evidence"
+      ]
+    },
+    {
+      "control_id": "USEQ-2C89D675",
+      "revision": 1,
+      "semantic_sha256": "2c89d675d010f49428916fdf3ec7cf2081edcc96be4bfd52bcac5e13cf4a03bd",
+      "statement": "Identify roles and knowledge domains with insufficient qualified backup.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 298
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Succession, resilience, and bus-factor reduction"
+      ]
+    },
+    {
+      "control_id": "USEQ-0057EA20",
+      "revision": 1,
+      "semantic_sha256": "0057ea204e312c929c04f036116504b51147023865dcbd04699438dfd206362e",
+      "statement": "Maintain at least one practical continuity path for every critical capability.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 299
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Succession, resilience, and bus-factor reduction"
+      ]
+    },
+    {
+      "control_id": "USEQ-89EC9701",
+      "revision": 1,
+      "semantic_sha256": "89ec97014ee502d2f365eaf148ca743662fe71080b14091b4acf1ee7acee3281",
+      "statement": "Cross-train personnel through real supervised work, not documentation alone.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 300
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Succession, resilience, and bus-factor reduction"
+      ]
+    },
+    {
+      "control_id": "USEQ-D8FB8E99",
+      "revision": 1,
+      "semantic_sha256": "d8fb8e9919918c494dfbd7d85c48363dfd0f04226a83dabea194ea793340fe84",
+      "statement": "Rotate operational and review responsibility enough to prevent hidden dependence.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 301
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Succession, resilience, and bus-factor reduction"
+      ]
+    },
+    {
+      "control_id": "USEQ-A988FCED",
+      "revision": 1,
+      "semantic_sha256": "52e820a8579e833c480e6acf4b674f408f583d485d92835f72685497851d0a44",
+      "statement": "Ensure emergency access and recovery do not depend on one person’s device, memory, or availability.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 302
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Succession, resilience, and bus-factor reduction"
+      ]
+    },
+    {
+      "control_id": "USEQ-5BA62E06",
+      "revision": 1,
+      "semantic_sha256": "5ba62e0699e93e7522ee3211a80e2657a9430d5b24c13aba8bae32cd92059f72",
+      "statement": "Maintain supplier and external-expert alternatives where internal capability is intentionally limited.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 303
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Succession, resilience, and bus-factor reduction"
+      ]
+    },
+    {
+      "control_id": "USEQ-8ED5CE14",
+      "revision": 1,
+      "semantic_sha256": "8ed5ce1465d27dc00a8ac1a0fc3e57a805f580987f5f961c8b9f142228501930",
+      "statement": "Preserve build, deployment, recovery, and signing knowledge independent of one tool administrator.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 304
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Succession, resilience, and bus-factor reduction"
+      ]
+    },
+    {
+      "control_id": "USEQ-623582AC",
+      "revision": 1,
+      "semantic_sha256": "623582ac580e1864bb70b3d4458c56b7612fa6b95dfd63b15738790319e5636c",
+      "statement": "Test continuity during leave, simulated unavailability, and organizational change.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 305
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Succession, resilience, and bus-factor reduction"
+      ]
+    },
+    {
+      "control_id": "USEQ-4E17EC00",
+      "revision": 1,
+      "semantic_sha256": "4e17ec00461c963fbffeaaadff196ece163139b4b36d5df0b8bfda0214878be0",
+      "statement": "Avoid concentration of authority that prevents independent review or creates coercion risk.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 306
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Succession, resilience, and bus-factor reduction"
+      ]
+    },
+    {
+      "control_id": "USEQ-56D4A68C",
+      "revision": 1,
+      "semantic_sha256": "56d4a68c451f75831c0cdf63fe73bb043546bd71152c72a8bebcd014cf3f17e4",
+      "statement": "Treat an irreplaceable single knowledge holder for a critical production capability as a material risk.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 307
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Succession, resilience, and bus-factor reduction"
+      ]
+    },
+    {
+      "control_id": "USEQ-40F8A533",
+      "revision": 1,
+      "semantic_sha256": "40f8a533af8494125c07ce759600dd2a631233c57d6dd1b19b4ba0d23fdcd65d",
+      "statement": "Apply access control and handling rules according to knowledge sensitivity.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 311
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Knowledge security and trustworthy use"
+      ]
+    },
+    {
+      "control_id": "USEQ-CF05C656",
+      "revision": 1,
+      "semantic_sha256": "cf05c656d3ee8009e5e953c5a37594aa99c92085490e2c0735c6035d3678b609",
+      "statement": "Prevent confidential or restricted knowledge from entering public tools, prompts, repositories, recordings, or support channels.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 312
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Knowledge security and trustworthy use"
+      ]
+    },
+    {
+      "control_id": "USEQ-26BF83D3",
+      "revision": 1,
+      "semantic_sha256": "26bf83d33eb1096ae5ee9c904aaddcb87765e1d31974d352785fbaf8c16e43f4",
+      "statement": "Protect credentials, secrets, personal data, exploit details, and customer information in documentation.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 313
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Knowledge security and trustworthy use"
+      ]
+    },
+    {
+      "control_id": "USEQ-268DD942",
+      "revision": 1,
+      "semantic_sha256": "268dd9429f96a66c800678adc66d739b328346c9c5df6c3ae3dd086d694e31d0",
+      "statement": "Provide safe examples and synthetic data rather than real restricted values.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 314
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Knowledge security and trustworthy use"
+      ]
+    },
+    {
+      "control_id": "USEQ-6213693F",
+      "revision": 1,
+      "semantic_sha256": "6213693f94bb86545d10b9a0f3053cab51a6e7913edd9a2ad6127fb1ce437005",
+      "statement": "Monitor unauthorized bulk export or unusual access to high-value knowledge repositories.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 315
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Knowledge security and trustworthy use"
+      ]
+    },
+    {
+      "control_id": "USEQ-1C374A1F",
+      "revision": 1,
+      "semantic_sha256": "1c374a1f13febb4d8d395e023e802e2e1b6cae66d4ba2565b5585cb0fae59efc",
+      "statement": "Verify external and AI-generated knowledge before relying on it for material decisions.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 316
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Knowledge security and trustworthy use"
+      ]
+    },
+    {
+      "control_id": "USEQ-4544D84B",
+      "revision": 1,
+      "semantic_sha256": "4544d84b3fe81be9a627e0559781069d7033e27f0cab2a5ea8c6f1048a96b5d9",
+      "statement": "Preserve citations and provenance for imported guidance.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 317
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Knowledge security and trustworthy use"
+      ]
+    },
+    {
+      "control_id": "USEQ-D5DAA624",
+      "revision": 1,
+      "semantic_sha256": "d5daa62476d84f6ff6d7633417763bbd0e64aae383344c834f61999680f77645",
+      "statement": "Detect stale, fabricated, manipulated, or conflicting content.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 318
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Knowledge security and trustworthy use"
+      ]
+    },
+    {
+      "control_id": "USEQ-C12331DF",
+      "revision": 1,
+      "semantic_sha256": "c12331dfd68e5cfd1c048810ae0c457facb6062140604699e9a5e3f11fe863d1",
+      "statement": "Provide a correction and withdrawal process for dangerous guidance.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 319
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Knowledge security and trustworthy use"
+      ]
+    },
+    {
+      "control_id": "USEQ-A275C64A",
+      "revision": 1,
+      "semantic_sha256": "a275c64a3b23d75fe7d070437870bd0d1924276aa8cef5770700f42db1021e6d",
+      "statement": "Back up and test recovery of critical knowledge repositories.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 320
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Knowledge security and trustworthy use"
+      ]
+    },
+    {
+      "control_id": "USEQ-1BA3A22D",
+      "revision": 1,
+      "semantic_sha256": "1ba3a22d3384e151e617746044c2a45e1dd6e355ad17dff2637964aa061ede80",
+      "statement": "Maintain alternate access when the normal knowledge platform is unavailable.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 321
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Knowledge security and trustworthy use"
+      ]
+    },
+    {
+      "control_id": "USEQ-0DFA37A5",
+      "revision": 1,
+      "semantic_sha256": "0dfa37a54b6529c81b8e818f3305b44d9cc8a67e68b18d0307a3f051d1629864",
+      "statement": "Define indicators for findability, freshness, coverage, use, comprehension, competence, concentration risk, and recovery.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 325
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Knowledge-management assurance"
+      ]
+    },
+    {
+      "control_id": "USEQ-B2E6E3E9",
+      "revision": 1,
+      "semantic_sha256": "b2e6e3e90f430b7320020020d142ef86ef34e81d868fdbc3f3ea27c4cc77a45c",
+      "statement": "Sample whether intended users can locate and correctly execute critical guidance.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 326
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Knowledge-management assurance"
+      ]
+    },
+    {
+      "control_id": "USEQ-A28F8DFF",
+      "revision": 1,
+      "semantic_sha256": "a28f8dff3f7266433d0b29005434cb02ce0599a5075976e50daea495f702c670",
+      "statement": "Audit authoritative-source ownership, review status, access, and retirement.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 327
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Knowledge-management assurance"
+      ]
+    },
+    {
+      "control_id": "USEQ-D7B09D2D",
+      "revision": 1,
+      "semantic_sha256": "d7b09d2d1070a3cae3aae462cc5088a35ce24d9de39a74a49b8bb0858062ab53",
+      "statement": "Exercise knowledge continuity during incidents, staff absence, supplier loss, and platform outage.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 328
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Knowledge-management assurance"
+      ]
+    },
+    {
+      "control_id": "USEQ-001E1D5A",
+      "revision": 1,
+      "semantic_sha256": "001e1d5a5083bef7b1201a6200b7400f7269d045ac0ad9020acd4dd7ae9ba8c8",
+      "statement": "Include knowledge and competence gaps in release, transition, continuity, and risk decisions.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 329
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Knowledge-management assurance"
+      ]
+    },
+    {
+      "control_id": "USEQ-AD8EEB84",
+      "revision": 1,
+      "semantic_sha256": "ad8eeb8424b896d78f46ffce5c66c293793fd3a17040ec93468b3a3ba1b98532",
+      "statement": "Treat unavailable critical procedures, unknown ownership, untested competence, or single-person recovery dependence as no-go conditions when impact is material.",
+      "source": {
+        "path": "docs/engineering/13-documentation-and-knowledge.md",
+        "line": 330
+      },
+      "heading_trail": [
+        "Documentation and knowledge",
+        "Final Gap Closure — Knowledge Management, Competence, Learning, and Continuity",
+        "Knowledge-management assurance"
+      ]
+    }
+  ]
+}

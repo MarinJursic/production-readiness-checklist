@@ -1,0 +1,2963 @@
+{
+  "schema_version": "prc.control-classification-final/v0.1",
+  "packet_id": "docs-checklists-09-conditional-modules-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "source_path": "docs/checklists/09-conditional-modules.md",
+  "control_count": 183,
+  "controls": [
+    {
+      "control_id": "PRC-39-001",
+      "revision": 1,
+      "semantic_sha256": "7dd475911a31b02a69dded7131e63453d63844300a51126344475870387757ba",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Minimize possession and processing of raw payment credentials.” is not deterministic because its key meaning depends on project, user, harm, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-002",
+      "revision": 1,
+      "semantic_sha256": "4eacc039ce696bad617f5cc6c03306774c38d489ba8968bf7ef3dd6fa34f8185",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule “Define the exact payment-compliance scope.” is not deterministic because its full meaning or applicability requires current qualified legal, linguistic, safety, privacy, or domain authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-003",
+      "revision": 1,
+      "semantic_sha256": "15973198480d5be09d80be1515d1c59b84dc7da068184a76a80a9e4f5e50a595",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Payment credentials never enter logs, analytics, support tools, or ordinary databases.” is not deterministic because it makes a universal claim across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-004",
+      "revision": 1,
+      "semantic_sha256": "9397d2def3317bf70197d8c744d2dc5d51bd04081611b75cde56c9d46ef48bff",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Amount, currency, tax, discount, exchange-rate, and rounding behavior is correct.” is not deterministic because its key meaning depends on project, user, harm, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-005",
+      "revision": 1,
+      "semantic_sha256": "87617c217a99497947cd1b91ac3af39c1540290f036bc9db0189f9801ff0b052",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Duplicate charge protection is implemented.” is not deterministic because it omits the exact scope, policy, states, thresholds, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-006",
+      "revision": 1,
+      "semantic_sha256": "2207dfdb0205f08be023ded55305fef380161160a3c2494854fa3944145585ea",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "A replay suite over declared payment operations cannot prove the inventory includes every request, callback, retry channel, and effect.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A provider callback handled by a legacy endpoint is absent from the inventory and credits an account twice on replay. Every declared operation remains idempotent, so the proposed checker passes while the control is violated."
+    },
+    {
+      "control_id": "PRC-39-007",
+      "revision": 1,
+      "semantic_sha256": "08c10c1a1595801277146d931e0b8b12ebd4cb72267d736417559f4dcbca45aa",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Declared-webhook fixtures do not establish a complete webhook ingress inventory or cover every deployed verification path.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A second provider posts to an undocumented callback that accepts unsigned old events. All inventoried webhooks reject the signature and replay fixtures, so the proposal passes despite an exploitable webhook."
+    },
+    {
+      "control_id": "PRC-39-008",
+      "revision": 1,
+      "semantic_sha256": "c5e59a0732e2e870e44477bc66f8b0ca9769f7a2501f21fb792398d3ffedfb59",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Pending, authorized, captured, settled, failed, refunded, disputed, and reversed states are modeled correctly.” is not deterministic because its key meaning depends on project, user, harm, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-009",
+      "revision": 1,
+      "semantic_sha256": "625b4a9b004679e280bd73b9fa2e104f6c3814f1fbb403fba42bbe0d008f585b",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The success-output map is self-declared and can omit user-visible channels or choose an incomplete authoritative-confirmation mapping.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A mobile push notification says payment complete before settlement, but only the web page is in the success-output map. All mapped transitions pass while the product still claims success early."
+    },
+    {
+      "control_id": "PRC-39-010",
+      "revision": 1,
+      "semantic_sha256": "71c83139574091b28774cecbdb33ef790ee7ace5c4a1d7d06dea7e061e9a3aa2",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "Fixed record fixtures and a comparison schema do not define the complete production record population or every reconciliation field that matters.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "The reconciler excludes refunded transactions before comparison. Its supplied application and bank fixtures match every schema field, so the test passes while real refund records are never compared."
+    },
+    {
+      "control_id": "PRC-39-011",
+      "revision": 1,
+      "semantic_sha256": "b73b95327cdf83085337c3a0a935fc0469e710e318d68d8bc622cb706173e189",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "The rule “Refund, partial refund, chargeback, and dispute workflows are tested.” is not deterministic because it requires empirical evidence but does not define complete fixtures, environment, coverage, outcome, or freshness.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-012",
+      "revision": 1,
+      "semantic_sha256": "baa97d68b6bba19ce2bdcf0955ff6bed2aa3e200183e36366d55d5e3b9589856",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Failed payment and retry behavior avoids accidental multiple charges.” is not deterministic because it makes a universal claim across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-013",
+      "revision": 1,
+      "semantic_sha256": "f944dea9a1a7a51294624e197aa69a6a907a6f59917615488d63e698eb565f36",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule “Strong-customer-authentication or equivalent regional requirements are applied where relevant.” is not deterministic because its full meaning or applicability requires current qualified legal, linguistic, safety, privacy, or domain authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-014",
+      "revision": 1,
+      "semantic_sha256": "98d00b450c6105fd9f9511f5d60f89df51cc2d66ea68f420fa7ce55604cc22bb",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The full rule is mixed: monitoring is checkable, but unacceptable discrimination and accessibility harm need specialist outcome judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "The monitoring system collects every declared fraud-control signal.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "legal_or_specialist_authority",
+        "contextual_judgment",
+        "undefined_threshold"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-015",
+      "revision": 1,
+      "semantic_sha256": "4aa456e195347df3b8674bc33cf26060045101d73d12886879ad7422a2872a79",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Payout destination changes receive enhanced verification.” is not deterministic because it omits the exact scope, policy, states, thresholds, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-016",
+      "revision": 1,
+      "semantic_sha256": "bd08d772c6787bc179fbab1994299af936189c1e86f4d330e8613f575b7489ad",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "A declared output inventory can omit an export, report variant, storage copy, or delivery path, making the universal access-and-audit claim circular.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A support-only CSV endpoint is absent from the registry and allows broad download without audit. Every listed report enforces the matrix and logs access, so the proposal passes."
+    },
+    {
+      "control_id": "PRC-39-017",
+      "revision": 1,
+      "semantic_sha256": "d6a837f816a1442047813e32c6d7e4399f98947e9c8b4839435dce6b31199e87",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "The rule “Provider outage and delayed-event behavior are tested.” is not deterministic because it requires empirical evidence but does not define complete fixtures, environment, coverage, outcome, or freshness.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-018",
+      "revision": 1,
+      "semantic_sha256": "7acf79ee5dcc70c2f16c483271c78c641cef2e11e8d867b2b7e0aaa352438bf0",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule “Invoice and receipt content is legally correct.” is not deterministic because its full meaning or applicability requires current qualified legal, linguistic, safety, privacy, or domain authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-019",
+      "revision": 1,
+      "semantic_sha256": "0979f4143f979090b57786a9234d125c3817a426bc69d2f85380e9b6abbe6ddc",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "The rule “Subscription renewal, trial conversion, cancellation, and proration are tested.” is not deterministic because it requires empirical evidence but does not define complete fixtures, environment, coverage, outcome, or freshness.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-020",
+      "revision": 1,
+      "semantic_sha256": "1b689432606abe2e788247b862645653621a102f6fd5193e56853421bd1a02f8",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The proposal cannot enumerate every support-mediated money-movement path, and whether an authorization is meaningfully controlled is not reduced to objective criteria.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A support worker changes a payout through a provider console omitted from the mutation inventory using a blanket shared approval. Declared paths log correctly, yet uncontrolled money movement remains."
+    },
+    {
+      "control_id": "PRC-39-021",
+      "revision": 1,
+      "semantic_sha256": "e1e91479df35cd8fffd81941b3ee6874b96c57f15fe97d13ca896b94805f92ec",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Tenant context is mandatory at every data and processing boundary.” is not deterministic because it makes a universal claim across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-022",
+      "revision": 1,
+      "semantic_sha256": "82a63bb41b7b4c435a2f265fd0823557384bd18dbc52dc2b4e7e1138b42c31f5",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "The rule “Tenant isolation is tested in database, cache, search, queue, file, log, analytics, backup, and administrative systems.” is not deterministic because it requires empirical evidence but does not define complete fixtures, environment, coverage, outcome, or freshness.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-023",
+      "revision": 1,
+      "semantic_sha256": "83bc6d6c531fabe739514aa126972f6f80d03b3d79d13ae1b7d54fa4f5a7e67c",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Cross-tenant fixtures cover only declared selectors and cannot prove absence of alternate identifiers, indirect references, cached keys, or new routes.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "An unlisted bulk-download parameter accepts another tenant's object identifier. Every selector in the sealed test list denies cross-tenant values, so the proposal passes while isolation is broken."
+    },
+    {
+      "control_id": "PRC-39-024",
+      "revision": 1,
+      "semantic_sha256": "8167ee1d7751c78376271a66533631aef3dae3efc7fea6af39ac7b47f0b647f2",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Tenant configuration cannot affect other tenants.” is not deterministic because it makes a universal claim across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-025",
+      "revision": 1,
+      "semantic_sha256": "951a379e4eba609a50e41e7c67eca4b3e8ce5dab9fc95213e6ee8b3b4fe4b314",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Finite load fixtures cannot prove that one tenant cannot exhaust every shared resource under all relevant concurrency, duration, dependency, and failure conditions.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "The test enforces API and storage quotas, but a tenant creates high-cardinality metrics that exhaust a shared monitoring backend during a long burst. All declared resource fixtures pass."
+    },
+    {
+      "control_id": "PRC-39-026",
+      "revision": 1,
+      "semantic_sha256": "a27931d2a0419bd0a30bc568d77a01197cca735ed00d35b4d2f23f44a7870b8e",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Cross-tenant timing and existence side channels are minimized.” is not deterministic because its key meaning depends on project, user, harm, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-027",
+      "revision": 1,
+      "semantic_sha256": "c165ae1041a27e0b8b88964f30c34dd0ac728aad89e695429acc19b92fc7de78",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Tenant-specific encryption and key requirements are satisfied.” is not deterministic because it omits the exact scope, policy, states, thresholds, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-028",
+      "revision": 1,
+      "semantic_sha256": "bc03fae7a37b739ff022ffae9a9c7983cb64e9a751c8f4bed441d0b6bf4df438",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "A role-operation matrix can omit administrative paths, inherited privileges, provider consoles, and indirect jobs, so it is not absence evidence for out-of-scope power.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A tenant administrator schedules an undocumented export job that reads a sibling organization. Every declared operation is denied across organizations, and the proposal still passes."
+    },
+    {
+      "control_id": "PRC-39-029",
+      "revision": 1,
+      "semantic_sha256": "826bb08974ef6a7c552005a3f50a02c2c63730ff53ba7a72e9e419c98a25a7ff",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Declared support paths are not a complete access inventory, and nonempty purpose or visibility fields do not prove legitimate purpose or meaningful tenant visibility.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "An operator uses an unlisted database console with purpose `support` and no tenant notice. Listed support tools require all fields, so their fixtures pass while the full rule is false."
+    },
+    {
+      "control_id": "PRC-39-030",
+      "revision": 1,
+      "semantic_sha256": "94eff3ba820ce177646b58c2f76435913a4b94d400b51e985a0af3bdac2e8833",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Tenant export and deletion include all relevant systems.” is not deterministic because its key meaning depends on project, user, harm, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-031",
+      "revision": 1,
+      "semantic_sha256": "1b760b95db34d95ddb232498a0cd67aa35f5467dc5dc58a272dd8f22b3bcb24f",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Passing an approved ownership-proof protocol shows policy conformance, not that the claimant is the real domain owner, and claim paths may be omitted.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A flawed DNS proof accepts a stale token controlled by the prior tenant, or a legacy claim endpoint skips proof. Contract fixtures pass while the wrong tenant claims the domain."
+    },
+    {
+      "control_id": "PRC-39-032",
+      "revision": 1,
+      "semantic_sha256": "4376f8ca1bd0ab3fcdb00eac2311aba84443b7d7fce0c710aaf7b5b3a3e15344",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Tenant migration and merge operations preserve isolation and auditability.” is not deterministic because it makes a universal claim across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-033",
+      "revision": 1,
+      "semantic_sha256": "c2c2eb94f05c06ee3d2af374bc5fa2e761e4ee2e907fc7b73ca7feecb9c4dc56",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Owner, revision, and effective-status fields do not establish that the records actually define acceptable use and content policy rather than placeholders.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Two approved records contain only `TBD` and have current metadata. The structured-record check passes, but no usable acceptable-use or content policy is defined."
+    },
+    {
+      "control_id": "PRC-39-034",
+      "revision": 1,
+      "semantic_sha256": "963902123568198a985095c1379149ab27cbc288b8e9fd3c9ca3b982847bdc0e",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "A declared prohibited-content taxonomy can omit real harmful conduct, and one accepted fixture does not prove users have a usable reporting path.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Harassment through live audio is excluded from the taxonomy; every listed category has a form that accepts a test record. The checker passes although users cannot report that harmful conduct."
+    },
+    {
+      "control_id": "PRC-39-035",
+      "revision": 1,
+      "semantic_sha256": "6942d51afd158f31466a74946372bcd9ac3eb34eb4ea2e9407e24e3a6e448b92",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Blocking, muting, privacy, and safety controls work.” is not deterministic because it omits the exact scope, policy, states, thresholds, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-036",
+      "revision": 1,
+      "semantic_sha256": "3191527056baabef59f1178605449e5760c00fb378502e9bfea7f1bef0137b0a",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The moderation-queue registry is not independently proven complete, so real queues can evade owner and response-objective checks.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A regional child-safety queue exists in the moderation provider but is absent from the registry and has no owner. Every declared queue has both fields, so the proposal passes."
+    },
+    {
+      "control_id": "PRC-39-037",
+      "revision": 1,
+      "semantic_sha256": "4f790f44a8c4cb6251aaa096fce1aca99a53e6f8092f244c9c1d557c3a79fc23",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "A moderator-action inventory can omit provider-side, bulk, automated, or newly deployed actions, defeating the universal authorization and audit claim.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A hidden bulk-delete command is callable by a junior moderator and emits no audit event. Every declared action enforces its matrix and logs correctly, so the proposal passes."
+    },
+    {
+      "control_id": "PRC-39-038",
+      "revision": 1,
+      "semantic_sha256": "fb409de4b66c6785510f70597072e064b9a52c220a4bbc921a4839a6b15afdb1",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Appeals and error-correction procedures exist where appropriate.” is not deterministic because its key meaning depends on project, user, harm, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-039",
+      "revision": 1,
+      "semantic_sha256": "2e675b37a0881198d0b35263010efe7b501f0aa14dc8f3630aab900c033ca224",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Spam, bots, scraping, harassment, impersonation, and coordinated abuse are addressed.” is not deterministic because it makes a universal claim across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-040",
+      "revision": 1,
+      "semantic_sha256": "39c541f1bd5cace7f35b22f50b69881c93f86a9dbcceb87cf73f58f10cae5067",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The full rule is mixed: scanner routing is checkable, but appropriate scanning and isolation depend on threats and product context.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every declared upload path routes content through the configured scanner before release.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-041",
+      "revision": 1,
+      "semantic_sha256": "6fc16246a2b50569451a0a5210ffd33c4de96160b8426a25b4a022f9005de2c2",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Record presence cannot establish legally adequate illegal-content, copyright, evidence-preservation, and lawful-request procedures across applicable jurisdictions.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Four current documents repeat generic text but omit a required counter-notice process and lawful evidence hold. Metadata passes while specialist legal obligations remain unmet."
+    },
+    {
+      "control_id": "PRC-39-042",
+      "revision": 1,
+      "semantic_sha256": "d6e83b3dfe948be92da3f9ced8ba9921e7f37a804d4392e657f2852dd2bbc9b1",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Public and private audience controls are clear.” is not deterministic because its key meaning depends on project, user, harm, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-043",
+      "revision": 1,
+      "semantic_sha256": "c2e712255306df02b48c793f5c4e59790b91b1649daee64c6eabb1e451378ae9",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Deleted or private content does not remain publicly cached or indexed.” is not deterministic because it makes a universal claim across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-044",
+      "revision": 1,
+      "semantic_sha256": "740484eb6e134755b7b319bdf05a2f85ea43f9ab7579c051c935e03a2f42cdae",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Search and recommendation do not expose restricted content.” is not deterministic because it makes a universal claim across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-045",
+      "revision": 1,
+      "semantic_sha256": "d4554a90e2b4e5ba037e76fcd5a8e03ed766d71a373fecff8295d18abf3b1cc5",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Seller, buyer, provider, or creator verification is applied where risk requires it.” is not deterministic because its key meaning depends on project, user, harm, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-046",
+      "revision": 1,
+      "semantic_sha256": "693b047d005b1c6ce6e4205b9a6ae9b6df8d964418dbc59385f522ba82ad2206",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Fraud, disputes, refunds, and trust-and-safety escalation are integrated.” is not deterministic because it omits the exact scope, policy, states, thresholds, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-047",
+      "revision": 1,
+      "semantic_sha256": "6b0b489b812f0228e3545b88a8589e6f0c773a51376c15d27268c85fd83cbc6a",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule “Age-sensitive content and interactions are controlled.” is not deterministic because its full meaning or applicability requires current qualified legal, linguistic, safety, privacy, or domain authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-048",
+      "revision": 1,
+      "semantic_sha256": "4f99ea697a80b28c9f73e3772721fed36751d2083eac7f0b5dba9c30fb2851f7",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Moderation personnel have suitable safeguards and access restrictions.” is not deterministic because its key meaning depends on project, user, harm, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-049",
+      "revision": 1,
+      "semantic_sha256": "f340bdf0bfbf84846ea635da62092043eacf2f4a80b2f5ada63614553e70b05d",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "A procedure-shaped record does not prove that its triggers, contacts, authority, and escalation path are suitable for real threats to life or safety.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "The document names a departed employee and omits imminent self-harm reports from its triggers. All required fields are nonempty, so the record passes while the safety escalation process is not viable."
+    },
+    {
+      "control_id": "PRC-39-050",
+      "revision": 1,
+      "semantic_sha256": "daa11f40dee356620514e08568a329472c79f081bd56abd5dd78dc0dc5b409f7",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Sender domains and identities are controlled.” is not deterministic because it omits the exact scope, policy, states, thresholds, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-051",
+      "revision": 1,
+      "semantic_sha256": "50c0dbe5cd38fccda2e1420fa04761c34b4de6be9e4d3b0582798ef8a7fb42d7",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The full rule is mixed: DNS records are queryable, but current authentication practice is a changing specialist standard.",
+      "deterministic_clauses": [
+        {
+          "statement": "Assessed sender domains publish parseable SPF and DMARC and expose configured DKIM selectors.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "external_registry"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-052",
+      "revision": 1,
+      "semantic_sha256": "f66ac29198b64230e5957ef1e57cd50774e6afbe146a7c78a40df32468ae2c79",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Routing declared signal fixtures to destinations does not prove complete provider-signal coverage or that production signals are continuously observed and acted on.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "undefined_protocol",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A new complaint stream is not inventoried, and the configured reputation destination silently stopped ingesting after the fixture. Every declared test signal arrives, so the proposal passes while monitoring is absent."
+    },
+    {
+      "control_id": "PRC-39-053",
+      "revision": 1,
+      "semantic_sha256": "b7bb1c02aaef8872d97ae240ce4136e4a7604fddf618c4f021730fd21450e7c5",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The subscription-send inventory cannot prove it contains every dispatch path, channel, recipient type, or consent race.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A legacy campaign worker caches consent before dispatch and sends after revocation, but it is absent from the send inventory. All declared sends read current consent and pass."
+    },
+    {
+      "control_id": "PRC-39-054",
+      "revision": 1,
+      "semantic_sha256": "562fd13b40b51a1e64251b2dbad87648307b5444eee706a897a80755f9b9489c",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The full rule is mixed: state change is checkable, but promptness needs a deadline and deception needs human interface review.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every declared unsubscribe control changes the tested subscription to unsubscribed.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment",
+        "undefined_threshold"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-055",
+      "revision": 1,
+      "semantic_sha256": "f8faa81d4183ab6beff09c71235954318c2aae8ad2505d35d3c712a843ab3ef2",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule “Transactional and marketing messages are classified correctly.” is not deterministic because its full meaning or applicability requires current qualified legal, linguistic, safety, privacy, or domain authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-056",
+      "revision": 1,
+      "semantic_sha256": "8b6cc616d77943523e0110206b937a476e9c282781b7e6e66fccbb2a72ac0b4d",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The full rule is mixed: authentication is testable, but safe tokenization needs a threat model and complete token policy.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every notification route declared authenticated rejects an unauthenticated request.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment",
+        "undefined_protocol"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-057",
+      "revision": 1,
+      "semantic_sha256": "cb9723e12c746c9177c75f09bb5a89eed43cfd2fbb1b3e76c8fe300cfd2844a9",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Sensitive information is not exposed in lock-screen, email-preview, or SMS content.” is not deterministic because it makes a universal claim across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-058",
+      "revision": 1,
+      "semantic_sha256": "bb82b289ff136b5aa2636e936b39a6bc76bbadd73ac9afd83049eb0a43441a3a",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Single-use fixtures for declared flows cannot prove every reset and verification token type, concurrent replay path, and legacy handler rejects reuse.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A mobile verification endpoint accepts the same token twice under concurrent requests but is omitted from the flow inventory. All declared sequential fixtures pass."
+    },
+    {
+      "control_id": "PRC-39-059",
+      "revision": 1,
+      "semantic_sha256": "1afbd08004300d6d05ccdbf8785e92869f599484bda81219744af5f55d2a88f5",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Notification retries do not create duplicates or spam.” is not deterministic because its key meaning depends on project, user, harm, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-060",
+      "revision": 1,
+      "semantic_sha256": "1ef2c12e5a3b25ed26b3cea7854bc3f7389ab5f7fad758916f0facda18d43870",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The full rule is mixed: escaping is testable, but translation, layout, and accessibility quality need contextual review.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every declared template escapes the approved malicious-markup fixtures without active markup.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment",
+        "undefined_protocol"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-061",
+      "revision": 1,
+      "semantic_sha256": "e790d22ab5b1098fe2ca519458666a602a15b841db8ef182e3a5d85b51655ba1",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Provider outage and delayed delivery are handled.” is not deterministic because it omits the exact scope, policy, states, thresholds, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-062",
+      "revision": 1,
+      "semantic_sha256": "02a31c3ff038f84cd0cb6cc3c23881f9820ba4a0ff2793d00b64bfc644f6ae1c",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Which notifications are nonessential is contextual, and the notification registry can omit a channel or event whose preference is not honored.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A promotional SMS is labelled essential and excluded, while every declared nonessential email obeys its toggle. The proposal passes although users cannot configure the nonessential SMS."
+    },
+    {
+      "control_id": "PRC-39-063",
+      "revision": 1,
+      "semantic_sha256": "fa21165cf735cc8ac774425c57c4066062ebf7e24cbf596ee6a3984204a83ee2",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Frequency limits prevent harassment and abuse.” is not deterministic because its key meaning depends on project, user, harm, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-064",
+      "revision": 1,
+      "semantic_sha256": "69ccd4a76319b242954ebfa1310337fde240b4965d2f7f7403c196a81628d467",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Phone-number or email reassignment risk is considered.” is not deterministic because its key meaning depends on project, user, harm, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-065",
+      "revision": 1,
+      "semantic_sha256": "dc1430b562b33932d34c53033a415686209f4af9f2a91f52694d245c8c71235b",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The delivery-event and approval maps cannot prove the absence of every implicit, alternate, or newly introduced authorization transition.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "An unlisted phone-verification flow marks an action approved when an SMS provider reports delivered. All declared approval transitions resist delivery events, so the proposal passes."
+    },
+    {
+      "control_id": "PRC-39-066",
+      "revision": 1,
+      "semantic_sha256": "74c45629a8c527bfc2413325e5c0bb376071bc2d45f1273f74b88c02ffba1d91",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Environment-list bindings do not enumerate manual uploads, provider address books, cached recipients, overrides, and all other dispatch sources.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Production sends through a manually uploaded test list that bypasses the bound-list loader. The configured production and test bindings pass while cross-environment recipients remain possible."
+    },
+    {
+      "control_id": "PRC-39-067",
+      "revision": 1,
+      "semantic_sha256": "97d9692f0bee949ad7755f423220602492ace988d148898b0a67c0debb0de37b",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The supported-locale registry controls its own scope and the proposal defines no independent trigger or completeness proof for locales actually offered.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "The product serves Croatian from runtime configuration but omits it from the supported-locale registry. Every registered locale has documentation, so the checker passes vacuously for the missing locale."
+    },
+    {
+      "control_id": "PRC-39-068",
+      "revision": 1,
+      "semantic_sha256": "9961ea59626f4e72169e1041c6fa702cbc8ff317f5482b7bde590e1feef6b466",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Key-set equality does not prove complete translation: required domains can be omitted and present values can be untranslated placeholders or wrong-language copies.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Every registered key exists, but Croatian values copy the English source and an email domain is absent from the required-domain registry. The mechanical join passes while translation remains incomplete."
+    },
+    {
+      "control_id": "PRC-39-069",
+      "revision": 1,
+      "semantic_sha256": "1362d29d8bec804669d994552b7f31f211aba3202bb5f8b54599a11c47967675",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The full rule is mixed: missing-key fallback is testable, but visible and safe failure depends on user impact.",
+      "deterministic_clauses": [
+        {
+          "statement": "A missing required key triggers the configured missing-translation path.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-070",
+      "revision": 1,
+      "semantic_sha256": "aea58cb19e843a02a01306ce03fc5dbb1e4a9a1c68c0e354dfade113c1faa166",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "The rule “Text expansion does not break layout.” is not deterministic because it requires empirical evidence but does not define complete fixtures, environment, coverage, outcome, or freshness.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-071",
+      "revision": 1,
+      "semantic_sha256": "206493da531815d475af16c6637b71c3f3604f27fce80e78df2af3c26652c4c1",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "The rule “Right-to-left layout and mixed-direction text are tested.” is not deterministic because it requires empirical evidence but does not define complete fixtures, environment, coverage, outcome, or freshness.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-072",
+      "revision": 1,
+      "semantic_sha256": "f07ad13f0df0172e7d517e35c0b06165d2921624fb85c161225381a8fff19dab",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The full rule is mixed: normalization is exact, but relevant confusables depend on scripts, identifiers, spoofing risk, and language.",
+      "deterministic_clauses": [
+        {
+          "statement": "Declared normalization boundaries transform approved Unicode fixtures to the configured form.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-073",
+      "revision": 1,
+      "semantic_sha256": "1c998bd70b8b122da45b9d7b31a205624c4aa009f8ba334f2be01922d943901c",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Names and addresses are not constrained to one cultural format without need.” is not deterministic because its key meaning depends on project, user, harm, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-074",
+      "revision": 1,
+      "semantic_sha256": "8abf4b5a1fd02d57b83b72a50b2341a92059b041af616fc08c1b9df731ae488b",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule “Date, time, number, decimal, currency, and unit formats are correct.” is not deterministic because its full meaning or applicability requires current qualified legal, linguistic, safety, privacy, or domain authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-075",
+      "revision": 1,
+      "semantic_sha256": "c683077b31f235a0937ed6df7d6f3c248f258d6c691c71284790a6d011c7d8e7",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "A finite transition-fixture set cannot prove correct time-zone and daylight-saving behavior across all supported zones, operations, database versions, and historical changes.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "The fixtures cover display around current transitions, but recurring scheduling chooses the wrong occurrence during a past ambiguous hour. Every approved fixture passes while DST behavior is still incorrect."
+    },
+    {
+      "control_id": "PRC-39-076",
+      "revision": 1,
+      "semantic_sha256": "29138b586e49f2a924c63f9e8751cb2679b8b24100256cba99c42c6f7eaeea88",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule “Pluralization and grammatical variation are correct.” is not deterministic because its full meaning or applicability requires current qualified legal, linguistic, safety, privacy, or domain authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-077",
+      "revision": 1,
+      "semantic_sha256": "d6e317631e890cc0ff101ec4c6995383bd87ed50cc355fec70e315732b588c7b",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Sorting and search behavior match locale requirements.” is not deterministic because it omits the exact scope, policy, states, thresholds, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-078",
+      "revision": 1,
+      "semantic_sha256": "9bdfa55f45fbc33cbf5e79a7f81a96fbb23e602fd892d7060333e26e6c74ed2e",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule “Legal and consent text is correct for each applicable locale.” is not deterministic because its full meaning or applicability requires current qualified legal, linguistic, safety, privacy, or domain authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-079",
+      "revision": 1,
+      "semantic_sha256": "2c6115e768bce4d9f106931b555ed8767b15d42dcdbff49991111c9dfd4b68f9",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Translated error, safety, and support content is understandable.” is not deterministic because its key meaning depends on project, user, harm, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-080",
+      "revision": 1,
+      "semantic_sha256": "dc538e068482378f3d0eff5022860b725742796e9af5e261bce03a28759c1829",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "A declared machine-field inventory cannot enumerate every identifier, signature input, token, serialization path, and locale-sensitive transformation.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "An unlisted CSV export localizes the decimal inside a signed machine identifier. All declared fields remain byte-identical across locales, so the proposal passes while machine data is altered."
+    },
+    {
+      "control_id": "PRC-39-081",
+      "revision": 1,
+      "semantic_sha256": "56dd3df30e45f1b8043e6639d636798b5789552a92961ed4c68f8338ffefb324",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Coverage records do not prove that staff can actually support the language or that the promised language and time-period inventory is complete.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A current schedule assigns Croatian coverage to a person who cannot communicate in Croatian, while a weekend promise is omitted from the promise registry. All rows pass despite missing real coverage."
+    },
+    {
+      "control_id": "PRC-39-082",
+      "revision": 1,
+      "semantic_sha256": "78fbd1f13e4e52fd51de7d033937cce4205356635e820b5c6d212c17e667109a",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "An approved route policy can omit pages and can itself encode an incorrect public/private indexing choice, so conformance is not proof of correctness.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A private invoice preview is wrongly marked public and omitted from the private-route set; it emits the approved index directive. All route fixtures pass while private content is indexable."
+    },
+    {
+      "control_id": "PRC-39-083",
+      "revision": 1,
+      "semantic_sha256": "756d0a7860e31f34c759c6261dfe50aea77c95806df962e28c39a069c9b9bf0a",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "A private-route inventory can omit alternate hosts, methods, files, caches, and dynamically generated paths, so deny fixtures are not universal absence evidence.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A legacy PDF URL exposes private invoices without authentication and is absent from the route registry. Every declared private route denies the crawler fixture, so the proposal passes."
+    },
+    {
+      "control_id": "PRC-39-084",
+      "revision": 1,
+      "semantic_sha256": "a46f0c32a48afb41e032e21db50c6304012ba97a30545391ff9e84f1975a9457",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Route fixtures can omit public URL variants, and an approved contract does not by itself establish the semantically correct canonical resource.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A parameterized product page points to a different product's canonical URL, but that parameter variant is absent from fixtures. Every declared fixture matches its contract, so the proposal passes."
+    },
+    {
+      "control_id": "PRC-39-085",
+      "revision": 1,
+      "semantic_sha256": "9df36cf7372aeba35f663d9adb2cd31f44d1cae3bcca3e507dcdbdab5ec44a5c",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The full rule is mixed: redirect authorization is testable, but intended search behavior includes contextual external crawler effects.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every declared redirect fixture preserves the authorization decision in its route contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-086",
+      "revision": 1,
+      "semantic_sha256": "cd5c521f142416676eb550272e1d63efb334863ac9394c6ec87fb57943e08503",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The route-outcome contract can omit methods and states or encode a semantically wrong status, so matching it does not prove statuses are correct.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A validation failure returns 200 because the contract says 200, and an unlisted DELETE path returns 500. All declared fixtures match their approved statuses while the original control is false."
+    },
+    {
+      "control_id": "PRC-39-087",
+      "revision": 1,
+      "semantic_sha256": "0d0976e95ee64574bb9b26cd9c42b3e8c1415cbfe6e7cd552f873a4f15117056",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Error and soft-error pages are handled properly.” is not deterministic because it omits the exact scope, policy, states, thresholds, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-088",
+      "revision": 1,
+      "semantic_sha256": "7276e2eaf949b36cc83716e2ab8a927b09e4a972bcbe72ac85b5d0d9ef1a67ac",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Set equality with approved URL registries is circular unless those registries independently and completely enumerate all indexable and private URLs.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A private report URL is absent from the private registry and appears in the sitemap; because it is also marked public, exact set equality passes while private data is exposed."
+    },
+    {
+      "control_id": "PRC-39-089",
+      "revision": 1,
+      "semantic_sha256": "f6203d959e00635156895e4b88a1fd59b79e8faf6b5e0b8378273dbed37696dc",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Metadata and social previews contain no sensitive information.” is not deterministic because it makes a universal claim across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-090",
+      "revision": 1,
+      "semantic_sha256": "05baef1d32341c3494589b7d5440b70a9af11b134a4d19b9de0c0b01e4daa16f",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Structured data matches visible content.” is not deterministic because its key meaning depends on project, user, harm, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-091",
+      "revision": 1,
+      "semantic_sha256": "ab92ca6749cb38dae38675465098f1344227f9bbbda22d801414423269c2ed2e",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Deleted or private content is removed from caches and indexing workflows.” is not deterministic because it makes a universal claim across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-092",
+      "revision": 1,
+      "semantic_sha256": "e453ce0446baf196dacc78f7bbeadc358c477cfd8570e79506be6c3a84235368",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Staging and preview environments are not unintentionally indexed.” is not deterministic because its key meaning depends on project, user, harm, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-093",
+      "revision": 1,
+      "semantic_sha256": "5b66a1b484c2fe7fb495349b938fbceb6b4056109c88d4536b13fb6362aab2bb",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Crawl load cannot overwhelm the application.” is not deterministic because it makes a universal claim across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-094",
+      "revision": 1,
+      "semantic_sha256": "5c15fbb0622e071e052632040ddbb087194536b4353a0240f6545ffa491c6578",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “URL generation avoids unbounded duplicate spaces.” is not deterministic because it makes a universal claim across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-095",
+      "revision": 1,
+      "semantic_sha256": "51c0ddac6881eaa50847501092cc4805829db4dea98fe05577498af9ec017282",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “User-generated content cannot manipulate site-wide metadata or redirects.” is not deterministic because it makes a universal claim across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-096",
+      "revision": 1,
+      "semantic_sha256": "eff861dcf2135074e712c0a25a48013af1a9254e9ddd16f6636a2f91ff14d2df",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "Declared registration parsing does not prove all dynamic, injected, legacy, or externally served service-worker registrations were discovered.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A script loaded from a feature flag registers a root-scoped worker but is absent from the static inventory. Every declared registration stays in its allowlist, so the proposal passes."
+    },
+    {
+      "control_id": "PRC-39-097",
+      "revision": 1,
+      "semantic_sha256": "054e777d09012d0a816ab26d2acfc91c8059f6cc9c3e9e716d5b3ed55a9ba00c",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "The rule “Cache versioning and invalidation are reliable.” is not deterministic because it requires empirical evidence but does not define complete fixtures, environment, coverage, outcome, or freshness.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-098",
+      "revision": 1,
+      "semantic_sha256": "fa6b45dec9d0d7b54812620d14b4c3cb3094a400a1501fd41f87d9cce1bd9afe",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Sensitive responses are not cached improperly.” is not deterministic because its key meaning depends on project, user, harm, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-099",
+      "revision": 1,
+      "semantic_sha256": "fedb4b22670a1622180838832841520632d8fbfa120ca68761511eea2c9813a5",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Updates do not leave clients permanently on vulnerable versions.” is not deterministic because it makes a universal claim across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-100",
+      "revision": 1,
+      "semantic_sha256": "ac070005d4d873b94040d1372e9ec419862957fe54f2d4a296d9ef203a02ef66",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "The rule “Old and new client versions remain compatible during rollout.” is not deterministic because it requires empirical evidence but does not define complete fixtures, environment, coverage, outcome, or freshness.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-101",
+      "revision": 1,
+      "semantic_sha256": "91787ac1998b573897d87f7742b262a579cb2eaa32ca8b86959d57a998889d22",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Offline changes have clear conflict and synchronization behavior.” is not deterministic because its key meaning depends on project, user, harm, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-102",
+      "revision": 1,
+      "semantic_sha256": "5edac9275bf42759f8a341a823f0fe7d3a85781a61cc97c4417b7dbd340dda21",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Replay fixtures cover only declared offline operations and effects, not every queued action, duplicate route, concurrency interleaving, or side effect.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "An old offline comment upload is omitted and creates two notifications when replayed. Every inventoried operation produces one declared effect, so the proposal passes."
+    },
+    {
+      "control_id": "PRC-39-103",
+      "revision": 1,
+      "semantic_sha256": "989ad1ac3af892447c683c7ee95ceef677721c13b12a8ccdf983b1c8e2673a35",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The full rule is mixed: approved stores can be checked after clearing, but relevant offline data needs privacy and product judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every store in the approved clearing inventory is empty after its logout or deletion fixture.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-104",
+      "revision": 1,
+      "semantic_sha256": "cb2ada44e742d1fc52668d637687434cca51e6d81f953f8ec5ee972e5c10c3a4",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Shared-device risks are addressed.” is not deterministic because it omits the exact scope, policy, states, thresholds, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-105",
+      "revision": 1,
+      "semantic_sha256": "251f2b06c5017819f55f2a48e39fbefdf1d8d7fc3de8e9aa4e6e9bafc2027a25",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The full rule is mixed: revocation is testable, but contextual request timing depends on wording, expectation, and intent.",
+      "deterministic_clauses": [
+        {
+          "statement": "A user can revoke push permission through the declared product control.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-106",
+      "revision": 1,
+      "semantic_sha256": "faea299ed8eace9a09ced5b6f7d84fb9db75b14a454a610cd317ab0f343a3c31",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Bounded runs cannot prove all background jobs stay within resource limits across device states, retries, duration, data volume, and scheduler behavior.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A sync job meets limits on the fixture but loops after a network flap on a low-memory device and drains the battery. Every approved run passes while resource use is not bounded in operation."
+    },
+    {
+      "control_id": "PRC-39-107",
+      "revision": 1,
+      "semantic_sha256": "b5fb6a4209c95e0bec29363a83b11dfc2a68d56885ec66b37c9051d0c08ff876",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "An approved corrupt-state fixture set cannot exhaust the possible corruptions, partial writes, version combinations, and storage failures covered by the broad claim.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Recovery succeeds for each supplied fixture, but an interrupted migration leaves a valid-looking mixed-version state that cannot recover. The finite suite passes while recovery from corrupt state is not generally possible."
+    },
+    {
+      "control_id": "PRC-39-108",
+      "revision": 1,
+      "semantic_sha256": "1919666e54dc6536ba455744f79539c771e7ed81cc512ca806abdf460c370a8e",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Connection authentication and authorization are continuously valid.” is not deterministic because it makes a universal claim across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-109",
+      "revision": 1,
+      "semantic_sha256": "ba3c6d1ec8958179c8a433bbf63184f26b37e5ea698bc5e873f69e41584c47fc",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Origin and cross-site connection risks are addressed.” is not deterministic because it omits the exact scope, policy, states, thresholds, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-110",
+      "revision": 1,
+      "semantic_sha256": "e83c31d6e57240df07751078ee1edcc789392733c9f8a7db85ece6132ff3794f",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Declared message and ingress inventories can omit alternate protocols, legacy types, internal relays, and dynamically registered handlers.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A legacy WebSocket handler processes an unlisted message type before validation. Every declared inbound message rejects invalid fixtures, so the proposal passes despite an unvalidated ingress."
+    },
+    {
+      "control_id": "PRC-39-111",
+      "revision": 1,
+      "semantic_sha256": "e958009b0940ef9255c617460ae5985478b40498088c844f2d93ba8a7bbdc9cc",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "An ingress inventory can omit paths and enforcement layers, so configured numeric limits do not prove every message path is bounded.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "An internal relay forwards oversized messages without rate limiting but is absent from the registry. Every declared ingress rejects over-limit fixtures, so the proposal passes."
+    },
+    {
+      "control_id": "PRC-39-112",
+      "revision": 1,
+      "semantic_sha256": "f2441dab74bb790ff44b1e0d693fce17746e54515eb0a38036f321a6da844e9a",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The stream and event registry is not independently complete, and a nonempty ordering value may omit a real ordering contract or event family.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A provider-managed event stream with ordering assumptions is absent from the registry. Every declared stream has `ordered` or `none`, so the record check passes while its guarantee is undocumented."
+    },
+    {
+      "control_id": "PRC-39-113",
+      "revision": 1,
+      "semantic_sha256": "0cfe3df3f8b1919f0c228cc36def979af6e0b4e8d2aa04c75fb26e0b7a7bbe52",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Duplicate and lost message behavior is handled.” is not deterministic because it omits the exact scope, policy, states, thresholds, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-114",
+      "revision": 1,
+      "semantic_sha256": "5a6e644c28e595ef77d02e1ce505d2e3e537618d7a51b1510a52137cfdff86a2",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Reconnection does not replay unsafe actions.” is not deterministic because it makes a universal claim across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-115",
+      "revision": 1,
+      "semantic_sha256": "32b3b57ee1d6990651fc592ee154d8f2683832c63936df4593ea2190fbe1b583",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "The rule “Backpressure prevents memory and queue exhaustion.” is not deterministic because it requires empirical evidence but does not define complete fixtures, environment, coverage, outcome, or freshness.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-116",
+      "revision": 1,
+      "semantic_sha256": "cff865fb2a6d5e28e82b93bbfc4f06f4e0b2f3dd3673184739c1972665f11afb",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "The rule “Slow consumers cannot degrade all users.” is not deterministic because it requires empirical evidence but does not define complete fixtures, environment, coverage, outcome, or freshness.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-117",
+      "revision": 1,
+      "semantic_sha256": "29c29c85c32725130988858a208b2a52e42c2516864f14f564d3c4c803f745b2",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Presence, typing, cursor, and collaboration data do not leak across users or tenants.” is not deterministic because it makes a universal claim across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-118",
+      "revision": 1,
+      "semantic_sha256": "7365c6a811e89346d17ba122a292916c56fc0178bb2ef8fab454bc2363709148",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "A permission-change matrix and stream inventory can omit a downgrade, long-lived transport, cached grant, or reconnect path.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A GraphQL subscription keeps delivering after group removal but is not in the stream registry. All declared downgrade fixtures terminate correctly, so the proposal passes."
+    },
+    {
+      "control_id": "PRC-39-119",
+      "revision": 1,
+      "semantic_sha256": "1e204096be04b10143052a947a2b0a9d37de18eaafec69970b36a36ed56dca64",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "The rule “Fan-out capacity is load-tested.” is not deterministic because it requires empirical evidence but does not define complete fixtures, environment, coverage, outcome, or freshness.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-120",
+      "revision": 1,
+      "semantic_sha256": "21c471431a28e14f8790a60c2cf55dd9c265712f3396e299f46a1f5ceba16261",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "The rule “Regional and network partition behavior is tested.” is not deterministic because it requires empirical evidence but does not define complete fixtures, environment, coverage, outcome, or freshness.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-121",
+      "revision": 1,
+      "semantic_sha256": "277445d7835345d4439fa4de213025f96adb3ca87e108dc169654bd479cbf2af",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Event history and replay preserve authorization.” is not deterministic because it makes a universal claim across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-122",
+      "revision": 1,
+      "semantic_sha256": "8a66afe5a53273a5ee09ad7971a5226ff099b9c085e2b0c2524d406340bc0aeb",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The full rule is mixed: inventory linkage is checkable, but threat-model completeness needs adversarial security judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every administrative interface has a linked versioned threat-model record.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-123",
+      "revision": 1,
+      "semantic_sha256": "426d4008f28bad413cb8cd32e320b9cf8c9891a50bb79812810c9ffae7a978c4",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Strong authentication is mandatory.” is not deterministic because its key meaning depends on project, user, harm, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-124",
+      "revision": 1,
+      "semantic_sha256": "c5873075e7268fe3bf70bd848724e462651ff85ceb3edb6c7d33d71469883cee",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Privileges are granular.” is not deterministic because its key meaning depends on project, user, harm, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-125",
+      "revision": 1,
+      "semantic_sha256": "0ba5d7092af5b2f0764b009d186c68be5a3173ae11adb050bbda061bfbbdddba",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Access is time-bounded where practical.” is not deterministic because its key meaning depends on project, user, harm, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-126",
+      "revision": 1,
+      "semantic_sha256": "e03a96fd2e207e16e2547fbd12ff4edb98c5f994475da359cb4d8a8c66afad3b",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “High-impact actions require reauthentication or additional approval.” is not deterministic because its key meaning depends on project, user, harm, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-127",
+      "revision": 1,
+      "semantic_sha256": "27e389993be9ab67afb269a71a304d598fb050b7dcbbd6adffc0e8c3ee6947aa",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Declared bulk-operation inventories can omit provider tools, scripts, administrative APIs, and newly deployed actions.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A support script bulk-exports customer data without confirmation or audit but is absent from the inventory. Every declared bulk operation satisfies both checks, so the proposal passes."
+    },
+    {
+      "control_id": "PRC-39-128",
+      "revision": 1,
+      "semantic_sha256": "ef1fb2088061313b2c5cbb39f6521876bcc61d052c08088f93847f5e1e5f14e0",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The full rule is mixed: scope-preview presence is testable, but safe limits depend on harm, scale, and reversibility.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every declared destructive command presents its target scope before confirmation.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment",
+        "undefined_threshold"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-129",
+      "revision": 1,
+      "semantic_sha256": "b0dda65be2fa4cbb64fa8261d44412da04942ad0ec31a7af75718154050fbbb2",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The full rule is mixed: visibility and logging are testable, but justification needs an accountable case-specific decision.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every declared impersonation session displays its state and emits an attributable audit record.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-130",
+      "revision": 1,
+      "semantic_sha256": "db0c58b63be644fb3e0d094f70238681ebedbc14c1dc9cc7baec4aeda394f92b",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Sensitive values are masked.” is not deterministic because it makes a universal claim across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-131",
+      "revision": 1,
+      "semantic_sha256": "60616d02e434a85b730fbca4a636d86a703a12fa28f671ddcd0ad2e6ee70b302",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Production data access is purpose-limited.” is not deterministic because its key meaning depends on project, user, harm, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-132",
+      "revision": 1,
+      "semantic_sha256": "4b789c6aafe20bdd8089d642425c687dd6fdcd70a3c0ab0a4bab0fcf7f48d633",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "A linked review record can be created without substantive review, and the emergency-event source can omit manual or provider-side access.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A provider console emergency login is absent from the event feed; another event creates an empty auto-closed review row. The schema and deadline pass while emergency access does not meaningfully trigger review."
+    },
+    {
+      "control_id": "PRC-39-133",
+      "revision": 1,
+      "semantic_sha256": "c8fab03394fc4ecf48415870874c5ff5a7c4f76e7cf09231cf188e0173b71e1d",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Administrative APIs receive the same testing as user-facing APIs.” is not deterministic because it omits the exact scope, policy, states, thresholds, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-134",
+      "revision": 1,
+      "semantic_sha256": "f7f342785ea618b2b2f43f2e5a02487db30a0b099988d1a0742d3641e2da4faf",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Support tooling cannot bypass tenant boundaries.” is not deterministic because it makes a universal claim across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-135",
+      "revision": 1,
+      "semantic_sha256": "8cc0743832d4a3ac196429eeebdb3561b3347d5955fe3a43135c33d1b8f1ee63",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Sessions terminate promptly after role removal.” is not deterministic because it omits the exact scope, policy, states, thresholds, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-136",
+      "revision": 1,
+      "semantic_sha256": "bdbe1b18b497c172e64761f561ffe28ad481f971f1cc99ef80785a1f8d4b3618",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Every action is attributable to an individual.” is not deterministic because it makes a universal claim across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-137",
+      "revision": 1,
+      "semantic_sha256": "d9f7ed4d9d93d3f9eb7caa8ee511a938c6136bfb06a3e9cc78d3d5106ffeb5dd",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Inventory every model, model version, provider, prompt, tool, data source, embedding store, and safety component.” is not deterministic because it makes a universal claim across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-138",
+      "revision": 1,
+      "semantic_sha256": "d8edc33f827bb589b2b600cbbe16f8d31df7434c11214c46e6b69bc79f7bffea",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule “Classify the consequences of incorrect, biased, unsafe, or manipulated output.” is not deterministic because its full meaning or applicability requires current qualified legal, linguistic, safety, privacy, or domain authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-139",
+      "revision": 1,
+      "semantic_sha256": "913d8f64578e6bde7954a763aaca7197df213500105a1ed065285338e45388a8",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The AI capability registry can omit real tasks, and categorizing broad or emergent model behavior into authorized and prohibited tasks requires contextual judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A model can send email through an indirect tool chain omitted from the capability registry. Every listed capability has allow and deny entries, so the proposal passes while that task remains undefined."
+    },
+    {
+      "control_id": "PRC-39-140",
+      "revision": 1,
+      "semantic_sha256": "d7d44227c693f8f24b861f875b07ccf31007c05e42f0a04f59b626f1b24a8459",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Treat user prompts, retrieved content, tool output, model output, and model metadata as untrusted.” is not deterministic because it makes a universal claim across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-141",
+      "revision": 1,
+      "semantic_sha256": "36e83c9e256644326fd381a4b47e22e7e20ca05716d10985b08751607468a1d7",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "The rule “Test direct and indirect prompt injection.” is not deterministic because it requires empirical evidence but does not define complete fixtures, environment, coverage, outcome, or freshness.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-142",
+      "revision": 1,
+      "semantic_sha256": "ee9a2eec3dc8b99bf2baf01360f215e262b6800a30018bd03bd718d7a89f6e98",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Prevent model instructions from overriding authorization and business rules.” is not deterministic because it makes a universal claim across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-143",
+      "revision": 1,
+      "semantic_sha256": "98018fa10d801e8ee8dea50195886de2e1f55df798100ccff4824e511e238e79",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Tool calls use independently enforced least privilege.” is not deterministic because its key meaning depends on project, user, harm, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-144",
+      "revision": 1,
+      "semantic_sha256": "4d9e3c5cc223bfb69826f868f8afa18e3b9461a06591f8709d3541bd1e9eeb82",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “The model cannot select credentials, tenants, resources, or permissions beyond the user’s authorization.” is not deterministic because it makes a universal claim across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-145",
+      "revision": 1,
+      "semantic_sha256": "abf6048f67630b4758101ab17d517e225c25a40ec1137a8f7064e6f730757526",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The full rule is mixed: validator execution is testable, but consequential actions and suitable confirmation need risk judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every action in the validation registry passes its validator before invocation.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment",
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-146",
+      "revision": 1,
+      "semantic_sha256": "b29391313fdd8b739ca1e891e7223e424240f4d6a523c076a58b5a2e454a7330",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Model output is validated before use in code, queries, commands, templates, transactions, or security decisions.” is not deterministic because it makes a universal claim across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-147",
+      "revision": 1,
+      "semantic_sha256": "6dd267cfdc4d7b805622a5ac9fcb370692d1505480d43b09d1e09edbe3e00650",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The full rule is mixed: declared data-flow checks are possible, but sensitive-data approval needs privacy and legal judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Each declared AI sink gets a policy decision before accepting labeled sensitive fields.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "legal_or_specialist_authority",
+        "human_accountability",
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-148",
+      "revision": 1,
+      "semantic_sha256": "e5171f593febefb24254cd7478c8ed59204f06961830306130b82822f4fcd861",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule “Provider data retention and model-training terms are understood.” is not deterministic because its full meaning or applicability requires current qualified legal, linguistic, safety, privacy, or domain authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-149",
+      "revision": 1,
+      "semantic_sha256": "7a14a2393161f100276a6164f61f64d140cee385fc2a98415c76b0f8ae1c02af",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Retrieval systems enforce user and tenant authorization before supplying content.” is not deterministic because it makes a universal claim across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-150",
+      "revision": 1,
+      "semantic_sha256": "501e48d508985264a7d6e23f8c8612280b413fb6e2ca15be63b98bb530753bd9",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Vector stores and embeddings preserve deletion and tenant boundaries.” is not deterministic because it makes a universal claim across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-151",
+      "revision": 1,
+      "semantic_sha256": "748d8caaf4d9fb41dff60021ee835b60a24f4b10f52d4b9e9e8d96f7c19a8dc1",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Retrieval poisoning and malicious documents are addressed.” is not deterministic because it omits the exact scope, policy, states, thresholds, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-152",
+      "revision": 1,
+      "semantic_sha256": "6524f718537c2b78875164c138b788e95f76c643aa27302313c0f39842ed38d2",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The full rule is mixed: lineage records are checkable, but adequate governance needs rights, consent, quality, and privacy judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every declared training, fine-tuning, and evaluation dataset has a versioned lineage record.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-153",
+      "revision": 1,
+      "semantic_sha256": "6f50b72be07632f18fe8c4fd72264fa71c0403ed03e28ae46ef1882fe7f00aa4",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The full rule is mixed: artifact versions are checkable, but suitable approval is accountable and the change boundary is contextual.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every declared model, prompt, and safety artifact has an immutable version linked to release.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "human_accountability",
+        "undefined_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-154",
+      "revision": 1,
+      "semantic_sha256": "b84c1411283ce85cb609ae6a837f2d0d051faf7d74038f8b9abd09e5ced06fa3",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Evaluation sets cover accuracy, security, safety, privacy, bias, refusal, and adversarial behavior.” is not deterministic because its key meaning depends on project, user, harm, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-155",
+      "revision": 1,
+      "semantic_sha256": "2d2994b4621429fcbef31d92d6c347885b6b7e592ad9abae18e2cbc9471dccb4",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Evaluations represent production languages, user groups, and edge cases.” is not deterministic because its key meaning depends on project, user, harm, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-156",
+      "revision": 1,
+      "semantic_sha256": "f1413665d246c1e7078b3c6239100a9902199776eb9d7e4f4a203214e34aef0f",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Hallucination and uncertainty are communicated appropriately.” is not deterministic because its key meaning depends on project, user, harm, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-157",
+      "revision": 1,
+      "semantic_sha256": "53cd8bb01c94ade37fb2878f387ee90e8eaea4a8bf619a6bd911632659b37d6e",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “High-impact decisions have suitable human review, appeal, and correction.” is not deterministic because its pass condition is an accountable human approval, not a fact an automated checker may substitute for.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-158",
+      "revision": 1,
+      "semantic_sha256": "9e691073689799cd8648ae6de219cfe64b175ee19a6024d97ffb100f9bfca52e",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Output moderation and abuse detection match the product’s risks.” is not deterministic because its key meaning depends on project, user, harm, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-159",
+      "revision": 1,
+      "semantic_sha256": "85b5789269405d11f3672f9cad1415f5ae3ea26c7d912f17c39119df83cc380d",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Model denial-of-service and cost-amplification attacks are bounded.” is not deterministic because it makes a universal claim across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-160",
+      "revision": 1,
+      "semantic_sha256": "8a8a08bedf286bf4d2c20164fd0a2a1596d55950faa5576ab43d5da942e1335b",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "An AI-operation inventory can omit models, agent loops, provider consoles, or indirect tool calls, so its configured limits are not universal.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "An unlisted background agent has no spending or tool-call cap, while every declared operation enforces all numeric fields. The proposal passes despite an unlimited AI path."
+    },
+    {
+      "control_id": "PRC-39-161",
+      "revision": 1,
+      "semantic_sha256": "d5c0d88df7c1948dc94171fe389c9fece67f0bace459e31c21071aee16755adc",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Model and provider outages have fallback behavior.” is not deterministic because it omits the exact scope, policy, states, thresholds, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-162",
+      "revision": 1,
+      "semantic_sha256": "1d374109f1d9368ce64e7cf104b5830cd23eb096b8d5ca8609a15e439f986cbc",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The declared AI-action set and approved essential-health set can omit real actions and critical non-AI workflows, while `essential` requires accountable product context.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "The switch blocks listed model calls but leaves an indirect AI tool active and breaks an omitted billing workflow. All approved checks pass while the full kill-switch promise is false."
+    },
+    {
+      "control_id": "PRC-39-163",
+      "revision": 1,
+      "semantic_sha256": "20f16ceb6959b180c41e9a6ab747df8e9ecbf25a634f81afff408f0aecb6fb63",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Model drift and quality regression are monitored.” is not deterministic because its key meaning depends on project, user, harm, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-164",
+      "revision": 1,
+      "semantic_sha256": "b9296ef631e5637543797ac0fdfaea313bf1f47623c81415bdc3035183c5ba4a",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule “Safety and security telemetry protects user privacy.” is not deterministic because its full meaning or applicability requires current qualified legal, linguistic, safety, privacy, or domain authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-165",
+      "revision": 1,
+      "semantic_sha256": "30e43806532b4dc42775483ea4f1fe3dc2532ec1d025a3092092a739446b9aa4",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The full rule is mixed: version logging is checkable, but sensitive or unnecessary retention needs privacy judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every declared AI audit event records model and prompt-template version identifiers.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment",
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-166",
+      "revision": 1,
+      "semantic_sha256": "5daf26809e2087b487b16660170b6b61d33aa885a03ad7df3dada573a0405716",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule “Users know when they are interacting with or affected by AI where required.” is not deterministic because its full meaning or applicability requires current qualified legal, linguistic, safety, privacy, or domain authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-167",
+      "revision": 1,
+      "semantic_sha256": "ee4b517ad5a5c7a85424c68c967d96556d3cbb710afd3fdee696d163d2544514",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule “Applicable AI transparency, documentation, assessment, and human-oversight rules are mapped.” is not deterministic because its full meaning or applicability requires current qualified legal, linguistic, safety, privacy, or domain authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-168",
+      "revision": 1,
+      "semantic_sha256": "815a4fabafdd3b7eb604293164a2af422815db7c26d6dbb55eca7ad49d27dfee",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The full rule is mixed: manifest removal is checkable, but complete safe retained-data retirement needs legal and lineage judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every model, credential, and index in the retirement manifest is absent from active configuration.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "legal_or_specialist_authority",
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-169",
+      "revision": 1,
+      "semantic_sha256": "1cd9abe30f736c82e7c68688d8fa96f255a6cbf51aa5d2552e9c4236d940ad38",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule “Perform formal hazard analysis.” is not deterministic because its full meaning or applicability requires current qualified legal, linguistic, safety, privacy, or domain authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-170",
+      "revision": 1,
+      "semantic_sha256": "8e3cc3681e51aeaf831b96201eb4e9aa3dcf71a4f61002e700c9f905d86bbb17",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule “Define unacceptable hazardous states.” is not deterministic because its full meaning or applicability requires current qualified legal, linguistic, safety, privacy, or domain authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-171",
+      "revision": 1,
+      "semantic_sha256": "22b46d25699596ccf13270ce4fd0fcd23b3de45e76fee88d7dcf61985f2213cf",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule “Establish fail-safe behavior.” is not deterministic because its full meaning or applicability requires current qualified legal, linguistic, safety, privacy, or domain authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-172",
+      "revision": 1,
+      "semantic_sha256": "9439b629bcb630b123b8e3a9fbdd996aa3bc6f670b93ea126c6e4ab869a673d0",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Safety controls are independent from ordinary feature logic where warranted.” is not deterministic because its key meaning depends on project, user, harm, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-173",
+      "revision": 1,
+      "semantic_sha256": "1cd2542209c8b9237c7334a682fca1f5435935eb31ab1d9f37779d67aa60792f",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Human override and emergency stop are available where appropriate.” is not deterministic because its key meaning depends on project, user, harm, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-174",
+      "revision": 1,
+      "semantic_sha256": "1ed47eea8b12b115660bbaf76be43289a4e6a2cc61f397df18b501e2f6f719ac",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule “Alerts are perceptible, timely, and actionable.” is not deterministic because its full meaning or applicability requires current qualified legal, linguistic, safety, privacy, or domain authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-175",
+      "revision": 1,
+      "semantic_sha256": "22ef8df394177cd469cb480960dba8ca30b6249e020658c347e100c049d0c48d",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule “Safety thresholds are conservative and validated.” is not deterministic because its full meaning or applicability requires current qualified legal, linguistic, safety, privacy, or domain authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-176",
+      "revision": 1,
+      "semantic_sha256": "bdbf9cd1ac1460145193dbccece1769b192b197af5ccfa77efe8569603dbfa50",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "The rule “Sensor, input, model, communication, and actuator failure modes are tested.” is not deterministic because it requires empirical evidence but does not define complete fixtures, environment, coverage, outcome, or freshness.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-177",
+      "revision": 1,
+      "semantic_sha256": "2e77709541bb6a2f8170367c6e8890bcf39e3c857aa4a320c226d25672835cb7",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “No single software defect can create unacceptable harm where architecture can prevent it.” is not deterministic because it makes a universal claim across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-178",
+      "revision": 1,
+      "semantic_sha256": "08ed423a2dc27fa36df6f3036ef80be7678cd3bdc6077f673ccb8f1bc76228eb",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule “Independent verification and validation are completed.” is not deterministic because its full meaning or applicability requires current qualified legal, linguistic, safety, privacy, or domain authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-179",
+      "revision": 1,
+      "semantic_sha256": "700753bff7db581841dd970afb4cba502a3b6bfd5ac9d62cf3c7d56994690ccc",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule “Safety evidence forms a reviewable safety case.” is not deterministic because its full meaning or applicability requires current qualified legal, linguistic, safety, privacy, or domain authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-180",
+      "revision": 1,
+      "semantic_sha256": "20ca87997d27b88f467b1472cdd2025a12c93124396e9a1095e888c48bb9c83f",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule “Relevant certification and regulatory requirements are satisfied.” is not deterministic because its full meaning or applicability requires current qualified legal, linguistic, safety, privacy, or domain authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-181",
+      "revision": 1,
+      "semantic_sha256": "9dd4c118d0cca9cfe2eb67bc1d527001e636ff14447165905a0bb2a204598bef",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Field monitoring detects dangerous drift or failure.” is not deterministic because it makes a universal claim across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-39-182",
+      "revision": 1,
+      "semantic_sha256": "f8f8db458e10e0a0dd339925d5c53bdce6512d92b2baf32c1b9843aefc23d7a1",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Procedure metadata does not establish usable, complete, or legally and safety-appropriate recall, disablement, and customer-notification procedures.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Three current documents contain generic placeholders, omit affected-customer identification, and conflict with a regulator's recall duty. Required fields pass while the safety-critical procedures do not truly exist in usable form."
+    },
+    {
+      "control_id": "PRC-39-183",
+      "revision": 1,
+      "semantic_sha256": "b174f49db465901e8e65d5ddd47940e28b0b74eb2c74ee6b27e6e090486b69e5",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Residual safety risk is accepted only by authorized leadership.” is not deterministic because its pass condition is an accountable human approval, not a fact an automated checker may substitute for.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    }
+  ]
+}

@@ -1,0 +1,1103 @@
+{
+  "schema_version": "prc.control-check-program-definitions/v0.1",
+  "scope": "structured_record",
+  "source_binding_catalog_sha256": "c32c6b879025b571362d5852904769ef54d2400392d22e9adb4dde5757542740",
+  "definition_count": 3,
+  "definitions": [
+    {
+      "control_id": "USEQ-FBE1B27D",
+      "control_revision": 1,
+      "control_semantic_sha256": "fbe1b27db60b4186bd4fd86e68f782eefd2706380c175965ae088fb78cd4ae07",
+      "clause_ordinal": 1,
+      "clause_id": "88cc6e205ed2fe6e3c97f82ad12e5ee97c635f6e4596d4b9ba2a9cc25711d8fe",
+      "clause_statement": "The authenticated versioned migration contract defines source state, target state, dual-operation period, negotiation rules, data conversion, key transition, validation evidence, stop conditions, and retirement criteria.",
+      "checker_family": "structured_record",
+      "required_authority": "structured_record",
+      "corrected_checker_family": "structured_record",
+      "corrected_required_authority": "structured_record",
+      "classification_status": "exact_predicate",
+      "classification_error_reason": null,
+      "raw_fact_contracts": [
+        {
+          "fact_id": "sr.useq-fbe1b27d.c1.source_state",
+          "fact_type": "string_map",
+          "authority": "structured_record",
+          "raw_value_semantics": "A canonical string_map keyed by the sealed migration contract identifiers; each value is the raw parsed source state. It is read for the exact clause: The authenticated versioned migration contract defines source state, target state, dual-operation period, negotiation rules, data conversion, key transition, validation evidence, stop conditions, and retirement criteria.",
+          "source_requirement": "Use pinned lossless schema prc.structured-record.useq-fbe1b27d.c1@1 and read the concrete source_state member directly from every authenticated migration_contract record; reject aliases, inferred text matches, duplicate keys, and lossy coercion.",
+          "complete_required": true
+        },
+        {
+          "fact_id": "sr.useq-fbe1b27d.c1.target_state",
+          "fact_type": "string_map",
+          "authority": "structured_record",
+          "raw_value_semantics": "A canonical string_map keyed by the sealed migration contract identifiers; each value is the raw parsed target state. It is read for the exact clause: The authenticated versioned migration contract defines source state, target state, dual-operation period, negotiation rules, data conversion, key transition, validation evidence, stop conditions, and retirement criteria.",
+          "source_requirement": "Use pinned lossless schema prc.structured-record.useq-fbe1b27d.c1@1 and read the concrete target_state member directly from every authenticated migration_contract record; reject aliases, inferred text matches, duplicate keys, and lossy coercion.",
+          "complete_required": true
+        },
+        {
+          "fact_id": "sr.useq-fbe1b27d.c1.dual_operation_period",
+          "fact_type": "string_map",
+          "authority": "structured_record",
+          "raw_value_semantics": "A canonical string_map keyed by the sealed migration contract identifiers; each value is the raw parsed dual operation period. It is read for the exact clause: The authenticated versioned migration contract defines source state, target state, dual-operation period, negotiation rules, data conversion, key transition, validation evidence, stop conditions, and retirement criteria.",
+          "source_requirement": "Use pinned lossless schema prc.structured-record.useq-fbe1b27d.c1@1 and read the concrete dual_operation_period member directly from every authenticated migration_contract record; reject aliases, inferred text matches, duplicate keys, and lossy coercion.",
+          "complete_required": true
+        },
+        {
+          "fact_id": "sr.useq-fbe1b27d.c1.negotiation_rules",
+          "fact_type": "string_map",
+          "authority": "structured_record",
+          "raw_value_semantics": "A canonical string_map keyed by the sealed migration contract identifiers; each value is the raw parsed negotiation rules. It is read for the exact clause: The authenticated versioned migration contract defines source state, target state, dual-operation period, negotiation rules, data conversion, key transition, validation evidence, stop conditions, and retirement criteria.",
+          "source_requirement": "Use pinned lossless schema prc.structured-record.useq-fbe1b27d.c1@1 and read the concrete negotiation_rules member directly from every authenticated migration_contract record; reject aliases, inferred text matches, duplicate keys, and lossy coercion.",
+          "complete_required": true
+        },
+        {
+          "fact_id": "sr.useq-fbe1b27d.c1.data_conversion",
+          "fact_type": "string_map",
+          "authority": "structured_record",
+          "raw_value_semantics": "A canonical string_map keyed by the sealed migration contract identifiers; each value is the raw parsed data conversion. It is read for the exact clause: The authenticated versioned migration contract defines source state, target state, dual-operation period, negotiation rules, data conversion, key transition, validation evidence, stop conditions, and retirement criteria.",
+          "source_requirement": "Use pinned lossless schema prc.structured-record.useq-fbe1b27d.c1@1 and read the concrete data_conversion member directly from every authenticated migration_contract record; reject aliases, inferred text matches, duplicate keys, and lossy coercion.",
+          "complete_required": true
+        },
+        {
+          "fact_id": "sr.useq-fbe1b27d.c1.key_transition",
+          "fact_type": "string_map",
+          "authority": "structured_record",
+          "raw_value_semantics": "A canonical string_map keyed by the sealed migration contract identifiers; each value is the raw parsed key transition. It is read for the exact clause: The authenticated versioned migration contract defines source state, target state, dual-operation period, negotiation rules, data conversion, key transition, validation evidence, stop conditions, and retirement criteria.",
+          "source_requirement": "Use pinned lossless schema prc.structured-record.useq-fbe1b27d.c1@1 and read the concrete key_transition member directly from every authenticated migration_contract record; reject aliases, inferred text matches, duplicate keys, and lossy coercion.",
+          "complete_required": true
+        },
+        {
+          "fact_id": "sr.useq-fbe1b27d.c1.validation_evidence",
+          "fact_type": "string_map",
+          "authority": "structured_record",
+          "raw_value_semantics": "A canonical string_map keyed by the sealed migration contract identifiers; each value is the raw parsed validation evidence. It is read for the exact clause: The authenticated versioned migration contract defines source state, target state, dual-operation period, negotiation rules, data conversion, key transition, validation evidence, stop conditions, and retirement criteria.",
+          "source_requirement": "Use pinned lossless schema prc.structured-record.useq-fbe1b27d.c1@1 and read the concrete validation_evidence member directly from every authenticated migration_contract record; reject aliases, inferred text matches, duplicate keys, and lossy coercion.",
+          "complete_required": true
+        },
+        {
+          "fact_id": "sr.useq-fbe1b27d.c1.stop_conditions",
+          "fact_type": "string_map",
+          "authority": "structured_record",
+          "raw_value_semantics": "A canonical string_map keyed by the sealed migration contract identifiers; each value is the raw parsed stop conditions. It is read for the exact clause: The authenticated versioned migration contract defines source state, target state, dual-operation period, negotiation rules, data conversion, key transition, validation evidence, stop conditions, and retirement criteria.",
+          "source_requirement": "Use pinned lossless schema prc.structured-record.useq-fbe1b27d.c1@1 and read the concrete stop_conditions member directly from every authenticated migration_contract record; reject aliases, inferred text matches, duplicate keys, and lossy coercion.",
+          "complete_required": true
+        },
+        {
+          "fact_id": "sr.useq-fbe1b27d.c1.retirement_criteria",
+          "fact_type": "string_map",
+          "authority": "structured_record",
+          "raw_value_semantics": "A canonical string_map keyed by the sealed migration contract identifiers; each value is the raw parsed retirement criteria. It is read for the exact clause: The authenticated versioned migration contract defines source state, target state, dual-operation period, negotiation rules, data conversion, key transition, validation evidence, stop conditions, and retirement criteria.",
+          "source_requirement": "Use pinned lossless schema prc.structured-record.useq-fbe1b27d.c1@1 and read the concrete retirement_criteria member directly from every authenticated migration_contract record; reject aliases, inferred text matches, duplicate keys, and lossy coercion.",
+          "complete_required": true
+        }
+      ],
+      "sealed_parameter_contracts": [
+        {
+          "parameter_id": "sr.useq-fbe1b27d.c1.migration_contract_ids",
+          "parameter_type": "string_set",
+          "value_origin": "scanner_inventory",
+          "source_requirement": "The complete nonempty migration contract identifier inventory is sealed before record collection from the authenticated scope manifest for USEQ-FBE1B27D clause 1; the structured-record provider cannot add, remove, or rename an item."
+        }
+      ],
+      "predicate": {
+        "op": "all",
+        "args": [
+          {
+            "op": "map_keys_eq_set_parameter",
+            "fact": "sr.useq-fbe1b27d.c1.source_state",
+            "parameter": "sr.useq-fbe1b27d.c1.migration_contract_ids"
+          },
+          {
+            "op": "string_map_all_nonempty",
+            "fact": "sr.useq-fbe1b27d.c1.source_state"
+          },
+          {
+            "op": "map_keys_eq_set_parameter",
+            "fact": "sr.useq-fbe1b27d.c1.target_state",
+            "parameter": "sr.useq-fbe1b27d.c1.migration_contract_ids"
+          },
+          {
+            "op": "string_map_all_nonempty",
+            "fact": "sr.useq-fbe1b27d.c1.target_state"
+          },
+          {
+            "op": "map_keys_eq_set_parameter",
+            "fact": "sr.useq-fbe1b27d.c1.dual_operation_period",
+            "parameter": "sr.useq-fbe1b27d.c1.migration_contract_ids"
+          },
+          {
+            "op": "string_map_all_nonempty",
+            "fact": "sr.useq-fbe1b27d.c1.dual_operation_period"
+          },
+          {
+            "op": "map_keys_eq_set_parameter",
+            "fact": "sr.useq-fbe1b27d.c1.negotiation_rules",
+            "parameter": "sr.useq-fbe1b27d.c1.migration_contract_ids"
+          },
+          {
+            "op": "string_map_all_nonempty",
+            "fact": "sr.useq-fbe1b27d.c1.negotiation_rules"
+          },
+          {
+            "op": "map_keys_eq_set_parameter",
+            "fact": "sr.useq-fbe1b27d.c1.data_conversion",
+            "parameter": "sr.useq-fbe1b27d.c1.migration_contract_ids"
+          },
+          {
+            "op": "string_map_all_nonempty",
+            "fact": "sr.useq-fbe1b27d.c1.data_conversion"
+          },
+          {
+            "op": "map_keys_eq_set_parameter",
+            "fact": "sr.useq-fbe1b27d.c1.key_transition",
+            "parameter": "sr.useq-fbe1b27d.c1.migration_contract_ids"
+          },
+          {
+            "op": "string_map_all_nonempty",
+            "fact": "sr.useq-fbe1b27d.c1.key_transition"
+          },
+          {
+            "op": "map_keys_eq_set_parameter",
+            "fact": "sr.useq-fbe1b27d.c1.validation_evidence",
+            "parameter": "sr.useq-fbe1b27d.c1.migration_contract_ids"
+          },
+          {
+            "op": "string_map_all_nonempty",
+            "fact": "sr.useq-fbe1b27d.c1.validation_evidence"
+          },
+          {
+            "op": "map_keys_eq_set_parameter",
+            "fact": "sr.useq-fbe1b27d.c1.stop_conditions",
+            "parameter": "sr.useq-fbe1b27d.c1.migration_contract_ids"
+          },
+          {
+            "op": "string_map_all_nonempty",
+            "fact": "sr.useq-fbe1b27d.c1.stop_conditions"
+          },
+          {
+            "op": "map_keys_eq_set_parameter",
+            "fact": "sr.useq-fbe1b27d.c1.retirement_criteria",
+            "parameter": "sr.useq-fbe1b27d.c1.migration_contract_ids"
+          },
+          {
+            "op": "string_map_all_nonempty",
+            "fact": "sr.useq-fbe1b27d.c1.retirement_criteria"
+          }
+        ]
+      },
+      "required_runtime_ops": [
+        "all",
+        "map_keys_eq_set_parameter",
+        "string_map_all_nonempty"
+      ],
+      "collector_contract": {
+        "collector_id": "prc.collect.structured-record.useq-fbe1b27d.c1@1.0",
+        "required_sources": [
+          "Authenticated migration contract records named by the independently sealed scope manifest for USEQ-FBE1B27D clause 1."
+        ],
+        "inventory_contract": "Resolve the complete sealed migration contract identifier set before reading records; require every identifier exactly once and reject missing, duplicate, unpaged, or provider-added subjects.",
+        "normalization_contract": "Pinned lossless parser prc.structured-record.useq-fbe1b27d.c1@1 emits only these typed raw members: source state, target state, dual operation period, negotiation rules, data conversion, key transition, validation evidence, stop conditions, retirement criteria. It rejects aliases, unknown duplicate keys, free-text keyword inference, and provider conclusions.",
+        "completeness_contract": "Mark evidence complete only after every sealed migration contract record and every named member (source state, target state, dual operation period, negotiation rules, data conversion, key transition, validation evidence, stop conditions, retirement criteria) is read at the authenticated revision without conflict.",
+        "freshness_contract": "Bind observed time and immutable record revision for USEQ-FBE1B27D clause 1; stale, future, superseded, mutable, or conflicting records remain Blocked.",
+        "provider_status": "unregistered"
+      },
+      "fixtures": {
+        "pass": {
+          "description": "USEQ-FBE1B27D clause 1 pass: both sealed migration contract records contain the exact typed fields and relations named by the clause.",
+          "parameters": {
+            "sr.useq-fbe1b27d.c1.migration_contract_ids": {
+              "type": "string_set",
+              "strings": [
+                "migration_contract-a",
+                "migration_contract-b"
+              ]
+            }
+          },
+          "facts": {
+            "sr.useq-fbe1b27d.c1.source_state": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "migration_contract-a": "documented source state for migration_contract-a",
+                "migration_contract-b": "documented source state for migration_contract-b"
+              }
+            },
+            "sr.useq-fbe1b27d.c1.target_state": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "migration_contract-a": "documented target state for migration_contract-a",
+                "migration_contract-b": "documented target state for migration_contract-b"
+              }
+            },
+            "sr.useq-fbe1b27d.c1.dual_operation_period": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "migration_contract-a": "documented dual operation period for migration_contract-a",
+                "migration_contract-b": "documented dual operation period for migration_contract-b"
+              }
+            },
+            "sr.useq-fbe1b27d.c1.negotiation_rules": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "migration_contract-a": "documented negotiation rules for migration_contract-a",
+                "migration_contract-b": "documented negotiation rules for migration_contract-b"
+              }
+            },
+            "sr.useq-fbe1b27d.c1.data_conversion": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "migration_contract-a": "documented data conversion for migration_contract-a",
+                "migration_contract-b": "documented data conversion for migration_contract-b"
+              }
+            },
+            "sr.useq-fbe1b27d.c1.key_transition": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "migration_contract-a": "documented key transition for migration_contract-a",
+                "migration_contract-b": "documented key transition for migration_contract-b"
+              }
+            },
+            "sr.useq-fbe1b27d.c1.validation_evidence": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "migration_contract-a": "documented validation evidence for migration_contract-a",
+                "migration_contract-b": "documented validation evidence for migration_contract-b"
+              }
+            },
+            "sr.useq-fbe1b27d.c1.stop_conditions": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "migration_contract-a": "documented stop conditions for migration_contract-a",
+                "migration_contract-b": "documented stop conditions for migration_contract-b"
+              }
+            },
+            "sr.useq-fbe1b27d.c1.retirement_criteria": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "migration_contract-a": "documented retirement criteria for migration_contract-a",
+                "migration_contract-b": "documented retirement criteria for migration_contract-b"
+              }
+            }
+          },
+          "expected_outcome": "pass"
+        },
+        "fail": {
+          "description": "USEQ-FBE1B27D clause 1 fail: authenticated complete evidence omits source state for one sealed migration contract subject.",
+          "parameters": {
+            "sr.useq-fbe1b27d.c1.migration_contract_ids": {
+              "type": "string_set",
+              "strings": [
+                "migration_contract-a",
+                "migration_contract-b"
+              ]
+            }
+          },
+          "facts": {
+            "sr.useq-fbe1b27d.c1.source_state": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "migration_contract-a": "documented source state for migration_contract-a"
+              }
+            },
+            "sr.useq-fbe1b27d.c1.target_state": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "migration_contract-a": "documented target state for migration_contract-a",
+                "migration_contract-b": "documented target state for migration_contract-b"
+              }
+            },
+            "sr.useq-fbe1b27d.c1.dual_operation_period": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "migration_contract-a": "documented dual operation period for migration_contract-a",
+                "migration_contract-b": "documented dual operation period for migration_contract-b"
+              }
+            },
+            "sr.useq-fbe1b27d.c1.negotiation_rules": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "migration_contract-a": "documented negotiation rules for migration_contract-a",
+                "migration_contract-b": "documented negotiation rules for migration_contract-b"
+              }
+            },
+            "sr.useq-fbe1b27d.c1.data_conversion": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "migration_contract-a": "documented data conversion for migration_contract-a",
+                "migration_contract-b": "documented data conversion for migration_contract-b"
+              }
+            },
+            "sr.useq-fbe1b27d.c1.key_transition": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "migration_contract-a": "documented key transition for migration_contract-a",
+                "migration_contract-b": "documented key transition for migration_contract-b"
+              }
+            },
+            "sr.useq-fbe1b27d.c1.validation_evidence": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "migration_contract-a": "documented validation evidence for migration_contract-a",
+                "migration_contract-b": "documented validation evidence for migration_contract-b"
+              }
+            },
+            "sr.useq-fbe1b27d.c1.stop_conditions": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "migration_contract-a": "documented stop conditions for migration_contract-a",
+                "migration_contract-b": "documented stop conditions for migration_contract-b"
+              }
+            },
+            "sr.useq-fbe1b27d.c1.retirement_criteria": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "migration_contract-a": "documented retirement criteria for migration_contract-a",
+                "migration_contract-b": "documented retirement criteria for migration_contract-b"
+              }
+            }
+          },
+          "expected_outcome": "fail"
+        },
+        "blocked": {
+          "description": "USEQ-FBE1B27D clause 1 blocked: collection of source state is explicitly incomplete, so absence is not treated as a violation.",
+          "parameters": {
+            "sr.useq-fbe1b27d.c1.migration_contract_ids": {
+              "type": "string_set",
+              "strings": [
+                "migration_contract-a",
+                "migration_contract-b"
+              ]
+            }
+          },
+          "facts": {
+            "sr.useq-fbe1b27d.c1.source_state": {
+              "type": "string_map",
+              "complete": false,
+              "values": {
+                "migration_contract-a": "documented source state for migration_contract-a",
+                "migration_contract-b": "documented source state for migration_contract-b"
+              }
+            },
+            "sr.useq-fbe1b27d.c1.target_state": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "migration_contract-a": "documented target state for migration_contract-a",
+                "migration_contract-b": "documented target state for migration_contract-b"
+              }
+            },
+            "sr.useq-fbe1b27d.c1.dual_operation_period": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "migration_contract-a": "documented dual operation period for migration_contract-a",
+                "migration_contract-b": "documented dual operation period for migration_contract-b"
+              }
+            },
+            "sr.useq-fbe1b27d.c1.negotiation_rules": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "migration_contract-a": "documented negotiation rules for migration_contract-a",
+                "migration_contract-b": "documented negotiation rules for migration_contract-b"
+              }
+            },
+            "sr.useq-fbe1b27d.c1.data_conversion": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "migration_contract-a": "documented data conversion for migration_contract-a",
+                "migration_contract-b": "documented data conversion for migration_contract-b"
+              }
+            },
+            "sr.useq-fbe1b27d.c1.key_transition": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "migration_contract-a": "documented key transition for migration_contract-a",
+                "migration_contract-b": "documented key transition for migration_contract-b"
+              }
+            },
+            "sr.useq-fbe1b27d.c1.validation_evidence": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "migration_contract-a": "documented validation evidence for migration_contract-a",
+                "migration_contract-b": "documented validation evidence for migration_contract-b"
+              }
+            },
+            "sr.useq-fbe1b27d.c1.stop_conditions": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "migration_contract-a": "documented stop conditions for migration_contract-a",
+                "migration_contract-b": "documented stop conditions for migration_contract-b"
+              }
+            },
+            "sr.useq-fbe1b27d.c1.retirement_criteria": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "migration_contract-a": "documented retirement criteria for migration_contract-a",
+                "migration_contract-b": "documented retirement criteria for migration_contract-b"
+              }
+            }
+          },
+          "expected_outcome": "blocked"
+        },
+        "counterexample": {
+          "description": "USEQ-FBE1B27D clause 1 counterexample: a shallow presence checker could pass, but this fixture leaves the required source state empty and must fail.",
+          "parameters": {
+            "sr.useq-fbe1b27d.c1.migration_contract_ids": {
+              "type": "string_set",
+              "strings": [
+                "migration_contract-a",
+                "migration_contract-b"
+              ]
+            }
+          },
+          "facts": {
+            "sr.useq-fbe1b27d.c1.source_state": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "migration_contract-a": "documented source state for migration_contract-a",
+                "migration_contract-b": ""
+              }
+            },
+            "sr.useq-fbe1b27d.c1.target_state": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "migration_contract-a": "documented target state for migration_contract-a",
+                "migration_contract-b": "documented target state for migration_contract-b"
+              }
+            },
+            "sr.useq-fbe1b27d.c1.dual_operation_period": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "migration_contract-a": "documented dual operation period for migration_contract-a",
+                "migration_contract-b": "documented dual operation period for migration_contract-b"
+              }
+            },
+            "sr.useq-fbe1b27d.c1.negotiation_rules": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "migration_contract-a": "documented negotiation rules for migration_contract-a",
+                "migration_contract-b": "documented negotiation rules for migration_contract-b"
+              }
+            },
+            "sr.useq-fbe1b27d.c1.data_conversion": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "migration_contract-a": "documented data conversion for migration_contract-a",
+                "migration_contract-b": "documented data conversion for migration_contract-b"
+              }
+            },
+            "sr.useq-fbe1b27d.c1.key_transition": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "migration_contract-a": "documented key transition for migration_contract-a",
+                "migration_contract-b": "documented key transition for migration_contract-b"
+              }
+            },
+            "sr.useq-fbe1b27d.c1.validation_evidence": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "migration_contract-a": "documented validation evidence for migration_contract-a",
+                "migration_contract-b": "documented validation evidence for migration_contract-b"
+              }
+            },
+            "sr.useq-fbe1b27d.c1.stop_conditions": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "migration_contract-a": "documented stop conditions for migration_contract-a",
+                "migration_contract-b": "documented stop conditions for migration_contract-b"
+              }
+            },
+            "sr.useq-fbe1b27d.c1.retirement_criteria": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "migration_contract-a": "documented retirement criteria for migration_contract-a",
+                "migration_contract-b": "documented retirement criteria for migration_contract-b"
+              }
+            }
+          },
+          "expected_outcome": "fail"
+        }
+      },
+      "review_reason": "For USEQ-FBE1B27D clause 1, the scanner first fixes the complete migration contract identity set. A pinned lossless schema then reads these exact typed members: source state, target state, dual operation period, negotiation rules, data conversion, key transition, validation evidence, stop conditions, retirement criteria. The closed predicate requires exact key coverage and proves that each named field is present for every independently inventoried subject with its declared raw type.",
+      "counterexample_analysis": "An authenticated record could contain the other named content yet omit the migration stop conditions. The old generic category wrapper had no exact typed predicate for that omission and could report the record complete while the original promise remained false; the replacement explicitly requires this fact over the complete sealed inventory. In the executable negative case for USEQ-FBE1B27D clause 1, all unrelated fields stay valid while the input leaves the required source state empty; the predicate must return Fail."
+    },
+    {
+      "control_id": "USEQ-FD88BE68",
+      "control_revision": 1,
+      "control_semantic_sha256": "fd88be681f97fcb4b2cf5ddcf86b6ac70766975ad58daa9964fc49ac098ed997",
+      "clause_ordinal": 1,
+      "clause_id": "2457fe121a87620212914ac94ce238d25a0c1d2267f94fe37d43bacccea57d8c",
+      "clause_statement": "The authenticated versioned compatibility contract states whether consumers must tolerate additive changes and explicitly identifies which changes are breaking.",
+      "checker_family": "structured_record",
+      "required_authority": "structured_record",
+      "corrected_checker_family": "structured_record",
+      "corrected_required_authority": "structured_record",
+      "classification_status": "exact_predicate",
+      "classification_error_reason": null,
+      "raw_fact_contracts": [
+        {
+          "fact_id": "sr.useq-fd88be68.c1.additive_change_tolerance",
+          "fact_type": "string_map",
+          "authority": "structured_record",
+          "raw_value_semantics": "A canonical string_map keyed by the sealed compatibility contract identifiers; each value is the raw parsed additive change tolerance. It is read for the exact clause: The authenticated versioned compatibility contract states whether consumers must tolerate additive changes and explicitly identifies which changes are breaking.",
+          "source_requirement": "Use pinned lossless schema prc.structured-record.useq-fd88be68.c1@1 and read the concrete additive_change_tolerance member directly from every authenticated compatibility_contract record; reject aliases, inferred text matches, duplicate keys, and lossy coercion.",
+          "complete_required": true
+        },
+        {
+          "fact_id": "sr.useq-fd88be68.c1.breaking_change_definitions",
+          "fact_type": "string_map",
+          "authority": "structured_record",
+          "raw_value_semantics": "A canonical string_map keyed by the sealed compatibility contract identifiers; each value is the raw parsed breaking change definitions. It is read for the exact clause: The authenticated versioned compatibility contract states whether consumers must tolerate additive changes and explicitly identifies which changes are breaking.",
+          "source_requirement": "Use pinned lossless schema prc.structured-record.useq-fd88be68.c1@1 and read the concrete breaking_change_definitions member directly from every authenticated compatibility_contract record; reject aliases, inferred text matches, duplicate keys, and lossy coercion.",
+          "complete_required": true
+        }
+      ],
+      "sealed_parameter_contracts": [
+        {
+          "parameter_id": "sr.useq-fd88be68.c1.compatibility_contract_ids",
+          "parameter_type": "string_set",
+          "value_origin": "scanner_inventory",
+          "source_requirement": "The complete nonempty compatibility contract identifier inventory is sealed before record collection from the authenticated scope manifest for USEQ-FD88BE68 clause 1; the structured-record provider cannot add, remove, or rename an item."
+        }
+      ],
+      "predicate": {
+        "op": "all",
+        "args": [
+          {
+            "op": "map_keys_eq_set_parameter",
+            "fact": "sr.useq-fd88be68.c1.additive_change_tolerance",
+            "parameter": "sr.useq-fd88be68.c1.compatibility_contract_ids"
+          },
+          {
+            "op": "string_map_all_nonempty",
+            "fact": "sr.useq-fd88be68.c1.additive_change_tolerance"
+          },
+          {
+            "op": "map_keys_eq_set_parameter",
+            "fact": "sr.useq-fd88be68.c1.breaking_change_definitions",
+            "parameter": "sr.useq-fd88be68.c1.compatibility_contract_ids"
+          },
+          {
+            "op": "string_map_all_nonempty",
+            "fact": "sr.useq-fd88be68.c1.breaking_change_definitions"
+          }
+        ]
+      },
+      "required_runtime_ops": [
+        "all",
+        "map_keys_eq_set_parameter",
+        "string_map_all_nonempty"
+      ],
+      "collector_contract": {
+        "collector_id": "prc.collect.structured-record.useq-fd88be68.c1@1.0",
+        "required_sources": [
+          "Authenticated compatibility contract records named by the independently sealed scope manifest for USEQ-FD88BE68 clause 1."
+        ],
+        "inventory_contract": "Resolve the complete sealed compatibility contract identifier set before reading records; require every identifier exactly once and reject missing, duplicate, unpaged, or provider-added subjects.",
+        "normalization_contract": "Pinned lossless parser prc.structured-record.useq-fd88be68.c1@1 emits only these typed raw members: additive change tolerance, breaking change definitions. It rejects aliases, unknown duplicate keys, free-text keyword inference, and provider conclusions.",
+        "completeness_contract": "Mark evidence complete only after every sealed compatibility contract record and every named member (additive change tolerance, breaking change definitions) is read at the authenticated revision without conflict.",
+        "freshness_contract": "Bind observed time and immutable record revision for USEQ-FD88BE68 clause 1; stale, future, superseded, mutable, or conflicting records remain Blocked.",
+        "provider_status": "unregistered"
+      },
+      "fixtures": {
+        "pass": {
+          "description": "USEQ-FD88BE68 clause 1 pass: both sealed compatibility contract records contain the exact typed fields and relations named by the clause.",
+          "parameters": {
+            "sr.useq-fd88be68.c1.compatibility_contract_ids": {
+              "type": "string_set",
+              "strings": [
+                "compatibility_contract-a",
+                "compatibility_contract-b"
+              ]
+            }
+          },
+          "facts": {
+            "sr.useq-fd88be68.c1.additive_change_tolerance": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "compatibility_contract-a": "documented additive change tolerance for compatibility_contract-a",
+                "compatibility_contract-b": "documented additive change tolerance for compatibility_contract-b"
+              }
+            },
+            "sr.useq-fd88be68.c1.breaking_change_definitions": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "compatibility_contract-a": "documented breaking change definitions for compatibility_contract-a",
+                "compatibility_contract-b": "documented breaking change definitions for compatibility_contract-b"
+              }
+            }
+          },
+          "expected_outcome": "pass"
+        },
+        "fail": {
+          "description": "USEQ-FD88BE68 clause 1 fail: authenticated complete evidence omits additive change tolerance for one sealed compatibility contract subject.",
+          "parameters": {
+            "sr.useq-fd88be68.c1.compatibility_contract_ids": {
+              "type": "string_set",
+              "strings": [
+                "compatibility_contract-a",
+                "compatibility_contract-b"
+              ]
+            }
+          },
+          "facts": {
+            "sr.useq-fd88be68.c1.additive_change_tolerance": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "compatibility_contract-a": "documented additive change tolerance for compatibility_contract-a"
+              }
+            },
+            "sr.useq-fd88be68.c1.breaking_change_definitions": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "compatibility_contract-a": "documented breaking change definitions for compatibility_contract-a",
+                "compatibility_contract-b": "documented breaking change definitions for compatibility_contract-b"
+              }
+            }
+          },
+          "expected_outcome": "fail"
+        },
+        "blocked": {
+          "description": "USEQ-FD88BE68 clause 1 blocked: collection of additive change tolerance is explicitly incomplete, so absence is not treated as a violation.",
+          "parameters": {
+            "sr.useq-fd88be68.c1.compatibility_contract_ids": {
+              "type": "string_set",
+              "strings": [
+                "compatibility_contract-a",
+                "compatibility_contract-b"
+              ]
+            }
+          },
+          "facts": {
+            "sr.useq-fd88be68.c1.additive_change_tolerance": {
+              "type": "string_map",
+              "complete": false,
+              "values": {
+                "compatibility_contract-a": "documented additive change tolerance for compatibility_contract-a",
+                "compatibility_contract-b": "documented additive change tolerance for compatibility_contract-b"
+              }
+            },
+            "sr.useq-fd88be68.c1.breaking_change_definitions": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "compatibility_contract-a": "documented breaking change definitions for compatibility_contract-a",
+                "compatibility_contract-b": "documented breaking change definitions for compatibility_contract-b"
+              }
+            }
+          },
+          "expected_outcome": "blocked"
+        },
+        "counterexample": {
+          "description": "USEQ-FD88BE68 clause 1 counterexample: a shallow presence checker could pass, but this fixture leaves the required additive change tolerance empty and must fail.",
+          "parameters": {
+            "sr.useq-fd88be68.c1.compatibility_contract_ids": {
+              "type": "string_set",
+              "strings": [
+                "compatibility_contract-a",
+                "compatibility_contract-b"
+              ]
+            }
+          },
+          "facts": {
+            "sr.useq-fd88be68.c1.additive_change_tolerance": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "compatibility_contract-a": "documented additive change tolerance for compatibility_contract-a",
+                "compatibility_contract-b": ""
+              }
+            },
+            "sr.useq-fd88be68.c1.breaking_change_definitions": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "compatibility_contract-a": "documented breaking change definitions for compatibility_contract-a",
+                "compatibility_contract-b": "documented breaking change definitions for compatibility_contract-b"
+              }
+            }
+          },
+          "expected_outcome": "fail"
+        }
+      },
+      "review_reason": "For USEQ-FD88BE68 clause 1, the scanner first fixes the complete compatibility contract identity set. A pinned lossless schema then reads these exact typed members: additive change tolerance, breaking change definitions. The closed predicate requires exact key coverage and proves that each named field is present for every independently inventoried subject with its declared raw type.",
+      "counterexample_analysis": "An authenticated record could contain the other named content yet omit the explicit set of breaking changes. The old generic category wrapper had no exact typed predicate for that omission and could report the record complete while the original promise remained false; the replacement explicitly requires this fact over the complete sealed inventory. In the executable negative case for USEQ-FD88BE68 clause 1, all unrelated fields stay valid while the input leaves the required additive change tolerance empty; the predicate must return Fail."
+    },
+    {
+      "control_id": "USEQ-FF9FB4C0",
+      "control_revision": 1,
+      "control_semantic_sha256": "ff9fb4c030f8fde321160cfaf6b062a2a523c8e6da15b5005e27f1e4fdf46bff",
+      "clause_ordinal": 1,
+      "clause_id": "e20b8aa091be2d867d545b94fd0dc9bccf53826599036d3ec5768d541bd09533",
+      "clause_statement": "For every evidentiary timestamp in the complete sealed timestamp inventory, the authenticated record identifies its source, precision, and uncertainty.",
+      "checker_family": "structured_record",
+      "required_authority": "structured_record",
+      "corrected_checker_family": "structured_record",
+      "corrected_required_authority": "structured_record",
+      "classification_status": "exact_predicate",
+      "classification_error_reason": null,
+      "raw_fact_contracts": [
+        {
+          "fact_id": "sr.useq-ff9fb4c0.c1.timestamp_id",
+          "fact_type": "identity_map",
+          "authority": "structured_record",
+          "raw_value_semantics": "A canonical identity_map keyed by the sealed evidentiary timestamp identifiers; each value is the raw parsed timestamp id. It is read for the exact clause: For every evidentiary timestamp in the complete sealed timestamp inventory, the authenticated record identifies its source, precision, and uncertainty.",
+          "source_requirement": "Use pinned lossless schema prc.structured-record.useq-ff9fb4c0.c1@1 and read the concrete timestamp_id member directly from every authenticated evidentiary_timestamp record; reject aliases, inferred text matches, duplicate keys, and lossy coercion.",
+          "complete_required": true
+        },
+        {
+          "fact_id": "sr.useq-ff9fb4c0.c1.time_source",
+          "fact_type": "string_map",
+          "authority": "structured_record",
+          "raw_value_semantics": "A canonical string_map keyed by the sealed evidentiary timestamp identifiers; each value is the raw parsed time source. It is read for the exact clause: For every evidentiary timestamp in the complete sealed timestamp inventory, the authenticated record identifies its source, precision, and uncertainty.",
+          "source_requirement": "Use pinned lossless schema prc.structured-record.useq-ff9fb4c0.c1@1 and read the concrete time_source member directly from every authenticated evidentiary_timestamp record; reject aliases, inferred text matches, duplicate keys, and lossy coercion.",
+          "complete_required": true
+        },
+        {
+          "fact_id": "sr.useq-ff9fb4c0.c1.precision",
+          "fact_type": "string_map",
+          "authority": "structured_record",
+          "raw_value_semantics": "A canonical string_map keyed by the sealed evidentiary timestamp identifiers; each value is the raw parsed precision. It is read for the exact clause: For every evidentiary timestamp in the complete sealed timestamp inventory, the authenticated record identifies its source, precision, and uncertainty.",
+          "source_requirement": "Use pinned lossless schema prc.structured-record.useq-ff9fb4c0.c1@1 and read the concrete precision member directly from every authenticated evidentiary_timestamp record; reject aliases, inferred text matches, duplicate keys, and lossy coercion.",
+          "complete_required": true
+        },
+        {
+          "fact_id": "sr.useq-ff9fb4c0.c1.uncertainty",
+          "fact_type": "string_map",
+          "authority": "structured_record",
+          "raw_value_semantics": "A canonical string_map keyed by the sealed evidentiary timestamp identifiers; each value is the raw parsed uncertainty. It is read for the exact clause: For every evidentiary timestamp in the complete sealed timestamp inventory, the authenticated record identifies its source, precision, and uncertainty.",
+          "source_requirement": "Use pinned lossless schema prc.structured-record.useq-ff9fb4c0.c1@1 and read the concrete uncertainty member directly from every authenticated evidentiary_timestamp record; reject aliases, inferred text matches, duplicate keys, and lossy coercion.",
+          "complete_required": true
+        }
+      ],
+      "sealed_parameter_contracts": [
+        {
+          "parameter_id": "sr.useq-ff9fb4c0.c1.evidentiary_timestamp_ids",
+          "parameter_type": "string_set",
+          "value_origin": "scanner_inventory",
+          "source_requirement": "The complete nonempty evidentiary timestamp identifier inventory is sealed before record collection from the authenticated scope manifest for USEQ-FF9FB4C0 clause 1; the structured-record provider cannot add, remove, or rename an item."
+        },
+        {
+          "parameter_id": "sr.useq-ff9fb4c0.c1.expected_timestamp_id_by_subject",
+          "parameter_type": "identity_map",
+          "value_origin": "scanner_inventory",
+          "source_requirement": "This exact mapping is derived from the independently sealed evidentiary timestamp subject inventory for USEQ-FF9FB4C0 clause 1: every subject key maps to itself, so the record cannot claim another subject's timestamp id."
+        }
+      ],
+      "predicate": {
+        "op": "all",
+        "args": [
+          {
+            "op": "map_keys_eq_set_parameter",
+            "fact": "sr.useq-ff9fb4c0.c1.timestamp_id",
+            "parameter": "sr.useq-ff9fb4c0.c1.evidentiary_timestamp_ids"
+          },
+          {
+            "op": "map_keys_eq_set_parameter",
+            "fact": "sr.useq-ff9fb4c0.c1.time_source",
+            "parameter": "sr.useq-ff9fb4c0.c1.evidentiary_timestamp_ids"
+          },
+          {
+            "op": "string_map_all_nonempty",
+            "fact": "sr.useq-ff9fb4c0.c1.time_source"
+          },
+          {
+            "op": "map_keys_eq_set_parameter",
+            "fact": "sr.useq-ff9fb4c0.c1.precision",
+            "parameter": "sr.useq-ff9fb4c0.c1.evidentiary_timestamp_ids"
+          },
+          {
+            "op": "string_map_all_nonempty",
+            "fact": "sr.useq-ff9fb4c0.c1.precision"
+          },
+          {
+            "op": "map_keys_eq_set_parameter",
+            "fact": "sr.useq-ff9fb4c0.c1.uncertainty",
+            "parameter": "sr.useq-ff9fb4c0.c1.evidentiary_timestamp_ids"
+          },
+          {
+            "op": "string_map_all_nonempty",
+            "fact": "sr.useq-ff9fb4c0.c1.uncertainty"
+          },
+          {
+            "op": "identity_map_eq_parameter",
+            "fact": "sr.useq-ff9fb4c0.c1.timestamp_id",
+            "parameter": "sr.useq-ff9fb4c0.c1.expected_timestamp_id_by_subject"
+          }
+        ]
+      },
+      "required_runtime_ops": [
+        "all",
+        "identity_map_eq_parameter",
+        "map_keys_eq_set_parameter",
+        "string_map_all_nonempty"
+      ],
+      "collector_contract": {
+        "collector_id": "prc.collect.structured-record.useq-ff9fb4c0.c1@1.0",
+        "required_sources": [
+          "Authenticated evidentiary timestamp records named by the independently sealed scope manifest for USEQ-FF9FB4C0 clause 1."
+        ],
+        "inventory_contract": "Resolve the complete sealed evidentiary timestamp identifier set before reading records; require every identifier exactly once and reject missing, duplicate, unpaged, or provider-added subjects.",
+        "normalization_contract": "Pinned lossless parser prc.structured-record.useq-ff9fb4c0.c1@1 emits only these typed raw members: timestamp id, time source, precision, uncertainty. It rejects aliases, unknown duplicate keys, free-text keyword inference, and provider conclusions.",
+        "completeness_contract": "Mark evidence complete only after every sealed evidentiary timestamp record and every named member (timestamp id, time source, precision, uncertainty) is read at the authenticated revision without conflict.",
+        "freshness_contract": "Bind observed time and immutable record revision for USEQ-FF9FB4C0 clause 1; stale, future, superseded, mutable, or conflicting records remain Blocked.",
+        "provider_status": "unregistered"
+      },
+      "fixtures": {
+        "pass": {
+          "description": "USEQ-FF9FB4C0 clause 1 pass: both sealed evidentiary timestamp records contain the exact typed fields and relations named by the clause.",
+          "parameters": {
+            "sr.useq-ff9fb4c0.c1.evidentiary_timestamp_ids": {
+              "type": "string_set",
+              "strings": [
+                "evidentiary_timestamp-a",
+                "evidentiary_timestamp-b"
+              ]
+            },
+            "sr.useq-ff9fb4c0.c1.expected_timestamp_id_by_subject": {
+              "type": "identity_map",
+              "values": {
+                "evidentiary_timestamp-a": "evidentiary_timestamp-a",
+                "evidentiary_timestamp-b": "evidentiary_timestamp-b"
+              }
+            }
+          },
+          "facts": {
+            "sr.useq-ff9fb4c0.c1.timestamp_id": {
+              "type": "identity_map",
+              "complete": true,
+              "values": {
+                "evidentiary_timestamp-a": "evidentiary_timestamp-a",
+                "evidentiary_timestamp-b": "evidentiary_timestamp-b"
+              }
+            },
+            "sr.useq-ff9fb4c0.c1.time_source": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "evidentiary_timestamp-a": "documented time source for evidentiary_timestamp-a",
+                "evidentiary_timestamp-b": "documented time source for evidentiary_timestamp-b"
+              }
+            },
+            "sr.useq-ff9fb4c0.c1.precision": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "evidentiary_timestamp-a": "documented precision for evidentiary_timestamp-a",
+                "evidentiary_timestamp-b": "documented precision for evidentiary_timestamp-b"
+              }
+            },
+            "sr.useq-ff9fb4c0.c1.uncertainty": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "evidentiary_timestamp-a": "documented uncertainty for evidentiary_timestamp-a",
+                "evidentiary_timestamp-b": "documented uncertainty for evidentiary_timestamp-b"
+              }
+            }
+          },
+          "expected_outcome": "pass"
+        },
+        "fail": {
+          "description": "USEQ-FF9FB4C0 clause 1 fail: authenticated complete evidence omits timestamp id for one sealed evidentiary timestamp subject.",
+          "parameters": {
+            "sr.useq-ff9fb4c0.c1.evidentiary_timestamp_ids": {
+              "type": "string_set",
+              "strings": [
+                "evidentiary_timestamp-a",
+                "evidentiary_timestamp-b"
+              ]
+            },
+            "sr.useq-ff9fb4c0.c1.expected_timestamp_id_by_subject": {
+              "type": "identity_map",
+              "values": {
+                "evidentiary_timestamp-a": "evidentiary_timestamp-a",
+                "evidentiary_timestamp-b": "evidentiary_timestamp-b"
+              }
+            }
+          },
+          "facts": {
+            "sr.useq-ff9fb4c0.c1.timestamp_id": {
+              "type": "identity_map",
+              "complete": true,
+              "values": {
+                "evidentiary_timestamp-a": "evidentiary_timestamp-a"
+              }
+            },
+            "sr.useq-ff9fb4c0.c1.time_source": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "evidentiary_timestamp-a": "documented time source for evidentiary_timestamp-a",
+                "evidentiary_timestamp-b": "documented time source for evidentiary_timestamp-b"
+              }
+            },
+            "sr.useq-ff9fb4c0.c1.precision": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "evidentiary_timestamp-a": "documented precision for evidentiary_timestamp-a",
+                "evidentiary_timestamp-b": "documented precision for evidentiary_timestamp-b"
+              }
+            },
+            "sr.useq-ff9fb4c0.c1.uncertainty": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "evidentiary_timestamp-a": "documented uncertainty for evidentiary_timestamp-a",
+                "evidentiary_timestamp-b": "documented uncertainty for evidentiary_timestamp-b"
+              }
+            }
+          },
+          "expected_outcome": "fail"
+        },
+        "blocked": {
+          "description": "USEQ-FF9FB4C0 clause 1 blocked: collection of timestamp id is explicitly incomplete, so absence is not treated as a violation.",
+          "parameters": {
+            "sr.useq-ff9fb4c0.c1.evidentiary_timestamp_ids": {
+              "type": "string_set",
+              "strings": [
+                "evidentiary_timestamp-a",
+                "evidentiary_timestamp-b"
+              ]
+            },
+            "sr.useq-ff9fb4c0.c1.expected_timestamp_id_by_subject": {
+              "type": "identity_map",
+              "values": {
+                "evidentiary_timestamp-a": "evidentiary_timestamp-a",
+                "evidentiary_timestamp-b": "evidentiary_timestamp-b"
+              }
+            }
+          },
+          "facts": {
+            "sr.useq-ff9fb4c0.c1.timestamp_id": {
+              "type": "identity_map",
+              "complete": false,
+              "values": {
+                "evidentiary_timestamp-a": "evidentiary_timestamp-a",
+                "evidentiary_timestamp-b": "evidentiary_timestamp-b"
+              }
+            },
+            "sr.useq-ff9fb4c0.c1.time_source": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "evidentiary_timestamp-a": "documented time source for evidentiary_timestamp-a",
+                "evidentiary_timestamp-b": "documented time source for evidentiary_timestamp-b"
+              }
+            },
+            "sr.useq-ff9fb4c0.c1.precision": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "evidentiary_timestamp-a": "documented precision for evidentiary_timestamp-a",
+                "evidentiary_timestamp-b": "documented precision for evidentiary_timestamp-b"
+              }
+            },
+            "sr.useq-ff9fb4c0.c1.uncertainty": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "evidentiary_timestamp-a": "documented uncertainty for evidentiary_timestamp-a",
+                "evidentiary_timestamp-b": "documented uncertainty for evidentiary_timestamp-b"
+              }
+            }
+          },
+          "expected_outcome": "blocked"
+        },
+        "counterexample": {
+          "description": "USEQ-FF9FB4C0 clause 1 counterexample: a shallow presence checker could pass, but this fixture binds timestamp id to a different subject than the sealed map key and must fail.",
+          "parameters": {
+            "sr.useq-ff9fb4c0.c1.evidentiary_timestamp_ids": {
+              "type": "string_set",
+              "strings": [
+                "evidentiary_timestamp-a",
+                "evidentiary_timestamp-b"
+              ]
+            },
+            "sr.useq-ff9fb4c0.c1.expected_timestamp_id_by_subject": {
+              "type": "identity_map",
+              "values": {
+                "evidentiary_timestamp-a": "evidentiary_timestamp-a",
+                "evidentiary_timestamp-b": "evidentiary_timestamp-b"
+              }
+            }
+          },
+          "facts": {
+            "sr.useq-ff9fb4c0.c1.timestamp_id": {
+              "type": "identity_map",
+              "complete": true,
+              "values": {
+                "evidentiary_timestamp-a": "evidentiary_timestamp-a",
+                "evidentiary_timestamp-b": "different-sealed-subject"
+              }
+            },
+            "sr.useq-ff9fb4c0.c1.time_source": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "evidentiary_timestamp-a": "documented time source for evidentiary_timestamp-a",
+                "evidentiary_timestamp-b": "documented time source for evidentiary_timestamp-b"
+              }
+            },
+            "sr.useq-ff9fb4c0.c1.precision": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "evidentiary_timestamp-a": "documented precision for evidentiary_timestamp-a",
+                "evidentiary_timestamp-b": "documented precision for evidentiary_timestamp-b"
+              }
+            },
+            "sr.useq-ff9fb4c0.c1.uncertainty": {
+              "type": "string_map",
+              "complete": true,
+              "values": {
+                "evidentiary_timestamp-a": "documented uncertainty for evidentiary_timestamp-a",
+                "evidentiary_timestamp-b": "documented uncertainty for evidentiary_timestamp-b"
+              }
+            }
+          },
+          "expected_outcome": "fail"
+        }
+      },
+      "review_reason": "For USEQ-FF9FB4C0 clause 1, the scanner first fixes the complete evidentiary timestamp identity set. A pinned lossless schema then reads these exact typed members: timestamp id, time source, precision, uncertainty. The closed predicate requires exact key coverage and proves that timestamp id equals its sealed subject key.",
+      "counterexample_analysis": "An authenticated record could contain the other named content yet omit the uncertainty of one evidentiary timestamp. The old generic category wrapper had no exact typed predicate for that omission and could report the record complete while the original promise remained false; the replacement explicitly requires this fact over the complete sealed inventory. In the executable negative case for USEQ-FF9FB4C0 clause 1, all unrelated fields stay valid while the input binds timestamp id to a different subject than the sealed map key; the predicate must return Fail."
+    }
+  ]
+}

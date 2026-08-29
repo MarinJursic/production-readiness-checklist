@@ -1,0 +1,2595 @@
+{
+  "schema_version": "prc.control-classification-packet/v0.1",
+  "packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "source_path": "docs/checklists/04-environments-quality-experience.md",
+  "control_count": 181,
+  "controls": [
+    {
+      "control_id": "PRC-10-001",
+      "revision": 1,
+      "semantic_sha256": "2774dbeeba1193f8b448b4dc468489d3d930424f05e793468e111f99b1c4ef8a",
+      "statement": "Development, testing, staging, and production are meaningfully separated.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 11
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.1 Environment separation"
+      ]
+    },
+    {
+      "control_id": "PRC-10-002",
+      "revision": 1,
+      "semantic_sha256": "856ccb73a7cf99893803fca6e8d464e2e7dca6097f39f551679197438f1d3df8",
+      "statement": "Production credentials do not work in non-production environments.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 12
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.1 Environment separation"
+      ]
+    },
+    {
+      "control_id": "PRC-10-003",
+      "revision": 1,
+      "semantic_sha256": "8bfbe1c72d3a9f36b92383676fda4b08b7871a2120c7a2f43b454d15d0a7ad9b",
+      "statement": "Non-production users cannot reach production control planes.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 13
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.1 Environment separation"
+      ]
+    },
+    {
+      "control_id": "PRC-10-004",
+      "revision": 1,
+      "semantic_sha256": "53084da10b60071d6c8eda124af39f88e02681f5af3e9a2f744747dbaeeb606e",
+      "statement": "Staging is sufficiently production-like to validate topology, integrations, migrations, and deployment behavior.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 14
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.1 Environment separation"
+      ]
+    },
+    {
+      "control_id": "PRC-10-005",
+      "revision": 1,
+      "semantic_sha256": "440e8dd8c708c3365911cf85758ff575c0becc62fbbfb395ecf8a3a90f844763",
+      "statement": "Production data is not copied to non-production without authorization and protection.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 15
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.1 Environment separation"
+      ]
+    },
+    {
+      "control_id": "PRC-10-006",
+      "revision": 1,
+      "semantic_sha256": "121857defed99b236194ea1c449bd4b9c6b147751cfe1727ac9ec7354d3a5e42",
+      "statement": "Test accounts, bypasses, simulators, and debug endpoints are absent or inaccessible in production.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 16
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.1 Environment separation"
+      ]
+    },
+    {
+      "control_id": "PRC-10-007",
+      "revision": 1,
+      "semantic_sha256": "64f19b9f2f577ae505dde43acaa32300058a0b530ebf7f3dc3cba9d1720e11e8",
+      "statement": "Non-production email, payment, notifications, and webhooks cannot accidentally contact real users.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 17
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.1 Environment separation"
+      ]
+    },
+    {
+      "control_id": "PRC-10-008",
+      "revision": 1,
+      "semantic_sha256": "a248d40d12235924bc671850682e4d4597891d50c68013110c0814ffbea90998",
+      "statement": "Environment boundaries are documented and tested.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 18
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.1 Environment separation"
+      ]
+    },
+    {
+      "control_id": "PRC-10-009",
+      "revision": 1,
+      "semantic_sha256": "c068c200af6f565d36d9731fa5e940d712f45e132dfd9201f7dd502a1e410523",
+      "statement": "Production access is logged and periodically reviewed.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 19
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.1 Environment separation"
+      ]
+    },
+    {
+      "control_id": "PRC-10-010",
+      "revision": 1,
+      "semantic_sha256": "88c12c23054b0d6c7dfe013fc033ea5bfb10fd1d207711e46a505a61b5cbc7ab",
+      "statement": "Configuration is version-controlled or otherwise auditable.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 23
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.2 Configuration"
+      ]
+    },
+    {
+      "control_id": "PRC-10-011",
+      "revision": 1,
+      "semantic_sha256": "8aca668b583977d2d8a72d465ebc07685a70c72d8ee723690bc56323f0b06d12",
+      "statement": "Configuration changes require review and approval.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 24
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.2 Configuration"
+      ]
+    },
+    {
+      "control_id": "PRC-10-012",
+      "revision": 1,
+      "semantic_sha256": "7479777fa3092494c85113666145e1f21e14fbb779a3da5b38c5071c52f2af6c",
+      "statement": "Configuration has schema and type validation.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 25
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.2 Configuration"
+      ]
+    },
+    {
+      "control_id": "PRC-10-013",
+      "revision": 1,
+      "semantic_sha256": "082cd25cc88fc7d2f1af5e254a96ccb26b3296a2f36ca3bdb80eb9f3c8da03da",
+      "statement": "Missing configuration fails safely rather than activating insecure defaults.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 26
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.2 Configuration"
+      ]
+    },
+    {
+      "control_id": "PRC-10-014",
+      "revision": 1,
+      "semantic_sha256": "cfb3e3c2561e30ee2ae82f75380fd3337949621da009db473d42a340e563f2b0",
+      "statement": "Secure defaults are used.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 27
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.2 Configuration"
+      ]
+    },
+    {
+      "control_id": "PRC-10-015",
+      "revision": 1,
+      "semantic_sha256": "02df9cd6d9d0a6303881c50cce435b0c0e6ad4cbc3653c63d20b52703f1dc755",
+      "statement": "Environment-specific values are explicit.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 28
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.2 Configuration"
+      ]
+    },
+    {
+      "control_id": "PRC-10-016",
+      "revision": 1,
+      "semantic_sha256": "c1f8baf6e36c152cf4d6ecf91381058f7875e0e072807a904339d6eaacd6790a",
+      "statement": "Configuration drift is detected.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 29
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.2 Configuration"
+      ]
+    },
+    {
+      "control_id": "PRC-10-017",
+      "revision": 1,
+      "semantic_sha256": "b1f484b10bb4cb979f7d61cafd759f2e98f3a88074466ad4375fb712c103a086",
+      "statement": "Production configuration can be reconstructed.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 30
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.2 Configuration"
+      ]
+    },
+    {
+      "control_id": "PRC-10-018",
+      "revision": 1,
+      "semantic_sha256": "c9f49045898dda4e9278d5aa187d3c8fbc524c39d8415a4a2437493a0068bdce",
+      "statement": "Configuration rollback is tested.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 31
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.2 Configuration"
+      ]
+    },
+    {
+      "control_id": "PRC-10-019",
+      "revision": 1,
+      "semantic_sha256": "558281b1f64100469d113f8b9657365223bb31d0d923ce0031c4f4aef35e535f",
+      "statement": "Debug mode, verbose exception output, profiling, test routes, and development consoles are disabled.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 32
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.2 Configuration"
+      ]
+    },
+    {
+      "control_id": "PRC-10-020",
+      "revision": 1,
+      "semantic_sha256": "6e208a44103149c53df3ef557b5dfc2d3bc494e0cf3c8b61c456514b86cfa47c",
+      "statement": "Time zones, locales, character encodings, and units are explicit.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 33
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.2 Configuration"
+      ]
+    },
+    {
+      "control_id": "PRC-10-021",
+      "revision": 1,
+      "semantic_sha256": "3d9b0a42ffaeb2209e7a98a5c9a26c008010312787880904bccf66d08cf0a7bd",
+      "statement": "Time synchronization is monitored.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 34
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.2 Configuration"
+      ]
+    },
+    {
+      "control_id": "PRC-10-022",
+      "revision": 1,
+      "semantic_sha256": "c0b6c6053e83e5aba330f709752a27c203fd74d9ee1524f8245a9a721a9117bc",
+      "statement": "Resource limits and timeouts are explicitly configured.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 35
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.2 Configuration"
+      ]
+    },
+    {
+      "control_id": "PRC-10-023",
+      "revision": 1,
+      "semantic_sha256": "8dca0f7de9c799f6ae4d57f7420d4bcb6a084b095a5d0a43faabef97a9c22444",
+      "statement": "Production source maps and diagnostic artifacts do not expose secrets or inappropriate internal information.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 36
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.2 Configuration"
+      ]
+    },
+    {
+      "control_id": "PRC-10-024",
+      "revision": 1,
+      "semantic_sha256": "376207272c9a18fc370eebacb8743b124e5eb7afb6390dd6b9fa7d2bb5e83920",
+      "statement": "Configuration ownership and expiration dates are recorded.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 37
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.2 Configuration"
+      ]
+    },
+    {
+      "control_id": "PRC-10-025",
+      "revision": 1,
+      "semantic_sha256": "d02116b2612db18f52abd3dc520d25f96c01f0d8301a4d4ce4c75a9403f7f916",
+      "statement": "Emergency configuration changes are captured and reviewed.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 38
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.2 Configuration"
+      ]
+    },
+    {
+      "control_id": "PRC-10-026",
+      "revision": 1,
+      "semantic_sha256": "09e99487ad177869fdb34f6ec5d2c138830f588f68d476168dc42a565eee3441",
+      "statement": "Every flag has an owner.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 42
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.3 Feature flags"
+      ]
+    },
+    {
+      "control_id": "PRC-10-027",
+      "revision": 1,
+      "semantic_sha256": "be6e342e9c71281667ef39ac2fd2a32eae888c2ef25ffac718189fc5b0892f99",
+      "statement": "Every flag has a documented purpose.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 43
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.3 Feature flags"
+      ]
+    },
+    {
+      "control_id": "PRC-10-028",
+      "revision": 1,
+      "semantic_sha256": "7648d57e00170fe7e1b88cddca2ed40d41d4c12880f82cc7d8046ba676a0a46d",
+      "statement": "Default behavior is safe when the flag service fails.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 44
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.3 Feature flags"
+      ]
+    },
+    {
+      "control_id": "PRC-10-029",
+      "revision": 1,
+      "semantic_sha256": "af9c1e5e7ec8c87d3072a2939b13828a1b935191fd15dd885f5ce50762d7fca1",
+      "statement": "Flag state is included in release and incident records.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 45
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.3 Feature flags"
+      ]
+    },
+    {
+      "control_id": "PRC-10-030",
+      "revision": 1,
+      "semantic_sha256": "232a8a3640327cd5d9ae153aa012b4b7a0c9d4aba35306cc0eddcae2e4415c38",
+      "statement": "Access to change high-impact flags is restricted and audited.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 46
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.3 Feature flags"
+      ]
+    },
+    {
+      "control_id": "PRC-10-031",
+      "revision": 1,
+      "semantic_sha256": "10abf2ec1cdc9f94fc742c5ca4df12663cb88f4ae00ea7a01ab4eaa135a083b8",
+      "statement": "Flag combinations are tested.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 47
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.3 Feature flags"
+      ]
+    },
+    {
+      "control_id": "PRC-10-032",
+      "revision": 1,
+      "semantic_sha256": "5b109823d328af16b55fff8a291b5b7a20c7909e42994ad5d539f15d5ec7eb73",
+      "statement": "A kill switch exists for high-risk new functionality where appropriate.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 48
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.3 Feature flags"
+      ]
+    },
+    {
+      "control_id": "PRC-10-033",
+      "revision": 1,
+      "semantic_sha256": "e7e570a7241be14bca1738381136bde458725f6170f21fd82bf1ed24a427b34c",
+      "statement": "Flag changes can be rolled back quickly.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 49
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.3 Feature flags"
+      ]
+    },
+    {
+      "control_id": "PRC-10-034",
+      "revision": 1,
+      "semantic_sha256": "1179805e850866edce2bc12e79de8e151f33ae75e9805e1dffb064af6c1f538f",
+      "statement": "Temporary flags have removal dates.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 50
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.3 Feature flags"
+      ]
+    },
+    {
+      "control_id": "PRC-10-035",
+      "revision": 1,
+      "semantic_sha256": "0eabc27c50ee731b94d4c24a87de882c4fdd1f84a186ee6f5f358643fe54c614",
+      "statement": "Stale flags and dead code are removed.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 51
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.3 Feature flags"
+      ]
+    },
+    {
+      "control_id": "PRC-10-036",
+      "revision": 1,
+      "semantic_sha256": "93671be0b8735fe176aef491a6bae0ffd70cc5cfde5d705c7963229065c93862",
+      "statement": "Secrets are stored in an approved secret-management system.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 55
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.4 Secrets"
+      ]
+    },
+    {
+      "control_id": "PRC-10-037",
+      "revision": 1,
+      "semantic_sha256": "46f0c75887f2a0bf21ad903e3488e2e8d6c3c28dae3a2fcbb7510b388822bb6f",
+      "statement": "No secrets exist in source, images, frontend bundles, logs, tickets, documentation, chat history, or analytics.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 56
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.4 Secrets"
+      ]
+    },
+    {
+      "control_id": "PRC-10-038",
+      "revision": 1,
+      "semantic_sha256": "7eaf037769aa9b47ef542c1ca0c085933adbaa65ba34c69fbcf48911ceee4009",
+      "statement": "Secrets are unique across environments.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 57
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.4 Secrets"
+      ]
+    },
+    {
+      "control_id": "PRC-10-039",
+      "revision": 1,
+      "semantic_sha256": "24e5ed4b189c55a4dbc6f188b4d8013128ce627d53a4619bf2520411457c8d52",
+      "statement": "Each workload uses its own scoped identity or credential.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 58
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.4 Secrets"
+      ]
+    },
+    {
+      "control_id": "PRC-10-040",
+      "revision": 1,
+      "semantic_sha256": "46de0066a7fc1df81b52d45abf1e3698c5b07249b1bbc280c232b6b606cdb726",
+      "statement": "Credentials follow least privilege.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 59
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.4 Secrets"
+      ]
+    },
+    {
+      "control_id": "PRC-10-041",
+      "revision": 1,
+      "semantic_sha256": "0faf4ac9295e513faa3f218657346e50fb52ab7a9679304a4b875b45ea00777c",
+      "statement": "Short-lived credentials are preferred where supported.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 60
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.4 Secrets"
+      ]
+    },
+    {
+      "control_id": "PRC-10-042",
+      "revision": 1,
+      "semantic_sha256": "b1e9bec7200dfbd0fa7943b0b2a3441db057809825418fc6b0b906ac6f94254d",
+      "statement": "Secret retrieval and use are audited.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 61
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.4 Secrets"
+      ]
+    },
+    {
+      "control_id": "PRC-10-043",
+      "revision": 1,
+      "semantic_sha256": "2829746df8d6225ff83c0367cd4e47a29bbb8b08c179122d028e2bd7bd852882",
+      "statement": "Secret rotation has been tested.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 62
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.4 Secrets"
+      ]
+    },
+    {
+      "control_id": "PRC-10-044",
+      "revision": 1,
+      "semantic_sha256": "acf91cff73293135034a0a8140fa93dae6f99776057590bd2aa116b69032f789",
+      "statement": "Emergency revocation has been tested.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 63
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.4 Secrets"
+      ]
+    },
+    {
+      "control_id": "PRC-10-045",
+      "revision": 1,
+      "semantic_sha256": "c172e10c825b0abe4c897db0fed6d26cf32bb2bfcd9dcb1d9db049b85209f2c0",
+      "statement": "Credential expiry and rotation failures are monitored.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 64
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.4 Secrets"
+      ]
+    },
+    {
+      "control_id": "PRC-10-046",
+      "revision": 1,
+      "semantic_sha256": "c470b2e70c98eba087ece9884f15bef074c0a169e1bf67769a9af1fe6bd6a0e8",
+      "statement": "Old credentials are invalidated after rotation.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 65
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.4 Secrets"
+      ]
+    },
+    {
+      "control_id": "PRC-10-047",
+      "revision": 1,
+      "semantic_sha256": "5c43ea7f8769c6c68b3b3590361819a42fc010fdc13051e0836b44f4eb3b78c2",
+      "statement": "Backup and recovery procedures preserve or reconstruct necessary secrets securely.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 66
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.4 Secrets"
+      ]
+    },
+    {
+      "control_id": "PRC-10-048",
+      "revision": 1,
+      "semantic_sha256": "8c6e6096d65d7970798b482766c4ada36998cb947a36a4b5f7b990ed014eac27",
+      "statement": "Break-glass credentials are protected, monitored, and periodically tested.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 67
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.4 Secrets"
+      ]
+    },
+    {
+      "control_id": "PRC-10-049",
+      "revision": 1,
+      "semantic_sha256": "ee1c9f023a113f18333e76baab20d15e681f9ae56bace63be5d8a373f3894460",
+      "statement": "No default or vendor-supplied credentials remain.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 68
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.4 Secrets"
+      ]
+    },
+    {
+      "control_id": "PRC-10-050",
+      "revision": 1,
+      "semantic_sha256": "529c55b86dde52addb3bdf4695d61038bc611dc1f180a47ed27d88befd970449",
+      "statement": "Suspected historical secret exposure has been addressed by rotation, not merely deletion from source.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 69
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "10. Environments, configuration, and secrets",
+        "10.4 Secrets"
+      ]
+    },
+    {
+      "control_id": "PRC-11-001",
+      "revision": 1,
+      "semantic_sha256": "3f7727e84a5e83a20dff7c78fd32fa31b82aca13c4368a2bd8fbbe2d7e6b02f1",
+      "statement": "Every requirement maps to at least one verification activity.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 75
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "11. Functional correctness and business logic"
+      ]
+    },
+    {
+      "control_id": "PRC-11-002",
+      "revision": 1,
+      "semantic_sha256": "c7a0536eaec89e3af52fbeea075da84fc78ac564f0142912f332d3ddf6709285",
+      "statement": "Every critical user journey passes end to end.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 76
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "11. Functional correctness and business logic"
+      ]
+    },
+    {
+      "control_id": "PRC-11-003",
+      "revision": 1,
+      "semantic_sha256": "77434391972d84eb32a10c2f0fc37c80a11bf2ea2fc85c7610f592d2a633825d",
+      "statement": "Positive, negative, boundary, and invalid-input cases pass.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 77
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "11. Functional correctness and business logic"
+      ]
+    },
+    {
+      "control_id": "PRC-11-004",
+      "revision": 1,
+      "semantic_sha256": "d6f6218a1a7401676bda5a56459d099c7e53adddffdc58ff354c0cce1c122d68",
+      "statement": "Empty-state behavior is correct.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 78
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "11. Functional correctness and business logic"
+      ]
+    },
+    {
+      "control_id": "PRC-11-005",
+      "revision": 1,
+      "semantic_sha256": "434ba3f8836d79da41fd45545ac2f37d36d064f874a5b256f75d8b3d06ae63d7",
+      "statement": "Maximum-size and high-volume behavior is correct.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 79
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "11. Functional correctness and business logic"
+      ]
+    },
+    {
+      "control_id": "PRC-11-006",
+      "revision": 1,
+      "semantic_sha256": "72c1b396314417ad968bbc52cbefe81f1e28aa0fd0324fe8e7cdd0a48ded72c5",
+      "statement": "Duplicate submissions do not create unintended duplicate effects.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 80
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "11. Functional correctness and business logic"
+      ]
+    },
+    {
+      "control_id": "PRC-11-007",
+      "revision": 1,
+      "semantic_sha256": "16a7a021d6d4c10c8de68035f5ec6d23dce0de96e4fc943814131bdd98bd2282",
+      "statement": "Refresh, retry, browser navigation, and network interruption do not corrupt state.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 81
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "11. Functional correctness and business logic"
+      ]
+    },
+    {
+      "control_id": "PRC-11-008",
+      "revision": 1,
+      "semantic_sha256": "6865f776d3b6933e4206a45de26b16f4bb19c0f899f352d95a1708bb91edf4f0",
+      "statement": "Concurrent requests do not violate business invariants.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 82
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "11. Functional correctness and business logic"
+      ]
+    },
+    {
+      "control_id": "PRC-11-009",
+      "revision": 1,
+      "semantic_sha256": "52f655efc93a0c233a9564bb59eab2412ff1d2037d8b6dc10dfcedf947cf1e38",
+      "statement": "Race conditions have been tested around balances, inventory, permissions, limits, and state transitions.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 83
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "11. Functional correctness and business logic"
+      ]
+    },
+    {
+      "control_id": "PRC-11-010",
+      "revision": 1,
+      "semantic_sha256": "f2da0c8c906c912a4f5c5818f3e750c0cfd91a6e3f70795687daa1f5e206ca0d",
+      "statement": "State transitions reject invalid orderings.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 84
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "11. Functional correctness and business logic"
+      ]
+    },
+    {
+      "control_id": "PRC-11-011",
+      "revision": 1,
+      "semantic_sha256": "4915c28bd4066c617528ab1a3b089ee3a5be88a3390ab72651c9b6bfc22f15e7",
+      "statement": "Operations that must be idempotent are demonstrably idempotent.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 85
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "11. Functional correctness and business logic"
+      ]
+    },
+    {
+      "control_id": "PRC-11-012",
+      "revision": 1,
+      "semantic_sha256": "57eef779f2eb0b7ba124d8fd36309233d88b774dc746744a2499148c0131dacc",
+      "statement": "Partial failures cannot leave an ambiguous or silently inconsistent result.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 86
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "11. Functional correctness and business logic"
+      ]
+    },
+    {
+      "control_id": "PRC-11-013",
+      "revision": 1,
+      "semantic_sha256": "a8e01e85d003ca6c20495b42ef8bc074bd882bb5c2ca2cf9be5f475ccf9339af",
+      "statement": "Transactions are atomic where required.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 87
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "11. Functional correctness and business logic"
+      ]
+    },
+    {
+      "control_id": "PRC-11-014",
+      "revision": 1,
+      "semantic_sha256": "f7a7a215185fcb666ffb68f0c9e478cea154eaa80a812c2cd93bf92978f923da",
+      "statement": "Eventually consistent operations expose correct pending and completion states.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 88
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "11. Functional correctness and business logic"
+      ]
+    },
+    {
+      "control_id": "PRC-11-015",
+      "revision": 1,
+      "semantic_sha256": "d3445257884a37599bb69266536bad78ed728e14cf163b5009c922cc22fa40b2",
+      "statement": "Reconciliation detects missing, duplicated, or mismatched records.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 89
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "11. Functional correctness and business logic"
+      ]
+    },
+    {
+      "control_id": "PRC-11-016",
+      "revision": 1,
+      "semantic_sha256": "698ee40e1fbb354ece9101a412af9e1591c79280a75f9e31044008ab6ce964a3",
+      "statement": "Numeric precision and rounding are correct.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 90
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "11. Functional correctness and business logic"
+      ]
+    },
+    {
+      "control_id": "PRC-11-017",
+      "revision": 1,
+      "semantic_sha256": "72bdcfdb543a72244cad0994f8d08ab2432e931790b6e3c549332de64d97d5b3",
+      "statement": "Money calculations use correct decimal, currency, tax, and rounding rules.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 91
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "11. Functional correctness and business logic"
+      ]
+    },
+    {
+      "control_id": "PRC-11-018",
+      "revision": 1,
+      "semantic_sha256": "096886a658480fd32aa592a2616d7ddcbd2291d7f86c8be777bfdc79bd180168",
+      "statement": "Time calculations handle time zones, daylight-saving changes, leap years, month boundaries, and clock differences.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 92
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "11. Functional correctness and business logic"
+      ]
+    },
+    {
+      "control_id": "PRC-11-019",
+      "revision": 1,
+      "semantic_sha256": "7bbbdf893128c653c8ed3fe18778c7fa55776492ba9cf8ea348d511d01911997",
+      "statement": "Unicode, normalization, collation, and case behavior do not create duplicates or bypasses.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 93
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "11. Functional correctness and business logic"
+      ]
+    },
+    {
+      "control_id": "PRC-11-020",
+      "revision": 1,
+      "semantic_sha256": "8d5eb455f927c7d179426cb743dd3b17a51e7926b2fd340a9d3399a98bf3335f",
+      "statement": "Limits and quotas are enforced server-side.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 94
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "11. Functional correctness and business logic"
+      ]
+    },
+    {
+      "control_id": "PRC-11-021",
+      "revision": 1,
+      "semantic_sha256": "3eab9aef486b28a9ee26b7d6dcfdc0fef8d2cb10009255c688943a9d509cd513",
+      "statement": "Approval and four-eyes workflows cannot be bypassed.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 95
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "11. Functional correctness and business logic"
+      ]
+    },
+    {
+      "control_id": "PRC-11-022",
+      "revision": 1,
+      "semantic_sha256": "b7c0227ca55b2028d980a20cb23b6851dbe334529d99fc8f85e6f8672716163d",
+      "statement": "Cancellation, refund, reversal, deletion, and undo operations are complete.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 96
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "11. Functional correctness and business logic"
+      ]
+    },
+    {
+      "control_id": "PRC-11-023",
+      "revision": 1,
+      "semantic_sha256": "8690bddd07e30867492e54bf564ea2b04b82a60c91c4db887902a4d703edaf61",
+      "statement": "Account suspension and termination affect every relevant session, token, worker, and integration.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 97
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "11. Functional correctness and business logic"
+      ]
+    },
+    {
+      "control_id": "PRC-11-024",
+      "revision": 1,
+      "semantic_sha256": "812b8e1b1da00d1654f9e51244aaef703a3a595f6fc9094b3b3d0644a330c773",
+      "statement": "Import and export behavior is complete and validated.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 98
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "11. Functional correctness and business logic"
+      ]
+    },
+    {
+      "control_id": "PRC-11-025",
+      "revision": 1,
+      "semantic_sha256": "7125e9d93b3cc93c2400a15a8ac9d2f7bb9e2ad4f43610a0c622bfbae733153f",
+      "statement": "Long-running operations can resume safely or fail clearly.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 99
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "11. Functional correctness and business logic"
+      ]
+    },
+    {
+      "control_id": "PRC-11-026",
+      "revision": 1,
+      "semantic_sha256": "81f986d88a7cfa13330e551e38f24a05438fac23b59abfebb734e33e5bbb60a1",
+      "statement": "Scheduled jobs handle missed runs, overlapping runs, retries, and duplicate execution.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 100
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "11. Functional correctness and business logic"
+      ]
+    },
+    {
+      "control_id": "PRC-11-027",
+      "revision": 1,
+      "semantic_sha256": "5c90624fbafa87ba8effc7d1eb69f555c945b5e43d0aa0fa3f02708efe345179",
+      "statement": "Background jobs preserve user, authorization, and tenant context.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 101
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "11. Functional correctness and business logic"
+      ]
+    },
+    {
+      "control_id": "PRC-11-028",
+      "revision": 1,
+      "semantic_sha256": "ab8fb56e39bfd317dbf322e38f7f4a9bf1c39c93d766a1791512456585ad0500",
+      "statement": "Dead-lettered operations can be inspected and replayed safely.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 102
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "11. Functional correctness and business logic"
+      ]
+    },
+    {
+      "control_id": "PRC-11-029",
+      "revision": 1,
+      "semantic_sha256": "c0ae4616280e9eebcb59551ce2b11a9ad2d22e1e59646b4f574846a94a6844e2",
+      "statement": "Administrative actions produce the intended effect and audit trail.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 103
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "11. Functional correctness and business logic"
+      ]
+    },
+    {
+      "control_id": "PRC-11-030",
+      "revision": 1,
+      "semantic_sha256": "235d9c1594400676026d4842d40b283cc0e9e35e7c1eb3a0ecb8f8fcac502c64",
+      "statement": "Support tools cannot create states impossible through the normal product.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 104
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "11. Functional correctness and business logic"
+      ]
+    },
+    {
+      "control_id": "PRC-11-031",
+      "revision": 1,
+      "semantic_sha256": "9747f56e83f1dba404bdcb8f437bc8b6115d50c3362425439571a37038eaf172",
+      "statement": "Failure defaults to the safer state.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 105
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "11. Functional correctness and business logic"
+      ]
+    },
+    {
+      "control_id": "PRC-11-032",
+      "revision": 1,
+      "semantic_sha256": "9d413701b207c78652fce0b11d68ab5d47f0809e13179fb2067c0cce51458520",
+      "statement": "Error messages tell users what they can do next without exposing sensitive details.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 106
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "11. Functional correctness and business logic"
+      ]
+    },
+    {
+      "control_id": "PRC-11-033",
+      "revision": 1,
+      "semantic_sha256": "ff95e627af5b8f0997d115f816fe9bfbb7da2ca80be68bf17c23808153a1417d",
+      "statement": "Known limitations are documented accurately.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 107
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "11. Functional correctness and business logic"
+      ]
+    },
+    {
+      "control_id": "PRC-12-001",
+      "revision": 1,
+      "semantic_sha256": "c6d67dc9e1d2f1a1be4ca184ead92cbb69c8ab45960d7438fd765c7893baa27e",
+      "statement": "A documented test strategy exists for the release risk level.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 115
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "12. Testing strategy and evidence"
+      ]
+    },
+    {
+      "control_id": "PRC-12-002",
+      "revision": 1,
+      "semantic_sha256": "b9f3e63242843f028ae39aefb4f0ac7d1813040427b219e1642c94aa507ea602",
+      "statement": "Tests cover unit, component, integration, contract, system, end-to-end, smoke, and regression levels as appropriate.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 116
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "12. Testing strategy and evidence"
+      ]
+    },
+    {
+      "control_id": "PRC-12-003",
+      "revision": 1,
+      "semantic_sha256": "01698a1227fb8d7f5bd4f7ee7db86662e3e8347394c69c8887d5d5e79cfe343d",
+      "statement": "Tests prioritize critical and high-risk behavior rather than relying solely on aggregate coverage.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 117
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "12. Testing strategy and evidence"
+      ]
+    },
+    {
+      "control_id": "PRC-12-004",
+      "revision": 1,
+      "semantic_sha256": "2ddeb3b035235bbfaed533092dbd6908514d8751cdf8fb0ffcd782b2e1044acf",
+      "statement": "Coverage gaps in critical code are explicitly reviewed.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 118
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "12. Testing strategy and evidence"
+      ]
+    },
+    {
+      "control_id": "PRC-12-005",
+      "revision": 1,
+      "semantic_sha256": "0925ec212931b848639bc7f2ad120db456666edac3a0ba6f72f65ec412562dc9",
+      "statement": "Test data is representative of real size, shape, encoding, and edge conditions.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 119
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "12. Testing strategy and evidence"
+      ]
+    },
+    {
+      "control_id": "PRC-12-006",
+      "revision": 1,
+      "semantic_sha256": "8ff01f1258fdc0f80b003a1932ee3e57840e1d11f8883fdb42205d814507566d",
+      "statement": "Personal or confidential test data is synthetic, masked, or properly authorized.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 120
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "12. Testing strategy and evidence"
+      ]
+    },
+    {
+      "control_id": "PRC-12-007",
+      "revision": 1,
+      "semantic_sha256": "ca6c1c5fb322ba8fb54d4ada4036b638b00a0c2434629510550d7f909ddce531",
+      "statement": "Tests are deterministic enough to act as release gates.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 121
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "12. Testing strategy and evidence"
+      ]
+    },
+    {
+      "control_id": "PRC-12-008",
+      "revision": 1,
+      "semantic_sha256": "2afcbd0779306ba258788a6188e8a1fe26fbef5a4bcec331652b3d7113d2f9ce",
+      "statement": "Flaky gating tests are fixed or formally quarantined with risk review.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 122
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "12. Testing strategy and evidence"
+      ]
+    },
+    {
+      "control_id": "PRC-12-009",
+      "revision": 1,
+      "semantic_sha256": "958ba41f97381833e98c37ee139b15c74fbbbe62c606fc62ba3694ece3d37bb3",
+      "statement": "Test failures cannot be dismissed without evidence.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 123
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "12. Testing strategy and evidence"
+      ]
+    },
+    {
+      "control_id": "PRC-12-010",
+      "revision": 1,
+      "semantic_sha256": "576702c1d02d30e960fa4eeefa5e8ca44ebc48c7513a420142617d872520f3a6",
+      "statement": "Tests validate failure and recovery, not only successful operation.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 124
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "12. Testing strategy and evidence"
+      ]
+    },
+    {
+      "control_id": "PRC-12-011",
+      "revision": 1,
+      "semantic_sha256": "6cab14ddf979ef9eede438bc3f0b6b0d2c7da3587df9059e8a2061dd5ecf9ce9",
+      "statement": "Contract tests cover internal and external interfaces.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 125
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "12. Testing strategy and evidence"
+      ]
+    },
+    {
+      "control_id": "PRC-12-012",
+      "revision": 1,
+      "semantic_sha256": "479d49ab187feb15377074d1cb001c566a090e4b045803cd8a61a62cab6b540b",
+      "statement": "Compatibility tests cover supported clients and versions.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 126
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "12. Testing strategy and evidence"
+      ]
+    },
+    {
+      "control_id": "PRC-12-013",
+      "revision": 1,
+      "semantic_sha256": "07366106329540126e5c011a9cc917449e4002226ab1b08d4c1483be9080e410",
+      "statement": "Migration, upgrade, mixed-version, downgrade, rollback, and roll-forward scenarios are tested.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 127
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "12. Testing strategy and evidence"
+      ]
+    },
+    {
+      "control_id": "PRC-12-014",
+      "revision": 1,
+      "semantic_sha256": "acb4fedf039b3ab33dfee8d14a72c73f164958e34413cb06a13a8210f7eee466",
+      "statement": "Performance tests cover load, stress, spike, endurance, and capacity limits.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 128
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "12. Testing strategy and evidence"
+      ]
+    },
+    {
+      "control_id": "PRC-12-015",
+      "revision": 1,
+      "semantic_sha256": "6721c5fdef4f44ff2c7ec0749da6f4e0afef57289fd182f0eb39d83dfbf7dd52",
+      "statement": "Resilience tests inject relevant dependency, network, storage, and resource failures.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 129
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "12. Testing strategy and evidence"
+      ]
+    },
+    {
+      "control_id": "PRC-12-016",
+      "revision": 1,
+      "semantic_sha256": "c323a8ada2cd443acee1593d8e8e5962f7df69f0f1e96a0781106c56580c1c20",
+      "statement": "Security testing covers source, dependencies, deployed behavior, infrastructure, configuration, and business logic.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 130
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "12. Testing strategy and evidence"
+      ]
+    },
+    {
+      "control_id": "PRC-12-017",
+      "revision": 1,
+      "semantic_sha256": "1a6ffbdf7ddc9b6faafbddf96e77bd295b70e8f9deae23ce5fc1d3240bee9ad0",
+      "statement": "Accessibility testing combines automation with manual keyboard and assistive-technology checks.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 131
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "12. Testing strategy and evidence"
+      ]
+    },
+    {
+      "control_id": "PRC-12-018",
+      "revision": 1,
+      "semantic_sha256": "2e9dc98d36c31438515a7400c001bf26fc9fd90578b0fffdd7dac40654aaaee7",
+      "statement": "Property-based, fuzz, mutation, model-based, or combinatorial testing is used for high-risk parsers and stateful logic where useful.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 132
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "12. Testing strategy and evidence"
+      ]
+    },
+    {
+      "control_id": "PRC-12-019",
+      "revision": 1,
+      "semantic_sha256": "ecb2e1c92f9fc9bf6c11ed25ef7883a13e780c614abb2b12ecc67b822b41f15a",
+      "statement": "Critical calculations use independent test or reconciliation methods.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 133
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "12. Testing strategy and evidence"
+      ]
+    },
+    {
+      "control_id": "PRC-12-020",
+      "revision": 1,
+      "semantic_sha256": "b7d6cf986f4a048d6e9845f774583b320ecb8879a312fb8a5b141620bc09da9b",
+      "statement": "Tests run against production-like topology and configuration.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 134
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "12. Testing strategy and evidence"
+      ]
+    },
+    {
+      "control_id": "PRC-12-021",
+      "revision": 1,
+      "semantic_sha256": "fd7e8b9e91ddc43ef2d4dfdb54d71a53ed7881eea7dd73bfc20bd27ac02896a6",
+      "statement": "Tests verify the actual artifact intended for production.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 135
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "12. Testing strategy and evidence"
+      ]
+    },
+    {
+      "control_id": "PRC-12-022",
+      "revision": 1,
+      "semantic_sha256": "c9cd7b6b94196135be62c13e60fa8e3caaed7abecb8ba428ed4874025ca9eab1",
+      "statement": "Evidence identifies test version, data, environment, build, and result.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 136
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "12. Testing strategy and evidence"
+      ]
+    },
+    {
+      "control_id": "PRC-12-023",
+      "revision": 1,
+      "semantic_sha256": "a1c9a44674017a2008f2c56773fc466aca2d7bb2e45f0a0a7efca20d5474642e",
+      "statement": "Failed tests are linked to fixes and successful retests.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 137
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "12. Testing strategy and evidence"
+      ]
+    },
+    {
+      "control_id": "PRC-12-024",
+      "revision": 1,
+      "semantic_sha256": "3384e4fbc553b55f39c4e91052e58bc7a7faf9c34bc6aa15645f75d712bc4dac",
+      "statement": "Material changes trigger the relevant regression suite.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 138
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "12. Testing strategy and evidence"
+      ]
+    },
+    {
+      "control_id": "PRC-12-025",
+      "revision": 1,
+      "semantic_sha256": "382542846e075ccf8e47b715e9d756c55ac706ec9d9d925f49c0c24362b0abfc",
+      "statement": "Independent user acceptance is complete.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 139
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "12. Testing strategy and evidence"
+      ]
+    },
+    {
+      "control_id": "PRC-12-026",
+      "revision": 1,
+      "semantic_sha256": "329bddbeede6619a9b86749d158fed0e0e985fb904c4cdfc6f8290c49be5effd",
+      "statement": "An independent penetration test is completed where risk, contract, or regulation warrants it.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 140
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "12. Testing strategy and evidence"
+      ]
+    },
+    {
+      "control_id": "PRC-12-027",
+      "revision": 1,
+      "semantic_sha256": "696a78765709eec8ad147c3251254e83cb971d899ba4ff2d6ec09392eff87b49",
+      "statement": "Testing limitations and untested conditions are disclosed in the readiness decision.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 141
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "12. Testing strategy and evidence"
+      ]
+    },
+    {
+      "control_id": "PRC-13-001",
+      "revision": 1,
+      "semantic_sha256": "6a073ff5a22efd4c7c880047922f987099ffbef22bbde5ea0fbba2eef9cf1e9c",
+      "statement": "A supported browser and device matrix is documented.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 147
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "13. Frontend, usability, and browser behavior"
+      ]
+    },
+    {
+      "control_id": "PRC-13-002",
+      "revision": 1,
+      "semantic_sha256": "20ab3ea0ae6d9d743284f91293e55c6d9cf7952da0acfa6e9e37cbcf1ee4f8be",
+      "statement": "Unsupported clients receive reasonable behavior or a clear message.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 148
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "13. Frontend, usability, and browser behavior"
+      ]
+    },
+    {
+      "control_id": "PRC-13-003",
+      "revision": 1,
+      "semantic_sha256": "03ce54cc31fb0458f9e0b47c40ea0d3adbaa10873bc28c553512b649a1c59fe1",
+      "statement": "Critical journeys work on every supported browser.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 149
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "13. Frontend, usability, and browser behavior"
+      ]
+    },
+    {
+      "control_id": "PRC-13-004",
+      "revision": 1,
+      "semantic_sha256": "2009ad03d39506dda4f35ef2c8bd9b3ae4344ca8e026e4520c293169df9b13ba",
+      "statement": "Layout works at supported viewport sizes.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 150
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "13. Frontend, usability, and browser behavior"
+      ]
+    },
+    {
+      "control_id": "PRC-13-005",
+      "revision": 1,
+      "semantic_sha256": "2856685bfbe14c23599acfd7ebaf633659521597dea74a695c92e75cefc0bc4d",
+      "statement": "Portrait and landscape behavior is correct where relevant.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 151
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "13. Frontend, usability, and browser behavior"
+      ]
+    },
+    {
+      "control_id": "PRC-13-006",
+      "revision": 1,
+      "semantic_sha256": "183b4ef4a9b920ede3239b78dd8011648746d1e9f800a5bb9fd91cb1d0a3da33",
+      "statement": "Zoom and text enlargement do not hide essential functionality.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 152
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "13. Frontend, usability, and browser behavior"
+      ]
+    },
+    {
+      "control_id": "PRC-13-007",
+      "revision": 1,
+      "semantic_sha256": "0f87bfe73ff4d4ddcf8b66010f8022310416b726179c0c0492df463d09c1d5e2",
+      "statement": "Touch, mouse, keyboard, and assistive input work appropriately.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 153
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "13. Frontend, usability, and browser behavior"
+      ]
+    },
+    {
+      "control_id": "PRC-13-008",
+      "revision": 1,
+      "semantic_sha256": "81d2a5a6cd2308c8de34f17d7dfb3ebd4b4a8e59f536157ebe6f042a74741c1c",
+      "statement": "Loading, empty, success, warning, error, partial, timeout, and offline states are designed.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 154
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "13. Frontend, usability, and browser behavior"
+      ]
+    },
+    {
+      "control_id": "PRC-13-009",
+      "revision": 1,
+      "semantic_sha256": "ac299f364e79e938bdf0931ba5d39e1dbb1686d8e9fdcf9eb0d5d1934488320e",
+      "statement": "Forms preserve appropriate input after recoverable errors.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 155
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "13. Frontend, usability, and browser behavior"
+      ]
+    },
+    {
+      "control_id": "PRC-13-010",
+      "revision": 1,
+      "semantic_sha256": "907cc779b316e548ebae9f509487579573af73019f78b1d3d298bfbbe7c8cfcd",
+      "statement": "Validation is understandable and points to the affected field.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 156
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "13. Frontend, usability, and browser behavior"
+      ]
+    },
+    {
+      "control_id": "PRC-13-011",
+      "revision": 1,
+      "semantic_sha256": "8b41b14dd0eb6df3164f2d689d4b7bd8ed5292ef7641786f8f393fdf2f1de2bd",
+      "statement": "Back, forward, refresh, bookmarks, and deep links behave correctly.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 157
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "13. Frontend, usability, and browser behavior"
+      ]
+    },
+    {
+      "control_id": "PRC-13-012",
+      "revision": 1,
+      "semantic_sha256": "e9ed7fdd0ab1dfcbafccde2cc29b2d2273e3ed92e40188f5cc11bb90cccf23af",
+      "statement": "Multiple tabs and windows do not corrupt session or workflow state.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 158
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "13. Frontend, usability, and browser behavior"
+      ]
+    },
+    {
+      "control_id": "PRC-13-013",
+      "revision": 1,
+      "semantic_sha256": "315109bab9699ab05982fdfef49e2ff7b24cac63a5c04b0419e1a19d2590f0ee",
+      "statement": "Client-side caching does not expose another user’s data.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 159
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "13. Frontend, usability, and browser behavior"
+      ]
+    },
+    {
+      "control_id": "PRC-13-014",
+      "revision": 1,
+      "semantic_sha256": "af12a70f4d2f3206595c6a2ddf3ff49c309c64ff7400ed7bff192d521d5de935",
+      "statement": "Browser storage contains no unnecessary sensitive data.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 160
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "13. Frontend, usability, and browser behavior"
+      ]
+    },
+    {
+      "control_id": "PRC-13-015",
+      "revision": 1,
+      "semantic_sha256": "1befc66de406a61c495a4b3277971593e9566362b1bb1671c19f5c3499e3bfa6",
+      "statement": "Logout and account deletion clear appropriate client state.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 161
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "13. Frontend, usability, and browser behavior"
+      ]
+    },
+    {
+      "control_id": "PRC-13-016",
+      "revision": 1,
+      "semantic_sha256": "733504b217f4b93323e563f8105fda71cdf07b895482388b0c7d9ed8f905040e",
+      "statement": "Client-side authorization is never treated as the security boundary.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 162
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "13. Frontend, usability, and browser behavior"
+      ]
+    },
+    {
+      "control_id": "PRC-13-017",
+      "revision": 1,
+      "semantic_sha256": "d837e6e9f87d52ad58ec20f4790830238cff9dc9d7258960c5f29bbb66dfd41c",
+      "statement": "Client-side execution being unavailable or failing degrades acceptably where required.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 163
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "13. Frontend, usability, and browser behavior"
+      ]
+    },
+    {
+      "control_id": "PRC-13-018",
+      "revision": 1,
+      "semantic_sha256": "f87be708c31adfc069e25c1da45615301378f9e37fbff270f87fa2cf9e4cf90d",
+      "statement": "Third-party script failure does not break critical operation unnecessarily.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 164
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "13. Frontend, usability, and browser behavior"
+      ]
+    },
+    {
+      "control_id": "PRC-13-019",
+      "revision": 1,
+      "semantic_sha256": "ffab4ae7766ce9067d5f39d084ba5d4ae96d957ffef7a87c6cc773ca69e3ac3c",
+      "statement": "No unhandled exceptions or material console errors remain.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 165
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "13. Frontend, usability, and browser behavior"
+      ]
+    },
+    {
+      "control_id": "PRC-13-020",
+      "revision": 1,
+      "semantic_sha256": "a8f85425f85d947aa971fb5a92b4f3f409571c7222fb88da9e8585f7a52b6208",
+      "statement": "Source maps, diagnostic data, and stack traces are appropriately restricted.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 166
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "13. Frontend, usability, and browser behavior"
+      ]
+    },
+    {
+      "control_id": "PRC-13-021",
+      "revision": 1,
+      "semantic_sha256": "e45efb59e13a7bed1881106bf0f065eea68469cf0069c59fd04be61bf1f0d9ea",
+      "statement": "Error pages do not expose internals.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 167
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "13. Frontend, usability, and browser behavior"
+      ]
+    },
+    {
+      "control_id": "PRC-13-022",
+      "revision": 1,
+      "semantic_sha256": "e4d2e2049e90cd142851f856be2590e2719bb563b4433bcb3d9cc8b7b50e5f9d",
+      "statement": "Download, print, copy, paste, and upload behaviors work where supported.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 168
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "13. Frontend, usability, and browser behavior"
+      ]
+    },
+    {
+      "control_id": "PRC-13-023",
+      "revision": 1,
+      "semantic_sha256": "79709fbc970555d7415ec940a71f801d980e02c47558df75326f0dabd3b1b3e0",
+      "statement": "Long text, translated text, unusual names, and bidirectional text are handled.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 169
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "13. Frontend, usability, and browser behavior"
+      ]
+    },
+    {
+      "control_id": "PRC-13-024",
+      "revision": 1,
+      "semantic_sha256": "5f4bc1daf7ca65ba739dfa2ee5264f789965d4ec8be332215fb8bf783f41296b",
+      "statement": "Destructive operations require suitable confirmation or reversal.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 170
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "13. Frontend, usability, and browser behavior"
+      ]
+    },
+    {
+      "control_id": "PRC-13-025",
+      "revision": 1,
+      "semantic_sha256": "8700b807d0e58cd41e8711adbc39813ad03c40d1adeb9b77e6427eaf685220f5",
+      "statement": "Navigation and controls are consistent.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 171
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "13. Frontend, usability, and browser behavior"
+      ]
+    },
+    {
+      "control_id": "PRC-13-026",
+      "revision": 1,
+      "semantic_sha256": "2045f7f1a7dba4ae5b72a68117129417ed054dcafcf481010d98bc81cd09faea",
+      "statement": "Users are not trapped in dead ends.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 172
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "13. Frontend, usability, and browser behavior"
+      ]
+    },
+    {
+      "control_id": "PRC-13-027",
+      "revision": 1,
+      "semantic_sha256": "012c5d0be27a1a88265634b4a370a5e04d2423accc94096f7d5167bad8617156",
+      "statement": "Session timeout warnings and recovery preserve work where appropriate.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 173
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "13. Frontend, usability, and browser behavior"
+      ]
+    },
+    {
+      "control_id": "PRC-13-028",
+      "revision": 1,
+      "semantic_sha256": "26aa8045c17409d8f0f39be4ed60a87e040c6b86a2042ddc4143ef9da49f8ce5",
+      "statement": "Autosave behavior is transparent and reliable.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 174
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "13. Frontend, usability, and browser behavior"
+      ]
+    },
+    {
+      "control_id": "PRC-13-029",
+      "revision": 1,
+      "semantic_sha256": "9f1990faae2c8e139791f35128ddeb87a7e82bb3cefb601c15ecdb9303d28a5f",
+      "statement": "User feedback is not lost during asynchronous operations.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 175
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "13. Frontend, usability, and browser behavior"
+      ]
+    },
+    {
+      "control_id": "PRC-13-030",
+      "revision": 1,
+      "semantic_sha256": "938ccd754bc3d060b61f9b3a06756cf33d429b42e7e0744e899c06de224a63a7",
+      "statement": "Client and server validation produce consistent outcomes.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 176
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "13. Frontend, usability, and browser behavior"
+      ]
+    },
+    {
+      "control_id": "PRC-13-031",
+      "revision": 1,
+      "semantic_sha256": "7cdc900aab6b80577c75baacae22be9bed334f2452bcb7c3c65c72db15c1804c",
+      "statement": "Analytics and experimentation code do not alter critical behavior.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 177
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "13. Frontend, usability, and browser behavior"
+      ]
+    },
+    {
+      "control_id": "PRC-13-032",
+      "revision": 1,
+      "semantic_sha256": "752c03ce6e087cf28059a55d1c50e5757c48aab4d615f9590f6a62658f8ab71c",
+      "statement": "Dark patterns, deceptive defaults, and misleading urgency are absent.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 178
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "13. Frontend, usability, and browser behavior"
+      ]
+    },
+    {
+      "control_id": "PRC-14-001",
+      "revision": 1,
+      "semantic_sha256": "a12fb3f060eec13649d598fb6eaaddf146022f935fab16787f13779ea05abb4f",
+      "statement": "The required WCAG version and conformance level are documented.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 186
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "14. Accessibility"
+      ]
+    },
+    {
+      "control_id": "PRC-14-002",
+      "revision": 1,
+      "semantic_sha256": "ff9cd46e78285d4a7728c064ee7ece39c68e6c4607b3acb9253eff8bcbfd6fad",
+      "statement": "Automated accessibility scans pass within the accepted threshold.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 187
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "14. Accessibility"
+      ]
+    },
+    {
+      "control_id": "PRC-14-003",
+      "revision": 1,
+      "semantic_sha256": "8a2f93566131933f32991dd29b16ccfb2d6c1b9f48abf7eed7c90fce2e94465f",
+      "statement": "Critical journeys have been tested manually using only a keyboard.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 188
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "14. Accessibility"
+      ]
+    },
+    {
+      "control_id": "PRC-14-004",
+      "revision": 1,
+      "semantic_sha256": "17a5db5178328c5e40d980a3fbb2ff4419d6338f608242769b011a2992badcb4",
+      "statement": "No keyboard trap exists.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 189
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "14. Accessibility"
+      ]
+    },
+    {
+      "control_id": "PRC-14-005",
+      "revision": 1,
+      "semantic_sha256": "e5292509f55362dbe085f97e109c2c7f6d687799f079cf28a499b414065f388f",
+      "statement": "Focus order follows a meaningful sequence.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 190
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "14. Accessibility"
+      ]
+    },
+    {
+      "control_id": "PRC-14-006",
+      "revision": 1,
+      "semantic_sha256": "14249df574e1d87cb8f9f6aad0e14f65e89087239da31074c6afa630596b7194",
+      "statement": "Focus is visibly indicated.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 191
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "14. Accessibility"
+      ]
+    },
+    {
+      "control_id": "PRC-14-007",
+      "revision": 1,
+      "semantic_sha256": "85c1eb7e22084364a915096427fae168bb1c243ba7c871dd9b38e7e0241fd7eb",
+      "statement": "Focus is not obscured by sticky headers, dialogs, banners, or overlays.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 192
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "14. Accessibility"
+      ]
+    },
+    {
+      "control_id": "PRC-14-008",
+      "revision": 1,
+      "semantic_sha256": "546af4c18b266a6f570cbf162e9694635dfbdbd2f7f500f1195820f33b5f8395",
+      "statement": "Page titles, headings, landmarks, regions, and lists use meaningful semantics.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 193
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "14. Accessibility"
+      ]
+    },
+    {
+      "control_id": "PRC-14-009",
+      "revision": 1,
+      "semantic_sha256": "92bfb767cf4d4bf7ac4b8b62fc1bc1178c0a86d46a9a62de4474a281d670b5ec",
+      "statement": "Every interactive control has an accessible name, role, state, and value.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 194
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "14. Accessibility"
+      ]
+    },
+    {
+      "control_id": "PRC-14-010",
+      "revision": 1,
+      "semantic_sha256": "94c2019396b9e1fdc90611004141bba24d79c23202d5d1c46026f336f9c9b97c",
+      "statement": "Custom controls expose equivalent semantics and keyboard behavior.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 195
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "14. Accessibility"
+      ]
+    },
+    {
+      "control_id": "PRC-14-011",
+      "revision": 1,
+      "semantic_sha256": "6cee869293557f4b3b1543abf11a69a449a5e9276624766cff1539b88f3b4080",
+      "statement": "Images have appropriate alternative text or are correctly marked decorative.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 196
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "14. Accessibility"
+      ]
+    },
+    {
+      "control_id": "PRC-14-012",
+      "revision": 1,
+      "semantic_sha256": "193a6013600704a6087e9891ee6559ee3352d0f7fcb517b99d5880e14cc4e922",
+      "statement": "Audio and video have required captions, transcripts, and descriptions.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 197
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "14. Accessibility"
+      ]
+    },
+    {
+      "control_id": "PRC-14-013",
+      "revision": 1,
+      "semantic_sha256": "09774ac1adc801e03d3f933b0e7af8f3521ab4b937c180288c02353e3cee8f42",
+      "statement": "Information is not communicated by color alone.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 198
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "14. Accessibility"
+      ]
+    },
+    {
+      "control_id": "PRC-14-014",
+      "revision": 1,
+      "semantic_sha256": "47166105248404590f6887a481987470d36a5ea87792752bfea955cefa6400d9",
+      "statement": "Text and meaningful visual elements meet contrast requirements.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 199
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "14. Accessibility"
+      ]
+    },
+    {
+      "control_id": "PRC-14-015",
+      "revision": 1,
+      "semantic_sha256": "3d76bd63957d2f0ec91da1699eeac5ead3eb02da524b04dc32b96c93b966d57a",
+      "statement": "Content reflows and remains usable when zoomed.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 200
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "14. Accessibility"
+      ]
+    },
+    {
+      "control_id": "PRC-14-016",
+      "revision": 1,
+      "semantic_sha256": "a80cba5dbca4dd66fec701acb64bcd3aaf5228b7418c913ba050b7f164254f54",
+      "statement": "Text spacing changes do not break content.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 201
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "14. Accessibility"
+      ]
+    },
+    {
+      "control_id": "PRC-14-017",
+      "revision": 1,
+      "semantic_sha256": "7d93da94630ae5d684a33e122869ab9692ddf272e1ae65cba8198b27b2ce37ae",
+      "statement": "Touch and pointer targets are sufficiently usable.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 202
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "14. Accessibility"
+      ]
+    },
+    {
+      "control_id": "PRC-14-018",
+      "revision": 1,
+      "semantic_sha256": "9c30511a57a1e001e1034c88d1f989d9581aa207625322331a393f89bdfc5b7a",
+      "statement": "Dragging has a non-drag alternative where required.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 203
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "14. Accessibility"
+      ]
+    },
+    {
+      "control_id": "PRC-14-019",
+      "revision": 1,
+      "semantic_sha256": "e44f9b0f50161508250252906711681458c6bca07d9d4447ad96ff6700871587",
+      "statement": "Motion, animation, autoplay, and flashing are controlled safely.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 204
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "14. Accessibility"
+      ]
+    },
+    {
+      "control_id": "PRC-14-020",
+      "revision": 1,
+      "semantic_sha256": "81ad2a2352d5b97ff2ef7340e8f0499238533a000a50fb603a72407b06bc0192",
+      "statement": "“Reduce motion” or equivalent preferences are respected where relevant.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 205
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "14. Accessibility"
+      ]
+    },
+    {
+      "control_id": "PRC-14-021",
+      "revision": 1,
+      "semantic_sha256": "79165745023598cf67484dbfc5050877a9319c4d3160d25d000f7d4966beb8b6",
+      "statement": "Forms have explicit labels and understandable instructions.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 206
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "14. Accessibility"
+      ]
+    },
+    {
+      "control_id": "PRC-14-022",
+      "revision": 1,
+      "semantic_sha256": "362cf05e6428f4c495413cdc771358ec3eb9d4af9742ff7269a122372d6436cf",
+      "statement": "Required fields and formats are conveyed accessibly.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 207
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "14. Accessibility"
+      ]
+    },
+    {
+      "control_id": "PRC-14-023",
+      "revision": 1,
+      "semantic_sha256": "3b5f97f5ca99464b2ac7c699dd42ce0b304feaea5063311060c41f23849d4206",
+      "statement": "Errors are identified, described, and associated with fields.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 208
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "14. Accessibility"
+      ]
+    },
+    {
+      "control_id": "PRC-14-024",
+      "revision": 1,
+      "semantic_sha256": "beabee69a189ca20148349a83bfff5c3e79967816ce57e63ab26042a965556bc",
+      "statement": "Error summaries and status changes are announced to assistive technologies.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 209
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "14. Accessibility"
+      ]
+    },
+    {
+      "control_id": "PRC-14-025",
+      "revision": 1,
+      "semantic_sha256": "119425b132bb324c4d736424618ea1f1dac91c7e477ec4b507effa48b5439c49",
+      "statement": "Authentication does not rely solely on inaccessible puzzles or memory tests.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 210
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "14. Accessibility"
+      ]
+    },
+    {
+      "control_id": "PRC-14-026",
+      "revision": 1,
+      "semantic_sha256": "50fd7d2a7f807688305b2a15f995653f16c24e0c7fdbbf875753429ae5d19219",
+      "statement": "Time limits can be extended or disabled where required.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 211
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "14. Accessibility"
+      ]
+    },
+    {
+      "control_id": "PRC-14-027",
+      "revision": 1,
+      "semantic_sha256": "489262ea9afac804f4300808c271b114a11a786fa25447ccd7fb4890683144c1",
+      "statement": "Repeated entry of the same information is minimized.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 212
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "14. Accessibility"
+      ]
+    },
+    {
+      "control_id": "PRC-14-028",
+      "revision": 1,
+      "semantic_sha256": "fad16f61d1e9040437ef0a14e9df9d6a904a14e49f3874ecd4bf1ccac360be6b",
+      "statement": "Help is located consistently.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 213
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "14. Accessibility"
+      ]
+    },
+    {
+      "control_id": "PRC-14-029",
+      "revision": 1,
+      "semantic_sha256": "8df28588c56ff54ff78d06a85d9543ebdee55185c1baaeae83053c51ba458ae6",
+      "statement": "Language and text direction are declared correctly.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 214
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "14. Accessibility"
+      ]
+    },
+    {
+      "control_id": "PRC-14-030",
+      "revision": 1,
+      "semantic_sha256": "bac50887badd899604d62460d6def281dd50172d5a377b87f5d1e1f856f97a9f",
+      "statement": "Tables expose proper headers and relationships.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 215
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "14. Accessibility"
+      ]
+    },
+    {
+      "control_id": "PRC-14-031",
+      "revision": 1,
+      "semantic_sha256": "6995cb8ffb2b29074efabc3ff80a820829618aa3c0ba55734267b6a9fae8904b",
+      "statement": "Dialogs, menus, tabs, tooltips, and notifications follow accessible interaction patterns.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 216
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "14. Accessibility"
+      ]
+    },
+    {
+      "control_id": "PRC-14-032",
+      "revision": 1,
+      "semantic_sha256": "9a1958eb0c524c1dbd095a35f88aef2fdafdc179b75c5f48ac32a30e27f8ca0d",
+      "statement": "Dynamic content changes are announced appropriately.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 217
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "14. Accessibility"
+      ]
+    },
+    {
+      "control_id": "PRC-14-033",
+      "revision": 1,
+      "semantic_sha256": "e1b88c4f4c802fa8104e74aea8518e28b163038a5ebf3b97b3c6e9bf9c89e7a6",
+      "statement": "Downloaded documents are accessible.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 218
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "14. Accessibility"
+      ]
+    },
+    {
+      "control_id": "PRC-14-034",
+      "revision": 1,
+      "semantic_sha256": "39b8e617a2fecda3eed52df9125f4733d5f17b42c31dfad537d273a953ad447e",
+      "statement": "Third-party embedded components meet the required level or have an accessible alternative.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 219
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "14. Accessibility"
+      ]
+    },
+    {
+      "control_id": "PRC-14-035",
+      "revision": 1,
+      "semantic_sha256": "d2ec4656df1405ddb7f8863ad95fabfb6cf61c68c30696b445eddeb4a887e4b5",
+      "statement": "Testing includes representative screen-reader combinations.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 220
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "14. Accessibility"
+      ]
+    },
+    {
+      "control_id": "PRC-14-036",
+      "revision": 1,
+      "semantic_sha256": "d6259de098f33edc669bb5db0b472ebcf5d736b0274479543eb2027f4539cade",
+      "statement": "Testing includes users with disabilities where the product’s impact warrants it.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 221
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "14. Accessibility"
+      ]
+    },
+    {
+      "control_id": "PRC-14-037",
+      "revision": 1,
+      "semantic_sha256": "e2cd7cd454bc1d8220d357463d022e24162ef9666d9b24cfc297c46561fac73b",
+      "statement": "An accessibility statement and issue-reporting path exist.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 222
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "14. Accessibility"
+      ]
+    },
+    {
+      "control_id": "PRC-14-038",
+      "revision": 1,
+      "semantic_sha256": "25fc76418cdd84b933e698618d533faa447ba5c4d0f6983d519ddff66d84ce8e",
+      "statement": "Accessibility defects have owners, severity, and remediation dates.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 223
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "14. Accessibility"
+      ]
+    },
+    {
+      "control_id": "PRC-14-039",
+      "revision": 1,
+      "semantic_sha256": "03ae0b35081102be25c9d4116e348275639a8c8d2040fe5544d230873dd2e8a3",
+      "statement": "Accessibility remains part of regression testing after launch.",
+      "source": {
+        "path": "docs/checklists/04-environments-quality-experience.md",
+        "line": 224
+      },
+      "heading_trail": [
+        "Environments, quality, and experience",
+        "14. Accessibility"
+      ]
+    }
+  ]
+}

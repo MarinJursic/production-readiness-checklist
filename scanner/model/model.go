@@ -3,6 +3,8 @@ package model
 import (
 	"encoding/json"
 	"time"
+
+	"github.com/MarinJursic/production-readiness-checklist/scanner/controlprogram"
 )
 
 const (
@@ -34,23 +36,64 @@ type Control struct {
 }
 
 type ControlCatalogSummary struct {
-	SchemaVersion               string `json:"schema_version"`
-	RegistryVersion             string `json:"registry_version"`
-	RegistrySHA256              string `json:"registry_sha256"`
-	SourceSHA256                string `json:"source_sha256"`
-	ContractSchemaVersion       string `json:"contract_schema_version"`
-	ContractSHA256              string `json:"contract_sha256"`
-	ControlCount                int    `json:"control_count"`
-	ActiveControlCount          int    `json:"active_control_count"`
-	ContractCount               int    `json:"contract_count"`
-	GeneratedContractCount      int    `json:"generated_contract_count"`
-	ExpertReviewedContractCount int    `json:"expert_reviewed_contract_count"`
-	ProfileTerminalState        string `json:"profile_terminal_state"`
-	AIReviewProvider            string `json:"ai_review_provider,omitempty"`
-	AIReviewModel               string `json:"ai_review_model,omitempty"`
-	AIReviewState               string `json:"ai_review_state,omitempty"`
-	AIReviewedCount             int    `json:"ai_reviewed_count,omitempty"`
-	AIAdvisoryFailCount         int    `json:"ai_advisory_fail_count,omitempty"`
+	SchemaVersion                      string `json:"schema_version"`
+	RegistryVersion                    string `json:"registry_version"`
+	RegistrySHA256                     string `json:"registry_sha256"`
+	SourceSHA256                       string `json:"source_sha256"`
+	ContractSchemaVersion              string `json:"contract_schema_version"`
+	ContractGeneratorID                string `json:"contract_generator_id,omitempty"`
+	ContractSHA256                     string `json:"contract_sha256"`
+	ClassificationMethodologySHA256    string `json:"classification_methodology_sha256,omitempty"`
+	ClassificationSummarySHA256        string `json:"classification_summary_sha256,omitempty"`
+	ClassificationCorpusSHA256         string `json:"classification_corpus_sha256,omitempty"`
+	ControlCheckBindingsSchemaVersion  string `json:"control_check_bindings_schema_version,omitempty"`
+	ControlCheckBindingsSHA256         string `json:"control_check_bindings_sha256,omitempty"`
+	ControlCheckProgramsSchemaVersion  string `json:"control_check_programs_schema_version,omitempty"`
+	ControlCheckProgramsSHA256         string `json:"control_check_programs_sha256,omitempty"`
+	ControlCheckProgramsCatalogSHA256  string `json:"control_check_programs_catalog_sha256,omitempty"`
+	ControlCheckDefinitionSchemaSHA256 string `json:"control_check_definition_schema_sha256,omitempty"`
+	ControlCheckDefinitionCorpusSHA256 string `json:"control_check_definition_corpus_sha256,omitempty"`
+	ControlCount                       int    `json:"control_count"`
+	ActiveControlCount                 int    `json:"active_control_count"`
+	ContractCount                      int    `json:"contract_count"`
+	GeneratedContractCount             int    `json:"generated_contract_count"`
+	AgentReviewedContractCount         int    `json:"agent_reviewed_contract_count"`
+	ReviewedDeterministicCount         int    `json:"reviewed_deterministic_count,omitempty"`
+	ReviewedNondeterministicCount      int    `json:"reviewed_nondeterministic_count,omitempty"`
+	DeterministicBindingCount          int    `json:"deterministic_binding_count,omitempty"`
+	DeterministicProgramTemplateCount  int    `json:"deterministic_program_template_count,omitempty"`
+	DeterministicProgramBlockedCount   int    `json:"deterministic_program_blocked_count,omitempty"`
+	DeterministicProgramExecutedCount  int    `json:"deterministic_program_executed_count,omitempty"`
+	DeterministicProgramPassCount      int    `json:"deterministic_program_pass_count,omitempty"`
+	DeterministicProgramFailCount      int    `json:"deterministic_program_fail_count,omitempty"`
+	DeterministicProgramNACount        int    `json:"deterministic_program_not_applicable_count,omitempty"`
+	ProfileTerminalState               string `json:"profile_terminal_state"`
+	AIReviewProvider                   string `json:"ai_review_provider,omitempty"`
+	AIReviewModel                      string `json:"ai_review_model,omitempty"`
+	AIReviewDepth                      string `json:"ai_review_depth,omitempty"`
+	AIReviewState                      string `json:"ai_review_state,omitempty"`
+	AIReviewedCount                    int    `json:"ai_reviewed_count,omitempty"`
+	AIAdvisoryFailCount                int    `json:"ai_advisory_fail_count,omitempty"`
+}
+
+// DeterministicClauseResult records one exact program execution without
+// copying raw evidence into every control row. The digests bind the result to
+// the separately retained program and evidence documents.
+type DeterministicClauseResult struct {
+	TemplateID                   string    `json:"template_id"`
+	CollectorID                  string    `json:"collector_id"`
+	ClauseID                     string    `json:"clause_id"`
+	ClauseOrdinal                int       `json:"clause_ordinal"`
+	ImplementationID             string    `json:"implementation_id"`
+	ImplementationContractSHA256 string    `json:"implementation_contract_sha256"`
+	RequiredAuthority            string    `json:"required_authority"`
+	ProviderID                   string    `json:"provider_id,omitempty"`
+	ProgramSHA256                string    `json:"program_sha256,omitempty"`
+	EvidenceSHA256               string    `json:"evidence_sha256,omitempty"`
+	Status                       string    `json:"status"`
+	Outcome                      string    `json:"outcome,omitempty"`
+	ReasonCode                   string    `json:"reason_code,omitempty"`
+	EvaluatedAt                  time.Time `json:"evaluated_at"`
 }
 
 // AIControlReview is advisory evidence produced by an explicitly selected AI
@@ -59,11 +102,18 @@ type ControlCatalogSummary struct {
 type AIControlReview struct {
 	Provider               string            `json:"provider"`
 	Model                  string            `json:"model,omitempty"`
+	ReviewDepth            string            `json:"review_depth"`
 	AssessmentCandidate    string            `json:"assessment_candidate"`
 	ApplicabilityCandidate string            `json:"applicability_candidate"`
 	Confidence             string            `json:"confidence"`
+	Priority               string            `json:"priority"`
 	Reason                 string            `json:"reason"`
+	Challenge              string            `json:"challenge"`
+	RiskIfIgnored          string            `json:"risk_if_ignored"`
 	Advice                 string            `json:"advice"`
+	RemediationSteps       []string          `json:"remediation_steps"`
+	VerificationSteps      []string          `json:"verification_steps"`
+	EvidenceNeeded         []string          `json:"evidence_needed"`
 	Evidence               []FindingLocation `json:"evidence"`
 	Limitations            []string          `json:"limitations"`
 	CitationVerification   string            `json:"citation_verification,omitempty"`
@@ -75,29 +125,38 @@ type AIControlReview struct {
 // narrower deterministic assertions. "partially_verified" means every linked
 // assertion in this run passed, not that the complete broad control passed.
 type ControlResult struct {
-	ControlID                 string           `json:"control_id"`
-	Revision                  int              `json:"revision"`
-	Statement                 string           `json:"statement"`
-	Source                    Source           `json:"source"`
-	ContractSHA256            string           `json:"contract_sha256"`
-	ContractStatus            string           `json:"contract_status"`
-	CanonicalControlID        string           `json:"canonical_control_id"`
-	EvaluationClass           string           `json:"evaluation_class"`
-	AutomationClass           string           `json:"automation_class"`
-	ApplicabilityClass        string           `json:"applicability_class"`
-	Atomicity                 string           `json:"atomicity"`
-	CompleteInventoryRequired bool             `json:"complete_inventory_required"`
-	NegativeCondition         bool             `json:"negative_condition"`
-	ProjectThresholdsRequired bool             `json:"project_thresholds_required"`
-	EvidenceAuthorities       []string         `json:"evidence_authorities"`
-	NotApplicableProof        string           `json:"not_applicable_proof"`
-	Disposition               string           `json:"disposition"`
-	Coverage                  string           `json:"coverage"`
-	Authority                 string           `json:"authority"`
-	AssertionIDs              []string         `json:"assertion_ids"`
-	ExecutedAssertionIDs      []string         `json:"executed_assertion_ids"`
-	Summary                   string           `json:"summary"`
-	AIReview                  *AIControlReview `json:"ai_review,omitempty"`
+	ControlID                         string                      `json:"control_id"`
+	Revision                          int                         `json:"revision"`
+	Statement                         string                      `json:"statement"`
+	Source                            Source                      `json:"source"`
+	ContractSHA256                    string                      `json:"contract_sha256"`
+	ContractStatus                    string                      `json:"contract_status"`
+	Classification                    string                      `json:"classification,omitempty"`
+	ClassificationRoute               string                      `json:"classification_route,omitempty"`
+	ClassificationDecisionBasis       string                      `json:"classification_decision_basis,omitempty"`
+	ClassificationRowSHA256           string                      `json:"classification_row_sha256,omitempty"`
+	DeterministicBindingID            string                      `json:"deterministic_binding_id,omitempty"`
+	DeterministicBindingSHA256        string                      `json:"deterministic_binding_sha256,omitempty"`
+	DeterministicProgramTemplateCount int                         `json:"deterministic_program_template_count,omitempty"`
+	DeterministicProgramStatus        string                      `json:"deterministic_program_status,omitempty"`
+	DeterministicClauseResults        []DeterministicClauseResult `json:"deterministic_clause_results,omitempty"`
+	CanonicalControlID                string                      `json:"canonical_control_id"`
+	EvaluationClass                   string                      `json:"evaluation_class"`
+	AutomationClass                   string                      `json:"automation_class"`
+	ApplicabilityClass                string                      `json:"applicability_class"`
+	Atomicity                         string                      `json:"atomicity"`
+	CompleteInventoryRequired         bool                        `json:"complete_inventory_required"`
+	NegativeCondition                 bool                        `json:"negative_condition"`
+	ProjectThresholdsRequired         bool                        `json:"project_thresholds_required"`
+	EvidenceAuthorities               []string                    `json:"evidence_authorities"`
+	NotApplicableProof                string                      `json:"not_applicable_proof"`
+	Disposition                       string                      `json:"disposition"`
+	Coverage                          string                      `json:"coverage"`
+	Authority                         string                      `json:"authority"`
+	AssertionIDs                      []string                    `json:"assertion_ids"`
+	ExecutedAssertionIDs              []string                    `json:"executed_assertion_ids"`
+	Summary                           string                      `json:"summary"`
+	AIReview                          *AIControlReview            `json:"ai_review,omitempty"`
 }
 
 type Objective struct {
@@ -408,18 +467,19 @@ type Finding struct {
 }
 
 type RunResult struct {
-	SchemaVersion     string                 `json:"schema_version"`
-	RunID             string                 `json:"run_id"`
-	StartedAt         time.Time              `json:"started_at"`
-	CompletedAt       time.Time              `json:"completed_at"`
-	Plan              Plan                   `json:"plan"`
-	Inventory         Inventory              `json:"inventory"`
-	AdapterExecutions []AdapterExecution     `json:"adapter_executions"`
-	Results           []AssertionResult      `json:"results"`
-	Findings          []Finding              `json:"findings"`
-	ControlCatalog    *ControlCatalogSummary `json:"control_catalog,omitempty"`
-	ControlResults    []ControlResult        `json:"control_results,omitempty"`
-	TerminalState     string                 `json:"terminal_state"`
+	SchemaVersion         string                    `json:"schema_version"`
+	RunID                 string                    `json:"run_id"`
+	StartedAt             time.Time                 `json:"started_at"`
+	CompletedAt           time.Time                 `json:"completed_at"`
+	Plan                  Plan                      `json:"plan"`
+	Inventory             Inventory                 `json:"inventory"`
+	AdapterExecutions     []AdapterExecution        `json:"adapter_executions"`
+	Results               []AssertionResult         `json:"results"`
+	Findings              []Finding                 `json:"findings"`
+	ControlCatalog        *ControlCatalogSummary    `json:"control_catalog,omitempty"`
+	ControlResults        []ControlResult           `json:"control_results,omitempty"`
+	DeterministicEvidence []controlprogram.Evidence `json:"deterministic_evidence,omitempty"`
+	TerminalState         string                    `json:"terminal_state"`
 }
 
 // MarshalJSON preserves the byte contract of archived run records. v0.6 and

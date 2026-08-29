@@ -39,8 +39,11 @@ Bare `prc` runs the 40-check core scan in the current directory and writes a
 private report outside the project. Use `prc /path/to/project` to scan another
 folder or `prc quick` for an 18-check screen. After `prc login codex` or
 `prc login claude`, use `prc full codex` or `prc full claude` for advisory AI
-review of every active control. Every mode keeps all 10,042 controls visible in
-the report; AI advice cannot create a verified pass.
+review of all 9,356 reviewed nondeterministic controls. Deep review gives every
+rule a primary subagent and adds an independent skeptical subagent per batch.
+The 686 reviewed deterministic controls remain blocked until their exact
+programs receive authoritative evidence. Every mode keeps all 10,042 controls
+visible in the report; AI advice cannot create a verified pass.
 
 For CI or a team that deliberately wants a project lock-file entry, use
 `npm install -D -E --ignore-scripts --no-audit --no-fund @marinjursic/prc@VERSION`,

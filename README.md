@@ -16,6 +16,8 @@
 
 [Begin the complete review](docs/engineering/00-overview.md) · [Check a release quickly](docs/guides/getting-started.md) · [Use with an AI agent](docs/guides/ai-assisted-review.md) · [Contribute](CONTRIBUTING.md)
 
+**[See the reviewed classification and exact checking route for every one of the 10,042 controls](docs/control-classification/README.md)**
+
 ⭐ [Star this project](https://github.com/MarinJursic/production-readiness-checklist) · 🤝 [Help improve it](CONTRIBUTING.md) · [Share on LinkedIn](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fmarinjursic.github.io%2Fproduction-readiness-checklist%2F) · [Share on X](https://twitter.com/intent/tweet?text=Production%20Readiness%20Checklist%3A%20know%20what%27s%20ready%20and%20what%20still%20needs%20work.&url=https%3A%2F%2Fmarinjursic.github.io%2Fproduction-readiness-checklist%2F)
 
 <a href="docs/assets/production-readiness-scan-demo.mp4"><img src="docs/assets/production-readiness-scan-demo.gif" alt="A continuous 27-second demo of the Production Readiness Checklist scanner checking a sample project and opening its HTML report" width="720"></a>
@@ -34,6 +36,10 @@ This repository provides one start-to-finish review path:
 2. **Production decision:** 1,421 `PRC-*` controls across ten release tracks, ending with evidence, sign-off, deployment, and verification.
 
 The source material contained 25,359 checkbox lines across 215 documents. It was consolidated into 16 navigable lifecycle manuals, with exact duplicates, repeated boilerplate, mirrored production controls, and 1,969 repeated cross-volume occurrences in the final corpus removed. The [source consolidation manifest](docs/engineering/source-manifest.md) records the treatment of every source document and section.
+
+Every control has now received a rule-by-rule primary classification, an independent skeptical review of every proposed deterministic rule, and a third semantic-strength audit. The validated result is **10,042 reviewed classifications: 686 deterministic and 9,356 nondeterministic**. The deterministic set has **686 one-to-one control bindings containing 765 exact clauses**, with a versioned checker family, required evidence authority, executable predicate, and pass/fail/blocked/adversarial fixtures for every clause. Read the [full classification reference](docs/control-classification/README.md) to see each decision and its reason.
+
+Those programs are fail-closed contracts, not a claim that 686 broad controls all run end to end today. The normal `prc` command runs the existing 40 local assertions plus the exact catalog programs whose evidence collectors are available. The first shipped collector can prove `PRC-36-004` when a root Node package declares usable build and test scripts and both public commands appear in bounded, inventoried Markdown code. It verifies the exact file hashes and returns Blocked for missing, changed, malformed, oversized, unsupported, or unclear evidence. The remaining authority-specific collectors are not shipped yet. A rule that needs an unavailable collector, external registry, environment access, complete scope, or other authoritative evidence remains **Blocked**; it is never counted as passed just because a predicate exists.
 
 > [!IMPORTANT]
 > No checklist or AI review can prove that a nontrivial application has zero defects. A credible decision requires current evidence, explicit risk ownership, and tested recovery paths. One material failure can block approval regardless of how many unrelated controls pass.
@@ -110,7 +116,7 @@ The scan is read-only: it does **not** fix files, run project code, install proj
 
 1. It reads the selected project without following symlinks or running project commands.
 2. It runs 40 narrow checks for facts it can prove from the files, such as a license, dependency lock files, test setup, CI safety, exposed private keys, API files, containers, Terraform, and Kubernetes settings.
-3. It connects those results to the full 10,042-control catalog. A small check never pretends it proved a much larger rule.
+3. It runs supported exact catalog programs over sealed evidence, retains validated evidence documents for replay, then connects every result to the full 10,042-control catalog. A small check never pretends it proved a much larger rule.
 4. It shows the overall result, score, passed count, failed count, and items that still need a person or more evidence.
 5. It prints the exact HTML report path. In supported terminals, that path is clickable. The report starts simple and keeps long evidence, IDs, and the full catalog inside expandable details.
 
@@ -118,7 +124,7 @@ The global install lives in npm's tool directory, outside every project you scan
 
 Every new npm release declares its security-related dual-use features, is built with no long-lived npm token, pauses for the maintainer's npm 2FA approval, and stays as a draft GitHub release until all seven public packages match the sealed release bytes and expose npm provenance. The [release verification guide](docs/scanner/releases.md) explains the complete chain. These checks protect package origin and integrity; they do not replace reviewing what a scanner is allowed to read or run.
 
-The package keeps the complete control data but excludes the website, video, and contributor-only files. Its two largest control indexes are stored in a bounded compressed form and are expanded only in memory, so this does not remove rules or weaken checks. Release builds also strip unused debug data and enforce compressed and installed-size limits.
+The package keeps the complete control data but excludes the website, video, contributor-only files, and internal classification-review packets. Its large control indexes are stored in a bounded compressed form and are expanded only in memory, so this does not remove rules or weaken checks. Release builds also strip unused debug data and enforce compressed and installed-size limits.
 
 If npm reports a global-install permission error, install Node with a version manager instead of using `sudo`. For an extra-strict installation that disables package lifecycle scripts, the longer equivalent is `npm install -g --ignore-scripts @marinjursic/prc`.
 
@@ -182,7 +188,10 @@ prc full codex
 Every level still lists all 10,042 controls in the report. `quick` means fewer
 local checks and less terminal noise; it does not mean the other controls
 passed. `full` runs the core local scan and asks the selected AI provider for
-advice on every active control. AI advice remains unverified.
+advice on all 9,356 reviewed nondeterministic controls. The 686 deterministic
+controls never go to AI for a verdict. Supported exact programs can now produce
+a verified result; the rest remain Blocked until complete authoritative evidence
+and a reviewed collector exist. AI advice remains unverified.
 
 ### Where AI is used
 
@@ -192,11 +201,11 @@ AI is **off by default**. You do not need Codex or Claude Code to install the sc
 | --- | --- | --- |
 | `prc quick` | No | Runs 18 small local checks and writes the report. |
 | `prc` | No | Runs the normal 40 local checks and writes the report. |
-| `prc full codex` | Yes, Codex | Runs the same 40 local checks, then asks Codex for advice on broad rules that simple file checks cannot settle. |
-| `prc full claude` | Yes, Claude Code | Runs the same full review with Claude Code instead. |
+| `prc full codex` | Yes, Codex | Runs the same 40 local checks, then reviews all 9,356 nondeterministic controls in quality-first deep mode. |
+| `prc full claude` | Yes, Claude Code | Runs the same deep advisory review with Claude Code instead. |
 | `prc fix ...` | Optional | A separate, advanced path can ask a chosen AI for a small patch idea inside an isolated copy. A scan never starts this path. |
 
-The AI step is useful for questions whose answer depends on context. For example, a script should not force every project to use folders named `src`, `components`, and `tests`. An AI review can look at the screened file list and short source excerpts, explain whether the layout is hard to follow for this project, and suggest a better fit. That answer is advice, not proof, so it cannot turn a rule into a verified Pass.
+AI is advisory only for nondeterministic or contextual review whose answer depends on the project. For example, a script should not force every project to use folders named `src`, `components`, and `tests`. An AI review can look at the screened file list and short source excerpts, explain whether the layout is hard to follow for this project, and suggest a better fit. That answer is advice, not proof, so it cannot create a verified Pass, verified Fail, or final Not Applicable result.
 
 When running a source build that is not on `PATH`, use the same commands with the `./` prefix:
 
@@ -292,7 +301,25 @@ prc full claude
 
 `prc full` uses the same guarded path as `prc scan --ai`. Selecting the provider is also your explicit permission to send bounded, secret-screened source excerpts to that remote provider. The provider receives no target workspace path and gets no shell, file-reading, write, web, MCP, or install tools. Do not enable AI review for source that its provider is not allowed to process.
 
-The full run is intentionally large: controls are sent in sealed batches of at most eight, and the coordinator must create one separate subagent for every control. Completed batches are saved outside the target and reused when the same scan resumes. The terminal shows the plan, bounded progress, elapsed time, cached work, and new Codex token totals or Claude cost estimates when the provider reports them. This can take a long time and use many tokens. AI results are always labeled advisory; they cannot create a verified Pass, a final Not Applicable decision, or modify the project.
+The full run is intentionally large: all 9,356 nondeterministic controls are
+sent in sealed batches of at most eight. The coordinator must create one
+separate primary subagent per rule. Deep mode also creates one independent
+skeptical subagent per batch and reconciles its counterexamples with the
+primary reviews. The short `prc full` command uses four parallel provider
+workers; Codex also uses `xhigh` reasoning. Each result contains a priority,
+risk, ordered fix steps, independent verification steps, evidence still needed,
+and the strongest skeptical challenge. These remain advice, never verified
+findings.
+
+Completed batches are saved outside the target and reused when the same scan
+resumes. If a later batch fails, the scanner writes a clearly marked partial
+report containing every completed, schema-checked result before it returns the
+execution error. Run the same command again to reuse those batches and
+continue. The terminal shows the plan, bounded progress, elapsed time, cached
+work, and new Codex token totals or Claude cost estimates when the provider
+reports them. This can take a long time and use many tokens. AI results cannot
+create a verified Pass, verified Fail, or final Not Applicable decision, and
+they cannot modify the project.
 
 Advanced options such as reviewing one control, changing effort, or setting a Claude cost limit remain available in the [safe AI control review](docs/scanner/ai-control-review.md).
 
@@ -304,14 +331,15 @@ The scanner includes every production concern in its report, but it does not pre
 
 Fixing is a separate workflow. `prc scan` never calls it. The bounded `prc fix` command works only in isolated candidate directories and supports a deliberately small set of independently verifiable changes; it never merges, deploys, or releases anything automatically.
 
-Continue with the [complete scanner quick start](docs/scanner/getting-started.md), [safe start-to-finish walkthrough](docs/scanner/security-walkthrough.md), [CLI and exit codes](docs/scanner/cli-contract.md), [diagnostics](docs/scanner/doctor.md), [read-only agent integration](docs/scanner/mcp-agent-integration.md), [project configuration](docs/scanner/configuration.md), [state and history](docs/scanner/state-and-history.md), [supply-chain scanning](docs/scanner/supply-chain.md), and [isolated remediation](docs/scanner/remediation.md). The [research findings and improvement plan](research/PROJECT_RESEARCH_AND_IMPROVEMENT_PLAN.md) records the Reddit audit, standards review, coverage gaps, and prioritized next work. Architecture details live in the [product contract](docs/architecture/product-contract.md), [trust model](docs/architecture/trust-model.md), [adapter protocol](docs/architecture/adapters.md), [evidence model](docs/architecture/evidence-and-results.md), and [remediation contract](docs/architecture/remediation-contract.md).
+Continue with the [complete scanner quick start](docs/scanner/getting-started.md), [safe start-to-finish walkthrough](docs/scanner/security-walkthrough.md), [CLI and exit codes](docs/scanner/cli-contract.md), [diagnostics](docs/scanner/doctor.md), [read-only agent integration](docs/scanner/mcp-agent-integration.md), [project configuration](docs/scanner/configuration.md), [state and history](docs/scanner/state-and-history.md), [supply-chain scanning](docs/scanner/supply-chain.md), and [isolated remediation](docs/scanner/remediation.md). The [evidence-backed production convergence roadmap](docs/architecture/evidence-backed-production-convergence.md) records the quality target, measured current state, implementation order, and acceptance gates. The [research findings and improvement plan](research/PROJECT_RESEARCH_AND_IMPROVEMENT_PLAN.md) records the Reddit audit, standards review, coverage gaps, and prioritized next work. Architecture details live in the [product contract](docs/architecture/product-contract.md), [trust model](docs/architecture/trust-model.md), [adapter protocol](docs/architecture/adapters.md), [evidence model](docs/architecture/evidence-and-results.md), and [remediation contract](docs/architecture/remediation-contract.md).
 
 ### What is still being built
 
 - More narrow, tested local checks. The catalog currently has 43 executable assertions linked to 26 broad controls; the normal profile runs 40 and the quick profile runs 18. Most broad controls still need evidence or review.
-- Expert review of the machine-readable acceptance contract for every control. All 10,042 current contracts are generated and clearly labeled unreviewed; they are routing hints, not 10,042 finished automatic tests.
+- More authority-specific read-only collectors for the reviewed deterministic catalog. Classification, bindings, exact predicates, the runtime, report aggregation, and the first repository collector now run end to end, but most of the 765 clauses still need a trusted source adapter. Missing collectors, external providers, complete scope, or authoritative evidence must stay Blocked.
 - Deeper meaning checks beyond the new readable, non-whitespace text baseline for repository documents—for example, whether a security policy gives useful reporting steps—without forcing one language, file name, heading, or folder layout.
-- Larger real-project accuracy tests for Codex and Claude review, including cost, resume, false-positive, missed-finding, prompt-injection, and unusual-project-layout measurements.
+- Domain-level synthesis and root-cause deduplication above the rule-by-rule AI reviews, so related advice becomes one dependency-ordered improvement plan instead of repeated symptoms.
+- Larger real-project accuracy tests for Codex and Claude review, including cost, partial resume, false-positive, missed-finding, prompt-injection, disagreement, and unusual-project-layout measurements.
 - Independent checks of the meaning of AI advice. The scanner can prove that an AI-cited file and line existed in the screened snapshot, but it cannot yet prove that the sentence the AI wrote about that line is correct.
 - Safer native installation choices for people without Node, such as signed standalone installers or package-manager formulas. These should download a fixed, verified scanner release—not hide the npm command inside a mutable shell script.
 - Broader isolated fixes with independent tests. Scan will remain report-only, and no fix path will silently merge, deploy, or claim that every production concern was solved.

@@ -1,0 +1,2656 @@
+{
+  "schema_version": "prc.control-classification-final/v0.1",
+  "packet_id": "docs-engineering-01-governance-and-foundations-md-part-003",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "source_path": "docs/engineering/01-governance-and-foundations.md",
+  "control_count": 138,
+  "controls": [
+    {
+      "control_id": "USEQ-7D97FA29",
+      "revision": 1,
+      "semantic_sha256": "7d97fa29697809a8cf96618ab12b5d7d3acba3af22724ce1cfcd01c06e4575cc",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Identify every group whose work, rights, incentives, responsibilities, workload, or outcomes will change.” has bounded record, configuration, or test evidence, but its full meaning also requires legal, rights, ethics, fairness, accessibility, or context-specific adequacy judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authoritative records expose the named in-scope fields, mappings, roles, decisions, or lifecycle events without treating their contextual quality or completeness as proven.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-F4BFF6A0",
+      "revision": 1,
+      "semantic_sha256": "f4bff6a07ee2cfb02bffa98bd6ab3e9f56d17b14b5a4d39379bd6e7caf63465a",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Involve affected users, operators, support teams, administrators, and downstream partners early enough to influence design.” has a mechanically checkable record, configuration, event, or bounded-test portion, but full pass status depends on contextual sufficiency, representativeness, impact, or outcome quality.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authoritative records expose the named in-scope fields, mappings, roles, decisions, or lifecycle events without treating their contextual quality or completeness as proven.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-7A6C75E2",
+      "revision": 1,
+      "semantic_sha256": "7a6c75e2adede75db0867c2724acf4121f86c1461134e81e43cc2509de0488b6",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because named process and transition fields do not prove complete, current, feasible states and retirement conditions.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: A record lists current and target processes but omits a retained exception and gives retirement as later; all fields exist."
+    },
+    {
+      "control_id": "USEQ-BD17C161",
+      "revision": 1,
+      "semantic_sha256": "bd17c1611cc32e206cb055c33ab9d5a882cd1ba3910a90566795773c4578daae",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because deployment state, adoption success, and benefit realization require distinct valid measures and decision thresholds.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_threshold",
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: A deployment is marked adopted because logins occurred and benefits realized because usage rose, although users still use the old process."
+    },
+    {
+      "control_id": "USEQ-F637AD14",
+      "revision": 1,
+      "semantic_sha256": "f637ad14b0d9a68455fa7c5cf2288d1feb9d017aa24d8adc06a5b4ea14e4b00b",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because indicator names do not establish valid outcomes, complete affected populations, meaningful failure criteria, or genuine prelaunch timing.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_threshold",
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: A launch backdates fields saying adoption high and failure low, omitting a safety indicator; the record passes."
+    },
+    {
+      "control_id": "USEQ-B8EE5089",
+      "revision": 1,
+      "semantic_sha256": "b8ee50892abbd3fe5a7f4442dc8d3541b3035e4b9301034bb088765d0e07837c",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "The proposed deterministic_composite check does not fully decide this rule because timestamps are checkable but baseline scope, measurement validity, and coverage of every changed outcome are not.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: A baseline samples one healthy team before a company-wide change; record ordering passes although it is not representative."
+    },
+    {
+      "control_id": "USEQ-C4685A7E",
+      "revision": 1,
+      "semantic_sha256": "c4685a7ef0a71c804069117a4bf6ca1f2cd5e7bd5643db02324a88481261e61e",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The control “Validate that the change addresses the actual problem rather than merely introducing new technology.” concerns human understanding, retaliation, pressure, incentives, truthfulness, or decision integrity that must remain with accountable people rather than inferred from artifacts.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-183A85DE",
+      "revision": 1,
+      "semantic_sha256": "183a85de6b7e873acd914fa9bf75bb50cb31e4fbcd0a358cece8029456ce53b7",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Identify incentives that can cause gaming, unsafe shortcuts, shadow systems, duplicate work, or data-quality degradation.” has a mechanically checkable record, configuration, event, or bounded-test portion, but full pass status depends on contextual sufficiency, representativeness, impact, or outcome quality.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authoritative records expose the named in-scope fields, mappings, roles, decisions, or lifecycle events without treating their contextual quality or completeness as proven.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-9C2558C8",
+      "revision": 1,
+      "semantic_sha256": "9c2558c8636c8e34ddd215a2483b627e47f7f5a5c23dc65755576bb1246cbf1b",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Assess workload transfer to users, support, operations, security, compliance, and external partners.” has a mechanically checkable record, configuration, event, or bounded-test portion, but full pass status depends on contextual sufficiency, representativeness, impact, or outcome quality.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authoritative records expose the named in-scope fields, mappings, roles, decisions, or lifecycle events without treating their contextual quality or completeness as proven.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-4D532A00",
+      "revision": 1,
+      "semantic_sha256": "4d532a0005608b7c0a04d2a1cd666ede0699c080f16e0b249b1b0800c48d5b0f",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The control “Ensure automation does not silently shift difficult work or risk to less powerful users.” depends on project-specific power, harm, workload, incentives, user context, or outcome semantics that no bounded generic evidence contract can decide.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-AECB2ABF",
+      "revision": 1,
+      "semantic_sha256": "aecb2abf9b1002744e38f9b756ac0b92672ae5688f68ad6f61b7915b8ca1dcb1",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The proposed deterministic_composite check does not fully decide this rule because affected-person completeness, role needs, training sufficiency, practical competence, and support usefulness require judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: All registered users watch a generic video, but contractors are omitted and cannot perform the new task; timestamps pass."
+    },
+    {
+      "control_id": "USEQ-F60A847F",
+      "revision": 1,
+      "semantic_sha256": "f60a847f1a4ab0a0773c9cf0889864f2eca0f13da67b8bbcbb25a324ba0df6f8",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Verify competence through observed performance or assessment rather than attendance alone.” has a mechanically checkable record, configuration, event, or bounded-test portion, but full pass status depends on contextual sufficiency, representativeness, impact, or outcome quality.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded evidence records the named event, configuration, review, or test behavior without treating legal adequacy, representative coverage, or universal success as proven.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-7908A553",
+      "revision": 1,
+      "semantic_sha256": "7908a5530b9ad5b981929072c518df3ecd7940d199b87fc37bdad84819f64bb0",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Provide accessible training and alternatives for different languages, abilities, schedules, locations, and levels of experience.” has bounded record, configuration, or test evidence, but its full meaning also requires legal, rights, ethics, fairness, accessibility, or context-specific adequacy judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded evidence records the named event, configuration, review, or test behavior without treating legal adequacy, representative coverage, or universal success as proven.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-871E097A",
+      "revision": 1,
+      "semantic_sha256": "871e097a1c8520dca88205ec853a6fd12aa3787faa9a4a99b57637f247d5b1dd",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Pilot changes with representative users, data, volume, constraints, and exception cases.” has a mechanically checkable record, configuration, event, or bounded-test portion, but full pass status depends on contextual sufficiency, representativeness, impact, or outcome quality.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authoritative records expose the named in-scope fields, mappings, roles, decisions, or lifecycle events without treating their contextual quality or completeness as proven.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-6CD7A9F9",
+      "revision": 1,
+      "semantic_sha256": "6cd7a9f9a49a849f73f0544029316e2a834a492ec13f12384e8ff1f45d166d98",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Define safe coexistence between old and new processes during transition.” has a mechanically checkable record, configuration, event, or bounded-test portion, but full pass status depends on contextual sufficiency, representativeness, impact, or outcome quality.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authoritative records expose the named in-scope fields, mappings, roles, decisions, or lifecycle events without treating their contextual quality or completeness as proven.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-05F6D1E7",
+      "revision": 1,
+      "semantic_sha256": "05f6d1e7d67901b37f8b90bb3a8e369e21b5223d72d0ff9b08ee7516295088bb",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Prevent duplicate records, conflicting authorities, and inconsistent decisions while both processes operate.” has a mechanically checkable record, configuration, event, or bounded-test portion, but full pass status depends on contextual sufficiency, representativeness, impact, or outcome quality.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded evidence records the named event, configuration, review, or test behavior without treating legal adequacy, representative coverage, or universal success as proven.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-88FC79BA",
+      "revision": 1,
+      "semantic_sha256": "88fc79baecf9f959a2a9d514641fc1032f38430b88e01c8f2c46bb75360a205f",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because a stage-to-system record does not prove all transition stages or that the named system truly governs writes and decisions.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: The registry names System A authoritative while an unlisted batch still writes System B; all recorded stages pass."
+    },
+    {
+      "control_id": "USEQ-22C353B1",
+      "revision": 1,
+      "semantic_sha256": "22c353b15226c32c8ff892d8551f0d41c2d6cc2db0e53d6b805c5c4b8cdc1917",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because a documented correction path does not prove accessibility, capacity, authority, or successful correction.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: A support email exists but is unstaffed and cannot repair migrated records; the record checker passes."
+    },
+    {
+      "control_id": "USEQ-7A86F837",
+      "revision": 1,
+      "semantic_sha256": "7a86f837d9f0c8beecf76a12252bd610c4aa14bb6c7307a810f1677206775c91",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Monitor adoption by user segment to detect exclusion, differential failure, or hidden burden.” has a mechanically checkable record, configuration, event, or bounded-test portion, but full pass status depends on contextual sufficiency, representativeness, impact, or outcome quality.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded evidence records the named event, configuration, review, or test behavior without treating legal adequacy, representative coverage, or universal success as proven.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-7AE11356",
+      "revision": 1,
+      "semantic_sha256": "7ae113563051e822b6408729246732c787ed99f284a5efc36230982810e0f388",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because records cannot prove representative qualitative collection, complete affected groups, or meaningful synthesis alongside metrics.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope",
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: One manager comment is stored as qualitative feedback while harmed end users are never asked; both feedback and usage rows exist."
+    },
+    {
+      "control_id": "USEQ-4FC73955",
+      "revision": 1,
+      "semantic_sha256": "4fc73955f377ffd279de421ebb97006065acdad922570d349d2a175d2bdd513e",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The control “Protect users from retaliation for reporting that a change is unsafe, unusable, inaccessible, or ineffective.” concerns human understanding, retaliation, pressure, incentives, truthfulness, or decision integrity that must remain with accountable people rather than inferred from artifacts.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-F2A1587B",
+      "revision": 1,
+      "semantic_sha256": "f2a1587be4c527f333774163d1c4dddca36520a3dc417386a25b91e6aba05134",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because a visible workflow does not establish authorized, timely, usable decisions to pause, narrow, modify, or reverse.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: The page names an owner who lacks shutdown authority and provides no viable rollback; all action labels are present."
+    },
+    {
+      "control_id": "USEQ-7B44BE46",
+      "revision": 1,
+      "semantic_sha256": "7b44be46d63eb41326fe44928dad6782d6f6dfb6a55288be330a952903121a48",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Avoid interpreting forced use as evidence of satisfaction or success.” has a mechanically checkable record, configuration, event, or bounded-test portion, but full pass status depends on contextual sufficiency, representativeness, impact, or outcome quality.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authoritative records expose the named in-scope fields, mappings, roles, decisions, or lifecycle events without treating their contextual quality or completeness as proven.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-2184CE2C",
+      "revision": 1,
+      "semantic_sha256": "2184ce2cd5358b0625e979d8f7fff63ad757d19535a1659f20cafaf42275aca5",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The control “Confirm that users understand changed responsibilities, limits, escalation routes, and consequences.” concerns human understanding, retaliation, pressure, incentives, truthfulness, or decision integrity that must remain with accountable people rather than inferred from artifacts.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-36B73F2A",
+      "revision": 1,
+      "semantic_sha256": "36b73f2a1dd4d63a69379cae11783e025d34da5ee20b19d61ae12101ac1e4882",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Ensure support capacity matches expected questions, incidents, and transition failures.” has a mechanically checkable record, configuration, event, or bounded-test portion, but full pass status depends on contextual sufficiency, representativeness, impact, or outcome quality.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authoritative records expose the named in-scope fields, mappings, roles, decisions, or lifecycle events without treating their contextual quality or completeness as proven.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-DED02C8E",
+      "revision": 1,
+      "semantic_sha256": "ded02c8e4ea1864e988fdd4aa810c2e5ad7bfd3d95871284453006965d1107ee",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The proposed deterministic_composite check does not fully decide this rule because the affected policy, contract, control, dashboard, report, and audit-procedure inventory is not complete and required changes need specialist meaning.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: An external contract still describes the old process but is omitted from inventory; every indexed artifact has the new version."
+    },
+    {
+      "control_id": "USEQ-C4FE996D",
+      "revision": 1,
+      "semantic_sha256": "c4fe996d081cff61a3143faf687d710204c1c2fcb851f6ce64f70a7506c3b260",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The proposed deterministic_composite check does not fully decide this rule because no inventory bounds every copy of obsolete guidance and clear temporary labeling depends on audience interpretation.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: An old job aid remains in a shared drive, while indexed documents are removed or labeled transition; the checker passes."
+    },
+    {
+      "control_id": "USEQ-6CD51BC3",
+      "revision": 1,
+      "semantic_sha256": "6cd51bc3dec16f1cf48a2d777ea77f6d378b213756544d2835264f189e687585",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Measure intended benefits after stabilization and compare them with cost, harm, risk, and displaced work.” has a mechanically checkable record, configuration, event, or bounded-test portion, but full pass status depends on contextual sufficiency, representativeness, impact, or outcome quality.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded evidence records the named event, configuration, review, or test behavior without treating legal adequacy, representative coverage, or universal success as proven.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-5ECB509F",
+      "revision": 1,
+      "semantic_sha256": "5ecb509f1400ac1f7413a4e03ce0e5513319e5bf40548a172b50f03d316dafa5",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Investigate benefits that appear only through metric definition changes, excluded populations, or unmeasured downstream costs.” has a mechanically checkable record, configuration, event, or bounded-test portion, but full pass status depends on contextual sufficiency, representativeness, impact, or outcome quality.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded evidence records the named event, configuration, review, or test behavior without treating legal adequacy, representative coverage, or universal success as proven.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-0C2A39BB",
+      "revision": 1,
+      "semantic_sha256": "0c2a39bb45a82cd77437f2e59f0e276c225fa06f6bace2aed233c8a522732286",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Retire old systems and processes only after legal, operational, data, support, and recovery obligations are satisfied.” has bounded record, configuration, or test evidence, but its full meaning also requires legal, rights, ethics, fairness, accessibility, or context-specific adequacy judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded evidence records the named event, configuration, review, or test behavior without treating legal adequacy, representative coverage, or universal success as proven.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-13D789B8",
+      "revision": 1,
+      "semantic_sha256": "13d789b881d9b772605e902d04766f539dee98c208fb85b632abad0ba0d0f47c",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The proposed deterministic_composite check does not fully decide this rule because which historical records are needed and whether retained records are usable for old-process decisions are not bounded.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: A legacy configuration needed to interpret approvals was deleted, while listed records remain accessible; the inventory passes."
+    },
+    {
+      "control_id": "USEQ-5DEBD48E",
+      "revision": 1,
+      "semantic_sha256": "5debd48eb5ad4a865344d040f840ecf0d491731ae13d61b07b81d7527cfe51ab",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because lesson fields do not prove valid learning or that all affected assumptions, estimates, training, and rollout methods were updated.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: A record says communicate better but leaves the failed rollout estimate unchanged; all named sections are present."
+    },
+    {
+      "control_id": "USEQ-F54385C8",
+      "revision": 1,
+      "semantic_sha256": "f54385c81224a323611bc8f26d92cb16c8113b12b491ea8970bea4323448bb07",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because a named benefits owner does not prove authority, capacity, accepted accountability, or continued ownership after deployment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: A departed contractor remains recorded as owner beyond deployment; the structured record passes."
+    },
+    {
+      "control_id": "USEQ-6A646372",
+      "revision": 1,
+      "semantic_sha256": "6a646372409b0026ae93ad949e0f2897610d58952cbda5a98278dceb72f78613",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The proposed deterministic_composite check does not fully decide this rule because criteria states do not prove adoption, outcomes, support, controls, and retirement were validly defined and truly met.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment",
+        "undefined_protocol"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: A manager marks all criteria met although users keep the old system and support is not ready; exact states pass."
+    },
+    {
+      "control_id": "USEQ-2A4D03EE",
+      "revision": 1,
+      "semantic_sha256": "2a4d03eeabe7e6104044404d90c9bcc40e0862ffbf9166d0483b643509bda5aa",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Inventory every automated rule, score, eligibility decision, prioritization, routing decision, threshold, and enforcement action that materially affects people or organizations.” has a mechanically checkable record, configuration, event, or bounded-test portion, but full pass status depends on contextual sufficiency, representativeness, impact, or outcome quality.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authoritative records expose the named in-scope fields, mappings, roles, decisions, or lifecycle events without treating their contextual quality or completeness as proven.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-DE0C89CA",
+      "revision": 1,
+      "semantic_sha256": "de0c89ca5a7a647559fede2186f7a90b71bdd0d9f248f9b9feee9a80da9ae3e4",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because legal basis, ethical rationale, affected populations, consequences, and appeal adequacy require specialist judgment and complete population discovery.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: A decision record cites legitimate interest without legal analysis and omits migrants affected by the rule; every field exists."
+    },
+    {
+      "control_id": "USEQ-B989239A",
+      "revision": 1,
+      "semantic_sha256": "b989239a186d83d552b8844f8e4d0a7e2e202644dabab6aaac6da063f733b614",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Classify decisions by potential harm, reversibility, scale, sensitivity, and degree of human reliance.” has a mechanically checkable record, configuration, event, or bounded-test portion, but full pass status depends on contextual sufficiency, representativeness, impact, or outcome quality.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authoritative records expose the named in-scope fields, mappings, roles, decisions, or lifecycle events without treating their contextual quality or completeness as proven.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-BA4A6745",
+      "revision": 1,
+      "semantic_sha256": "ba4a67451a0186ba89c99c8301616c30c0f41eb6c855ff7560d06692f923353d",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Require stronger review, evidence, monitoring, and human oversight as decision impact increases.” has a mechanically checkable record, configuration, event, or bounded-test portion, but full pass status depends on contextual sufficiency, representativeness, impact, or outcome quality.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded evidence records the named event, configuration, review, or test behavior without treating legal adequacy, representative coverage, or universal success as proven.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-FA2A720B",
+      "revision": 1,
+      "semantic_sha256": "fa2a720b6fc779fc4c8ae43447e14fa9682014ebf129296c507dc0bdf828979e",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because the complete rule and decision-table inventory and genuine authority of each source and version are not established.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "human_accountability"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: A spreadsheet decision table outside the registry drives production; all registered rules have source and version fields."
+    },
+    {
+      "control_id": "USEQ-0518839E",
+      "revision": 1,
+      "semantic_sha256": "0518839ec88a6e31af01f332f0394587b034f6ad3544dc219f83b105089e04c1",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Prevent undocumented business rules from existing only in code, spreadsheets, individual memory, or vendor configuration.” has a mechanically checkable record, configuration, event, or bounded-test portion, but full pass status depends on contextual sufficiency, representativeness, impact, or outcome quality.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded evidence records the named event, configuration, review, or test behavior without treating legal adequacy, representative coverage, or universal success as proven.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-A9E124F3",
+      "revision": 1,
+      "semantic_sha256": "a9e124f30d45862a4cb25c6abcfe6d57f8245cdfc856b71dc0e96720d4fa633a",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Translate policy language into unambiguous executable logic with reviewed examples and counterexamples.” has a mechanically checkable record, configuration, event, or bounded-test portion, but full pass status depends on contextual sufficiency, representativeness, impact, or outcome quality.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded evidence records the named event, configuration, review, or test behavior without treating legal adequacy, representative coverage, or universal success as proven.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-7EA42112",
+      "revision": 1,
+      "semantic_sha256": "7ea421121968cde90ae541fd78897378f40ce56efe96f1e6044d16993d7562d2",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because identifying every ambiguity, discretionary area, conflict, exception, and precedence relation is interpretive and open-ended.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: Two rules conflict only for a rare population but the conflict is not recorded; listed relationships pass."
+    },
+    {
+      "control_id": "USEQ-CC7A27FE",
+      "revision": 1,
+      "semantic_sha256": "cc7a27fe8c0951fe58e985173ec1307f2e66dd3de8341f6f816df51cc4f67a51",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because jurisdiction and population scope require legal interpretation, and explicit values may still be wrong or misleading.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: A rule records EU scope but legally applies in the UK too; all date and scope fields are populated."
+    },
+    {
+      "control_id": "USEQ-5BF321CF",
+      "revision": 1,
+      "semantic_sha256": "5bf321cf9a3980d91d04c2883f2dbe461b85963c40b9dff3cbaefea3a8c1e8c2",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "The proposed deterministic_composite check does not fully decide this rule because historical reconstruction needs complete immutable inputs and an executable equality oracle, not only version bindings.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: An unrecorded feature flag changed a past outcome; all registered rules, data, and versions replay consistently but reconstruct the wrong decision."
+    },
+    {
+      "control_id": "USEQ-D0AF7A75",
+      "revision": 1,
+      "semantic_sha256": "d0af7a75f83eafaea3d901255f922bed5a0ce930896c70703cf104b1551c14a2",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Validate every input for accuracy, completeness, timeliness, provenance, semantic meaning, and permitted use.” has a mechanically checkable record, configuration, event, or bounded-test portion, but full pass status depends on contextual sufficiency, representativeness, impact, or outcome quality.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authoritative records expose the named in-scope fields, mappings, roles, decisions, or lifecycle events without treating their contextual quality or completeness as proven.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-CE3B9271",
+      "revision": 1,
+      "semantic_sha256": "ce3b927155b08ee535aa58ee6250db326b0af86c35c153d3a0728368f1d0fd69",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because named fallback behaviors do not prove coverage of every input failure combination or safe and appropriate handling.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: The policy handles missing values but treats conflicting stale inputs as current; all five headings exist."
+    },
+    {
+      "control_id": "USEQ-7881AC46",
+      "revision": 1,
+      "semantic_sha256": "7881ac4647c7c197118ffff7e02e3189802c1bfefbfd5573f242c3cfb3e34bb5",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Prevent proxies from defeating legal, ethical, fairness, or purpose limitations.” has bounded record, configuration, or test evidence, but its full meaning also requires legal, rights, ethics, fairness, accessibility, or context-specific adequacy judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded evidence records the named event, configuration, review, or test behavior without treating legal adequacy, representative coverage, or universal success as proven.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-A1EF5F3D",
+      "revision": 1,
+      "semantic_sha256": "a1ef5f3d4cf120e4c543983a12f924502d4db1342f8fdd12b0b61ab722b6f258",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Test rules across representative demographic, geographic, linguistic, accessibility, and socioeconomic groups where outcomes can differ.” has a mechanically checkable record, configuration, event, or bounded-test portion, but full pass status depends on contextual sufficiency, representativeness, impact, or outcome quality.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded evidence records the named event, configuration, review, or test behavior without treating legal adequacy, representative coverage, or universal success as proven.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-15661B6F",
+      "revision": 1,
+      "semantic_sha256": "15661b6f31c4b0eaeacface31700fc09941d05f68c4ec349e180dfa3ce16757c",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Test boundary values and combinations near thresholds for disproportionate or unstable effects.” has a mechanically checkable record, configuration, event, or bounded-test portion, but full pass status depends on contextual sufficiency, representativeness, impact, or outcome quality.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded evidence records the named event, configuration, review, or test behavior without treating legal adequacy, representative coverage, or universal success as proven.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-69F2B791",
+      "revision": 1,
+      "semantic_sha256": "69f2b791472b6d0860d3fdbbfed820e6f6a4503ef14cc03575692e1d3298017e",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Detect feedback loops in which earlier automated outcomes shape future inputs and reinforce error or disadvantage.” has a mechanically checkable record, configuration, event, or bounded-test portion, but full pass status depends on contextual sufficiency, representativeness, impact, or outcome quality.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authoritative records expose the named in-scope fields, mappings, roles, decisions, or lifecycle events without treating their contextual quality or completeness as proven.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-05AA60BA",
+      "revision": 1,
+      "semantic_sha256": "05aa60ba6cf833e51c8e1901f02bde6e7f98ffb464caccf3ce138d77da6502b5",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Evaluate whether a threshold creates cliff effects that should be replaced by review, graduated handling, or uncertainty disclosure.” has a mechanically checkable record, configuration, event, or bounded-test portion, but full pass status depends on contextual sufficiency, representativeness, impact, or outcome quality.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded evidence records the named event, configuration, review, or test behavior without treating legal adequacy, representative coverage, or universal success as proven.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-85E43B93",
+      "revision": 1,
+      "semantic_sha256": "85e43b930910eceffb4ac7b5485688e71d847c9bd5536253a33ef57efd1d80da",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Provide understandable reasons for consequential outcomes at a level appropriate to affected users and reviewers.” has a mechanically checkable record, configuration, event, or bounded-test portion, but full pass status depends on contextual sufficiency, representativeness, impact, or outcome quality.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded evidence records the named event, configuration, review, or test behavior without treating legal adequacy, representative coverage, or universal success as proven.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-3D5B49D0",
+      "revision": 1,
+      "semantic_sha256": "3d5b49d0e787aad11ce94fba8f5f40c2127b3ec5f0af7dcbab4a34b76de53a85",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Distinguish an explanation of the actual decision from generic policy text.” has a mechanically checkable record, configuration, event, or bounded-test portion, but full pass status depends on contextual sufficiency, representativeness, impact, or outcome quality.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authoritative records expose the named in-scope fields, mappings, roles, decisions, or lifecycle events without treating their contextual quality or completeness as proven.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-E94AE5FB",
+      "revision": 1,
+      "semantic_sha256": "e94ae5fb5708d4dea6b1b51e31d58a80c7370232d7dd914b113837b4ee452ba2",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Avoid exposing security-sensitive details while still providing meaningful reason and redress.” has a mechanically checkable record, configuration, event, or bounded-test portion, but full pass status depends on contextual sufficiency, representativeness, impact, or outcome quality.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authoritative records expose the named in-scope fields, mappings, roles, decisions, or lifecycle events without treating their contextual quality or completeness as proven.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-ECA2F700",
+      "revision": 1,
+      "semantic_sha256": "eca2f70039c4513097be70c35d9340a4b8b949506680e3d7a18f350cd91d15d1",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Provide a timely, accessible, and effective path to challenge, correct, and appeal consequential decisions.” has bounded record, configuration, or test evidence, but its full meaning also requires legal, rights, ethics, fairness, accessibility, or context-specific adequacy judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded evidence records the named event, configuration, review, or test behavior without treating legal adequacy, representative coverage, or universal success as proven.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-E6116080",
+      "revision": 1,
+      "semantic_sha256": "e6116080d4a88c6b6c0760649603251246af540b6ff35e0a803ea19ea38c817a",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Ensure reviewers can change an outcome and are not evaluated solely on agreement with automation.” has a mechanically checkable record, configuration, event, or bounded-test portion, but full pass status depends on contextual sufficiency, representativeness, impact, or outcome quality.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded evidence records the named event, configuration, review, or test behavior without treating legal adequacy, representative coverage, or universal success as proven.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-AAE859CB",
+      "revision": 1,
+      "semantic_sha256": "aae859cb366c4d2016b0d27a90299259b3c47a5745de8eca3dd7e926d08e32e8",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Prevent automation bias by presenting uncertainty, conflicting evidence, limitations, and alternatives.” has a mechanically checkable record, configuration, event, or bounded-test portion, but full pass status depends on contextual sufficiency, representativeness, impact, or outcome quality.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded evidence records the named event, configuration, review, or test behavior without treating legal adequacy, representative coverage, or universal success as proven.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-EE4F8C75",
+      "revision": 1,
+      "semantic_sha256": "ee4f8c75f06f3b0570e715f05d77f115372eb8c821e407d80f981843e267696e",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because mandatory-review triggers and reviewer competence, authority, time, and information are accountable domain judgments.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: A high-impact case is labeled routine and an untrained reviewer is recorded as competent; the rule fields pass."
+    },
+    {
+      "control_id": "USEQ-FDC0790E",
+      "revision": 1,
+      "semantic_sha256": "fdc0790e811e627581781a1eec2f92782ae48417583eee320f65913f49a8ccaa",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Record overrides, reasons, outcomes, and patterns without discouraging justified intervention.” has a mechanically checkable record, configuration, event, or bounded-test portion, but full pass status depends on contextual sufficiency, representativeness, impact, or outcome quality.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authoritative records expose the named in-scope fields, mappings, roles, decisions, or lifecycle events without treating their contextual quality or completeness as proven.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-5F638352",
+      "revision": 1,
+      "semantic_sha256": "5f63835280f13417a4a9c62553eefa4dc928bb04d109198dacf8f3930f1e7e7d",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "The proposed deterministic_composite check does not fully decide this rule because metric bindings do not prove complete appeals, subgroups, harms, drift, or valid measurement methods and thresholds.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: A harmed small subgroup is absent from monitoring, while aggregate override and complaint dashboards pass."
+    },
+    {
+      "control_id": "USEQ-6E4D7B2E",
+      "revision": 1,
+      "semantic_sha256": "6e4d7b2eb6c4683f774e98cd808ebbbd68e0d1dc16c5a3f8450a5fc790f41ad3",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The proposed deterministic_composite check does not fully decide this rule because high disagreement, expert authority, causal investigation, and adequate resolution are not defined by exact record states.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_threshold",
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: The configured threshold hides severe disagreement in one subgroup, and a superficial ticket is marked investigated."
+    },
+    {
+      "control_id": "USEQ-16C7AB3F",
+      "revision": 1,
+      "semantic_sha256": "16c7ab3f745b6c4c755cc05a0336919d87dc20755a3f6f68089d03b530e13f73",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because separate approval fields do not prove independent authorities made policy and implementation decisions for the correct artifacts.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: One manager uses two accounts to approve both stages; the records show distinct approval types and pass."
+    },
+    {
+      "control_id": "USEQ-9C43C510",
+      "revision": 1,
+      "semantic_sha256": "9c43c510800152e52eea4575760fba01cbd28a985244b61ce69ac4aec1c0cf91",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The proposed deterministic_composite check does not fully decide this rule because affected-rights scope, independence, reviewer competence, and review sufficiency are not mechanically decidable.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "legal_or_specialist_authority",
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: A housing-access rule is mislabeled general workflow and omitted, while registered rights rules have nominal reviews."
+    },
+    {
+      "control_id": "USEQ-A3E0DD69",
+      "revision": 1,
+      "semantic_sha256": "a3e0dd69672ac68dc59def0ab14335f1837c5fd11be661c7fbbb07137cb7772e",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The proposed deterministic_composite check does not fully decide this rule because matching version labels do not prove every related artifact is included or semantically compatible.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: Rules and tests share version 7, but the explanation and data mapping describe old logic; identifier comparisons pass."
+    },
+    {
+      "control_id": "USEQ-F9A87984",
+      "revision": 1,
+      "semantic_sha256": "f9a87984c6938a6be2dbbf5303432c6f7730f1b799c3d66d43d7752fc19b2c11",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The proposed deterministic_composite check does not fully decide this rule because high impact, emergency scope, and genuinely independent dual control require accountable judgment and complete change capture.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: An emergency change is labeled medium impact and approved by one person through two identities; registered states pass."
+    },
+    {
+      "control_id": "USEQ-507353D7",
+      "revision": 1,
+      "semantic_sha256": "507353d79b43198401c39a547569ae474b60bfa0b8fdfdd997c9205f47a3f26f",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "The proposed deterministic_composite check does not fully decide this rule because simulation evidence lacks a representative population, operational model, materiality boundary, outcome oracle, and confidence requirement.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope",
+        "undefined_threshold"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: A tiny synthetic sample shows no effect, while the real population contains a harmed subgroup; the approved scenario passes."
+    },
+    {
+      "control_id": "USEQ-DA024B8E",
+      "revision": 1,
+      "semantic_sha256": "da024b8e61096ac5a7be4edaaf1686bfc79b5b5e3127981c487a1577d42a8f65",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Use phased rollout, shadow evaluation, or retrospective analysis where direct rollout creates avoidable risk.” has a mechanically checkable record, configuration, event, or bounded-test portion, but full pass status depends on contextual sufficiency, representativeness, impact, or outcome quality.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded evidence records the named event, configuration, review, or test behavior without treating legal adequacy, representative coverage, or universal success as proven.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-C059B588",
+      "revision": 1,
+      "semantic_sha256": "c059b5884bb042358d0a8fef40514b12e0642bced46ca2a387ba1293a7cef39d",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because rollback and remediation sections do not prove feasible reversal, complete affected decisions, or corrected consequences.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: The plan says rerun decisions but historical inputs are gone and payments cannot be reversed; every field exists."
+    },
+    {
+      "control_id": "USEQ-72675725",
+      "revision": 1,
+      "semantic_sha256": "72675725c481f3b7f7349681cb9ca332f806f065ba08ba82d1d712444ac192f7",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The proposed deterministic_composite check does not fully decide this rule because the proposed inventories cannot prove every affected record and user for unknown propagation paths after a rule defect.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: A derived warehouse table lacks rule-version lineage, so its users are missed while all inventoried bindings pass."
+    },
+    {
+      "control_id": "USEQ-BAD34E15",
+      "revision": 1,
+      "semantic_sha256": "bad34e15aa9253db714f27aaed40d5d80b5f7140a2f9482c24d3d18d1a48e69a",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The proposed deterministic_composite check does not fully decide this rule because complete downstream propagation and semantic correction cannot be proven from registered system bindings.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: Balances are fixed in the core database but an unlisted report cache and customer notification remain wrong; states pass."
+    },
+    {
+      "control_id": "USEQ-A3D3BEAB",
+      "revision": 1,
+      "semantic_sha256": "a3d3beab007a290dcb95925adcd23e7359b1645856032ee762957c60061ac267",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Notify affected parties when required or when doing so materially enables correction and trust.” has a mechanically checkable record, configuration, event, or bounded-test portion, but full pass status depends on contextual sufficiency, representativeness, impact, or outcome quality.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded evidence records the named event, configuration, review, or test behavior without treating legal adequacy, representative coverage, or universal success as proven.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-EF58B259",
+      "revision": 1,
+      "semantic_sha256": "ef58b259727b4ac58bb53814d11490229613256aae574fe6a883826d8031319d",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Prevent users from manipulating decision inputs beyond intended discretion while avoiding unfair barriers to legitimate correction.” has bounded record, configuration, or test evidence, but its full meaning also requires legal, rights, ethics, fairness, accessibility, or context-specific adequacy judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded evidence records the named event, configuration, review, or test behavior without treating legal adequacy, representative coverage, or universal success as proven.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-E0356C82",
+      "revision": 1,
+      "semantic_sha256": "e0356c822582cf82276275d0ecc45c71691969a97aa3916906a6575aeccfb9fc",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "The proposed bounded_execution check does not fully decide this rule because an approved adversarial scenario set cannot bound creative gaming, collusion, automation, and economic strategies or their success oracle.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: Listed abuse cases pass, but coordinated low-rate accounts exploit a price rule outside the scenario set."
+    },
+    {
+      "control_id": "USEQ-4F9E9ECD",
+      "revision": 1,
+      "semantic_sha256": "4f9e9ecdf4951df64324cdaf402833d2a40e35092f46d182a94eca608ba47423",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Ensure rate limits and fraud controls do not silently create discriminatory or inaccessible outcomes.” has bounded record, configuration, or test evidence, but its full meaning also requires legal, rights, ethics, fairness, accessibility, or context-specific adequacy judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded evidence records the named event, configuration, review, or test behavior without treating legal adequacy, representative coverage, or universal success as proven.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-1D490309",
+      "revision": 1,
+      "semantic_sha256": "1d4903090f2125ce86de7fb01bf372d24827ff8a52c8b1abed0d8ef820f628f6",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The proposed deterministic_composite check does not fully decide this rule because complete source-policy, legal, population, data, product, and context changes and adequate revalidation require specialist judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: A court interpretation changes the rule authority but is absent from monitored sources; all registered triggers revalidate."
+    },
+    {
+      "control_id": "USEQ-4892D554",
+      "revision": 1,
+      "semantic_sha256": "4892d5541915bb00880bf5f5511353959eb61841c6ff717f7773decc97dcd036",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The proposed deterministic_composite check does not fully decide this rule because purpose and authority expiry require legal judgment, related-data scope is incomplete, and retirement state does not prove deletion.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: A rule authority expires but an unlisted derived profile remains in a warehouse; registered rules and data show retired."
+    },
+    {
+      "control_id": "USEQ-411D10D5",
+      "revision": 1,
+      "semantic_sha256": "411d10d589ae5c1561239134197a10f50067aced3c79d996e2260b7145048fe8",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because the event stream cannot prove completeness across creation, approval, tests, deployments, executions, overrides, and retirement, or authentic approval.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "human_accountability"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: An administrator overrides a rule through an unlogged path; every indexed lifecycle event has a valid record."
+    },
+    {
+      "control_id": "USEQ-CC58936A",
+      "revision": 1,
+      "semantic_sha256": "cc58936a29ac10089bd0879c02908abf545bcaf99fcb95c8ccddc137dae39670",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Publish appropriate transparency about the existence and purpose of material automated decision-making.” has a mechanically checkable record, configuration, event, or bounded-test portion, but full pass status depends on contextual sufficiency, representativeness, impact, or outcome quality.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authoritative records expose the named in-scope fields, mappings, roles, decisions, or lifecycle events without treating their contextual quality or completeness as proven.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-2D7EA97F",
+      "revision": 1,
+      "semantic_sha256": "2d7ea97f81c556e1199e56e5ec757e650df7d62e1b45751bf8079003d35fd8c8",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Prohibit claims of neutrality or objectivity when the rule embeds policy choices, value judgments, or incomplete data.” has a mechanically checkable record, configuration, event, or bounded-test portion, but full pass status depends on contextual sufficiency, representativeness, impact, or outcome quality.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authoritative records expose the named in-scope fields, mappings, roles, decisions, or lifecycle events without treating their contextual quality or completeness as proven.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-83CB306E",
+      "revision": 1,
+      "semantic_sha256": "83cb306ebc8a0b3babfcdf4944d785516f505c4beaf65367513c294242816744",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Identify the owner and permitted uses of every material codebase, library, data set, model, design, document, media asset, brand asset, and generated artifact.” has a mechanically checkable record, configuration, event, or bounded-test portion, but full pass status depends on contextual sufficiency, representativeness, impact, or outcome quality.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authoritative records expose the named in-scope fields, mappings, roles, decisions, or lifecycle events without treating their contextual quality or completeness as proven.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-4161FF42",
+      "revision": 1,
+      "semantic_sha256": "4161ff42b0c5cc6f39cd4ef7d7392964dd5248e79e1f7d5b3888d508c01bf842",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Obtain written intellectual-property assignments or licenses from employees, contractors, partners, and contributors where required.” has bounded record, configuration, or test evidence, but its full meaning also requires legal, rights, ethics, fairness, accessibility, or context-specific adequacy judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authoritative records expose the named in-scope fields, mappings, roles, decisions, or lifecycle events without treating their contextual quality or completeness as proven.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-89CB5A91",
+      "revision": 1,
+      "semantic_sha256": "89cb5a913d8f0770cdbf6b4240b9a820b790e94bd3bf597b402bf9e0d6a29212",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The control “Verify that contributors have authority to provide the material they contribute.” requires intellectual-property, licensing, contractual, legal, or rights interpretation. A scanner may validate records but cannot be the authority on permission, compatibility, or enforceability.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-F8B4E93A",
+      "revision": 1,
+      "semantic_sha256": "f8b4e93a70b8a8cfebea9e596e79c20fc26cceaac3f899ac73117dcc85685560",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because source inventories are incomplete and provenance records do not prove ownership, license rights, or permitted use.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: An externally sourced font embedded in an image is omitted; every catalogued asset has provenance fields."
+    },
+    {
+      "control_id": "USEQ-3F1EA654",
+      "revision": 1,
+      "semantic_sha256": "3f1ea65419c3373e9e6002b71086882fd3b78e3ba4b043856ab3324f8021bac3",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The control “Review license compatibility before combining, distributing, hosting, modifying, or embedding components.” requires intellectual-property, licensing, contractual, legal, or rights interpretation. A scanner may validate records but cannot be the authority on permission, compatibility, or enforceability.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-E687E904",
+      "revision": 1,
+      "semantic_sha256": "e687e904ee765e75c3f1802755ed3118adeca0425603823217e008ff1d5efca0",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The control “Fulfil attribution, notice, source-offer, reciprocity, patent, trademark, and redistribution obligations.” requires intellectual-property, licensing, contractual, legal, or rights interpretation. A scanner may validate records but cannot be the authority on permission, compatibility, or enforceability.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-18BB4ACD",
+      "revision": 1,
+      "semantic_sha256": "18bb4acdb42d5e30f7361be5e026bad94482870d7dd4749be417caaeaa3e36dd",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Prevent confidential, proprietary, customer, employer, or restricted material from entering repositories or products without authorization.” has bounded record, configuration, or test evidence, but its full meaning also requires legal, rights, ethics, fairness, accessibility, or context-specific adequacy judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded evidence records the named event, configuration, review, or test behavior without treating legal adequacy, representative coverage, or universal success as proven.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-1E23B466",
+      "revision": 1,
+      "semantic_sha256": "1e23b46640efb60c07899b364c5a32417d33bccf564de16b84079f1199383c9b",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because policy text cannot prove legally correct ownership rules for inventions, contributions, and resource use across jurisdictions.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: The policy assigns all side projects to the employer despite local law; every topic is explicitly defined."
+    },
+    {
+      "control_id": "USEQ-46E6D74A",
+      "revision": 1,
+      "semantic_sha256": "46e6d74a871abd6f8b3c0b6bb1f54ec679ad8df825e724c2c8a1125e72a001aa",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because contribution-term presence does not establish enforceability, contributor authority, licensing completeness, or private-repository obligations.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: A template grants rights the contributor does not own; public and private terms both exist and pass."
+    },
+    {
+      "control_id": "USEQ-E4A212F5",
+      "revision": 1,
+      "semantic_sha256": "e4a212f5b40840532f8a39240e403334a2eca9de198e1a5c65cd9aa84d95efff",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The control “Review contributor license agreements or developer certificates for appropriateness and enforceability.” requires intellectual-property, licensing, contractual, legal, or rights interpretation. A scanner may validate records but cannot be the authority on permission, compatibility, or enforceability.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-B34707EE",
+      "revision": 1,
+      "semantic_sha256": "b34707ee43fed487f0da6b9205bd9f8af02c7efbca83d3d27a0152b9b1048fa6",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because which patents, marks, domains, and rights are material requires legal judgment and external discovery beyond an internal register.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: A material unregistered trademark application exists, while every listed right has complete tracking fields."
+    },
+    {
+      "control_id": "USEQ-50A7E640",
+      "revision": 1,
+      "semantic_sha256": "50a7e640fec45b5ddeb5937e71d4fd2adf2767b0083b52546fc06c71f4b3078d",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The proposed deterministic_composite check does not fully decide this rule because all rights assertions and qualified-review authority are legal and organizational facts not bounded by records.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "human_accountability",
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: Marketing makes an unregistered patent claim and a nonlawyer is marked qualified for another; recorded reviews pass."
+    },
+    {
+      "control_id": "USEQ-64E5AE64",
+      "revision": 1,
+      "semantic_sha256": "64e5ae6424e03d369cabf5932b12d138e2a9826ef439a1ab850ccbf7b056c176",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The control “Assess freedom-to-operate or infringement risk where the product, market, or contract warrants it.” requires intellectual-property, licensing, contractual, legal, or rights interpretation. A scanner may validate records but cannot be the authority on permission, compatibility, or enforceability.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-53DAE09A",
+      "revision": 1,
+      "semantic_sha256": "53dae09a700f714ed24964fb4bfb1693352cf6884b1b6884c65a9403871479b2",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Use clean-room or other controlled development methods when independently reimplementing restricted interfaces or behavior.” has a mechanically checkable record, configuration, event, or bounded-test portion, but full pass status depends on contextual sufficiency, representativeness, impact, or outcome quality.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded evidence records the named event, configuration, review, or test behavior without treating legal adequacy, representative coverage, or universal success as proven.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-20AD6393",
+      "revision": 1,
+      "semantic_sha256": "20ad6393f78aa94c55363f1d8e556eac04cb9b169ec584ca07993a98a17e2081",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because retained boundary records do not prove every participant and information path actually obeyed clean-room controls.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "undefined_scope",
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: A developer views prohibited source code off-channel, while all registered accesses and attestations show compliance."
+    },
+    {
+      "control_id": "USEQ-42D1678E",
+      "revision": 1,
+      "semantic_sha256": "42d1678ea6236c7ec5b8ca5d747f8f92bf2b47e194fa61de9696152875972ad6",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The control “Ensure reverse engineering, interoperability work, scraping, and data acquisition comply with applicable rights and restrictions.” requires intellectual-property, licensing, contractual, legal, or rights interpretation. A scanner may validate records but cannot be the authority on permission, compatibility, or enforceability.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-E49C70F6",
+      "revision": 1,
+      "semantic_sha256": "e49c70f6a5e8e0a980fdf70d76f8d2ea3b939c766d23b966a196bae6f5e158d7",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The control “Verify rights to use personal data, licensed data, public data, synthetic data, and derived data for the intended purpose.” requires intellectual-property, licensing, contractual, legal, or rights interpretation. A scanner may validate records but cannot be the authority on permission, compatibility, or enforceability.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-D70EDF93",
+      "revision": 1,
+      "semantic_sha256": "d70edf93afafe4575e93eb23bc82220e22659ead314347d8244acb371249f93a",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The control “Do not assume public availability means unrestricted reuse.” requires intellectual-property, licensing, contractual, legal, or rights interpretation. A scanner may validate records but cannot be the authority on permission, compatibility, or enforceability.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-97C2833E",
+      "revision": 1,
+      "semantic_sha256": "97c2833e2fc284fe477a36088d3ea5d1788391fdbec339f8a376e1e4e313dbd0",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The control “Verify that training, evaluation, retrieval, analytics, and generated-output uses are covered by appropriate rights.” requires intellectual-property, licensing, contractual, legal, or rights interpretation. A scanner may validate records but cannot be the authority on permission, compatibility, or enforceability.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-29EE3F45",
+      "revision": 1,
+      "semantic_sha256": "29ee3f457cf98425d56b10ae257b5b9d02ea46ff8027fde76ff98334e646d140",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because user-content and feedback rights depend on law, product behavior, contract formation, and data types beyond field presence.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: Terms claim rights to uploaded files but omit biometric data duties; all four content categories have rows."
+    },
+    {
+      "control_id": "USEQ-CC00B307",
+      "revision": 1,
+      "semantic_sha256": "cc00b307f9972a784230e28a5f108fd25deb0082ad41d37d445e359ecc47ed06",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The control “Avoid terms that claim broader user-content rights than needed for the service.” requires intellectual-property, licensing, contractual, legal, or rights interpretation. A scanner may validate records but cannot be the authority on permission, compatibility, or enforceability.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-2482AD39",
+      "revision": 1,
+      "semantic_sha256": "2482ad39139b424eb28f0bb2785a45fcc47f79e375b28d0442262ff529b6a6c5",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because a complaint-process document cannot prove lawful intake, preservation, notice, remedies, deadlines, or accessibility.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment",
+        "undefined_protocol"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: The process has every heading but no statutory takedown deadline and no usable appeal; the record passes."
+    },
+    {
+      "control_id": "USEQ-FF4BC88F",
+      "revision": 1,
+      "semantic_sha256": "ff4bc88ff4c7a18700e147dfee8b80029ed2751587327cb070d9461c9e424f0d",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Prevent takedown processes from being abused without removing effective remedies for legitimate claimants.” has a mechanically checkable record, configuration, event, or bounded-test portion, but full pass status depends on contextual sufficiency, representativeness, impact, or outcome quality.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded evidence records the named event, configuration, review, or test behavior without treating legal adequacy, representative coverage, or universal success as proven.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-864C229F",
+      "revision": 1,
+      "semantic_sha256": "864c229f7f3ac4fa432100beeaa02b0c344d9326a00a8642d4c97c021b646faa",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because license inventories and restrictions require complete external agreement discovery and legal interpretation.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: A side letter adds a device limit but is omitted; every registered license has six restriction fields."
+    },
+    {
+      "control_id": "USEQ-D38BB2A8",
+      "revision": 1,
+      "semantic_sha256": "d38bb2a89d573d67642c497d3dd5b2bfecff76ae4cc39e5b30dca5a7092ba807",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The proposed deterministic_composite check does not fully decide this rule because date monitoring is objective only after legally complete licenses and operative amendments are known.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: An unregistered amendment shortens termination notice; all indexed expiration and renewal dates are monitored."
+    },
+    {
+      "control_id": "USEQ-A6A85301",
+      "revision": 1,
+      "semantic_sha256": "a6a8530105c02300b1df2f3e0b216271583cd1b761713ee35ce677cfeb35c1b6",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Ensure backups, disaster recovery, testing, and archive copies remain within license rights.” has bounded record, configuration, or test evidence, but its full meaning also requires legal, rights, ethics, fairness, accessibility, or context-specific adequacy judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded evidence records the named event, configuration, review, or test behavior without treating legal adequacy, representative coverage, or universal success as proven.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-EA6F3090",
+      "revision": 1,
+      "semantic_sha256": "ea6f30900de62aea4b97f756e823e1a170491d2397d90aee3f0282d2aabfdfbd",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because review fields do not prove all supplier and acquisition obligations were found, correctly interpreted, and incorporated.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: A supplier dataset license bars training use but the review says no restrictions; every record field passes."
+    },
+    {
+      "control_id": "USEQ-FD996784",
+      "revision": 1,
+      "semantic_sha256": "fd9967840540025b5f39a5a1f0eecc547b8454f3b6d8ff5e2aabeff9d28f11c3",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Prevent AI-assisted tools from receiving confidential or restricted material contrary to policy or contract.” has bounded record, configuration, or test evidence, but its full meaning also requires legal, rights, ethics, fairness, accessibility, or context-specific adequacy judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded evidence records the named event, configuration, review, or test behavior without treating legal adequacy, representative coverage, or universal success as proven.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-38A675BA",
+      "revision": 1,
+      "semantic_sha256": "38a675bac6da4dff7082d7cadb054b0130cdaec1e235bc9fdfa850781a59adcf",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Independently review generated output for unauthorized copying, confidential disclosure, incompatible licensing, and provenance uncertainty.” has bounded record, configuration, or test evidence, but its full meaning also requires legal, rights, ethics, fairness, accessibility, or context-specific adequacy judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded evidence records the named event, configuration, review, or test behavior without treating legal adequacy, representative coverage, or universal success as proven.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-9A5356E6",
+      "revision": 1,
+      "semantic_sha256": "9a5356e603c5420d352ef08b41252a9154c5b1d44987390980ccd995d8db218b",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Preserve trade secrets through access control, confidentiality terms, labeling, training, and reasonable handling practices.” has bounded record, configuration, or test evidence, but its full meaning also requires legal, rights, ethics, fairness, accessibility, or context-specific adequacy judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded evidence records the named event, configuration, review, or test behavior without treating legal adequacy, representative coverage, or universal success as proven.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-ACCAC2B8",
+      "revision": 1,
+      "semantic_sha256": "accac2b896d556888fabb840f368ef60c9c044ff614da7048d8ce427af044702",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The proposed deterministic_composite check does not fully decide this rule because no inventory bounds every account, credential, local copy, backup, and supplier-held confidential material or proves recovery.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: A departing contractor keeps an offline export and an unlisted token; all registered access is revoked."
+    },
+    {
+      "control_id": "USEQ-9A5C1988",
+      "revision": 1,
+      "semantic_sha256": "9a5c19887e249f3b4452f86a10b1671daebef27d32f6638cc65e29618e5bc041",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The proposed deterministic_composite check does not fully decide this rule because material classification requires judgment and repository inventory cannot cover all copies, branches, exports, and documentation stores.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: Customer-owned data is copied into an unregistered public gist, while indexed repositories enforce separation."
+    },
+    {
+      "control_id": "USEQ-3B7D73D6",
+      "revision": 1,
+      "semantic_sha256": "3b7d73d6c684f000c9fab0be5ac58819cc3ed6b36eafd5adfe438ff689fc3a55",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The control “Review product names, domains, icons, and branding for conflicts before public launch.” requires intellectual-property, licensing, contractual, legal, or rights interpretation. A scanner may validate records but cannot be the authority on permission, compatibility, or enforceability.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-4414E1D1",
+      "revision": 1,
+      "semantic_sha256": "4414e1d10fb1790a887403f1c35b685883f1e643121f6dc138ef7879be148edb",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because future decommissioning, export, patching, support, and retention rights require legal sufficiency and enforceability.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: A contract record names all uses but the supplier license forbids security patches after termination; fields pass."
+    },
+    {
+      "control_id": "USEQ-EE05022B",
+      "revision": 1,
+      "semantic_sha256": "ee05022bde113ca61dc2e6f30ce08f5e627ef1cc063f9de791f338e3d7800a00",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because plan sections do not prove legally correct, timely, feasible response to ownership and infringement disputes.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment",
+        "undefined_protocol"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: The plan routes copyright claims to an inactive mailbox and lacks evidence preservation; all categories exist."
+    },
+    {
+      "control_id": "USEQ-2967E6ED",
+      "revision": 1,
+      "semantic_sha256": "2967e6ed5f3b1677726b0f75cd067d4b39f0a3e05be6a0d2971fbbeb5bfb2656",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Correct notices, distributions, source offers, and customer communications promptly when a rights defect is found.” has bounded record, configuration, or test evidence, but its full meaning also requires legal, rights, ethics, fairness, accessibility, or context-specific adequacy judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded evidence records the named event, configuration, review, or test behavior without treating legal adequacy, representative coverage, or universal success as proven.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-11CC414E",
+      "revision": 1,
+      "semantic_sha256": "11cc414e683e7908b4324178762f7a014a76b1cf47c18a6ad7078601665d4522",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Channel presence, confidentiality controls, and bounded accessibility tests are objective evidence, but whether reporting channels are genuinely accessible to every affected person requires disability, language, power, and user-context judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every approved reporting channel has authenticated confidentiality configuration and current bounded accessibility test evidence.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-FD8476F7",
+      "revision": 1,
+      "semantic_sha256": "fd8476f74d73d7cbb6c6eb49ee5637e518f754e1b24347814e4312b59fc006c1",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The control “Prohibit retaliation against people who raise concerns in good faith.” concerns human understanding, retaliation, pressure, incentives, truthfulness, or decision integrity that must remain with accountable people rather than inferred from artifacts.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-89CCF5C5",
+      "revision": 1,
+      "semantic_sha256": "89ccf5c5a088a3b5d99a6787ed8be32813b0336515b19a38f9a4dc657f783dd1",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because a documented alternate path does not prove conflict detection, independence, protection, or usable bypass authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: The bypass officer reports to the implicated manager and cannot halt work; the process record passes."
+    },
+    {
+      "control_id": "USEQ-7C6CF5BB",
+      "revision": 1,
+      "semantic_sha256": "7c6cf5bb37a6180dc1e30d90b17125407fd5074a718499f166c239f5ab63c4db",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Published escalation routes and structural independence can be checked, but deciding which legal, compliance, security, safety, audit, risk, or governing body is appropriate depends on the concern and organizational context.",
+      "deterministic_clauses": [
+        {
+          "statement": "The approved speak-up policy records independently reachable escalation routes and accountable owners for its declared concern categories.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-22A55748",
+      "revision": 1,
+      "semantic_sha256": "22a5574888ddd974eedbcd28700c44bc02ac2211f65ce0e542df2367b6895a47",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because conflict disclosure completeness and materiality depend on truthful humans and external relationships, not a register.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: A procurement participant hides a family interest while every declared conflict record is complete."
+    },
+    {
+      "control_id": "USEQ-7D5BF185",
+      "revision": 1,
+      "semantic_sha256": "7d5bf1853ffff1f71192ee2eebd61c6c65f315dcfcd65af1173668da672b1fc3",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The proposed deterministic_composite check does not fully decide this rule because whether a conflict affects objectivity and whether review is independent require human judgment and complete conflict discovery.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: An undisclosed financial tie biases a reviewer, while all registered conflicts show recusal or review."
+    },
+    {
+      "control_id": "USEQ-F42C1888",
+      "revision": 1,
+      "semantic_sha256": "f42c1888898259ab275fe23378533be41d4892d89c4b0392f07e38e450147046",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Prevent a person from accepting material risk solely to meet a target for which that person is rewarded.” has a mechanically checkable record, configuration, event, or bounded-test portion, but full pass status depends on contextual sufficiency, representativeness, impact, or outcome quality.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded evidence records the named event, configuration, review, or test behavior without treating legal adequacy, representative coverage, or universal success as proven.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-0081139A",
+      "revision": 1,
+      "semantic_sha256": "0081139a2abec217fdf0aee25c548abf3baf399b0477e73422f10f8f8b9c63ef",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Separate implementation, verification, approval, and audit responsibilities in proportion to risk.” has a mechanically checkable record, configuration, event, or bounded-test portion, but full pass status depends on contextual sufficiency, representativeness, impact, or outcome quality.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authoritative records expose the named in-scope fields, mappings, roles, decisions, or lifecycle events without treating their contextual quality or completeness as proven.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-5D1E5D62",
+      "revision": 1,
+      "semantic_sha256": "5d1e5d628b898b60e2b6f0bf680b1f592933a945a871261f8a90e97bc38772c6",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Ensure independent reviewers receive complete evidence and are not limited to management-selected summaries.” has a mechanically checkable record, configuration, event, or bounded-test portion, but full pass status depends on contextual sufficiency, representativeness, impact, or outcome quality.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded evidence records the named event, configuration, review, or test behavior without treating legal adequacy, representative coverage, or universal success as proven.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-FB0DCDDA",
+      "revision": 1,
+      "semantic_sha256": "fb0dcddabc4545b9eff8cc59776fb8b5e0a566ef0f7ebb01c43017e04d995081",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Protect dissenting technical opinions and record unresolved disagreements in decision records.” has a mechanically checkable record, configuration, event, or bounded-test portion, but full pass status depends on contextual sufficiency, representativeness, impact, or outcome quality.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authoritative records expose the named in-scope fields, mappings, roles, decisions, or lifecycle events without treating their contextual quality or completeness as proven.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-D06298BE",
+      "revision": 1,
+      "semantic_sha256": "d06298be6c997ed01aa0a1f0c472d90958bbd5052679957b33967c91337445b4",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Require decision-makers to address material contrary evidence explicitly.” has a mechanically checkable record, configuration, event, or bounded-test portion, but full pass status depends on contextual sufficiency, representativeness, impact, or outcome quality.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authoritative records expose the named in-scope fields, mappings, roles, decisions, or lifecycle events without treating their contextual quality or completeness as proven.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-866CC7D2",
+      "revision": 1,
+      "semantic_sha256": "866cc7d2d720aead9380457ebddeb0d2df06a340f147d43a46446473d84b897d",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The control “Do not use consensus pressure to convert unresolved risk into apparent agreement.” concerns human understanding, retaliation, pressure, incentives, truthfulness, or decision integrity that must remain with accountable people rather than inferred from artifacts.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-C30D4EE0",
+      "revision": 1,
+      "semantic_sha256": "c30d4ee00392ffd1cb913890c9a577116efe435778cfd140f67de3e40d2080fb",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because credible high impact and effective stop authority require judgment, independence, and operational power.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment",
+        "undefined_threshold"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: A policy names a stop owner who lacks deployment permissions and dismisses a safety concern as not credible."
+    },
+    {
+      "control_id": "USEQ-CEECAF90",
+      "revision": 1,
+      "semantic_sha256": "ceecaf90094cbe31a8447f4055c28274ffedf9ee5073659d04e9559e9cd4dbf8",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "The proposed deterministic_composite check does not fully decide this rule because configured pause states do not prove every unsafe automation and communication path can be stopped safely and promptly.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope",
+        "human_accountability"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: The main deployment pause works, but an unlisted campaign worker continues unsafe messages; inventory states pass."
+    },
+    {
+      "control_id": "USEQ-7EE0FA0B",
+      "revision": 1,
+      "semantic_sha256": "7ee0fa0b3d8c66fe489f6edafd103afecb2f9cfae7a2a8ffbaf683ff9c5afeef",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Investigate reports promptly, fairly, confidentially, and with appropriate evidence preservation.” has bounded record, configuration, or test evidence, but its full meaning also requires legal, rights, ethics, fairness, accessibility, or context-specific adequacy judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authoritative records expose the named in-scope fields, mappings, roles, decisions, or lifecycle events without treating their contextual quality or completeness as proven.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-584CD846",
+      "revision": 1,
+      "semantic_sha256": "584cd8462d1a852dacfd05fb074610e0ff253d633e99c2c666ec1e14fadbd021",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The control “Communicate outcomes to reporters to the extent legally and operationally possible.” requires intellectual-property, licensing, contractual, legal, or rights interpretation. A scanner may validate records but cannot be the authority on permission, compatibility, or enforceability.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-22119AF5",
+      "revision": 1,
+      "semantic_sha256": "22119af57c6b665540986db313893727e84ada1b50613e611518fe119e878798",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because complete warnings and exceptions are not bounded, and recognizing meaningful patterns cannot be reduced to populated records.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: Repeated warnings are split across tools and never form a pattern in the register; all listed records pass."
+    },
+    {
+      "control_id": "USEQ-F8C584BF",
+      "revision": 1,
+      "semantic_sha256": "f8c584bf5c97db3fc2d4e9f3dda76c3816d1a5b75715e825f73ca0cb89fe1a2e",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The control “Evaluate leaders on truthful risk communication and corrective action, not only delivery speed.” concerns human understanding, retaliation, pressure, incentives, truthfulness, or decision integrity that must remain with accountable people rather than inferred from artifacts.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-7BB8745A",
+      "revision": 1,
+      "semantic_sha256": "7bb8745abefe3b8d090a2dcb1cab2b727739685c048b6fd188a9616cc2068122",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The control “Reward prevention, simplification, documentation, mentoring, and reliability work that may not create visible features.” concerns human understanding, retaliation, pressure, incentives, truthfulness, or decision integrity that must remain with accountable people rather than inferred from artifacts.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-FA9114A6",
+      "revision": 1,
+      "semantic_sha256": "fa9114a6f6b5b8f9f22239d7b60f6330fde65cf32630d4d4546ddbadfab5b9c5",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The control “Prohibit manipulation of metrics, test scope, severity, evidence, or sampling to create a false appearance of readiness.” concerns human understanding, retaliation, pressure, incentives, truthfulness, or decision integrity that must remain with accountable people rather than inferred from artifacts.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-FE265A51",
+      "revision": 1,
+      "semantic_sha256": "fe265a51ea4763d81254015d97f921090df97e2e64821e4124cdaad6a2f76ff9",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The proposed deterministic_composite check does not fully decide this rule because not every emergency event is captured and a review state does not prove timely, independent, substantive retrospective review.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: An off-channel break-glass decision is omitted and a listed approval gets a rubber-stamp review; exact states pass."
+    },
+    {
+      "control_id": "USEQ-6BA781DF",
+      "revision": 1,
+      "semantic_sha256": "6ba781dfe4482657b564d157e62d81fe408dbcee0f00ee634ad7e0c2e9784bc2",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The proposed structured_record_validation check does not fully decide this rule because field presence cannot prove complete evidence and alternatives, authentic decision identity, or truthful rationale.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Counterexample: A decision record omits a rejected safer option and backfills a false reason; every named audit field exists."
+    },
+    {
+      "control_id": "USEQ-622B3666",
+      "revision": 1,
+      "semantic_sha256": "622b36668a4933ca2da740a360a785e6c3304268ba12d13d8425504fb76f26d5",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Review the effectiveness and trustworthiness of speak-up channels at least periodically and after serious incidents.” has a mechanically checkable record, configuration, event, or bounded-test portion, but full pass status depends on contextual sufficiency, representativeness, impact, or outcome quality.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded evidence records the named event, configuration, review, or test behavior without treating legal adequacy, representative coverage, or universal success as proven.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    }
+  ]
+}

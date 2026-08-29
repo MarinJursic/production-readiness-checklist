@@ -1,0 +1,850 @@
+{
+  "schema_version": "prc.control-classification-final/v0.1",
+  "packet_id": "docs-checklists-01-release-foundations-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "source_path": "docs/checklists/01-release-foundations.md",
+  "control_count": 42,
+  "controls": [
+    {
+      "control_id": "PRC-02-001",
+      "revision": 1,
+      "semantic_sha256": "d3b0f7fb8a1d48627fdff3f0df5e5ed2384bf19243356c4768e6c67be2b018f1",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Execution records can prove that declared journeys passed, but deciding whether the inventory contains every genuinely critical journey requires product and risk judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every journey in the approved release test inventory has current successful end-to-end execution evidence bound to the assessed release and environment.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-02-002",
+      "revision": 1,
+      "semantic_sha256": "22bb6868fefd1f2e573485cf86a49e27b906464b1a792d33f120fdb1008de8f7",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "A checker can validate current independent review records, but the statement combines four security areas without defining complete verification methods or applicable scope.",
+      "deterministic_clauses": [
+        {
+          "statement": "Current release-bound verification records identify a reviewer independent of the implementer for each security area declared applicable.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-02-003",
+      "revision": 1,
+      "semantic_sha256": "ccde215edd97a4dd2546df672c2bf0f7b0e6a94dc699a5db4563aa7942e48c01",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Pinned scanners and exploited-vulnerability registries can identify candidates, but relevance and whether a mitigation is sufficient depend on exposure and risk context.",
+      "deterministic_clauses": [
+        {
+          "statement": "Pinned vulnerability analysis and a current authoritative exploited-vulnerability registry identify matching known findings for the exact release inventory.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "external_registry"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-02-004",
+      "revision": 1,
+      "semantic_sha256": "9e10216018dfa4dd7f1639c5279b18aa8d2e115f858f81515a3c347fe33e8ef4",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Known exposure evidence can prove this no-go condition true, but no bounded inventory or observation history can prove that none of these sensitive values was ever exposed.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-02-005",
+      "revision": 1,
+      "semantic_sha256": "35b442877a347a32215a3ef60d83f757686d59990db731b6cf3205bbb46d4c3a",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "A rehearsal result is machine-verifiable, but the rule does not define which migrations are destructive or irreversible or what makes rehearsal data representative.",
+      "deterministic_clauses": [
+        {
+          "statement": "Each migration declared in the release rehearsal plan has a current completed rehearsal result bound to the migration and data-set digests.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-02-006",
+      "revision": 1,
+      "semantic_sha256": "5bf58c4057cf1009c9079f7038690c19ed472bc5cb8daf75a2c5279e9d6a745c",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "The proposal compares recovery numbers but does not define a complete restoration protocol, success criteria for usable data, or an authoritative inventory of everything that must be restored.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A test can restore one listed database within the RTO and RPO while the restored records are corrupt, application startup fails, or an omitted object store remains unrecoverable. Both proposed clauses can pass, yet restoration has not been demonstrated for the real protected system."
+    },
+    {
+      "control_id": "PRC-02-007",
+      "revision": 1,
+      "semantic_sha256": "abe4c9d235f232bb1b9c3a29a904067228c65770f9afe073301992ccd6daa58f",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "A drill record can prove that a rollback or roll-forward ran, but the rule leaves safe behavior, required scenarios, and successful demonstration undefined.",
+      "deterministic_clauses": [
+        {
+          "statement": "The assessed artifact has a current completed rollback or roll-forward drill record with fixed expected outcomes and observed results.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_threshold",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-02-008",
+      "revision": 1,
+      "semantic_sha256": "ef17209444fe1a9d8d6a0a7b0b58c2de9d62910979d17c0ef16a35dcf8fad19a",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Fixed load and fault tests can record behavior for declared scenarios, but selecting expected peaks, bursts, dependencies, and sufficient coverage requires contextual judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every scenario in the approved load and dependency-failure plan has a current execution result bound to the assessed artifact and environment.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-02-009",
+      "revision": 1,
+      "semantic_sha256": "89a6a2527c4c8a8244d67549493a89f43f50409b6aec19a7dd715581b093b14b",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Numeric objectives and an operating profile do not define the duration, sampling, fault model, statistical confidence, or other protocol needed to prove reliability under those conditions.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A one-hour test can meet every latency and availability objective while a daily resource leak, rare failover defect, or longer dependency outage makes the release miss the same objectives in expected production use. The evidence comparison passes without proving the original claim."
+    },
+    {
+      "control_id": "PRC-02-010",
+      "revision": 1,
+      "semantic_sha256": "c9a3ecf5577f37210203caf4030319ae9d521850cee56dd88682c7a206e0d7cc",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Fault-injection evidence can prove detection for declared journeys, but completeness of the critical-journey set and acceptable detection behavior are not defined here.",
+      "deterministic_clauses": [
+        {
+          "statement": "Monitoring emits the policy-required detection signal during each approved critical-journey failure test within its fixed time limit.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "undefined_threshold",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-02-011",
+      "revision": 1,
+      "semantic_sha256": "2dd3e36f5a0acb204769ba3ccea571c9e62649f1f1d12b97aa9a5f31c757eb30",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Schedules and access grants can prove availability and authorization, but whether a responder is qualified for the launch risks requires accountable human judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "The launch window has named responder coverage and each scheduled responder holds the required active authorization grants.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-02-012",
+      "revision": 1,
+      "semantic_sha256": "93e06571b78b9a7b7034dfeb2a17e5fb42fdc674f305accef875bfc3e224e094",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "A parser can verify that current procedure records exist, but determining which procedures are required includes legal applicability and contextual communication needs.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every procedure type declared applicable in the approved release policy has a current authenticated procedure record with required ownership fields.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "legal_or_specialist_authority",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-02-013",
+      "revision": 1,
+      "semantic_sha256": "6866b14d2500169b35227b29e8c57c8a875fc2ac43a7f088c1a2fc30b4b6ceae",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Identifying mandatory obligations and deciding whether the release meets them requires legal, privacy, accessibility, safety, payment, or contractual authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-02-014",
+      "revision": 1,
+      "semantic_sha256": "79bcc6c2cda6b9d2a6a1b96915a72d5dddddc0c736f3ed532cb5683979261b9e",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Digest linkage is objective, but the proposal does not prove that the source review and approval were made by authorized accountable actors or that every build input and relevant test is in the trace.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "An artifact can have matching source, SBOM, build, test, and approval digests while the approval was entered by an unauthorized account, the test record contains no required test outcome, or an undeclared build-time download affected the bytes. The proposed trace passes while the production artifact is not fully traceable as required."
+    },
+    {
+      "control_id": "PRC-02-015",
+      "revision": 1,
+      "semantic_sha256": "b8449461c9dd7ba99c5945d2e8076b79a85f475d8ead592cc46cb7d78f63019f",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Machine inventories can match some components to end-of-life registries, but required operating dependencies and support status include services, protocols, and contractual support not completely defined here.",
+      "deterministic_clauses": [
+        {
+          "statement": "Inventoried runtime and dependency versions are compared with current authoritative end-of-life records where those records provide exact product and version matches.",
+          "checker_family": "package_metadata",
+          "evidence_authority": "external_registry"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-02-016",
+      "revision": 1,
+      "semantic_sha256": "52abf98a61a2874f165cbbb090bf2d3cb8337eede95f672ce9f8dd3da41aee18",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Test records can show controls exercised for named hazards, but deciding whether irreversible risk remains possible requires a complete threat model and contextual residual-risk judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every hazard in the approved release hazard inventory has a current successful control test bound to the assessed artifact and environment.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-02-017",
+      "revision": 1,
+      "semantic_sha256": "94c7138ed3d3628e6172f1f1d8c8de09d848cedaab47080035a9af48c0a8cb69",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Proving that one item is the only recovery path requires a complete inventory of technical and undocumented human paths, which cannot be safely or objectively enumerated.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-02-018",
+      "revision": 1,
+      "semantic_sha256": "e618f5c6675e4e6da639c29a8bf4ef4d95ce04de4d71f95fe92313db6a7b0c7a",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Evidence and change timestamps can be compared exactly, but deciding which changes are material and which prior results they invalidate requires impact judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "The scanner identifies changes after each evidence snapshot and whether a later retest record is bound to those changed inputs.",
+          "checker_family": "inventory_fact",
+          "evidence_authority": "repository"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-02-019",
+      "revision": 1,
+      "semantic_sha256": "460216a47302889d6976c45abb94114c47e5010bd53af34e6c7cf2c719d8fa30",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "An active identity in an ownership record does not establish real authority or accountability, and the proposal lacks a complete way to detect semantic relabeling outside the tracked blocker history.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A team can delete a blocker and recreate it as an unrelated advisory, so the authenticated status history shows no relabeling. It can also assign an active but powerless account as owner. Both clauses pass while a blocker was suppressed without an accountable risk owner."
+    },
+    {
+      "control_id": "PRC-02-020",
+      "revision": 1,
+      "semantic_sha256": "8e4a9ce36f65686e95008ead10a3c56c2e620a923c0a88b389192d43496b1c01",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "A schema can prove that criteria were recorded before deployment, but whether they are concrete and adequate for this release requires contextual operational judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Before deployment, the release record contains nonempty stop, rollback, and incident-declaration criteria with owners and measurable trigger fields.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_threshold",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-03-001",
+      "revision": 1,
+      "semantic_sha256": "9848e03085419a63bc9c152d6f7c383b0e55eda3c80ac75e7ff3ee938bdac9e2",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The declared namespace is not bound to a complete authoritative inventory of project releases, so uniqueness within that selected record does not prove the identifier is actually unique.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A new ledger can contain release identifier 2026.08 exactly once while the same project identifier already exists in an older release system omitted from the declared namespace. The proposed checker passes, but the assigned release identifier is duplicated."
+    },
+    {
+      "control_id": "PRC-03-002",
+      "revision": 1,
+      "semantic_sha256": "022dcf91273cf66582c1076073161c432db0bfaac1d5228b987c9f7e7c58540b",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The proposal checks commit syntax and agreement with supplied provenance but does not establish a complete authoritative inventory of every artifact included in the release.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "The record and provenance can agree on commit A for the one artifact presented to the checker while a second production worker built from commit B is omitted from the release-artifact set. Both clauses pass even though the exact release commits were not all recorded."
+    },
+    {
+      "control_id": "PRC-03-003",
+      "revision": 1,
+      "semantic_sha256": "98f645cde26dcabb895d1b912db2653f6134b90e7e9bbf17f82b93f30077e3bf",
+      "classification": "deterministic",
+      "route": "artifact_verification",
+      "reason": "For the singular application artifact bound to the assessed release, a policy-approved digest algorithm and the exact artifact bytes provide a complete objective equality check.",
+      "deterministic_clauses": [
+        {
+          "statement": "The release record contains an approved cryptographic digest algorithm and digest that match the exact application artifact bytes.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "A substituted or modified artifact cannot pass because its freshly computed digest differs, and an absent, malformed, unapproved, or mismatched digest fails or blocks. The rule asks only to record the immutable digest, not to judge artifact quality."
+    },
+    {
+      "control_id": "PRC-03-004",
+      "revision": 1,
+      "semantic_sha256": "1f28969256faa65795e14da2dd09e11f320be86050e2262241b3d83ed8014312",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Calling build and deployment manifests complete does not prove that they enumerate every deployable kind or every deployment channel covered by the broad original statement.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "The sealed manifests can list the API and frontend exactly while a separately managed scheduled job or infrastructure stack is deployed through another system and absent from both manifests. The record matches its partial inventory and passes while an included component is unrecorded."
+    },
+    {
+      "control_id": "PRC-03-005",
+      "revision": 1,
+      "semantic_sha256": "3f511ed524007d5bfaf5c5a406e638f737486c6573639e80ec80c05b62928918",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The approved release scope is not shown to be a complete authoritative database inventory, so exact version agreement for its listed databases can still miss a database in the release.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A query can return matching schema and migration versions for the primary database while an analytics database changed by the same release is absent from the approved scope. Both proposed clauses pass, but not all release database versions were recorded."
+    },
+    {
+      "control_id": "PRC-03-006",
+      "revision": 1,
+      "semantic_sha256": "b70a35534242fb71066002ae8e651ab06d2e4be1d3c31af52c6fe502e2addc6d",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The proposal has no bounded authoritative inventory of all production configuration sources, and a connector cannot prove completeness for configuration managed outside the approved list.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A cloud connector can report matching versions for declared parameter files while a production environment variable or separately managed gateway configuration has its own unrecorded version. The record exactly matches collected evidence but the original configuration-version record is incomplete."
+    },
+    {
+      "control_id": "PRC-03-007",
+      "revision": 1,
+      "semantic_sha256": "9167eda2d48c52edec2b086f49f86023e27feeb7a45260c6bb11f29f865a8fec",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "A flag-system query is authoritative only for that system and does not establish that the approved launch scope includes every flag mechanism used by the release.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "The queried provider can return every flag it knows and the record can give each an intended state while a code-based flag or second provider controls a production feature and is omitted. Both clauses pass although the release flag inventory is incomplete."
+    },
+    {
+      "control_id": "PRC-03-008",
+      "revision": 1,
+      "semantic_sha256": "4929e4cf79af045db0f1ee58a0860835987976aefce997ce32f6e0ed6ad85e66",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Declared and statically discoverable third-party versions can be checked, but relied-upon services may be dynamic, transitive, or unversioned, preventing proof of complete scope.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every third-party service and API version declared in structured manifests and configuration is present in the release record.",
+          "checker_family": "inventory_fact",
+          "evidence_authority": "repository"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-03-009",
+      "revision": 1,
+      "semantic_sha256": "c03a7063bb480fac3be3c8397e880247343b0a8e3de2e6be9d41b56b317eaa76",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "Presence of typed lists does not prove they completely and truthfully express the intended deployment plan, while empty and not-applicable choices depend on accountable release-owner judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A record can name one cluster and mark accounts and domains not applicable even though the approved launch plan also targets a second cluster, account, and public domain. Its schema is valid and passes while the intended production scope is not fully recorded."
+    },
+    {
+      "control_id": "PRC-03-010",
+      "revision": 1,
+      "semantic_sha256": "e28cf718150de651b7bf516bd0fede4aa729469ab32a5aaf66f844cb5f3664d4",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The control requires recording declared schedule facts, and valid timezone-aware target and ordered window timestamps in the release record completely satisfy that bounded requirement.",
+      "deterministic_clauses": [
+        {
+          "statement": "The release record contains a valid target deployment time and ordered change-window start and end timestamps with an explicit timezone.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "Missing, malformed, timezone-free, or reversed timestamps cannot pass the proposed schema. Whether the chosen window is operationally wise is a separate judgment not promised by this control, so no pass-while-broken example remains within its text."
+    },
+    {
+      "control_id": "PRC-03-011",
+      "revision": 1,
+      "semantic_sha256": "6dce0dde8784cde46f79f109d806e421c939767d167b07853d6e702eb4b59c00",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Release and artifact identities can be recorded and verified, but the rule does not define the evidence or thresholds that make the previous release known-good.",
+      "deterministic_clauses": [
+        {
+          "statement": "The release record contains a previous release identifier and a rollback artifact digest that matches retained artifact bytes.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_threshold",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-03-012",
+      "revision": 1,
+      "semantic_sha256": "c1fd5005fd86b2ca5761732c1c799862176a760681dff4c80415e36f90c1fb66",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The proposal does not define a complete inventory of mutation channels, so authenticated CI history cannot prove that every source, artifact, configuration, or policy change after the cutoff was frozen or tracked.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "CI can reject or record every repository change while an operator directly changes a production flag, secret version, or cloud setting through a path outside that history. The snapshot and CI clauses pass even though a post-snapshot change was neither frozen nor formally tracked."
+    },
+    {
+      "control_id": "PRC-03-013",
+      "revision": 1,
+      "semantic_sha256": "938a740aa45041fbd0fc82ab0fed719361c2514869ae222645341226df429ac4",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Managed DNS and routing inventories provide objective candidates, but deciding which names are user-facing and proving coverage of custom or external domains requires broader context.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every domain and subdomain returned by the approved DNS, gateway, CDN, and certificate inventories is represented in the release scope record.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-03-014",
+      "revision": 1,
+      "semantic_sha256": "cd12f369e8d482d4107f38a3875357b82e90e4e678511e692967f8c100f2fc78",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "API specifications and gateway inventories are checkable, but callbacks, streams, and generic machine interfaces can be created dynamically or omitted from those bounded sources.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every interface in approved API specifications, gateway routes, webhook registries, and streaming configuration is present in the release scope record.",
+          "checker_family": "structured_document",
+          "evidence_authority": "repository"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-03-015",
+      "revision": 1,
+      "semantic_sha256": "d91947b1a357bc137584d110def967569c1624bc8bc2109ea3faec009b6faf92",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Deployment and scheduler systems can enumerate many workers and jobs, but administrative tools and manually operated batch processes lack a guaranteed complete machine inventory.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every worker, queue consumer, scheduled task, and batch process returned by approved deployment and scheduler inventories appears in the release scope record.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-03-016",
+      "revision": 1,
+      "semantic_sha256": "812daed2999cae7952c54a1dbb96267d1e569ccefd7499f8fc6d04274a5a9e9a",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Cloud and service connectors can enumerate configured stores, but caches, analytics, broker resources, and backup locations across all providers lack one complete authoritative inventory.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every data service and backup location returned by approved read-only environment connectors is represented in the release scope record.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-03-017",
+      "revision": 1,
+      "semantic_sha256": "f56048ec6a38038df0231a9b22be6c7f933a14d5038e714da766b4759df75a65",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Supplier records and discovered integrations are checkable partial sources, but the complete external-provider relationship set spans code, operations, contracts, and shadow services.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every provider in approved supplier records and every provider endpoint discovered in structured integration configuration is present in the release scope record.",
+          "checker_family": "inventory_fact",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-03-018",
+      "revision": 1,
+      "semantic_sha256": "866ac7873046c4535223137b88a69bfd2eee0d1f2e524486083fd48ef6f9f60e",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "IAM systems can enumerate declared roles and service accounts, but user types and external actors depend on product boundaries and threat-model judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every role and service account returned by approved identity-system and application authorization inventories appears in the release scope record.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-03-019",
+      "revision": 1,
+      "semantic_sha256": "92b1d066541c6b24ba4910cb98afe564c8d5d06abdbf5444301895eea8889191",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Schema presence is objective, but deciding the complete support commitments and whether a dimension is justifiably not applicable requires accountable contextual judgment not supplied by the record itself.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "human_accountability",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A web product can list one browser and mark accessibility targets not applicable with a written but invalid rationale, while its public support promise covers more browsers and accessibility requirements. The record passes the proposed shape check although the supported targets are incomplete."
+    },
+    {
+      "control_id": "PRC-03-020",
+      "revision": 1,
+      "semantic_sha256": "ee262e47b1b075f358fb5ba38e2b37752ec7621159ee241691549d202081e37e",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Structured data discovery can identify candidate data stores and fields, but classifying them and determining regulated status requires privacy and legal authority.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every data classification and regulated-data label in approved schemas, catalogs, and data inventories is present in the release scope record.",
+          "checker_family": "structured_document",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-03-021",
+      "revision": 1,
+      "semantic_sha256": "b638e05b481799cab738e745e9ca1bdfa0f2b523d4253a1fa69e75d9cf4639d2",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "A schema can prove that exclusions and explanations are present, but whether an exclusion is legitimately outside the assessment requires contextual risk judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every excluded component has a stable identity and a nonempty scoped explanation in the authenticated release assessment record.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "human_accountability",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-03-022",
+      "revision": 1,
+      "semantic_sha256": "e2cfff75aa9b67166d4b496758278315ee03c0aee376e5b78c45e6b52f742d08",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Declared dependency graphs can expose known shared platforms, but every cross-team service that can causally affect the application is an open-ended contextual set.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every shared platform and cross-team dependency in approved architecture, deployment, and service-catalog records appears in the release scope record.",
+          "checker_family": "inventory_fact",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    }
+  ]
+}

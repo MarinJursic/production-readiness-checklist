@@ -1,0 +1,3764 @@
+{
+  "schema_version": "prc.control-classification-packet/v0.1",
+  "packet_id": "docs-engineering-08-security-and-cryptography-md-part-003",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "source_path": "docs/engineering/08-security-and-cryptography.md",
+  "control_count": 250,
+  "controls": [
+    {
+      "control_id": "USEQ-D01E15AC",
+      "revision": 1,
+      "semantic_sha256": "d01e15ac8c9ab002e4993ada4380ed0e09f74d4601b93cb1ef657f20a5b19a72",
+      "statement": "Do not deploy a post-quantum or hybrid mechanism without standard alignment, interoperability, implementation assurance, performance testing, and downgrade protection.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 675
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Cryptographic Agility, Obsolescence, and Long-Term Resilience Master Checklist",
+        "Expanded gap-closure controls",
+        "Cryptographic release blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-95379EA9",
+      "revision": 1,
+      "semantic_sha256": "95379ea9b0053cfd305c8ba5bfce2f3977bbb6c6d8cef1686253825f8edaaa78",
+      "statement": "Do not retire legacy verification or decryption while authorized records, partners, devices, archives, or recovery paths still require it.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 676
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Cryptographic Agility, Obsolescence, and Long-Term Resilience Master Checklist",
+        "Expanded gap-closure controls",
+        "Cryptographic release blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-2E5E1B57",
+      "revision": 1,
+      "semantic_sha256": "2e5e1b5766c31b2c685e0b6755a5e372ad6ed38e46787d880d8ed7252dc28b62",
+      "statement": "Do not retain obsolete cryptography indefinitely for convenience; isolate, constrain, monitor, and remove it on a risk-owned schedule.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 677
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Cryptographic Agility, Obsolescence, and Long-Term Resilience Master Checklist",
+        "Expanded gap-closure controls",
+        "Cryptographic release blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-F1A425EE",
+      "revision": 1,
+      "semantic_sha256": "f1a425ee48796f8ba99104beea86073fa0f1d9bc9f15c13d20799008a152c2b1",
+      "statement": "Make security a product quality responsibility shared by product, engineering, design, operations, support, legal, procurement, and executive leadership rather than a downstream testing activity.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 685
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Secure-by-design governance and product outcomes"
+      ]
+    },
+    {
+      "control_id": "USEQ-C254F26C",
+      "revision": 1,
+      "semantic_sha256": "c254f26c2fe5d8b15e4596ada6fd961743091b099e0cfae23b094d15a65b5165",
+      "statement": "Define measurable secure-by-design outcomes for the product, including safe defaults, reduced attack surface, rapid remediation, transparent support periods, and customer control over material security behavior.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 686
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Secure-by-design governance and product outcomes"
+      ]
+    },
+    {
+      "control_id": "USEQ-F8717B01",
+      "revision": 1,
+      "semantic_sha256": "f8717b01e7da377e75bd1b19f8f66a1a9ec7e62e2194030f0cc6cc0db709b720",
+      "statement": "Assign an accountable product-security owner for every released product, service, component, integration, and supported version.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 687
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Secure-by-design governance and product outcomes"
+      ]
+    },
+    {
+      "control_id": "USEQ-EDED6D52",
+      "revision": 1,
+      "semantic_sha256": "eded6d52cab841aba2b879d8bb1b5d6a05c473f2ade39b2b53bac652bf3955f1",
+      "statement": "Document the product security model, trust assumptions, threat actors, abuse cases, security boundaries, privileged operations, and expected customer responsibilities.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 688
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Secure-by-design governance and product outcomes"
+      ]
+    },
+    {
+      "control_id": "USEQ-49CD43F7",
+      "revision": 1,
+      "semantic_sha256": "49cd43f7d184974ba81bbf32f587549908d62fcfb63c961e94494ae0ebef8a17",
+      "statement": "Integrate security requirements into product discovery, architecture decisions, acceptance criteria, Definition of Done, release gates, procurement, support, and retirement.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 689
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Secure-by-design governance and product outcomes"
+      ]
+    },
+    {
+      "control_id": "USEQ-55436D24",
+      "revision": 1,
+      "semantic_sha256": "55436d2438e54487ab213303702fe9fa4267e6f7eeae353556c2282c5ed586f1",
+      "statement": "Prefer designs that remove entire vulnerability classes or make insecure states unrepresentable rather than relying only on training, detection, or user configuration.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 690
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Secure-by-design governance and product outcomes"
+      ]
+    },
+    {
+      "control_id": "USEQ-3CDA70F1",
+      "revision": 1,
+      "semantic_sha256": "3cda70f146148f77582111c3ea57b3398ea558a159ea6f3dd0e83d3b9735d6af",
+      "statement": "Treat security defects that expose all customers, cross trust boundaries, enable remote compromise, undermine update mechanisms, or compromise identities as product-design failures requiring systemic correction.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 691
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Secure-by-design governance and product outcomes"
+      ]
+    },
+    {
+      "control_id": "USEQ-FB306E32",
+      "revision": 1,
+      "semantic_sha256": "fb306e3221819fd5bedfbac1c52d2ba93602a7789c40b5be3a0483bc0aa9efc2",
+      "statement": "Budget engineering capacity for preventive security work, dependency maintenance, vulnerability remediation, cryptographic migration, and security debt reduction.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 692
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Secure-by-design governance and product outcomes"
+      ]
+    },
+    {
+      "control_id": "USEQ-60C42502",
+      "revision": 1,
+      "semantic_sha256": "60c42502356a7e92abded66ecfe7838218796c379a1860d984161588a57f6c3a",
+      "statement": "Measure and report the recurrence of vulnerability classes, time to remediation, exploitability, customer exposure, affected supported versions, and effectiveness of preventive controls.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 693
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Secure-by-design governance and product outcomes"
+      ]
+    },
+    {
+      "control_id": "USEQ-5D78099F",
+      "revision": 1,
+      "semantic_sha256": "5d78099f2b6d65ed1afedf72860a07049baa55639f2a12a44a4b4b011eaccbc0",
+      "statement": "Prevent commercial, schedule, or adoption objectives from silently overriding mandatory security controls.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 694
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Secure-by-design governance and product outcomes"
+      ]
+    },
+    {
+      "control_id": "USEQ-AAA56E97",
+      "revision": 1,
+      "semantic_sha256": "aaa56e97e6b345106dfb87ae911ceb9aad7b53e73462de4f6152625c2cc01f0e",
+      "statement": "Require explicit, time-bounded risk acceptance by an authorized owner when a material security requirement cannot be met.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 695
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Secure-by-design governance and product outcomes"
+      ]
+    },
+    {
+      "control_id": "USEQ-D508B428",
+      "revision": 1,
+      "semantic_sha256": "d508b428ce34ca2ddd30011ede98dcdab59b362ec210bb0b34e478ec9876a672",
+      "statement": "Publish realistic support periods, security-update commitments, end-of-life dates, and customer migration guidance before purchase or adoption decisions depend on them.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 696
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Secure-by-design governance and product outcomes"
+      ]
+    },
+    {
+      "control_id": "USEQ-353A98DB",
+      "revision": 1,
+      "semantic_sha256": "353a98dbcd9617c5fb76877f3d46348f1a347b85d3cd2b5320dabc4700fef490",
+      "statement": "Design security controls so that ordinary customers receive the safer configuration without paying an additional fee for baseline protections.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 697
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Secure-by-design governance and product outcomes"
+      ]
+    },
+    {
+      "control_id": "USEQ-FB2A090D",
+      "revision": 1,
+      "semantic_sha256": "fb2a090d2cd9e17b27d1aefb9dc58eae4542029f41d8e1d4294ccb0f83e41062",
+      "statement": "Ensure security controls are usable, accessible, observable, and compatible with legitimate customer workflows so that users are not driven to disable them.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 698
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Secure-by-design governance and product outcomes"
+      ]
+    },
+    {
+      "control_id": "USEQ-29DE8F78",
+      "revision": 1,
+      "semantic_sha256": "29de8f78f8584157f1fd29d43f00afb65358f9255af2c7e2c081d2bf756a3aca",
+      "statement": "Review security outcomes after incidents, near misses, major vulnerabilities, architecture changes, acquisitions, supplier changes, and threat-landscape changes.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 699
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Secure-by-design governance and product outcomes"
+      ]
+    },
+    {
+      "control_id": "USEQ-AFC232E4",
+      "revision": 1,
+      "semantic_sha256": "afc232e420458b4d80a9082f158d9075875f9539f0318e4f7b40f5d25b4363a6",
+      "statement": "Use independent assurance for products whose compromise could create widespread, systemic, regulated, financial, safety, or national-security consequences.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 700
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Secure-by-design governance and product outcomes"
+      ]
+    },
+    {
+      "control_id": "USEQ-42B1D2E9",
+      "revision": 1,
+      "semantic_sha256": "42b1d2e92735b8dde401dd149910eea6a5e707f6517345c665bf5c193a34e6fe",
+      "statement": "Inventory every externally reachable interface, protocol, port, domain, subdomain, API, webhook, administrative surface, remote-management feature, update channel, file format, parser, plugin point, and embedded third-party component.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 704
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Attack-surface reduction, secure defaults, and fail-safe behavior"
+      ]
+    },
+    {
+      "control_id": "USEQ-BEB2A340",
+      "revision": 1,
+      "semantic_sha256": "beb2a3408529b9d041b6b405ff761e656021472de33afe853f13b1b633ab7645",
+      "statement": "Disable unused services, features, protocols, accounts, credentials, debug paths, sample applications, test endpoints, and compatibility modes before release.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 705
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Attack-surface reduction, secure defaults, and fail-safe behavior"
+      ]
+    },
+    {
+      "control_id": "USEQ-EC60EA94",
+      "revision": 1,
+      "semantic_sha256": "ec60ea94f3a5aa05b6af4b9b3228b6fe7269018fbaa2813e2b67a2ba4b29430f",
+      "statement": "Ship with the minimum permissions, network reachability, data access, capabilities, and enabled features required for intended operation.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 706
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Attack-surface reduction, secure defaults, and fail-safe behavior"
+      ]
+    },
+    {
+      "control_id": "USEQ-19FE22C4",
+      "revision": 1,
+      "semantic_sha256": "19fe22c4dbbeab04d6655eb5c5d0c656395e07e19140a3eb761665bcc8384675",
+      "statement": "Require deliberate, informed action to enable high-risk capabilities rather than enabling them by default.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 707
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Attack-surface reduction, secure defaults, and fail-safe behavior"
+      ]
+    },
+    {
+      "control_id": "USEQ-BD19B7E0",
+      "revision": 1,
+      "semantic_sha256": "bd19b7e05afc0493895b3f731cecc461511e79fef018125bcb6a1f57d46d4918",
+      "statement": "Use deny-by-default authorization, network, execution, data-sharing, and integration policies.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 708
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Attack-surface reduction, secure defaults, and fail-safe behavior"
+      ]
+    },
+    {
+      "control_id": "USEQ-D2318271",
+      "revision": 1,
+      "semantic_sha256": "d23182710ce7f8876da7d04828dd698c7729ece67e44294cfb87817fca09e28d",
+      "statement": "Fail closed when identity, authorization, policy, signature, certificate, secret, configuration, or security-service verification cannot complete, unless a documented safety analysis requires a different fail-safe state.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 709
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Attack-surface reduction, secure defaults, and fail-safe behavior"
+      ]
+    },
+    {
+      "control_id": "USEQ-C60BECF4",
+      "revision": 1,
+      "semantic_sha256": "c60becf4e57566318091bf2ac7947acb9e00b3e2b70af8109531b6dd757d891d",
+      "statement": "Ensure degraded or recovery modes do not silently bypass normal authentication, authorization, tenant isolation, logging, validation, or integrity controls.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 710
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Attack-surface reduction, secure defaults, and fail-safe behavior"
+      ]
+    },
+    {
+      "control_id": "USEQ-F45A4057",
+      "revision": 1,
+      "semantic_sha256": "f45a405717713f77d96399a6e7229ec032cbf57e27d3893888b4ad7b2b665a8c",
+      "statement": "Prevent insecure fallback to obsolete algorithms, protocols, identities, transports, parsers, or unsigned artifacts.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 711
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Attack-surface reduction, secure defaults, and fail-safe behavior"
+      ]
+    },
+    {
+      "control_id": "USEQ-9E96F4CB",
+      "revision": 1,
+      "semantic_sha256": "9e96f4cbb11458cf6fffe1503d3c6a0984bef6028416d5ebc680df4eef05e181",
+      "statement": "Eliminate default, shared, hard-coded, predictable, or non-expiring credentials.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 712
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Attack-surface reduction, secure defaults, and fail-safe behavior"
+      ]
+    },
+    {
+      "control_id": "USEQ-7CC95347",
+      "revision": 1,
+      "semantic_sha256": "7cc953471b35521acdcd5deb22a447e5310355b4f4bc97ac8d0b0b0d2ee8d8d3",
+      "statement": "Require unique credentials or identities per customer, device, workload, installation, or trust domain where compromise of one must not compromise others.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 713
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Attack-surface reduction, secure defaults, and fail-safe behavior"
+      ]
+    },
+    {
+      "control_id": "USEQ-727C8590",
+      "revision": 1,
+      "semantic_sha256": "727c859044eca80643d6b445f942cc4198843e0496db78634fb8b0c4a8deefc6",
+      "statement": "Constrain outbound network access and server-side destinations to the minimum needed to reduce exfiltration and server-side request forgery risk.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 714
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Attack-surface reduction, secure defaults, and fail-safe behavior"
+      ]
+    },
+    {
+      "control_id": "USEQ-6E8BC41E",
+      "revision": 1,
+      "semantic_sha256": "6e8bc41ec8a309bbe6d592adf66e485fbbd61e7107bc6493294200b7d2ac6f94",
+      "statement": "Isolate Internet-facing, privileged, high-risk parsing, build, signing, and customer-data workloads from unrelated systems.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 715
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Attack-surface reduction, secure defaults, and fail-safe behavior"
+      ]
+    },
+    {
+      "control_id": "USEQ-8C682826",
+      "revision": 1,
+      "semantic_sha256": "8c6828268fb7f337e85817e2354fa5db3f2d0220a8a13027a17098045c4aa9ae",
+      "statement": "Bound input size, nesting, recursion, expansion, execution time, resource use, concurrency, retries, and fan-out at every untrusted boundary.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 716
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Attack-surface reduction, secure defaults, and fail-safe behavior"
+      ]
+    },
+    {
+      "control_id": "USEQ-31C682FC",
+      "revision": 1,
+      "semantic_sha256": "31c682fc7294c0f9a114079e27aaec47c091acb4a3d11dcb6637d03863e80281",
+      "statement": "Use explicit timeouts and cancellation for network, storage, cryptographic, and external-service operations.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 717
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Attack-surface reduction, secure defaults, and fail-safe behavior"
+      ]
+    },
+    {
+      "control_id": "USEQ-FE4699C0",
+      "revision": 1,
+      "semantic_sha256": "fe4699c054b0f91621b0883d14658c68fd4426bb07b54824bbc3efd478cbe09d",
+      "statement": "Avoid exposing implementation details, internal identifiers, topology, secrets, stack traces, queries, or sensitive state through errors, headers, metadata, or client artifacts.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 718
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Attack-surface reduction, secure defaults, and fail-safe behavior"
+      ]
+    },
+    {
+      "control_id": "USEQ-D03E58A5",
+      "revision": 1,
+      "semantic_sha256": "d03e58a5b8abb4087f2e2ebccf586a5713214d9e47d0e1e5c1539aa0a3763677",
+      "statement": "Test startup, shutdown, partial configuration, missing secrets, clock errors, certificate expiry, dependency outage, and recovery paths for secure failure behavior.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 719
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Attack-surface reduction, secure defaults, and fail-safe behavior"
+      ]
+    },
+    {
+      "control_id": "USEQ-B120E734",
+      "revision": 1,
+      "semantic_sha256": "b120e7341677fd651009c2bc03b95b6869ac0498295f543369a1be307151d5ec",
+      "statement": "Continuously compare the deployed attack surface with the approved inventory and alert on unexpected exposure.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 720
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Attack-surface reduction, secure defaults, and fail-safe behavior"
+      ]
+    },
+    {
+      "control_id": "USEQ-869D6032",
+      "revision": 1,
+      "semantic_sha256": "869d6032302e11deafe89c8d5cc95440bac7641c2f77f52ee71dc12301c46b11",
+      "statement": "Use individual, attributable identities for human and machine access; prohibit shared privileged accounts except controlled break-glass mechanisms.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 724
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Identity, authorization, tenant, and privileged-control defaults"
+      ]
+    },
+    {
+      "control_id": "USEQ-65652603",
+      "revision": 1,
+      "semantic_sha256": "656526035ca4490272309926fd6aca8189beac727041b7aaa38d29ef42f4f190",
+      "statement": "Require strong, risk-appropriate authentication for administrative, support, development, build, signing, production, and high-impact customer operations.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 725
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Identity, authorization, tenant, and privileged-control defaults"
+      ]
+    },
+    {
+      "control_id": "USEQ-99CBEDC3",
+      "revision": 1,
+      "semantic_sha256": "99cbedc32ed481e052acab1ea045919c794df415120472a0e9f86e87475bc2ec",
+      "statement": "Support phishing-resistant authentication for privileged and high-risk access where available and appropriate.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 726
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Identity, authorization, tenant, and privileged-control defaults"
+      ]
+    },
+    {
+      "control_id": "USEQ-26D9A26B",
+      "revision": 1,
+      "semantic_sha256": "26d9a26b6708e23b8a07e73c3337f1d0e8932893270b82a89595c5858cd0fddf",
+      "statement": "Enforce least privilege for users, services, workloads, integrations, build systems, deployment systems, and support tools.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 727
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Identity, authorization, tenant, and privileged-control defaults"
+      ]
+    },
+    {
+      "control_id": "USEQ-B2310836",
+      "revision": 1,
+      "semantic_sha256": "b23108368d0b9e19cfd52e4f38899db919289944ae4411d223df51377c0166bc",
+      "statement": "Separate duties for code approval, artifact creation, signing, deployment, security exception approval, and financial or destructive operations where practical.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 728
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Identity, authorization, tenant, and privileged-control defaults"
+      ]
+    },
+    {
+      "control_id": "USEQ-1AF71ED7",
+      "revision": 1,
+      "semantic_sha256": "1af71ed70c1308e8d519a583245968ed5b144de3c2d265a30296cc7235dff250",
+      "statement": "Make privileged access time-bounded, just-in-time, purpose-bound, logged, and reviewed.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 729
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Identity, authorization, tenant, and privileged-control defaults"
+      ]
+    },
+    {
+      "control_id": "USEQ-3F5E9C92",
+      "revision": 1,
+      "semantic_sha256": "3f5e9c926012b5d83a19ea4805d62caf461ccd27175f9f53f61fea9f159ad3c7",
+      "statement": "Revalidate authorization at every trusted boundary and for every object, property, action, tenant, and state transition.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 730
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Identity, authorization, tenant, and privileged-control defaults"
+      ]
+    },
+    {
+      "control_id": "USEQ-46D1211E",
+      "revision": 1,
+      "semantic_sha256": "46d1211ebf4d870b064d98c7c9692b1207df6bb6174bfd05dc54b615f19c0eba",
+      "statement": "Preserve user, organization, tenant, and authorization context across queues, caches, search indexes, exports, background jobs, analytics, and recovery operations.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 731
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Identity, authorization, tenant, and privileged-control defaults"
+      ]
+    },
+    {
+      "control_id": "USEQ-2354CE04",
+      "revision": 1,
+      "semantic_sha256": "2354ce04b4a92c43a1ea0a982fcb5a45aa51a6e391d3af6bba588b052965e61e",
+      "statement": "Invalidate access promptly after account disablement, role change, credential compromise, organization departure, contract termination, or tenant closure.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 732
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Identity, authorization, tenant, and privileged-control defaults"
+      ]
+    },
+    {
+      "control_id": "USEQ-CDD6F044",
+      "revision": 1,
+      "semantic_sha256": "cdd6f0443483685fb56cd3dfd8541911b9058d8c366e5830006a421256b4410d",
+      "statement": "Require recent reauthentication or additional approval for security-sensitive changes and irreversible actions.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 733
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Identity, authorization, tenant, and privileged-control defaults"
+      ]
+    },
+    {
+      "control_id": "USEQ-16536058",
+      "revision": 1,
+      "semantic_sha256": "16536058aeb17919cd1bb3944ae82e3ab378acc75bdd6c68ab3f8950fe422522",
+      "statement": "Make support impersonation conspicuous, justified, narrowly scoped, auditable, and incapable of revealing credentials or crossing tenant boundaries.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 734
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Identity, authorization, tenant, and privileged-control defaults"
+      ]
+    },
+    {
+      "control_id": "USEQ-D6921613",
+      "revision": 1,
+      "semantic_sha256": "d69216138a60180618fa42b478b6fe084c194f4f9fa01484f1f20848c379306d",
+      "statement": "Continuously review dormant identities, stale permissions, unused service accounts, long-lived tokens, inactive keys, and excessive administrative roles.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 735
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Identity, authorization, tenant, and privileged-control defaults"
+      ]
+    },
+    {
+      "control_id": "USEQ-EBC37F77",
+      "revision": 1,
+      "semantic_sha256": "ebc37f77eeb89267b83c74b53ed1c37e39f6a8e2964ae3f57a2364b9fbff5e6d",
+      "statement": "Test horizontal, vertical, function-level, property-level, object-level, tenant-level, and workflow authorization independently of user-interface restrictions.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 736
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Identity, authorization, tenant, and privileged-control defaults"
+      ]
+    },
+    {
+      "control_id": "USEQ-79DCD705",
+      "revision": 1,
+      "semantic_sha256": "79dcd70562c4290b14dc55f029c456f87448c556e34cef2c1060c35f42c5bd86",
+      "statement": "Prevent emergency and maintenance mechanisms from becoming permanent authorization bypasses.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 737
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Identity, authorization, tenant, and privileged-control defaults"
+      ]
+    },
+    {
+      "control_id": "USEQ-B3692336",
+      "revision": 1,
+      "semantic_sha256": "b3692336abc2e5dd56d2a972eb59c532e2fbd3e9b03e420e33ee5f17b32adb26",
+      "statement": "Ensure customers can review and revoke relevant sessions, devices, API credentials, integrations, and delegated grants.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 738
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Identity, authorization, tenant, and privileged-control defaults"
+      ]
+    },
+    {
+      "control_id": "USEQ-A4635395",
+      "revision": 1,
+      "semantic_sha256": "a46353953c2dd0e98d756f84ceab935615d6ee3aa7d0a46fe82cc81210018109",
+      "statement": "Publish clear security contact information and a machine-readable vulnerability-reporting route compatible with RFC 9116 where a public reporting surface exists.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 742
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security transparency, customer controls, and support lifecycle"
+      ]
+    },
+    {
+      "control_id": "USEQ-E0B0E04F",
+      "revision": 1,
+      "semantic_sha256": "e0b0e04f45fecb129b90e835b4514c8dc81ed3bd73b09c6f69e40a9ee1e298d8",
+      "statement": "Publish a vulnerability disclosure policy describing scope, safe-harbor expectations, report content, supported communication channels, acknowledgment, coordination, and disclosure practices.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 743
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security transparency, customer controls, and support lifecycle"
+      ]
+    },
+    {
+      "control_id": "USEQ-1DBAD873",
+      "revision": 1,
+      "semantic_sha256": "1dbad8731098230cde496b45f4919c93989b2d86900979313dffc7a3c8bea52b",
+      "statement": "Provide customers with security advisories that identify affected products and versions, impact, severity context, exploit status, remediation, workarounds, and required actions.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 744
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security transparency, customer controls, and support lifecycle"
+      ]
+    },
+    {
+      "control_id": "USEQ-60AC40CD",
+      "revision": 1,
+      "semantic_sha256": "60ac40cda48f3b50995f121ee80251b8835e749d1d1d3f64991631e3de67ae81",
+      "statement": "Use machine-readable advisory formats where practical so customers can automate impact assessment and remediation.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 745
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security transparency, customer controls, and support lifecycle"
+      ]
+    },
+    {
+      "control_id": "USEQ-F5829ECB",
+      "revision": 1,
+      "semantic_sha256": "f5829ecb6eb4ce621a9c307b6de26424ccc2c889df9b422f78742da50b8d0a1f",
+      "statement": "Publish supported-version and end-of-life information in a durable, discoverable location.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 746
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security transparency, customer controls, and support lifecycle"
+      ]
+    },
+    {
+      "control_id": "USEQ-1C422270",
+      "revision": 1,
+      "semantic_sha256": "1c422270d359c556f192e8485e9b4341b6a754a41f864338f393b3819e826650",
+      "statement": "Notify customers sufficiently before support, compatibility, protocol, algorithm, or security-update commitments change.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 747
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security transparency, customer controls, and support lifecycle"
+      ]
+    },
+    {
+      "control_id": "USEQ-6F25E01F",
+      "revision": 1,
+      "semantic_sha256": "6f25e01fe5efed81054f91fd4975dc602501c316819acbf60db9843e287ae355",
+      "statement": "Provide secure update, migration, backup, rollback, and recovery guidance appropriate to customer skill levels.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 748
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security transparency, customer controls, and support lifecycle"
+      ]
+    },
+    {
+      "control_id": "USEQ-67789AFB",
+      "revision": 1,
+      "semantic_sha256": "67789afb8ae59986f44eb7104b69ef7a25d3045bf55158a2e77d68310971d5e7",
+      "statement": "Expose security-relevant configuration and events through documented interfaces without requiring unsafe access or excessive data collection.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 749
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security transparency, customer controls, and support lifecycle"
+      ]
+    },
+    {
+      "control_id": "USEQ-09354DE6",
+      "revision": 1,
+      "semantic_sha256": "09354de6b9de05f71e498ee34ebf23ab666435aadd1ddf60db9db21c3440c331",
+      "statement": "Give customers meaningful control over administrators, sessions, credentials, integrations, data sharing, retention, logging, and notifications where the product model permits it.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 750
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security transparency, customer controls, and support lifecycle"
+      ]
+    },
+    {
+      "control_id": "USEQ-D2858271",
+      "revision": 1,
+      "semantic_sha256": "d2858271660547ee883b59d5c459463eb656be53858e8c47e5385e070a034e58",
+      "statement": "Provide secure defaults and baseline protections to all customers rather than reserving essential controls solely for premium tiers.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 751
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security transparency, customer controls, and support lifecycle"
+      ]
+    },
+    {
+      "control_id": "USEQ-F5D84228",
+      "revision": 1,
+      "semantic_sha256": "f5d84228605c8d6b6f0a3703e517b2ff536e2ce9ea322d77a3868dddeb88dd62",
+      "statement": "Document customer responsibilities without transferring responsibility for preventable manufacturer defects.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 752
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security transparency, customer controls, and support lifecycle"
+      ]
+    },
+    {
+      "control_id": "USEQ-0C9AC888",
+      "revision": 1,
+      "semantic_sha256": "0c9ac888fa448c961dc5f5ee96e7da0fe3f86b2001fd18d525338dfe193d1c75",
+      "statement": "Maintain a product security incident response team or equivalent function with authority, staffing, and escalation access.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 753
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security transparency, customer controls, and support lifecycle"
+      ]
+    },
+    {
+      "control_id": "USEQ-9C6A95C5",
+      "revision": 1,
+      "semantic_sha256": "9c6a95c518bf75cd23374e663550caa34faff91a099098c2fbe0447c63fa12ce",
+      "statement": "Coordinate vulnerability handling across product, cloud service, installed software, firmware, documentation, dependencies, partners, and resellers.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 754
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security transparency, customer controls, and support lifecycle"
+      ]
+    },
+    {
+      "control_id": "USEQ-D5D62E85",
+      "revision": 1,
+      "semantic_sha256": "d5d62e85a7e843cca2570b43d693fe32878b98d17fe4a79fdbb03d7cd28ba8cc",
+      "statement": "Retain advisory, vulnerability, patch, affected-version, and customer-notification records for audit and future incident analysis.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 755
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security transparency, customer controls, and support lifecycle"
+      ]
+    },
+    {
+      "control_id": "USEQ-8EC69EEB",
+      "revision": 1,
+      "semantic_sha256": "8ec69eebe9fd50297a769d989108d7945fb8adcf8dcf73bf740e49c31e10ef8b",
+      "statement": "Measure whether customers can successfully discover, understand, and apply security updates within the required timeframe.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 756
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security transparency, customer controls, and support lifecycle"
+      ]
+    },
+    {
+      "control_id": "USEQ-60A24074",
+      "revision": 1,
+      "semantic_sha256": "60a24074d27e828537044c62912204b5a64384784296e47565a7372a6c0467a8",
+      "statement": "Inventory components that use memory-unsafe languages, unsafe runtime features, native extensions, foreign-function interfaces, kernel interfaces, device drivers, embedded code, or untrusted binary parsers.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 760
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Memory safety and unsafe-code reduction"
+      ]
+    },
+    {
+      "control_id": "USEQ-BAB7EE53",
+      "revision": 1,
+      "semantic_sha256": "bab7ee53021e473f55f065b7931e17c1bf62c492905d3de149502829dd0d834d",
+      "statement": "Classify each memory-unsafe component by Internet exposure, privilege, data sensitivity, parsing complexity, updateability, exploit history, and blast radius.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 761
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Memory safety and unsafe-code reduction"
+      ]
+    },
+    {
+      "control_id": "USEQ-27FF2C05",
+      "revision": 1,
+      "semantic_sha256": "27ff2c054c26caeaeabdf97714b41ab32130f38bb58826d21cb6cf52c0153f4f",
+      "statement": "Maintain a published or internally governed memory-safety roadmap for priority components where memory corruption could create material risk.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 762
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Memory safety and unsafe-code reduction"
+      ]
+    },
+    {
+      "control_id": "USEQ-C12B569D",
+      "revision": 1,
+      "semantic_sha256": "c12b569d64aa003c2bbba92b403cba99f37c1d8b8772c1bfececda53951d3f80",
+      "statement": "Prefer memory-safe languages, libraries, runtimes, and APIs for new security-sensitive, network-facing, privileged, parser, authentication, cryptographic, and update components when operationally feasible.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 763
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Memory safety and unsafe-code reduction"
+      ]
+    },
+    {
+      "control_id": "USEQ-D99FAB43",
+      "revision": 1,
+      "semantic_sha256": "d99fab439569a8b8182297733b1401377dcfec02e9e97ec7b88fb9b2bcca9b23",
+      "statement": "Require explicit architectural approval for introducing new memory-unsafe code into high-risk components.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 764
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Memory safety and unsafe-code reduction"
+      ]
+    },
+    {
+      "control_id": "USEQ-6DC17539",
+      "revision": 1,
+      "semantic_sha256": "6dc17539d8738351b4638f5ffabf24cc17d5a812f74b276819b0918db3030037",
+      "statement": "Minimize and isolate unsafe blocks, native modules, foreign-function boundaries, and privileged low-level operations.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 765
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Memory safety and unsafe-code reduction"
+      ]
+    },
+    {
+      "control_id": "USEQ-1DE82CD8",
+      "revision": 1,
+      "semantic_sha256": "1de82cd8ee0e279f1afe44ee6c30e936f741c588455b6676ea8cf647ce5f62aa",
+      "statement": "Document the invariants that make each unavoidable unsafe operation valid and verify them through review and testing.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 766
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Memory safety and unsafe-code reduction"
+      ]
+    },
+    {
+      "control_id": "USEQ-23AD7641",
+      "revision": 1,
+      "semantic_sha256": "23ad76412b4ef9f82ef766d7578bcf3aaa020324dcd47c5916a82c6a3fb31d91",
+      "statement": "Wrap unsafe interfaces behind small, typed, validated, ownership-aware abstractions.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 767
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Memory safety and unsafe-code reduction"
+      ]
+    },
+    {
+      "control_id": "USEQ-0FDD2A1C",
+      "revision": 1,
+      "semantic_sha256": "0fdd2a1c7f4f6871db51f381ab251a432ac7a6564c8d3042d95dceac3179bcb3",
+      "statement": "Use compiler, linker, runtime, operating-system, and platform hardening protections appropriate to the deployed environment.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 768
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Memory safety and unsafe-code reduction"
+      ]
+    },
+    {
+      "control_id": "USEQ-FE8DA3C6",
+      "revision": 1,
+      "semantic_sha256": "fe8da3c68be722232bd85779c5edf580dba95679feac89b3886e8c035f6b08b3",
+      "statement": "Use sanitizers, bounds checking, fuzzing, static analysis, control-flow protections, stack protections, and undefined-behavior detection during development and verification where supported.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 769
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Memory safety and unsafe-code reduction"
+      ]
+    },
+    {
+      "control_id": "USEQ-2838FD78",
+      "revision": 1,
+      "semantic_sha256": "2838fd78f5cb0e94f2b208c717594065fa741de6fca404f5634efacb5b9d816f",
+      "statement": "Test native and unsafe components with malformed, adversarial, oversized, concurrent, and lifetime-sensitive inputs.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 770
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Memory safety and unsafe-code reduction"
+      ]
+    },
+    {
+      "control_id": "USEQ-275092E2",
+      "revision": 1,
+      "semantic_sha256": "275092e21a9da981a4b632a79dfebe7a116e56b0251cee2e8ed085f2d7a3a5ab",
+      "statement": "Remove or replace unsafe dependencies with poor maintenance, recurring memory vulnerabilities, or inadequate hardening.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 771
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Memory safety and unsafe-code reduction"
+      ]
+    },
+    {
+      "control_id": "USEQ-23FAB9D5",
+      "revision": 1,
+      "semantic_sha256": "23fab9d5e352d6a849a8d8ccf7934d3611e4c3eef30f5a024e0417a6bcb757b3",
+      "statement": "Treat repeated memory-corruption classes as evidence that local patching is insufficient and architectural migration is required.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 772
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Memory safety and unsafe-code reduction"
+      ]
+    },
+    {
+      "control_id": "USEQ-37CF961F",
+      "revision": 1,
+      "semantic_sha256": "37cf961f08414f884218f8ed93793849dbdee238c2a9b2c88877d88fc17c7819",
+      "statement": "Track the percentage and risk concentration of memory-unsafe code and verify progress against the roadmap.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 773
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Memory safety and unsafe-code reduction"
+      ]
+    },
+    {
+      "control_id": "USEQ-B5B21183",
+      "revision": 1,
+      "semantic_sha256": "b5b21183d359e4e0f22734cc1eb29ab566120ba79abf1e3d7a0a0f6e60ca78e0",
+      "statement": "Ensure crash handling, restart, dumps, and diagnostics do not expose secrets or create repeated exploitation opportunities.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 774
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Memory safety and unsafe-code reduction"
+      ]
+    },
+    {
+      "control_id": "USEQ-558250FA",
+      "revision": 1,
+      "semantic_sha256": "558250facdbf4264cb56fd30bcf2b40298cca09787affbdfb5b1187b240fd9f9",
+      "statement": "Test interoperability boundaries for allocation ownership, lifetimes, error translation, thread safety, encoding, alignment, and integer conversion.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 775
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Memory safety and unsafe-code reduction"
+      ]
+    },
+    {
+      "control_id": "USEQ-EF56D84F",
+      "revision": 1,
+      "semantic_sha256": "ef56d84f1fbbe746dd96e6f7eaf8c7e530b9463483fffcadad6a2aa5124517af",
+      "statement": "Plan safe migration and compatibility strategies so that memory-safety improvement does not create uncontrolled operational risk.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 776
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Memory safety and unsafe-code reduction"
+      ]
+    },
+    {
+      "control_id": "USEQ-EAFABF89",
+      "revision": 1,
+      "semantic_sha256": "eafabf89edf7aabaae273b1ad10a4c776ca652ed4e72914e085a319ac3dc8ef5",
+      "statement": "Maintain an authoritative inventory of source repositories, build systems, runners, package registries, artifact registries, signing services, deployment systems, dependencies, plugins, compilers, generators, base images, firmware, models, and hosted services that can affect released software.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 780
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Software supply-chain inventory and dependency trust"
+      ]
+    },
+    {
+      "control_id": "USEQ-87566C3E",
+      "revision": 1,
+      "semantic_sha256": "87566c3ebd4274c0a6219afdbbf80c6ff8e61993bb9ce461c410e662670e2111",
+      "statement": "Generate an SBOM for every released artifact at a level that includes direct, transitive, embedded, operating-system, client, server, model, and runtime components as applicable.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 781
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Software supply-chain inventory and dependency trust"
+      ]
+    },
+    {
+      "control_id": "USEQ-AFDC30DC",
+      "revision": 1,
+      "semantic_sha256": "afdc30dcdc2628701385d3c5f0aaf5ad763bb102e8dda0d89b7ab69eb58363b1",
+      "statement": "Bind each SBOM to the exact immutable artifact digest and retain it for the supported lifetime of the release.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 782
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Software supply-chain inventory and dependency trust"
+      ]
+    },
+    {
+      "control_id": "USEQ-E3CB6ADE",
+      "revision": 1,
+      "semantic_sha256": "e3cb6ade8d8929cabfdf889f3084ee63fa5c11996bd94eda24c13d53e4fcf2a1",
+      "statement": "Verify the SBOM against the final packaged artifact rather than relying solely on declared dependency files.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 783
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Software supply-chain inventory and dependency trust"
+      ]
+    },
+    {
+      "control_id": "USEQ-17E77EF2",
+      "revision": 1,
+      "semantic_sha256": "17e77ef2721e79e6c3dcd52638b58fbbbc49ed930027b15ea1fa06925e20725a",
+      "statement": "Record package identity, version, source, supplier, license, relationships, hashes, build and runtime role, and known modifications.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 784
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Software supply-chain inventory and dependency trust"
+      ]
+    },
+    {
+      "control_id": "USEQ-2C859395",
+      "revision": 1,
+      "semantic_sha256": "2c859395b6cb6f2f128c7e6e862bef6f4fe88ca736d9bfd76673434e6ae21f56",
+      "statement": "Identify undeclared, bundled, dynamically downloaded, generated, optional, vendored, forked, and externally hosted components.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 785
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Software supply-chain inventory and dependency trust"
+      ]
+    },
+    {
+      "control_id": "USEQ-B1550D2E",
+      "revision": 1,
+      "semantic_sha256": "b1550d2e099dd797890ad00fd4d145d5d7d8c0abfb1a0e64a28825398b894673",
+      "statement": "Use approved repositories and authenticated, integrity-protected channels for source and dependency retrieval.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 786
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Software supply-chain inventory and dependency trust"
+      ]
+    },
+    {
+      "control_id": "USEQ-109C4B2C",
+      "revision": 1,
+      "semantic_sha256": "109c4b2ce6a6932df8d69f0af46573afbd0f877828b409de26f50346115eda11",
+      "statement": "Pin or constrain dependencies sufficiently to prevent unexpected substitution while preserving a controlled update process.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 787
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Software supply-chain inventory and dependency trust"
+      ]
+    },
+    {
+      "control_id": "USEQ-2E2D2071",
+      "revision": 1,
+      "semantic_sha256": "2e2d2071d773835f2e9c95c8487a0efcbf0a122a35e65a0b2b96b52867dedef4",
+      "statement": "Protect against namespace confusion, dependency confusion, typosquatting, account takeover, malicious maintainers, compromised mirrors, and abandoned packages.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 788
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Software supply-chain inventory and dependency trust"
+      ]
+    },
+    {
+      "control_id": "USEQ-3CB3AA79",
+      "revision": 1,
+      "semantic_sha256": "3cb3aa7919f03c36c19cab6ee03c13a1a730ea8ae88df7a8212cd26127237b2b",
+      "statement": "Assess critical dependencies for maintainer health, update cadence, security process, provenance, ownership concentration, funding, and replacement feasibility.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 789
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Software supply-chain inventory and dependency trust"
+      ]
+    },
+    {
+      "control_id": "USEQ-2D04CAE9",
+      "revision": 1,
+      "semantic_sha256": "2d04cae9f55dbfe1b2cecd827720bd91c4a40d055acfe466e926b213b631691e",
+      "statement": "Remove unused, unsupported, end-of-life, unmaintained, or unjustifiably privileged dependencies.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 790
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Software supply-chain inventory and dependency trust"
+      ]
+    },
+    {
+      "control_id": "USEQ-FA681075",
+      "revision": 1,
+      "semantic_sha256": "fa68107566226287f4b3c856053c399bd74221674a0b819ac3f3f2cc27501a21",
+      "statement": "Assign an owner and update strategy to every critical dependency and toolchain component.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 791
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Software supply-chain inventory and dependency trust"
+      ]
+    },
+    {
+      "control_id": "USEQ-2097630C",
+      "revision": 1,
+      "semantic_sha256": "2097630c346dc893f4be1bec48ebb369b9ee1a45b7300366b2ce2209184de9cc",
+      "statement": "Monitor upstream advisories, releases, ownership changes, deprecations, and compromise reports throughout the supported product lifetime.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 792
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Software supply-chain inventory and dependency trust"
+      ]
+    },
+    {
+      "control_id": "USEQ-77F6382E",
+      "revision": 1,
+      "semantic_sha256": "77f6382e96283c763edca82f0224e1f319d030ea5dca59bf94effaeb6af7060a",
+      "statement": "Preserve the source and licenses necessary to rebuild or maintain critical components when supplier availability is uncertain.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 793
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Software supply-chain inventory and dependency trust"
+      ]
+    },
+    {
+      "control_id": "USEQ-941ADF38",
+      "revision": 1,
+      "semantic_sha256": "941adf388d6a4c009c017e684a91a3e602f046fb88dce12a96f7e798749e172c",
+      "statement": "Test emergency replacement, pinning, revocation, or isolation of a compromised dependency.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 794
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Software supply-chain inventory and dependency trust"
+      ]
+    },
+    {
+      "control_id": "USEQ-B7FD49F6",
+      "revision": 1,
+      "semantic_sha256": "b7fd49f662515d5efd043a26b66fdb43a5db95524ebfe5245811ee99c28442fa",
+      "statement": "Ensure supplier contracts provide appropriate notification, security, vulnerability, continuity, data-use, and termination obligations.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 795
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Software supply-chain inventory and dependency trust"
+      ]
+    },
+    {
+      "control_id": "USEQ-7F4D9550",
+      "revision": 1,
+      "semantic_sha256": "7f4d95503b79e72694f274b6f45050beff0156afbdefbe04e996ab4751319cd1",
+      "statement": "Treat externally hosted scripts, styles, models, fonts, SDKs, tags, and runtime downloads as supply-chain dependencies subject to the same inventory and failure analysis.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 796
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Software supply-chain inventory and dependency trust"
+      ]
+    },
+    {
+      "control_id": "USEQ-2A74C4D1",
+      "revision": 1,
+      "semantic_sha256": "2a74c4d16b2c025f9ea94df99cffbae46a8d9dc26270aa6eafd07eb9b54886de",
+      "statement": "Build production artifacts from reviewed, version-controlled source using controlled and auditable workflows.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 800
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Build provenance, reproducibility, signing, and release integrity"
+      ]
+    },
+    {
+      "control_id": "USEQ-FF79519F",
+      "revision": 1,
+      "semantic_sha256": "ff79519f7cd4a72fa2231d92d8b00e880baaba4e74650ee9ccf2158acba1928e",
+      "statement": "Protect build and release definitions with the same review and access controls as application source.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 801
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Build provenance, reproducibility, signing, and release integrity"
+      ]
+    },
+    {
+      "control_id": "USEQ-50AF0727",
+      "revision": 1,
+      "semantic_sha256": "50af0727e7655ac91dab42644dcb1908e395f8b615a4ef54a47c1ac5f02b94ae",
+      "statement": "Isolate trusted release builds from untrusted pull requests, forks, user-controlled inputs, and development credentials.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 802
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Build provenance, reproducibility, signing, and release integrity"
+      ]
+    },
+    {
+      "control_id": "USEQ-8981070B",
+      "revision": 1,
+      "semantic_sha256": "8981070b2a35b3891614ca31b6389aed609a756bbe92c77107069b5f5816b393",
+      "statement": "Use dedicated, least-privilege identities for build, test, packaging, signing, publication, and deployment stages.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 803
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Build provenance, reproducibility, signing, and release integrity"
+      ]
+    },
+    {
+      "control_id": "USEQ-54DBE3CB",
+      "revision": 1,
+      "semantic_sha256": "54dbe3cbd8a9153b8c9cc73010cd69ba556d44b0235c07ac001eba34bbda4331",
+      "statement": "Prevent untrusted build steps from accessing production secrets, signing keys, release registries, or deployment credentials.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 804
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Build provenance, reproducibility, signing, and release integrity"
+      ]
+    },
+    {
+      "control_id": "USEQ-5F40CD90",
+      "revision": 1,
+      "semantic_sha256": "5f40cd90fecc58d7c8d690f83234794657cd72084a5e6b379c2c98af6672d6ff",
+      "statement": "Record verifiable provenance linking source revision, declared inputs, builder identity, workflow, environment, dependencies, time, and output digest.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 805
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Build provenance, reproducibility, signing, and release integrity"
+      ]
+    },
+    {
+      "control_id": "USEQ-A059F67E",
+      "revision": 1,
+      "semantic_sha256": "a059f67ef1d268b15e9b3f095d1abf903e1a38639aad57340dd1523cf518d369",
+      "statement": "Make deployable artifacts immutable and promote the same artifact through environments rather than rebuilding independently.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 806
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Build provenance, reproducibility, signing, and release integrity"
+      ]
+    },
+    {
+      "control_id": "USEQ-E8367B76",
+      "revision": 1,
+      "semantic_sha256": "e8367b760892aad892947224dd3ecbf0fd521d7c44ce4eb4fa932168f0309066",
+      "statement": "Sign or attest release artifacts and verify signatures or attestations before deployment or distribution.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 807
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Build provenance, reproducibility, signing, and release integrity"
+      ]
+    },
+    {
+      "control_id": "USEQ-5F2C2F68",
+      "revision": 1,
+      "semantic_sha256": "5f2c2f68902d291a8fd77db6131c7fb3efd2f898159d45a9167b65af21218f34",
+      "statement": "Protect signing keys in dedicated, access-controlled systems and require auditable authorization for signing operations.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 808
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Build provenance, reproducibility, signing, and release integrity"
+      ]
+    },
+    {
+      "control_id": "USEQ-A7EB4CF4",
+      "revision": 1,
+      "semantic_sha256": "a7eb4cf4b7935d2d53193607cf6b71ca4fd04d6cdcf1b1cac9995de727ee653b",
+      "statement": "Support rapid revocation, replacement, resigning, and customer notification after key or build-system compromise.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 809
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Build provenance, reproducibility, signing, and release integrity"
+      ]
+    },
+    {
+      "control_id": "USEQ-73652DCE",
+      "revision": 1,
+      "semantic_sha256": "73652dce01d2c7a7cf84924c593bf5bb9f86f1095d1f6600c8113bedb8ef6a0b",
+      "statement": "Use reproducible, hermetic, or otherwise independently verifiable builds where the risk and ecosystem permit it.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 810
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Build provenance, reproducibility, signing, and release integrity"
+      ]
+    },
+    {
+      "control_id": "USEQ-D4761BFF",
+      "revision": 1,
+      "semantic_sha256": "d4761bff3a9c0ff02f9a1ae841b9a2c102267023da381163d8ad45bd75fe46f7",
+      "statement": "Identify and control nondeterministic build inputs such as time, network access, unpinned tools, random generation, locale, environment variables, and mutable caches.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 811
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Build provenance, reproducibility, signing, and release integrity"
+      ]
+    },
+    {
+      "control_id": "USEQ-35AC3905",
+      "revision": 1,
+      "semantic_sha256": "35ac39056faf172fb60e256212258282fc4e179fa7a403cead06a6ffa103f62f",
+      "statement": "Prevent build caches and intermediate artifacts from crossing trust boundaries without integrity verification.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 812
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Build provenance, reproducibility, signing, and release integrity"
+      ]
+    },
+    {
+      "control_id": "USEQ-7DD38794",
+      "revision": 1,
+      "semantic_sha256": "7dd38794218fac3245c75ad19038912a6680f51d4d26ba54f901e55680745f02",
+      "statement": "Verify that release tags, source revisions, provenance, SBOMs, signatures, registry records, and deployed digests agree.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 813
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Build provenance, reproducibility, signing, and release integrity"
+      ]
+    },
+    {
+      "control_id": "USEQ-D3EF3836",
+      "revision": 1,
+      "semantic_sha256": "d3ef3836be7a311eed122c5132506f9602d69c7ba8abb285ee04e7e338f2cf62",
+      "statement": "Retain previous known-good artifacts and the evidence required to restore or rebuild them.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 814
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Build provenance, reproducibility, signing, and release integrity"
+      ]
+    },
+    {
+      "control_id": "USEQ-019C16A7",
+      "revision": 1,
+      "semantic_sha256": "019c16a7cf837aaae094f80e50d7506894f3977d4bd00ef7e17c9de8b33bf3a2",
+      "statement": "Exercise a build-system compromise scenario, including containment, credential rotation, clean rebuild, provenance regeneration, and customer communication.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 815
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Build provenance, reproducibility, signing, and release integrity"
+      ]
+    },
+    {
+      "control_id": "USEQ-6DF1A806",
+      "revision": 1,
+      "semantic_sha256": "6df1a80656f52ebaf4b43eaf2b497c5f20f6ae651eaf2cd1952ed6b40606848d",
+      "statement": "Choose and document an appropriate SLSA or equivalent assurance target for critical release pipelines and record unmet requirements.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 816
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Build provenance, reproducibility, signing, and release integrity"
+      ]
+    },
+    {
+      "control_id": "USEQ-00201CAD",
+      "revision": 1,
+      "semantic_sha256": "00201cade77982a7517fc66b97b0e66356fef8c1911d5c3424876a5939cdab28",
+      "statement": "Continuously scan supported released artifacts and deployed environments for newly disclosed vulnerabilities and affected components.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 820
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Vulnerability intelligence, VEX, advisories, and prioritization"
+      ]
+    },
+    {
+      "control_id": "USEQ-9BF68C7E",
+      "revision": 1,
+      "semantic_sha256": "9bf68c7e71c8830033f07a08a3a24ac0a256b03147a989b43338b4e2c1718d2b",
+      "statement": "Correlate findings with the exact artifact, component, version, configuration, reachability, deployment exposure, and customer population.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 821
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Vulnerability intelligence, VEX, advisories, and prioritization"
+      ]
+    },
+    {
+      "control_id": "USEQ-F9D594DC",
+      "revision": 1,
+      "semantic_sha256": "f9d594dc80e3ec78ea7750af19c023ea2a98a437b316a7ce940b3c1f847f655e",
+      "statement": "Use exploit evidence, known exploitation, attack prerequisites, privilege, data impact, blast radius, business criticality, and compensating controls when prioritizing remediation.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 822
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Vulnerability intelligence, VEX, advisories, and prioritization"
+      ]
+    },
+    {
+      "control_id": "USEQ-EB450E0C",
+      "revision": 1,
+      "semantic_sha256": "eb450e0c0faecd8c60983a379ee7a861ed285beb8ef5cd0bf19ef6ecb81cff60",
+      "statement": "Check relevant known-exploited-vulnerability catalogs and authoritative supplier advisories rather than relying only on generic severity scores.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 823
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Vulnerability intelligence, VEX, advisories, and prioritization"
+      ]
+    },
+    {
+      "control_id": "USEQ-025E1F78",
+      "revision": 1,
+      "semantic_sha256": "025e1f782e324cbc26d7c874d05418c9f7eb843836e0fc3c41b0d6a93ebe6fd7",
+      "statement": "Distinguish vulnerable-code presence from actual product impact while avoiding unsupported claims of non-exploitability.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 824
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Vulnerability intelligence, VEX, advisories, and prioritization"
+      ]
+    },
+    {
+      "control_id": "USEQ-4AA0FB22",
+      "revision": 1,
+      "semantic_sha256": "4aa0fb22780a24981f240b7328e6ddb2884712cad42229f56c73481ba055b916",
+      "statement": "Create VEX or equivalent status statements only after documented technical analysis and approval.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 825
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Vulnerability intelligence, VEX, advisories, and prioritization"
+      ]
+    },
+    {
+      "control_id": "USEQ-9FA938B0",
+      "revision": 1,
+      "semantic_sha256": "9fa938b06dc293340e6af6e36e00a79229e66c1ac20dc576d3b854f3b188f5cd",
+      "statement": "Use precise affected and fixed version ranges, product identifiers, component identifiers, and justification in machine-readable vulnerability statements.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 826
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Vulnerability intelligence, VEX, advisories, and prioritization"
+      ]
+    },
+    {
+      "control_id": "USEQ-169B8B85",
+      "revision": 1,
+      "semantic_sha256": "169b8b853d4b58041afe3f95a753cff4761321e0f2792eca0c9da85d1e3e355c",
+      "statement": "Expire or reassess VEX statements after product, dependency, configuration, exposure, threat, or exploit information changes.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 827
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Vulnerability intelligence, VEX, advisories, and prioritization"
+      ]
+    },
+    {
+      "control_id": "USEQ-E902DB28",
+      "revision": 1,
+      "semantic_sha256": "e902db28a40302a380c0906da782e768539ac630576968993990e368127e7123",
+      "statement": "Publish coordinated advisories using interoperable formats such as CSAF where customers or ecosystems can consume them.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 828
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Vulnerability intelligence, VEX, advisories, and prioritization"
+      ]
+    },
+    {
+      "control_id": "USEQ-24756081",
+      "revision": 1,
+      "semantic_sha256": "247560815cf6d0934ebd4a75bbb5869d617756f4c6ddf6d0077fb294bb6fc4e9",
+      "statement": "Prevent advisory publication from exposing confidential customer details, active credentials, or unnecessary exploit instructions before mitigation is available.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 829
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Vulnerability intelligence, VEX, advisories, and prioritization"
+      ]
+    },
+    {
+      "control_id": "USEQ-53AE526C",
+      "revision": 1,
+      "semantic_sha256": "53ae526c3954150a43b69ce344f7329800411c0dcce2bdd96eb86774e1f3516e",
+      "statement": "Define risk-based remediation objectives and escalation triggers for supported products.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 830
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Vulnerability intelligence, VEX, advisories, and prioritization"
+      ]
+    },
+    {
+      "control_id": "USEQ-B7AFF0ED",
+      "revision": 1,
+      "semantic_sha256": "b7aff0edbee972907dc588c59fc3ad519b7064b31bcd4e82de41ea5bb8e351b2",
+      "statement": "Provide temporary mitigations only when their effectiveness, limitations, operational impact, and removal plan are documented and tested.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 831
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Vulnerability intelligence, VEX, advisories, and prioritization"
+      ]
+    },
+    {
+      "control_id": "USEQ-99B63234",
+      "revision": 1,
+      "semantic_sha256": "99b63234a32a50badae3754691893e2723c6d664ca253913aeb34efc8b21d447",
+      "statement": "Retest fixes and confirm that they do not introduce regressions, incomplete variant fixes, or new vulnerable paths.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 832
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Vulnerability intelligence, VEX, advisories, and prioritization"
+      ]
+    },
+    {
+      "control_id": "USEQ-E1AC6227",
+      "revision": 1,
+      "semantic_sha256": "e1ac6227806daf9e72bce3ee8efc54a91375ca5d24a41faef6d8284d1d3f7915",
+      "statement": "Search for vulnerability variants across shared code, forks, products, versions, and dependencies after a root cause is identified.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 833
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Vulnerability intelligence, VEX, advisories, and prioritization"
+      ]
+    },
+    {
+      "control_id": "USEQ-46CF4758",
+      "revision": 1,
+      "semantic_sha256": "46cf4758943d3657c993a865d55f8104ee1d4f4e0201fa6957aa38b81ecb16a4",
+      "statement": "Measure recurrence, aging, exposure time, fix adoption, failed remediation, and unsupported affected versions.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 834
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Vulnerability intelligence, VEX, advisories, and prioritization"
+      ]
+    },
+    {
+      "control_id": "USEQ-88E8A0C0",
+      "revision": 1,
+      "semantic_sha256": "88e8a0c01e1e064a28f76d53889c088c7be241227c55ff1e866d3bb05fef1f63",
+      "statement": "Retain vulnerability analysis, VEX, advisory, remediation, notification, and exception evidence for the supported lifetime and required audit period.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 835
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Vulnerability intelligence, VEX, advisories, and prioritization"
+      ]
+    },
+    {
+      "control_id": "USEQ-30C8A670",
+      "revision": 1,
+      "semantic_sha256": "30c8a6707f9d51b8ec11ec470e3fa358c2fa75b3b79de128ca202c939ac734ca",
+      "statement": "Apply a maturity-appropriate baseline such as the OpenSSF OSPS Baseline to public projects and packages.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 839
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Open-source project and public package security"
+      ]
+    },
+    {
+      "control_id": "USEQ-2FFFF689",
+      "revision": 1,
+      "semantic_sha256": "2ffff68911a9ce92de87c58dc6cd7db4b9697e19e150d360ab82d81eb590e8b2",
+      "statement": "Document project governance, maintainers, decision rights, release authority, supported branches, security contacts, and succession plans.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 840
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Open-source project and public package security"
+      ]
+    },
+    {
+      "control_id": "USEQ-1D716FC4",
+      "revision": 1,
+      "semantic_sha256": "1d716fc440aa8f7372f6d76f10b8f2011d00d74070c05dcac8c55dbd7de79732",
+      "statement": "Require strong authentication and least privilege for repository, package, build, release, domain, and organization administration.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 841
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Open-source project and public package security"
+      ]
+    },
+    {
+      "control_id": "USEQ-56BA1580",
+      "revision": 1,
+      "semantic_sha256": "56ba1580139f37db5441c88001ed5b1a942d07e9d6ebb051af96c932e681162b",
+      "statement": "Protect default and release branches from unreviewed direct changes and unauthorized history rewriting.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 842
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Open-source project and public package security"
+      ]
+    },
+    {
+      "control_id": "USEQ-8898FB30",
+      "revision": 1,
+      "semantic_sha256": "8898fb30c29a43ee9570bec6c8f52c957b4130d5e96a1bcaae5137bd3d5e9bb4",
+      "statement": "Require independent review and automated checks for security-sensitive and release-affecting changes.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 843
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Open-source project and public package security"
+      ]
+    },
+    {
+      "control_id": "USEQ-2D097AF7",
+      "revision": 1,
+      "semantic_sha256": "2d097af77a652bc4ec153ff24034076ea598ec779c8cb7eac9ba5417f0e5b0a2",
+      "statement": "Restrict publication tokens and use short-lived or trusted-publishing identities where the ecosystem supports them.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 844
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Open-source project and public package security"
+      ]
+    },
+    {
+      "control_id": "USEQ-9D7169D2",
+      "revision": 1,
+      "semantic_sha256": "9d7169d2a4c5e3958603cb00cc9abe33fafd67e3df5206234e4fa9017d37b8aa",
+      "statement": "Sign releases or publish verifiable provenance and checksums through authenticated channels.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 845
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Open-source project and public package security"
+      ]
+    },
+    {
+      "control_id": "USEQ-7BA9B43B",
+      "revision": 1,
+      "semantic_sha256": "7ba9b43b5fe2699d5916db56b0d5e15254ea9941b74ba6868e0434f0efb0cc74",
+      "statement": "Publish supported versions, security policy, contribution policy, code of conduct, license, and vulnerability-reporting instructions.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 846
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Open-source project and public package security"
+      ]
+    },
+    {
+      "control_id": "USEQ-7A520F83",
+      "revision": 1,
+      "semantic_sha256": "7a520f83603075adb4044927019aba0735078c26e8a7d4cbb67ac923365a7bed",
+      "statement": "Automate dependency, secret, workflow, and vulnerability monitoring without granting unnecessary permissions.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 847
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Open-source project and public package security"
+      ]
+    },
+    {
+      "control_id": "USEQ-A66FBA30",
+      "revision": 1,
+      "semantic_sha256": "a66fba307cf52ba98d3aef62563f1d25dd479a045c8f682197a41deb01b0af90",
+      "statement": "Review external contributors, bots, apps, webhooks, workflow triggers, and generated changes according to their trust level.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 848
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Open-source project and public package security"
+      ]
+    },
+    {
+      "control_id": "USEQ-DA8EF2DF",
+      "revision": 1,
+      "semantic_sha256": "da8ef2df0c6eecd39c616dd0e42d889d1ab376293761cd31d51588eb13800a4a",
+      "statement": "Prevent pull-request or issue content from executing with maintainer or release privileges.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 849
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Open-source project and public package security"
+      ]
+    },
+    {
+      "control_id": "USEQ-778AEC86",
+      "revision": 1,
+      "semantic_sha256": "778aec86509cfff1c5b4a4478409fe1d4cac964c5e65b719e98d786b2fe4b609",
+      "statement": "Maintain at least two trusted maintainers or a documented succession and emergency-release process for critical projects.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 850
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Open-source project and public package security"
+      ]
+    },
+    {
+      "control_id": "USEQ-3336FD27",
+      "revision": 1,
+      "semantic_sha256": "3336fd27ce088448ff3b1067bce0fb4a631c61994fb6a7ea5254251113ee89d9",
+      "statement": "Archive or transfer abandoned projects safely, revoke release credentials, mark unsupported versions, and prevent namespace hijacking.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 851
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Open-source project and public package security"
+      ]
+    },
+    {
+      "control_id": "USEQ-A7CD6B27",
+      "revision": 1,
+      "semantic_sha256": "a7cd6b279106a6954c7ebe6cbf3a24ae0690a5a2143c2b109b072589f1b8465d",
+      "statement": "Respond transparently to malicious releases, maintainer compromise, dependency takeover, and package-name disputes.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 852
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Open-source project and public package security"
+      ]
+    },
+    {
+      "control_id": "USEQ-356CA9EC",
+      "revision": 1,
+      "semantic_sha256": "356ca9ec2a3ee3c89ee9e521b05bfeb2d4e778896a44dbaef3cba2198ea6c788",
+      "statement": "Assess whether badges, attestations, scores, or automated checks represent current evidence rather than permanent certification.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 853
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Open-source project and public package security"
+      ]
+    },
+    {
+      "control_id": "USEQ-D9310A4C",
+      "revision": 1,
+      "semantic_sha256": "d9310a4c778f604fcbdeb5fffd531eff76a1de50144c676e006b25822654c7bf",
+      "statement": "Protect contributor privacy and avoid collecting unnecessary personal data through project tooling.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 854
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Open-source project and public package security"
+      ]
+    },
+    {
+      "control_id": "USEQ-6DE36A56",
+      "revision": 1,
+      "semantic_sha256": "6de36a56cebc0f604e6e449ff120cb088d7485e669c3005074d47784bd4646dc",
+      "statement": "Maintain a cryptographic inventory covering algorithms, protocols, modes, parameters, libraries, certificates, keys, secrets, hardware, services, data formats, dependencies, and externally imposed cryptography.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 858
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Cryptographic inventory and agility"
+      ]
+    },
+    {
+      "control_id": "USEQ-F7CB4B6E",
+      "revision": 1,
+      "semantic_sha256": "f7cb4b6e170242231453dff53e3a63ffb889d8873c3da7ccbc0df941864a030a",
+      "statement": "Record where each cryptographic mechanism is created, configured, negotiated, used, stored, transmitted, rotated, verified, and retired.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 859
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Cryptographic inventory and agility"
+      ]
+    },
+    {
+      "control_id": "USEQ-FE4F5183",
+      "revision": 1,
+      "semantic_sha256": "fe4f51837e08a2e6b04e2002e692d3e8d46f95cd3f93f17ed8969d6cfe0ee0f3",
+      "statement": "Classify cryptographic uses by purpose, protected data, retention period, exposure, interoperability constraints, regulatory requirements, and migration difficulty.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 860
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Cryptographic inventory and agility"
+      ]
+    },
+    {
+      "control_id": "USEQ-CC1D5CF8",
+      "revision": 1,
+      "semantic_sha256": "cc1d5cf823fa67be7313d3f837836841caf3bb540c753478a972c544b8ce644a",
+      "statement": "Use approved, maintained cryptographic implementations and protocols; prohibit custom algorithms and ad hoc protocol designs.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 861
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Cryptographic inventory and agility"
+      ]
+    },
+    {
+      "control_id": "USEQ-9EFCF878",
+      "revision": 1,
+      "semantic_sha256": "9efcf87886131edac065035f05c0794db3b7e363a921fb53935c079c7c518b36",
+      "statement": "Separate cryptographic policy from application logic sufficiently to permit controlled algorithm and parameter changes.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 862
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Cryptographic inventory and agility"
+      ]
+    },
+    {
+      "control_id": "USEQ-BE9D7D45",
+      "revision": 1,
+      "semantic_sha256": "be9d7d45997e442afe7c24f4bb1b9e7dd8bec4bc6e168c337cc747b15a7bd583",
+      "statement": "Avoid hard-coding algorithms, key sizes, certificate assumptions, provider names, serialization choices, or negotiation behavior across the codebase.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 863
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Cryptographic inventory and agility"
+      ]
+    },
+    {
+      "control_id": "USEQ-B0413466",
+      "revision": 1,
+      "semantic_sha256": "b04134660a7942a680d5081346301b6bb072f8e94dedd76daf45606cad57241d",
+      "statement": "Support versioned keys, certificates, signatures, ciphertext formats, protocol parameters, and trust stores.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 864
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Cryptographic inventory and agility"
+      ]
+    },
+    {
+      "control_id": "USEQ-90DB5A74",
+      "revision": 1,
+      "semantic_sha256": "90db5a749c1c089379567e409be3022dfef10e48f1f7793d193dc87086ea6419",
+      "statement": "Ensure readers can distinguish old and new formats during migration and reject ambiguous or downgradeable representations.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 865
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Cryptographic inventory and agility"
+      ]
+    },
+    {
+      "control_id": "USEQ-F9C1ACEE",
+      "revision": 1,
+      "semantic_sha256": "f9c1acee2ebe0ee61712c4ee12f90a818f811de157304f238709aca8a7f8e876",
+      "statement": "Test algorithm negotiation and fallback to prevent downgrade to disallowed or weaker mechanisms.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 866
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Cryptographic inventory and agility"
+      ]
+    },
+    {
+      "control_id": "USEQ-52C1EED6",
+      "revision": 1,
+      "semantic_sha256": "52c1eed64936803720a4a502f99215de6c8bf111db2a713b54fc8298ddf2fd90",
+      "statement": "Design dual-read, dual-write, re-encryption, re-signing, certificate replacement, and staged migration procedures where required.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 867
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Cryptographic inventory and agility"
+      ]
+    },
+    {
+      "control_id": "USEQ-FCFC129E",
+      "revision": 1,
+      "semantic_sha256": "fcfc129ec94a3eef75b62d7aa9b9d9a660dc46748b8ad24d250a9268787410ea",
+      "statement": "Monitor certificate, key, trust-anchor, algorithm, library, provider, and policy expiry or deprecation.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 868
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Cryptographic inventory and agility"
+      ]
+    },
+    {
+      "control_id": "USEQ-E3AF6525",
+      "revision": 1,
+      "semantic_sha256": "e3af6525bd571f1c636638d58aea36cef3fe56e75e65924df6375d8bb1f41302",
+      "statement": "Test emergency revocation and replacement without losing required data or making recovery impossible.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 869
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Cryptographic inventory and agility"
+      ]
+    },
+    {
+      "control_id": "USEQ-9CED6D5B",
+      "revision": 1,
+      "semantic_sha256": "9ced6d5b7743cee548dcb13b92e9e98a49496c988bcd3c42ea37bebc003a1293",
+      "statement": "Ensure cryptographic errors fail safely and do not leak key, plaintext, oracle, timing, or validation details.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 870
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Cryptographic inventory and agility"
+      ]
+    },
+    {
+      "control_id": "USEQ-2FD454BD",
+      "revision": 1,
+      "semantic_sha256": "2fd454bd5d78387dc396499491988c017d78bba8dfc12b7c5aa28687c29e54ce",
+      "statement": "Include cryptographic components in SBOMs and consider maintaining a cryptographic bill of materials for high-risk systems.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 871
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Cryptographic inventory and agility"
+      ]
+    },
+    {
+      "control_id": "USEQ-078D8DD9",
+      "revision": 1,
+      "semantic_sha256": "078d8dd97ef8529b1fdfdbdb061c479b49222d88d2bb693b6051ce0b793d87f4",
+      "statement": "Review the inventory after acquisitions, provider changes, protocol upgrades, dependency changes, new data-retention commitments, and regulatory changes.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 872
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Cryptographic inventory and agility"
+      ]
+    },
+    {
+      "control_id": "USEQ-1E188423",
+      "revision": 1,
+      "semantic_sha256": "1e18842365b8a34d3e64c68177260c3f862128503032646fcac4939269a67a28",
+      "statement": "Measure the time and effort required to replace a cryptographic primitive and use the result to reduce migration bottlenecks.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 873
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Cryptographic inventory and agility"
+      ]
+    },
+    {
+      "control_id": "USEQ-916B5699",
+      "revision": 1,
+      "semantic_sha256": "916b5699fa7541b1b3be7eb759d8626b9868eddbb521d948873190d81c5396e8",
+      "statement": "Identify uses of quantum-vulnerable public-key cryptography in software, infrastructure, protocols, certificates, code signing, identity, data protection, backups, archives, devices, and supplier services.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 877
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Post-quantum cryptography readiness and migration"
+      ]
+    },
+    {
+      "control_id": "USEQ-09278EE3",
+      "revision": 1,
+      "semantic_sha256": "09278ee343bc4c495193a54655509313c35404e551f0e659fdb39dc964530487",
+      "statement": "Identify data and signatures whose required confidentiality, authenticity, or evidentiary value extends far enough to face harvest-now-decrypt-later or future forgery risk.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 878
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Post-quantum cryptography readiness and migration"
+      ]
+    },
+    {
+      "control_id": "USEQ-DB0563F9",
+      "revision": 1,
+      "semantic_sha256": "db0563f95603a1c8b6562fbec08fd36132d7b1dfe0b29797bda9000008338893",
+      "statement": "Prioritize migration by data lifetime, adversary capability, exposure, system criticality, upgrade difficulty, interoperability, and replacement lead time.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 879
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Post-quantum cryptography readiness and migration"
+      ]
+    },
+    {
+      "control_id": "USEQ-74F44BB5",
+      "revision": 1,
+      "semantic_sha256": "74f44bb512d61f8c2ac93261569f5348db8e0f9e835aa7130b24da6365788252",
+      "statement": "Track NIST-finalized post-quantum standards and applicable protocol profiles rather than adopting unstandardized algorithms without explicit expert review.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 880
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Post-quantum cryptography readiness and migration"
+      ]
+    },
+    {
+      "control_id": "USEQ-520410A4",
+      "revision": 1,
+      "semantic_sha256": "520410a4c73925aa88ca5a5dbcae0eb649eb66a18c3727272034759c07979b29",
+      "statement": "Build a phased post-quantum migration roadmap with owners, dependencies, milestones, compatibility strategy, testing, rollback, and customer communication.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 881
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Post-quantum cryptography readiness and migration"
+      ]
+    },
+    {
+      "control_id": "USEQ-84B491AD",
+      "revision": 1,
+      "semantic_sha256": "84b491ad30558277dd968f427317de7f566a258cee491186f856dbc617e6b1e2",
+      "statement": "Confirm that cryptographic libraries, hardware modules, certificate authorities, identity providers, network devices, cloud services, and partners have credible migration plans.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 882
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Post-quantum cryptography readiness and migration"
+      ]
+    },
+    {
+      "control_id": "USEQ-C6D1BB35",
+      "revision": 1,
+      "semantic_sha256": "c6d1bb35b6a0317cc94a37b748e9d14059d4f4f0e04e68e9a65ea6e0337a075b",
+      "statement": "Evaluate increased key, ciphertext, signature, certificate, handshake, storage, bandwidth, latency, and memory requirements.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 883
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Post-quantum cryptography readiness and migration"
+      ]
+    },
+    {
+      "control_id": "USEQ-8F9E6A2A",
+      "revision": 1,
+      "semantic_sha256": "8f9e6a2a450af05bc957692e6d2e16eb386c1d9b1f651eb395e88fe5dc9e45d4",
+      "statement": "Test post-quantum and hybrid mechanisms under representative load, failure, interoperability, constrained-device, and recovery conditions.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 884
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Post-quantum cryptography readiness and migration"
+      ]
+    },
+    {
+      "control_id": "USEQ-7D25B6D6",
+      "revision": 1,
+      "semantic_sha256": "7d25b6d69e6f9b27c207ff2298bccfd92e52f1663b2f6ac61885fa01f3d8c013",
+      "statement": "Prevent hybrid deployment from accepting success when only the weaker component was validated or when negotiation was downgraded.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 885
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Post-quantum cryptography readiness and migration"
+      ]
+    },
+    {
+      "control_id": "USEQ-C26F0779",
+      "revision": 1,
+      "semantic_sha256": "c26f077959b287cdfbaa2fff9331dd6c658c5bad12a76910cf06f30d4b1323a9",
+      "statement": "Version data and protocol formats so that classical, hybrid, and post-quantum material cannot be confused.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 886
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Post-quantum cryptography readiness and migration"
+      ]
+    },
+    {
+      "control_id": "USEQ-A36B1359",
+      "revision": 1,
+      "semantic_sha256": "a36b13591e378c816bc42c8bf4c48fd9b01d33139e6e612340cdc2ded8d1b832",
+      "statement": "Plan re-encryption, re-signing, certificate replacement, firmware update, device replacement, and archival validation where long-lived data or devices are involved.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 887
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Post-quantum cryptography readiness and migration"
+      ]
+    },
+    {
+      "control_id": "USEQ-89AA1BEF",
+      "revision": 1,
+      "semantic_sha256": "89aa1bef8ec648a9884b33bc9c502c7a8014d6f22f6d6642eadec2db8da856b5",
+      "statement": "Maintain algorithm agility so that one post-quantum algorithm can be replaced if weaknesses or operational limitations emerge.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 888
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Post-quantum cryptography readiness and migration"
+      ]
+    },
+    {
+      "control_id": "USEQ-621DB1E3",
+      "revision": 1,
+      "semantic_sha256": "621db1e3f9b50d6a8484dfd0d1a2d7c272a0ac2f521b6f6ac19a4fc07ca8b91d",
+      "statement": "Avoid claiming quantum resistance beyond the exact standardized algorithm, parameter set, implementation, protocol, and threat model tested.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 889
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Post-quantum cryptography readiness and migration"
+      ]
+    },
+    {
+      "control_id": "USEQ-A359B0E3",
+      "revision": 1,
+      "semantic_sha256": "a359b0e30b047227a801e0868d2eef81d74e72163c02df4d5bff2ed1143085db",
+      "statement": "Include post-quantum dependencies and migration status in supplier assurance and procurement decisions.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 890
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Post-quantum cryptography readiness and migration"
+      ]
+    },
+    {
+      "control_id": "USEQ-C82359F6",
+      "revision": 1,
+      "semantic_sha256": "c82359f686571a5a013fcf9cc1702915d873078867c74c8c36bc3ff043ec2e9b",
+      "statement": "Review the roadmap at least after new standards, cryptanalytic developments, provider commitments, regulatory deadlines, or major architecture changes.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 891
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Post-quantum cryptography readiness and migration"
+      ]
+    },
+    {
+      "control_id": "USEQ-5FF9FA47",
+      "revision": 1,
+      "semantic_sha256": "5ff9fa47a4503866a788db8194d22e085b0016ab99f5b1d09f9ad5ec069a4767",
+      "statement": "Assign ownership, purpose, environment, scope, allowed operations, creation date, expiry, rotation policy, storage location, and recovery requirements to every key, certificate, secret, token, and trust anchor.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 895
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Key, certificate, secret, and trust-anchor lifecycle"
+      ]
+    },
+    {
+      "control_id": "USEQ-1C557B3B",
+      "revision": 1,
+      "semantic_sha256": "1c557b3b624c23116f448230b0e8408ae874378b59458d513668a8e153fec692",
+      "statement": "Generate cryptographic keys and security tokens using approved, cryptographically secure mechanisms and sufficient entropy.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 896
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Key, certificate, secret, and trust-anchor lifecycle"
+      ]
+    },
+    {
+      "control_id": "USEQ-C11B3220",
+      "revision": 1,
+      "semantic_sha256": "c11b32202bf6ad91ae7c3f59d71437c271fe7738f9efaababb16cde69cb043b9",
+      "statement": "Store high-value keys in dedicated protected systems or hardware-backed controls appropriate to their risk.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 897
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Key, certificate, secret, and trust-anchor lifecycle"
+      ]
+    },
+    {
+      "control_id": "USEQ-DB2BF944",
+      "revision": 1,
+      "semantic_sha256": "db2bf94488544ebd6f1c77c056d2c4b1dfd5e6e41063c0f932f00aaf1ce47cfe",
+      "statement": "Separate signing, encryption, authentication, transport, webhook, session, recovery, and environment-specific key purposes.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 898
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Key, certificate, secret, and trust-anchor lifecycle"
+      ]
+    },
+    {
+      "control_id": "USEQ-D4084F19",
+      "revision": 1,
+      "semantic_sha256": "d4084f1968c44a24afa1bf9c924383c1433c0cb5aab6fd655878be7ed0bc94a5",
+      "statement": "Use least privilege and separation of duties for key generation, activation, use, export, rotation, revocation, backup, and destruction.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 899
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Key, certificate, secret, and trust-anchor lifecycle"
+      ]
+    },
+    {
+      "control_id": "USEQ-B46D8B1A",
+      "revision": 1,
+      "semantic_sha256": "b46d8b1a05f5b4ca18a96b1a3425b4758a73038a5fa66335af72b71482a93241",
+      "statement": "Prevent secrets and private keys from entering source, build logs, artifacts, client bundles, diagnostics, tickets, documentation, analytics, or ordinary backups.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 900
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Key, certificate, secret, and trust-anchor lifecycle"
+      ]
+    },
+    {
+      "control_id": "USEQ-9F4AFED9",
+      "revision": 1,
+      "semantic_sha256": "9f4afed9dabce00e9aabdbafd23100d286c39c5f72f0cec6996e64bfeddf3e25",
+      "statement": "Prefer short-lived, automatically rotated workload credentials over static shared secrets where supported.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 901
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Key, certificate, secret, and trust-anchor lifecycle"
+      ]
+    },
+    {
+      "control_id": "USEQ-8EEEFE8A",
+      "revision": 1,
+      "semantic_sha256": "8eeefe8a5ba5ca5467aca664dbb8b4329656c1f172777beead43a812ba4494b6",
+      "statement": "Monitor and alert on unauthorized access, unusual use, failed rotation, impending expiry, excessive lifetime, and unexpected export.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 902
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Key, certificate, secret, and trust-anchor lifecycle"
+      ]
+    },
+    {
+      "control_id": "USEQ-61EA20EA",
+      "revision": 1,
+      "semantic_sha256": "61ea20ea727906aa78f3c416380aeea873b496c31dd954d478fa86140993c46e",
+      "statement": "Test routine rotation without outage or data loss.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 903
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Key, certificate, secret, and trust-anchor lifecycle"
+      ]
+    },
+    {
+      "control_id": "USEQ-5A78A24C",
+      "revision": 1,
+      "semantic_sha256": "5a78a24cf710339ac0f240959faedf7b54c961c6ce742238e8d1b935fe0e7eac",
+      "statement": "Test emergency revocation and replacement after suspected compromise.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 904
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Key, certificate, secret, and trust-anchor lifecycle"
+      ]
+    },
+    {
+      "control_id": "USEQ-F289E6E7",
+      "revision": 1,
+      "semantic_sha256": "f289e6e787f78539572b4acd2a4ec10dde0f8b76c8b653c1ca3310ad48691027",
+      "statement": "Invalidate replaced credentials and confirm that old material no longer grants access.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 905
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Key, certificate, secret, and trust-anchor lifecycle"
+      ]
+    },
+    {
+      "control_id": "USEQ-7690BB3F",
+      "revision": 1,
+      "semantic_sha256": "7690bb3f424fc530aa2e0b98b47919d51deaf86cb47378f0bc275d3b35b9e5a9",
+      "statement": "Protect trust-store and root-certificate updates from unauthorized modification and rollback.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 906
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Key, certificate, secret, and trust-anchor lifecycle"
+      ]
+    },
+    {
+      "control_id": "USEQ-89264760",
+      "revision": 1,
+      "semantic_sha256": "89264760a70510e11db3e2527b35c8e28f5a8bb6f6cf5aa16f6e83b75a14cdc8",
+      "statement": "Ensure backups and disaster recovery preserve or safely reconstruct required key material without making it broadly accessible.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 907
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Key, certificate, secret, and trust-anchor lifecycle"
+      ]
+    },
+    {
+      "control_id": "USEQ-ACEEB352",
+      "revision": 1,
+      "semantic_sha256": "aceeb35284f4783606afa445dbc74176c15901639ce4d34b12e4f5181c7aa96b",
+      "statement": "Define secure destruction and cryptographic-erasure procedures and verify their effect across replicas, caches, devices, and retained media.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 908
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Key, certificate, secret, and trust-anchor lifecycle"
+      ]
+    },
+    {
+      "control_id": "USEQ-824D21DA",
+      "revision": 1,
+      "semantic_sha256": "824d21da8e1abc8ae287f452ff5de161a6aae5d376e9430aa0f3c9eebc56ab59",
+      "statement": "Maintain an offline or otherwise resilient recovery path for critical trust and signing systems.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 909
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Key, certificate, secret, and trust-anchor lifecycle"
+      ]
+    },
+    {
+      "control_id": "USEQ-F63C1BAB",
+      "revision": 1,
+      "semantic_sha256": "f63c1bab0323755bd3c34df4014f03e900b66744c6a612ad2d446bb34dce0a16",
+      "statement": "Reconcile secret-management inventory with actual deployed references and remove orphaned or unused material.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 910
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Key, certificate, secret, and trust-anchor lifecycle"
+      ]
+    },
+    {
+      "control_id": "USEQ-265C76DD",
+      "revision": 1,
+      "semantic_sha256": "265c76ddec943af7a18c6cb009f91e71a0edfb7e717b52dfb148ee1395bea49e",
+      "statement": "Inventory components that process untrusted files, archives, media, markup, documents, fonts, images, compressed data, serialized objects, templates, expressions, bytecode, plugins, scripts, models, or network protocols.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 914
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "High-risk parsers, sandboxing, isolation, and runtime hardening"
+      ]
+    },
+    {
+      "control_id": "USEQ-B0A00947",
+      "revision": 1,
+      "semantic_sha256": "b0a009474c56a60bab0ce0639521b05c36bd76b5689493e35656ea49537f0ace",
+      "statement": "Prefer simple, maintained, memory-safe parsers with strict schemas and limited feature sets.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 915
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "High-risk parsers, sandboxing, isolation, and runtime hardening"
+      ]
+    },
+    {
+      "control_id": "USEQ-7CC55066",
+      "revision": 1,
+      "semantic_sha256": "7cc550666c709221b15393a19d4cd41749da5a7a2aa695ea696c7efdecbed33c",
+      "statement": "Disable external entity resolution, dynamic code loading, macros, active content, network retrieval, and unnecessary format features.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 916
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "High-risk parsers, sandboxing, isolation, and runtime hardening"
+      ]
+    },
+    {
+      "control_id": "USEQ-8162A074",
+      "revision": 1,
+      "semantic_sha256": "8162a0746289fbb71f78bef7723af69c163b76305d92dde58fbed6e903a24713",
+      "statement": "Validate type, structure, size, nesting, compression ratio, dimensions, duration, page count, metadata, and allowed content before expensive processing.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 917
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "High-risk parsers, sandboxing, isolation, and runtime hardening"
+      ]
+    },
+    {
+      "control_id": "USEQ-B0517C0F",
+      "revision": 1,
+      "semantic_sha256": "b0517c0f5b0e8379409ab8e73a623ba94dd7860820ff6a43115090f2038f1b84",
+      "statement": "Run high-risk parsers with minimum operating-system, filesystem, network, device, credential, and tenant privileges.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 918
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "High-risk parsers, sandboxing, isolation, and runtime hardening"
+      ]
+    },
+    {
+      "control_id": "USEQ-57105A16",
+      "revision": 1,
+      "semantic_sha256": "57105a163676568b173a6a2a12f8d4df6c8ef3b3fdab8d1e3dabaed2591f2704",
+      "statement": "Use sandboxing, process isolation, containers, virtual machines, language isolation, or dedicated services according to the plausible impact of parser compromise.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 919
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "High-risk parsers, sandboxing, isolation, and runtime hardening"
+      ]
+    },
+    {
+      "control_id": "USEQ-62E093EE",
+      "revision": 1,
+      "semantic_sha256": "62e093eea175fb221ff1f57cd5c6557662d7442f3963cb037bbfc6d06c82622c",
+      "statement": "Apply CPU, memory, storage, file, process, thread, connection, and wall-clock limits to untrusted processing.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 920
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "High-risk parsers, sandboxing, isolation, and runtime hardening"
+      ]
+    },
+    {
+      "control_id": "USEQ-5AAE6EF7",
+      "revision": 1,
+      "semantic_sha256": "5aae6ef722c5cd49f12d5fe743211e87cd7e8b53c6e73d15401e7a1f1970156b",
+      "statement": "Ensure temporary storage is non-executable, access-controlled, bounded, monitored, and cleaned reliably.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 921
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "High-risk parsers, sandboxing, isolation, and runtime hardening"
+      ]
+    },
+    {
+      "control_id": "USEQ-5B861CE9",
+      "revision": 1,
+      "semantic_sha256": "5b861ce9a1c496f5fffd01176187a6fd612a275e21fca68e5af753b9f8bc5470",
+      "statement": "Prevent path traversal, symbolic-link attacks, archive traversal, name collisions, race conditions, and filesystem escape.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 922
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "High-risk parsers, sandboxing, isolation, and runtime hardening"
+      ]
+    },
+    {
+      "control_id": "USEQ-06A8E3D6",
+      "revision": 1,
+      "semantic_sha256": "06a8e3d6d2a7c0aae14fbb8e00211cee743b26f2cd71dab1f372852a27bd827e",
+      "statement": "Quarantine content until mandatory validation, scanning, moderation, or transformation completes.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 923
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "High-risk parsers, sandboxing, isolation, and runtime hardening"
+      ]
+    },
+    {
+      "control_id": "USEQ-EDE9D828",
+      "revision": 1,
+      "semantic_sha256": "ede9d82856dc522ec422fb94cc36f1c080eefe1dee97a7b5ebf889c98210b2c0",
+      "statement": "Patch parser dependencies quickly and maintain a safe disablement or alternate-processing path.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 924
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "High-risk parsers, sandboxing, isolation, and runtime hardening"
+      ]
+    },
+    {
+      "control_id": "USEQ-91AF77D7",
+      "revision": 1,
+      "semantic_sha256": "91af77d7a88ba220f1cd780672c7384ddbfc54f7c1dd5e74b716328a53be9702",
+      "statement": "Fuzz and adversarially test parser and conversion boundaries with corpus minimization and regression retention.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 925
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "High-risk parsers, sandboxing, isolation, and runtime hardening"
+      ]
+    },
+    {
+      "control_id": "USEQ-3BE6FE4E",
+      "revision": 1,
+      "semantic_sha256": "3be6fe4effde8dca0f50ccb55992b12c827fff1a88034ebc488086823c5bc2b9",
+      "statement": "Ensure crashes, timeouts, malformed output, and partial processing cannot publish unsafe content or expose internal data.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 926
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "High-risk parsers, sandboxing, isolation, and runtime hardening"
+      ]
+    },
+    {
+      "control_id": "USEQ-53329913",
+      "revision": 1,
+      "semantic_sha256": "533299132de3b18747d300a4d77665e358404f79a125000d650f0e5e9106d0b7",
+      "statement": "Validate output before passing it to downstream interpreters, renderers, databases, templates, or user agents.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 927
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "High-risk parsers, sandboxing, isolation, and runtime hardening"
+      ]
+    },
+    {
+      "control_id": "USEQ-CE106B4A",
+      "revision": 1,
+      "semantic_sha256": "ce106b4ad7418f84ee1a939427db67acb42f435978ebc96a0f38d60d25050e66",
+      "statement": "Monitor parser failures, unusual resource use, suspicious formats, repeated crashes, and attempted sandbox escape.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 928
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "High-risk parsers, sandboxing, isolation, and runtime hardening"
+      ]
+    },
+    {
+      "control_id": "USEQ-C943A49C",
+      "revision": 1,
+      "semantic_sha256": "c943a49cfb6370ea5727dcc7627a3aa2681aa1128004456c684b6620757208b4",
+      "statement": "Provide a monitored, durable, accessible vulnerability-reporting channel and backup channel.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 932
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Vulnerability disclosure, PSIRT, and coordinated response"
+      ]
+    },
+    {
+      "control_id": "USEQ-9C98F5EF",
+      "revision": 1,
+      "semantic_sha256": "9c98f5ef99f92e2b92fc81ff9b1d18d2f1a42f3dc2e8c74f86a75149cddf9bc7",
+      "statement": "Publish RFC 9116-compatible security.txt information at the correct well-known location for public Internet properties where appropriate.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 933
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Vulnerability disclosure, PSIRT, and coordinated response"
+      ]
+    },
+    {
+      "control_id": "USEQ-269537E5",
+      "revision": 1,
+      "semantic_sha256": "269537e56205ca7079645ca1feb5a23e5ea66d979b266cdc42a14d3b26c2f3b3",
+      "statement": "Keep reporting contacts, encryption keys, policy links, languages, acknowledgments, canonical location, and expiration current.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 934
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Vulnerability disclosure, PSIRT, and coordinated response"
+      ]
+    },
+    {
+      "control_id": "USEQ-21099947",
+      "revision": 1,
+      "semantic_sha256": "21099947704b35462304cf3aa5d93cea6b585772653d98abc7825bec96428e1f",
+      "statement": "Define intake, acknowledgment, duplicate handling, severity assessment, reproduction, ownership, remediation, disclosure, credit, and closure procedures.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 935
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Vulnerability disclosure, PSIRT, and coordinated response"
+      ]
+    },
+    {
+      "control_id": "USEQ-72882CB1",
+      "revision": 1,
+      "semantic_sha256": "72882cb1e119b024eb72712a29472ee03ae479a08a8db6c3fa4034ed8c0c70e3",
+      "statement": "Protect reporters from retaliation when they act in good faith within a reasonable policy.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 936
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Vulnerability disclosure, PSIRT, and coordinated response"
+      ]
+    },
+    {
+      "control_id": "USEQ-9CC54D0D",
+      "revision": 1,
+      "semantic_sha256": "9cc54d0d115971da96ec291bf6b798da96c519005751ce750b8da0f36ee567ec",
+      "statement": "Handle anonymous, encrypted, multilingual, accessibility-related, and high-severity reports.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 937
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Vulnerability disclosure, PSIRT, and coordinated response"
+      ]
+    },
+    {
+      "control_id": "USEQ-A7280EB5",
+      "revision": 1,
+      "semantic_sha256": "a7280eb55882c6d812d5805d1c0e643e4e92df589a789cd3e650d6e98a2ad092",
+      "statement": "Separate vulnerability intake from ordinary customer support while preserving escalation between them.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 938
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Vulnerability disclosure, PSIRT, and coordinated response"
+      ]
+    },
+    {
+      "control_id": "USEQ-C483F499",
+      "revision": 1,
+      "semantic_sha256": "c483f499674769b5f9a90a498298f59516b57a1946f5885639f9937a9b42d9da",
+      "statement": "Track affected products, versions, customers, dependencies, environments, exploit status, data impact, and regulatory implications.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 939
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Vulnerability disclosure, PSIRT, and coordinated response"
+      ]
+    },
+    {
+      "control_id": "USEQ-58075E45",
+      "revision": 1,
+      "semantic_sha256": "58075e45932a855abc1b8d837251fdf18c88d03b385cb167e46f4c4095e1ec3d",
+      "statement": "Coordinate fixes and disclosure with upstream maintainers, downstream users, providers, partners, resellers, and authorities when necessary.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 940
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Vulnerability disclosure, PSIRT, and coordinated response"
+      ]
+    },
+    {
+      "control_id": "USEQ-C4FD9FDC",
+      "revision": 1,
+      "semantic_sha256": "c4fd9fdcc4fea0f17ed11b1204046d21ef2fa0890699acf8b7e00cfd42d9a423",
+      "statement": "Prevent premature closure based only on inability to reproduce in one environment.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 941
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Vulnerability disclosure, PSIRT, and coordinated response"
+      ]
+    },
+    {
+      "control_id": "USEQ-D2826C12",
+      "revision": 1,
+      "semantic_sha256": "d2826c12d5b42217902f26d1bf8bb91043573e789da19e098dcff53c126039b9",
+      "statement": "Retest remediation independently and search for variants and incomplete fixes.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 942
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Vulnerability disclosure, PSIRT, and coordinated response"
+      ]
+    },
+    {
+      "control_id": "USEQ-8345B8F9",
+      "revision": 1,
+      "semantic_sha256": "8345b8f901b1c441aa64fd1f9779430eb1f4169dba2d7279bcbc28d586df2344",
+      "statement": "Provide reporters with meaningful status updates without exposing confidential remediation details.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 943
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Vulnerability disclosure, PSIRT, and coordinated response"
+      ]
+    },
+    {
+      "control_id": "USEQ-CD05776E",
+      "revision": 1,
+      "semantic_sha256": "cd05776e9dc416aba914b42f3c265649a36c4cbb2354a610c94b5bf1e9e39c50",
+      "statement": "Publish advisories and CVE or equivalent records when appropriate and ensure identifiers map correctly to products and versions.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 944
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Vulnerability disclosure, PSIRT, and coordinated response"
+      ]
+    },
+    {
+      "control_id": "USEQ-C950BEAA",
+      "revision": 1,
+      "semantic_sha256": "c950beaa77048d24d66cdad2be0e459657bea1a1a30cdbeb43cde280395b0cd6",
+      "statement": "Measure response time, remediation time, recurrence, reporter experience, and disclosure quality.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 945
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Vulnerability disclosure, PSIRT, and coordinated response"
+      ]
+    },
+    {
+      "control_id": "USEQ-E292D085",
+      "revision": 1,
+      "semantic_sha256": "e292d0852a786235375880a6653d78c7954040b34366b5602a3cfd8a64136c7c",
+      "statement": "Exercise the intake channel and PSIRT process periodically using realistic reports.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 946
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Vulnerability disclosure, PSIRT, and coordinated response"
+      ]
+    },
+    {
+      "control_id": "USEQ-3398A871",
+      "revision": 1,
+      "semantic_sha256": "3398a871f2121df08b5fc12a100410336f5e1debc8561fb2f7fe6b0e594c7a10",
+      "statement": "Retain sufficient evidence for audit, legal, incident, and product-improvement purposes while protecting reporter and customer privacy.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 947
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Vulnerability disclosure, PSIRT, and coordinated response"
+      ]
+    },
+    {
+      "control_id": "USEQ-DC9BD8B6",
+      "revision": 1,
+      "semantic_sha256": "dc9bd8b6ad7a398e2943a101c8bb9520371b065ac0759859dab8c11d1c4b12f5",
+      "statement": "Define security-relevant events for authentication, authorization, privilege, secret, build, release, configuration, data access, export, deletion, integration, and administrative behavior.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 951
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security telemetry, detection, abuse resistance, and privacy"
+      ]
+    },
+    {
+      "control_id": "USEQ-1DB46918",
+      "revision": 1,
+      "semantic_sha256": "1db46918337e97d9debb9718b685b254b477db437fd9f292fd894e3175f819ca",
+      "statement": "Log events with attributable actor, tenant, target, action, time, source, outcome, reason, and release context where appropriate.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 952
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security telemetry, detection, abuse resistance, and privacy"
+      ]
+    },
+    {
+      "control_id": "USEQ-39B9F28F",
+      "revision": 1,
+      "semantic_sha256": "39b9f28fffbcd21923b0e2a0f97465d219dbe7f5070e73396bc35b27e2274d44",
+      "statement": "Protect security logs against unauthorized access, alteration, deletion, clock manipulation, and uncontrolled retention.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 953
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security telemetry, detection, abuse resistance, and privacy"
+      ]
+    },
+    {
+      "control_id": "USEQ-28695312",
+      "revision": 1,
+      "semantic_sha256": "28695312e82f926ed4e871891fbf4573e0e1cdceb423dbc0d2f32b3553e91842",
+      "statement": "Exclude passwords, reusable tokens, session identifiers, private keys, payment credentials, unnecessary personal data, and sensitive content from telemetry.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 954
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security telemetry, detection, abuse resistance, and privacy"
+      ]
+    },
+    {
+      "control_id": "USEQ-9FA4F083",
+      "revision": 1,
+      "semantic_sha256": "9fa4f08336261779895bab9791a17ff79c2fd373836734dc97c938a39422072a",
+      "statement": "Detect credential stuffing, brute force, account takeover, privilege escalation, token abuse, impossible travel, suspicious automation, scraping, spam, fraud, bulk export, and control tampering according to product risk.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 955
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security telemetry, detection, abuse resistance, and privacy"
+      ]
+    },
+    {
+      "control_id": "USEQ-8827937F",
+      "revision": 1,
+      "semantic_sha256": "8827937f22e0da34315d55e97ab9c69d5b6be63e0d0755bc9c0acbc23e75cfd6",
+      "statement": "Distinguish legitimate high-volume customers and accessibility tools from abusive automation to reduce harmful false positives.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 956
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security telemetry, detection, abuse resistance, and privacy"
+      ]
+    },
+    {
+      "control_id": "USEQ-8CDCFA39",
+      "revision": 1,
+      "semantic_sha256": "8cdcfa3929d524d01542c14cfe037fdc4b5c7b964bf9a6e3f04e167f183ecf05",
+      "statement": "Use rate limits, quotas, proof of work or presence, verification, reputation, friction, and manual review proportionately and accessibly.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 957
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security telemetry, detection, abuse resistance, and privacy"
+      ]
+    },
+    {
+      "control_id": "USEQ-C7959671",
+      "revision": 1,
+      "semantic_sha256": "c795967124c24afc06edacfd58b0376b5f310d1d93d30f96b8930b2264610180",
+      "statement": "Prevent attackers from using error messages, timing, rate limits, notification channels, recovery flows, or enumeration behavior to discover users or sensitive state.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 958
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security telemetry, detection, abuse resistance, and privacy"
+      ]
+    },
+    {
+      "control_id": "USEQ-9A423455",
+      "revision": 1,
+      "semantic_sha256": "9a4234555566e1fc7736202381b067d2db39febc10a0657a60968ce4f58ae065",
+      "statement": "Monitor whether protective controls disproportionately block users with disabilities, shared networks, privacy tools, limited connectivity, or unusual but legitimate behavior.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 959
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security telemetry, detection, abuse resistance, and privacy"
+      ]
+    },
+    {
+      "control_id": "USEQ-701DB40E",
+      "revision": 1,
+      "semantic_sha256": "701db40e82e9808ba837977eada30d34c69057d30ebceaaccf195bb3729bf89e",
+      "statement": "Correlate security signals across services without creating an unrestricted surveillance data store.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 960
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security telemetry, detection, abuse resistance, and privacy"
+      ]
+    },
+    {
+      "control_id": "USEQ-2C94A74B",
+      "revision": 1,
+      "semantic_sha256": "2c94a74bae733c4a86aab971f4a2711171e5a06264ea290e218917fa8f172203",
+      "statement": "Define retention, access, purpose, and deletion for security telemetry and derived risk profiles.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 961
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security telemetry, detection, abuse resistance, and privacy"
+      ]
+    },
+    {
+      "control_id": "USEQ-403661F7",
+      "revision": 1,
+      "semantic_sha256": "403661f708d6467aac10c706eb65dad9eca3e33e4df81bb4a5fa61b03372c2dc",
+      "statement": "Provide investigator access that is time-bounded, purpose-bound, and audited.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 962
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security telemetry, detection, abuse resistance, and privacy"
+      ]
+    },
+    {
+      "control_id": "USEQ-65BEBFAE",
+      "revision": 1,
+      "semantic_sha256": "65bebfaebae5b8ef3502c92e259fb9eb1621c24bf0e47b3dbbd4cf4bcffbb6ef",
+      "statement": "Test detection rules with realistic attacks, benign edge cases, evasion attempts, and telemetry outages.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 963
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security telemetry, detection, abuse resistance, and privacy"
+      ]
+    },
+    {
+      "control_id": "USEQ-150EBD9A",
+      "revision": 1,
+      "semantic_sha256": "150ebd9a916cef2219ffce16d00e11bd124e66c1039af673aa957341f17c0dfc",
+      "statement": "Monitor the monitoring pipeline itself for delay, loss, quota exhaustion, manipulation, and disabled controls.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 964
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security telemetry, detection, abuse resistance, and privacy"
+      ]
+    },
+    {
+      "control_id": "USEQ-CC494F14",
+      "revision": 1,
+      "semantic_sha256": "cc494f145d71f39c0758b48ccdf8d5ad3072c0e1c69f68942d8948069d7a176b",
+      "statement": "Connect detections to actionable runbooks, escalation, containment, customer protection, and evidence preservation.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 965
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security telemetry, detection, abuse resistance, and privacy"
+      ]
+    },
+    {
+      "control_id": "USEQ-8AB7F4B7",
+      "revision": 1,
+      "semantic_sha256": "8ab7f4b74433b665340d2a712c8850ba3b1bcab71681da307954d9bd794b9d02",
+      "statement": "Review alert quality, false positives, false negatives, response outcomes, and privacy impact continuously.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 966
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security telemetry, detection, abuse resistance, and privacy"
+      ]
+    },
+    {
+      "control_id": "USEQ-3EAF96A6",
+      "revision": 1,
+      "semantic_sha256": "3eaf96a62c0ccacde458902647d4d3ae71a0a8e3aac529411da9a456f2bfc308",
+      "statement": "Maintain incident playbooks for account compromise, secret exposure, dependency compromise, malicious release, build-system compromise, data exfiltration, destructive access, ransomware, denial of service, cryptographic failure, and widespread vulnerability.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 970
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security incident containment, recovery, and product correction"
+      ]
+    },
+    {
+      "control_id": "USEQ-3ED3E1B2",
+      "revision": 1,
+      "semantic_sha256": "3ed3e1b2fb440a4bb0d8b84760448470109f9fc2a524348d4d7ecaf6e936667a",
+      "statement": "Define incident authority, severity, command, technical response, communications, legal and privacy review, customer support, evidence preservation, and executive escalation.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 971
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security incident containment, recovery, and product correction"
+      ]
+    },
+    {
+      "control_id": "USEQ-AAC2B31B",
+      "revision": 1,
+      "semantic_sha256": "aac2b31b8a5b2a777454841dd69c440e28713f39e250c36696ec625659145276",
+      "statement": "Maintain alternate communication, identity, documentation, and recovery channels that remain usable when primary systems are compromised.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 972
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security incident containment, recovery, and product correction"
+      ]
+    },
+    {
+      "control_id": "USEQ-E760DBDB",
+      "revision": 1,
+      "semantic_sha256": "e760dbdbd023c6fe7927a48a490fd3e7cfe07c85045909a9e3ff4c14556d91a3",
+      "statement": "Be able to identify every released and deployed artifact built from compromised source, dependencies, runners, signing keys, or workflows.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 973
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security incident containment, recovery, and product correction"
+      ]
+    },
+    {
+      "control_id": "USEQ-06D4E84C",
+      "revision": 1,
+      "semantic_sha256": "06d4e84cf2e380c5987c4eb58bca3a3ad1cf57ff30c6f80e2c9d5ac2cff445ca",
+      "statement": "Be able to revoke credentials, sessions, tokens, certificates, keys, integrations, artifacts, and releases at the required scale.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 974
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security incident containment, recovery, and product correction"
+      ]
+    },
+    {
+      "control_id": "USEQ-77C90B9F",
+      "revision": 1,
+      "semantic_sha256": "77c90b9ff1708d9b7aa32f6b97916682a9f57f94ef9f253800f5940857b80562",
+      "statement": "Maintain tested clean-room or trusted rebuild procedures for severe supply-chain incidents.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 975
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security incident containment, recovery, and product correction"
+      ]
+    },
+    {
+      "control_id": "USEQ-C9A3E11F",
+      "revision": 1,
+      "semantic_sha256": "c9a3e11fd3d45a3541ca693b73e5af36d6108fed1b9cc8d645899b7147d23a71",
+      "statement": "Preserve forensic evidence without delaying necessary containment or exposing additional sensitive data.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 976
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure by Design, Software Supply Chain, Memory Safety, and Cryptographic Readiness",
+        "Security incident containment, recovery, and product correction"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,3417 @@
+{
+  "schema_version": "prc.control-classification-final/v0.1",
+  "packet_id": "docs-checklists-04-environments-quality-experience-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "source_path": "docs/checklists/04-environments-quality-experience.md",
+  "control_count": 181,
+  "controls": [
+    {
+      "control_id": "PRC-10-001",
+      "revision": 1,
+      "semantic_sha256": "2774dbeeba1193f8b448b4dc468489d3d930424f05e793468e111f99b1c4ef8a",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The word meaningfully requires a risk-based judgment about whether identity, data, network, and control-plane separation is sufficient for this system.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-10-002",
+      "revision": 1,
+      "semantic_sha256": "856ccb73a7cf99893803fca6e8d464e2e7dca6097f39f551679197438f1d3df8",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The proposal assumes that approved inventories include every credential and non-production authentication boundary, but it provides no authoritative evidence that those universal inventories are complete.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A forgotten production API key can still authenticate to a legacy staging endpoint omitted from both inventories. Every tested matrix entry is rejected and both clauses pass, while a production credential still works in non-production."
+    },
+    {
+      "control_id": "PRC-10-003",
+      "revision": 1,
+      "semantic_sha256": "8bfbe1c72d3a9f36b92383676fda4b08b7871a2120c7a2f43b454d15d0a7ad9b",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The claimed complete principal and control-plane inventories are not independently bounded, so denial results for listed pairs cannot prove that no non-production identity reaches production.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A contractor group omitted from the identity inventory can retain access to an old production cluster omitted from the target list. Every inventoried authorization test denies access, yet the original boundary is still violated."
+    },
+    {
+      "control_id": "PRC-10-004",
+      "revision": 1,
+      "semantic_sha256": "53084da10b60071d6c8eda124af39f88e02681f5af3e9a2f744747dbaeeb606e",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "How production-like staging must be depends on release risks, while sufficiently and validation adequacy have no fixed meaning in this control.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_threshold",
+        "undefined_protocol"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-10-005",
+      "revision": 1,
+      "semantic_sha256": "440e8dd8c708c3365911cf85758ff575c0becc62fbbfb395ecf8a3a90f844763",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Copies and protection settings can be queried, but authorization, adequate protection, and complete historical copy scope include privacy and accountable approval decisions.",
+      "deterministic_clauses": [
+        {
+          "statement": "Known production-data transfers to non-production are linked to authenticated authorization records and observed protection settings.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "human_accountability",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-10-006",
+      "revision": 1,
+      "semantic_sha256": "121857defed99b236194ea1c449bd4b9c6b147751cfe1727ac9ec7354d3a5e42",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Known debug features and accounts can be scanned or access-tested, but proving no hidden bypass, simulator, or endpoint exists requires an unavailable complete inventory.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every test account, bypass, simulator, and debug endpoint in approved repository and runtime inventories is absent from production or denied by a bounded access test.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-10-007",
+      "revision": 1,
+      "semantic_sha256": "64f19b9f2f577ae505dde43acaa32300058a0b530ebf7f3dc3cba9d1720e11e8",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Listed integrations and bounded delivery tests cannot prove the universal claim that no dynamic, fallback, or unlisted path can accidentally reach a real user.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope",
+        "undefined_protocol"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "All tested email and webhook paths can use test sinks while a retry worker falls back to a production SMS provider for malformed addresses. The fixed tests pass, but a real user can still be contacted."
+    },
+    {
+      "control_id": "PRC-10-008",
+      "revision": 1,
+      "semantic_sha256": "a248d40d12235924bc671850682e4d4597891d50c68013110c0814ffbea90998",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The proposal checks only documented boundaries and does not define a complete boundary inventory or what isolation behavior a successful test must cover.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "undefined_protocol",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Network and identity boundaries in the record can have passing tests while an undocumented shared data store lets staging read production records. Both clauses pass because the missing data boundary never enters the test set."
+    },
+    {
+      "control_id": "PRC-10-009",
+      "revision": 1,
+      "semantic_sha256": "c068c200af6f565d36d9731fa5e940d712f45e132dfd9201f7dd502a1e410523",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Audit logs cannot prove the absence of unlogged access paths, and periodic review requires accountable judgment about what was reviewed and whether exceptions were acceptable.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "human_accountability",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "The approved identity system can log and review all of its events while direct database access through a break-glass account produces no event in that system. The records pass even though production access is not fully logged or reviewed."
+    },
+    {
+      "control_id": "PRC-10-010",
+      "revision": 1,
+      "semantic_sha256": "88c12c23054b0d6c7dfe013fc033ea5bfb10fd1d207711e46a505a61b5cbc7ab",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "No authoritative complete inventory of production configuration items is defined, so immutable history for listed items cannot prove that all configuration is version-controlled or auditable.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Repository configuration can have perfect history while an operator-managed load-balancer rule or environment variable is omitted and leaves no audit trail. The proposed clause passes for the partial inventory while the control remains broken."
+    },
+    {
+      "control_id": "PRC-10-011",
+      "revision": 1,
+      "semantic_sha256": "8aca668b583977d2d8a72d465ebc07685a70c72d8ee723690bc56323f0b06d12",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The proposal assumes complete capture of effective changes and treats approval records as proof of valid accountable review, neither of which is established by the workflow fields alone.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A direct console change can bypass the authenticated workflow, or an unauthorized account can populate the reviewer and approver fields. Recorded changes satisfy policy while an effective configuration change still lacks valid review and approval."
+    },
+    {
+      "control_id": "PRC-10-012",
+      "revision": 1,
+      "semantic_sha256": "7479777fa3092494c85113666145e1f21e14fbb779a3da5b38c5071c52f2af6c",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "Validation against schemas is objective for supplied files, but the proposal does not bind an authoritative complete inventory of configuration instances and schemas.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Two declared YAML files can validate while an unlisted runtime JSON configuration has no schema or type check at all. Every inventoried instance passes, but configuration as a whole does not have the claimed validation."
+    },
+    {
+      "control_id": "PRC-10-013",
+      "revision": 1,
+      "semantic_sha256": "082cd25cc88fc7d2f1af5e254a96ccb26b3296a2f36ca3bdb80eb9f3c8da03da",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Failure tests can observe missing-configuration behavior, but deciding whether every resulting default is secure and safe requires a threat-specific judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Each required configuration field in the approved schema has a bounded omission test with an observed fail-closed result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-10-014",
+      "revision": 1,
+      "semantic_sha256": "cfb3e3c2561e30ee2ae82f75380fd3337949621da009db473d42a340e563f2b0",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Secure depends on the threat model, data, exposure, and compensating controls, so identical defaults can be acceptable for one system and unsafe for another.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_threshold"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-10-015",
+      "revision": 1,
+      "semantic_sha256": "02df9cd6d9d0a6303881c50cce435b0c0e6ad4cbc3653c63d20b52703f1dc755",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Whether a value is environment-specific is a semantic applicability decision, and an approved schema can simply fail to mark a field whose meaning changes by environment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A shared schema can omit the environment-specific marker on a payment endpoint, letting staging inherit the production URL. Every marked field is explicit and the checker passes, although an environment-specific value remains implicit."
+    },
+    {
+      "control_id": "PRC-10-016",
+      "revision": 1,
+      "semantic_sha256": "c1f8baf6e36c152cf4d6ecf91381058f7875e0e072807a904339d6eaacd6790a",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "Exact comparison detects differences only for inventoried and correctly normalized values; the proposal does not prove complete desired and observed configuration coverage.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "The desired snapshot and cloud query can match while a manually managed DNS rule is omitted, or a normalizer drops a meaningful ordering field. All reported comparisons pass while real production drift remains undetected."
+    },
+    {
+      "control_id": "PRC-10-017",
+      "revision": 1,
+      "semantic_sha256": "b1f484b10bb4cb979f7d61cafd759f2e98f3a88074466ad4375fb712c103a086",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "A matching digest proves equality with the approved snapshot, but not that the snapshot contains every production configuration input or that isolated reconstruction yields an operable production configuration.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "The recipe can recreate all files in an incomplete snapshot while missing an external secret binding or provider-side setting required in production. Digests match exactly, yet production configuration cannot actually be reconstructed."
+    },
+    {
+      "control_id": "PRC-10-018",
+      "revision": 1,
+      "semantic_sha256": "c9f49045898dda4e9278d5aa187d3c8fbc524c39d8415a4a2437493a0068bdce",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "The proposal calls the expected configuration and service state complete without defining a rollback protocol, fault set, or full oracle for service recovery.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A rollback test can restore configuration digests and one health endpoint while leaving queued work incompatible or a background worker broken. The execution record passes its limited oracle although configuration rollback was not adequately demonstrated."
+    },
+    {
+      "control_id": "PRC-10-019",
+      "revision": 1,
+      "semantic_sha256": "558281b1f64100469d113f8b9657365223bb31d0d923ce0031c4f4aef35e535f",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Known framework controls and endpoints can be checked, but proving every possible debug route, profiler, console, and verbose exception path is disabled is not bounded.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every debug control and development endpoint in approved configuration, route, and framework inventories is disabled or inaccessible in production.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-10-020",
+      "revision": 1,
+      "semantic_sha256": "6e208a44103149c53df3ef557b5dfc2d3bc494e0cf3c8b61c456514b86cfa47c",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Structured configuration can expose declared locale and encoding values, but identifying every implicit unit and time or text assumption across business logic is unbounded.",
+      "deterministic_clauses": [
+        {
+          "statement": "Approved configuration schemas explicitly declare timezone, locale, and character encoding fields for every applicable component.",
+          "checker_family": "structured_document",
+          "evidence_authority": "repository"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-10-021",
+      "revision": 1,
+      "semantic_sha256": "3d9b0a42ffaeb2209e7a98a5c9a26c008010312787880904bccf66d08cf0a7bd",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Current skew results for an approved host list cannot prove monitoring coverage for dynamic or omitted workloads, and the proposal confuses being within threshold with monitoring completeness.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "All listed hosts can report healthy clock skew while an autoscaled worker pool is missing from the inventory and has no time monitor. The clause passes even though time synchronization is not monitored everywhere required."
+    },
+    {
+      "control_id": "PRC-10-022",
+      "revision": 1,
+      "semantic_sha256": "c0b6c6053e83e5aba330f709752a27c203fd74d9ee1524f8245a9a721a9117bc",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The policy can define fields for known component classes, but applicability and the complete set of required timeout and resource controls remain context-dependent and incomplete.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "An HTTP service can have CPU, memory, and request timeouts that satisfy policy while its database client has no connection timeout because that field was omitted from its class policy. All declared requirements pass, but an applicable timeout is absent."
+    },
+    {
+      "control_id": "PRC-10-023",
+      "revision": 1,
+      "semantic_sha256": "8dca0f7de9c799f6ae4d57f7420d4bcb6a084b095a5d0a43faabef97a9c22444",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Secret analyzers can find known exposures, but inappropriate internal information is contextual and absence across every diagnostic artifact cannot be proven completely.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every inventoried production source map and diagnostic artifact has a current pinned secret-analysis result with no detected secret finding.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-10-024",
+      "revision": 1,
+      "semantic_sha256": "376207272c9a18fc370eebacb8743b124e5eb7afb6390dd6b9fa7d2bb5e83920",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Field presence does not establish that an identity is an accountable owner or that a non-expiring classification is justified, and the configuration inventory can be incomplete.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A stale service account can be entered as owner and a temporary configuration marked approved non-expiring while all dates and identities are syntactically valid. The record passes without real ownership or a justified expiration decision."
+    },
+    {
+      "control_id": "PRC-10-025",
+      "revision": 1,
+      "semantic_sha256": "d02116b2612db18f52abd3dc520d25f96c01f0d8301a4d4ce4c75a9403f7f916",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The proposal cannot prove that every emergency change entered the ledger, and determining that a later record is a valid independent review requires accountable human authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "An operator can make an emergency console change outside the ledger, while all recorded emergencies receive timely checkbox reviews from an unqualified reviewer. Both clauses pass although an emergency change was neither captured nor validly reviewed."
+    },
+    {
+      "control_id": "PRC-10-026",
+      "revision": 1,
+      "semantic_sha256": "09e99487ad177869fdb34f6ec5d2c138830f588f68d476168dc42a565eee3441",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The declared flag-service scope may omit other flag mechanisms, and an active identity field does not prove that the named person has accepted accountable ownership.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Every flag returned by one provider can name a current user while a code-based flag is omitted and another flag names an inactive nominal owner. The proposed checks pass without proving every real flag has an owner."
+    },
+    {
+      "control_id": "PRC-10-027",
+      "revision": 1,
+      "semantic_sha256": "be6e342e9c71281667ef39ac2fd2a32eae888c2ef25ffac718189fc5b0892f99",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "A nonempty purpose field can contain meaningless text and the supplied flag inventory may be incomplete, so record shape does not prove that every flag has a documented purpose.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "All listed flags can use the purpose value TBD, which is nonempty and versioned, while an unlisted environment flag has no record. The clause passes although the purposes are not meaningfully documented for every flag."
+    },
+    {
+      "control_id": "PRC-10-028",
+      "revision": 1,
+      "semantic_sha256": "7648d57e00170fe7e1b88cddca2ed40d41d4c12880f82cc7d8046ba676a0a46d",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "A flag-service failure test can observe a declared fallback, but whether that fallback is safe depends on the functionality, users, data, and threat model.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every flag in the approved failure-test inventory has a current flag-service outage result recording its actual fallback state.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-10-029",
+      "revision": 1,
+      "semantic_sha256": "af9c1e5e7ec8c87d3072a2939b13828a1b935191fd15dd885f5ce50762d7fca1",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The proposal leaves material state changes to judgment and assumes a complete incident and flag inventory, so matching snapshot digests can cover only selected events.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A flag that changed during an incident can be judged non-material and omitted, or an incident can be missing from the record set. Every required record references a matching snapshot while the actual incident history lacks flag state."
+    },
+    {
+      "control_id": "PRC-10-030",
+      "revision": 1,
+      "semantic_sha256": "232a8a3640327cd5d9ae153aa012b4b7a0c9d4aba35306cc0eddcae2e4415c38",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Selecting high-impact flags and authorized principals is an accountable policy decision, while current IAM and audit data cannot prove that omitted flags or bypass paths are restricted and logged.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "undefined_scope",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A release-controlling flag can be left out of the high-impact list and changed through an older admin endpoint without an audit event. Every policy-listed flag passes IAM and logging checks while a genuinely high-impact flag remains unrestricted."
+    },
+    {
+      "control_id": "PRC-10-031",
+      "revision": 1,
+      "semantic_sha256": "10abf2ec1cdc9f94fc742c5ca4df12663cb88f4ae00ea7a01ab4eaa135a083b8",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Execution evidence can cover an approved combination set, but the rule does not define which of the exponentially many flag combinations must be tested.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every flag combination in the approved combinatorial test plan has a current result bound to the assessed release.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-10-032",
+      "revision": 1,
+      "semantic_sha256": "5b109823d328af16b55fff8a291b5b7a20c7909e42994ad5d539f15d5ec7eb73",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "High-risk, new functionality, where appropriate, and the adequacy of a kill switch all require project-specific risk and design judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-10-033",
+      "revision": 1,
+      "semantic_sha256": "e7e570a7241be14bca1738381136bde458725f6170f21fd82bf1ed24a427b34c",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "A rollback drill can measure elapsed time, but quickly has no accepted threshold and the required rollback outcomes are not defined by this control.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every flag class in the approved rollback plan has a current successful rollback execution with a recorded duration.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "undefined_threshold",
+        "undefined_protocol",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-10-034",
+      "revision": 1,
+      "semantic_sha256": "1179805e850866edce2bc12e79de8e151f33ae75e9805e1dffb064af6c1f538f",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The check trusts the temporary classification and flag inventory, so a temporary flag can evade the date rule merely by being mislabeled permanent or omitted.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A rollout flag can be marked permanent and therefore have no removal date, while every flag labeled temporary has a valid date and owner. The schema passes although a real temporary flag lacks its removal date."
+    },
+    {
+      "control_id": "PRC-10-035",
+      "revision": 1,
+      "semantic_sha256": "0eabc27c50ee731b94d4c24a87de882c4fdd1f84a186ee6f5f358643fe54c614",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Known stale flags and unreachable branches can be detected, but the staleness threshold and proof that code is truly dead depend on policy and whole-system behavior.",
+      "deterministic_clauses": [
+        {
+          "statement": "Flags older than the approved staleness interval are reported and pinned static analysis identifies unreachable flag branches it can prove.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "undefined_threshold",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-10-036",
+      "revision": 1,
+      "semantic_sha256": "93671be0b8735fe176aef491a6bae0ffd70cc5cfde5d705c7963229065c93862",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "A declared credential scope cannot prove the absence of unknown secrets stored in source, files, CI variables, or other unapproved locations.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "All inventoried production secrets can reside in an approved vault while a forgotten database password remains in a deployment script outside the inventory. Both clauses pass, but not every secret is stored in an approved system."
+    },
+    {
+      "control_id": "PRC-10-037",
+      "revision": 1,
+      "semantic_sha256": "46f0c75887f2a0bf21ad903e3488e2e8d6c3c28dae3a2fcbb7510b388822bb6f",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "A detected secret can prove failure, but no bounded scanner has complete access to all historical source, images, logs, tickets, chats, documents, and analytics.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-10-038",
+      "revision": 1,
+      "semantic_sha256": "7eaf037769aa9b47ef542c1ca0c085933adbaa65ba34c69fbcf48911ceee4009",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Fingerprint comparison is exact only for values returned by approved managers; it cannot prove uniqueness for credentials stored in an omitted manager or unmanaged location.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Every returned fingerprint can be unique while the same password is reused in a legacy staging file and production appliance outside the scoped managers. The comparison passes even though a secret value is shared across environments."
+    },
+    {
+      "control_id": "PRC-10-039",
+      "revision": 1,
+      "semantic_sha256": "24e5ed4b189c55a4dbc6f188b4d8013128ce627d53a4619bf2520411457c8d52",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The complete workload and credential inventories are assumed rather than proven, and the meaning of sufficiently scoped identity depends on the operation and authorization policy.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Listed workloads can each map to a different identity while two omitted cron jobs share a broad administrator credential, or a unique identity still has global rights. Inventory checks pass although the original isolation goal is unmet."
+    },
+    {
+      "control_id": "PRC-10-040",
+      "revision": 1,
+      "semantic_sha256": "46de0066a7fc1df81b52d45abf1e3698c5b07249b1bbc280c232b6b606cdb726",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Least privilege requires deciding which permissions are necessary for each workload and task, which cannot be inferred solely from identical IAM evidence.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-10-041",
+      "revision": 1,
+      "semantic_sha256": "0faf4ac9295e513faa3f218657346e50fb52ab7a9679304a4b875b45ea00777c",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Preferred and where supported require a design and provider-capability judgment rather than a fixed pass or fail predicate.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-10-042",
+      "revision": 1,
+      "semantic_sha256": "b1e9bec7200dfbd0fa7943b0b2a3441db057809825418fc6b0b906ac6f94254d",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Secret-manager retrieval logs do not observe every subsequent use, and the phrase supported use event narrows the original universal auditing claim without an authoritative coverage contract.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A workload can retrieve a secret through a logged call and then use it against a database repeatedly with no use audit. Every supported event has a record, yet secret use as required by the control is not audited."
+    },
+    {
+      "control_id": "PRC-10-043",
+      "revision": 1,
+      "semantic_sha256": "2829746df8d6225ff83c0367cd4e47a29bbb8b08c179122d028e2bd7bd852882",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "One successful rotation per credential class does not define the failure, propagation, concurrency, and workload-behavior protocol needed to demonstrate rotation safely.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A test credential can rotate and keep one workload healthy while a real clustered workload caches the old value and fails during propagation. The approved class test passes, but secret rotation has not been demonstrated for the actual failure mode."
+    },
+    {
+      "control_id": "PRC-10-044",
+      "revision": 1,
+      "semantic_sha256": "acf91cff73293135034a0a8140fa93dae6f99776057590bd2aa116b69032f789",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "A bounded test credential and selected continuity outcomes do not define a complete emergency scenario, propagation scope, or oracle for real revocation behavior.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "The test can show denial at the identity provider and one service staying healthy while a replicated gateway accepts the credential for ten more minutes or a critical worker stops. The record passes without proving emergency revocation works end to end."
+    },
+    {
+      "control_id": "PRC-10-045",
+      "revision": 1,
+      "semantic_sha256": "c172e10c825b0abe4c897db0fed6d26cf32bb2bfcd9dcb1d9db049b85209f2c0",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "Configured monitors and policy-shaped fields do not prove that expiry and rotation failures are detected and delivered, and credential-class coverage can omit individual paths.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A monitor can be enabled with the right threshold and destination while its query is broken or the notification route silently drops alerts. The clause passes configuration checks although real expiry and rotation failures are not monitored effectively."
+    },
+    {
+      "control_id": "PRC-10-046",
+      "revision": 1,
+      "semantic_sha256": "c470b2e70c98eba087ece9884f15bef074c0a169e1bf67769a9af1fe6bd6a0e8",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Current rejection at a queried identity boundary does not prove that an old credential is invalid at every replica, cache, protocol, and target where it was usable.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "The predecessor can be disabled centrally and fail the tested login while an offline token verifier or legacy replica continues accepting it. The clause passes its current state check, yet the old credential is not fully invalidated."
+    },
+    {
+      "control_id": "PRC-10-047",
+      "revision": 1,
+      "semantic_sha256": "5c43ea7f8769c6c68b3b3590361819a42fc010fdc13051e0836b44f4eb3b78c2",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Recovery exercises can verify restoration behavior, but necessary scope and securely preserving or reconstructing secret material require threat-specific design judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every secret class in the approved recovery plan has a current recovery result bound to the backup and secret-manager configuration.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-10-048",
+      "revision": 1,
+      "semantic_sha256": "8c6e6096d65d7970798b482766c4ada36998cb947a36a4b5f7b990ed014eac27",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Monitoring and drill records are objective, but whether break-glass credentials are adequately protected depends on the threat model and compensating controls.",
+      "deterministic_clauses": [
+        {
+          "statement": "Each break-glass credential has current monitoring coverage and a successful test within the approved interval.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-10-049",
+      "revision": 1,
+      "semantic_sha256": "ee1c9f023a113f18333e76baab20d15e681f9ae56bace63be5d8a373f3894460",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The negative claim depends on complete deployed-product and vendor-default catalogs, but neither inventory can prove coverage for undocumented, version-specific, or locally supplied defaults.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "All cataloged defaults can be rejected while an appliance image retains an undocumented support credential or a product omitted from deployment inventory keeps admin/admin. Both clauses pass despite a vendor-supplied credential remaining."
+    },
+    {
+      "control_id": "PRC-10-050",
+      "revision": 1,
+      "semantic_sha256": "529c55b86dde52addb3bdf4695d61038bc611dc1f180a47ed27d88befd970449",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The checker only covers recorded suspicions and cannot prove that every known or suspected historical exposure was entered with all affected credential versions.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "One exposure record can show correct rotation while another suspected leak is deliberately never recorded and its token remains valid. Every listed exposure satisfies both clauses, but historical exposure was not fully addressed by rotation."
+    },
+    {
+      "control_id": "PRC-11-001",
+      "revision": 1,
+      "semantic_sha256": "3f7727e84a5e83a20dff7c78fd32fa31b82aca13c4368a2bd8fbbe2d7e6b02f1",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Stable links prove record connectivity, not that the linked activity actually verifies the requirement; deciding semantic verification relevance requires contextual judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A requirement for tenant isolation can link to a spelling test named verify-tenant. Every requirement has an activity identity and the schema passes, but the linked activity does not verify the requirement."
+    },
+    {
+      "control_id": "PRC-11-002",
+      "revision": 1,
+      "semantic_sha256": "c7a0536eaec89e3af52fbeea075da84fc78ac564f0142912f332d3ddf6709285",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "End-to-end results are objective for declared journeys, but deciding whether the inventory includes every genuinely critical journey requires product and risk judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every journey in the approved critical-journey inventory has a current successful end-to-end result for the assessed release and environment.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-11-003",
+      "revision": 1,
+      "semantic_sha256": "77434391972d84eb32a10c2f0fc37c80a11bf2ea2fc85c7610f592d2a633825d",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Fixed cases can be executed, but complete positive, negative, boundary, and invalid-input sets depend on each requirement and are not defined by this control.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every case in the approved input-partition and boundary test plan has a current passing result for the assessed release.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-11-004",
+      "revision": 1,
+      "semantic_sha256": "d6f6218a1a7401676bda5a56459d099c7e53adddffdc58ff354c0cce1c122d68",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "Correct empty-state behavior has no fixed expected content, action, or state transition here, so informed reviewers can disagree from the same UI evidence.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-11-005",
+      "revision": 1,
+      "semantic_sha256": "434ba3f8836d79da41fd45545ac2f37d36d064f874a5b256f75d8b3d06ae63d7",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Maximum sizes and approved volume limits can be tested, but high-volume and correct behavior lack defined thresholds and expected outcomes in this rule.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every maximum value and volume profile in the approved policy has a current execution result with observed state and errors.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "undefined_threshold",
+        "undefined_protocol",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-11-006",
+      "revision": 1,
+      "semantic_sha256": "72c1b396314417ad968bbc52cbefe81f1e28aa0fd0324fe8e7cdd0a48ded72c5",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Duplicate-effect tests can check declared operations, but unintended depends on product semantics and the complete duplicate-sensitive operation inventory is not defined.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every operation declared duplicate-sensitive has a repeated-submission test comparing observed effects with its approved idempotency contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-11-007",
+      "revision": 1,
+      "semantic_sha256": "16a7a021d6d4c10c8de68035f5ec6d23dce0de96e4fc943814131bdd98bd2282",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Scenario tests can detect known corruption, but complete state invariants and every refresh, retry, navigation, and interruption point are not specified here.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every scenario in the approved interruption test plan preserves all machine-checkable state invariants.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-11-008",
+      "revision": 1,
+      "semantic_sha256": "6865f776d3b6933e4206a45de26b16f4bb19c0f899f352d95a1708bb91edf4f0",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Concurrency tests and model checks can find violations, but arbitrary request interleavings are unbounded and the relevant business invariants require an approved model.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every bounded concurrency scenario in the approved model preserves its declared machine-checkable business invariants.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-11-009",
+      "revision": 1,
+      "semantic_sha256": "52f655efc93a0c233a9564bb59eab2412ff1d2037d8b6dc10dfcedf947cf1e38",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Test records are objective for a declared race-risk inventory, but around and the applicable balances, permissions, limits, and transitions lack complete scope and protocol.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every item in the approved race-risk inventory has a current concurrency or race-analysis result bound to the assessed release.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-11-010",
+      "revision": 1,
+      "semantic_sha256": "f2da0c8c906c912a4f5c5818f3e750c0cfd91a6e3f70795687daa1f5e206ca0d",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "A finite state model and selected ordering tests do not define all input, role, tenant, retry, and concurrency contexts in which an invalid ordering must be rejected.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "The service can reject cancel-before-create for the fixture user while accepting the same invalid transition through an admin endpoint or during a race. Every modeled ordering test passes, yet an invalid ordering remains accepted."
+    },
+    {
+      "control_id": "PRC-11-011",
+      "revision": 1,
+      "semantic_sha256": "4915c28bd4066c617528ab1a3b089ee3a5be88a3390ab72651c9b6bfc22f15e7",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "The observable effect model and bounded repeat protocol may omit side effects and execution contexts, so selected repeated calls cannot prove an operation is generally idempotent.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Two sequential retries can create one database row while concurrent retries send two emails, an effect omitted from the approved model. The proposed execution passes even though the operation is not demonstrably idempotent."
+    },
+    {
+      "control_id": "PRC-11-012",
+      "revision": 1,
+      "semantic_sha256": "57eef779f2eb0b7ba124d8fd36309233d88b774dc746744a2499148c0131dacc",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Failure injection can exercise declared cases, but ambiguous or silently inconsistent depends on a complete state model and an unbounded set of partial failures.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every partial-failure case in the approved fault plan ends in a state satisfying its declared machine-checkable consistency invariant and returns an explicit outcome.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-11-013",
+      "revision": 1,
+      "semantic_sha256": "a8e01e85d003ca6c20495b42ef8bc074bd882bb5c2ca2cf9be5f475ccf9339af",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Approved invariants and selected fault or concurrency tests cannot exhaust the relevant interruption points and interleavings unless a complete protocol is explicitly bounded.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A transfer can pass normal rollback and one injected fault while a crash after debit but before durable credit violates atomicity. All approved cases pass, yet a required transaction is not atomic under another relevant interruption."
+    },
+    {
+      "control_id": "PRC-11-014",
+      "revision": 1,
+      "semantic_sha256": "f7a7a215185fcb666ffb68f0c9e478cea154eaa80a812c2cd93bf92978f923da",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "The state contract does not by itself define exhaustive timing, retry, failure, and observation cases, so current tests can miss incorrect exposed states.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A job can show valid pending and completion states in the happy path while exposing completed before durable storage during a retry race. Every approved test reaches its terminal state, but users can still see an incorrect state."
+    },
+    {
+      "control_id": "PRC-11-015",
+      "revision": 1,
+      "semantic_sha256": "d3445257884a37599bb69266536bad78ed728e14cf163b5009c922cc22fa40b2",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Detection of seeded fixtures proves only those examples; the proposal does not establish an exhaustive generator or oracle for all missing, duplicated, and mismatched record forms.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Reconciliation can detect the three simple seeded rows while missing a duplicate split across pages or a mismatch after normalization. Every fixture passes, yet a real duplicated or mismatched record remains undetected."
+    },
+    {
+      "control_id": "PRC-11-016",
+      "revision": 1,
+      "semantic_sha256": "698ee40e1fbb354ece9101a412af9e1591c79280a75f9e31044008ab6ce964a3",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Boundary and property tests are not necessarily exhaustive over every numeric input and execution path, so passing them cannot prove that rounding is always correct.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A tax calculation can pass listed decimal boundaries while one untested negative value or large magnitude uses binary floating point and rounds incorrectly. Every inventoried test passes, but numeric precision is still wrong."
+    },
+    {
+      "control_id": "PRC-11-017",
+      "revision": 1,
+      "semantic_sha256": "72bdcfdb543a72244cad0994f8d08ab2432e931790b6e3c549332de64d97d5b3",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Decimal and rounding behavior can be tested, but correct currency and tax rules depend on jurisdiction, effective date, and legal or financial authority.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every money calculation in the approved inventory uses the declared decimal representation and passes its versioned currency and rounding fixtures.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-11-018",
+      "revision": 1,
+      "semantic_sha256": "096886a658480fd32aa592a2616d7ddcbd2291d7f86c8be777bfdc79bd180168",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Standard time fixtures can test known operations, but proving all time calculations and clock-difference behavior are covered requires a complete semantic operation inventory.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every time operation in the approved inventory passes version-pinned timezone, daylight-saving, leap-year, month-boundary, and clock-skew fixtures.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-11-019",
+      "revision": 1,
+      "semantic_sha256": "7bbbdf893128c653c8ed3fe18778c7fa55776492ba9cf8ea348d511d01911997",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Unicode behavior has an enormous evolving input space, and bounded normalization, collation, case, and fuzz tests cannot prove no duplicate or bypass exists.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-11-020",
+      "revision": 1,
+      "semantic_sha256": "8d5eb455f927c7d179426cb743dd3b17a51e7926b2fd340a9d3399a98bf3335f",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Requests at and beyond listed thresholds do not prove server-side enforcement across all endpoints, identities, races, and distributed reset behavior.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "The main endpoint can enforce quota 100 in direct tests while an alias endpoint or concurrent requests across two nodes exceed the same quota. Every approved request case passes, yet the limit is not fully enforced server-side."
+    },
+    {
+      "control_id": "PRC-11-021",
+      "revision": 1,
+      "semantic_sha256": "3eab9aef486b28a9ee26b7d6dcfdc0fef8d2cb10009255c688943a9d509cd513",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Authorization tests can cover declared approval paths, but proving no bypass exists across all endpoints, races, support tools, and direct data paths is unbounded.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every approval operation in the approved interface inventory rejects same-actor and missing-second-actor attempts under bounded authorization tests.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-11-022",
+      "revision": 1,
+      "semantic_sha256": "b7c0227ca55b2028d980a20cb23b6851dbe334529d99fc8f85e6f8672716163d",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "Complete cancellation, refund, reversal, deletion, and undo behavior depends on product-specific downstream effects, retention duties, and expected outcomes not defined here.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-11-023",
+      "revision": 1,
+      "semantic_sha256": "8690bddd07e30867492e54bf564ea2b04b82a60c91c4db887902a4d703edaf61",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Identity and integration inventories can support revocation tests, but every relevant external integration and asynchronous path is not guaranteed to be completely enumerable.",
+      "deterministic_clauses": [
+        {
+          "statement": "Each session, token, worker, and integration in the approved suspension inventory loses the prohibited access after a bounded suspension or termination test.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-11-024",
+      "revision": 1,
+      "semantic_sha256": "812b8e1b1da00d1654f9e51244aaef703a3a595f6fc9094b3b3d0644a330c773",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "Complete and validated import or export behavior has no declared formats, fields, round-trip rules, error behavior, or completeness oracle in this control.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-11-025",
+      "revision": 1,
+      "semantic_sha256": "7125e9d93b3cc93c2400a15a8ac9d2f7bb9e2ad4f43610a0c622bfbae733153f",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Resume and failure-path tests can evaluate declared operations, but safely and clearly require business and user-experience judgments not fixed by the statement.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every long-running operation in the approved inventory has current interruption tests recording resume or explicit terminal-failure outcomes.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-11-026",
+      "revision": 1,
+      "semantic_sha256": "81f986d88a7cfa13330e551e38f24a05438fac23b59abfebb734e33e5bbb60a1",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "One bounded example of each scenario class does not define the timing, retry count, partial-effect, and scheduler-state space required to prove each job handles those conditions.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A job can pass the four fixtures while two overlapping workers at a particular commit point duplicate charges. All required scenario classes have passing evidence, yet overlapping execution is not safely handled."
+    },
+    {
+      "control_id": "PRC-11-027",
+      "revision": 1,
+      "semantic_sha256": "5c90624fbafa87ba8effc7d1eb69f555c945b5e43d0aa0fa3f02708efe345179",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Selected enqueue and retry tests do not exhaust every job type and branch, and the contract may omit context fields whose preservation is semantically required.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "The tested success path can preserve tenant ID while the dead-letter retry loses the authorization scope or an omitted job drops the user ID. Every inventoried case passes while background context is not preserved end to end."
+    },
+    {
+      "control_id": "PRC-11-028",
+      "revision": 1,
+      "semantic_sha256": "ab8fb56e39bfd317dbf322e38f7f4a9bf1c39c93d766a1791512456585ad0500",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Inspection and replay mechanics can be tested, but safe replay depends on operation-specific side effects, authorization, idempotency, and risk judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every dead-letter mechanism in the approved inventory exposes inspectable records and completes its bounded replay protocol with an auditable outcome.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-11-029",
+      "revision": 1,
+      "semantic_sha256": "c0ae4616280e9eebcb59551ce2b11a9ad2d22e1e59646b4f574846a94a6844e2",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Catalog tests establish declared effects for chosen fixtures, but not correct behavior across authorization, failure, partial-state, and audit-delivery paths for every administrative action.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A delete-user action can produce the expected state and audit event in the fixture while a failed partial deletion changes data without an audit record. All catalog cases pass, yet an administrative action can produce the wrong effect or trail."
+    },
+    {
+      "control_id": "PRC-11-030",
+      "revision": 1,
+      "semantic_sha256": "235d9c1594400676026d4842d40b283cc0e9e35e7c1eb3a0ecb8f8fcac502c64",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "A state model can catch known impossible states, but normal-product reachability across all workflows is generally unbounded and may depend on business semantics.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every support-tool transition in the approved finite state model ends only in a state reachable by an allowed normal-product transition sequence.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-11-031",
+      "revision": 1,
+      "semantic_sha256": "9747f56e83f1dba404bdcb8f437bc8b6115d50c3362425439571a37038eaf172",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Safer is a comparative risk decision that depends on hazards, users, data, and operating context rather than a universal failure-state predicate.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-11-032",
+      "revision": 1,
+      "semantic_sha256": "9d413701b207c78652fce0b11d68ab5d47f0809e13179fb2067c0cce51458520",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Whether users understand the next action and whether details are sensitive both depend on audience, context, threat model, and content meaning.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-11-033",
+      "revision": 1,
+      "semantic_sha256": "ff95e627af5b8f0997d115f816fe9bfbb7da2ca80be68bf17c23808153a1417d",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "A document can be found mechanically, but proving that all known limitations are included and described accurately requires open-ended knowledge and semantic review.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-12-001",
+      "revision": 1,
+      "semantic_sha256": "c6d67dc9e1d2f1a1be4ca184ead92cbb69c8ab45960d7438fd765c7893baa27e",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "A parser can verify that a strategy record exists, but whether its depth and methods fit the release risk level requires contextual test and risk judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "The assessed release has a current authenticated test-strategy record bound to its risk classification.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-12-002",
+      "revision": 1,
+      "semantic_sha256": "b9f3e63242843f028ae39aefb4f0ac7d1813040427b219e1642c94aa507ea602",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Test metadata can prove the presence of named test levels, but as appropriate leaves applicability and sufficient coverage to architecture and risk judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every test level required by the approved strategy has at least one current execution result bound to the assessed release.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-12-003",
+      "revision": 1,
+      "semantic_sha256": "01698a1227fb8d7f5bd4f7ee7db86662e3e8347394c69c8887d5d5e79cfe343d",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Identifying critical and high-risk behavior and deciding that test effort prioritizes it adequately cannot be reduced to aggregate test metadata alone.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-12-004",
+      "revision": 1,
+      "semantic_sha256": "2ddeb3b035235bbfaed533092dbd6908514d8751cdf8fb0ffcd782b2e1044acf",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Coverage tools and review records are objective, but defining critical code and deciding whether each gap was substantively reviewed require human risk judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every uncovered item in the approved critical-code inventory has an authenticated review disposition linked to the current coverage result.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "human_accountability",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-12-005",
+      "revision": 1,
+      "semantic_sha256": "0925ec212931b848639bc7f2ad120db456666edac3a0ba6f72f65ec412562dc9",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Representative real size, shape, encoding, and edge conditions depend on production populations and test purpose, so the same data can support different valid judgments.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_threshold"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-12-006",
+      "revision": 1,
+      "semantic_sha256": "8ff01f1258fdc0f80b003a1932ee3e57840e1d11f8883fdb42205d814507566d",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Data scanners can identify known sensitive fields and masking state, but confidentiality classification and authorization depend on privacy and accountable authority.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every test-data set classified as personal or confidential has a current synthetic, masking, or authenticated authorization record.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "human_accountability",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-12-007",
+      "revision": 1,
+      "semantic_sha256": "ca6c1c5fb322ba8fb54d4ada4036b638b00a0c2434629510550d7f909ddce531",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Repeated runs can measure flake rates, but deterministic enough for a release gate requires an approved flakiness threshold and risk-specific gate policy.",
+      "deterministic_clauses": [
+        {
+          "statement": "Each gating test has a measured repeat-run outcome and flake rate over the policy-defined sample.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "undefined_threshold",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-12-008",
+      "revision": 1,
+      "semantic_sha256": "2afcbd0779306ba258788a6188e8a1fe26fbef5a4bcec331652b3d7113d2f9ce",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "A checker can identify flaky gates and linked fixes or quarantines, but the quarantine risk review and accepted residual risk require accountable judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every test exceeding the approved flake threshold has either a verified fix and stable retest or an active authenticated quarantine record.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "undefined_threshold",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-12-009",
+      "revision": 1,
+      "semantic_sha256": "958ba41f97381833e98c37ee139b15c74fbbbe62c606fc62ba3694ece3d37bb3",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Required evidence fields do not establish that the evidence justifies dismissal or that the approver has accountable authority, and relabeled failures can evade the disposition history.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A failing security test can be dismissed with an irrelevant log and an unauthorized approver identity while satisfying every required field. The structured records pass even though the failure was dismissed without meaningful evidence."
+    },
+    {
+      "control_id": "PRC-12-010",
+      "revision": 1,
+      "semantic_sha256": "576702c1d02d30e960fa4eeefa5e8ca44ebc48c7513a420142617d872520f3a6",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Test metadata can show declared failure and recovery cases ran, but the complete relevant failure set and adequacy of recovery coverage are not defined here.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every failure and recovery case in the approved test strategy has a current execution result for the assessed release.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-12-011",
+      "revision": 1,
+      "semantic_sha256": "6cab14ddf979ef9eede438bc3f0b6b0d2c7da3587df9059e8a2061dd5ecf9ce9",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Interface links and successful test records do not prove that contract tests meaningfully cover each interface's behavior, and the approved inventory can omit real interfaces.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Each listed API can have a passing test that checks only HTTP 200 while an undocumented webhook is absent. Both clauses pass, but internal and external interface contracts are not actually covered."
+    },
+    {
+      "control_id": "PRC-12-012",
+      "revision": 1,
+      "semantic_sha256": "479d49ab187feb15377074d1cb001c566a090e4b045803cd8a61a62cab6b540b",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "A result record for each support-matrix entry does not define what compatibility behavior must be exercised or require a complete success oracle.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Every supported client version can have a test result from simply opening a connection while core operations fail on one client. The matrix is covered by records, but compatibility was not meaningfully tested."
+    },
+    {
+      "control_id": "PRC-12-013",
+      "revision": 1,
+      "semantic_sha256": "07366106329540126e5c011a9cc917449e4002226ab1b08d4c1483be9080e410",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Applicability of transition scenarios and the adequacy of each execution protocol remain contextual, while mere existence of a result does not prove meaningful testing.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A policy can mark mixed-version and downgrade not applicable without justification, and the rollback result can cover only an empty database. Every declared scenario has evidence while relevant transition behavior remains untested."
+    },
+    {
+      "control_id": "PRC-12-014",
+      "revision": 1,
+      "semantic_sha256": "acb4fedf039b3ab33dfee8d14a72c73f164958e34413cb06a13a8210f7eee466",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Chosen profiles and a production-like label require contextual adequacy judgment, and finite executions cannot establish coverage of all important load, stress, spike, endurance, and capacity behavior.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A five-minute endurance case and a small single-region environment can satisfy the approved plan while missing a day-long leak and distributed bottleneck. All five classes have results, but performance coverage is inadequate."
+    },
+    {
+      "control_id": "PRC-12-015",
+      "revision": 1,
+      "semantic_sha256": "6721c5fdef4f44ff2c7ec0749da6f4e0afef57289fd182f0eb39d83dfbf7dd52",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Fault-injection results are objective, but relevant dependencies, failure modes, and sufficient injection coverage depend on architecture and risk judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every fault in the approved resilience plan has a current injection-test result bound to the assessed topology and artifact.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-12-016",
+      "revision": 1,
+      "semantic_sha256": "c323a8ada2cd443acee1593d8e8e5962f7df69f0f1e96a0781106c56580c1c20",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Security tool and test records can cover declared domains, but complete and adequate security testing across code, runtime, infrastructure, configuration, and business logic needs specialist judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every security-testing activity in the approved plan has a current result bound to its exact source, artifact, environment, and tool identity.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "undefined_protocol",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-12-017",
+      "revision": 1,
+      "semantic_sha256": "1a6ffbdf7ddc9b6faafbddf96e77bd295b70e8f9deae23ce5fc1d3240bee9ad0",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The existence of three records does not prove that manual keyboard and assistive-technology checks were adequate or correctly judged; those outcomes require accessibility specialist evidence.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "undefined_protocol"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A record can name one trivial journey and one assistive-technology combination while critical checkout controls remain unusable by keyboard. All three modes are present, yet the required accessibility testing has not meaningfully covered the interface."
+    },
+    {
+      "control_id": "PRC-12-018",
+      "revision": 1,
+      "semantic_sha256": "2e9dc98d36c31438515a7400c001bf26fc9fd90578b0fffdd7dac40654aaaee7",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "High-risk, where useful, and the choice among five advanced test methods depend on parser, state-model, threat, and cost context rather than fixed evidence.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-12-019",
+      "revision": 1,
+      "semantic_sha256": "ecb2e1c92f9fc9bf6c11ed25ef7883a13e780c614abb2b12ecc67b822b41f15a",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Independent execution or reconciliation records can be validated, but deciding which calculations are critical and whether the method is truly independent requires risk judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every calculation in the approved critical-calculation inventory has a current result from a separately identified test oracle or reconciliation implementation.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-12-020",
+      "revision": 1,
+      "semantic_sha256": "b7d6cf986f4a048d6e9845f774583b320ecb8879a312fb8a5b141620bc09da9b",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Production-like topology and configuration are similarity judgments whose required fidelity varies with the release risks and cannot be inferred from configuration equality alone.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_threshold"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-12-021",
+      "revision": 1,
+      "semantic_sha256": "fd7e8b9e91ddc43ef2d4dfdb54d71a53ed7881eea7dd73bfc20bd27ac02896a6",
+      "classification": "deterministic",
+      "route": "artifact_verification",
+      "reason": "The intended production artifact and every required test result are bound by immutable digests, so exact digest equality proves the artifact identity fact stated by this control.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every required test result identifies an artifact digest exactly equal to the intended production artifact digest.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "Testing a different build, a modified artifact, or a record without an artifact digest cannot pass the equality check. Test adequacy is governed by other controls; this rule asks only whether tests used the actual intended artifact."
+    },
+    {
+      "control_id": "PRC-12-022",
+      "revision": 1,
+      "semantic_sha256": "c9cd7b6b94196135be62c13e60fa8e3caaed7abecb8ba428ed4874025ca9eab1",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The complete requirement is that evidence identifies five explicit facts, each of which is a typed record field with an objective release or artifact binding.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every test-evidence record contains test version, data-set identity, environment identity, build or artifact digest, and structured outcome.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "A record missing or malformed in any required field fails or blocks, while identical sealed records always yield the same result. The control does not ask the checker to judge whether the test itself was adequate."
+    },
+    {
+      "control_id": "PRC-12-023",
+      "revision": 1,
+      "semantic_sha256": "a1c9a44674017a2008f2c56773fc466aca2d7bb2e45f0a0a7efca20d5474642e",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Mechanical links and a later passing result do not prove that the linked change actually fixed the cause or that a flaky retest is meaningful.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A failure can link to an unrelated documentation change followed by a lucky successful rerun of a flaky test. Both proposed clauses pass, yet the failed test was not genuinely linked to a fix and reliable retest."
+    },
+    {
+      "control_id": "PRC-12-024",
+      "revision": 1,
+      "semantic_sha256": "3384e4fbc553b55f39c4e91052e58bc7a7faf9c34bc6aa15645f75d712bc4dac",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Change and regression executions are machine facts, but material and relevant require impact analysis that can differ legitimately across informed reviewers.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every change classified as material in the approved change record triggers and completes its explicitly mapped regression suite.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-12-025",
+      "revision": 1,
+      "semantic_sha256": "382542846e075ccf8e47b715e9d756c55ac706ec9d9d925f49c0c24362b0abfc",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "User acceptance and its completeness are decisions made by authorized independent users or representatives, not facts an automated evaluator can determine.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-12-026",
+      "revision": 1,
+      "semantic_sha256": "329bddbeede6619a9b86749d158fed0e0e985fb904c4cdfc6f8290c49be5effd",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "A penetration-test report and tester independence can be validated, but whether risk, contract, or regulation warrants testing requires security, legal, and accountable authority.",
+      "deterministic_clauses": [
+        {
+          "statement": "When an approved assessment requires a penetration test, a current report identifies an independent tester, scope, artifact, environment, dates, and completion status.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "human_accountability",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-12-027",
+      "revision": 1,
+      "semantic_sha256": "696a78765709eec8ad147c3251254e83cb971d899ba4ff2d6ec09392eff87b49",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "A record can contain named limitations, but proving that every material limitation and untested condition was disclosed requires open-ended knowledge and accountable review.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-13-001",
+      "revision": 1,
+      "semantic_sha256": "6a073ff5a22efd4c7c880047922f987099ffbef22bbde5ea0fbba2eef9cf1e9c",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The control asks for documentation of an intended support policy, and an authenticated versioned matrix with explicit browser and device entries completely proves that record exists.",
+      "deterministic_clauses": [
+        {
+          "statement": "The authenticated support record contains a versioned browser and device matrix with explicit versions, form factors, and policy status.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "Missing matrix entries, malformed versions, or an absent policy status fail the schema. Whether the chosen support set is a good market decision is outside this documentation-only control."
+    },
+    {
+      "control_id": "PRC-13-002",
+      "revision": 1,
+      "semantic_sha256": "20ab3ea0ae6d9d743284f91293e55c6d9cf7952da0acfa6e9e37cbcf1ee4f8be",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Reasonable behavior and clear message quality for unsupported clients depend on user needs, failure modes, and language comprehension rather than fixed syntax.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-13-003",
+      "revision": 1,
+      "semantic_sha256": "03ce54cc31fb0458f9e0b47c40ea0d3adbaa10873bc28c553512b649a1c59fe1",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Browser-matrix execution results can be checked, but determining every critical journey requires product and risk judgment outside the browser test evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every declared critical journey has a current successful result on every browser-version entry in the approved support matrix.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-13-004",
+      "revision": 1,
+      "semantic_sha256": "2009ad03d39506dda4f35ef2c8bd9b3ae4344ca8e026e4520c293169df9b13ba",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Automated visual tests can cover fixed viewports, but works includes readability and task usability judgments not fully captured by layout geometry.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every viewport in the approved support matrix has current layout test evidence with no policy-defined clipping, overlap, or unreachable-control failure.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-13-005",
+      "revision": 1,
+      "semantic_sha256": "2856685bfbe14c23599acfd7ebaf633659521597dea74a695c92e75cefc0bc4d",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "Correct portrait and landscape behavior and where it is relevant are not defined by an orientation inventory, expected layout, or user-task oracle.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-13-006",
+      "revision": 1,
+      "semantic_sha256": "183b4ef4a9b920ede3239b78dd8011648746d1e9f800a5bb9fd91cb1d0a3da33",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Browser geometry can detect hidden or clipped elements at fixed zoom levels, but deciding which functionality is essential requires product and accessibility judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every approved zoom and text-enlargement case retains visibility and reachability for all controls marked essential in the approved journey inventory.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-13-007",
+      "revision": 1,
+      "semantic_sha256": "0f87bfe73ff4d4ddcf8b66010f8022310416b726179c0c0492df463d09c1d5e2",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Appropriate operation across touch, mouse, keyboard, and assistive input depends on control semantics, equivalent interactions, and user needs.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-13-008",
+      "revision": 1,
+      "semantic_sha256": "81d2a5a6cd2308c8de34f17d7dfb3ebd4b4a8e59f536157ebe6f042a74741c1c",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "A component inventory can find some state designs, but whether all listed states are needed and adequately designed requires product and interaction judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-13-009",
+      "revision": 1,
+      "semantic_sha256": "ac299f364e79e938bdf0931ba5d39e1dbb1686d8e9fdcf9eb0d5d1934488320e",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Which input should be preserved after each recoverable error is a product, privacy, and interaction decision encoded nowhere in this broad statement.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-13-010",
+      "revision": 1,
+      "semantic_sha256": "907cc779b316e548ebae9f509487579573af73019f78b1d3d298bfbbe7c8cfcd",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Field association can be parsed, but whether validation language is understandable to intended users requires semantic and user-centered review.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-13-011",
+      "revision": 1,
+      "semantic_sha256": "8b41b14dd0eb6df3164f2d689d4b7bd8ed5292ef7641786f8f393fdf2f1de2bd",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Automated navigation tests can compare declared routes and states, but correctly depends on product-specific expectations for history, refresh, bookmark, and deep-link behavior.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every case in the approved browser-navigation contract has a current result matching its declared route, state, and persistence outcome.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-13-012",
+      "revision": 1,
+      "semantic_sha256": "e9ed7fdd0ab1dfcbafccde2cc29b2d2273e3ed92e40188f5cc11bb90cccf23af",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Bounded multi-tab tests can detect known state corruption, but arbitrary interleavings and the complete session and workflow invariants are not defined here.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every multi-tab scenario in the approved concurrency plan preserves its declared machine-checkable session and workflow invariants.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-13-013",
+      "revision": 1,
+      "semantic_sha256": "315109bab9699ab05982fdfef49e2ff7b24cac63a5c04b0419e1a19d2590f0ee",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Cross-user cache tests can prove particular leaks, but no bounded set of users, routes, cache keys, intermediaries, and timing states proves that exposure never occurs.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-13-014",
+      "revision": 1,
+      "semantic_sha256": "af12a70f4d2f3206595c6a2ddf3ff49c309c64ff7400ed7bff192d521d5de935",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Sensitive and unnecessary depend on data classification, feature need, retention, and threat context, so storage contents alone cannot settle the control.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-13-015",
+      "revision": 1,
+      "semantic_sha256": "1befc66de406a61c495a4b3277971593e9566362b1bb1671c19f5c3499e3bfa6",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Storage deletion can be tested, but appropriate client state depends on retention, recovery, legal, device, and product requirements.",
+      "deterministic_clauses": [
+        {
+          "statement": "Logout and account-deletion tests remove every client-state item explicitly marked removable in the approved data-lifecycle contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "legal_or_specialist_authority",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-13-016",
+      "revision": 1,
+      "semantic_sha256": "733504b217f4b93323e563f8105fda71cdf07b895482388b0c7d9ed8f905040e",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Server authorization checks can prove declared endpoints enforce policy, but never treating the client as a boundary requires complete coverage of all direct server paths.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every operation in the approved server-interface inventory rejects unauthorized direct requests regardless of client-side state.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-13-017",
+      "revision": 1,
+      "semantic_sha256": "d837e6e9f87d52ad58ec20f4790830238cff9dc9d7258960c5f29bbb66dfd41c",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Acceptable degradation and where it is required depend on product purpose, audience, regulation, and business continuity expectations.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-13-018",
+      "revision": 1,
+      "semantic_sha256": "f87be708c31adfc069e25c1da45615301378f9e37fbff270f87fa2cf9e4cf90d",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Critical operation and unnecessarily encode product importance and acceptable dependency tradeoffs, so third-party failure behavior needs contextual review.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-13-019",
+      "revision": 1,
+      "semantic_sha256": "ffab4ae7766ce9067d5f39d084ba5d4ae96d957ffef7a87c6cc773ca69e3ac3c",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "A bounded browser session can find unhandled exceptions, but no finite interaction set proves none remain, and material console errors require judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-13-020",
+      "revision": 1,
+      "semantic_sha256": "a8f85425f85d947aa971fb5a92b4f3f409571c7222fb88da9e8585f7a52b6208",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Appropriate restriction depends on who needs diagnostics, what internal data is sensitive, and the deployment threat model.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-13-021",
+      "revision": 1,
+      "semantic_sha256": "e45efb59e13a7bed1881106bf0f065eea68469cf0069c59fd04be61bf1f0d9ea",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Response scanners can find known stack traces and secret patterns, but internals is context-dependent and all error paths cannot be exhaustively triggered.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every error response in the approved route and failure-case inventory passes pinned secret and diagnostic-disclosure pattern checks.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-13-022",
+      "revision": 1,
+      "semantic_sha256": "e4d2e2049e90cd142851f856be2590e2719bb563b4433bcb3d9cc8b7b50e5f9d",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Execution tests can cover declared download, print, clipboard, and upload cases, but where supported and works require product-specific expected outcomes.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every operation declared supported in the interaction matrix has a current execution result matching its explicit expected file or clipboard outcome.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-13-023",
+      "revision": 1,
+      "semantic_sha256": "79709fbc970555d7415ec940a71f801d980e02c47558df75326f0dabd3b1b3e0",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "Handled does not specify rendering, validation, storage, search, truncation, or bidirectional ordering outcomes, and the relevant input space is open-ended.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-13-024",
+      "revision": 1,
+      "semantic_sha256": "5f4bc1daf7ca65ba739dfa2ee5264f789965d4ec8be332215fb8bf783f41296b",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Whether an operation is destructive and which confirmation or reversal is suitable depend on impact, recoverability, user intent, and domain risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-13-025",
+      "revision": 1,
+      "semantic_sha256": "8700b807d0e58cd41e8711adbc39813ad03c40d1adeb9b77e6427eaf685220f5",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Consistency of navigation and controls is a design-system and user-experience judgment rather than a complete fixed equality relation.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-13-026",
+      "revision": 1,
+      "semantic_sha256": "2045f7f1a7dba4ae5b72a68117129417ed054dcafcf481010d98bc81cd09faea",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "A dead end is defined relative to user goals, permissions, recovery options, and task context, so static route reachability is only partial evidence.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-13-027",
+      "revision": 1,
+      "semantic_sha256": "012c5d0be27a1a88265634b4a370a5e04d2423accc94096f7d5167bad8617156",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Appropriate warning timing and work preservation require session-security, privacy, task, and usability tradeoffs not fixed by this control.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_threshold"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-13-028",
+      "revision": 1,
+      "semantic_sha256": "26aa8045c17409d8f0f39be4ed60a87e040c6b86a2042ddc4143ef9da49f8ce5",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Transparent and reliable autosave require user understanding plus project-defined durability, conflict, latency, and recovery expectations.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_threshold"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-13-029",
+      "revision": 1,
+      "semantic_sha256": "9f1990faae2c8e139791f35128ddeb87a7e82bb3cefb601c15ecdb9303d28a5f",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Bounded async tests can verify declared feedback states persist, but every asynchronous path and what counts as lost user feedback are not completely defined.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every asynchronous operation in the approved interaction contract preserves its declared pending, success, and failure feedback through completion or recovery.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-13-030",
+      "revision": 1,
+      "semantic_sha256": "938ccd754bc3d060b61f9b3a06756cf33d429b42e7e0744e899c06de224a63a7",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Equality on an approved finite case list does not prove consistent outcomes for the larger input domain unless exhaustive generation and a complete outcome oracle are defined.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Client and server can agree on every listed valid email while disagreeing on an unlisted Unicode address or boundary length. All inventoried cases pass although validation outcomes remain inconsistent."
+    },
+    {
+      "control_id": "PRC-13-031",
+      "revision": 1,
+      "semantic_sha256": "7cdc900aab6b80577c75baacae22be9bed334f2452bcb7c3c65c72db15c1804c",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Controlled tests can compare declared critical outcomes with analytics enabled and disabled, but proving no experiment alters any critical behavior is open-ended.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every critical outcome in the approved experiment-safety plan is unchanged in bounded enabled-versus-disabled execution tests.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-13-032",
+      "revision": 1,
+      "semantic_sha256": "752c03ce6e087cf28059a55d1c50e5757c48aab4d615f9590f6a62658f8ab71c",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Recognizing dark patterns, deception, misleading urgency, and manipulative defaults requires ethical, legal, design, and user-centered interpretation.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-14-001",
+      "revision": 1,
+      "semantic_sha256": "a12fb3f060eec13649d598fb6eaaddf146022f935fab16787f13779ea05abb4f",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The control is limited to documenting two recognized policy values, so an authenticated product-scoped record provides complete authoritative evidence of the WCAG version and level.",
+      "deterministic_clauses": [
+        {
+          "statement": "The authenticated accessibility policy records one recognized WCAG version and required conformance level for the assessed product scope.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "An absent, unrecognized, conflicting, or unbound WCAG value fails or blocks. Determining actual conformance is a separate specialist control and is not inferred from this documentation record."
+    },
+    {
+      "control_id": "PRC-14-002",
+      "revision": 1,
+      "semantic_sha256": "ff9cd46e78285d4a7728c064ee7ece39c68e6c4607b3acb9253eff8bcbfd6fad",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The rule concerns a pinned automated scan against an accepted policy threshold, making tool identity, scope, freshness, normalized findings, and numeric comparison fully bounded.",
+      "deterministic_clauses": [
+        {
+          "statement": "The approved accessibility policy binds a scanner identity and version, scan scope, accepted severity or count threshold, and evidence freshness.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "A current automated accessibility scan covers the bound scope and its normalized findings satisfy every accepted threshold.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "A stale result, wrong tool version, incomplete bound scope, or finding count above threshold cannot pass. Manual accessibility quality is not claimed by this automated-scan threshold control."
+    },
+    {
+      "control_id": "PRC-14-003",
+      "revision": 1,
+      "semantic_sha256": "8a2f93566131933f32991dd29b16ccfb2d6c1b9f48abf7eed7c90fce2e94465f",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Manual keyboard test records are checkable, but deciding whether the inventory includes every critical journey requires product, risk, and accessibility judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every journey in the approved critical accessibility inventory has a current manual keyboard-only test record with tester, environment, steps, and outcome.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-14-004",
+      "revision": 1,
+      "semantic_sha256": "17a5db5178328c5e40d980a3fbb2ff4419d6338f608242769b011a2992badcb4",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "A keyboard-trap test can prove a trap in a visited state, but no bounded navigation sequence over all dynamic states proves that no keyboard trap exists anywhere.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-14-005",
+      "revision": 1,
+      "semantic_sha256": "e5292509f55362dbe085f97e109c2c7f6d687799f079cf28a499b414065f388f",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Meaningful focus sequence depends on visual layout, task flow, reading order, and user intent, so identical focus-order evidence can support different informed judgments.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-14-006",
+      "revision": 1,
+      "semantic_sha256": "14249df574e1d87cb8f9f6aad0e14f65e89087239da31074c6afa630596b7194",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rendered-state checks can detect missing or low-contrast indicators, but visible across all controls, themes, states, and impairments is not fully machine-decidable.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every focusable target in the approved rendered-state inventory has a nonzero visual focus change meeting its bound contrast and geometry policy.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-14-007",
+      "revision": 1,
+      "semantic_sha256": "85c1eb7e22084364a915096427fae168bb1c243ba7c871dd9b38e7e0241fd7eb",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Browser geometry can detect overlap for fixed states, but complete sticky, dialog, banner, overlay, zoom, and responsive state coverage is not bounded by this rule.",
+      "deterministic_clauses": [
+        {
+          "statement": "No focused target in the approved viewport and overlay-state matrix is obscured beyond the bound WCAG geometry threshold.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-14-008",
+      "revision": 1,
+      "semantic_sha256": "546af4c18b266a6f570cbf162e9694635dfbdbd2f7f500f1195820f33b5f8395",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Whether titles, headings, landmarks, regions, and lists are meaningful requires understanding document purpose and content hierarchy, not merely parsing elements.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-14-009",
+      "revision": 1,
+      "semantic_sha256": "92bfb767cf4d4bf7ac4b8b62fc1bc1178c0a86d46a9a62de4474a281d670b5ec",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Accessibility APIs can compute name, role, state, and value for rendered controls, but every dynamic control and whether each value is semantically correct remain open-ended.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every interactive control in the approved rendered-state inventory exposes nonempty required name, role, state, and value properties through the accessibility tree.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-14-010",
+      "revision": 1,
+      "semantic_sha256": "94c2019396b9e1fdc90611004141bba24d79c23202d5d1c46026f336f9c9b97c",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Accessibility-tree and keyboard tests can check declared custom controls, but equivalent semantics and behavior depend on the native control purpose and interaction context.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every custom control in the approved inventory exposes its declared accessibility-tree properties and passes its versioned keyboard interaction cases.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-14-011",
+      "revision": 1,
+      "semantic_sha256": "6cee869293557f4b3b1543abf11a69a449a5e9276624766cff1539b88f3b4080",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Presence and decorative markup are parseable, but whether alternative text is appropriate requires understanding the image purpose and surrounding content.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-14-012",
+      "revision": 1,
+      "semantic_sha256": "193a6013600704a6087e9891ee6559ee3352d0f7fcb517b99d5880e14cc4e922",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Media tracks and transcript records can be inventoried, but which alternatives are required and whether their content is accurate need accessibility and content judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every media item in the approved inventory contains the machine-detectable caption, transcript, and description resources required by its declared media policy.",
+          "checker_family": "structured_document",
+          "evidence_authority": "repository"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-14-013",
+      "revision": 1,
+      "semantic_sha256": "09774ac1adc801e03d3f933b0e7af8f3521ab4b937c180288c02353e3cee8f42",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Determining whether color is the sole carrier of information requires understanding the message conveyed by visual context, not only inspecting CSS colors.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-14-014",
+      "revision": 1,
+      "semantic_sha256": "47166105248404590f6887a481987470d36a5ea87792752bfea955cefa6400d9",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Numeric contrast for identified foreground and background pairs is deterministic, but identifying every meaningful visual element and effective rendered background requires partial human review.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every text and non-text contrast pair in the approved rendered-element inventory meets the numeric threshold bound to its WCAG level and state.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-14-015",
+      "revision": 1,
+      "semantic_sha256": "3d76bd63957d2f0ec91da1699eeac5ead3eb02da524b04dc32b96c93b966d57a",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Fixed browser tests can detect clipping and overlap under required zoom and reflow settings, but remains usable includes task and comprehension judgments.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every page-state in the approved reflow matrix has no policy-defined two-dimensional scroll, clipping, overlap, or unreachable-control failure at required zoom.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-14-016",
+      "revision": 1,
+      "semantic_sha256": "a80cba5dbca4dd66fec701acb64bcd3aaf5228b7418c913ba050b7f164254f54",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rendered geometry can detect clipping and overlap after prescribed spacing changes, but complete content-state coverage and semantic breakage remain beyond that check.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every approved content state remains free of policy-defined clipping, overlap, or lost controls after the WCAG text-spacing transformation.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-14-017",
+      "revision": 1,
+      "semantic_sha256": "7d93da94630ae5d684a33e122869ab9692ddf272e1ae65cba8198b27b2ce37ae",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Target geometry can be compared to numeric policy, but sufficiently usable includes spacing exceptions, equivalent targets, gesture context, and user ability judgments.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every pointer target in the approved rendered-state inventory meets its bound WCAG size or spacing threshold or a machine-verifiable exception.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-14-018",
+      "revision": 1,
+      "semantic_sha256": "9c30511a57a1e001e1034c88d1f989d9581aa207625322331a393f89bdfc5b7a",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Interaction tests can verify a declared non-drag action, but determining where dragging is required and whether an alternative is equivalent needs contextual review.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every dragging interaction in the approved inventory has a bounded non-drag execution path producing the same declared outcome.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-14-019",
+      "revision": 1,
+      "semantic_sha256": "e44f9b0f50161508250252906711681458c6bca07d9d4447ad96ff6700871587",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Static and runtime checks can measure durations, flashes, pause controls, and autoplay state, but safely combines several context-dependent accessibility requirements.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every motion, animation, autoplay, and flashing item in the approved state inventory satisfies the numeric and control requirements bound by accessibility policy.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-14-020",
+      "revision": 1,
+      "semantic_sha256": "81ad2a2352d5b97ff2ef7340e8f0499238533a000a50fb603a72407b06bc0192",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Media-query tests can observe reduced-motion behavior, but where relevant and whether the reduction sufficiently respects user needs require contextual judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every motion effect in the approved inventory produces its declared reduced-motion state when the platform preference is enabled.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-14-021",
+      "revision": 1,
+      "semantic_sha256": "79165745023598cf67484dbfc5050877a9319c4d3160d25d000f7d4966beb8b6",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Label association is machine-checkable, but explicit wording and understandable instructions require semantic and user-centered review.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every form control in the approved rendered-state inventory has an explicitly associated accessible label and instruction reference where declared required.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-14-022",
+      "revision": 1,
+      "semantic_sha256": "362cf05e6428f4c495413cdc771358ec3eb9d4af9742ff7269a122372d6436cf",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Required-state and format semantics can be parsed, but whether they are conveyed accessibly and understood across assistive technologies needs contextual assessment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every required or format-constrained field exposes its constraint through associated visible text and accessibility-tree relationships.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-14-023",
+      "revision": 1,
+      "semantic_sha256": "3b5f97f5ca99464b2ac7c699dd42ce0b304feaea5063311060c41f23849d4206",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Programmatic error association is deterministic, but whether an error is identified and adequately described requires understanding its cause and intended user action.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every validation error in the approved form-state inventory has an error identity and programmatic association to each affected field.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-14-024",
+      "revision": 1,
+      "semantic_sha256": "beabee69a189ca20148349a83bfff5c3e79967816ce57e63ab26042a965556bc",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Accessibility-tree events can be observed for fixed cases, but appropriate timing, wording, priority, and complete dynamic-state coverage require manual assistive-technology review.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every status-change case in the approved interaction plan emits the declared accessibility notification through the tested platform accessibility API.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-14-025",
+      "revision": 1,
+      "semantic_sha256": "119425b132bb324c4d736424618ea1f1dac91c7e477ec4b507effa48b5439c49",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Whether an authentication task is an inaccessible puzzle or memory test and whether alternatives are equivalent require cognitive-accessibility and user-context judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-14-026",
+      "revision": 1,
+      "semantic_sha256": "50fd7d2a7f807688305b2a15f995653f16c24e0c7fdbbf875753429ae5d19219",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Timers and extension controls can be tested, but where required depends on purpose, real-time exceptions, safety, and accessibility applicability decisions.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every time limit declared extendable or disableable in the approved policy passes its bounded extension or disablement interaction test.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-14-027",
+      "revision": 1,
+      "semantic_sha256": "489262ea9afac804f4300808c271b114a11a786fa25447ccd7fb4890683144c1",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Minimized is a comparative design judgment, and legitimate re-entry exceptions depend on security, privacy, task, and technical purpose.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-14-028",
+      "revision": 1,
+      "semantic_sha256": "fad16f61d1e9040437ef0a14e9df9d6a904a14e49f3874ecd4bf1ccac360be6b",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Consistent help location depends on which pages are comparable, what counts as help, and whether alternate placement remains understandable.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-14-029",
+      "revision": 1,
+      "semantic_sha256": "8df28588c56ff54ff78d06a85d9543ebdee55185c1baaeae83053c51ba458ae6",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Language and direction attributes are parseable, but deciding whether they are correct requires identifying the natural language and intended reading direction of content.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every page and marked language-change span in the approved content inventory has syntactically valid language and text-direction declarations.",
+          "checker_family": "structured_document",
+          "evidence_authority": "repository"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-14-030",
+      "revision": 1,
+      "semantic_sha256": "bac50887badd899604d62460d6def281dd50172d5a377b87f5d1e1f856f97a9f",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Header and relationship markup can be parsed, but whether complex table relationships are proper depends on the table's semantic structure and intended reading.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every data table in the approved rendered inventory exposes recognized header cells and programmatic header relationships without invalid references.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-14-031",
+      "revision": 1,
+      "semantic_sha256": "6995cb8ffb2b29074efabc3ff80a820829618aa3c0ba55734267b6a9fae8904b",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Pattern-specific accessibility-tree and keyboard tests can check known widgets, but choosing the correct pattern and equivalent interaction behavior requires semantic review.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every declared dialog, menu, tab, tooltip, and notification widget passes the machine-checkable cases of its bound accessible interaction pattern.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-14-032",
+      "revision": 1,
+      "semantic_sha256": "9a1958eb0c524c1dbd095a35f88aef2fdafdc179b75c5f48ac32a30e27f8ca0d",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Appropriate announcement of dynamic content depends on user task, urgency, verbosity, timing, and assistive-technology behavior rather than event presence alone.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-14-033",
+      "revision": 1,
+      "semantic_sha256": "e1b88c4f4c802fa8104e74aea8518e28b163038a5ebf3b97b3c6e9bf9c89e7a6",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Document accessibility analyzers can verify structural properties, but complete PDF or office-document accessibility also requires manual reading-order, meaning, and usability review.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every downloaded document in the approved release inventory has a current pinned document-accessibility analysis result bound to its artifact digest.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "legal_or_specialist_authority",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-14-034",
+      "revision": 1,
+      "semantic_sha256": "39b8e617a2fecda3eed52df9125f4733d5f17b42c31dfad537d273a953ad447e",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Third-party conformance records can be checked, but required-level satisfaction and whether an alternative is genuinely accessible need specialist and user-context judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every third-party embedded component has a current accessibility evidence record or an explicitly linked alternative interaction path.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-14-035",
+      "revision": 1,
+      "semantic_sha256": "d2ec4656df1405ddb7f8863ad95fabfb6cf61c68c30696b445eddeb4a887e4b5",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Representative screen-reader combinations depend on the audience, platform support matrix, usage data, and risk, none of which this control turns into a fixed sample.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-14-036",
+      "revision": 1,
+      "semantic_sha256": "d6259de098f33edc669bb5db0b472ebcf5d736b0274479543eb2027f4539cade",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Whether product impact warrants user testing and which users, disabilities, tasks, and sample are representative require accountable accessibility research judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-14-037",
+      "revision": 1,
+      "semantic_sha256": "e2cd7cd454bc1d8220d357463d022e24162ef9666d9b24cfc297c46561fac73b",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "A page that names the product and a non-submitting reachability probe do not prove a meaningful accessibility statement or a working issue-reporting path.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "undefined_protocol",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "The linked form can return HTTP 200 but fail every submission, and the statement can contain only the product name with no accessibility information. Both clauses pass while the required public resources do not function as intended."
+    },
+    {
+      "control_id": "PRC-14-038",
+      "revision": 1,
+      "semantic_sha256": "25fc76418cdd84b933e698618d533faa447ba5c4d0f6983d519ddff66d84ce8e",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Owner identities and remediation dates are fixed record fields, but severity assignment requires accessibility impact and user-risk judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every recorded accessibility defect has a current owner identity, nonempty severity field, and valid remediation date or approved exception expiry.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-14-039",
+      "revision": 1,
+      "semantic_sha256": "03ae0b35081102be25c9d4116e348275639a8c8d2040fe5544d230873dd2e8a3",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "Current CI configuration and an unspecified latest result do not prove that accessibility testing actually ran after launch changes or that applicable triggers cover the relevant changes.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "undefined_protocol"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A workflow added after launch can retain a pre-launch result, or the approved trigger list can omit frontend changes. Both clauses pass while post-launch regressions receive no accessibility test."
+    }
+  ]
+}

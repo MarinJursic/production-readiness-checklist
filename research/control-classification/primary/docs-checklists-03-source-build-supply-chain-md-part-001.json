@@ -1,0 +1,966 @@
+{
+  "schema_version": "prc.control-classification-review/v0.1",
+  "packet_id": "docs-checklists-03-source-build-supply-chain-md-part-001",
+  "source_path": "docs/checklists/03-source-build-supply-chain.md",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "controls": [
+    {
+      "control_id": "PRC-07-001",
+      "revision": 1,
+      "semantic_sha256": "51f3eb627b33ff010188b0e0fe63b93f76fc512f1dc5c3976994c1a31fc640d4",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "An authenticated project record can identify exactly one repository as authoritative for the assessed source scope.",
+      "deterministic_clauses": [
+        {"statement": "The assessed project record identifies exactly one authoritative source repository.", "checker_family": "structured_record", "evidence_authority": "structured_record"}
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-07-002",
+      "revision": 1,
+      "semantic_sha256": "a32358b4dfbc138fc036bd1bae7f053d17a7c626f85c975d87394edd2bdb5a53",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Repository principals can be inventoried, but identical evidence cannot prove that people never share a nominally individual account.",
+      "deterministic_clauses": [
+        {"statement": "All configured repository access principals are matched to current identity records.", "checker_family": "environment_evidence", "evidence_authority": "environment"}
+      ],
+      "nondeterministic_reason_codes": ["mixed_with_nondeterministic_child", "unbounded_scope"],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-07-003",
+      "revision": 1,
+      "semantic_sha256": "45b263320a32a0b4abb0d2f0ff0a431583ce934bcbd81d1576a238df6faf8747",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The statement does not define which authentication factors, assurance level, exceptions, or attack resistance count as strong.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": ["undefined_threshold"],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-07-004",
+      "revision": 1,
+      "semantic_sha256": "0ee3c3f8c577130ea6bbbc6c9903ef44dd6d8830bd0e8de1f8fa54e2b052e8f2",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Deciding the least privilege needed for each repository role depends on job duties and operational tradeoffs not fixed by this rule.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": ["contextual_judgment"],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-07-005",
+      "revision": 1,
+      "semantic_sha256": "7ffd677a9bf43364caed3830ef5f13460b385da3ad6a70bf17fed0347aaf6471",
+      "classification": "deterministic",
+      "route": "external_readonly_query",
+      "reason": "Authoritative repository rules can be queried to prove that every protected target branch rejects direct changes lacking a recorded review.",
+      "deterministic_clauses": [
+        {"statement": "Every in-scope protected branch requires a recorded approving review before a direct change can land.", "checker_family": "ci_policy", "evidence_authority": "environment"},
+        {"statement": "No configured branch-rule bypass permits an unreviewed direct change for the assessed principals.", "checker_family": "ci_policy", "evidence_authority": "environment"}
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-07-006",
+      "revision": 1,
+      "semantic_sha256": "cb8b9b7e1a7a43b1a8d157939c7a7b94f7e2880e07a8418ea266cdcf7484a5e9",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Materiality and reviewer independence require contextual change-risk and relationship judgments that the statement does not operationally define.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": ["contextual_judgment", "undefined_threshold"],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-07-007",
+      "revision": 1,
+      "semantic_sha256": "d8dad25f9727807110643275bf8526f51d7cb45166c4e126e448e93555bd877b",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Reviewer assignments can be checked for declared areas, but deciding whether every truly critical code area was declared needs contextual risk judgment.",
+      "deterministic_clauses": [
+        {"statement": "Each project-declared critical code area has at least one designated reviewer in an authenticated ownership record.", "checker_family": "structured_record", "evidence_authority": "structured_record"}
+      ],
+      "nondeterministic_reason_codes": ["mixed_with_nondeterministic_child", "contextual_judgment", "undefined_scope"],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-07-008",
+      "revision": 1,
+      "semantic_sha256": "052c0ba9aac2e66836a60ecbdf9a6c4d5faf1d3e3e9671601d88940220894ab2",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Complete administrator bypass settings and immutable audit behavior can be checked against versioned repository-platform semantics.",
+      "deterministic_clauses": [
+        {"statement": "Every administrator review-bypass path emits an immutable attributable audit event.", "checker_family": "ci_policy", "evidence_authority": "environment"},
+        {"statement": "No administrator can disable or erase review-bypass recording within the assessed repository control plane.", "checker_family": "environment_evidence", "evidence_authority": "environment"}
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-07-009",
+      "revision": 1,
+      "semantic_sha256": "32e7b292379a932144859e1a55cb2090235d0b6dff5adc8c6a78c1ac98b8da0c",
+      "classification": "deterministic",
+      "route": "external_readonly_query",
+      "reason": "A versioned required-check policy can be compared exactly with the merge requirements on every in-scope target branch.",
+      "deterministic_clauses": [
+        {"statement": "Every automated check required by the selected policy is a mandatory merge condition on each in-scope branch.", "checker_family": "ci_policy", "evidence_authority": "environment"}
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-07-010",
+      "revision": 1,
+      "semantic_sha256": "b2cbade624d6bdff57f696dc48fdafd2459b60dd7b87f6edd1c55be26931416d",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Determining security sensitivity, appropriate expertise, and whether a specialist review was adequate requires accountable specialist judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": ["legal_or_specialist_authority", "undefined_threshold"],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-07-011",
+      "revision": 1,
+      "semantic_sha256": "5d8cc9dcb2d451aaa40e17ad90225aa8b0372a7a73f3e952c9d05ec092a1ce2b",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Declared path-review rules are machine-checkable, but identifying all semantic changes in these categories and defining heightened review require judgment.",
+      "deterministic_clauses": [
+        {"statement": "Declared infrastructure, pipeline, authorization, cryptography, payment, and migration paths have the configured enhanced review rules.", "checker_family": "ci_policy", "evidence_authority": "environment"}
+      ],
+      "nondeterministic_reason_codes": ["mixed_with_nondeterministic_child", "contextual_judgment", "undefined_threshold"],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-07-012",
+      "revision": 1,
+      "semantic_sha256": "24a5c64dcf4131481543ba784349a5009b8ead08489a2f9cd8a30802ee42ca05",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Authenticated identifiers can join the complete change inventory to issue, review, build, artifact, and deployment records without interpretation.",
+      "deterministic_clauses": [
+        {"statement": "Every in-scope change links to an authenticated requirement or issue and review record.", "checker_family": "structured_record", "evidence_authority": "structured_record"},
+        {"statement": "Every in-scope change links through build provenance to an immutable artifact digest.", "checker_family": "artifact_integrity", "evidence_authority": "artifact"},
+        {"statement": "Every deployed in-scope artifact digest links to its deployment record.", "checker_family": "environment_evidence", "evidence_authority": "environment"}
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-07-013",
+      "revision": 1,
+      "semantic_sha256": "9f9174de567fa5c29901da39d4eaa657c17d08099120706a83fd3727de9350e1",
+      "classification": "deterministic",
+      "route": "external_readonly_query",
+      "reason": "Repository ref-protection configuration and authorized principal lists objectively determine whether commits and release tags can be rewritten.",
+      "deterministic_clauses": [
+        {"statement": "All in-scope protected branches and release-tag namespaces reject rewriting by unauthorized principals.", "checker_family": "ci_policy", "evidence_authority": "environment"}
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-07-014",
+      "revision": 1,
+      "semantic_sha256": "98c9a85654674b37ce42b1482edfea63dd962afde1c791ab3ba6283f6c812280",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Versioned secret-scanner execution evidence can prove coverage of both the current change set and every reachable historical revision.",
+      "deterministic_clauses": [
+        {"statement": "A versioned secret scanner successfully analyzed the complete current change set.", "checker_family": "analysis_adapter", "evidence_authority": "executed"},
+        {"statement": "A versioned secret scanner successfully analyzed the complete reachable repository history for the assessed revision.", "checker_family": "analysis_adapter", "evidence_authority": "executed"}
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-07-015",
+      "revision": 1,
+      "semantic_sha256": "488b4b319b92c9371aff56f08df5383a0eeaf9ad8da94ee58455f07fc8e368d4",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule does not define large, which generated or vendored content applies, or what controls are sufficient for each class.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": ["undefined_threshold", "undefined_scope"],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-07-016",
+      "revision": 1,
+      "semantic_sha256": "4de6c399cf0679dcf35931bbd2663af8015d32d04dd847ec3c089f4ddad9db61",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Source and regeneration documentation can be validated, but deciding whether that source is trusted requires contextual supply-chain judgment.",
+      "deterministic_clauses": [
+        {"statement": "Every detected generated-code set links to a nonempty source identifier and versioned regeneration procedure.", "checker_family": "structured_document", "evidence_authority": "repository"}
+      ],
+      "nondeterministic_reason_codes": ["mixed_with_nondeterministic_child", "contextual_judgment"],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-07-017",
+      "revision": 1,
+      "semantic_sha256": "3fd5766d5fc6256bb0255e40ee83fc1b47fdb000d814fa99a785d6094eb61b37",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Process and retrospective-review records are observable, but emergency classification and whether the break-glass process is adequate require human judgment.",
+      "deterministic_clauses": [
+        {"statement": "A versioned break-glass process record exists for emergency source changes.", "checker_family": "structured_record", "evidence_authority": "structured_record"},
+        {"statement": "Every recorded emergency change has a subsequent authenticated review record.", "checker_family": "structured_record", "evidence_authority": "structured_record"}
+      ],
+      "nondeterministic_reason_codes": ["mixed_with_nondeterministic_child", "human_accountability", "contextual_judgment"],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-07-018",
+      "revision": 1,
+      "semantic_sha256": "c99a1614fd5d10d78b08446f4246d7c6754347c326b422ea8358366702de4800",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "A recovery-test run can be authenticated, but the rule gives no recovery scope, freshness, expected outcome, or protocol proving the test was meaningful.",
+      "deterministic_clauses": [
+        {"statement": "An authenticated repository backup-and-recovery test execution record exists and records its observed outcome.", "checker_family": "execution_evidence", "evidence_authority": "executed"}
+      ],
+      "nondeterministic_reason_codes": ["mixed_with_nondeterministic_child", "undefined_protocol", "undefined_scope"],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-07-019",
+      "revision": 1,
+      "semantic_sha256": "f6a638a73d0c4b6cb2d80e950764dbcc45acb1eb24a1d4b41c6aa02310c4739a",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Authoritative personnel and automation lifecycle records can be joined to the complete repository-principal inventory to find remaining access.",
+      "deterministic_clauses": [
+        {"statement": "No repository principal mapped to a departed person retains repository access.", "checker_family": "environment_evidence", "evidence_authority": "environment"},
+        {"statement": "No automation identity marked obsolete in the authoritative lifecycle record retains repository access.", "checker_family": "environment_evidence", "evidence_authority": "environment"}
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-07-020",
+      "revision": 1,
+      "semantic_sha256": "4ceda9bfaaf3c692e04e1fc21bab4410d5d84de098aecac28621c56a8466cb31",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The integration inventory is objectively queryable, but whether every webhook, app, bot, or key is sufficiently restricted depends on intended duties.",
+      "deterministic_clauses": [
+        {"statement": "Every configured repository webhook, app, bot, and deploy key appears in the authenticated integration inventory with its permissions.", "checker_family": "environment_evidence", "evidence_authority": "environment"}
+      ],
+      "nondeterministic_reason_codes": ["mixed_with_nondeterministic_child", "contextual_judgment", "undefined_threshold"],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-08-001",
+      "revision": 1,
+      "semantic_sha256": "fd052fbe66d134d62feb72e7e4697d981a3811a922c44cba4daffa6049a34e4f",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Build provenance can bind every build input revision to an authenticated review status for that exact source revision.",
+      "deterministic_clauses": [
+        {"statement": "Every assessed build provenance record identifies the exact source revision used.", "checker_family": "artifact_integrity", "evidence_authority": "artifact"},
+        {"statement": "Every identified build source revision has the review evidence required by the selected branch policy.", "checker_family": "ci_policy", "evidence_authority": "environment"}
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-08-002",
+      "revision": 1,
+      "semantic_sha256": "6d06dcc047fa775b412d9180303e07625a361d7d70c8faa825b757e41c496562",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Authenticated build records prove automated execution, and a sealed repeated-build protocol can compare outputs using the approved equivalence policy.",
+      "deterministic_clauses": [
+        {"statement": "Every assessed build was executed by the declared automated build system.", "checker_family": "execution_evidence", "evidence_authority": "executed"},
+        {"statement": "Repeated builds from identical declared inputs satisfy the versioned output-equivalence policy.", "checker_family": "execution_evidence", "evidence_authority": "executed"}
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-08-003",
+      "revision": 1,
+      "semantic_sha256": "e43d672c3a433f3537b9ed16f66f238281a02e0f8deba71196883e87f4afcf3e",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "A sealed clean-build experiment with a named equivalence policy can repeatedly compare outputs from the exact same declared inputs.",
+      "deterministic_clauses": [
+        {"statement": "A clean repeated build from identical declared inputs satisfies the approved output-equivalence predicate.", "checker_family": "execution_evidence", "evidence_authority": "executed"}
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-08-004",
+      "revision": 1,
+      "semantic_sha256": "b1667fae8732903026829b23baaf6c8d995496ac358eacef90f7425831697b9b",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Exact pins can be found, but whether they are sufficient against every relevant substitution path depends on ecosystem behavior and threat judgment.",
+      "deterministic_clauses": [
+        {"statement": "All declared build inputs and dependencies expose immutable versions or digests where the selected ecosystem policy requires them.", "checker_family": "package_metadata", "evidence_authority": "repository"}
+      ],
+      "nondeterministic_reason_codes": ["mixed_with_nondeterministic_child", "undefined_threshold", "contextual_judgment"],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-08-005",
+      "revision": 1,
+      "semantic_sha256": "9345733e0e39d915f84618a3a535c58c4139b50edfbdd0777312f67cd6bd76f2",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The approved verification inventory and CI outcome rules can prove that unavailable mandatory checks block rather than permit a build.",
+      "deterministic_clauses": [
+        {"statement": "Every verification required by the selected policy is represented in the build gate.", "checker_family": "ci_policy", "evidence_authority": "environment"},
+        {"statement": "An unavailable, errored, or missing required verification produces a non-passing build outcome.", "checker_family": "execution_evidence", "evidence_authority": "executed"}
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-08-006",
+      "revision": 1,
+      "semantic_sha256": "223ad841c7447d2d6c38d17c7feadd8a7bd8d94f6b03927f6297da14c5c189b9",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Build provenance and environment deployment records can prove that one immutable digest is promoted without environment-specific rebuilding.",
+      "deterministic_clauses": [
+        {"statement": "The production release has exactly one build provenance record for its immutable artifact digest.", "checker_family": "artifact_integrity", "evidence_authority": "artifact"},
+        {"statement": "Every promoted environment records the same artifact digest and no independent rebuild provenance.", "checker_family": "environment_evidence", "evidence_authority": "environment"}
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-08-007",
+      "revision": 1,
+      "semantic_sha256": "803be60cd2ef66ce3a38dce79978b786fe8d41b87bb016ab4496c15a851e3b14",
+      "classification": "deterministic",
+      "route": "artifact_verification",
+      "reason": "Registry metadata and a bounded mutation check can determine whether every deployable artifact digest is immutable after publication.",
+      "deterministic_clauses": [
+        {"statement": "Every deployable artifact is addressed by immutable digest and rejects replacement of content at that identity.", "checker_family": "artifact_integrity", "evidence_authority": "artifact"}
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-08-008",
+      "revision": 1,
+      "semantic_sha256": "cb3db715ee8b2695414ff1d5dad92aa88a6a05d2cb562e03b8bba7f9d12f4f55",
+      "classification": "deterministic",
+      "route": "artifact_verification",
+      "reason": "A complete artifact inventory can be checked mechanically for a valid cryptographic digest bound to each artifact's exact bytes.",
+      "deterministic_clauses": [
+        {"statement": "Every in-scope artifact has a valid cryptographic digest that matches its exact bytes.", "checker_family": "artifact_integrity", "evidence_authority": "artifact"}
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-08-009",
+      "revision": 1,
+      "semantic_sha256": "b60d4ed82d8313f6492192f2356208d40053ca3d384c37bc152ea90a912f8612",
+      "classification": "deterministic",
+      "route": "artifact_verification",
+      "reason": "The explicitly listed provenance fields and their artifact binding can be validated without judging build quality.",
+      "deterministic_clauses": [
+        {"statement": "Every build provenance record contains source, builder, complete declared inputs, commands or workflow, time, and output digest.", "checker_family": "artifact_integrity", "evidence_authority": "artifact"},
+        {"statement": "The provenance output digest matches the exact assessed artifact bytes.", "checker_family": "artifact_integrity", "evidence_authority": "artifact"}
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-08-010",
+      "revision": 1,
+      "semantic_sha256": "0ddadff15ebc9b078c8ae50c853b4a8ddb9c97342d761a088e825c8aea00aba1",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Cryptographic verification results and deployment event ordering objectively show whether a valid signature or attestation was checked first.",
+      "deterministic_clauses": [
+        {"statement": "Each deployed artifact has a valid signature or attestation under the selected trust policy.", "checker_family": "artifact_integrity", "evidence_authority": "artifact"},
+        {"statement": "Successful signature or attestation verification precedes the corresponding deployment event.", "checker_family": "environment_evidence", "evidence_authority": "environment"}
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-08-011",
+      "revision": 1,
+      "semantic_sha256": "dbc3c6c7bf5cb9b5f11c100d2c05c864a6668a7b3bf68bb494d4425cbccf0119",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Whether each build identity and signing key has the least privileges needed depends on intended duties and abuse scenarios not defined here.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": ["contextual_judgment"],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-08-012",
+      "revision": 1,
+      "semantic_sha256": "8048a09692c91a7623647ecd0d565d1798ea36924f568bee1e5cce69b6d86c71",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "An authoritative key inventory and complete source and artifact inventories can prove the configured storage location and absence of known key material.",
+      "deterministic_clauses": [
+        {"statement": "Every build or signing key in the authoritative inventory is stored in an approved external key or secret store.", "checker_family": "environment_evidence", "evidence_authority": "environment"},
+        {"statement": "No inventoried build or signing private-key material occurs in the complete assessed source or build outputs.", "checker_family": "analysis_adapter", "evidence_authority": "executed"}
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-08-013",
+      "revision": 1,
+      "semantic_sha256": "6a949c200ca65d2bf68150ffb95c1351f5b3e4a87a0a32ef755ae92bb1315006",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Patch compliance can be measured, but appropriate runner isolation depends on the workload, threat model, and trust boundaries not defined by the rule.",
+      "deterministic_clauses": [
+        {"statement": "Every build runner satisfies the selected versioned patch-baseline policy.", "checker_family": "environment_evidence", "evidence_authority": "environment"}
+      ],
+      "nondeterministic_reason_codes": ["mixed_with_nondeterministic_child", "contextual_judgment", "undefined_threshold"],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-08-014",
+      "revision": 1,
+      "semantic_sha256": "865c067c58d269c5da02d792ad34b9f4ce9df994ee96843a9e8054734cb61aff",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Trust classification, workflow permissions, secret bindings, and a bounded untrusted-run test can prove that production secrets are unavailable.",
+      "deterministic_clauses": [
+        {"statement": "Every workflow triggered by an untrusted contribution has no configured production-secret binding.", "checker_family": "ci_policy", "evidence_authority": "environment"},
+        {"statement": "A bounded untrusted-contribution execution cannot read any production secret in the authoritative secret inventory.", "checker_family": "execution_evidence", "evidence_authority": "executed"}
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-08-015",
+      "revision": 1,
+      "semantic_sha256": "a02abdfed1f2cb55a79971d18b622eb8603a32dbefa8433edd02053e3f054c3b",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Registry permissions and an isolated pull-request build attempt can prove that untrusted build identities cannot replace trusted artifacts.",
+      "deterministic_clauses": [
+        {"statement": "Pull-request build identities lack overwrite permission for every trusted release artifact namespace.", "checker_family": "environment_evidence", "evidence_authority": "environment"},
+        {"statement": "A bounded pull-request build cannot overwrite an existing trusted release artifact.", "checker_family": "execution_evidence", "evidence_authority": "executed"}
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-08-016",
+      "revision": 1,
+      "semantic_sha256": "903061764e26c6cb077626ece16255c17d8b0838a6099fa916dbfb42ec9d766a",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Configured job permissions are enumerable, but deciding the minimum necessary permission for each job requires semantic knowledge of its intended behavior.",
+      "deterministic_clauses": [
+        {"statement": "Every CI job has explicit network, repository, cloud, and registry permission declarations.", "checker_family": "ci_policy", "evidence_authority": "repository"}
+      ],
+      "nondeterministic_reason_codes": ["mixed_with_nondeterministic_child", "contextual_judgment"],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-08-017",
+      "revision": 1,
+      "semantic_sha256": "41fcbe717d0af089c8fe24d4dc5c982ed627417b43c97003166ee7b6cfb30e32",
+      "classification": "deterministic",
+      "route": "external_readonly_query",
+      "reason": "Path coverage and repository review rules can be compared exactly to prove equal protection for pipeline and application definitions.",
+      "deterministic_clauses": [
+        {"statement": "Pipeline-definition paths are covered by review requirements at least as strong as the application-code paths in the selected policy.", "checker_family": "ci_policy", "evidence_authority": "environment"}
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-08-018",
+      "revision": 1,
+      "semantic_sha256": "011dc0aed20f7fd36d9ea9b49ec04ac70cd29f625c65a08494d2ee075963e014",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "A complete required-check policy, merge-gate settings, and audit behavior can prove that missing or bypassed checks never become silent success.",
+      "deterministic_clauses": [
+        {"statement": "Every required unit, integration, security, policy, and packaging check is enforced by the protected merge or release gate.", "checker_family": "ci_policy", "evidence_authority": "environment"},
+        {"statement": "Every allowed bypass of a required check creates an immutable attributable non-success or exception record.", "checker_family": "environment_evidence", "evidence_authority": "environment"}
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-08-019",
+      "revision": 1,
+      "semantic_sha256": "5374f4e9fe797f91dadb67b39d0ffad5f0792251a0bc6b2876f15c293be554ad",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "A bounded matrix of failed, canceled, missing, and successful jobs can verify the CI aggregator's exact reported status.",
+      "deterministic_clauses": [
+        {"statement": "Failed, canceled, and missing required checks never produce a passed aggregate build or release status.", "checker_family": "execution_evidence", "evidence_authority": "executed"}
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-08-020",
+      "revision": 1,
+      "semantic_sha256": "5ab8d31bbff232c97eecc0b09d5ccf79864ffacb60e74f023a05281946f23970",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Registry configuration and conformance queries can test authentication, authorization, immutability, and the approved retention policy independently.",
+      "deterministic_clauses": [
+        {"statement": "Every in-scope artifact registry requires authenticated access according to the selected access policy.", "checker_family": "environment_evidence", "evidence_authority": "environment"},
+        {"statement": "Every in-scope artifact registry enforces the selected authorization and immutability policy.", "checker_family": "environment_evidence", "evidence_authority": "environment"},
+        {"statement": "Every in-scope artifact registry enforces the versioned project retention policy.", "checker_family": "environment_evidence", "evidence_authority": "environment"}
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-08-021",
+      "revision": 1,
+      "semantic_sha256": "789ed32938b3a2184c7ad25efec4b9b34d9ccd6ae4f44a07f58adfd81de5b871",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The approved known-good release record identifies an immutable digest whose current availability can be queried directly from the registry.",
+      "deterministic_clauses": [
+        {"statement": "An authenticated release record identifies the previous known-good artifact digest.", "checker_family": "structured_record", "evidence_authority": "structured_record"},
+        {"statement": "The identified previous known-good artifact digest is currently retrievable from an approved registry.", "checker_family": "artifact_integrity", "evidence_authority": "artifact"}
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-08-022",
+      "revision": 1,
+      "semantic_sha256": "ee6f165c133b284a47af90ad44148ca5b16ccad8b1c2178e2a6db9e58e654021",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Retained logs can be scanned for known secrets, but sensitive source classification and complete historical log scope are not fully defined.",
+      "deterministic_clauses": [
+        {"statement": "All logs retained for the bounded assessment window contain none of the known secret values or fingerprints in the authorized inventory.", "checker_family": "analysis_adapter", "evidence_authority": "executed"}
+      ],
+      "nondeterministic_reason_codes": ["mixed_with_nondeterministic_child", "undefined_scope", "contextual_judgment", "unbounded_scope"],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-08-023",
+      "revision": 1,
+      "semantic_sha256": "793f79b91db4658b5cd18c0ee8c1d3040f384f86355bf6fec3b1f4bdcc438570",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Versioned trust zones, cache-key provenance, integrity checks, and an adversarial cache test can decide the stated substitution property.",
+      "deterministic_clauses": [
+        {"statement": "Every build-cache input is bound to verified integrity metadata and its declared trust zone.", "checker_family": "artifact_integrity", "evidence_authority": "artifact"},
+        {"statement": "A bounded unverified or cross-trust cache substitution attempt is rejected.", "checker_family": "execution_evidence", "evidence_authority": "executed"}
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-08-024",
+      "revision": 1,
+      "semantic_sha256": "7c05f34f30b1bb604762d6a51c95007598b63bc22e7f00850986c345b0baaf38",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Immutable identifiers and digests allow an exact join and equality comparison across tags, artifacts, provenance, and deployments.",
+      "deterministic_clauses": [
+        {"statement": "Each release tag resolves to the source revision recorded in its build provenance.", "checker_family": "artifact_integrity", "evidence_authority": "artifact"},
+        {"statement": "Each provenance output digest equals the corresponding release artifact digest.", "checker_family": "artifact_integrity", "evidence_authority": "artifact"},
+        {"statement": "Each deployment record names the same artifact digest as its release artifact and provenance.", "checker_family": "environment_evidence", "evidence_authority": "environment"}
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-08-025",
+      "revision": 1,
+      "semantic_sha256": "58d3c8be4fd9f5c8fee5a24febd5e0f87cd3b9480b6a9a724e25a5b921b2303c",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Document presence and required sections are objective, but whether the procedure can contain and recover from the relevant compromise needs expert judgment.",
+      "deterministic_clauses": [
+        {"statement": "A versioned build-platform compromise containment and recovery procedure record exists with declared owners, scope, and steps.", "checker_family": "structured_record", "evidence_authority": "structured_record"}
+      ],
+      "nondeterministic_reason_codes": ["mixed_with_nondeterministic_child", "contextual_judgment", "legal_or_specialist_authority"],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-08-026",
+      "revision": 1,
+      "semantic_sha256": "7f20b18ca90f2a5e7439d80a87b9bd097e7bc519561e7bfea0fd9efa115ffb0c",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "A drill record can prove the listed actions ran, but the rule defines no realistic compromise scenario, success criteria, or freshness.",
+      "deterministic_clauses": [
+        {"statement": "An authenticated drill record shows execution and observed outcomes for revocation, rebuild, resigning, and redeployment.", "checker_family": "execution_evidence", "evidence_authority": "executed"}
+      ],
+      "nondeterministic_reason_codes": ["mixed_with_nondeterministic_child", "undefined_protocol", "undefined_threshold"],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-09-001",
+      "revision": 1,
+      "semantic_sha256": "3816b61e4f3b5fb76f55d2e33f31b2a9fb15dd678d060449abb50f4d92b08f16",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "A complete released-artifact inventory can be joined by digest to a valid SBOM record for every application artifact.",
+      "deterministic_clauses": [
+        {"statement": "Every released application artifact digest has exactly one valid bound SBOM record.", "checker_family": "artifact_integrity", "evidence_authority": "artifact"}
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-09-002",
+      "revision": 1,
+      "semantic_sha256": "f4fac65520816624cc190010739e9ef17f62c2f7bee7048b5cb72298fe151f75",
+      "classification": "deterministic",
+      "route": "artifact_verification",
+      "reason": "The complete dependency graph and final artifact inventory can be compared with the SBOM to detect missing direct or transitive components.",
+      "deterministic_clauses": [
+        {"statement": "The SBOM includes every direct and transitive component found in the authoritative dependency graph and final artifact inventory.", "checker_family": "artifact_integrity", "evidence_authority": "artifact"}
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-09-003",
+      "revision": 1,
+      "semantic_sha256": "598ffdb5b2c743e758a70ee303e6d61d1bf6c76c0a6b906a53a3b0f277c2f1d8",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Applicability for each listed component class can be derived from complete artifact and deployment inventories, then compared to the SBOM.",
+      "deterministic_clauses": [
+        {"statement": "Every applicable runtime, operating-system, container, client, server, plugin, model, and embedded component appears in the bound SBOM.", "checker_family": "artifact_integrity", "evidence_authority": "artifact"}
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-09-004",
+      "revision": 1,
+      "semantic_sha256": "32496def6af1eef434376cbf7304a9dbd5e37821503e2a16279cc68476a50dca",
+      "classification": "deterministic",
+      "route": "artifact_verification",
+      "reason": "Authoritative package metadata and build graphs can assign the listed dependency scopes and verify that the SBOM preserves them.",
+      "deterministic_clauses": [
+        {"statement": "Every SBOM dependency is classified as build-only, development-only, optional, runtime, or another explicitly supported non-overlapping scope.", "checker_family": "package_metadata", "evidence_authority": "artifact"}
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-09-005",
+      "revision": 1,
+      "semantic_sha256": "51ebb3e76e27a5a7c6e8b67977e19f1485a415e44b610ef85a06faa72be81cfa",
+      "classification": "deterministic",
+      "route": "artifact_verification",
+      "reason": "Each explicitly listed SBOM field and dependency relationship has a machine-readable value that can be checked against authoritative metadata.",
+      "deterministic_clauses": [
+        {"statement": "Every SBOM component records its exact version, package identifier, source, and hash.", "checker_family": "package_metadata", "evidence_authority": "artifact"},
+        {"statement": "Every SBOM dependency relationship matches the authoritative dependency and artifact graph.", "checker_family": "artifact_integrity", "evidence_authority": "artifact"}
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-09-006",
+      "revision": 1,
+      "semantic_sha256": "b77be54a304f26c69cd695dccda291a73200f03da9c8663989fecd9729e009f3",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Machine-readable license metadata can be recorded, but deciding which notices are legally required needs specialist license interpretation.",
+      "deterministic_clauses": [
+        {"statement": "Every SBOM component records available license identifiers, license text references, and bundled notice files.", "checker_family": "package_metadata", "evidence_authority": "artifact"}
+      ],
+      "nondeterministic_reason_codes": ["mixed_with_nondeterministic_child", "legal_or_specialist_authority"],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-09-007",
+      "revision": 1,
+      "semantic_sha256": "fbf6b416502e4a2ca3582b654ad9de6cc01289c6dee276d7f5b23df8cd699b52",
+      "classification": "deterministic",
+      "route": "artifact_verification",
+      "reason": "The SBOM subject identifier can be compared exactly with the cryptographic digest of the released artifact bytes.",
+      "deterministic_clauses": [
+        {"statement": "Each SBOM names a subject digest equal to the digest of its exact released artifact.", "checker_family": "artifact_integrity", "evidence_authority": "artifact"}
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-09-008",
+      "revision": 1,
+      "semantic_sha256": "eb7d51fa154ebd9e502ddc0d224c22f55c81d19cf5d080968fc3d8f50d31cb35",
+      "classification": "deterministic",
+      "route": "artifact_verification",
+      "reason": "A bounded artifact parser can compare the final packaged contents and dependency graph with the bound SBOM without source-only assumptions.",
+      "deterministic_clauses": [
+        {"statement": "The bound SBOM component inventory matches the complete supported inventory extracted from the final packaged artifact.", "checker_family": "artifact_integrity", "evidence_authority": "artifact"}
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-09-009",
+      "revision": 1,
+      "semantic_sha256": "42582eb9db53f5effd85521b8e4aabc04bb1c8cb65eda79a6f1f2d9046028438",
+      "classification": "deterministic",
+      "route": "artifact_verification",
+      "reason": "A complete final-artifact component inventory can be differenced against the declared bound SBOM, with unsupported formats returning Blocked.",
+      "deterministic_clauses": [
+        {"statement": "No component extracted from the complete supported final-artifact inventory is absent from the bound SBOM declaration.", "checker_family": "artifact_integrity", "evidence_authority": "artifact"}
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-09-010",
+      "revision": 1,
+      "semantic_sha256": "be04590426e23cf0a1921138ba48c84cb6dbb2705565ca24b95490c1e3a887fc",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Static evidence cannot prove a dependency is unused across reflection, plugins, optional paths, generated code, and runtime loading.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": ["unbounded_scope", "contextual_judgment"],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-09-011",
+      "revision": 1,
+      "semantic_sha256": "ca23bea74dce7ac99480134519826ad22f9b1ada744b397c902dce43d5b25768",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "A complete component inventory can be joined to authoritative publisher and registry lifecycle records for support and end-of-life status.",
+      "deterministic_clauses": [
+        {"statement": "No component in the complete dependency inventory is marked unsupported or end-of-life by its authoritative lifecycle source for the assessed version.", "checker_family": "package_metadata", "evidence_authority": "external_registry"}
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-09-012",
+      "revision": 1,
+      "semantic_sha256": "571cea4a2c6c75eb7fe2700514a5e52e9e2c9c23fd3fb8713814054f06dc7586",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "An approved publisher and registry policy can be compared exactly with locked dependency identities and authoritative registry metadata.",
+      "deterministic_clauses": [
+        {"statement": "Every dependency resolves from a registry allowed by the versioned project policy.", "checker_family": "package_metadata", "evidence_authority": "repository"},
+        {"statement": "Every dependency publisher identity matches the publisher allowed by the versioned project policy and authoritative registry metadata.", "checker_family": "package_metadata", "evidence_authority": "external_registry"}
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-09-013",
+      "revision": 1,
+      "semantic_sha256": "c056b55d1422c41747c2517be74f5c42fe322aa264b5d1cc99fb92200cdb5ed9",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Registry allowlists and immutable resolution are checkable, but proving protection against every confusion, collision, and typo substitution path is unbounded.",
+      "deterministic_clauses": [
+        {"statement": "Every dependency resolves through an explicitly allowed registry and immutable package identity under the selected ecosystem policy.", "checker_family": "package_metadata", "evidence_authority": "repository"}
+      ],
+      "nondeterministic_reason_codes": ["mixed_with_nondeterministic_child", "unbounded_scope"],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-09-014",
+      "revision": 1,
+      "semantic_sha256": "7bb5edfe6cedd69f7c120b934d9fd50a1cc3571fdcabcbd4520075fc7a6018a4",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Maintainer health, criticality, and abandonment risk require contextual weighting of incomplete social and project signals.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": ["contextual_judgment", "undefined_threshold"],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-09-015",
+      "revision": 1,
+      "semantic_sha256": "7ebe711e6e85d021559b561fbbb4ff13ecbddc92378748c373a7ee8ddf1f7c97",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The complete dependency inventory and approved advisory-source policy can be compared to authenticated subscription and ingestion records.",
+      "deterministic_clauses": [
+        {"statement": "Every dependency ecosystem in scope is covered by at least one approved upstream advisory source.", "checker_family": "package_metadata", "evidence_authority": "external_registry"},
+        {"statement": "Each approved advisory source has a current successful monitoring or ingestion record.", "checker_family": "environment_evidence", "evidence_authority": "environment"}
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-09-016",
+      "revision": 1,
+      "semantic_sha256": "ed332d73536af8e4960c9ad0b5b7a2baa3b573b9492e5a1e1ba30081915487bd",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Released component inventories and authenticated event-driven or policy-cadenced scan records can prove continuing vulnerability coverage.",
+      "deterministic_clauses": [
+        {"statement": "Every supported released component remains registered with the approved vulnerability-monitoring service.", "checker_family": "environment_evidence", "evidence_authority": "environment"},
+        {"statement": "Newly disclosed vulnerability data triggers or is included within the approved maximum scan cadence for every supported release.", "checker_family": "analysis_adapter", "evidence_authority": "executed"}
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-09-017",
+      "revision": 1,
+      "semantic_sha256": "cf1b5930b82700a2f30fa10fb30ea222648a9dabd6c7536c6eec0b44104a9c46",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The listed factor values can be recorded, but combining exploit, reachability, exposure, criticality, sensitivity, and controls into priority needs risk judgment.",
+      "deterministic_clauses": [
+        {"statement": "Each vulnerability-priority record contains evidence fields for exploit activity, reachability, exposure, asset criticality, data sensitivity, and compensating controls.", "checker_family": "structured_record", "evidence_authority": "structured_record"}
+      ],
+      "nondeterministic_reason_codes": ["mixed_with_nondeterministic_child", "contextual_judgment", "undefined_threshold"],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-09-018",
+      "revision": 1,
+      "semantic_sha256": "b95ff43b212930dc23b9abd20281d577c25cf82c9f720cbbf148560f4a39e02f",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Selected catalog queries are deterministic, but deciding which known-exploited-vulnerability catalogs are relevant is not defined by the rule.",
+      "deterministic_clauses": [
+        {"statement": "Every vulnerability and component identifier is checked against every catalog named in the approved catalog policy.", "checker_family": "analysis_adapter", "evidence_authority": "external_registry"}
+      ],
+      "nondeterministic_reason_codes": ["mixed_with_nondeterministic_child", "contextual_judgment", "undefined_scope"],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-09-019",
+      "revision": 1,
+      "semantic_sha256": "4e1aea1a4204d8761bc159cf35f1e6e5ef006086a3c1930ef57087b49e6cc011",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Actual risk and the acceptable remediation target require accountable business and security judgment rather than a fixed observation.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": ["contextual_judgment", "human_accountability", "undefined_threshold"],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-09-020",
+      "revision": 1,
+      "semantic_sha256": "4ee106f907fd997e47bd456eb65607313412725038a9d73bceee2eadeddc2c1c",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Deployment and rescan evidence can be checked, but mitigation effectiveness and the correct verification protocol vary by vulnerability and environment.",
+      "deterministic_clauses": [
+        {"statement": "The deployed artifact or configuration digest matches the identified fix or mitigation record.", "checker_family": "environment_evidence", "evidence_authority": "environment"},
+        {"statement": "A post-deployment verification execution record is bound to the vulnerability, deployed release, environment, and observed outcome.", "checker_family": "execution_evidence", "evidence_authority": "executed"}
+      ],
+      "nondeterministic_reason_codes": ["mixed_with_nondeterministic_child", "undefined_protocol", "contextual_judgment"],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-09-021",
+      "revision": 1,
+      "semantic_sha256": "b3990371369361d1d8ff50eab5c2e5a6f416d8144b5f01bf1fbd5a23fb59a8df",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "A process record can be validated, but whether it enables effective emergency replacement across relevant dependency failures needs contextual review.",
+      "deterministic_clauses": [
+        {"statement": "A versioned emergency dependency-replacement process record exists with scope, owner, triggers, steps, and rollback fields.", "checker_family": "structured_record", "evidence_authority": "structured_record"}
+      ],
+      "nondeterministic_reason_codes": ["mixed_with_nondeterministic_child", "contextual_judgment"],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-09-022",
+      "revision": 1,
+      "semantic_sha256": "10fcbad9a16daf8df1027f3c8a4edcf2fe2ac2602fe749b2f20d6e55d51df8b6",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "A complete component inventory can be joined exactly to authenticated ownership records for each vendored, forked, or patched component.",
+      "deterministic_clauses": [
+        {"statement": "Every vendored, forked, or internally patched component in the complete inventory has a current authenticated owner record.", "checker_family": "structured_record", "evidence_authority": "structured_record"}
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-09-023",
+      "revision": 1,
+      "semantic_sha256": "b7765d8e6c3cd5e766811e852b51eca621f506dd85df243c8e406a6e970ca1f3",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Execution and promotion ordering are objective, but the rule provides no required test scope or oracle showing an update was adequately tested.",
+      "deterministic_clauses": [
+        {"statement": "Each promoted dependency update has a preceding bound test execution record with an observed result.", "checker_family": "execution_evidence", "evidence_authority": "executed"}
+      ],
+      "nondeterministic_reason_codes": ["mixed_with_nondeterministic_child", "undefined_protocol", "undefined_scope"],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-09-024",
+      "revision": 1,
+      "semantic_sha256": "68f8672403d480d3402f1a16fbd1f57562340cb2b3a5bede7c6bfb56056cfffc",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "License compatibility depends on legal interpretation of licenses, linking, distribution, jurisdiction, and the specific combined work.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": ["legal_or_specialist_authority"],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-09-025",
+      "revision": 1,
+      "semantic_sha256": "356b90f33610b7db9c8747ea071edd4d536a975e99cfdcb28cdc5c62e9dfb522",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Determining which attributions, source offers, notices, and redistribution terms are legally required needs license-specialist authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": ["legal_or_specialist_authority"],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-09-026",
+      "revision": 1,
+      "semantic_sha256": "42f3f78e0a642bf6fdf7d5217f0fb145491480fbf672081e1bbbb0f4703ebbb4",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Artifact scans can find known matches, but confidentiality, ownership, intent, and absence of all undisclosed code cannot be completely inferred.",
+      "deterministic_clauses": [
+        {"statement": "The final distributable artifact is scanned against authorized proprietary and confidential source fingerprints and reports no unapproved match.", "checker_family": "analysis_adapter", "evidence_authority": "executed"}
+      ],
+      "nondeterministic_reason_codes": ["mixed_with_nondeterministic_child", "contextual_judgment", "unbounded_scope"],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-09-027",
+      "revision": 1,
+      "semantic_sha256": "323c5a4d7de6d1dc643cd772a4e793762577c748e5fe3c443a69247178d17921",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Historical release and incident inventories can be compared exactly with retained digest-bound SBOM records under the approved retention policy.",
+      "deterministic_clauses": [
+        {"statement": "Every historical release required by the retention policy has a retrievable SBOM bound to its artifact digest.", "checker_family": "artifact_integrity", "evidence_authority": "artifact"},
+        {"statement": "Every incident-required SBOM remains retrievable for the incident investigation retention period.", "checker_family": "structured_record", "evidence_authority": "structured_record"}
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    }
+  ]
+}

@@ -26,7 +26,7 @@ const maximumNativeParseBytes = 4 * 1024 * 1024
 const (
 	maximumSensitiveMaterialFiles     = 10_000
 	maximumSensitiveMaterialBytes     = 256 * 1024 * 1024
-	maximumSensitiveMaterialFileBytes = 8 * 1024 * 1024
+	maximumSensitiveMaterialFileBytes = 16 * 1024 * 1024
 	maximumSensitiveLocations         = 100
 	maximumKubernetesProblems         = 100
 )

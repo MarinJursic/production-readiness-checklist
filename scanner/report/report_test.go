@@ -9,12 +9,24 @@ import (
 	"testing"
 	"time"
 
+	"github.com/MarinJursic/production-readiness-checklist/scanner/controlprogram"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
 )
 
 func reportRun() model.RunResult {
 	digest := strings.Repeat("a", 64)
 	started := time.Date(2026, 8, 23, 10, 0, 0, 0, time.UTC)
+	exactEvidence := controlprogram.Evidence{
+		SchemaVersion: controlprogram.EvidenceSchemaVersion, EvidenceID: "report-fixture",
+		ProgramSHA256: digest, ControlID: "USEQ-11111111", ControlRevision: 1,
+		ControlSemanticSHA256: digest, ClauseID: digest, ClauseSHA256: digest,
+		ImplementationContractSHA256: digest, SubjectID: "fixture", ObservedSubjects: []string{"fixture"},
+		InventorySHA256: digest, Authority: controlprogram.AuthorityRepository, ObservedAt: started,
+		Complete: true, Applicability: controlprogram.ApplicabilityApplicable,
+		ApplicabilityProofContractSHA256: digest,
+		Facts:                            map[string]controlprogram.Fact{"fixture.flag": {Type: controlprogram.FactBoolean, Complete: true, Boolean: boolPointer(true)}},
+	}
+	exactEvidenceSHA256 := controlprogram.EvidenceSHA256(exactEvidence)
 	return model.RunResult{
 		SchemaVersion: model.RunSchema, RunID: digest, StartedAt: started, CompletedAt: started.Add(time.Second),
 		Plan: model.Plan{
@@ -43,18 +55,42 @@ func reportRun() model.RunResult {
 		ControlCatalog: &model.ControlCatalogSummary{
 			ControlCount: 2, ActiveControlCount: 2, AIReviewProvider: "codex",
 			AIReviewState: "focused", AIReviewedCount: 1, AIAdvisoryFailCount: 1,
+			ReviewedDeterministicCount: 1, ReviewedNondeterministicCount: 1,
+			DeterministicBindingCount: 1, ClassificationCorpusSHA256: digest,
+			ControlCheckBindingsSHA256: digest, DeterministicProgramTemplateCount: 1,
+			DeterministicProgramExecutedCount: 1, DeterministicProgramPassCount: 1,
 		},
 		ControlResults: []model.ControlResult{
-			{ControlID: "USEQ-11111111", Disposition: "needs_review", Statement: "A broad rule needs more evidence."},
-			{ControlID: "USEQ-22222222", Disposition: "needs_review", Statement: "A cited rule remains advisory.", AIReview: &model.AIControlReview{
-				Provider: "codex", AssessmentCandidate: "advisory_fail_candidate", ApplicabilityCandidate: "applicable",
-				Confidence: "medium", Reason: "The cited line looks risky.", Advice: "Review the real behavior.",
-				Evidence: []model.FindingLocation{{Path: "README.md", Line: 1}}, Limitations: []string{"Only repository text was visible."},
-				CitationVerification: "snapshot_location_validated", ClaimVerification: "advisory_unverified", TaskID: digest,
-			}},
+			{ControlID: "USEQ-11111111", Disposition: "verified_pass", Statement: "A broad rule has exact evidence.",
+				Classification: "deterministic", ClassificationRoute: "local_static",
+				ClassificationDecisionBasis: "strength_audit_confirmed", ClassificationRowSHA256: digest,
+				DeterministicBindingID: "USEQ-11111111@1", DeterministicBindingSHA256: digest,
+				DeterministicClauseResults: []model.DeterministicClauseResult{{
+					TemplateID: "USEQ-11111111@1#1", CollectorID: "repository.fixture.v1", ClauseID: "c1",
+					ClauseOrdinal: 1, ImplementationID: "repository.fixture.v1", ImplementationContractSHA256: digest,
+					RequiredAuthority: "repository", ProviderID: "fixture", ProgramSHA256: digest,
+					EvidenceSHA256: exactEvidenceSHA256, Status: "passed", Outcome: "pass", EvaluatedAt: started,
+				}}},
+			{ControlID: "USEQ-22222222", Disposition: "needs_review", Statement: "A cited rule remains advisory.",
+				Classification: "nondeterministic", ClassificationRoute: "contextual_judgment",
+				ClassificationDecisionBasis: "primary_nondeterministic", ClassificationRowSHA256: digest,
+				AIReview: &model.AIControlReview{
+					Provider: "codex", AssessmentCandidate: "advisory_fail_candidate", ApplicabilityCandidate: "applicable",
+					ReviewDepth: "deep", Confidence: "medium", Priority: "high",
+					Reason: "The cited line looks risky.", Challenge: "The line might not describe live behavior.",
+					RiskIfIgnored: "The behavior could fail in production.", Advice: "Review the real behavior.",
+					RemediationSteps:  []string{"Correct the behavior in an isolated change."},
+					VerificationSteps: []string{"Run the independent behavior check."},
+					EvidenceNeeded:    []string{"Current runtime evidence."},
+					Evidence:          []model.FindingLocation{{Path: "README.md", Line: 1}}, Limitations: []string{"Only repository text was visible."},
+					CitationVerification: "snapshot_location_validated", ClaimVerification: "advisory_unverified", TaskID: digest,
+				}},
 		},
+		DeterministicEvidence: []controlprogram.Evidence{exactEvidence},
 	}
 }
+
+func boolPointer(value bool) *bool { return &value }
 
 func TestMarkdownReportIsScopedAndEscapesTableCells(t *testing.T) {
 	var output bytes.Buffer
@@ -62,7 +98,7 @@ func TestMarkdownReportIsScopedAndEscapesTableCells(t *testing.T) {
 		t.Fatal(err)
 	}
 	text := output.String()
-	for _, expected := range []string{"# Production readiness assessment", "Missing README \\| required.", "## What the result means", "Verified problems", "Narrow checks passed", "citation=snapshot_location_validated; claim=advisory_unverified", "## Adapter executions", "local-explicit", "## Findings", "example-product", "staging", "not an unqualified production-readiness"} {
+	for _, expected := range []string{"# Production readiness assessment", "Missing README \\| required.", "## What the result means", "Verified problems", "Narrow checks passed", "Reviewed deterministic controls", "Exact programs attempted", "Retained replayable exact evidence documents", "Classification corpus digest", "USEQ-11111111@1", "strength_audit_confirmed", "citation=snapshot_location_validated; claim=advisory_unverified", "## Adapter executions", "local-explicit", "## Findings", "example-product", "staging", "not an unqualified production-readiness"} {
 		if !strings.Contains(text, expected) {
 			t.Errorf("missing %q in report", expected)
 		}
@@ -138,7 +174,7 @@ func TestHTMLReportEscapesUntrustedText(t *testing.T) {
 	if !strings.Contains(text, "example-product") || !strings.Contains(text, "staging") {
 		t.Fatal("configured scope missing from HTML")
 	}
-	for _, expected := range []string{"report-brand", "Scan report", "Local score", "hero-metrics", "About this score", "score-gauge", "pathLength=\"100\"", "NOT READY", "simple local-check pass rate", "controls needing evidence or review", "Scores by category", "Not scored in this scan", "control-category", "AI verification state", "citation=snapshot_location_validated; claim=advisory_unverified", "does not prove that the line supports the AI claim", "What to fix first", "Local check details", "README.md:1:2", "USEQ-FDCA6C71", "A root README must exist.", "README was not present.", "authority:", "observed: not recorded", "Evidence time:", "evidence-001", "Remediation class", ">R2<", "isolated agent-authored candidate", "Report-only scan", "Show more controls", "Technical evidence and IDs"} {
+	for _, expected := range []string{"report-brand", "Scan report", "Local score", "hero-metrics", "About this score", "score-gauge", "pathLength=\"100\"", "NOT READY", "simple local-check pass rate", "controls needing evidence or review", "Scores by category", "Not scored in this scan", "control-category", "Verified pass", "Reviewed classification", "Strength audit confirmed", "Deterministic binding", "USEQ-11111111@1", "Exact deterministic programs", "repository.fixture.v1", "Exact deterministic execution", "replayable evidence documents retained", "Replayable exact evidence", "report-fixture", "fixture.flag", "Classification corpus digest", "AI verification state", "citation=snapshot_location_validated; claim=advisory_unverified", "does not prove that the line supports the AI claim", "What to fix first", "Local check details", "README.md:1:2", "USEQ-FDCA6C71", "A root README must exist.", "README was not present.", "authority:", "observed: not recorded", "Evidence time:", "evidence-001", "Remediation class", ">R2<", "isolated agent-authored candidate", "Report-only scan", "Show more controls", "Technical evidence and IDs"} {
 		if !strings.Contains(text, expected) {
 			t.Errorf("detailed HTML report missing %q", expected)
 		}

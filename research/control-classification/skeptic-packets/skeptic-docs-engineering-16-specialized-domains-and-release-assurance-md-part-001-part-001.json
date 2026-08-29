@@ -1,0 +1,2511 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-engineering-16-specialized-domains-and-release-assurance-md-part-001-part-001",
+  "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 100,
+  "controls": [
+    {
+      "control_id": "USEQ-333EF029",
+      "revision": 1,
+      "semantic_sha256": "333ef0298cdc221a8daee7f70e46c91b0450dbbd35af24aeee9dfae7ee0cb727",
+      "statement": "Duplicate-charge and duplicate-payout protection is implemented.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 17
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Payments, Billing, and Money Movement",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Duplicate-charge and duplicate-payout protection is implemented.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Duplicate-charge and duplicate-payout protection is implemented.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-197BC003",
+      "revision": 1,
+      "semantic_sha256": "197bc003409fabec542ef8e3cb6419d8e617c0388ae2f456fde199827b717bcb",
+      "statement": "Payment, refund, payout, and callback requests are idempotent.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 18
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Payments, Billing, and Money Movement",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Payment, refund, payout, and callback requests are idempotent.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Payment, refund, payout, and callback requests are idempotent.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6592AF43",
+      "revision": 1,
+      "semantic_sha256": "6592af43cf5ca41fd5663894af2a6fda2da9bdb00ddfc569eb0e225c13c23239",
+      "statement": "Payment webhooks are authenticated or signed and replay-protected.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 19
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Payments, Billing, and Money Movement",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Payment webhooks are authenticated or signed and replay-protected.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Payment webhooks are authenticated or signed and replay-protected.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CA5B22D9",
+      "revision": 1,
+      "semantic_sha256": "ca5b22d9f1ca616b1a3fea33af49a3eae78f0f8899c0c9c73b2616c82262517c",
+      "statement": "Pending, authorized, captured, settled, failed, canceled, refunded, disputed, reversed, and chargeback states are modeled correctly.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 20
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Payments, Billing, and Money Movement",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Pending, authorized, captured, settled, failed, canceled, refunded, disputed, reversed, and chargeback states are modeled correctly.” is fully decidable from a fixed conjunction of versioned contracts, sealed configuration, authoritative state, and exact release evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Pending, authorized, captured, settled, failed, canceled, refunded, disputed, reversed, and chargeback states are modeled correctly.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-98E13A36",
+      "revision": 1,
+      "semantic_sha256": "98e13a367ce88ce4774b21180946a9bc64a680bfda03aeadb8934866fc556fac",
+      "statement": "The product does not claim financial success before authoritative confirmation.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 21
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Payments, Billing, and Money Movement",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “The product does not claim financial success before authoritative confirmation.” is fully decidable from a fixed conjunction of versioned contracts, sealed configuration, authoritative state, and exact release evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: The product does not claim financial success before authoritative confirmation.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FB9EBF41",
+      "revision": 1,
+      "semantic_sha256": "fb9ebf4196b642f5009c43fdc6fcca1c29d4e38416a3ff9cd9eeca89220067da",
+      "statement": "Reconciliation compares application records with provider, processor, bank, or ledger records.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 22
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Payments, Billing, and Money Movement",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Reconciliation compares application records with provider, processor, bank, or ledger records.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Reconciliation compares application records with provider, processor, bank, or ledger records.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4CDBDA9F",
+      "revision": 1,
+      "semantic_sha256": "4cdbda9f1537ed7dab1435e7b3a2f2a4ea2537fe61f728b1ec585eae5d273c04",
+      "statement": "Full refund, partial refund, reversal, chargeback, dispute, and failed-payment workflows are tested.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 23
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Payments, Billing, and Money Movement",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Full refund, partial refund, reversal, chargeback, dispute, and failed-payment workflows are tested.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Full refund, partial refund, reversal, chargeback, dispute, and failed-payment workflows are tested.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BE1302B9",
+      "revision": 1,
+      "semantic_sha256": "be1302b99ea5508ef0eb8dc367dea1ffc652c491ce52d43264536e0616d47ead",
+      "statement": "Financial exports and reports are access-controlled and audited.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 28
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Payments, Billing, and Money Movement",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Rule “Financial exports and reports are access-controlled and audited.” is fully decidable from read-only inspection of sealed access, monitoring, release, runtime, registry, and infrastructure state.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Financial exports and reports are access-controlled and audited.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E056DB88",
+      "revision": 1,
+      "semantic_sha256": "e056db88b6df7d743ca3fcf8a8bbd63de267218c05a53e2f6a7757143877ef0a",
+      "statement": "Provider outage, delay, duplicate event, out-of-order event, and reconciliation failure are tested.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 29
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Payments, Billing, and Money Movement",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Provider outage, delay, duplicate event, out-of-order event, and reconciliation failure are tested.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Provider outage, delay, duplicate event, out-of-order event, and reconciliation failure are tested.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C12F67B1",
+      "revision": 1,
+      "semantic_sha256": "c12f67b15196b4424033b1e9922ec11a0bd54b5a73fa4e96854dcebec5dae441",
+      "statement": "Subscription renewal, trial conversion, proration, upgrade, downgrade, pause, cancellation, grace period, and retry behavior are tested.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 31
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Payments, Billing, and Money Movement",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Subscription renewal, trial conversion, proration, upgrade, downgrade, pause, cancellation, grace period, and retry behavior are tested.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Subscription renewal, trial conversion, proration, upgrade, downgrade, pause, cancellation, grace period, and retry behavior are tested.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-40B1DC25",
+      "revision": 1,
+      "semantic_sha256": "40b1dc2564801374230430b015eaf79adb8cadaac7782da094d64db9a2418dce",
+      "statement": "Connection authentication and authorization remain valid for the lifetime of the connection.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 40
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Real-Time, Streaming, Collaboration, and Event-Driven Features",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Connection authentication and authorization remain valid for the lifetime of the connection.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Connection authentication and authorization remain valid for the lifetime of the connection.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9A67EA71",
+      "revision": 1,
+      "semantic_sha256": "9a67ea712b124dbe3cc990acaef426a13664e835fdf7cd3f9e6e0b3617161474",
+      "statement": "Messages and events are schema-validated.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 42
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Real-Time, Streaming, Collaboration, and Event-Driven Features",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Messages and events are schema-validated.” is fully decidable from a fixed conjunction of versioned contracts, sealed configuration, authoritative state, and exact release evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Messages and events are schema-validated.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-65100565",
+      "revision": 1,
+      "semantic_sha256": "651005658f33010eb909d37a5a7d4ecf9e6e00f8798d5edb65d0ebef3b941a76",
+      "statement": "Message size, rate, fan-out, subscription count, and connection count are bounded.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 43
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Real-Time, Streaming, Collaboration, and Event-Driven Features",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Rule “Message size, rate, fan-out, subscription count, and connection count are bounded.” is fully decidable from read-only inspection of sealed access, monitoring, release, runtime, registry, and infrastructure state.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Message size, rate, fan-out, subscription count, and connection count are bounded.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-085B1CFB",
+      "revision": 1,
+      "semantic_sha256": "085b1cfb5fe948c22837084f5afd1b839a4f02e028188a9b895d49fa8273ecd6",
+      "statement": "Ordering guarantees and conflict-resolution behavior are documented.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 44
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Real-Time, Streaming, Collaboration, and Event-Driven Features",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Ordering guarantees and conflict-resolution behavior are documented.” is fully decidable from exact domain inventories, required fields, lifecycle records, policies, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Ordering guarantees and conflict-resolution behavior are documented.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AC384A6E",
+      "revision": 1,
+      "semantic_sha256": "ac384a6e39566fbe2ed355bf48eca0bc0eca2678f5231ccf61830dc81a89292b",
+      "statement": "Duplicate, delayed, reordered, and lost message behavior is handled.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 45
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Real-Time, Streaming, Collaboration, and Event-Driven Features",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Duplicate, delayed, reordered, and lost message behavior is handled.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Duplicate, delayed, reordered, and lost message behavior is handled.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-61B2D449",
+      "revision": 1,
+      "semantic_sha256": "61b2d4497c5befb5ef507340f958ecc2fba33e82fc46ec150d44aafccdc1e615",
+      "statement": "Backpressure prevents memory, queue, and downstream-resource exhaustion.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 46
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Real-Time, Streaming, Collaboration, and Event-Driven Features",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Backpressure prevents memory, queue, and downstream-resource exhaustion.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Backpressure prevents memory, queue, and downstream-resource exhaustion.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1F0175D9",
+      "revision": 1,
+      "semantic_sha256": "1f0175d9b0c6fe1c460a40fad0440540887fd3cef1472cc7120e859facb30dff",
+      "statement": "Permission changes, logout, suspension, and deletion terminate or constrain active streams.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 48
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Real-Time, Streaming, Collaboration, and Event-Driven Features",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Permission changes, logout, suspension, and deletion terminate or constrain active streams.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Permission changes, logout, suspension, and deletion terminate or constrain active streams.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-50CCE7A2",
+      "revision": 1,
+      "semantic_sha256": "50cce7a21b35e34562f3d054eb8382d97392a7b996661f305a572bf00a0a8586",
+      "statement": "Fan-out capacity and hot-room or hot-topic behavior are load-tested.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 49
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Real-Time, Streaming, Collaboration, and Event-Driven Features",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Fan-out capacity and hot-room or hot-topic behavior are load-tested.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Fan-out capacity and hot-room or hot-topic behavior are load-tested.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-58F7B452",
+      "revision": 1,
+      "semantic_sha256": "58f7b45224ce05c16dbb98be8816c7d8d54edc42681b35e246aaee5276e48c4c",
+      "statement": "Event history and replay preserve authorization, retention, deletion, and tenant boundaries.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 50
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Real-Time, Streaming, Collaboration, and Event-Driven Features",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Event history and replay preserve authorization, retention, deletion, and tenant boundaries.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Event history and replay preserve authorization, retention, deletion, and tenant boundaries.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-44AC2BF0",
+      "revision": 1,
+      "semantic_sha256": "44ac2bf005de76e4fb9a48c36b218c66bb8e75737132bab39164d1d246e4f890",
+      "statement": "Collaborative edits handle concurrency, conflict, undo, attribution, and recovery correctly.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 51
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Real-Time, Streaming, Collaboration, and Event-Driven Features",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Collaborative edits handle concurrency, conflict, undo, attribution, and recovery correctly.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Collaborative edits handle concurrency, conflict, undo, attribution, and recovery correctly.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-49E96333",
+      "revision": 1,
+      "semantic_sha256": "49e9633356bac2a10a5544be3f2792c409249557b66f9136edf7071b7662a525",
+      "statement": "Establish fail-safe and fail-secure behavior.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 59
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Safety-Critical and Physically Consequential Systems",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Establish fail-safe and fail-secure behavior.” is fully decidable from exact domain inventories, required fields, lifecycle records, policies, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Establish fail-safe and fail-secure behavior.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-69A5E188",
+      "revision": 1,
+      "semantic_sha256": "69a5e188a78179739194ce84367875f72d67d1ef8886a3e608f6af36bcb2d063",
+      "statement": "Recall, disablement, rollback, and customer-notification procedures exist.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 63
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Safety-Critical and Physically Consequential Systems",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Recall, disablement, rollback, and customer-notification procedures exist.” is fully decidable from exact domain inventories, required fields, lifecycle records, policies, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Recall, disablement, rollback, and customer-notification procedures exist.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E6602317",
+      "revision": 1,
+      "semantic_sha256": "e6602317a11a5a70bb8d2daa6f8dc0d10db4cfc195a090e5f7aee3acc37b585f",
+      "statement": "Permission and recording state are visible and revocable.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 72
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Media, Voice, Video, and Live Communications",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Permission and recording state are visible and revocable.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Permission and recording state are visible and revocable.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A1A11D01",
+      "revision": 1,
+      "semantic_sha256": "a1a11d0103982019b7d2a7a591685cf3eb385978293048f5e212796f749c79ce",
+      "statement": "Signaling, room membership, invitations, and media access are authenticated and authorized.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 73
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Media, Voice, Video, and Live Communications",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Signaling, room membership, invitations, and media access are authenticated and authorized.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Signaling, room membership, invitations, and media access are authenticated and authorized.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7F4FC4B0",
+      "revision": 1,
+      "semantic_sha256": "7f4fc4b0e3a1da17bb7bac34e5dd539c302642fc52a73fcf8828bb27c32608d0",
+      "statement": "Users cannot join, observe, record, or retrieve communications without authorization.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 75
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Media, Voice, Video, and Live Communications",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Users cannot join, observe, record, or retrieve communications without authorization.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Users cannot join, observe, record, or retrieve communications without authorization.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FA268344",
+      "revision": 1,
+      "semantic_sha256": "fa268344085d3725b9871282c73fb6be2d1b78ae659ef98a3bcedd65f1551850",
+      "statement": "Media relay, direct peer connectivity, network-address exposure, and metadata leakage are threat-modeled.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 76
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Media, Voice, Video, and Live Communications",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Media relay, direct peer connectivity, network-address exposure, and metadata leakage are threat-modeled.” is fully decidable from exact domain inventories, required fields, lifecycle records, policies, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Media relay, direct peer connectivity, network-address exposure, and metadata leakage are threat-modeled.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DF4B3471",
+      "revision": 1,
+      "semantic_sha256": "df4b34717587da74e393c1b33379ac2ba79dfba5e4918fc725d9c170aaacefdd",
+      "statement": "Background noise, echo, poor bandwidth, jitter, packet loss, device changes, and reconnection are tested.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 79
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Media, Voice, Video, and Live Communications",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Background noise, echo, poor bandwidth, jitter, packet loss, device changes, and reconnection are tested.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Background noise, echo, poor bandwidth, jitter, packet loss, device changes, and reconnection are tested.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FD11B478",
+      "revision": 1,
+      "semantic_sha256": "fd11b478d5c1b00f4129f2edab0adc0e21dc9911aa88ef0bdc87be7d1d61c3b2",
+      "statement": "Map, geocoding, routing, and location providers receive only approved data.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 99
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Geolocation, Sensors, and Device Capabilities",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Map, geocoding, routing, and location providers receive only approved data.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Map, geocoding, routing, and location providers receive only approved data.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DCB37BC2",
+      "revision": 1,
+      "semantic_sha256": "dcb37bc22be18dc5f8b3537fef04046de34a8a27c2ea6760f3a965429602c4ef",
+      "statement": "Every event, property, identifier, destination, and retention period is inventoried.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 110
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Analytics, Experimentation, Advertising, and Attribution",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Every event, property, identifier, destination, and retention period is inventoried.” is fully decidable from exact domain inventories, required fields, lifecycle records, policies, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Every event, property, identifier, destination, and retention period is inventoried.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-03BBB392",
+      "revision": 1,
+      "semantic_sha256": "03bbb392e1335e28c12dcea7f74bf014789f029750d333d9c9ed766379806ac4",
+      "statement": "Event names and semantics are versioned and documented.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 111
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Analytics, Experimentation, Advertising, and Attribution",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Event names and semantics are versioned and documented.” is fully decidable from exact domain inventories, required fields, lifecycle records, policies, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Event names and semantics are versioned and documented.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-376714FD",
+      "revision": 1,
+      "semantic_sha256": "376714fd1b1ce84d05f89e93a8856806fe34cd3b6706bbaae0d2127a7c61ab62",
+      "statement": "Consent and opt-out choices are enforced at collection and transmission time.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 113
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Analytics, Experimentation, Advertising, and Attribution",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Consent and opt-out choices are enforced at collection and transmission time.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Consent and opt-out choices are enforced at collection and transmission time.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1DB8EA36",
+      "revision": 1,
+      "semantic_sha256": "1db8ea36e9fbf6d6e76a3bba8e0a367904ffc76a3cbc96b956589a6789b2b8cb",
+      "statement": "User and tenant isolation is preserved in analytics and reporting.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 114
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Analytics, Experimentation, Advertising, and Attribution",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “User and tenant isolation is preserved in analytics and reporting.” is fully decidable from a fixed conjunction of versioned contracts, sealed configuration, authoritative state, and exact release evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: User and tenant isolation is preserved in analytics and reporting.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E52D44A3",
+      "revision": 1,
+      "semantic_sha256": "e52d44a398aae0c753744e97982f732d4976961b4cc5be0790cfba43a3cb740e",
+      "statement": "Experiment assignment is deterministic and does not bypass authorization, pricing, safety, or legal controls.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 115
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Analytics, Experimentation, Advertising, and Attribution",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Experiment assignment is deterministic and does not bypass authorization, pricing, safety, or legal controls.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Experiment assignment is deterministic and does not bypass authorization, pricing, safety, or legal controls.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7E879111",
+      "revision": 1,
+      "semantic_sha256": "7e879111d2d29fcaae30ccaf5bb588fd852ca7208d5756281681670f5e08ee4a",
+      "statement": "Experiment combinations and interactions are bounded and tested.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 116
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Analytics, Experimentation, Advertising, and Attribution",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Experiment combinations and interactions are bounded and tested.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Experiment combinations and interactions are bounded and tested.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9DB9E528",
+      "revision": 1,
+      "semantic_sha256": "9db9e5288f49eab23b3a53dff1fc7d4a313648abfa174e562fda605071646b9b",
+      "statement": "Experiments have owners, hypotheses, stop criteria, monitoring, and expiry dates.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 117
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Analytics, Experimentation, Advertising, and Attribution",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Experiments have owners, hypotheses, stop criteria, monitoring, and expiry dates.” is fully decidable from exact domain inventories, required fields, lifecycle records, policies, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Experiments have owners, hypotheses, stop criteria, monitoring, and expiry dates.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-36303028",
+      "revision": 1,
+      "semantic_sha256": "36303028c41202f53393a64bb8903ce124086b8881c1e729ece49d6836d104d4",
+      "statement": "Metric definitions resist double counting, bot traffic, missing events, retries, and clock differences.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 119
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Analytics, Experimentation, Advertising, and Attribution",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Metric definitions resist double counting, bot traffic, missing events, retries, and clock differences.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Metric definitions resist double counting, bot traffic, missing events, retries, and clock differences.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5C3A4846",
+      "revision": 1,
+      "semantic_sha256": "5c3a48463ec0c940a807d71cab518c41a08541760f4c0b1b964c7b611a5bfe94",
+      "statement": "Data quality, loss, duplication, delay, schema drift, and provider outage are monitored.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 122
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Analytics, Experimentation, Advertising, and Attribution",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Rule “Data quality, loss, duplication, delay, schema drift, and provider outage are monitored.” is fully decidable from read-only inspection of sealed access, monitoring, release, runtime, registry, and infrastructure state.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Data quality, loss, duplication, delay, schema drift, and provider outage are monitored.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D4A8D9FB",
+      "revision": 1,
+      "semantic_sha256": "d4a8d9fb0eb0b4802b3a29ffd03229741620e993d8320bc0481b6506d1de35ad",
+      "statement": "Inventory reservation, decrement, release, oversell, backorder, and cancellation behavior is correct under concurrency.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 133
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "E-Commerce, Orders, Inventory, Fulfillment, and Returns",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Inventory reservation, decrement, release, oversell, backorder, and cancellation behavior is correct under concurrency.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Inventory reservation, decrement, release, oversell, backorder, and cancellation behavior is correct under concurrency.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AA20A64E",
+      "revision": 1,
+      "semantic_sha256": "aa20a64e7daf3d8149125c6cb3e65ffb847d65b84c4edc39cb9988e38be70d1c",
+      "statement": "Cart and checkout totals cannot be manipulated by the client.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 134
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "E-Commerce, Orders, Inventory, Fulfillment, and Returns",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Cart and checkout totals cannot be manipulated by the client.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Cart and checkout totals cannot be manipulated by the client.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-100B6DA2",
+      "revision": 1,
+      "semantic_sha256": "100b6da20841bf265f3adea126115bf38d9fe36efb50527110c4a2f7c66aa27f",
+      "statement": "Coupon, promotion, referral, loyalty, and gift-card rules cannot be abused or stacked improperly.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 135
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "E-Commerce, Orders, Inventory, Fulfillment, and Returns",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Coupon, promotion, referral, loyalty, and gift-card rules cannot be abused or stacked improperly.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Coupon, promotion, referral, loyalty, and gift-card rules cannot be abused or stacked improperly.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2F559873",
+      "revision": 1,
+      "semantic_sha256": "2f5598731fe6a445b07d97fff54159242e342109dd3bd7f31c1c255ef55ace3a",
+      "statement": "Order creation is idempotent and reconciled with payment and inventory systems.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 136
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "E-Commerce, Orders, Inventory, Fulfillment, and Returns",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Order creation is idempotent and reconciled with payment and inventory systems.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Order creation is idempotent and reconciled with payment and inventory systems.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F072E319",
+      "revision": 1,
+      "semantic_sha256": "f072e319d2a7f0d8f1e4644114d10c4a78bb482a096c3166a6b9a75e8226320a",
+      "statement": "Partial fulfillment, split shipment, substitution, backorder, cancellation, refund, and return workflows are tested.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 137
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "E-Commerce, Orders, Inventory, Fulfillment, and Returns",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Partial fulfillment, split shipment, substitution, backorder, cancellation, refund, and return workflows are tested.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Partial fulfillment, split shipment, substitution, backorder, cancellation, refund, and return workflows are tested.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2B9E1A68",
+      "revision": 1,
+      "semantic_sha256": "2b9e1a68a81624b0531f8b03141975f25b9aa0c05f2438ccb34e313f72b092b9",
+      "statement": "Order status reflects authoritative state and handles delayed or out-of-order provider events.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 140
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "E-Commerce, Orders, Inventory, Fulfillment, and Returns",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Order status reflects authoritative state and handles delayed or out-of-order provider events.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Order status reflects authoritative state and handles delayed or out-of-order provider events.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8848D08B",
+      "revision": 1,
+      "semantic_sha256": "8848d08b52c160703120fb119be3f43f493c2e5b347b8e8a1f53c5ad7ab3cc58",
+      "statement": "Marketplace seller and buyer permissions, payouts, disputes, and fees are isolated and audited.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 141
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "E-Commerce, Orders, Inventory, Fulfillment, and Returns",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Marketplace seller and buyer permissions, payouts, disputes, and fees are isolated and audited.” is fully decidable from a fixed conjunction of versioned contracts, sealed configuration, authoritative state, and exact release evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Marketplace seller and buyer permissions, payouts, disputes, and fees are isolated and audited.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E1CC2FBF",
+      "revision": 1,
+      "semantic_sha256": "e1cc2fbfbaae44ccb74ceafcdb614295a0a822ba596dc2962bb7183b0cb8223d",
+      "statement": "Customer support cannot modify prices, refunds, inventory, or fulfillment without controlled authorization.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 142
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "E-Commerce, Orders, Inventory, Fulfillment, and Returns",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Rule “Customer support cannot modify prices, refunds, inventory, or fulfillment without controlled authorization.” is fully decidable from read-only inspection of sealed access, monitoring, release, runtime, registry, and infrastructure state.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Customer support cannot modify prices, refunds, inventory, or fulfillment without controlled authorization.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2DA04192",
+      "revision": 1,
+      "semantic_sha256": "2da04192dfcca0a4de6baacdab80ca133dc9cfea753fd7d78cf165e48d44d678",
+      "statement": "Product recalls and safety notifications can identify and contact affected customers.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 143
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "E-Commerce, Orders, Inventory, Fulfillment, and Returns",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Product recalls and safety notifications can identify and contact affected customers.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Product recalls and safety notifications can identify and contact affected customers.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FB281AC4",
+      "revision": 1,
+      "semantic_sha256": "fb281ac46a0c84bb1268523a0ee9b9d5b6868172f39a5b6e3c0383d11025b131",
+      "statement": "On-chain and off-chain components, networks, contracts, bridges, oracles, custodians, signers, and keys are inventoried.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 151
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Blockchain, Smart Contracts, Digital Assets, and Irreversible Ledgers",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “On-chain and off-chain components, networks, contracts, bridges, oracles, custodians, signers, and keys are inventoried.” is fully decidable from exact domain inventories, required fields, lifecycle records, policies, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: On-chain and off-chain components, networks, contracts, bridges, oracles, custodians, signers, and keys are inventoried.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4EE7054B",
+      "revision": 1,
+      "semantic_sha256": "4ee7054bfc29ae822332db839f07e1f475b2b83da1fdf895403f5705c51c7daa",
+      "statement": "Smart-contract code and upgrades receive independent review and testing.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 152
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Blockchain, Smart Contracts, Digital Assets, and Irreversible Ledgers",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Smart-contract code and upgrades receive independent review and testing.” is fully decidable from a fixed conjunction of versioned contracts, sealed configuration, authoritative state, and exact release evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Smart-contract code and upgrades receive independent review and testing.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5A5F7869",
+      "revision": 1,
+      "semantic_sha256": "5a5f7869cee43484d46cb8d4d27ced6c39ea0b9226e23372217ada1cedc84e61",
+      "statement": "Irreversible actions require clear confirmation, address validation, amount validation, and network validation.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 153
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Blockchain, Smart Contracts, Digital Assets, and Irreversible Ledgers",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Irreversible actions require clear confirmation, address validation, amount validation, and network validation.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Irreversible actions require clear confirmation, address validation, amount validation, and network validation.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-76F26E01",
+      "revision": 1,
+      "semantic_sha256": "76f26e014b2ad710f5d509f7df788a98020d6ad6de327af2da47156f86b421b8",
+      "statement": "Contract ownership, upgrade authority, pause authority, and emergency controls are documented and restricted.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 157
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Blockchain, Smart Contracts, Digital Assets, and Irreversible Ledgers",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Contract ownership, upgrade authority, pause authority, and emergency controls are documented and restricted.” is fully decidable from a fixed conjunction of versioned contracts, sealed configuration, authoritative state, and exact release evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Contract ownership, upgrade authority, pause authority, and emergency controls are documented and restricted.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-20A50596",
+      "revision": 1,
+      "semantic_sha256": "20a50596c27a7aadd4ef1f7d67faf1d595266df7aeaa798813627fcb6c0f5e79",
+      "statement": "Oracle, bridge, exchange, custodian, and wallet-provider failures are threat-modeled.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 158
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Blockchain, Smart Contracts, Digital Assets, and Irreversible Ledgers",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Oracle, bridge, exchange, custodian, and wallet-provider failures are threat-modeled.” is fully decidable from exact domain inventories, required fields, lifecycle records, policies, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Oracle, bridge, exchange, custodian, and wallet-provider failures are threat-modeled.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C38E0EC6",
+      "revision": 1,
+      "semantic_sha256": "c38e0ec61d3ee6608987d0b25767a0a7d6e2dd84fe38d6f65e5927dc560e613e",
+      "statement": "Chain congestion, network fork, delayed finality, and provider outage are handled.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 159
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Blockchain, Smart Contracts, Digital Assets, and Irreversible Ledgers",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Chain congestion, network fork, delayed finality, and provider outage are handled.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Chain congestion, network fork, delayed finality, and provider outage are handled.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-14B6379E",
+      "revision": 1,
+      "semantic_sha256": "14b6379e6ec9d2f0e7d02b95957673295a9fa28154e50a7bddf98f0b47026010",
+      "statement": "User balances reconcile across internal records and authoritative ledgers.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 160
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Blockchain, Smart Contracts, Digital Assets, and Irreversible Ledgers",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “User balances reconcile across internal records and authoritative ledgers.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: User balances reconcile across internal records and authoritative ledgers.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-427D419B",
+      "revision": 1,
+      "semantic_sha256": "427d419bdf88cb5795ae790eb5d55e905496c6c4ccfde1b3060da3ad09378bd3",
+      "statement": "Devices, firmware, gateways, protocols, commands, sensors, actuators, and ownership states are inventoried.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 170
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "IoT, Device Control, Industrial, and Cyber-Physical Integrations",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Devices, firmware, gateways, protocols, commands, sensors, actuators, and ownership states are inventoried.” is fully decidable from exact domain inventories, required fields, lifecycle records, policies, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Devices, firmware, gateways, protocols, commands, sensors, actuators, and ownership states are inventoried.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0E3D9A51",
+      "revision": 1,
+      "semantic_sha256": "0e3d9a510a32fcfbbeb411d80f707d57febc7985b55abaf8f41f42fb7afe0717",
+      "statement": "Commands are authenticated, authorized, scoped, replay-protected, and auditable.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 172
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "IoT, Device Control, Industrial, and Cyber-Physical Integrations",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Commands are authenticated, authorized, scoped, replay-protected, and auditable.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Commands are authenticated, authorized, scoped, replay-protected, and auditable.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3A5CABA3",
+      "revision": 1,
+      "semantic_sha256": "3a5caba3e9af0cd6c6c8113e545befeec0eb1d03e199e37a7773a4805592073b",
+      "statement": "Unsafe or conflicting commands are rejected.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 173
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "IoT, Device Control, Industrial, and Cyber-Physical Integrations",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Unsafe or conflicting commands are rejected.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Unsafe or conflicting commands are rejected.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-01750D1D",
+      "revision": 1,
+      "semantic_sha256": "01750d1d4a7cecdf8549a0060591141028a4db9880079713a91248c8721544a6",
+      "statement": "Device firmware and configuration have trusted update, rollback, and integrity verification.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 175
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "IoT, Device Control, Industrial, and Cyber-Physical Integrations",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Device firmware and configuration have trusted update, rollback, and integrity verification.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Device firmware and configuration have trusted update, rollback, and integrity verification.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7C316720",
+      "revision": 1,
+      "semantic_sha256": "7c316720c9dcf8c68ac03c51ba24b1ebdc82d773d4764c8e00a27619005f10ac",
+      "statement": "Lost, stolen, compromised, or resold devices can be revoked and reset.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 176
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "IoT, Device Control, Industrial, and Cyber-Physical Integrations",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Lost, stolen, compromised, or resold devices can be revoked and reset.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Lost, stolen, compromised, or resold devices can be revoked and reset.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-72F94CB0",
+      "revision": 1,
+      "semantic_sha256": "72f94cb08893cafd01057ca842926eeca66f780ddc9ad88d3c103fdbab7bbd8a",
+      "statement": "Local physical access and network exposure are threat-modeled.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 177
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "IoT, Device Control, Industrial, and Cyber-Physical Integrations",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Local physical access and network exposure are threat-modeled.” is fully decidable from exact domain inventories, required fields, lifecycle records, policies, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Local physical access and network exposure are threat-modeled.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A69FFAC6",
+      "revision": 1,
+      "semantic_sha256": "a69ffac67edc27022b6de6d236aa2946faf082a41baca81e368779cde0f98835",
+      "statement": "Safety interlocks remain effective if the web application, network, cloud, or identity provider fails.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 178
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "IoT, Device Control, Industrial, and Cyber-Physical Integrations",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Safety interlocks remain effective if the web application, network, cloud, or identity provider fails.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Safety interlocks remain effective if the web application, network, cloud, or identity provider fails.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BC5663A0",
+      "revision": 1,
+      "semantic_sha256": "bc5663a02ff12ae388153ac615167a36be60d5e4715f902c89fdbc2fb98e62b8",
+      "statement": "Telemetry accuracy, spoofing, calibration, drift, and missing-data behavior are monitored.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 179
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "IoT, Device Control, Industrial, and Cyber-Physical Integrations",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Rule “Telemetry accuracy, spoofing, calibration, drift, and missing-data behavior are monitored.” is fully decidable from read-only inspection of sealed access, monitoring, release, runtime, registry, and infrastructure state.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Telemetry accuracy, spoofing, calibration, drift, and missing-data behavior are monitored.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2D51DCAA",
+      "revision": 1,
+      "semantic_sha256": "2d51dcaa54608ab3f7a0e6c7a08ad5d0d573f037227a190bab687b30cdce8bb1",
+      "statement": "Emergency disablement, field support, recall, and end-of-life procedures exist.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 181
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "IoT, Device Control, Industrial, and Cyber-Physical Integrations",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Emergency disablement, field support, recall, and end-of-life procedures exist.” is fully decidable from exact domain inventories, required fields, lifecycle records, policies, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Emergency disablement, field support, recall, and end-of-life procedures exist.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D73106BF",
+      "revision": 1,
+      "semantic_sha256": "d73106bf06020ee52b7746b35d04ca1229edefe16587b2eb7ddd4d5043f9c514",
+      "statement": "Define governance, maintainer roles, decision process, code of conduct, and conflict resolution.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 190
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Open-Source Projects and Public Packages",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Define governance, maintainer roles, decision process, code of conduct, and conflict resolution.” is fully decidable from exact domain inventories, required fields, lifecycle records, policies, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Define governance, maintainer roles, decision process, code of conduct, and conflict resolution.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-89F5E97A",
+      "revision": 1,
+      "semantic_sha256": "89f5e97ae3830c7085ada8dd29447ef0cb43c90b9c6834457621f1f42201a036",
+      "statement": "Provide contribution, development, testing, review, security, and release guidance.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 191
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Open-Source Projects and Public Packages",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Provide contribution, development, testing, review, security, and release guidance.” is fully decidable from exact domain inventories, required fields, lifecycle records, policies, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Provide contribution, development, testing, review, security, and release guidance.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-23087C10",
+      "revision": 1,
+      "semantic_sha256": "23087c10015337aa73b020bd0a3760f1ee786f08fece76a819d905a919f7ee35",
+      "statement": "Use protected branches, independent review, and trusted release automation.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 194
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Open-Source Projects and Public Packages",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Use protected branches, independent review, and trusted release automation.” is fully decidable from a fixed conjunction of versioned contracts, sealed configuration, authoritative state, and exact release evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Use protected branches, independent review, and trusted release automation.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-888978BC",
+      "revision": 1,
+      "semantic_sha256": "888978bc729bee3ccc49bd4e6dafa43c9e42607e04cb0703885006c6b3563389",
+      "statement": "Publish release artifacts, checksums, provenance, SBOM, compatibility, and change notes.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 195
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Open-Source Projects and Public Packages",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Publish release artifacts, checksums, provenance, SBOM, compatibility, and change notes.” is fully decidable from exact domain inventories, required fields, lifecycle records, policies, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Publish release artifacts, checksums, provenance, SBOM, compatibility, and change notes.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B88FA04F",
+      "revision": 1,
+      "semantic_sha256": "b88fa04f48c3375c9f7f718bcb30454db38e6bebd84e051ab9f04529d3f3ad1f",
+      "statement": "Define supported versions, security maintenance, deprecation, and end-of-life.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 196
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Open-Source Projects and Public Packages",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Define supported versions, security maintenance, deprecation, and end-of-life.” is fully decidable from exact domain inventories, required fields, lifecycle records, policies, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Define supported versions, security maintenance, deprecation, and end-of-life.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BC106078",
+      "revision": 1,
+      "semantic_sha256": "bc106078228a72418f5418662babb7ff835dd94ff991e0f03ec6675674c2a624",
+      "statement": "Provide a private vulnerability-reporting path and coordinated disclosure policy.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 197
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Open-Source Projects and Public Packages",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Provide a private vulnerability-reporting path and coordinated disclosure policy.” is fully decidable from exact domain inventories, required fields, lifecycle records, policies, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Provide a private vulnerability-reporting path and coordinated disclosure policy.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8BB2D4E1",
+      "revision": 1,
+      "semantic_sha256": "8bb2d4e1ba795b25b72f2e3d153f9266bd9656ea7f41ea441acfd27c468eeb94",
+      "statement": "Review dependencies, install scripts, generated content, examples, and package metadata.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 200
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Open-Source Projects and Public Packages",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Review dependencies, install scripts, generated content, examples, and package metadata.” is fully decidable from exact domain inventories, required fields, lifecycle records, policies, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Review dependencies, install scripts, generated content, examples, and package metadata.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-01F8B782",
+      "revision": 1,
+      "semantic_sha256": "01f8b782ebde3ff98282497e2b1127fc53510d9aa519366b3157e923fce1028f",
+      "statement": "Prevent package-name takeover, abandoned namespace, and unauthorized release.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 201
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Open-Source Projects and Public Packages",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Rule “Prevent package-name takeover, abandoned namespace, and unauthorized release.” is fully decidable from read-only inspection of sealed access, monitoring, release, runtime, registry, and infrastructure state.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Prevent package-name takeover, abandoned namespace, and unauthorized release.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C714CD1A",
+      "revision": 1,
+      "semantic_sha256": "c714cd1a2d9d83044525b09b9c1c2e4824e84af04c5789984d8ac3833807bb74",
+      "statement": "Use semantic or otherwise documented versioning consistently.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 203
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Open-Source Projects and Public Packages",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Use semantic or otherwise documented versioning consistently.” is fully decidable from a fixed conjunction of versioned contracts, sealed configuration, authoritative state, and exact release evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Use semantic or otherwise documented versioning consistently.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-93F18228",
+      "revision": 1,
+      "semantic_sha256": "93f18228d34c6a8535276322f17ba77ea933664c78402982e7e28133dbaf4494",
+      "statement": "Provide reproducible setup and tests for contributors.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 204
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Open-Source Projects and Public Packages",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Provide reproducible setup and tests for contributors.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Provide reproducible setup and tests for contributors.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F4CC9891",
+      "revision": 1,
+      "semantic_sha256": "f4cc98919be1a9c924b298847567d5465fe76578fe5e88069979ac55a9d671bf",
+      "statement": "Plan maintainer succession and avoid single-person release authority.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 206
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Open-Source Projects and Public Packages",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Plan maintainer succession and avoid single-person release authority.” is fully decidable from a fixed conjunction of versioned contracts, sealed configuration, authoritative state, and exact release evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Plan maintainer succession and avoid single-person release authority.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8A380A72",
+      "revision": 1,
+      "semantic_sha256": "8a380a7284b04fa5c79a9c290d30b02ddbaf9aa11abdd6fb9d36e1594c491e1c",
+      "statement": "Disclose commercial sponsorship, conflicts of interest, and governance changes.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 207
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Open-Source Projects and Public Packages",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Disclose commercial sponsorship, conflicts of interest, and governance changes.” is fully decidable from exact domain inventories, required fields, lifecycle records, policies, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Disclose commercial sponsorship, conflicts of interest, and governance changes.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FBF0A7B0",
+      "revision": 1,
+      "semantic_sha256": "fbf0a7b02d9ca46059ff525b5d1fed2a71a70c7488c2db0d44bdb445d234b4fe",
+      "statement": "Define supported operating systems, versions, device classes, architectures, input modes, and assistive technologies.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 216
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Mobile, Desktop, and Installed Clients",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Define supported operating systems, versions, device classes, architectures, input modes, and assistive technologies.” is fully decidable from exact domain inventories, required fields, lifecycle records, policies, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Define supported operating systems, versions, device classes, architectures, input modes, and assistive technologies.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C56B91A7",
+      "revision": 1,
+      "semantic_sha256": "c56b91a7cd517ae265df803c6608f7146db96d25cbbc84e96e27eead7333842a",
+      "statement": "Sign distributable applications and protect signing and store accounts.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 217
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Mobile, Desktop, and Installed Clients",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Rule “Sign distributable applications and protect signing and store accounts.” is fully decidable from read-only inspection of sealed access, monitoring, release, runtime, registry, and infrastructure state.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Sign distributable applications and protect signing and store accounts.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B7D00E9D",
+      "revision": 1,
+      "semantic_sha256": "b7d00e9d709bf8f2dfc4682b6e9e8ff59cd4001af86603a9a884be18a6b41856",
+      "statement": "Use trusted distribution channels and verify update authenticity and integrity.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 218
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Mobile, Desktop, and Installed Clients",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Use trusted distribution channels and verify update authenticity and integrity.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Use trusted distribution channels and verify update authenticity and integrity.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-222045D3",
+      "revision": 1,
+      "semantic_sha256": "222045d3268e25adb862c07b196805da888aa16701455814cdd288b67e5dc65a",
+      "statement": "Make updates compatible, resumable, rollback-aware, and safe under interruption.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 219
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Mobile, Desktop, and Installed Clients",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Make updates compatible, resumable, rollback-aware, and safe under interruption.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Make updates compatible, resumable, rollback-aware, and safe under interruption.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-328B6D42",
+      "revision": 1,
+      "semantic_sha256": "328b6d42edd1cc1af0092586e5036da53bc584e73d5a0caf5dccd55c8e8275b7",
+      "statement": "Define minimum and recommended versions and communicate end-of-support.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 220
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Mobile, Desktop, and Installed Clients",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Define minimum and recommended versions and communicate end-of-support.” is fully decidable from exact domain inventories, required fields, lifecycle records, policies, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Define minimum and recommended versions and communicate end-of-support.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-ADE1D9DE",
+      "revision": 1,
+      "semantic_sha256": "ade1d9dea4776e2ea190f5afb7819e17754b5b7b0854abf5aea57b6c2a383419",
+      "statement": "Provide functional alternatives when optional permissions are denied.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 222
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Mobile, Desktop, and Installed Clients",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Provide functional alternatives when optional permissions are denied.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Provide functional alternatives when optional permissions are denied.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8955879F",
+      "revision": 1,
+      "semantic_sha256": "8955879fd01f57b025da6c0753701466a60dcd313865bff234f75ba64f29dfba",
+      "statement": "Clear or protect user data during logout, account switch, uninstall, device transfer, and remote revocation.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 224
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Mobile, Desktop, and Installed Clients",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Clear or protect user data during logout, account switch, uninstall, device transfer, and remote revocation.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Clear or protect user data during logout, account switch, uninstall, device transfer, and remote revocation.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0EC9D8F4",
+      "revision": 1,
+      "semantic_sha256": "0ec9d8f44466b238e3d18b7a0d98404ec02abf8ca404c290996898583e8062a2",
+      "statement": "Prevent stale clients from bypassing current authorization, safety, or data rules.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 226
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Mobile, Desktop, and Installed Clients",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Prevent stale clients from bypassing current authorization, safety, or data rules.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Prevent stale clients from bypassing current authorization, safety, or data rules.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AA7C2DC9",
+      "revision": 1,
+      "semantic_sha256": "aa7c2dc939ac5584b1a55163408be0e065116beae46ee369f5161b580be625c0",
+      "statement": "Validate deep links, inter-application messages, extensions, custom schemes, and shared files.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 227
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Mobile, Desktop, and Installed Clients",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Validate deep links, inter-application messages, extensions, custom schemes, and shared files.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Validate deep links, inter-application messages, extensions, custom schemes, and shared files.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B5BDC412",
+      "revision": 1,
+      "semantic_sha256": "b5bdc4125079db5628a990285927444975cdea55fab18f792036b1d889f7a4c3",
+      "statement": "Avoid embedding long-lived secrets in distributed binaries.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 229
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Mobile, Desktop, and Installed Clients",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Avoid embedding long-lived secrets in distributed binaries.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Avoid embedding long-lived secrets in distributed binaries.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0E6064FC",
+      "revision": 1,
+      "semantic_sha256": "0e6064fca5b71e2c9e5aa0fb3fcabe0359e697cb7465aa0b29a7110dee3143f5",
+      "statement": "Test battery, memory, storage, network, background, interruption, suspension, and resume behavior.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 231
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Mobile, Desktop, and Installed Clients",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Test battery, memory, storage, network, background, interruption, suspension, and resume behavior.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Test battery, memory, storage, network, background, interruption, suspension, and resume behavior.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5053A39C",
+      "revision": 1,
+      "semantic_sha256": "5053a39c3553c8c84be7627cd6e79f541dd05f717e8bec17eccd25a2335107fc",
+      "statement": "Provide accessible keyboard, screen-reader, scaling, contrast, and reduced-motion behavior.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 232
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Mobile, Desktop, and Installed Clients",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Provide accessible keyboard, screen-reader, scaling, contrast, and reduced-motion behavior.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Provide accessible keyboard, screen-reader, scaling, contrast, and reduced-motion behavior.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F43D141E",
+      "revision": 1,
+      "semantic_sha256": "f43d141effb8843a89807d446e569f39c9c5ce639d38abf1565142b5274b4106",
+      "statement": "Test clean install, upgrade from supported versions, migration, repair, uninstall, and reinstallation.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 235
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Mobile, Desktop, and Installed Clients",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Test clean install, upgrade from supported versions, migration, repair, uninstall, and reinstallation.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Test clean install, upgrade from supported versions, migration, repair, uninstall, and reinstallation.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B7FB0BC0",
+      "revision": 1,
+      "semantic_sha256": "b7fb0bc07965ac93ca575ea5277b0d149ad8eb3ded606544b0704502ddba3bd1",
+      "statement": "Document the shared-responsibility boundary for every managed service and control.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 243
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Cloud-Native and Managed Platforms",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Document the shared-responsibility boundary for every managed service and control.” is fully decidable from exact domain inventories, required fields, lifecycle records, policies, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Document the shared-responsibility boundary for every managed service and control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0A87718E",
+      "revision": 1,
+      "semantic_sha256": "0a87718ecbc5fcf6822e8abee937f8c966867fe4946f7feb3e3cdaf2a3b75d3f",
+      "statement": "Inventory regions, zones, endpoints, public exposure, service policies, keys, and quotas.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 246
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Cloud-Native and Managed Platforms",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Inventory regions, zones, endpoints, public exposure, service policies, keys, and quotas.” is fully decidable from exact domain inventories, required fields, lifecycle records, policies, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Inventory regions, zones, endpoints, public exposure, service policies, keys, and quotas.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-542A6C62",
+      "revision": 1,
+      "semantic_sha256": "542a6c62640eaf932624127774c9891bb51f9be6d4a43e37fa0ef8f782078bc6",
+      "statement": "Use policy and automation to prevent prohibited configurations.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 249
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Cloud-Native and Managed Platforms",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Rule “Use policy and automation to prevent prohibited configurations.” is fully decidable from read-only inspection of sealed access, monitoring, release, runtime, registry, and infrastructure state.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Use policy and automation to prevent prohibited configurations.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8155C7A6",
+      "revision": 1,
+      "semantic_sha256": "8155c7a61f60df1482d849eed1bf5abb2546645816141e92046a4c082dc84fd6",
+      "statement": "Monitor control-plane, quota, billing, identity, network, region, and managed-service failures.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 250
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Cloud-Native and Managed Platforms",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Rule “Monitor control-plane, quota, billing, identity, network, region, and managed-service failures.” is fully decidable from read-only inspection of sealed access, monitoring, release, runtime, registry, and infrastructure state.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Monitor control-plane, quota, billing, identity, network, region, and managed-service failures.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B68F5F66",
+      "revision": 1,
+      "semantic_sha256": "b68f5f66f1c4348b961b64143348d769001e44c648e7b9b4c45c0c335ebecf48",
+      "statement": "Test provider-service outage, throttling, regional loss, identity failure, and quota exhaustion.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 252
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Cloud-Native and Managed Platforms",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Test provider-service outage, throttling, regional loss, identity failure, and quota exhaustion.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Test provider-service outage, throttling, regional loss, identity failure, and quota exhaustion.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-28D7D9E6",
+      "revision": 1,
+      "semantic_sha256": "28d7d9e673be1309af7c95af748eec89d479803f58e156c4bc95070490df0abe",
+      "statement": "Maintain backups and recovery that are isolated from ordinary account compromise.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 253
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Cloud-Native and Managed Platforms",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Maintain backups and recovery that are isolated from ordinary account compromise.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Maintain backups and recovery that are isolated from ordinary account compromise.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FE43BE53",
+      "revision": 1,
+      "semantic_sha256": "fe43be5358e015ef5fa6b17fdbbf8587f1a57b9c811054a72edb2c8944b8a92d",
+      "statement": "Avoid provider defaults that create public access, weak retention, or broad identity trust.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 254
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Cloud-Native and Managed Platforms",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Rule “Avoid provider defaults that create public access, weak retention, or broad identity trust.” is fully decidable from a fixed conjunction of versioned contracts, sealed configuration, authoritative state, and exact release evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Avoid provider defaults that create public access, weak retention, or broad identity trust.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7ACBEBF3",
+      "revision": 1,
+      "semantic_sha256": "7acbebf370bcb56e991b08bd71418563ef25ed995adfaa8a771b3a6b5f67640b",
+      "statement": "Version infrastructure and detect drift.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 255
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Cloud-Native and Managed Platforms",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Rule “Version infrastructure and detect drift.” is fully decidable from read-only inspection of sealed access, monitoring, release, runtime, registry, and infrastructure state.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Version infrastructure and detect drift.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-43BE2B24",
+      "revision": 1,
+      "semantic_sha256": "43be2b2437b18ec30b8e7ae050d2f6cd893e13e5e6b87b1eb1e424cc8eb562ed",
+      "statement": "Review managed-service upgrade, deprecation, and maintenance behavior.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 256
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Cloud-Native and Managed Platforms",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Review managed-service upgrade, deprecation, and maintenance behavior.” is fully decidable from exact domain inventories, required fields, lifecycle records, policies, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Review managed-service upgrade, deprecation, and maintenance behavior.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A4D95CE3",
+      "revision": 1,
+      "semantic_sha256": "a4d95ce3d20fd85baa904ae154c2510d236292a23b597380b60722443571e168",
+      "statement": "Avoid claiming multi-cloud portability that has not been exercised.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 261
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Cloud-Native and Managed Platforms",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Avoid claiming multi-cloud portability that has not been exercised.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Avoid claiming multi-cloud portability that has not been exercised.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C0562936",
+      "revision": 1,
+      "semantic_sha256": "c05629360bb7ceb452c95c6dcaa46981f3477a2022190ccff6816bf0bfb5935f",
+      "statement": "Include provider incidents and control changes in internal risk and postmortem processes.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 262
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Cloud-Native and Managed Platforms",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rule “Include provider incidents and control changes in internal risk and postmortem processes.” is fully decidable from exact domain inventories, required fields, lifecycle records, policies, and trace links.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Include provider incidents and control changes in internal risk and postmortem processes.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A2E62F38",
+      "revision": 1,
+      "semantic_sha256": "a2e62f38775f35ed6e0614197e3309734113a31536c099c2a7ec6ebad21cd36b",
+      "statement": "Build images from reviewed source with provenance and SBOM.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 271
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Containers and Orchestration",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Rule “Build images from reviewed source with provenance and SBOM.” is fully decidable from read-only inspection of sealed access, monitoring, release, runtime, registry, and infrastructure state.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Build images from reviewed source with provenance and SBOM.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-726D8BC7",
+      "revision": 1,
+      "semantic_sha256": "726d8bc727ead26c3c30faac92f6f5e64d89a920bd8de3795572da1006b0e3a8",
+      "statement": "Scan final images and monitor them after release.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 272
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Containers and Orchestration",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rule “Scan final images and monitor them after release.” is fully decidable from bounded functional, fault, security, concurrency, recovery, or accessibility tests with fixed inputs and oracles.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify every objective predicate explicitly required by: Scan final images and monitor them after release.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    }
+  ]
+}

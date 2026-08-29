@@ -1,0 +1,2378 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-engineering-03-user-experience-web-and-content-md-part-003-part-001",
+  "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 93,
+  "controls": [
+    {
+      "control_id": "USEQ-3FBF31A0",
+      "revision": 1,
+      "semantic_sha256": "3fbf31a089b97ea56880d5b2ec8c2f29d211b95cd5787a8b32f6b969be979e40",
+      "statement": "Monitor crawl errors, indexing states, manual actions, security issues, sitemap processing, structured-data enhancements, page experience, and removal requests.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 679
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Monitoring, diagnostics, and continuous improvement"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "The named webmaster signal classes are finite external properties whose monitor coverage and freshness can be queried.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every inventoried property has current monitoring for crawl errors, indexing, manual actions, security issues, sitemap processing, enhancements, page experience, and removals.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "external_registry"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E73D403C",
+      "revision": 1,
+      "semantic_sha256": "e73d403c6382fd17d5a25f4a64331333db6c0447576a5ac6f1cdc8cf154dff7c",
+      "statement": "Use server logs to distinguish crawler discovery, fetch, rendering-resource, redirect, rate-limit, and failure problems.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 680
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Monitoring, diagnostics, and continuous improvement"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "A versioned log-analysis schema can require distinct classified outcomes for each named crawler problem category.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Crawler log analysis reports discovery, fetch, rendering-resource, redirect, rate-limit, and failure categories with counts and source events.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-34256FC3",
+      "revision": 1,
+      "semantic_sha256": "34256fc3ba0a67135c22703db77d3ecd9c432d40d35f7e71b9a3cd2e910631db",
+      "statement": "Monitor intended versus actual indexed URL counts by host, locale, template, content type, and canonical state.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 681
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Monitoring, diagnostics, and continuous improvement"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Intended URL manifests and indexed URL reports can be joined and grouped exactly by the six stated dimensions.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Current intended and actual indexed URL counts are reported by host, locale, template, content type, and canonical state.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "external_registry"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A28B0595",
+      "revision": 1,
+      "semantic_sha256": "a28b0595e17ca2c6de541ae9284d39d1a28628983cc2a7f2725cab5750e12b4b",
+      "statement": "Annotate releases, migrations, incidents, experiments, template changes, content campaigns, and crawler-policy changes on relevant dashboards.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 685
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Monitoring, diagnostics, and continuous improvement"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Release and operational events have exact identifiers and times that can be matched to annotations on declared dashboards.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every recorded release, migration, incident, experiment, template change, campaign, and crawler-policy change appears on each relevant dashboard timeline.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1680F8E4",
+      "revision": 1,
+      "semantic_sha256": "1680f8e43da67fc333ce8aa28946e54ae5525c2bc25c59fb0e67faf32b5d95ad",
+      "statement": "Alert on sudden changes in status codes, redirect volume, crawl load, indexability directives, canonical targets, structured-data validity, accessibility failures, and performance budgets.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 686
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Monitoring, diagnostics, and continuous improvement"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Versioned alert definitions can provide fixed thresholds for every named observable signal and their active state can be queried.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Active alerts cover sudden changes in status codes, redirects, crawl load, index directives, canonicals, structured data, accessibility, and performance budgets.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0DB446A8",
+      "revision": 1,
+      "semantic_sha256": "0db446a81ab63fbb7eca8ff74a7548855f288a4fdbd5a43a9acd0c4c514f62a5",
+      "statement": "Do not launch when a critical page returns misleading success status for errors, unauthorized states, or nonexistent resources.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 697
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Specific release blockers"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A versioned route behavior contract can define exact expected HTTP status classes for errors, unauthorized states, and missing resources.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every critical page returns the contractually expected non-success status for error, unauthorized, and nonexistent-resource scenarios.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6071D598",
+      "revision": 1,
+      "semantic_sha256": "6071d598efc97932e397423ffe2f0bb5efc649852b9d7eb2325f3d048b5f22f5",
+      "statement": "Do not claim WCAG conformance based only on automated testing or a third-party overlay.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 702
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Expanded gap-closure controls",
+        "Specific release blockers"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "A WCAG claim can be mechanically rejected when its evidence set contains only automated tests or an overlay without required manual evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every WCAG conformance claim links to evidence beyond automated testing and third-party overlay output.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7EB6BE46",
+      "revision": 1,
+      "semantic_sha256": "7eb6be466902e3e2072a4b2b60bfb9dc692376c02eb2e5e49c08636f380f2772",
+      "statement": "Retain the applicability record, scope, assumptions, owners, reviewers, and decision date.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 708
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Required evidence"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The retained governance fields are a finite exact set whose presence and signatures can be validated.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The evidence package retains applicability record, scope, assumptions, owners, reviewers, and decision date.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1B7F2728",
+      "revision": 1,
+      "semantic_sha256": "1b7f27283af367004b63dca9961776230633d77990ec5d33289a140ea21333b8",
+      "statement": "Retain objective verification results tied to the exact assessed revision.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 709
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Required evidence"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Verification records and source revisions are exact identifiers, allowing complete evidence binding checks.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every objective verification result is bound to the exact assessed source revision.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5D5338EB",
+      "revision": 1,
+      "semantic_sha256": "5d5338eb2d8438fb424df2c3735df4b7604c7684e680101d1b757ee9e2e02a6e",
+      "statement": "Retain unresolved defects and risks with severity, impact, compensating controls, owner, and target date.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 711
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Required evidence"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Unresolved defect and risk entries have an exact required field schema.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every unresolved defect or risk records severity, impact, compensating controls, owner, and target date.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8E12CCA7",
+      "revision": 1,
+      "semantic_sha256": "8e12cca7c941f6b64392c183ef1e75a5c1a5f80060074e3265f5e95281186984",
+      "statement": "Retain evidence that controls continue to operate after deployment rather than only before release.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 712
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Required evidence"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Postdeployment timestamps and authenticated control-operation results can prove that evidence was collected after release.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every declared continuous control has current operational evidence timestamped after deployment.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0E5A3C0E",
+      "revision": 1,
+      "semantic_sha256": "0e5a3c0e7e49dcda9776ad69ec55c655547c607d0793e17be5b71df1d557f8c2",
+      "statement": "Retain changes made after the evidence snapshot and show which controls were reassessed.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 713
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Required evidence"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Change timestamps can be compared with an evidence snapshot and joined to explicit reassessed-control identifiers.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every change after the evidence snapshot is recorded and maps to the controls reassessed because of that change.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-436CB3E7",
+      "revision": 1,
+      "semantic_sha256": "436cb3e727cbf8addcd2323c9ebee83f6551870868df358a869c77ca9c491c6f",
+      "statement": "Do not accept a tool, framework, supplier, certification, or policy claim as evidence without verifying the deployed outcome.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 718
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Web Quality, SEO, Accessibility, and Content Master Checklist",
+        "Category no-go conditions"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Each external claim can be required to link to deployed-outcome verification bound to the assessed production version.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "No tool, framework, supplier, certification, or policy claim is accepted without a current deployed-outcome verification record.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EB22BF99",
+      "revision": 1,
+      "semantic_sha256": "eb22bf99bb83d80fa2209d794184eff08bc97bbd7ecb7d0a29ddca6255052e59",
+      "statement": "Identify which surfaces are intended to be public, indexable, searchable, shareable, archived, private, or removed.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 729
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Scope, ownership, and measurable outcomes"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Visibility and lifecycle states form an exact enumeration that can be required for every inventoried surface.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every inventoried surface is labeled public, indexable, searchable, shareable, archived, private, or removed as applicable.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6B251F18",
+      "revision": 1,
+      "semantic_sha256": "6b251f189cd714b12624f56ddfe5c45fd4d28f955bd2b1924023b8dd93e49377",
+      "statement": "Assign accountable owners for accessibility, technical discoverability, content quality, metadata, structured data, translations, and search monitoring.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 730
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Scope, ownership, and measurable outcomes"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The seven responsibility domains form a finite owner matrix with exact-one cardinality checks.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Accessibility, discoverability, content, metadata, structured data, translation, and search-monitoring domains each have one accountable owner.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0103E2BB",
+      "revision": 1,
+      "semantic_sha256": "0103e2bb65719938bf0519fd9b5f8e5ab684bd8d05e9ad7f1aabfd91e7d2ad73",
+      "statement": "Define measurable success criteria for task completion, accessibility defects, search coverage, crawl errors, indexing, content freshness, and performance.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 734
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Scope, ownership, and measurable outcomes"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The seven success domains can each be required to define exact metrics, thresholds, and evaluation windows.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The plan defines measurable criteria for task completion, accessibility defects, search coverage, crawl errors, indexing, freshness, and performance.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D5B7E6DD",
+      "revision": 1,
+      "semantic_sha256": "d5b7e6dd8b6210d6365d25c56eafae74e33d51cd19aeaa84efb61e9af66787dc",
+      "statement": "Document how accessibility and search behavior are affected by personalization, experiments, geolocation, consent, authentication, and feature flags.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 740
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Scope, ownership, and measurable outcomes"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The six behavior-changing mechanisms are explicit documentation categories with exact applicability records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The behavior documentation covers personalization, experiments, geolocation, consent, authentication, and feature flags for accessibility and search effects.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FCC69E21",
+      "revision": 1,
+      "semantic_sha256": "fcc69e214960534da41fbbbc5a3cae0042ae6a1d937f18d8259835242c4dbff8",
+      "statement": "Include accessibility and discoverability acceptance criteria in product requirements and Definition of Done.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 741
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Scope, ownership, and measurable outcomes"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Product requirements and Definition of Done are bounded artifacts that can be checked for linked accessibility and discoverability criteria.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every applicable product requirement and Definition of Done contains accessibility and discoverability acceptance criteria.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EFFCCD14",
+      "revision": 1,
+      "semantic_sha256": "effccd14e5973563d78cfec9fb22db052348320823af9efe3eb4cc07b09b433e",
+      "statement": "Use a defined evaluation methodology such as WCAG-EM 2.0 to establish scope, representative samples, states, processes, and reporting.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 749
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Accessibility standards and evaluation methodology"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "A selected evaluation methodology has exact scope, sample, state, process, and reporting fields that can be validated.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The evaluation plan identifies a methodology and defines scope, representative sample, states, processes, and reporting.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3801322B",
+      "revision": 1,
+      "semantic_sha256": "3801322bc4a1236b8ab20ed1b7fb7bd0eed2e463a0b0f7c69bdb318565d35c8b",
+      "statement": "Evaluate content at supported zoom, text spacing, viewport, orientation, contrast, color-scheme, forced-color, reduced-motion, and platform settings.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 752
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Accessibility standards and evaluation methodology"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Supported setting combinations are a finite matrix with exact expected content and operation outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every content target passes the approved zoom, spacing, viewport, orientation, contrast, color, forced-color, reduced-motion, and platform-setting tests.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A371549C",
+      "revision": 1,
+      "semantic_sha256": "a371549c78283db3c0066a1b26c122de5943aeaf7ec03667538ff47d2e9431c1",
+      "statement": "Combine automated testing, expert manual review, keyboard testing, assistive-technology testing, and user testing; do not treat automation as proof of conformance.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 753
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Accessibility standards and evaluation methodology"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The required evaluation modalities are a finite evidence set, and a conformance claim can be rejected when it contains automation only.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Each conformance evaluation contains automated, expert manual, keyboard, assistive-technology, and user-testing evidence.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6D505348",
+      "revision": 1,
+      "semantic_sha256": "6d5053487bcace022bb91cf9027ff53b7768e64827610dabeba84e7e580d03df",
+      "statement": "Record the exact standards, techniques, test tools, versions, assistive technologies, browsers, operating systems, devices, samples, and limitations used.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 754
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Accessibility standards and evaluation methodology"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The evaluation metadata fields are explicit and their version references can be validated.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every evaluation records standards, techniques, tools and versions, assistive technologies, browsers, operating systems, devices, samples, and limitations.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A4088B58",
+      "revision": 1,
+      "semantic_sha256": "a4088b58ba25f74828f2ddacddd62ebc7222a1435a27e5179452cac30b9a7309",
+      "statement": "Distinguish normative requirements from informative techniques and tool heuristics.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 755
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Accessibility standards and evaluation methodology"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Authoritative sources expose normative status, allowing each requirement, technique, and heuristic to be labeled by exact provenance.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every evaluation item is labeled normative requirement, informative technique, or tool heuristic with its source reference.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9F7B27E7",
+      "revision": 1,
+      "semantic_sha256": "9f7b27e70b4a09e4265dd31f41fa39107e1aa189a337f89a0e682bb93f53c45f",
+      "statement": "Do not average inaccessible critical journeys against large numbers of passing low-value pages.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 757
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Accessibility standards and evaluation methodology"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "local_static",
+      "primary_reason": "A scoring and gate policy can be inspected to ensure critical inaccessible journeys are never offset by low-value page passes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Any inaccessible critical journey forces failure regardless of passing low-value page counts.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4D11DB36",
+      "revision": 1,
+      "semantic_sha256": "4d11db36962942ea9dc71a7d1b6f46f8069a79d8dec97fe3244eead2e97c449b",
+      "statement": "Expose status messages, validation results, loading states, progress, notifications, and asynchronous updates without forcing focus changes.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 779
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Semantic structure, content alternatives, and programmatic relationships"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Declared asynchronous state changes have exact accessibility-tree event and focus expectations that can be exercised.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every status, validation, loading, progress, notification, and asynchronous update emits its expected programmatic message without an unrequested focus change.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BA50C7B0",
+      "revision": 1,
+      "semantic_sha256": "ba50c7b040dc04710e0e1e21d54eec49e5860e10034a49cf508a0ada2778a49d",
+      "statement": "Preserve semantics when content is reordered, virtualized, collapsed, expanded, filtered, or rendered lazily.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 780
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Semantic structure, content alternatives, and programmatic relationships"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A finite dynamic-state matrix can compare semantic snapshots before and after reorder, virtualization, collapse, filter, and lazy rendering.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every declared dynamic transformation preserves the versioned expected accessibility-tree roles, names, relationships, and order.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1ACA514F",
+      "revision": 1,
+      "semantic_sha256": "1aca514faa7b69d5c8bccb63a8956401d1dbd7651568712dea73e35e1152e845",
+      "statement": "Make every actionable function operable with a keyboard without requiring pointer input.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 789
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Keyboard, focus, pointer, voice, and alternative input"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "An actionable-function inventory and keyboard-only test harness make pointer-free operability a finite pass or fail result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every actionable function in the approved interface inventory completes through keyboard input without pointer events.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8FBB63F5",
+      "revision": 1,
+      "semantic_sha256": "8fbb63f5e220c674703481738291d0e5f57a041321dcbbbd44675f1a0d37f27a",
+      "statement": "Prevent keyboard traps and provide a documented exit from any constrained interaction.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 790
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Keyboard, focus, pointer, voice, and alternative input"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Tab-cycle and escape-sequence tests can detect keyboard traps, while exit documentation is an exact artifact check.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every constrained interaction permits its documented keyboard exit and no keyboard-only sequence remains trapped.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DB2C10EF",
+      "revision": 1,
+      "semantic_sha256": "db2c10efab66bb0697a079a79f3cfe60b074feb68a83d80d76575cc012e89493",
+      "statement": "Provide a clearly visible focus indicator with sufficient contrast and area.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 792
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Keyboard, focus, pointer, voice, and alternative input"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The selected accessibility target supplies exact focus contrast and area thresholds that rendered geometry and colors can measure.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every focusable element's visible indicator meets the required contrast and area thresholds in each supported state.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-018113B7",
+      "revision": 1,
+      "semantic_sha256": "018113b752010c6f80af42ade2339edfc1a151abdc17c2bc13ce76e31294226b",
+      "statement": "Ensure focused elements are not hidden behind sticky headers, banners, dialogs, virtual keyboards, or overlays.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 793
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Keyboard, focus, pointer, voice, and alternative input"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rendered focus geometry and occluding surfaces can be compared exactly across the supported viewport matrix.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every focused element remains within the unobscured viewport outside sticky headers, banners, dialogs, virtual keyboards, and overlays.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-591A7C39",
+      "revision": 1,
+      "semantic_sha256": "591a7c397372bea55efe23e3f1008c290be4116dd95ce33cd8b551ac62a959fe",
+      "statement": "Provide skip mechanisms or equivalent navigation for repeated blocks.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 796
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Keyboard, focus, pointer, voice, and alternative input"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Repeated-block declarations and keyboard tests can verify a functioning skip mechanism or equivalent navigation target.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every repeated block has a keyboard-operable skip or equivalent mechanism that moves focus to the declared destination.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E3635275",
+      "revision": 1,
+      "semantic_sha256": "e3635275d8e393c15844ea7c3fd17a2ad99a16f5d136f2160376670e7f9bfffd",
+      "statement": "Avoid single-character shortcuts that conflict with assistive technology, or make them remappable or disableable.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 797
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Keyboard, focus, pointer, voice, and alternative input"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Single-character shortcut events and configuration options are finite and can be exercised for collision, remapping, and disabling behavior.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every single-character shortcut is absent, scoped safely, or can be remapped or disabled through a tested control.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-54E8800E",
+      "revision": 1,
+      "semantic_sha256": "54e8800ebfdf7610aecc43b4d526ab1daa42b05c198597308b6ca1e242db380e",
+      "statement": "Provide non-drag alternatives for functionality that depends on dragging.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 798
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Keyboard, focus, pointer, voice, and alternative input"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Every declared drag action can be paired with and tested against a non-drag operation producing the same versioned result.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Each drag-dependent function has a keyboard or simple-pointer alternative that reaches the same declared outcome.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-53DCF354",
+      "revision": 1,
+      "semantic_sha256": "53dcf3540c29ce917271e05ad275fe3cfec5b05dac6d620dbe024983b34b4f5a",
+      "statement": "Provide alternatives to path-based, multipoint, or complex gestures.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 799
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Keyboard, focus, pointer, voice, and alternative input"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Declared path, multipoint, and complex gestures can be matched to simple alternatives and their outcomes compared.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Each complex gesture in the interaction inventory has a tested simple-pointer or keyboard alternative with the same declared outcome.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-639D4B06",
+      "revision": 1,
+      "semantic_sha256": "639d4b0682cb7e46dfb3f9f37d99efda07961c0891e0a26b168aa606d3bd94e7",
+      "statement": "Do not trigger actions solely on pointer-down when cancellation or reversal is needed.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 801
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Keyboard, focus, pointer, voice, and alternative input"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Pointer event traces can prove that consequential actions commit after release rather than solely on pointer-down and permit cancellation when required.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every action marked cancellation-required does not commit solely on pointer-down and cancels when the pointer is moved away before release.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9387A6EF",
+      "revision": 1,
+      "semantic_sha256": "9387a6eff4b94fc53f265eeae39b7f86d5a6fa971e913a620fa4f381fa6e99ae",
+      "statement": "Support pointer cancellation and undo for consequential actions.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 802
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Keyboard, focus, pointer, voice, and alternative input"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Consequential actions form a declared inventory whose pointer-cancel and undo behaviors have exact expected state transitions.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every consequential pointer action supports cancellation before commit and an approved undo or reversal path after commit.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-59674F93",
+      "revision": 1,
+      "semantic_sha256": "59674f931c138dc503e982d8fdd97a8475daec7eceeb05d6b1d4816a76a41550",
+      "statement": "Ensure visible control text can be used by voice-control users to activate the corresponding control.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 804
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Keyboard, focus, pointer, voice, and alternative input"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Visible labels and voice-command activation can be tested directly for every declared control.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every visible control activates through a supported voice command containing its displayed control text.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9645FB34",
+      "revision": 1,
+      "semantic_sha256": "9645fb34712dcbe7997278c7ae8af2d3fa5fe70681e80a615c24aa36d3a43b5d",
+      "statement": "Meet the required contrast ratios for text, controls, focus indicators, icons, charts, and other meaningful visual information.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 810
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Visual presentation, audio, video, motion, and sensory safety"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Selected conformance requirements provide exact contrast ratios whose rendered colors and geometry can be measured.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Text, controls, focus indicators, icons, charts, and meaningful visuals meet their declared contrast thresholds in all supported states.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-83473448",
+      "revision": 1,
+      "semantic_sha256": "83473448b782dfbc1637d9448a5d14be9ea4fc48e1256b19790fcb2940178670",
+      "statement": "Allow text to be resized and spaced without loss of content, function, or readability.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 812
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Visual presentation, audio, video, motion, and sensory safety"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Defined resize and text-spacing settings support direct rendered-content and functional comparisons with exact loss checks.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "At every required resize and spacing setting, all declared content and functions remain present, reachable, and readable under the approved assertions.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-417FF771",
+      "revision": 1,
+      "semantic_sha256": "417ff7719a67a69b528b5e52f0688d3dadb3b391616e1e2174e7e92fcf4ec2f6",
+      "statement": "Honor user preferences for reduced motion, contrast, color scheme, text size, captions, and other accessibility settings where available.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 815
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Visual presentation, audio, video, motion, and sensory safety"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Platform preference states are queryable and can be toggled to verify exact declared presentation responses.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The product honors every available declared reduced-motion, contrast, color, text-size, caption, and accessibility preference.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-16826B5E",
+      "revision": 1,
+      "semantic_sha256": "16826b5e112795f4b1b1e14ef7c46cc12418dfd7666b3471ebbb95fd3ef53628",
+      "statement": "Avoid flashes and visual patterns that can exceed seizure or physical-reaction thresholds.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 816
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Visual presentation, audio, video, motion, and sensory safety"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Seizure and physical-reaction limits are numeric standards that frame and frequency analysis can evaluate.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "No tested visual sequence exceeds the selected flash or physical-reaction thresholds.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-81BE1D6D",
+      "revision": 1,
+      "semantic_sha256": "81be1d6daad4734a009c644a34f0de2364cf349d6b8e28181e340c3f7d083881",
+      "statement": "Do not start audio automatically unless the user can stop or control it immediately.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 818
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Visual presentation, audio, video, motion, and sensory safety"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Autoplay audio start and stop-control availability have exact event and timing observations.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Any automatically started audio exposes an immediately reachable tested stop or volume control.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B06A6E6F",
+      "revision": 1,
+      "semantic_sha256": "b06a6e6fd7f76763a0868f3cbb912c314db62ba8e9f5b2de804fbab6ce1aad22",
+      "statement": "Provide synchronized captions for prerecorded and live audio where required.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 819
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Visual presentation, audio, video, motion, and sensory safety"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A media applicability inventory plus caption tracks and timing tolerances permits exact presence and synchronization checks.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every prerecorded or live media item marked caption-required has an active caption track within the approved synchronization tolerance.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0F32C504",
+      "revision": 1,
+      "semantic_sha256": "0f32c504863d2bfd01bce078d2d79bfbd28b0e69f4c93fd0b217efecca0eef30",
+      "statement": "Ensure media controls are keyboard operable, labeled, visible, and usable with assistive technology.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 822
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Visual presentation, audio, video, motion, and sensory safety"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Media-control keyboard actions, names, visibility, and accessibility-tree exposure are finite executable assertions.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every media control is keyboard operable, visibly rendered, programmatically labeled, and exposed with supported role and state.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9013CE98",
+      "revision": 1,
+      "semantic_sha256": "9013ce98f4eae7a10866b6aca50741d16975e578a6bae6f3beab6d3aa17d6276",
+      "statement": "Test forced-colors and high-contrast modes so that controls, focus, selection, errors, and state remain perceivable.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 827
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Visual presentation, audio, video, motion, and sensory safety"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Forced-color and high-contrast modes are finite platform states with declared visibility assertions for controls, focus, selection, errors, and state.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every required item remains programmatically and visually perceivable in each supported forced-color and high-contrast mode.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DDF0FE8A",
+      "revision": 1,
+      "semantic_sha256": "ddf0fe8a002723269d7c92d4e9d5b735e6dff77d6edeec2967dca34741bd9767",
+      "statement": "Provide user control over distracting animations, parallax, carousels, and background media.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 829
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Visual presentation, audio, video, motion, and sensory safety"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Distracting media types are a finite content inventory and control availability can be exercised.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every animation, parallax effect, carousel, and background media item marked distracting exposes a tested user pause, stop, hide, or reduction control.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E35FCCCE",
+      "revision": 1,
+      "semantic_sha256": "e35fccce1638d5cdb9beaa4cfc6b95390ee8ece6f5f1ef0740e76d84f4af9781",
+      "statement": "Identify required fields, formats, constraints, and examples before submission.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 841
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Cognitive accessibility, forms, authentication, and error prevention"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Form schemas define required status, formats, constraints, and examples that rendered pre-submission content can be compared against.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Before submission, every field exposes its declared required status, format, constraints, and examples.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-79FA79CC",
+      "revision": 1,
+      "semantic_sha256": "79fa79cc4b12325aa9a8acdd7c3c46d39c163f5945f1ba0c437202885f4c9175",
+      "statement": "Associate errors with the affected fields and provide an accessible error summary for multi-field failures.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 843
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Cognitive accessibility, forms, authentication, and error prevention"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Invalid form scenarios have exact field association and summary expectations visible in the accessibility tree.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every field error is programmatically associated with its field, and multi-field failure produces an accessible summary linking to each error.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FC0BCDA1",
+      "revision": 1,
+      "semantic_sha256": "fc0bcda197a3603a74984a9dcc32640096b929f7c461cca46f35d913e84c868f",
+      "statement": "Preserve valid input after recoverable errors and prevent duplicate submission.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 845
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Cognitive accessibility, forms, authentication, and error prevention"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Recoverable-error and duplicate-submission scenarios have exact input-state and side-effect assertions.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Recoverable errors preserve every valid input and repeated submission produces at most one declared operation.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BB3E050D",
+      "revision": 1,
+      "semantic_sha256": "bb3e050d9cc4ed72a699b35973919f62fc127109132577ce31ba7a996278b742",
+      "statement": "Do not make authentication depend solely on solving cognitive-function tests, transcribing distorted content, or remembering arbitrary secrets.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 848
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Cognitive accessibility, forms, authentication, and error prevention"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Authentication-method inventories and end-to-end tests can prove that success is not solely dependent on a prohibited cognitive task.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every supported authentication journey has a successful path that does not require distorted transcription, a cognitive-function test, or arbitrary-secret recall alone.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-375A6696",
+      "revision": 1,
+      "semantic_sha256": "375a669635b7025d678de724d54c5d2ce1ab65a8b2247395115b7e93147afa65",
+      "statement": "Support password managers, paste, accessible multifactor methods, and accessible account recovery.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 849
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Cognitive accessibility, forms, authentication, and error prevention"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Password-manager, paste, MFA, and recovery capabilities are finite authentication scenarios with direct expected outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Supported password-manager, paste, accessible multifactor, and accessible recovery scenarios complete successfully.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9DB6D254",
+      "revision": 1,
+      "semantic_sha256": "9db6d254ad1176b542f78a6b2809f6b93b49e026d60c58fd7fc0231a1e3bdbd1",
+      "statement": "Provide alternatives when biometrics, CAPTCHAs, device possession, or a particular communication channel are inaccessible.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 850
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Cognitive accessibility, forms, authentication, and error prevention"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Biometric, CAPTCHA, device, and channel barriers form a finite applicability inventory whose alternative paths can be executed.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every declared biometric, CAPTCHA, device-possession, or channel barrier has a successful supported alternative path.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EE9AEBED",
+      "revision": 1,
+      "semantic_sha256": "ee9aebed2d6ab27e91fa3e930bf11f73861374f43340e2ab1399b33187222a8d",
+      "statement": "Test error recovery under screen-reader, magnification, voice-control, and keyboard-only use.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 852
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Cognitive accessibility, forms, authentication, and error prevention"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The four input-mode combinations are explicit and error-recovery results can be executed against a fixed scenario suite.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every declared error-recovery scenario passes with screen reader, magnification, voice control, and keyboard-only input.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-34A9C539",
+      "revision": 1,
+      "semantic_sha256": "34a9c5396ab2ed9cd915e089236aa89d11d6bb283544dce3f55af9f8077a1d38",
+      "statement": "Ensure virtual keyboards, safe areas, display cutouts, and magnification do not cover controls or instructions.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 860
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Responsive, mobile, assistive-technology, and document interoperability"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Supported mobile layout conditions provide exact geometry assertions for control and instruction visibility.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "No virtual keyboard, safe area, cutout, or magnification state covers declared controls or instructions in the supported matrix.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E6287819",
+      "revision": 1,
+      "semantic_sha256": "e62878197b874127b07ed977981f97ccfc12835d63066c3df5a89e3d6c07daca",
+      "statement": "Ensure offline, cached, and installed experiences preserve accessibility.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 863
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Responsive, mobile, assistive-technology, and document interoperability"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Offline, cached, and installed modes are finite runtime states whose accessibility assertions can be compared with the online baseline.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every declared offline, cached, and installed experience passes its bound accessibility test suite.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CACB9B46",
+      "revision": 1,
+      "semantic_sha256": "cacb9b463439edc52296a1bf93e09f7cc93a948591429b5b08d6c5d84e22faae",
+      "statement": "Preserve document tags, headings, reading order, bookmarks, language, alternate text, tables, links, and form semantics during generation and conversion.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 866
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Responsive, mobile, assistive-technology, and document interoperability"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Document accessibility structures can be compared before and after generation or conversion using exact tagged-document assertions.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Generation and conversion preserve tags, headings, reading order, bookmarks, language, alternate text, tables, links, and form semantics.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A00433C7",
+      "revision": 1,
+      "semantic_sha256": "a00433c77b5cc34b889245a56cb54e51d7d2574d9903deb45ef187d81f70cb84",
+      "statement": "Verify that assistive-technology behavior remains correct after component-library, browser-engine, platform, or PDF-generation upgrades.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 870
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Responsive, mobile, assistive-technology, and document interoperability"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Upgrade events and the bound assistive-technology suite permit direct regression comparison after each component, browser, platform, or generator change.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every recorded relevant upgrade has a later successful assistive-technology regression result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-584BDA9F",
+      "revision": 1,
+      "semantic_sha256": "584bda9fba875e591be89f65621d8a23e9086c9980852a4a88b12c1b22a6116a",
+      "statement": "Expose rendered content, controls, selection, focus, caret, viewport, playback, status, and document structure through supported accessibility APIs.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 877
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "User agents, embedded viewers, media players, and assistive interoperability"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Supported accessibility APIs expose finite object properties that can be inspected for each declared user-agent surface.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Rendered content, controls, selection, focus, caret, viewport, playback, status, and document structure expose their declared accessibility API values.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-43A0D27C",
+      "revision": 1,
+      "semantic_sha256": "43a0d27c48bf07faa7f3dd83d71a99ea2e2cf3daa218e4a7d3dc0e426d87bc42",
+      "statement": "Preserve content semantics and accessibility information rather than flattening or replacing them during rendering, transformation, reader mode, translation, annotation, or export.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 878
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "User agents, embedded viewers, media players, and assistive interoperability"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Versioned accessibility-tree snapshots allow exact comparison through rendering, transformation, reader mode, translation, annotation, and export.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every declared transformation preserves expected content roles, names, relationships, order, and accessibility metadata.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-07226877",
+      "revision": 1,
+      "semantic_sha256": "0722687720e2240f7522baaa659877c47f6be94309474fa8bee4d994d06468bf",
+      "statement": "Provide keyboard and alternative-input access to browser chrome, media controls, document navigation, extensions, permissions, downloads, history, and settings.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 880
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "User agents, embedded viewers, media players, and assistive interoperability"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The named user-agent functions and alternative-input actions form a finite interaction matrix with exact outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Browser chrome, media, document navigation, extensions, permissions, downloads, history, and settings pass the approved keyboard and alternative-input tests.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8DD986C8",
+      "revision": 1,
+      "semantic_sha256": "8dd986c8636b19fb0ce58293e5df686f2f3b0b4fda33d073106e78b6356224b8",
+      "statement": "Treat user-agent and assistive-technology compatibility regressions as product defects even when the underlying content has not changed.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 886
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "User agents, embedded viewers, media players, and assistive interoperability"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Detected compatibility regressions and issue types are structured facts, so policy can require every regression to be filed as a product defect.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every user-agent or assistive-technology regression has a product-defect record regardless of underlying content-change status.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3C4F60FD",
+      "revision": 1,
+      "semantic_sha256": "3c4f60fdfc567374d42f23f6fafc5a7e45fef95c2f1e8a2f8a3ac59b5020b245",
+      "statement": "Prompt authors for missing alternate text, labels, headings, captions, language, table headers, and other required accessibility information.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 893
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Authoring tools, design systems, third parties, and procurement"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Missing required accessibility metadata has exact schema predicates, and prompt appearance can be exercised for each authoring action.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "When required alternate text, labels, headings, captions, language, table headers, or metadata is missing, the authoring tool presents its declared prompt.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4F0EF52C",
+      "revision": 1,
+      "semantic_sha256": "4f0ef52ce531bcebdf5f3bac0e14c27048d51f1770f64bea9c9312c33623fe4f",
+      "statement": "Include accessibility requirements in design-system component contracts and acceptance tests.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 897
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Authoring tools, design systems, third parties, and procurement"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Component contracts and acceptance suites are bounded artifacts that can be checked for explicit accessibility requirements and tests.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every design-system component contract contains accessibility requirements linked to acceptance tests.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4202F7C4",
+      "revision": 1,
+      "semantic_sha256": "4202f7c4b92118f441b8679675b4b960489e0540a4d18a3c6b2276bf611d566a",
+      "statement": "Provide documented keyboard behavior, semantics, states, content constraints, and known limitations for every shared component.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 898
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Authoring tools, design systems, third parties, and procurement"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The six component documentation categories are exact required fields for every shared component.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every shared component documents keyboard behavior, semantics, states, content constraints, and known limitations.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-433B5762",
+      "revision": 1,
+      "semantic_sha256": "433b576282b271c1608a173d982d7b59b6a9ac2238059a78b62f53238a6ae978",
+      "statement": "Prevent design tokens from allowing inaccessible contrast, focus, motion, spacing, or target sizes without an explicit reviewed exception.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 899
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Authoring tools, design systems, third parties, and procurement"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Selected accessibility thresholds and exception records allow design-token values to be rejected before they permit inaccessible states.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every contrast, focus, motion, spacing, and target-size token is within the approved accessibility constraints.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        },
+        {
+          "statement": "Any out-of-constraint token requires an explicit authenticated reviewed exception.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8C17324F",
+      "revision": 1,
+      "semantic_sha256": "8c17324f3ef7f8fac729d4365e587423fcfaab44791365b68c2ac674e940a6a0",
+      "statement": "Version accessibility behavior and communicate breaking changes to consumers.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 901
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Authoring tools, design systems, third parties, and procurement"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Accessibility behavior versions and consumer communication events are exact component-release metadata.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every component release versions accessibility behavior and every declared breaking change has authenticated consumer communication evidence.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F8516AC8",
+      "revision": 1,
+      "semantic_sha256": "f8516ac854b96378d57c48f7368055b82b8dcc280514071cefba9dce243a1f19",
+      "statement": "Keep a replacement or isolation plan for inaccessible supplier components.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 904
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Authoring tools, design systems, third parties, and procurement"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Inaccessible supplier components are a finite register that can require a replacement or isolation plan.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every supplier component marked inaccessible links to a versioned replacement or isolation plan.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2AE7001B",
+      "revision": 1,
+      "semantic_sha256": "2ae7001b41dff6575511b643af1779ecc175783e870d8cb15ef264adb76664b1",
+      "statement": "Ensure procurement scoring considers actual task accessibility, not only presence of a conformance report.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 907
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Authoring tools, design systems, third parties, and procurement"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Procurement scoring inputs can be inspected to require actual task-accessibility results in addition to any conformance report.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every accessibility procurement score includes deployed task-accessibility evidence and is not computed solely from conformance-report presence.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-00EB0815",
+      "revision": 1,
+      "semantic_sha256": "00eb08156cf1f97ff99984ec87bc27336ba1367f0b9d76d750ce584fda80a52a",
+      "statement": "Automate checks for repeatable detectable defects in components, templates, rendered pages, documents, and critical flows.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 911
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Accessibility regression, reporting, and operations"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "local_static",
+      "primary_reason": "Repeatable detector configurations and their CI coverage can be enumerated across components, templates, pages, documents, and critical flows.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Automated accessibility checks run for each declared repeatable defect class and applicable artifact or flow.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-393454F3",
+      "revision": 1,
+      "semantic_sha256": "393454f31604477e7c84e500befcac82daf8ffd49c42d79fb37f8a3a9e0b8b33",
+      "statement": "Use automated rules as a floor and track false positives, false negatives, rule coverage, and tool versions.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 912
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Accessibility regression, reporting, and operations"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Tool versions, rule coverage, and false-positive or false-negative measures are exact automation-governance fields.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every automated accessibility run records tool version and rule coverage, and the program tracks false positives and false negatives.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0532FA61",
+      "revision": 1,
+      "semantic_sha256": "0532fa615a70dfe293e80a32c530a0d2a324cde856d2b80cb67c64d0081debbf",
+      "statement": "Keep manual test scripts for keyboard, focus, zoom, text spacing, screen readers, forms, media, and cognitive access.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 913
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Accessibility regression, reporting, and operations"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The named manual test areas are a finite script-library coverage set.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The manual test library contains current scripts for keyboard, focus, zoom, text spacing, screen readers, forms, media, and cognitive access.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-53280330",
+      "revision": 1,
+      "semantic_sha256": "5328033006df5ea198c1dbafa94be525cb5975cbbf2381baaaf86cf487ab3a20",
+      "statement": "Collect accessibility feedback without requiring users to disclose a diagnosis.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 917
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Accessibility regression, reporting, and operations"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Feedback form fields and submission behavior can prove that diagnosis disclosure is not required.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The accessibility feedback route accepts a report without a diagnosis field or diagnosis-dependent validation.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A6A392BF",
+      "revision": 1,
+      "semantic_sha256": "a6a392bf87bb951b08f52b862c6499b29a3afd137c4a3d4aeddac68a270e68dc",
+      "statement": "Retest fixes with the input mode or assistive technology that exposed the defect.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 920
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Accessibility regression, reporting, and operations"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Defect records identify the exposing input mode or assistive technology, allowing exact retest-environment matching.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every fixed defect has a successful retest using the same input mode or assistive technology recorded on the original report.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F6CFFA0D",
+      "revision": 1,
+      "semantic_sha256": "f6cffa0dfe1c65d3ba263c75d547b818c0ce92ceec2abf7aabd43be001a26f62",
+      "statement": "Maintain an accessibility defect backlog with owner, impact, affected surfaces, workaround, target date, and evidence of closure.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 922
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Accessibility regression, reporting, and operations"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The accessibility backlog has a finite exact required field schema and closure-evidence reference.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every accessibility defect records owner, impact, affected surfaces, workaround, target date, and closure evidence when closed.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0C55957B",
+      "revision": 1,
+      "semantic_sha256": "0c55957b0f8f5d46302532e3f7bc790be673c8a018d58fbe1f4a100e51bc54a2",
+      "statement": "Monitor third-party changes for accessibility regression.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 924
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Accessibility regression, reporting, and operations"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "A third-party version inventory and accessibility baselines permit exact change-triggered regression monitoring.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every monitored third-party version change runs the bound accessibility regression suite and records its result.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4FE30275",
+      "revision": 1,
+      "semantic_sha256": "4fe302758853da6af889019638a0c13f6301d4bfd892f0e89556278d36c229cc",
+      "statement": "Review accessibility statements and conformance reports whenever scope or known limitations change.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 925
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Accessibility regression, reporting, and operations"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Scope and limitation diffs can trigger exact review requirements for statements and conformance reports.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every recorded scope or known-limitation change links to a later accessibility-statement and conformance-report review.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E969C3C9",
+      "revision": 1,
+      "semantic_sha256": "e969c3c98462031ca8daa6c9a0ab25be5967d7467913a832ffed150959402b68",
+      "statement": "Assign owners for technical SEO, editorial quality, structured data, international targeting, migrations, and monitoring.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 937
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "SEO, discoverability, and ethical search governance"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The six SEO governance domains form a finite owner matrix with exact-one identity checks.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Technical SEO, editorial quality, structured data, international targeting, migrations, and monitoring each have one accountable owner.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D33DFAE7",
+      "revision": 1,
+      "semantic_sha256": "d33dfae7bd32f26801b106061905fc5f55af29e3ba0c5363edf1a13c9cabb0db",
+      "statement": "Document which engines, regional services, vertical search products, and AI or content crawlers matter to the product.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 938
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "SEO, discoverability, and ethical search governance"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The requirement is to document the selected external discovery services, so a versioned applicability inventory decides it exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The search applicability record lists engines, regional services, vertical products, and AI or content crawlers that matter to the product.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8959440E",
+      "revision": 1,
+      "semantic_sha256": "8959440e65d8597ff1a0781f544c1407e964d7f91adbec9c68b258e5233d754d",
+      "statement": "Create a policy for crawler access, content licensing, training use, archival access, and high-volume automated retrieval.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 939
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "SEO, discoverability, and ethical search governance"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The five crawler-governance topics are explicit required policy sections.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The crawler policy covers access, content licensing, training use, archival access, and high-volume automated retrieval.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-625225E7",
+      "revision": 1,
+      "semantic_sha256": "625225e71c22097b54d0e736c239a3068b64bd2c4943e29df7e167b8dabb858f",
+      "statement": "Distinguish crawler directives from authentication and authorization; never rely on crawler compliance to protect confidential information.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 940
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "SEO, discoverability, and ethical search governance"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Policy text and public access tests can verify that crawler directives are not treated as authentication for confidential assets.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Security documentation distinguishes crawler directives from authentication and authorization.",
+          "checker_family": "structured_document",
+          "evidence_authority": "repository"
+        },
+        {
+          "statement": "Every confidential asset in the approved inventory requires access control independently of crawler directives.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B9CD4463",
+      "revision": 1,
+      "semantic_sha256": "b9cd4463a3b13bcf197604e3bcf1277ee4c2c8d269f9fca5d30543b67c150a5d",
+      "statement": "Ensure every intended public page is reachable through stable crawlable links or an intentional discovery mechanism.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 951
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Crawlability, indexability, crawler controls, and exposure safety"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "An intended-public URL inventory and crawl graph permit exact reachability checks through stable links or declared discovery mechanisms.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every intended public page is reachable from its approved discovery seed through stable crawlable links or its declared discovery mechanism.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-838FA31D",
+      "revision": 1,
+      "semantic_sha256": "838fa31d521ef19c375bd38535338c8567adca7ba22849c2d87e694521d084ac",
+      "statement": "Ensure pages that must remain private require authentication or equivalent access control.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 953
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Crawlability, indexability, crawler controls, and exposure safety"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Private-page classifications and unauthenticated access probes make access-control presence directly decidable.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every page classified private rejects unauthenticated public-network requests and requires the declared access control.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B4F0B76C",
+      "revision": 1,
+      "semantic_sha256": "b4f0b76cee76df8c03e98ede7f74b8c44c53b7743053d3993b8bf6c6636d963b",
+      "statement": "Use robots.txt in accordance with RFC 9309 and understand that it controls compliant crawling, not confidentiality or authorization.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 954
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Crawlability, indexability, crawler controls, and exposure safety"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "RFC 9309 syntax and semantics are machine-testable, while documentation and access tests can show robots rules are not used for confidentiality.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every robots.txt file conforms to RFC 9309.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        },
+        {
+          "statement": "No confidential asset relies only on robots.txt for access restriction.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-50530FEB",
+      "revision": 1,
+      "semantic_sha256": "50530febc5fefdef94f51a2d8f1e647a38b0043aeb9582a477ec3659a8330145",
+      "statement": "Keep robots.txt syntactically valid, reachable, monitored, and consistent across relevant hosts and protocols.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 955
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Crawlability, indexability, crawler controls, and exposure safety"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Robots files have exact parser, reachability, monitor, host, and protocol assertions.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every relevant host and protocol returns a syntactically valid robots.txt with the approved rule digest.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        },
+        {
+          "statement": "Active monitors verify robots.txt reachability and digest consistency.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-39597E04",
+      "revision": 1,
+      "semantic_sha256": "39597e04ff6745f04b9ecfc1e380f20cf7f68e5fbf18cd0c6950407eb5b05653",
+      "statement": "Use `noindex` or equivalent supported indexing controls for public-but-nonindexable content, and ensure crawlers can retrieve the directive when required.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 957
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Crawlability, indexability, crawler controls, and exposure safety"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Public nonindexable classifications and supported directives permit exact retrieval and directive-visibility tests.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every public-but-nonindexable resource returns a supported noindex directive retrievable by the intended crawler.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4D234580",
+      "revision": 1,
+      "semantic_sha256": "4d234580500acb8b90316bc4ca9e6b5038de835cb46710627f384b299366e169",
+      "statement": "Do not use robots.txt as a substitute for `noindex`, deletion, authentication, or canonicalization.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 959
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Crawlability, indexability, crawler controls, and exposure safety"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Protection intent, crawler directives, authentication, deletion, and canonical state can be compared to reject robots-only substitutes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "No resource uses robots.txt as its sole mechanism when its declared intent requires noindex, deletion, authentication, or canonicalization.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-85574DF8",
+      "revision": 1,
+      "semantic_sha256": "85574df82cdbd867e3e733f2fc6bb39f2ec6e605ac8f26ed9a8770a221ba85d9",
+      "statement": "Ensure deleted content returns the intended permanent or temporary status and is removed from sitemaps and internal links.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 962
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Crawlability, indexability, crawler controls, and exposure safety"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A deleted-content inventory supplies exact expected statuses and supports deterministic sitemap and internal-link absence checks.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every deleted URL returns its declared permanent or temporary removal status.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        },
+        {
+          "statement": "No deleted URL appears in current sitemaps or internal-link graphs.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CFC54B83",
+      "revision": 1,
+      "semantic_sha256": "cfc54b835aa6e97caaee0e110e66797a00f155195247eef948cbcd6e28593174",
+      "statement": "Use temporary unavailability statuses during short maintenance rather than returning misleading success pages.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 963
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Crawlability, indexability, crawler controls, and exposure safety"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Declared maintenance windows and route probes allow exact comparison between temporary-unavailability and success status codes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "During each short maintenance state, affected routes return the approved temporary-unavailability status rather than success.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4539572E",
+      "revision": 1,
+      "semantic_sha256": "4539572e11428b162e2f88f54667a6baf6f46e59afb252bda0e3941bce90c4e6",
+      "statement": "Avoid soft errors in which a missing, blocked, or failed resource returns a successful status with an error message.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 964
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Crawlability, indexability, crawler controls, and exposure safety"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Missing, blocked, and failed resource scenarios have exact expected non-success statuses and error-body assertions.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every declared missing, blocked, or failed resource scenario returns its expected non-success status rather than a success status with error content.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-01A25EAE",
+      "revision": 1,
+      "semantic_sha256": "01a25eaeb2039b72892220748a491acb7762ff02717192e5560c375bec26ca60",
+      "statement": "Control faceted navigation, calendars, internal search, session identifiers, sort orders, and unbounded parameters that create crawl traps.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 967
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Crawlability, indexability, crawler controls, and exposure safety"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A route grammar and parameter policies can bound faceting, calendars, search, sessions, sorting, and repeated parameter expansion.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every crawl-generating route family has finite parameter cardinality or an approved crawl restriction.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bounded crawl simulation finds no loop or expansion beyond the approved URL-space limit.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6908CAC0",
+      "revision": 1,
+      "semantic_sha256": "6908cac0ebcd5e7c283f7c956a14f854205ebf886a8d1ccc1e1dd119b8552585",
+      "statement": "Keep private media and documents outside public URL spaces or protect them independently of page-level directives.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 969
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Crawlability, indexability, crawler controls, and exposure safety"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Private media classifications and public-network probes can prove independent access control or absence from public URL space.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every private media or document asset is outside public URL routes or rejects unauthenticated access independently of page directives.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B8CC27A7",
+      "revision": 1,
+      "semantic_sha256": "b8cc27a78ed951df9248cedaf19fb05c800d12712865ca1a776f30b93ef02310",
+      "statement": "Test crawl and indexing controls from the public network against the deployed production configuration.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 970
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Crawlability, indexability, crawler controls, and exposure safety"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The public test origin and production configuration binding make crawl and indexing control results directly reproducible.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every declared crawl and indexing control has a current public-network test bound to the deployed production configuration.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2A892965",
+      "revision": 1,
+      "semantic_sha256": "2a892965aaa302684e3c0e725f5cb79b64030d3bffe222f1ad2e91f2eb1d34ae",
+      "statement": "Align canonical declarations, redirects, internal links, sitemaps, alternate-language links, and structured data.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 976
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "URLs, canonicalization, redirects, site architecture, and links"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Once canonical and locale intent is declared, redirects, links, sitemaps, alternates, and structured data can be compared for exact agreement.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Each URL has a declared intended canonical and locale target.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Canonical declarations, redirects, internal links, sitemaps, alternate-language links, and structured data match those targets.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ]
+    }
+  ]
+}

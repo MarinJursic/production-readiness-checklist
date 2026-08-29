@@ -1,0 +1,437 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-checklists-01-release-foundations-md-part-001-part-001",
+  "primary_packet_id": "docs-checklists-01-release-foundations-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 15,
+  "controls": [
+    {
+      "control_id": "PRC-02-006",
+      "revision": 1,
+      "semantic_sha256": "5bf58c4057cf1009c9079f7038690c19ed472bc5cb8daf75a2c5279e9d6a745c",
+      "statement": "Backup restoration has not been demonstrated within the required recovery objectives.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 41
+      },
+      "heading_trail": [
+        "Release foundations",
+        "2. Immediate no-go conditions"
+      ],
+      "primary_packet_id": "docs-checklists-01-release-foundations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Approved recovery objectives and protected-data scope provide fixed policy inputs, and authenticated restore results can be compared directly with those limits.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The approved recovery record defines the protected data scope and numeric recovery objectives for the assessed release.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Current authenticated restore-test evidence covers the complete protected scope and meets every approved recovery objective.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-02-009",
+      "revision": 1,
+      "semantic_sha256": "89a6a2527c4c8a8244d67549493a89f43f50409b6aec19a7dd715581b093b14b",
+      "statement": "The release cannot meet its approved reliability objectives under expected operating conditions.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 44
+      },
+      "heading_trail": [
+        "Release foundations",
+        "2. Immediate no-go conditions"
+      ],
+      "primary_packet_id": "docs-checklists-01-release-foundations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control explicitly uses approved reliability objectives, so fixed observations for the approved operating profile can be compared to their exact thresholds.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "A versioned approved policy defines numeric reliability objectives and the operating conditions for the assessed release.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Current execution or environment evidence for the approved operating conditions meets every bound reliability objective.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-02-014",
+      "revision": 1,
+      "semantic_sha256": "79bcc6c2cda6b9d2a6a1b96915a72d5dddddc0c736f3ed532cb5683979261b9e",
+      "statement": "The production artifact cannot be traced to reviewed source, dependencies, build process, tests, and approval.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 49
+      },
+      "heading_trail": [
+        "Release foundations",
+        "2. Immediate no-go conditions"
+      ],
+      "primary_packet_id": "docs-checklists-01-release-foundations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Content-addressed provenance, dependency records, build attestations, test results, and approval records can form a complete fixed trace for the exact artifact.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The production artifact digest is bound by verified provenance to the exact reviewed source and build process.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        },
+        {
+          "statement": "The verified build record includes the complete dependency inventory used to create the production artifact.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        },
+        {
+          "statement": "Current test and approval records identify the same source, build, and production artifact digests.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-02-019",
+      "revision": 1,
+      "semantic_sha256": "460216a47302889d6976c45abb94114c47e5010bd53af34e6c7cf2c719d8fa30",
+      "statement": "A release blocker has been relabeled, suppressed, or accepted without an accountable risk owner.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 54
+      },
+      "heading_trail": [
+        "Release foundations",
+        "2. Immediate no-go conditions"
+      ],
+      "primary_packet_id": "docs-checklists-01-release-foundations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A versioned gate policy defines release blockers, and authenticated history and ownership records can show every relabel, suppression, or acceptance and its owner.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every blocker defined by the versioned release policy retains an authenticated status-change and exception history.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Each relabeled, suppressed, or accepted blocker has an active accountable risk-owner identity in the approved ownership record.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-03-001",
+      "revision": 1,
+      "semantic_sha256": "9848e03085419a63bc9c152d6f7c383b0e55eda3c80ac75e7ff3ee938bdac9e2",
+      "statement": "Assign a unique release identifier.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 65
+      },
+      "heading_trail": [
+        "Release foundations",
+        "3. Release control record",
+        "3.1 Release identity"
+      ],
+      "primary_packet_id": "docs-checklists-01-release-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "A release ledger can deterministically require a nonempty identifier and prove its uniqueness within the declared project release namespace.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The release record has a nonempty identifier that occurs exactly once in the declared project release namespace.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-03-002",
+      "revision": 1,
+      "semantic_sha256": "022dcf91273cf66582c1076073161c432db0bfaac1d5228b987c9f7e7c58540b",
+      "statement": "Record the exact source commit or commits.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 66
+      },
+      "heading_trail": [
+        "Release foundations",
+        "3. Release control record",
+        "3.1 Release identity"
+      ],
+      "primary_packet_id": "docs-checklists-01-release-foundations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Source identities are immutable machine values, and the recorded set can be compared exactly with the source inputs in verified build provenance.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The release record contains one or more syntactically valid immutable source commit identifiers.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "The recorded source commit set exactly equals the source commit set in verified provenance for every release artifact.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-03-003",
+      "revision": 1,
+      "semantic_sha256": "98f645cde26dcabb895d1b912db2653f6134b90e7e9bbf17f82b93f30077e3bf",
+      "statement": "Record the immutable application artifact digest.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 67
+      },
+      "heading_trail": [
+        "Release foundations",
+        "3. Release control record",
+        "3.1 Release identity"
+      ],
+      "primary_packet_id": "docs-checklists-01-release-foundations-md-part-001",
+      "primary_route": "artifact_verification",
+      "primary_reason": "The recorded digest can be parsed with a fixed algorithm and compared byte-for-byte with a fresh digest of the exact application artifact.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The release record contains an approved cryptographic digest algorithm and digest that match the exact application artifact bytes.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-03-004",
+      "revision": 1,
+      "semantic_sha256": "1f28969256faa65795e14da2dd09e11f320be86050e2262241b3d83ed8014312",
+      "statement": "Record every deployable service, worker, scheduled job, frontend bundle, and infrastructure component included.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 68
+      },
+      "heading_trail": [
+        "Release foundations",
+        "3. Release control record",
+        "3.1 Release identity"
+      ],
+      "primary_packet_id": "docs-checklists-01-release-foundations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Deployable release contents are finite and can be enumerated from sealed build and deployment manifests, then compared with the release component record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Sealed build and deployment manifests produce a complete inventory of deployable components included in the release.",
+          "checker_family": "inventory_fact",
+          "evidence_authority": "artifact"
+        },
+        {
+          "statement": "The release record lists exactly every component in the complete deployable inventory with its type and immutable identity.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-03-005",
+      "revision": 1,
+      "semantic_sha256": "3f511ed524007d5bfaf5c5a406e638f737486c6573639e80ec80c05b62928918",
+      "statement": "Record database schema and migration versions.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 69
+      },
+      "heading_trail": [
+        "Release foundations",
+        "3. Release control record",
+        "3.1 Release identity"
+      ],
+      "primary_packet_id": "docs-checklists-01-release-foundations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Database schema and migration identifiers are structured machine values that can be collected from the target environment and matched to the release record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "A read-only environment query returns the schema and migration version for every database in the approved release scope.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "The release record exactly matches every collected database schema and migration version.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-03-006",
+      "revision": 1,
+      "semantic_sha256": "b70a35534242fb71066002ae8e651ab06d2e4be1d3c31af52c6fe502e2addc6d",
+      "statement": "Record production configuration versions.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 70
+      },
+      "heading_trail": [
+        "Release foundations",
+        "3. Release control record",
+        "3.1 Release identity"
+      ],
+      "primary_packet_id": "docs-checklists-01-release-foundations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Versioned production configuration identities can be collected through read-only connectors and compared exactly with their release-recorded values.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Read-only environment evidence identifies every versioned production configuration in the approved release scope.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "The release record exactly lists the collected production configuration identities and versions.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-03-007",
+      "revision": 1,
+      "semantic_sha256": "9167eda2d48c52edec2b086f49f86023e27feeb7a45260c6bb11f29f865a8fec",
+      "statement": "Record feature flags and their intended launch states.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 71
+      },
+      "heading_trail": [
+        "Release foundations",
+        "3. Release control record",
+        "3.1 Release identity"
+      ],
+      "primary_packet_id": "docs-checklists-01-release-foundations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Feature-flag inventories and intended states are finite structured data, so complete environment and release records can be compared without interpretation.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "A read-only flag-system query produces the complete feature-flag inventory for the approved launch scope.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "The release record lists every inventoried flag and one explicit intended launch state for each flag.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-03-009",
+      "revision": 1,
+      "semantic_sha256": "c03a7063bb480fac3be3c8397e880247343b0a8e3de2e6be9d41b56b317eaa76",
+      "statement": "Record the intended production regions, accounts, projects, clusters, and domains.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 73
+      },
+      "heading_trail": [
+        "Release foundations",
+        "3. Release control record",
+        "3.1 Release identity"
+      ],
+      "primary_packet_id": "docs-checklists-01-release-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The intended deployment scope is a release-owner declaration, and a schema can require explicit identifiers for each applicable location and resource type.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authenticated release record contains explicit production region, account, project, cluster, and domain lists, including recorded empty or not-applicable states where permitted.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-03-010",
+      "revision": 1,
+      "semantic_sha256": "e28cf718150de651b7bf516bd0fede4aa729469ab32a5aaf66f844cb5f3664d4",
+      "statement": "Record the target deployment date and change window.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 74
+      },
+      "heading_trail": [
+        "Release foundations",
+        "3. Release control record",
+        "3.1 Release identity"
+      ],
+      "primary_packet_id": "docs-checklists-01-release-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Deployment date and change-window boundaries are structured time values whose presence, ordering, timezone, and release binding are objectively validatable.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The release record contains a valid target deployment time and ordered change-window start and end timestamps with an explicit timezone.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-03-012",
+      "revision": 1,
+      "semantic_sha256": "c1fd5005fd86b2ca5761732c1c799862176a760681dff4c80415e36f90c1fb66",
+      "statement": "Freeze or formally track changes after the readiness evidence snapshot.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 76
+      },
+      "heading_trail": [
+        "Release foundations",
+        "3. Release control record",
+        "3.1 Release identity"
+      ],
+      "primary_packet_id": "docs-checklists-01-release-foundations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Content-addressed snapshots and authenticated change history can prove whether every later change was prevented or formally recorded after the evidence cutoff.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The readiness evidence record identifies an immutable source, artifact, configuration, and policy snapshot with a cutoff time.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        },
+        {
+          "statement": "Every change after the cutoff is either rejected by the freeze policy or present in the authenticated change-tracking record.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-03-019",
+      "revision": 1,
+      "semantic_sha256": "92b1d066541c6b24ba4910cb98afe564c8d5d06abdbf5444301895eea8889191",
+      "statement": "List supported countries, languages, currencies, time zones, browsers, devices, and accessibility targets.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 86
+      },
+      "heading_trail": [
+        "Release foundations",
+        "3. Release control record",
+        "3.2 Scope"
+      ],
+      "primary_packet_id": "docs-checklists-01-release-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "These are intended support-policy dimensions, so the authenticated release scope is authoritative and can require explicit typed lists or recorded non-applicability.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The approved support-scope record explicitly lists countries, languages, currencies, time zones, browsers, devices, and accessibility targets or a justified not-applicable value for each dimension.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    }
+  ]
+}

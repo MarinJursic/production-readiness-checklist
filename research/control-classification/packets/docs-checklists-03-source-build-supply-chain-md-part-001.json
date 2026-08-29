@@ -1,0 +1,1033 @@
+{
+  "schema_version": "prc.control-classification-packet/v0.1",
+  "packet_id": "docs-checklists-03-source-build-supply-chain-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "source_path": "docs/checklists/03-source-build-supply-chain.md",
+  "control_count": 73,
+  "controls": [
+    {
+      "control_id": "PRC-07-001",
+      "revision": 1,
+      "semantic_sha256": "51f3eb627b33ff010188b0e0fe63b93f76fc512f1dc5c3976994c1a31fc640d4",
+      "statement": "One authoritative source repository is identified.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 9
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "7. Source control and change management"
+      ]
+    },
+    {
+      "control_id": "PRC-07-002",
+      "revision": 1,
+      "semantic_sha256": "a32358b4dfbc138fc036bd1bae7f053d17a7c626f85c975d87394edd2bdb5a53",
+      "statement": "Repository access uses individual identities rather than shared accounts.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 10
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "7. Source control and change management"
+      ]
+    },
+    {
+      "control_id": "PRC-07-003",
+      "revision": 1,
+      "semantic_sha256": "45b263320a32a0b4abb0d2f0ff0a431583ce934bcbd81d1576a238df6faf8747",
+      "statement": "Strong authentication is required for repository access.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 11
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "7. Source control and change management"
+      ]
+    },
+    {
+      "control_id": "PRC-07-004",
+      "revision": 1,
+      "semantic_sha256": "0ee3c3f8c577130ea6bbbc6c9903ef44dd6d8830bd0e8de1f8fa54e2b052e8f2",
+      "statement": "Access follows least privilege.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 12
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "7. Source control and change management"
+      ]
+    },
+    {
+      "control_id": "PRC-07-005",
+      "revision": 1,
+      "semantic_sha256": "7ffd677a9bf43364caed3830ef5f13460b385da3ad6a70bf17fed0347aaf6471",
+      "statement": "Protected branches prevent unreviewed direct changes.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 13
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "7. Source control and change management"
+      ]
+    },
+    {
+      "control_id": "PRC-07-006",
+      "revision": 1,
+      "semantic_sha256": "cb8b9b7e1a7a43b1a8d157939c7a7b94f7e2880e07a8418ea266cdcf7484a5e9",
+      "statement": "Material changes require independent review.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 14
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "7. Source control and change management"
+      ]
+    },
+    {
+      "control_id": "PRC-07-007",
+      "revision": 1,
+      "semantic_sha256": "d8dad25f9727807110643275bf8526f51d7cb45166c4e126e448e93555bd877b",
+      "statement": "Critical code areas require designated reviewers.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 15
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "7. Source control and change management"
+      ]
+    },
+    {
+      "control_id": "PRC-07-008",
+      "revision": 1,
+      "semantic_sha256": "052c0ba9aac2e66836a60ecbdf9a6c4d5faf1d3e3e9671601d88940220894ab2",
+      "statement": "Review cannot be bypassed silently by administrators.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 16
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "7. Source control and change management"
+      ]
+    },
+    {
+      "control_id": "PRC-07-009",
+      "revision": 1,
+      "semantic_sha256": "32e7b292379a932144859e1a55cb2090235d0b6dff5adc8c6a78c1ac98b8da0c",
+      "statement": "Merge requirements include the required automated checks.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 17
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "7. Source control and change management"
+      ]
+    },
+    {
+      "control_id": "PRC-07-010",
+      "revision": 1,
+      "semantic_sha256": "b2cbade624d6bdff57f696dc48fdafd2459b60dd7b87f6edd1c55be26931416d",
+      "statement": "Security-sensitive changes receive appropriate specialist review.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 18
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "7. Source control and change management"
+      ]
+    },
+    {
+      "control_id": "PRC-07-011",
+      "revision": 1,
+      "semantic_sha256": "5d8cc9dcb2d451aaa40e17ad90225aa8b0372a7a73f3e952c9d05ec092a1ce2b",
+      "statement": "Infrastructure, pipeline, authorization, cryptography, payment, and migration changes receive heightened review.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 19
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "7. Source control and change management"
+      ]
+    },
+    {
+      "control_id": "PRC-07-012",
+      "revision": 1,
+      "semantic_sha256": "24a5c64dcf4131481543ba784349a5009b8ead08489a2f9cd8a30802ee42ca05",
+      "statement": "Changes are traceable from requirement or issue to code, review, build, artifact, and deployment.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 20
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "7. Source control and change management"
+      ]
+    },
+    {
+      "control_id": "PRC-07-013",
+      "revision": 1,
+      "semantic_sha256": "9f9174de567fa5c29901da39d4eaa657c17d08099120706a83fd3727de9350e1",
+      "statement": "Commit history and release tags are protected against unauthorized rewriting.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 21
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "7. Source control and change management"
+      ]
+    },
+    {
+      "control_id": "PRC-07-014",
+      "revision": 1,
+      "semantic_sha256": "98c9a85654674b37ce42b1482edfea63dd962afde1c791ab3ba6283f6c812280",
+      "statement": "Secret scanning covers current changes and repository history.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 22
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "7. Source control and change management"
+      ]
+    },
+    {
+      "control_id": "PRC-07-015",
+      "revision": 1,
+      "semantic_sha256": "488b4b319b92c9371aff56f08df5383a0eeaf9ad8da94ee58455f07fc8e368d4",
+      "statement": "Large binaries, generated files, and vendored code are controlled.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 23
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "7. Source control and change management"
+      ]
+    },
+    {
+      "control_id": "PRC-07-016",
+      "revision": 1,
+      "semantic_sha256": "4de6c399cf0679dcf35931bbd2663af8015d32d04dd847ec3c089f4ddad9db61",
+      "statement": "Generated code has a documented trusted source and regeneration process.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 24
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "7. Source control and change management"
+      ]
+    },
+    {
+      "control_id": "PRC-07-017",
+      "revision": 1,
+      "semantic_sha256": "3fd5766d5fc6256bb0255e40ee83fc1b47fdb000d814fa99a785d6094eb61b37",
+      "statement": "Emergency changes follow a documented break-glass process and receive retrospective review.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 25
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "7. Source control and change management"
+      ]
+    },
+    {
+      "control_id": "PRC-07-018",
+      "revision": 1,
+      "semantic_sha256": "c99a1614fd5d10d78b08446f4246d7c6754347c326b422ea8358366702de4800",
+      "statement": "Repository backup and recovery have been tested.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 26
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "7. Source control and change management"
+      ]
+    },
+    {
+      "control_id": "PRC-07-019",
+      "revision": 1,
+      "semantic_sha256": "f6a638a73d0c4b6cb2d80e950764dbcc45acb1eb24a1d4b41c6aa02310c4739a",
+      "statement": "Departed personnel and obsolete automation identities no longer have access.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 27
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "7. Source control and change management"
+      ]
+    },
+    {
+      "control_id": "PRC-07-020",
+      "revision": 1,
+      "semantic_sha256": "4ceda9bfaaf3c692e04e1fc21bab4410d5d84de098aecac28621c56a8466cb31",
+      "statement": "Repository webhooks, apps, bots, and deploy keys are inventoried and restricted.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 28
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "7. Source control and change management"
+      ]
+    },
+    {
+      "control_id": "PRC-08-001",
+      "revision": 1,
+      "semantic_sha256": "fd052fbe66d134d62feb72e7e4697d981a3811a922c44cba4daffa6049a34e4f",
+      "statement": "Builds run from reviewed source.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 36
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "8. Build, CI/CD, and artifact integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-08-002",
+      "revision": 1,
+      "semantic_sha256": "6d06dcc047fa775b412d9180303e07625a361d7d70c8faa825b757e41c496562",
+      "statement": "Builds are automated and repeatable.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 37
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "8. Build, CI/CD, and artifact integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-08-003",
+      "revision": 1,
+      "semantic_sha256": "e43d672c3a433f3537b9ed16f66f238281a02e0f8deba71196883e87f4afcf3e",
+      "statement": "A clean build produces equivalent output from the same declared inputs.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 38
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "8. Build, CI/CD, and artifact integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-08-004",
+      "revision": 1,
+      "semantic_sha256": "b1667fae8732903026829b23baaf6c8d995496ac358eacef90f7425831697b9b",
+      "statement": "Build inputs and dependency versions are pinned sufficiently to prevent unexpected substitution.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 39
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "8. Build, CI/CD, and artifact integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-08-005",
+      "revision": 1,
+      "semantic_sha256": "9345733e0e39d915f84618a3a535c58c4139b50edfbdd0777312f67cd6bd76f2",
+      "statement": "Builds fail closed when required verification cannot run.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 40
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "8. Build, CI/CD, and artifact integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-08-006",
+      "revision": 1,
+      "semantic_sha256": "223ad841c7447d2d6c38d17c7feadd8a7bd8d94f6b03927f6297da14c5c189b9",
+      "statement": "The production artifact is built once and promoted, not independently rebuilt in each environment.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 41
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "8. Build, CI/CD, and artifact integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-08-007",
+      "revision": 1,
+      "semantic_sha256": "803be60cd2ef66ce3a38dce79978b786fe8d41b87bb016ab4496c15a851e3b14",
+      "statement": "Deployable artifacts are immutable.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 42
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "8. Build, CI/CD, and artifact integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-08-008",
+      "revision": 1,
+      "semantic_sha256": "cb3db715ee8b2695414ff1d5dad92aa88a6a05d2cb562e03b8bba7f9d12f4f55",
+      "statement": "Every artifact has a cryptographic digest.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 43
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "8. Build, CI/CD, and artifact integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-08-009",
+      "revision": 1,
+      "semantic_sha256": "b60d4ed82d8313f6492192f2356208d40053ca3d384c37bc152ea90a912f8612",
+      "statement": "Build provenance records source, builder, inputs, commands or workflow, time, and output digest.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 44
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "8. Build, CI/CD, and artifact integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-08-010",
+      "revision": 1,
+      "semantic_sha256": "0ddadff15ebc9b078c8ae50c853b4a8ddb9c97342d761a088e825c8aea00aba1",
+      "statement": "Artifact signatures or attestations are verified before deployment.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 45
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "8. Build, CI/CD, and artifact integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-08-011",
+      "revision": 1,
+      "semantic_sha256": "dbc3c6c7bf5cb9b5f11c100d2c05c864a6668a7b3bf68bb494d4425cbccf0119",
+      "statement": "Build identities and signing keys use least privilege.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 46
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "8. Build, CI/CD, and artifact integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-08-012",
+      "revision": 1,
+      "semantic_sha256": "8048a09692c91a7623647ecd0d565d1798ea36924f568bee1e5cce69b6d86c71",
+      "statement": "Build and signing keys are stored outside source code and build output.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 47
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "8. Build, CI/CD, and artifact integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-08-013",
+      "revision": 1,
+      "semantic_sha256": "6a949c200ca65d2bf68150ffb95c1351f5b3e4a87a0a32ef755ae92bb1315006",
+      "statement": "Build runners are patched and isolated appropriately.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 48
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "8. Build, CI/CD, and artifact integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-08-014",
+      "revision": 1,
+      "semantic_sha256": "865c067c58d269c5da02d792ad34b9f4ce9df994ee96843a9e8054734cb61aff",
+      "statement": "Untrusted contribution workflows cannot access production secrets.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 49
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "8. Build, CI/CD, and artifact integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-08-015",
+      "revision": 1,
+      "semantic_sha256": "a02abdfed1f2cb55a79971d18b622eb8603a32dbefa8433edd02053e3f054c3b",
+      "statement": "Pull-request builds cannot overwrite trusted release artifacts.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 50
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "8. Build, CI/CD, and artifact integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-08-016",
+      "revision": 1,
+      "semantic_sha256": "903061764e26c6cb077626ece16255c17d8b0838a6099fa916dbfb42ec9d766a",
+      "statement": "CI jobs have minimum required network, repository, cloud, and registry permissions.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 51
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "8. Build, CI/CD, and artifact integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-08-017",
+      "revision": 1,
+      "semantic_sha256": "41fcbe717d0af089c8fe24d4dc5c982ed627417b43c97003166ee7b6cfb30e32",
+      "statement": "Pipeline definitions receive the same review protection as application code.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 52
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "8. Build, CI/CD, and artifact integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-08-018",
+      "revision": 1,
+      "semantic_sha256": "011dc0aed20f7fd36d9ea9b49ec04ac70cd29f625c65a08494d2ee075963e014",
+      "statement": "Required unit, integration, security, policy, and packaging checks cannot be skipped silently.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 53
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "8. Build, CI/CD, and artifact integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-08-019",
+      "revision": 1,
+      "semantic_sha256": "5374f4e9fe797f91dadb67b39d0ffad5f0792251a0bc6b2876f15c293be554ad",
+      "statement": "Failed or canceled checks cannot be misrepresented as passed.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 54
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "8. Build, CI/CD, and artifact integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-08-020",
+      "revision": 1,
+      "semantic_sha256": "5ab8d31bbff232c97eecc0b09d5ccf79864ffacb60e74f023a05281946f23970",
+      "statement": "Artifact registries enforce authentication, authorization, immutability, and retention.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 55
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "8. Build, CI/CD, and artifact integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-08-021",
+      "revision": 1,
+      "semantic_sha256": "789ed32938b3a2184c7ad25efec4b9b34d9ccd6ae4f44a07f58adfd81de5b871",
+      "statement": "The previous known-good artifact remains available.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 56
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "8. Build, CI/CD, and artifact integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-08-022",
+      "revision": 1,
+      "semantic_sha256": "ee6f165c133b284a47af90ad44148ca5b16ccad8b1c2178e2a6db9e58e654021",
+      "statement": "Build logs do not expose secrets or sensitive source material.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 57
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "8. Build, CI/CD, and artifact integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-08-023",
+      "revision": 1,
+      "semantic_sha256": "793f79b91db4658b5cd18c0ee8c1d3040f384f86355bf6fec3b1f4bdcc438570",
+      "statement": "Build caches cannot substitute unverified or cross-trust artifacts.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 58
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "8. Build, CI/CD, and artifact integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-08-024",
+      "revision": 1,
+      "semantic_sha256": "7c05f34f30b1bb604762d6a51c95007598b63bc22e7f00850986c345b0baaf38",
+      "statement": "Release tags, artifacts, provenance, and deployment records agree.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 59
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "8. Build, CI/CD, and artifact integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-08-025",
+      "revision": 1,
+      "semantic_sha256": "58d3c8be4fd9f5c8fee5a24febd5e0f87cd3b9480b6a9a724e25a5b921b2303c",
+      "statement": "Compromise of the build platform has a documented containment and recovery procedure.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 60
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "8. Build, CI/CD, and artifact integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-08-026",
+      "revision": 1,
+      "semantic_sha256": "7f20b18ca90f2a5e7439d80a87b9bd097e7bc519561e7bfea0fd9efa115ffb0c",
+      "statement": "A supply-chain incident drill has tested revocation, rebuild, resigning, and redeployment.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 61
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "8. Build, CI/CD, and artifact integrity"
+      ]
+    },
+    {
+      "control_id": "PRC-09-001",
+      "revision": 1,
+      "semantic_sha256": "3816b61e4f3b5fb76f55d2e33f31b2a9fb15dd678d060449abb50f4d92b08f16",
+      "statement": "Generate an SBOM for every released application artifact.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 69
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "9. Dependencies, SBOM, and licenses"
+      ]
+    },
+    {
+      "control_id": "PRC-09-002",
+      "revision": 1,
+      "semantic_sha256": "f4fac65520816624cc190010739e9ef17f62c2f7bee7048b5cb72298fe151f75",
+      "statement": "Include direct and transitive components.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 70
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "9. Dependencies, SBOM, and licenses"
+      ]
+    },
+    {
+      "control_id": "PRC-09-003",
+      "revision": 1,
+      "semantic_sha256": "598ffdb5b2c743e758a70ee303e6d61d1bf6c76c0a6b906a53a3b0f277c2f1d8",
+      "statement": "Include runtime, operating-system, container, client, server, plugin, model, and embedded components as applicable.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 71
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "9. Dependencies, SBOM, and licenses"
+      ]
+    },
+    {
+      "control_id": "PRC-09-004",
+      "revision": 1,
+      "semantic_sha256": "32496def6af1eef434376cbf7304a9dbd5e37821503e2a16279cc68476a50dca",
+      "statement": "Distinguish build-only, development-only, optional, and runtime dependencies.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 72
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "9. Dependencies, SBOM, and licenses"
+      ]
+    },
+    {
+      "control_id": "PRC-09-005",
+      "revision": 1,
+      "semantic_sha256": "51ebb3e76e27a5a7c6e8b67977e19f1485a415e44b610ef85a06faa72be81cfa",
+      "statement": "Record exact versions, package identifiers, sources, hashes, and relationships.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 73
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "9. Dependencies, SBOM, and licenses"
+      ]
+    },
+    {
+      "control_id": "PRC-09-006",
+      "revision": 1,
+      "semantic_sha256": "b77be54a304f26c69cd695dccda291a73200f03da9c8663989fecd9729e009f3",
+      "statement": "Record license information and required notices.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 74
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "9. Dependencies, SBOM, and licenses"
+      ]
+    },
+    {
+      "control_id": "PRC-09-007",
+      "revision": 1,
+      "semantic_sha256": "fbf6b416502e4a2ca3582b654ad9de6cc01289c6dee276d7f5b23df8cd699b52",
+      "statement": "Link the SBOM to the released artifact digest.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 75
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "9. Dependencies, SBOM, and licenses"
+      ]
+    },
+    {
+      "control_id": "PRC-09-008",
+      "revision": 1,
+      "semantic_sha256": "eb7d51fa154ebd9e502ddc0d224c22f55c81d19cf5d080968fc3d8f50d31cb35",
+      "statement": "Verify the SBOM against the final packaged artifact.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 76
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "9. Dependencies, SBOM, and licenses"
+      ]
+    },
+    {
+      "control_id": "PRC-09-009",
+      "revision": 1,
+      "semantic_sha256": "42582eb9db53f5effd85521b8e4aabc04bb1c8cb65eda79a6f1f2d9046028438",
+      "statement": "Ensure no unexpected undeclared components are present.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 77
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "9. Dependencies, SBOM, and licenses"
+      ]
+    },
+    {
+      "control_id": "PRC-09-010",
+      "revision": 1,
+      "semantic_sha256": "be04590426e23cf0a1921138ba48c84cb6dbb2705565ca24b95490c1e3a887fc",
+      "statement": "Remove unused dependencies.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 78
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "9. Dependencies, SBOM, and licenses"
+      ]
+    },
+    {
+      "control_id": "PRC-09-011",
+      "revision": 1,
+      "semantic_sha256": "ca23bea74dce7ac99480134519826ad22f9b1ada744b397c902dce43d5b25768",
+      "statement": "Remove unsupported and end-of-life dependencies.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 79
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "9. Dependencies, SBOM, and licenses"
+      ]
+    },
+    {
+      "control_id": "PRC-09-012",
+      "revision": 1,
+      "semantic_sha256": "571cea4a2c6c75eb7fe2700514a5e52e9e2c9c23fd3fb8713814054f06dc7586",
+      "statement": "Check whether dependencies come from intended publishers and registries.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 80
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "9. Dependencies, SBOM, and licenses"
+      ]
+    },
+    {
+      "control_id": "PRC-09-013",
+      "revision": 1,
+      "semantic_sha256": "c056b55d1422c41747c2517be74f5c42fe322aa264b5d1cc99fb92200cdb5ed9",
+      "statement": "Protect against dependency confusion, namespace collision, and typographical substitution.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 81
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "9. Dependencies, SBOM, and licenses"
+      ]
+    },
+    {
+      "control_id": "PRC-09-014",
+      "revision": 1,
+      "semantic_sha256": "7bb5edfe6cedd69f7c120b934d9fd50a1cc3571fdcabcbd4520075fc7a6018a4",
+      "statement": "Assess maintainer health and abandonment risk for critical dependencies.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 82
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "9. Dependencies, SBOM, and licenses"
+      ]
+    },
+    {
+      "control_id": "PRC-09-015",
+      "revision": 1,
+      "semantic_sha256": "7ebe711e6e85d021559b561fbbb4ff13ecbddc92378748c373a7ee8ddf1f7c97",
+      "statement": "Monitor upstream security advisories.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 83
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "9. Dependencies, SBOM, and licenses"
+      ]
+    },
+    {
+      "control_id": "PRC-09-016",
+      "revision": 1,
+      "semantic_sha256": "ed332d73536af8e4960c9ad0b5b7a2baa3b573b9492e5a1e1ba30081915487bd",
+      "statement": "Continuously scan released components for newly disclosed vulnerabilities.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 84
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "9. Dependencies, SBOM, and licenses"
+      ]
+    },
+    {
+      "control_id": "PRC-09-017",
+      "revision": 1,
+      "semantic_sha256": "cf1b5930b82700a2f30fa10fb30ea222648a9dabd6c7536c6eec0b44104a9c46",
+      "statement": "Prioritize vulnerabilities using exploit activity, reachability, exposure, asset criticality, data sensitivity, and compensating controls.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 85
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "9. Dependencies, SBOM, and licenses"
+      ]
+    },
+    {
+      "control_id": "PRC-09-018",
+      "revision": 1,
+      "semantic_sha256": "b95ff43b212930dc23b9abd20281d577c25cf82c9f720cbbf148560f4a39e02f",
+      "statement": "Check relevant known-exploited-vulnerability catalogs.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 86
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "9. Dependencies, SBOM, and licenses"
+      ]
+    },
+    {
+      "control_id": "PRC-09-019",
+      "revision": 1,
+      "semantic_sha256": "4e1aea1a4204d8761bc159cf35f1e6e5ef006086a3c1930ef57087b49e6cc011",
+      "statement": "Define remediation targets by actual risk.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 87
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "9. Dependencies, SBOM, and licenses"
+      ]
+    },
+    {
+      "control_id": "PRC-09-020",
+      "revision": 1,
+      "semantic_sha256": "4ee106f907fd997e47bd456eb65607313412725038a9d73bceee2eadeddc2c1c",
+      "statement": "Verify fixes or mitigations after deployment.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 88
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "9. Dependencies, SBOM, and licenses"
+      ]
+    },
+    {
+      "control_id": "PRC-09-021",
+      "revision": 1,
+      "semantic_sha256": "b3990371369361d1d8ff50eab5c2e5a6f416d8144b5f01bf1fbd5a23fb59a8df",
+      "statement": "Maintain a process for emergency replacement of a compromised dependency.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 89
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "9. Dependencies, SBOM, and licenses"
+      ]
+    },
+    {
+      "control_id": "PRC-09-022",
+      "revision": 1,
+      "semantic_sha256": "10fcbad9a16daf8df1027f3c8a4edcf2fe2ac2602fe749b2f20d6e55d51df8b6",
+      "statement": "Document ownership of vendored, forked, or internally patched components.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 90
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "9. Dependencies, SBOM, and licenses"
+      ]
+    },
+    {
+      "control_id": "PRC-09-023",
+      "revision": 1,
+      "semantic_sha256": "b7765d8e6c3cd5e766811e852b51eca621f506dd85df243c8e406a6e970ca1f3",
+      "statement": "Test updates before promotion.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 91
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "9. Dependencies, SBOM, and licenses"
+      ]
+    },
+    {
+      "control_id": "PRC-09-024",
+      "revision": 1,
+      "semantic_sha256": "68f8672403d480d3402f1a16fbd1f57562340cb2b3a5bede7c6bfb56056cfffc",
+      "statement": "Verify license compatibility among combined components.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 92
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "9. Dependencies, SBOM, and licenses"
+      ]
+    },
+    {
+      "control_id": "PRC-09-025",
+      "revision": 1,
+      "semantic_sha256": "356b90f33610b7db9c8747ea071edd4d536a975e99cfdcb28cdc5c62e9dfb522",
+      "statement": "Provide required attributions, source offers, notices, and redistribution terms.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 93
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "9. Dependencies, SBOM, and licenses"
+      ]
+    },
+    {
+      "control_id": "PRC-09-026",
+      "revision": 1,
+      "semantic_sha256": "42f3f78e0a642bf6fdf7d5217f0fb145491480fbf672081e1bbbb0f4703ebbb4",
+      "statement": "Ensure proprietary or confidential code is not unintentionally incorporated into distributable artifacts.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 94
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "9. Dependencies, SBOM, and licenses"
+      ]
+    },
+    {
+      "control_id": "PRC-09-027",
+      "revision": 1,
+      "semantic_sha256": "323c5a4d7de6d1dc643cd772a4e793762577c748e5fe3c443a69247178d17921",
+      "statement": "Retain SBOMs for historical releases and incident investigation.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 95
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "9. Dependencies, SBOM, and licenses"
+      ]
+    }
+  ]
+}

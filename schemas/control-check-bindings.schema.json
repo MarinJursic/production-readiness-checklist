@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/control-check-bindings.schema.json",
+  "title": "Production Readiness Deterministic Control Check Bindings v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "generator_id", "registry_version", "registry_sha256", "methodology_sha256", "classification_corpus_sha256", "implementation_registry", "binding_count", "bindings"],
+  "properties": {
+    "schema_version": {"const": "prc.control-check-bindings/v0.1"},
+    "generator_id": {"const": "prc.build-control-check-bindings@0.1"},
+    "registry_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "registry_sha256": {"$ref": "#/$defs/digest"},
+    "methodology_sha256": {"$ref": "#/$defs/digest"},
+    "classification_corpus_sha256": {"$ref": "#/$defs/digest"},
+    "implementation_registry": {
+      "type": "array", "minItems": 11, "maxItems": 11,
+      "items": {"$ref": "#/$defs/implementation"}
+    },
+    "binding_count": {"type": "integer", "minimum": 1, "maximum": 100000},
+    "bindings": {
+      "type": "array", "minItems": 1, "maxItems": 100000,
+      "items": {"$ref": "#/$defs/binding"}
+    }
+  },
+  "$defs": {
+    "digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "control_id": {"type": "string", "pattern": "^(PRC-[0-9]{2}-[0-9]{3}|USEQ-[A-F0-9]{8})$"},
+    "checker_family": {
+      "enum": ["inventory_fact", "structured_document", "package_metadata", "ci_policy", "container_iac", "source_ast", "artifact_integrity", "analysis_adapter", "execution_evidence", "environment_evidence", "structured_record"]
+    },
+    "authority": {"enum": ["repository", "artifact", "executed", "environment", "external_registry", "structured_record"]},
+    "implementation": {
+      "type": "object", "additionalProperties": false,
+      "required": ["checker_family", "implementation_id", "supported_evidence_authorities", "capability_class", "external_provider_registration", "implementation_contract_sha256", "registration_state", "on_unregistered", "external_provider_claimed"],
+      "properties": {
+        "checker_family": {"$ref": "#/$defs/checker_family"},
+        "implementation_id": {"type": "string", "pattern": "^prc\\.check\\.[a-z0-9-]+@[0-9]+\\.[0-9]+$"},
+        "supported_evidence_authorities": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/authority"}},
+        "capability_class": {"enum": ["read_workspace", "read_workspace_or_external_readonly", "read_workspace_or_environment_readonly", "read_artifact", "executed_evidence", "external_readonly", "structured_record_evidence"]},
+        "external_provider_registration": {"const": "required_when_authority_is_environment_or_external_registry"},
+        "implementation_contract_sha256": {"$ref": "#/$defs/digest"},
+        "registration_state": {"const": "runtime_registration_required"},
+        "on_unregistered": {"const": "blocked"},
+        "external_provider_claimed": {"const": false}
+      }
+    },
+    "applicability_contract": {
+      "type": "object", "additionalProperties": false,
+      "required": ["applicable_result", "not_applicable_requires", "unresolved_result"],
+      "properties": {
+        "applicable_result": {"const": "applicable"},
+        "not_applicable_requires": {"const": "authoritative_bounded_absence_proof"},
+        "unresolved_result": {"const": "blocked"}
+      }
+    },
+    "result_branch": {
+      "type": "object", "additionalProperties": false,
+      "required": ["result", "requires_all"],
+      "properties": {
+        "result": {"enum": ["pass", "fail"]},
+        "requires_all": {
+          "type": "array", "minItems": 1, "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^[a-z0-9_]+$"}
+        }
+      }
+    },
+    "blocked_branch": {
+      "type": "object", "additionalProperties": false,
+      "required": ["result", "when_any"],
+      "properties": {
+        "result": {"const": "blocked"},
+        "when_any": {
+          "type": "array", "minItems": 1, "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^[a-z0-9_]+$"}
+        }
+      }
+    },
+    "result_contract": {
+      "type": "object", "additionalProperties": false,
+      "required": ["pass", "fail", "blocked"],
+      "properties": {
+        "pass": {"$ref": "#/$defs/result_branch"},
+        "fail": {"$ref": "#/$defs/result_branch"},
+        "blocked": {"$ref": "#/$defs/blocked_branch"}
+      }
+    },
+    "clause": {
+      "type": "object", "additionalProperties": false,
+      "required": ["clause_id", "ordinal", "statement", "checker_family", "evidence_authority", "implementation_id", "implementation_contract_sha256", "implementation_registration", "provider_contract", "external_provider_claimed", "result_contract"],
+      "properties": {
+        "clause_id": {"$ref": "#/$defs/digest"},
+        "ordinal": {"type": "integer", "minimum": 1, "maximum": 50},
+        "statement": {"type": "string", "minLength": 1, "maxLength": 2000},
+        "checker_family": {"$ref": "#/$defs/checker_family"},
+        "evidence_authority": {"$ref": "#/$defs/authority"},
+        "implementation_id": {"type": "string", "pattern": "^prc\\.check\\.[a-z0-9-]+@[0-9]+\\.[0-9]+$"},
+        "implementation_contract_sha256": {"$ref": "#/$defs/digest"},
+        "implementation_registration": {"const": "required_before_execution"},
+        "provider_contract": {"const": "required_before_execution"},
+        "external_provider_claimed": {"const": false},
+        "result_contract": {"$ref": "#/$defs/result_contract"}
+      }
+    },
+    "binding": {
+      "type": "object", "additionalProperties": false,
+      "required": ["control_id", "revision", "semantic_sha256", "final_row_sha256", "route", "aggregation", "applicability_contract", "clauses"],
+      "properties": {
+        "control_id": {"$ref": "#/$defs/control_id"},
+        "revision": {"type": "integer", "minimum": 1},
+        "semantic_sha256": {"$ref": "#/$defs/digest"},
+        "final_row_sha256": {"$ref": "#/$defs/digest"},
+        "route": {"enum": ["local_static", "artifact_verification", "bounded_execution", "external_readonly_query", "structured_record_validation", "deterministic_composite"]},
+        "aggregation": {"const": "all_clauses_pass"},
+        "applicability_contract": {"$ref": "#/$defs/applicability_contract"},
+        "clauses": {"type": "array", "minItems": 1, "maxItems": 50, "items": {"$ref": "#/$defs/clause"}}
+      }
+    }
+  }
+}

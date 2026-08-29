@@ -1,0 +1,2418 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-checklists-07-reliability-operations-md-part-001-part-001",
+  "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 100,
+  "controls": [
+    {
+      "control_id": "PRC-27-001",
+      "revision": 1,
+      "semantic_sha256": "75d52620aea45d5e82dcd488afaaa962697f86ce185b57978b81c8c419580625",
+      "statement": "User-centric service-level indicators are defined.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 11
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "27. Reliability, resilience, and failure engineering"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "A versioned SLI record can objectively name its user outcome, query, unit, scope, and freshness; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "User-centric service-level indicators are defined.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-27-005",
+      "revision": 1,
+      "semantic_sha256": "a1a569afdf637f5869ebaec67c90e4639efcec1303f2d8b821f0780bd1ca1f65",
+      "statement": "An error-budget policy controls release and reliability decisions.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 15
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "27. Reliability, resilience, and failure engineering"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A versioned error-budget policy can be joined to release-gate and reliability-decision records for exact enforcement; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "An error-budget policy controls release and reliability decisions.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-27-007",
+      "revision": 1,
+      "semantic_sha256": "1037a23857f569671b6d240c2b58ec441cb1c5a85b83fe9d234c513be6ec4b2b",
+      "statement": "Critical dependencies have reliability expectations compatible with the product SLO.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 17
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "27. Reliability, resilience, and failure engineering"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Declared dependency objectives can be compared mathematically with the product SLO and dependency topology; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Critical dependencies have reliability expectations compatible with the product SLO.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-27-010",
+      "revision": 1,
+      "semantic_sha256": "b59611288aeb018568fc2e291912b7ea1be9745286d4b42b97a770a47d175515",
+      "statement": "Retries are bounded.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 20
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "27. Reliability, resilience, and failure engineering"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "local_static",
+      "primary_reason": "A named retry-count policy and complete supported retry-site inventory provide exact upper-bound predicates; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Retries are bounded.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-27-018",
+      "revision": 1,
+      "semantic_sha256": "e0738b572725124273144d96f022c55bcbf3937deedfa5bd53fa33c7f5eb5152",
+      "statement": "Health checks distinguish process liveness from readiness to serve.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 28
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "27. Reliability, resilience, and failure engineering"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Independent liveness and readiness failure cases produce exact expected health-check outcomes; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Health checks distinguish process liveness from readiness to serve.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-27-019",
+      "revision": 1,
+      "semantic_sha256": "d5249e0900c8beff152eae6cd5bf3d9872e3bbedb5a256db8936a4b232c4f28b",
+      "statement": "Instances stop receiving work before shutdown.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 29
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "27. Reliability, resilience, and failure engineering"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Shutdown ordering can be instrumented to prove work admission stops before process termination; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Instances stop receiving work before shutdown.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-27-021",
+      "revision": 1,
+      "semantic_sha256": "262d346100a49b09c33a1502effcb01dc70899f0e7b95b8c91af72a3dba732c2",
+      "statement": "Redundancy crosses the failure domains it is intended to survive.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 31
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "27. Reliability, resilience, and failure engineering"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Declared failure domains and resource placement can be compared exactly for required redundancy diversity; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Redundancy crosses the failure domains it is intended to survive.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-27-022",
+      "revision": 1,
+      "semantic_sha256": "48ebf1c029ccb888df9aa214df4f615ae2305b6542b4c0dbd35dbefb4ca089dd",
+      "statement": "Shared control planes, identity systems, networks, storage, DNS, and providers are included in failure analysis.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 32
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "27. Reliability, resilience, and failure engineering"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The named shared dependencies can be required as explicit entries in the versioned failure-analysis record; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Shared control planes, identity systems, networks, storage, DNS, and providers are included in failure analysis.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-27-035",
+      "revision": 1,
+      "semantic_sha256": "14966cc5b16ffac5bbc10bc6efb84f259d8ff139b87b3b73d11fac2ed3d6f62f",
+      "statement": "Maintenance and degraded modes are documented.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 45
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "27. Reliability, resilience, and failure engineering"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Versioned maintenance and degraded-mode documents have objective presence and required-field predicates; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Maintenance and degraded modes are documented.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-27-037",
+      "revision": 1,
+      "semantic_sha256": "63625b21bf296827d85bcc398c037d5d36f3f6e97f9b8f49b646019fd9be7097",
+      "statement": "Recovery time from tested failures meets the approved objective.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 47
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "27. Reliability, resilience, and failure engineering"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A bound recovery execution duration can be compared numerically with the approved objective; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Recovery time from tested failures meets the approved objective.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-28-002",
+      "revision": 1,
+      "semantic_sha256": "20071809b606b1b79c961c9558dfc271780624c282278a7c5bd7de6732ec368e",
+      "statement": "Infrastructure changes receive review.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 54
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "28. Infrastructure and platform readiness"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Every inventoried infrastructure change can be joined to an authenticated review record; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Infrastructure changes receive review.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-28-005",
+      "revision": 1,
+      "semantic_sha256": "db1e1f363047721f46dd0adc2c37e80fdfc3774618bb27615fbdfcf14cc387e9",
+      "statement": "Resource ownership and criticality are labeled.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 57
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "28. Infrastructure and platform readiness"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Every resource in the authoritative inventory can be checked for owner and criticality labels; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Resource ownership and criticality are labeled.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-28-006",
+      "revision": 1,
+      "semantic_sha256": "165c009e214fa856901cc487330670d8cf651501c57e7fc08356d0a8380b591b",
+      "statement": "Operating systems, runtimes, database engines, and platform versions are supported.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 58
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "28. Infrastructure and platform readiness"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Complete platform version inventory can be joined to authoritative vendor support lifecycle records; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Operating systems, runtimes, database engines, and platform versions are supported.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "external_registry"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-28-007",
+      "revision": 1,
+      "semantic_sha256": "3dd6117c9e7b348a368950e6431bb811e404cbed09eea127434fe4672b417d07",
+      "statement": "Security patches are current according to risk policy.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 59
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "28. Infrastructure and platform readiness"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Observed patch levels and timestamps can be compared exactly with the versioned risk policy; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Security patches are current according to risk policy.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-28-012",
+      "revision": 1,
+      "semantic_sha256": "1a707c98981e8f508d916c35bd0eecd82074d999d32f37856b64526aff54bc8b",
+      "statement": "Network segmentation and private connectivity are configured as designed.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 64
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "28. Infrastructure and platform readiness"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Effective connectivity and segmentation can be compared exactly with the approved network design graph; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Network segmentation and private connectivity are configured as designed.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-28-015",
+      "revision": 1,
+      "semantic_sha256": "067f6819398a434c008e3c978277da81e8e8635022bd5d9d4efa4cba81095da4",
+      "statement": "Resource quotas and account limits are documented.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 67
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "28. Infrastructure and platform readiness"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The statement requires quotas and account limits to be present in a versioned documentation record; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Resource quotas and account limits are documented.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-28-016",
+      "revision": 1,
+      "semantic_sha256": "e6ba2059e4c9a550599f35ebb79d1095188ca3f8eb5471f8a9f2391020908612",
+      "statement": "Monitoring covers platform control-plane and quota failures.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 68
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "28. Infrastructure and platform readiness"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Named control-plane and quota failure signals can be joined to monitoring rules and canary events; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Monitoring covers platform control-plane and quota failures.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-28-017",
+      "revision": 1,
+      "semantic_sha256": "38a339647ccb0480337492239e22ba9283eeb17986a0fafc681377a1c545af96",
+      "statement": "Configuration drift and unauthorized resources are detected.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 69
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "28. Infrastructure and platform readiness"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Desired-state records, authorization policy, deployed inventory, and detector results permit exact drift comparisons; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Configuration drift and unauthorized resources are detected.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-28-018",
+      "revision": 1,
+      "semantic_sha256": "a388885c99bf63f8918793d974fdb1a4e85497771f191260c9eb4e95d3fee5ea",
+      "statement": "Asset inventory matches deployed infrastructure.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 70
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "28. Infrastructure and platform readiness"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "The authenticated asset inventory can be differenced exactly against the deployed infrastructure inventory; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Asset inventory matches deployed infrastructure.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-28-020",
+      "revision": 1,
+      "semantic_sha256": "eb4bf74f23f23ec0ec9db69f83863fe8adcfff0e0a1ff7f4a2a85e5ccd4b8215",
+      "statement": "Multi-zone or multi-region architecture matches the required recovery and availability objectives.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 72
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "28. Infrastructure and platform readiness"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Failure-domain placement and tested numeric recovery and availability objectives can be compared exactly; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Multi-zone or multi-region architecture matches the required recovery and availability objectives.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-28-022",
+      "revision": 1,
+      "semantic_sha256": "b2e3ab6a09ea9918d01e3a2c7b2bc5ccd553974c6aa898c3b3afafd01893ce82",
+      "statement": "Cloud or platform provider status and escalation paths are integrated into operations.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 74
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "28. Infrastructure and platform readiness"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Provider status sources, subscriptions, support contacts, and escalation routes have exact record predicates; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Cloud or platform provider status and escalation paths are integrated into operations.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-28-023",
+      "revision": 1,
+      "semantic_sha256": "5301e0c854c9aeadf3892f267896fa53b8713b12977b8973d0159d764c1a979f",
+      "statement": "Infrastructure cost alerts and runaway-resource protections exist.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 75
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "28. Infrastructure and platform readiness"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Cost alert and runaway-resource protection configurations are directly queryable against project limits; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Infrastructure cost alerts and runaway-resource protections exist.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-28-024",
+      "revision": 1,
+      "semantic_sha256": "25ed43c9a814361301a7c375e615605a8723c19c0bd234bb9e81360a5abbc9e8",
+      "statement": "Break-glass access works during identity or network failure and is audited.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 76
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "28. Infrastructure and platform readiness"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Identity and network failure injection can objectively test break-glass access and its audit event; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Break-glass access works during identity or network failure and is audited.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-28-025",
+      "revision": 1,
+      "semantic_sha256": "fe57d99ca5beee576f41fe1e152e15a79f48f39d32804559139832edc6ac77a2",
+      "statement": "Infrastructure credentials and machine identities are rotated and inventoried.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 77
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "28. Infrastructure and platform readiness"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Complete machine-identity inventory and rotation timestamps can be compared with the approved cadence; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Infrastructure credentials and machine identities are rotated and inventoried.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-28-030",
+      "revision": 1,
+      "semantic_sha256": "cfdbf8e55bd7a032dc807ea2d85b039583be1d53a57818d3a81ce9b813d5a100",
+      "statement": "Privileged containers and host access are prohibited unless explicitly approved.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 85
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "28. Infrastructure and platform readiness",
+        "28.1 Containers and orchestration, when used"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Effective privileged and host-access settings can be checked, and every exception must have an authenticated approval record; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Privileged containers and host access are prohibited unless explicitly approved.",
+          "checker_family": "container_iac",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-28-031",
+      "revision": 1,
+      "semantic_sha256": "d78907a224e2e9ea1f486b5006902c0abbc3c7b0dfe8b93b6a19053ca390ccaa",
+      "statement": "Resource requests and limits are configured.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 86
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "28. Infrastructure and platform readiness",
+        "28.1 Containers and orchestration, when used"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Every workload's effective resource requests and limits are objectively queryable; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Resource requests and limits are configured.",
+          "checker_family": "container_iac",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-28-032",
+      "revision": 1,
+      "semantic_sha256": "9a4c5bd7a09fc48e29e42e480e01bde84f80cb444cfd11c2c0732791b650f3a8",
+      "statement": "Runtime security policies are enforced.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 87
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "28. Infrastructure and platform readiness",
+        "28.1 Containers and orchestration, when used"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "The selected runtime security policy and effective enforcement status can be queried for every workload; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Runtime security policies are enforced.",
+          "checker_family": "container_iac",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-28-035",
+      "revision": 1,
+      "semantic_sha256": "003d3e8bfd7394303493241c88fb2e27926602e48b95d896c045c4ef81867d2d",
+      "statement": "Admission or policy checks prevent prohibited workloads.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 90
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "28. Infrastructure and platform readiness",
+        "28.1 Containers and orchestration, when used"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The versioned prohibited-workload policy and admission test provide exact allow and deny results; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Admission or policy checks prevent prohibited workloads.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-28-036",
+      "revision": 1,
+      "semantic_sha256": "5b619e9c8613de547f5e06394657f0cfdbadf5d6fab17e5b207127ff41a09266",
+      "statement": "Image signatures or provenance are verified.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 91
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "28. Infrastructure and platform readiness",
+        "28.1 Containers and orchestration, when used"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "artifact_verification",
+      "primary_reason": "Every deployed image signature or provenance can be cryptographically verified under the selected trust policy; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Image signatures or provenance are verified.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-28-045",
+      "revision": 1,
+      "semantic_sha256": "d57d5a2a58a0e3dc2ed6b8f3f3cf04f26c54bd1a3e1c5e18d051139d437d150b",
+      "statement": "Provider lock-in and recovery dependencies are documented.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 103
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "28. Infrastructure and platform readiness",
+        "28.2 Serverless or managed execution, when used"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The named provider lock-in and recovery dependencies can be required in a versioned record; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Provider lock-in and recovery dependencies are documented.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-28-048",
+      "revision": 1,
+      "semantic_sha256": "92acee5d6b5c89743b5f74ed9a3e9b55a9d2043a7dbe5fc4325c777d7af9cda9",
+      "statement": "Regional availability and failover match the SLO.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 106
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "28. Infrastructure and platform readiness",
+        "28.2 Serverless or managed execution, when used"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Regional deployment and failover evidence can be compared numerically with the approved SLO; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Regional availability and failover match the SLO.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-29-002",
+      "revision": 1,
+      "semantic_sha256": "1234d5ea96097e71ea3e4e1b1b18d51fdf91d1c24da88e57fc0e9c85719084c2",
+      "statement": "Telemetry uses a consistent service, environment, version, and instance identity.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 113
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "29. Observability, logging, metrics, and audit trails"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Telemetry records can be checked for consistent service, environment, version, and instance identity fields; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Telemetry uses a consistent service, environment, version, and instance identity.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-29-003",
+      "revision": 1,
+      "semantic_sha256": "320bf1c8539a877ecd9e1630af4245e153a4c53beab32dd644962e3b73c9c4de",
+      "statement": "Timestamps are accurate and use an unambiguous time basis.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 114
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "29. Observability, logging, metrics, and audit trails"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Timestamp offset and synchronization error can be compared with a named accuracy policy and time basis; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Timestamps are accurate and use an unambiguous time basis.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-29-004",
+      "revision": 1,
+      "semantic_sha256": "21bd6a021a8f56f61421240a562745d7f256a77acf8c4c24103e722e201b8c79",
+      "statement": "Requests and background operations have correlation identifiers.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 115
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "29. Observability, logging, metrics, and audit trails"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Every inventoried request and background operation can be checked for a valid correlation identifier; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Requests and background operations have correlation identifiers.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-29-005",
+      "revision": 1,
+      "semantic_sha256": "9b0c91a3c0d61254f627b566db60e27098757935d3c1e946c41c3348de2d0029",
+      "statement": "Distributed trace context propagates across trusted service boundaries.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 116
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "29. Observability, logging, metrics, and audit trails"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A complete trusted-boundary inventory and trace probe can objectively verify propagation; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Distributed trace context propagates across trusted service boundaries.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-29-006",
+      "revision": 1,
+      "semantic_sha256": "a7771029c6edc9beabbf852e094ac2fcae4a9e131eb11fd1560c4454746d8c65",
+      "statement": "The release version appears in telemetry.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 117
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "29. Observability, logging, metrics, and audit trails"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Every telemetry record can be matched to the deployed release version field; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The release version appears in telemetry.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-29-007",
+      "revision": 1,
+      "semantic_sha256": "c014f846eb54564660bb373ceb6deb3a7a50e2f49eac612cbf120b922b1b5172",
+      "statement": "Deployments and configuration changes are annotated on dashboards.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 118
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "29. Observability, logging, metrics, and audit trails"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Deployment and configuration event inventories can be joined exactly to dashboard annotations; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Deployments and configuration changes are annotated on dashboards.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-29-011",
+      "revision": 1,
+      "semantic_sha256": "e49aee5ab4d217cbeaedf3084640df843b6be348ef10c9c01d064d9dc5e7ba02",
+      "statement": "Traffic or workload volume is measured.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 122
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "29. Observability, logging, metrics, and audit trails"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Presence and freshness of traffic or workload volume measurements are objectively queryable; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Traffic or workload volume is measured.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-29-017",
+      "revision": 1,
+      "semantic_sha256": "6daf9eabe0385e8c653ea0e09aefddbaeeb83d9c0cc728e680c0eba849c919b2",
+      "statement": "Logs are structured and searchable.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 128
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "29. Observability, logging, metrics, and audit trails"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A log schema and authenticated search query can objectively verify structure and searchability; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Logs are structured and searchable.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-29-018",
+      "revision": 1,
+      "semantic_sha256": "50a46d38f5ad7fe6f42d943d2e0578b3a51f12a7f09f58333a38bef529eba540",
+      "statement": "Log levels are consistent.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 129
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "29. Observability, logging, metrics, and audit trails"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "local_static",
+      "primary_reason": "A versioned log-level policy can be compared with every supported logging site; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Log levels are consistent.",
+          "checker_family": "structured_document",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-29-024",
+      "revision": 1,
+      "semantic_sha256": "2f9d48f4629e6f5f2e1a5c124d839e1b286f4a8c2cdfdfd167bcc081559f6d56",
+      "statement": "Authentication, authorization changes, administrative actions, sensitive reads, exports, deletion, and configuration changes are audited.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 135
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "29. Observability, logging, metrics, and audit trails"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A complete versioned event taxonomy can be joined to audit records for every listed event class; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authentication, authorization changes, administrative actions, sensitive reads, exports, deletion, and configuration changes are audited.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-29-025",
+      "revision": 1,
+      "semantic_sha256": "d3fb9a69b7970cca81e568cc6fae73529cf1ed729dba4a2d6bb3c59e38bbd1d3",
+      "statement": "Audit data is protected against unauthorized modification and deletion.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 136
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "29. Observability, logging, metrics, and audit trails"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Effective immutability, write authorization, deletion protection, and retention controls are objectively queryable; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Audit data is protected against unauthorized modification and deletion.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-29-026",
+      "revision": 1,
+      "semantic_sha256": "b24f8fd52230f58b09ee43d62c64c78abcd4e6bdee2c084690a0328793270935",
+      "statement": "Audit access is restricted and audited.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 137
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "29. Observability, logging, metrics, and audit trails"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Effective audit-data access can be compared with policy and every access joined to its audit event; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Audit access is restricted and audited.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-29-029",
+      "revision": 1,
+      "semantic_sha256": "5181649d7d7c4ea0ed7492e0b7bab27dc65c7071df3294446f24e371a729597f",
+      "statement": "Telemetry pipeline failure is itself monitored.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 140
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "29. Observability, logging, metrics, and audit trails"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "An injected telemetry-pipeline failure can objectively verify its independent monitoring signal; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Telemetry pipeline failure is itself monitored.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-29-030",
+      "revision": 1,
+      "semantic_sha256": "7f0bc8b7830123e0cc018d862a9f43a7b9651bcdb486da06920a9d75d680a4d7",
+      "statement": "Telemetry backlog and quota exhaustion are monitored.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 141
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "29. Observability, logging, metrics, and audit trails"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Backlog and quota boundary events can objectively verify configured monitoring signals; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Telemetry backlog and quota exhaustion are monitored.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-30-004",
+      "revision": 1,
+      "semantic_sha256": "2167c20eeef3ced40081ebe51fdfdd3e1ab4fa069708fd21719d62cdfabae131",
+      "statement": "Alert severity definitions are documented.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 155
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "30. Alerting, on-call, and runbooks"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "A versioned alert-severity definition record has exact presence and schema predicates; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Alert severity definitions are documented.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-30-005",
+      "revision": 1,
+      "semantic_sha256": "9d9523e762bda9e90434c1568d0e9c22131452f6933222b41b74c8151c215904",
+      "statement": "Every alert has an owner.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 156
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "30. Alerting, on-call, and runbooks"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Every alert in the authoritative inventory can be joined to a current owner record; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every alert has an owner.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-30-006",
+      "revision": 1,
+      "semantic_sha256": "2eb31f479989a365ce7e8a4f20be29482e69d9255a565c34251fc2ad2cc8a212",
+      "statement": "Every page has a corresponding diagnostic or mitigation runbook.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 157
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "30. Alerting, on-call, and runbooks"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Every paging alert can be joined to a versioned diagnostic or mitigation runbook; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every page has a corresponding diagnostic or mitigation runbook.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-30-008",
+      "revision": 1,
+      "semantic_sha256": "ff12bd9fb6660ba83f5b4c75e4056662920bcbe414da0169e778adb2644bb76c",
+      "statement": "Primary and secondary coverage exist during required service hours.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 159
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "30. Alerting, on-call, and runbooks"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Declared service hours and schedules permit exact primary and secondary coverage queries; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Primary and secondary coverage exist during required service hours.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-30-011",
+      "revision": 1,
+      "semantic_sha256": "7115635b6fea39888581a9aff853a26572c79affbc8cf3c118a6adba9ef4e85e",
+      "statement": "Burn-rate or equivalent alerts detect both fast and slow SLO consumption.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 162
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "30. Alerting, on-call, and runbooks"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Approved SLO windows and burn-rate formulas provide exact fast and slow consumption alert tests; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Burn-rate or equivalent alerts detect both fast and slow SLO consumption.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-30-015",
+      "revision": 1,
+      "semantic_sha256": "2a08dd302618efb1a3e9eee6b641e8ab823c78386c6a9919ba62c5176988db37",
+      "statement": "Failure of the monitoring or paging system generates an independent signal.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 166
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "30. Alerting, on-call, and runbooks"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Disabling each monitoring or paging component can objectively verify an independent signal; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Failure of the monitoring or paging system generates an independent signal.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-30-016",
+      "revision": 1,
+      "semantic_sha256": "f1c693bec4523c43fb28f5a5edf19afcc7db83fa82dd14420bb98d62bfa061ae",
+      "statement": "Runbooks include symptoms, impact, diagnosis, containment, rollback, recovery, verification, and escalation.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 167
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "30. Alerting, on-call, and runbooks"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Every runbook can be parsed for the eight explicitly named sections; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Runbooks include symptoms, impact, diagnosis, containment, rollback, recovery, verification, and escalation.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-30-019",
+      "revision": 1,
+      "semantic_sha256": "b7dca3ed982347f06f00e370667c6112decc7cf49ee7f7ffc2015c6c3d58786b",
+      "statement": "Access to required dashboards and consoles works during an incident.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 170
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "30. Alerting, on-call, and runbooks"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "An incident-role account can test required dashboard and console access under the declared failure conditions; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Access to required dashboards and consoles works during an incident.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-30-020",
+      "revision": 1,
+      "semantic_sha256": "7187ad7ec1ee88a564c085dbe414686b0b1a487e487e7db3005c069fb2053e27",
+      "statement": "Provider support and escalation information is current.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 171
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "30. Alerting, on-call, and runbooks"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Provider support contacts and escalation records can be checked against a defined freshness policy; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Provider support and escalation information is current.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-31-003",
+      "revision": 1,
+      "semantic_sha256": "9f77a492d72b020a16ab30c673769482578c74130e6ebb4eee1cd45d355d8f89",
+      "statement": "Source-code security analysis has run.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 184
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "31. Security validation and vulnerability management"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "An authenticated successful source-security analysis record can be bound to the exact source revision and checker version; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Source-code security analysis has run.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-31-004",
+      "revision": 1,
+      "semantic_sha256": "8c13cc6c19b0fcc28e3663361492303a76ab7f940f5f88beb3d96a7ec69582b8",
+      "statement": "Dependency and SBOM analysis has run.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 185
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "31. Security validation and vulnerability management"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "An authenticated dependency and SBOM analysis record can be bound to the exact inventory and artifact; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Dependency and SBOM analysis has run.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-31-005",
+      "revision": 1,
+      "semantic_sha256": "d9706cdfccd63ee0000cff5c9b30590cd287a32299abb1af5c29743d177a6dc9",
+      "statement": "Secret scanning has run.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 186
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "31. Security validation and vulnerability management"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "An authenticated secret-scanning execution can be bound to the exact scope, revision, and checker version; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Secret scanning has run.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-31-006",
+      "revision": 1,
+      "semantic_sha256": "74d418b6a49a19e0c6f9aef515681cb70b6c513779d1efc893f71b14ee711d98",
+      "statement": "Infrastructure and configuration analysis has run.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 187
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "31. Security validation and vulnerability management"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "An authenticated infrastructure and configuration analysis record can be bound to the assessed inputs; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Infrastructure and configuration analysis has run.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-31-007",
+      "revision": 1,
+      "semantic_sha256": "a0ee929ed04573daf8af1fc3ed474626509fd61fc003550b67a048d55fd9dcb9",
+      "statement": "Container or system-image analysis has run where applicable.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 188
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "31. Security validation and vulnerability management"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Objective image applicability and a bound container or system-image analysis record determine this execution fact; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Container or system-image analysis has run where applicable.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-31-008",
+      "revision": 1,
+      "semantic_sha256": "800909db37327dd234b290ffd29a8194778037b07e803501ad8501d64646ff3d",
+      "statement": "Deployed application security testing has run.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 189
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "31. Security validation and vulnerability management"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "A deployed-application security test execution record can be bound to release, environment, and checker; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Deployed application security testing has run.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-31-009",
+      "revision": 1,
+      "semantic_sha256": "b808a1adf5bde1e08d5f1717598d31599a655813dbf999ca2c970017d8be7a5e",
+      "statement": "API security testing has run.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 190
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "31. Security validation and vulnerability management"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "An API security test execution record can be bound to the assessed API inventory and release; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "API security testing has run.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-31-010",
+      "revision": 1,
+      "semantic_sha256": "c42966b3bc4bd9305aacb63177e7dc28b435461d04f46d43451903db6a8cb31f",
+      "statement": "Authentication and recovery testing has run.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 191
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "31. Security validation and vulnerability management"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Authentication and recovery test execution records can be bound to the assessed release and scope; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authentication and recovery testing has run.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-31-011",
+      "revision": 1,
+      "semantic_sha256": "f3b2d6724ab05a55aa04bac212f125d43a28ccad1169ddcfe544280a59cfbc7d",
+      "statement": "Authorization and tenant-isolation testing has run.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 192
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "31. Security validation and vulnerability management"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Authorization and tenant-isolation execution records can be bound to the assessed release and test scope; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authorization and tenant-isolation testing has run.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-31-012",
+      "revision": 1,
+      "semantic_sha256": "479df4e01f925394722447784744c5e2971d6ccdcbb8e6657153289b22e14fee",
+      "statement": "Injection and unsafe-input testing has run.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 193
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "31. Security validation and vulnerability management"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Injection and unsafe-input test execution records can be bound to exact parsers and release; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Injection and unsafe-input testing has run.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-31-013",
+      "revision": 1,
+      "semantic_sha256": "4df40fa4cacd180e9d2c19a8611f6962a69141fa2b8b13cf185406c450009dcf",
+      "statement": "Browser and session security testing has run.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 194
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "31. Security validation and vulnerability management"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Browser and session security execution records can be bound to the assessed clients and release; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Browser and session security testing has run.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-31-014",
+      "revision": 1,
+      "semantic_sha256": "3b95387e6426209c6acd5302474a0d158ec7caad7c88c057da73b0110edc01ea",
+      "statement": "File-processing security testing has run where applicable.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 195
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "31. Security validation and vulnerability management"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Objective file-processing applicability and a bound security test record determine whether testing ran; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "File-processing security testing has run where applicable.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-31-015",
+      "revision": 1,
+      "semantic_sha256": "94c58162a1dfa66380a39088afcd26971756d1177904d1e6abf779e588533550",
+      "statement": "Business-logic and abuse testing has run.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 196
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "31. Security validation and vulnerability management"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "A business-logic and abuse test execution record can objectively prove the named activity ran; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Business-logic and abuse testing has run.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-31-020",
+      "revision": 1,
+      "semantic_sha256": "e182955544831a5b67c2f4ab832daacdd8a8cbd653436a73dc2b734d28b02f3a",
+      "statement": "Findings have owners and remediation targets.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 201
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "31. Security validation and vulnerability management"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Every finding in the authenticated inventory can be joined to an owner and dated remediation target; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Findings have owners and remediation targets.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-31-021",
+      "revision": 1,
+      "semantic_sha256": "8ba95af5ceaf09ed23a71cf7d2c19e7fe7b31946c9974769d0b4d74b0242cadd",
+      "statement": "Fixed findings have been retested.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 202
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "31. Security validation and vulnerability management"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Every finding marked fixed can be joined to a bound successful retest record; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Fixed findings have been retested.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-31-023",
+      "revision": 1,
+      "semantic_sha256": "deabd4bc676230c9bfc15aadd29f46af73f0b82d7d27cce62cfac56695e5e3c6",
+      "statement": "Unsupported software and unpatchable components have explicit treatment plans.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 204
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "31. Security validation and vulnerability management"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Complete unsupported and unpatchable component inventory can be joined to explicit versioned treatment plans; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Unsupported software and unpatchable components have explicit treatment plans.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-31-026",
+      "revision": 1,
+      "semantic_sha256": "ee4c5233dbe88cc1bf71d254580bd4550c10cbf30b3a3d176c9cea25e0cc5cfc",
+      "statement": "External attack-surface discovery is continuous.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 207
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "31. Security validation and vulnerability management"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "A versioned continuous discovery service can be queried for current coverage and freshness over the known external surface; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "External attack-surface discovery is continuous.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-31-027",
+      "revision": 1,
+      "semantic_sha256": "e93dca99b6772f1a2f501230812e769c8f0c64f3d08e74fef3c9a2752d12012a",
+      "statement": "A vulnerability-disclosure policy and reporting channel exist.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 208
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "31. Security validation and vulnerability management"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Versioned vulnerability-disclosure policy and working reporting-channel records have exact presence predicates; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "A vulnerability-disclosure policy and reporting channel exist.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-31-030",
+      "revision": 1,
+      "semantic_sha256": "e167d6b51830e8130b5702845a41ccc5abca81ff9af0589220e1406caf535d69",
+      "statement": "Security evidence is retained with the release.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 211
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "31. Security validation and vulnerability management"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Every release record can be joined to retained security evidence under the approved retention policy; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Security evidence is retained with the release.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-31-033",
+      "revision": 1,
+      "semantic_sha256": "52f3affd8cd42297ca48a22bac30b05acfd98395f5be8beefcb9adfe979291f3",
+      "statement": "Security monitoring covers account takeover, privilege changes, secret use, suspicious exports, abuse, and control tampering.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 214
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "31. Security validation and vulnerability management"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A versioned security-event taxonomy can be joined to detectors and canary signals for every named category; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Security monitoring covers account takeover, privilege changes, secret use, suspicious exports, abuse, and control tampering.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-32-001",
+      "revision": 1,
+      "semantic_sha256": "bd510a03753db5532dd5aed3e6ee06f8fb1b6d5696e1fcbc5cef58e6b2d191c5",
+      "statement": "A current incident-response plan exists.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 222
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "32. Incident response and crisis readiness"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "A versioned incident-response plan can be checked for presence and policy-defined freshness; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "A current incident-response plan exists.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-32-002",
+      "revision": 1,
+      "semantic_sha256": "739a9860c8f59258bf50c1d77eacfcd71f0f54eb9b5c7d4da6732efb319d1489",
+      "statement": "Incident severity levels are defined.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 223
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "32. Incident response and crisis readiness"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Incident severity levels can be required as explicit fields in the response plan; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Incident severity levels are defined.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-32-003",
+      "revision": 1,
+      "semantic_sha256": "f19f9fe267a18dea44c7077f6fe1ab1a8200afa49e0a07172109b99aac0e64e5",
+      "statement": "Authority to declare an incident is clear.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 224
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "32. Incident response and crisis readiness"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The authenticated plan can identify exact roles authorized to declare an incident; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authority to declare an incident is clear.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-32-005",
+      "revision": 1,
+      "semantic_sha256": "40c23f29b5c03d353d6fb2f03639c79a7d417408755f6ae51994fb7bddf87d9f",
+      "statement": "Primary and alternate communication channels exist.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 226
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "32. Incident response and crisis readiness"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Primary and alternate communication channels can be required as authenticated plan fields; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Primary and alternate communication channels exist.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-32-006",
+      "revision": 1,
+      "semantic_sha256": "21dbe31d0b29c924ca4b4000b1d8540bac33c2fb58ec10d2cb0214b1eccee3ec",
+      "statement": "Contact details are current and available during identity, network, or provider failure.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 227
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "32. Incident response and crisis readiness"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Contact freshness and bounded identity, network, and provider failure access tests have exact outcomes; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Contact details are current and available during identity, network, or provider failure.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-32-007",
+      "revision": 1,
+      "semantic_sha256": "233fd7c80be4a9190a0c1da0650550c9407c7a1a7f616f018838753b0383a809",
+      "statement": "Procedures cover detection, triage, containment, eradication, recovery, and closure.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 228
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "32. Incident response and crisis readiness"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The six named incident stages can be required in a versioned procedure record; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Procedures cover detection, triage, containment, eradication, recovery, and closure.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-32-008",
+      "revision": 1,
+      "semantic_sha256": "f25f3829b1c2f6b30f132cbf9eb491f67e65734ff821001c0be24a178408ca59",
+      "statement": "Procedures distinguish outages, security incidents, privacy incidents, safety events, and fraud events.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 229
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "32. Incident response and crisis readiness"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The five named event classes can be required as explicit differentiated procedure branches; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Procedures distinguish outages, security incidents, privacy incidents, safety events, and fraud events.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-32-009",
+      "revision": 1,
+      "semantic_sha256": "532b65f3f636edfd29074fff0caf928454bb924364a277cf5d9c6e4cac731936",
+      "statement": "Evidence-preservation and forensic procedures exist.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 230
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "32. Incident response and crisis readiness"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Evidence-preservation and forensic procedure records have exact presence and version predicates; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Evidence-preservation and forensic procedures exist.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-32-013",
+      "revision": 1,
+      "semantic_sha256": "00f67f6a884228e48d54be39ccfa15544bbb1aaeb4d1dfdf4401f0930e26acad",
+      "statement": "Customer and public communications templates exist.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 234
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "32. Incident response and crisis readiness"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Customer and public incident communication templates have exact presence and version predicates; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Customer and public communications templates exist.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-32-016",
+      "revision": 1,
+      "semantic_sha256": "8d65533aca74153328a1c79329313e78a0c289690098df3c6c6cf0f8bc355769",
+      "statement": "Notification deadlines and decision owners are documented.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 237
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "32. Incident response and crisis readiness"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Notification records can be checked for explicit deadlines and accountable decision owners; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Notification deadlines and decision owners are documented.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-32-017",
+      "revision": 1,
+      "semantic_sha256": "f7dad7560d7f67667da883233a8c9a798bc281b8fe1b246b20d8e8740491eed1",
+      "statement": "Provider and subprocessor incident contacts are current.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 238
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "32. Incident response and crisis readiness"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Provider and subprocessor contacts can be checked against a defined freshness policy; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Provider and subprocessor incident contacts are current.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-32-021",
+      "revision": 1,
+      "semantic_sha256": "3650f997416393689ba7c7304beded8d1dae19b79f0b097c558e85263951a43b",
+      "statement": "Exercise findings have owners and deadlines.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 242
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "32. Incident response and crisis readiness"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Every exercise finding can be joined to a current owner and explicit deadline; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Exercise findings have owners and deadlines.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-32-023",
+      "revision": 1,
+      "semantic_sha256": "4c2d40c38a39124b98cbf319871d727322584b92cb70941bb82752f74fc81915",
+      "statement": "Corrective actions are tracked to completion.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 244
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "32. Incident response and crisis readiness"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Every corrective action can be joined to status evidence showing completion or current progress; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Corrective actions are tracked to completion.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-32-025",
+      "revision": 1,
+      "semantic_sha256": "6d341dfddf40cc76a5c99658037bc3364344d65eeb5f88e7f67f500fd33aae55",
+      "statement": "Incident metrics include detection, acknowledgment, containment, recovery, impact, and recurrence.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 246
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "32. Incident response and crisis readiness"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Incident metric records can be checked for every explicitly listed field; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Incident metrics include detection, acknowledgment, containment, recovery, impact, and recurrence.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-32-026",
+      "revision": 1,
+      "semantic_sha256": "f2665e44e2c3a17b2c09be10d96f274ed87d5444964c3f7413eca57f22466a14",
+      "statement": "Incident records preserve decisions and timelines.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 247
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "32. Incident response and crisis readiness"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Incident records can be checked for timestamped decision and timeline entries; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Incident records preserve decisions and timelines.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-33-002",
+      "revision": 1,
+      "semantic_sha256": "7f80fcae1fac36cfaeb6cc07b1c44db10b73453a49fee39073f809a767d5961f",
+      "statement": "Recovery Point Objective is defined for each stateful system.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 255
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "33. Backups, disaster recovery, and continuity"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Complete stateful-system inventory can be joined to a defined RPO record for each system; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Recovery Point Objective is defined for each stateful system.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-33-003",
+      "revision": 1,
+      "semantic_sha256": "3799dca4e2004cc6f1f39496e56028d6bea76907fb237d9b89feec7abe944a9b",
+      "statement": "Recovery Time Objective is defined for each critical journey.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 256
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "33. Backups, disaster recovery, and continuity"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The approved critical-journey inventory can be joined to a defined RTO record for each journey; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Recovery Time Objective is defined for each critical journey.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-33-005",
+      "revision": 1,
+      "semantic_sha256": "199fd89551f49506439a338fe532dafd385641e59d6dc09437d59e56036a1abd",
+      "statement": "Backups run automatically at the required frequency.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 258
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "33. Backups, disaster recovery, and continuity"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Backup schedules and execution timestamps can be compared exactly with the approved frequency; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Backups run automatically at the required frequency.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-33-006",
+      "revision": 1,
+      "semantic_sha256": "31f8fe44fc61d68925f9d97d9227c82eea8c2883c5869711595e4c012c01f1fe",
+      "statement": "Backup success is monitored.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 259
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "33. Backups, disaster recovery, and continuity"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A failed or missing backup event can objectively verify the configured monitoring signal; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Backup success is monitored.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-33-007",
+      "revision": 1,
+      "semantic_sha256": "63b41e8d34458dd4603f916228b7d8a91a4604ceb63898e440ee887c4289523e",
+      "statement": "Backups are encrypted.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 260
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "33. Backups, disaster recovery, and continuity"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Effective backup encryption state and approved algorithm configuration are objectively queryable; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Backups are encrypted.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-33-018",
+      "revision": 1,
+      "semantic_sha256": "98c937fe15949e33d275f923f53d0827aed70cfbbb366e1483448d9807dcac21",
+      "statement": "Restore order and dependency requirements are documented.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 271
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "33. Backups, disaster recovery, and continuity"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Restore order and dependency requirements can be required as explicit versioned procedure fields; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Restore order and dependency requirements are documented.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-33-019",
+      "revision": 1,
+      "semantic_sha256": "a07dcdfb426aea2b8cdc6968829498adc29d76946a224ca8953b510652070272",
+      "statement": "DNS, certificates, secrets, identity, networking, and external integrations are included in the recovery procedure.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 272
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "33. Backups, disaster recovery, and continuity"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Every named infrastructure and integration dependency can be required in the recovery procedure; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "DNS, certificates, secrets, identity, networking, and external integrations are included in the recovery procedure.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-33-021",
+      "revision": 1,
+      "semantic_sha256": "b51a2b740363fdfbee3d26073aa410bb82022c8a20636546f7ba22890e967548",
+      "statement": "Actual tested recovery time meets the objective.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 274
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "33. Backups, disaster recovery, and continuity"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Bound tested recovery duration can be compared numerically with the approved objective; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Actual tested recovery time meets the objective.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-33-023",
+      "revision": 1,
+      "semantic_sha256": "01202a9a1437aaa04ef62acdf4f555ae1ba5f6ba551b6d3accb26ed25b5bb85f",
+      "statement": "Disaster-recovery capacity can carry the required load.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 276
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "33. Backups, disaster recovery, and continuity"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A named required load and disaster-recovery capacity test yield an objective pass or fail result; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Disaster-recovery capacity can carry the required load.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-33-025",
+      "revision": 1,
+      "semantic_sha256": "8b02baea5ca1ead0106b7faaa1a84527123c6f2ba6ae38bcf38f036316de36c5",
+      "statement": "Backup restoration does not re-enable revoked users, secrets, or deleted data without detection.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 278
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "33. Backups, disaster recovery, and continuity"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Authoritative revoked and deleted inventories can be reconciled after restore and any reappearance must trigger detection; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Backup restoration does not re-enable revoked users, secrets, or deleted data without detection.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-33-026",
+      "revision": 1,
+      "semantic_sha256": "b74f0d468b38a19037889d2e5710ee2035178f6867013ac9feb3f95c63b4c5ed",
+      "statement": "Privacy deletion and backup-retention interactions are documented.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 279
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "33. Backups, disaster recovery, and continuity"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Privacy deletion and backup-retention interaction rules can be required as a versioned documentation record; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Privacy deletion and backup-retention interactions are documented.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    }
+  ]
+}

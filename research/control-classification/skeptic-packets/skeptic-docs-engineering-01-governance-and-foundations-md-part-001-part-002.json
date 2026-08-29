@@ -1,0 +1,266 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-engineering-01-governance-and-foundations-md-part-001-part-002",
+  "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 10,
+  "controls": [
+    {
+      "control_id": "USEQ-24066ACE",
+      "revision": 1,
+      "semantic_sha256": "24066acec973bd3e8f982a725807cd5f266bb33fce79a3d6f32fb428ffcfa4b6",
+      "statement": "Validate that every category file contains purpose, applicability, universal controls, evidence expectations, and interpretation boundaries.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 343
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Corpus Maintenance and Versioning",
+        "Maintenance controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "local_static",
+      "primary_reason": "Required category-file sections are exact structural headings or front-matter fields that can be parsed from the bounded corpus.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every category file contains purpose, applicability, universal controls, evidence expectations, and interpretation-boundary sections.",
+          "checker_family": "structured_document",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C6F40249",
+      "revision": 1,
+      "semantic_sha256": "c6f4024993a31ceaa721d0917747db206e263bfafb3f714a4dc1da2b9d655fcb",
+      "statement": "Measure corpus use, control ambiguity, Not Applicable patterns, exception recurrence, and escaped defects.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 347
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Corpus Maintenance and Versioning",
+        "Maintenance controls"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "With versioned metric definitions, corpus assessments and operational registers supply bounded counts and rates for each named measure.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The corpus program records defined measurements for use, ambiguity, Not Applicable patterns, exception recurrence, and escaped defects.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8C84BDA1",
+      "revision": 1,
+      "semantic_sha256": "8c84bda1ad3c69b792c56f6ac07df67ab511ad484f2b17ca9083191167a2d588",
+      "statement": "Every production service has named business and engineering owners.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 357
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Governance, Ownership, and Risk",
+        "Ownership"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The production-service inventory is finite, so named business and engineering owner fields can be checked for every service.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every production service has one active business owner and one active engineering owner.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C8627A8D",
+      "revision": 1,
+      "semantic_sha256": "c8627a8d19305dd388e72f68f68f389acbdb93bfc30a2b1e9820588b42e3a842",
+      "statement": "Every third-party integration, dashboard, alert, runbook, scheduled job, and background process has an owner.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 358
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Governance, Ownership, and Risk",
+        "Ownership"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Declared integration and operational-asset inventories are finite and support exact owner-cardinality checks.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every third-party integration, dashboard, alert, runbook, scheduled job, and background process in the approved inventories has an active owner.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8272E813",
+      "revision": 1,
+      "semantic_sha256": "8272e813100529b059b86ee88e6c9a737fc48cf1a57f5ebd7da5ca459697dd07",
+      "statement": "Escalation paths include primary, secondary, management, security, privacy/legal, and provider contacts.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 360
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Governance, Ownership, and Risk",
+        "Ownership"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The escalation contact categories are an exact required field set with resolvable identity or provider references.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every escalation path contains primary, secondary, management, security, privacy or legal, and provider contacts.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4B9CB799",
+      "revision": 1,
+      "semantic_sha256": "4b9cb799873fd23601b76e27d2b0d54f2992ef39eca441b92b739fd24a95d3f3",
+      "statement": "Give every risk an owner, likelihood, impact, treatment, evidence, and review date.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 369
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Governance, Ownership, and Risk",
+        "Risk assessment"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Risk identifiers form a finite register whose owner, likelihood, impact, treatment, evidence, and review-date fields can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every risk in the approved register has owner, likelihood, impact, treatment, evidence reference, and review date.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0B8D7893",
+      "revision": 1,
+      "semantic_sha256": "0b8d7893706782fbb6d97e0d87bc4bcce125a13baf684e7abf9963d37f7c5e60",
+      "statement": "Record accepted residual risks and the authorized people who accept them.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 370
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Governance, Ownership, and Risk",
+        "Risk assessment"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Accepted residual risks and accepting identities are explicit signed register fields with authorization references.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every accepted residual risk records its value, authenticated accepting people, and their authorization references.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9843CD0A",
+      "revision": 1,
+      "semantic_sha256": "9843cd0a5a7f5e6ffe1e9a92a8a0a9d76a8a0246a850d9576cb275ebb0d87c76",
+      "statement": "Ensure exceptions expire and compensating controls are tested.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 372
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Governance, Ownership, and Risk",
+        "Risk assessment"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Exception timestamps and compensating-control test records make automatic expiry and test completion directly decidable.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every exception expires automatically at its recorded expiry time.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "Every active exception's compensating controls have current successful test evidence.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0C8F7443",
+      "revision": 1,
+      "semantic_sha256": "0c8f7443355f347f918937e2601962bc7efb44bf156e18b8a621881797ffba60",
+      "statement": "Map accessibility controls to the selected conformance target.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 378
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Governance, Ownership, and Risk",
+        "Control framework"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Once the conformance target is selected, its control or criterion identifiers can be mapped exactly to accessibility controls.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every accessibility control links to one or more criteria in the versioned selected conformance target.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2C632814",
+      "revision": 1,
+      "semantic_sha256": "2c632814f85b351e3676d76e523caf891608850797906cb285cddbd2d35c86dd",
+      "statement": "Document resolutions, tradeoffs, and approvals.",
+      "source": {
+        "path": "docs/engineering/01-governance-and-foundations.md",
+        "line": 380
+      },
+      "heading_trail": [
+        "Governance and foundations",
+        "Governance, Ownership, and Risk",
+        "Control framework"
+      ],
+      "primary_packet_id": "docs-engineering-01-governance-and-foundations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Resolution, trade-off, and approval records are explicit governance artifacts whose presence, identity, and signatures are mechanically decidable.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every registered requirements conflict links to a documented resolution, stated trade-offs, and required authenticated approvals.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    }
+  ]
+}

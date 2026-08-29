@@ -1,0 +1,1142 @@
+{
+  "schema_version": "prc.control-classification-skeptic-review/v0.1",
+  "packet_id": "skeptic-docs-checklists-05-application-security-md-part-001-part-001",
+  "primary_packet_id": "docs-checklists-05-application-security-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "controls": [
+    {
+      "control_id": "PRC-15-004",
+      "revision": 1,
+      "semantic_sha256": "5d8d1e8247e08dfc39fe9bf67bf70ee10b416f7a9d54cc76df6d6a5e36e09312",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A bounded authentication matrix cannot prove coverage of every protected operation or every alternate dispatch path.",
+      "counterexample_analysis": "An undocumented RPC method or method-override route reaches a protected handler without authentication while every inventoried HTTP operation rejects unauthenticated requests. The conformance matrix passes because the vulnerable operation is absent from its assumed-complete inventory.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-15-006",
+      "revision": 1,
+      "semantic_sha256": "d051605f9c96310ce0102dc6ad1f260a76c35866253c82e7495b5d14b083fe51",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Schema declarations and supported AST bindings do not prove that every runtime input path validates before use.",
+      "counterexample_analysis": "A dynamically registered endpoint or deserialized message bypasses the schema middleware, while all statically inventoried routes have explicit schemas and bindings. The repository check passes despite an unvalidated input boundary.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-15-008",
+      "revision": 1,
+      "semantic_sha256": "458bacc010349817937fd134aa90ca676139e2e1fea77e53cde52d55a1df32ef",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A repository allowlist does not prove effective constraints across proxies, framework defaults, error paths, and runtime overrides.",
+      "counterexample_analysis": "The main route configuration permits only JSON and UTF-8, but a reverse-proxy fallback accepts an arbitrary content type and legacy encoding. The structured document passes while effective request handling is unconstrained.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-15-009",
+      "revision": 1,
+      "semantic_sha256": "0e5dced1191996886311f105633e6dcb6d3611f6eb12c70eb82a5adc95bac3c0",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Boundary tests over an assumed request-shape matrix do not cover parser differentials, transfer encodings, or alternate batching paths.",
+      "counterexample_analysis": "Normal bodies, URLs, headers, and batches respect limits, but a chunked compressed body expands before the checked size layer or an alternate batch endpoint omits the cap. All matrix cases pass while a listed size remains unbounded.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-15-014",
+      "revision": 1,
+      "semantic_sha256": "6eb482e9eabf94ba3dd63cac5e59a4dde5a557a8976d1b260f7c51d11b2d7f7d",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Correct and consistent HTTP semantics include business side effects and safety meaning that a generic protocol profile cannot decide.",
+      "counterexample_analysis": "A DELETE endpoint returns the profile-approved status and is idempotent syntactically but deletes a parent resource it should preserve, while a GET increments a billing counter. Method conformance tests pass although semantics are incorrect.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-15-017",
+      "revision": 1,
+      "semantic_sha256": "c416a11fa595ae78b83b26cef1f34c00d24796ab25d9135e9492eb12f997dc29",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Static outbound-call discovery cannot safely enumerate reflection, plugins, generated clients, shell commands, and transitive library calls.",
+      "counterexample_analysis": "All inventoried HTTP clients specify timeouts, but a dynamically loaded provider SDK makes a socket call with no timeout. The supported call-site inventory passes while an outbound call remains unbounded.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-15-018",
+      "revision": 1,
+      "semantic_sha256": "478da9b8fab18fb52896755a855e7fb54cd6d0b6b1d13d3b4028737e2d6c6f00",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Retry configuration presence does not prove bounded runtime behavior or actual randomized jitter across layered retry mechanisms.",
+      "counterexample_analysis": "Application retries are capped with exponential jitter, but the SDK and service mesh independently retry without a cap. Static checks see the approved application configuration and pass while total retries are unbounded.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-15-026",
+      "revision": 1,
+      "semantic_sha256": "a64e4362027b7daa301aff078baacc5b1b8005e95da76db8f4ab42501b269035",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A finite CORS response test can omit error, redirect, preflight, and dynamically generated response paths.",
+      "counterexample_analysis": "The tested API response reflects an allowed origin, but an authentication-error handler returns `Access-Control-Allow-Origin: *` with credentials. The selected execution fixture passes while a credentialed cross-origin response uses a wildcard.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-15-032",
+      "revision": 1,
+      "semantic_sha256": "8b795333fff84a4e9c0a84a81a61e1f98dd230c25016d6b112923a9bdb0bdd69",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Explicit repository declarations do not prove the effective host and forwarded-header trust after infrastructure and framework overrides.",
+      "counterexample_analysis": "The application config names approved proxies, but a production environment variable enables trust for every proxy. Static configuration passes while hostile forwarded headers are trusted.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-15-034",
+      "revision": 1,
+      "semantic_sha256": "90adaef9195897c56b5da65e2807f10244a1f3088352a5f0114c1c21e2031adb",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Exercising inventoried webhooks does not prove every endpoint, media type, alias, and fallback path verifies authentication or signatures.",
+      "counterexample_analysis": "The documented webhook route rejects unsigned JSON, but a legacy alias accepts form-encoded events without verification. The test inventory omits the alias, so it passes while an unsigned webhook is accepted.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-15-035",
+      "revision": 1,
+      "semantic_sha256": "75eab81af81f61f831641305aab5edf70cb15bcb4090974946055f2edbc99115",
+      "verdict": "rejected_nondeterministic",
+      "reason": "One repeated-event test does not prove replay protection across concurrency, canonicalization, multiple nodes, or the whole replay window.",
+      "counterexample_analysis": "Sequential duplicate events are rejected, but two concurrent deliveries reach separate nodes before the nonce store converges and both execute. The bounded repeated-event test passes while replay protection fails.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-15-036",
+      "revision": 1,
+      "semantic_sha256": "c1c0a93fe17c4c8780cc53998f1b5012765856e944d7af5eb96b3f817410d67b",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A finite duplicate-event comparison does not establish idempotency under concurrency, partial failure, expiry, and reordered delivery.",
+      "counterexample_analysis": "Two sequential events produce one effect, but a crash after the side effect and before recording the idempotency key makes the retry repeat payment. The proposal's simple repetition passes while the consumer is not idempotent.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-15-037",
+      "revision": 1,
+      "semantic_sha256": "0967a56d03ed880c77ef8e270cd8a99b3b699674bced676e62c0753f06061e65",
+      "verdict": "confirmed_deterministic",
+      "reason": "The rule asks only that four webhook behaviors be defined, which an authenticated versioned contract can establish exactly.",
+      "counterexample_analysis": "I tried omitting reconciliation, leaving failure behavior blank, and using an unversioned retry note. Each makes a required contract field absent or invalid; whether the chosen behavior is ideal is not part of this statement.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-15-041",
+      "revision": 1,
+      "semantic_sha256": "792e136bf388b442902d2fc385dc3b40dc82087f836ee80ee2f191b2cfba29ef",
+      "verdict": "confirmed_deterministic",
+      "reason": "Existence of authenticated breaking-change and deprecation policy records is the complete narrow fact required.",
+      "counterexample_analysis": "I tried a release note mentioning deprecation, an expired policy, and a policy covering only breaking changes. None satisfies both current authenticated records, while policy quality is outside the rule.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-15-042",
+      "revision": 1,
+      "semantic_sha256": "c51f2467cdb3ba95be63db9bb5703d069de13d5f7f622c0a2bb8f408fdba89d5",
+      "verdict": "confirmed_deterministic",
+      "reason": "With an authoritative version inventory and freshness policy, retirement dates and active monitoring are objectively queryable.",
+      "counterexample_analysis": "I tried an old version without a date, a monitoring series that stopped, and an unregistered old endpoint. Complete version discovery exposes the endpoint, and each case fails the date or freshness predicate.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-15-043",
+      "revision": 1,
+      "semantic_sha256": "f87bda21d542910a19c04d130cea74932359c18ce6c10ef471d6d127e766220d",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A successful contract test does not prove behavioral coverage, and a complete external consumer inventory is not generally authoritative or observable.",
+      "counterexample_analysis": "A provider changes an optional error field used by an unregistered external consumer; all registered provider-consumer tests pass. The rule is violated for that external consumer despite the assumed-complete join.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-15-046",
+      "revision": 1,
+      "semantic_sha256": "91ca7f792581c0c7941c4081b4e6de502d0af256348928ee9a444de55aa741e2",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Boundary examples and a cost policy cannot prove every graph shape is bounded by the actual computational work it triggers.",
+      "counterexample_analysis": "A query stays within tested depth, breadth, aliases, and estimated cost but invokes a resolver whose work grows with tenant data and becomes unbounded. All syntactic limits and test cases pass while computational cost is not bounded.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-15-049",
+      "revision": 1,
+      "semantic_sha256": "be2b907e344b818fdfbe7be7df69870c45baa3b4c8e7dba6a13c1e4d139a7ccc",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Origin tests over selected streaming routes do not prove coverage of every upgrade, fallback transport, and proxy dispatch path.",
+      "counterexample_analysis": "The tested WebSocket route validates Origin, while a fallback Server-Sent Events endpoint accepts browser credentials from any origin. The execution proposal passes because that browser-initiated path is absent from its matrix.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-15-050",
+      "revision": 1,
+      "semantic_sha256": "ba76c4848d925f75f2dba9b0eeccc08071c8e6ab8625269c52298b568fa81c90",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A sampled lifecycle test does not prove invalidation across all connection types, nodes, caches, and authorization changes.",
+      "counterexample_analysis": "Logout closes the tested connection, but a connection on another node keeps cached privileges until reconnect. The before-and-after test passes while a long-lived connection remains authorized.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-16-009",
+      "revision": 1,
+      "semantic_sha256": "660bdb6439ae66e40c332514a0fd1194d610b4fe5d16031830f96205937efcd9",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A finite password corpus cannot prove absence of truncation or unexpected transformation for all lengths, scripts, and normalization sequences.",
+      "counterexample_analysis": "The corpus covers common Unicode and lengths up to 128, but the backend silently truncates after 255 bytes or normalizes a rare combining sequence contrary to policy. Tests pass while the rule is violated.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-16-010",
+      "revision": 1,
+      "semantic_sha256": "0cf44c4cc97405de0bd824e1bcf55e64f0f3e2da30360fbc568853029e420dfc",
+      "verdict": "confirmed_deterministic",
+      "reason": "Password-authentication applicability, a versioned compromised-password source, and exact rejection behavior are bounded facts.",
+      "counterexample_analysis": "I tried a listed breached password with case variation, a stale list, and a passwordless deployment. Listed variants must be rejected, stale registry evidence blocks, and a passwordless system is objectively not applicable.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-16-011",
+      "revision": 1,
+      "semantic_sha256": "79a114de0eeba554f870d0a23c330caf3a6bdf91bf9bde8de72cab73ea473698",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A few browser interactions cannot prove support across password managers, platform autofill implementations, shadow DOM, and accessibility modes.",
+      "counterexample_analysis": "Paste works in the tested browser and one manager fills correctly, but the field uses markup that blocks major mobile password managers. The selected tests pass while password-manager support is incomplete.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-16-017",
+      "revision": 1,
+      "semantic_sha256": "b5278064516f203c499c1ae8345118870e3b3821c05ec811c5f7927de596563f",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A recovery-channel inventory and finite transitions do not cover every multi-step redirect, support override, and identity-state path.",
+      "counterexample_analysis": "The normal flow rejects a new unverified email, but a support escalation changes the recovery destination before verification and then initiates reset. Inventoried direct transitions pass while recovery is redirected through an unverified channel.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-16-023",
+      "revision": 1,
+      "semantic_sha256": "af79cee548423326b50f2c576183a2594ef839f9badef45d1b2ef38747ee26de",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Known credential inventories and a clean-install attempt cannot prove absence of undocumented, generated, hidden, or environment-specific defaults.",
+      "counterexample_analysis": "A maintenance account with a derived default password activates only under a recovery flag not exercised by the clean install. Known credentials are absent and tested logins fail, so the adapter passes while a default credential exists.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-16-024",
+      "revision": 1,
+      "semantic_sha256": "090c680a7cb64c8b5b20e7dcd5c3031bf1fa27c4d6509a3e6dc3a30b958a2816",
+      "verdict": "confirmed_deterministic",
+      "reason": "Authoritative account lifecycle status, a complete identity inventory, and effective enabled state give an exact join.",
+      "counterexample_analysis": "I tried an enabled terminated employee, a dormant account past its approved threshold, and a test account hidden in another tenant. Complete account inventory exposes each, and enabled state conflicts with its lifecycle category.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-16-026",
+      "revision": 1,
+      "semantic_sha256": "5fe1258afef11db4dedfdc42ab6ea784ea9015e61079c1f90471cd7842b65721",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A predefined event inventory can omit alternate authentication protocols, failures inside providers, and newly introduced event types.",
+      "counterexample_analysis": "Interactive login events are audited, but a service-token exchange authenticates without emitting an audit record. The versioned inventory excludes that new flow, so its audit comparison passes while an authentication event is unaudited.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-16-027",
+      "revision": 1,
+      "semantic_sha256": "50850ef2b3e19bc8103d0f637795aa3711ae1190821ed015cee990a14afc87ac",
+      "verdict": "confirmed_deterministic",
+      "reason": "The word `can` makes this a bounded capability rule: an approved suspicious event need only trigger one of two observable outcomes.",
+      "counterexample_analysis": "I injected every event type named by the versioned suspicious-event policy. If none creates step-up or an investigation, the proposal fails; detection completeness for unknown attacks is a separate rule.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-16-032",
+      "revision": 1,
+      "semantic_sha256": "22236ad81f187947a3e13d141640df1a692d4560f714656d5587705355a40dba",
+      "verdict": "confirmed_deterministic",
+      "reason": "Explicit social-engineering resistance steps in the authenticated support procedure fully satisfy this documentation requirement.",
+      "counterexample_analysis": "I tried a generic security warning, obsolete procedure, and training-only record. None is a current support procedure containing explicit resistance steps, so each fails without needing to judge effectiveness.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-16-033",
+      "revision": 1,
+      "semantic_sha256": "6e4252d1df460c59ce09c65356dd08c8642a82349537e5c4fd02ab05e59cfc1a",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A finite federation corpus cannot prove parsers validate every duplicate, ambiguous, encoded, or algorithm-confusion form of all seven fields.",
+      "counterexample_analysis": "Normal invalid tokens are rejected, but a token with duplicate issuer keys or an alternate encoded algorithm value is interpreted inconsistently and accepted. The selected profile tests pass while a named field is not reliably validated.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-16-034",
+      "revision": 1,
+      "semantic_sha256": "45ec13c429001690c91e77d4c3cf9201fc38aecbdd0dd00f0e6b04550b680881",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Selected redirect tests do not prove exact matching across every normalization, encoding, parser, and registration path.",
+      "counterexample_analysis": "Tested suffix and query variations are rejected, but a percent-encoded path or Unicode hostname normalizes to an attacker URI after the comparison. The corpus passes while redirect matching violates the protocol.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-16-036",
+      "revision": 1,
+      "semantic_sha256": "4b0641edcfadd0c40f5cb534b3022ae5552b49d02f51e02b4f8f688428394ee9",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Repository flow configuration does not prove which delegated flows are effectively enabled by providers, runtime flags, or dynamic clients.",
+      "counterexample_analysis": "Checked-in clients use only approved flows, but a provider dashboard leaves an insecure legacy flow enabled for one production client. The structured document passes while an insecure flow is used.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-16-045",
+      "revision": 1,
+      "semantic_sha256": "eccf21fe7cfb547073396b71b43e5792b79edb0898f977a93137359238f5c5fa",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A structured assurance record does not prove every runtime consumer uses a claim only within that assurance.",
+      "counterexample_analysis": "The policy says an email claim is self-asserted and permitted only for display, but an undocumented downstream job uses it to authorize account linking. The assurance record is complete and passes while trust exceeds it.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-17-001",
+      "revision": 1,
+      "semantic_sha256": "e6a32e339bbe678b2ba6bfcaaee594f38584520d7898f739f8c42e3b2d85366e",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Finite missing-policy tests cannot prove default denial at every hidden route, background action, protocol adapter, and fallback handler.",
+      "counterexample_analysis": "Unknown actions in the tested API deny access, but a newly registered RPC handler treats a missing policy as allow. The assumed boundary inventory omits it, so tests pass while authorization is not denied by default.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-17-003",
+      "revision": 1,
+      "semantic_sha256": "e7726023bc9e6704c8fd41dcbe89ba799975c88c29837c902f2c0ba534372df3",
+      "verdict": "confirmed_deterministic",
+      "reason": "Existence, schema validity, version binding, and freshness of the role-permission-resource matrix are objective record facts.",
+      "counterexample_analysis": "I tried a stale matrix, missing resource dimension, and unsigned spreadsheet. Each fails the named schema or freshness/authentication policy; whether permissions are wise is outside this existence rule.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-17-004",
+      "revision": 1,
+      "semantic_sha256": "872bbb1ef0380f793dbf8a43156d39443f60699ee896526ac31a766908c8b0d2",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A declared endpoint inventory cannot safely establish every runtime endpoint and non-HTTP action, especially generated and administrative paths.",
+      "counterexample_analysis": "All documented routes map to permissions, but a generated maintenance command invokes the same action without a route declaration or permission mapping. The join passes while an action lacks a required permission.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-17-005",
+      "revision": 1,
+      "semantic_sha256": "3d0bd2bfbe6d3d08225d5e9ab6d888d5d4838e847310df08d978c84325b7a1e4",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Static call arguments do not prove the identities and resource are current or correctly bound at runtime.",
+      "counterexample_analysis": "Every call site passes variables named user, tenant, resource, and operation, but a cached tenant from the prior request is supplied on one async path. AST shape passes while the access check does not use the current tenant.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-17-013",
+      "revision": 1,
+      "semantic_sha256": "ffefba73ca9f7dfcbbb68bc975037632cc339e3d4dffc2e731412ecff367b6b9",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A finite removal test cannot cover cached grants, signed links, replicas, delegated shares, and every shared-resource type.",
+      "counterexample_analysis": "The removed user loses direct database access in the tested resource, but a previously issued signed URL remains valid for another shared file. The matrix passes while access to a shared resource remains.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-17-015",
+      "revision": 1,
+      "semantic_sha256": "35116b4ea36a1c6d6444e9aea6524a0948d129d328dd871655d892f64ff31502",
+      "verdict": "confirmed_deterministic",
+      "reason": "Temporary-grant expiry and current effective access are authoritative timestamp and state facts.",
+      "counterexample_analysis": "I tried a grant with no expiry, an expired grant still effective through a group, and a delayed cleanup. Effective-access resolution after the policy deadline catches each; mere expiry metadata without revocation cannot pass.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-17-018",
+      "revision": 1,
+      "semantic_sha256": "d2d574257a499a1d5012bda91f5ab5901c0af5bc6915dc3d2e9831bac655b36d",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Visible indication requires human-interface judgment, and execution fixtures cannot prove every privileged action path requires all four elements.",
+      "counterexample_analysis": "Tested impersonation shows a banner and audit, but a support bulk action runs without user-visible indication. The action inventory omits it; additionally two informed reviewers can disagree whether a subtle icon is visible enough.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-17-020",
+      "revision": 1,
+      "semantic_sha256": "2fb8f9521d943d8eaf1ec179a71f73d2633845632db2efd9235fc37440e5e911",
+      "verdict": "confirmed_deterministic",
+      "reason": "Approved maximum duration and authenticated review records make time bounds and review completion mechanically checkable.",
+      "counterexample_analysis": "I tried an emergency grant with no expiry, one exceeding the maximum, and one closed without a review record. Each fails an exact timestamp or record predicate; review quality is not asserted.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-17-028",
+      "revision": 1,
+      "semantic_sha256": "59d2cba96b97c265a50519771156742722e64082a8b715c190e87d7b2326be88",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Supported static data-flow analysis cannot prove a universal negative across dynamic authorization code, stored procedures, plugins, and services.",
+      "counterexample_analysis": "All recognized call sites combine identifiers with policy checks, but a dynamically loaded resolver grants access when an unguessable resource ID exists. The AST inventory passes while the identifier alone acts as authorization.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-18-001",
+      "revision": 1,
+      "semantic_sha256": "75adefdd0111322af25667c0318665841886984822316d22e5bbbe900fcbc2ed",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A finite statistical sample can pass for a deterministic or state-recoverable generator and cannot prove sufficient unpredictability to attackers.",
+      "counterexample_analysis": "Session IDs are hashes of an incrementing counter with a hidden fixed salt. A finite sample passes collision and distribution thresholds, yet an attacker who recovers state predicts all future IDs. The sealed statistical test passes while unpredictability is insufficient.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-18-002",
+      "revision": 1,
+      "semantic_sha256": "f5a3868c57b22b246bd538690314127a984019f85fcd47cf5a342be2c4ae93c6",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Static approved-source matching misses runtime substitution, indirect generation, native modules, and copied identifiers.",
+      "counterexample_analysis": "Source calls an approved secure RNG, but production dependency injection replaces it with a deterministic test provider under one flag. The call-site check passes while session identifiers are generated insecurely.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-18-004",
+      "revision": 1,
+      "semantic_sha256": "591119735ace95b4c7f3a83b780bb520baae3350af43c9a0050dc034f05e3498",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A sampled HTTPS response does not cover every cookie emitted by errors, redirects, subapplications, and proxy-injected responses.",
+      "counterexample_analysis": "Normal login cookies have `Secure`, but an HTTPS error handler sets a session-recovery cookie without it. The tested response set passes while a browser cookie transmitted over HTTPS lacks the flag.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-18-009",
+      "revision": 1,
+      "semantic_sha256": "db77aed316c00a3b6aaeaa28371490a575fcf19cd2b8e116e15461c33e0b5f16",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Before-and-after fixtures cannot prove rotation across every login mechanism, privilege transition, and session store.",
+      "counterexample_analysis": "Password login and role elevation rotate the tested session, but federated login or an indirect group privilege increase retains the identifier. Selected event tests pass while the rule is violated.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-18-012",
+      "revision": 1,
+      "semantic_sha256": "0fac68d57f9c26a2d9b7851fbc63679a9245f8228d07e8efa65396f7404136f3",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A logout reuse fixture does not cover every session cookie, refresh token, replica, device grant, and cached authorization path.",
+      "counterexample_analysis": "The tested server session is invalidated, but a refresh token or session replica on another node remains usable after logout. The selected reuse test passes while access is still revocable but not revoked.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-18-014",
+      "revision": 1,
+      "semantic_sha256": "858bb937a8f9233c63d8b32058f5050ed3ae6adf48f9e66e5b4d2564679f94ee",
+      "verdict": "confirmed_deterministic",
+      "reason": "The statement asks only for a current concurrent-session policy record, so authenticated existence and version binding are complete.",
+      "counterexample_analysis": "I tried an informal wiki note, a policy with no effective date, and a record missing concurrent-session behavior. Each fails the record schema or freshness predicate; the chosen number of sessions is not judged.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-18-018",
+      "revision": 1,
+      "semantic_sha256": "78064112a0d080dd19d4ea9fe8d1aa644880fda34abfd5d5413d606c9719ea2b",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A finite token corpus cannot prove robust validation of duplicate, ambiguous, encoded, or parser-differential forms for eight fields.",
+      "counterexample_analysis": "The suite rejects straightforward invalid claims, but a token with duplicate audience keys or algorithm confusion is interpreted differently across layers and accepted. Profile fixtures pass while one required value is not safely validated.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-18-019",
+      "revision": 1,
+      "semantic_sha256": "e2fd30726ad080e7a905f652d07fe3c0edb2001bd7a6faec3cba9ca81f86114c",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A purpose matrix plus sampled cross-purpose tests cannot enumerate all consumers, token aliases, forwarding paths, and claim interpretations.",
+      "counterexample_analysis": "Access tokens are rejected at the ID-token endpoint in tests, but a background service accepts the same token through an alternate audience alias. The matrix omits that consumer, so it passes while a token crosses purposes.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-19-002",
+      "revision": 1,
+      "semantic_sha256": "be8209e501b9650b2d22871b87ff768762fa8b45c8be609db7979fe2cf70157d",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Static supported data flows cannot prove validation at every runtime server boundary involving reflection, plugins, generated routes, and message consumers.",
+      "counterexample_analysis": "HTTP routes validate at the trusted boundary, but a dynamically registered queue consumer processes unvalidated external messages. AST-supported flows pass while validation is missing at a trusted server-side boundary.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-19-003",
+      "revision": 1,
+      "semantic_sha256": "dff28ee87a423f9db95d0a883ee094900d59e1825846d81ec3dc6833e68b5ef3",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Schemas and call-site checks do not prove every input has meaningful allowed values or reaches all six validators before use.",
+      "counterexample_analysis": "A field is typed as string with a large length cap but accepts security-sensitive reserved values the business rule should forbid, while a dynamic route bypasses range checks. The schema proposal passes despite incomplete validation.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-19-004",
+      "revision": 1,
+      "semantic_sha256": "7eb6cbee68de343138a171ac9d98e7b5d2ebd375b39c4adc021e46b7bcf62493",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Correct canonical form and security-sensitive comparison scope depend on context, and static ordering misses transformations in other layers.",
+      "counterexample_analysis": "The application normalizes before its comparison, but a proxy decodes again afterward, producing a traversal-equivalent value. AST ordering passes while the security-sensitive comparison uses a noncanonical effective value.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-19-006",
+      "revision": 1,
+      "semantic_sha256": "7a0b8114de197b33b2b0d57ed4a59f3840ed5f25cf9fc6d2b125d63d1001d068",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Supported AST predicates do not cover dynamic query builders, stored procedures, native extensions, or unsafe identifiers that parameter binding cannot protect.",
+      "counterexample_analysis": "All recognized values use parameters, but a query builder concatenates an untrusted table name through reflection. The call-site checker reports safe binding while a database operation remains injectable.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-19-007",
+      "revision": 1,
+      "semantic_sha256": "61834079b4034fe6c688d4cd2aa438c8a472b10a761931b472711e6bcde52d39",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Static taint analysis cannot prove absence across shell wrappers, scripts, environment expansion, native calls, and indirect command construction.",
+      "counterexample_analysis": "Recognized process calls use argument arrays, but untrusted input reaches a generated shell script executed by a helper library. Supported call sites pass while an operating-system command is constructed from untrusted input.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-19-012",
+      "revision": 1,
+      "semantic_sha256": "24e608f7379158dd74f76c08e60e60984ccfeab186d1e14cc8fddd61132ba59c",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A supported AST inventory cannot prove a universal negative across template engines, plugin interpreters, reflection, native code, and generated configuration.",
+      "counterexample_analysis": "No direct `eval` call exists, but a template expression or plugin configuration evaluates attacker-controlled code at runtime. The AST predicate passes while dynamic evaluation of untrusted input exists.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-19-014",
+      "revision": 1,
+      "semantic_sha256": "c46eddacde68cc5ab4386aeeb4f74de68b1e33bacd182dc2bdd3cda27d535de2",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Expected types require contextual policy, while static site discovery cannot cover runtime deserializers and alternate codecs.",
+      "counterexample_analysis": "Inventoried JSON deserializers use type allowlists and depth limits, but a plugin accepts an unexpected object type through a binary codec. The repository check passes while unsafe deserialization remains; reviewers can also disagree about which types are expected.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-20-002",
+      "revision": 1,
+      "semantic_sha256": "60b6248b786f554d8a225df1ce898c0819988011371b511a6929e7e5959121f2",
+      "verdict": "rejected_nondeterministic",
+      "reason": "One instrumented over-limit upload does not cover compressed, chunked, multipart, remote-fetch, and format-specific preprocessing paths.",
+      "counterexample_analysis": "A normal oversized upload is rejected before parsing, but a small compressed body expands beyond the maximum inside the decoder before the size check. The fixture passes while excessive processing happens first.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-20-003",
+      "revision": 1,
+      "semantic_sha256": "6311a834a1f4b0ffc8d2e8ed65562fdbf046d6b692b384876cdb5cf16e4fa093",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Boundary tests cannot enumerate every parser, nested container, cycle, decompression behavior, and processing path that consumes files.",
+      "counterexample_analysis": "The corpus enforces ZIP depth and size, but a nested office document or image metadata cycle causes unbounded work through another parser. All named fixtures pass while processing time or expanded structure is unbounded.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-20-004",
+      "revision": 1,
+      "semantic_sha256": "9699ba718ffd43c2bf4286dbb0edaa1eccbf7037ac6dc9e3078e947559005d5b",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A finite file corpus cannot establish effective type validation against polyglots, parser differentials, and ambiguous structures.",
+      "counterexample_analysis": "The checker inspects magic bytes, a shallow structure marker, and extension, so its fixtures pass; a valid image/script polyglot satisfies all three and executes in a downstream parser. Type checking exists but is not security-correct.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-20-005",
+      "revision": 1,
+      "semantic_sha256": "6b5c83efad7764201ac321e2a1216bc2603ffbfcc2a6cee6d75b5c0774dc61f8",
+      "verdict": "confirmed_deterministic",
+      "reason": "Presence of a parseable explicit allowed-type list is the complete narrow fact required by this rule.",
+      "counterexample_analysis": "I tried relying only on blocked types, prose examples, and runtime inference. None is an explicit exhaustive allowlist, while the checker need not judge whether the chosen allowed types are safe.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-20-008",
+      "revision": 1,
+      "semantic_sha256": "1fbcf049858a644e1ebac770761c1da61e332fd86f989e05752cc682fe6a60e1",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A state-transition fixture does not prove every read path, race, replica, cache, and validation stage preserves quarantine.",
+      "counterexample_analysis": "The normal publish transition waits for all required validators, but a preview URL can read the quarantined object before the final scanner finishes. The tested release transition passes while the file does not remain quarantined from use.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-20-009",
+      "revision": 1,
+      "semantic_sha256": "7e5440288a6b0852d864e63ac3e365ceded86a52cc9bfa27815d98a33fa3787b",
+      "verdict": "confirmed_deterministic",
+      "reason": "With complete supported path data flow and Unknown yielding Blocked, user filename influence on trusted path construction is mechanically decidable.",
+      "counterexample_analysis": "I tried direct concatenation, normalized traversal, and using the filename after storage indirection. Any tainted filename reaching a trusted filesystem-path sink fails; applications that generate internal opaque paths and retain the name only as metadata pass legitimately.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-20-011",
+      "revision": 1,
+      "semantic_sha256": "7c4f2d93bb2a2eec18611e32d643e3af9892c0d56ae9db19b7709e48b8261136",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A non-executable mount or storage flag does not prove uploaded content cannot execute through the web server, interpreter, or processing service.",
+      "counterexample_analysis": "Uploads reside on a `noexec` filesystem, but the application serves an uploaded script through an interpreter or includes it as a template. Mount evidence passes while upload storage effectively supplies executable content.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-20-013",
+      "revision": 1,
+      "semantic_sha256": "1ad07298ee1e1376612fa2a91b6f1c2d23ea23da6d335300bf00e1ba291bdf9f",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A finite file-operation matrix cannot cover hidden routes, signed URLs, caches, background transforms, and every resource/tenant combination.",
+      "counterexample_analysis": "The five tested API operations check access, but a direct object-store preview URL or asynchronous transform reads another tenant's file. Matrix tests pass while access control is missing for a listed operation.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-20-015",
+      "revision": 1,
+      "semantic_sha256": "94a3562b8b6b89125e1034a76573047a7b4eb76cb9cf378e146f0db1c02ea900",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Selected browser and response-header tests do not prove no sniffing across all download routes, error responses, proxies, and supported browsers.",
+      "counterexample_analysis": "Normal downloads use `nosniff`, but a redirect or CDN error serves the same user file without the header and a browser interprets active content. The tested response passes while sniffing remains possible.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-20-016",
+      "revision": 1,
+      "semantic_sha256": "0cc9eecf36442e44a2be902e6bd214a60d09bafa77a661f8c786750f41610caa",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A fixed malicious archive corpus cannot prove resistance to all encodings, link types, parser versions, races, and resource-exhaustion shapes.",
+      "counterexample_analysis": "ZIP traversal and symlink fixtures are blocked, but a hard-link entry, alternate path encoding, or nested-format bomb bypasses the corpus. Tests pass while archive extraction remains exploitable.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-20-019",
+      "revision": 1,
+      "semantic_sha256": "509ecb87fd2537b62099986c8381e508abb6241388d6a591d5c3be4003c5c5bf",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A fixed export corpus cannot enumerate formula syntax and other active content across spreadsheet, document, HTML, and client variants.",
+      "counterexample_analysis": "Known leading formula characters are escaped, but a locale-specific formula prefix or active hyperlink/template payload is not. The corpus passes while generated output retains active content.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-20-020",
+      "revision": 1,
+      "semantic_sha256": "07c6bc5c56d0a9d59509eae6511aad7c6ccb5dbceda6289c58f3d9ac6a2ef3b7",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Creation and normal cleanup tests do not prove reliable deletion under crashes, cancellation, reboot, replica lag, open handles, and cleanup-worker failure.",
+      "counterexample_analysis": "Temporary files have restricted permissions and delete on a successful request, but persist indefinitely after process termination before cleanup registration. The bounded test passes while deletion is not reliable.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-20-021",
+      "revision": 1,
+      "semantic_sha256": "2ff5e1d4942b4e2d26be76fad51c48cad40e57ff757485ac6bc84017ba3e87cd",
+      "verdict": "confirmed_deterministic",
+      "reason": "Defined terminal states, age thresholds, complete upload records, and current storage queries make cleanup status objective.",
+      "counterexample_analysis": "I tried a failed upload past its deadline, an abandoned multipart upload, and an object with no owning record. Each is classified by the policy and remains queryable, so its continued existence fails.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-20-022",
+      "revision": 1,
+      "semantic_sha256": "233bcc641a02b776f8c5c192b8b29b92d69de041766ba6c277d5c5185fe263b8",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A claimed complete original-derived graph can omit caches, thumbnails, search indexes, backups, exports, and supplier copies.",
+      "counterexample_analysis": "The registered original and thumbnail obey retention, but an unregistered preview derivative in a CDN survives deletion. The graph query passes while a derived version violates the rule.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-21-001",
+      "revision": 1,
+      "semantic_sha256": "e4007e1c8857891dc65fd843c773b43e3e972151707c1dd55ec15760544a5687",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A complete traffic-path inventory is not safely established by configuration and misses shadow endpoints, alternate ports, tunnels, and internal admin routes.",
+      "counterexample_analysis": "Documented user and admin endpoints use approved TLS, but an old management port or direct origin address accepts plaintext traffic. The known path inventory passes while administrative traffic is unencrypted.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-21-003",
+      "revision": 1,
+      "semantic_sha256": "b155ef8bcb6435dd8d067524065ff8f15e034d9885d3e778abc1a39cdd1cc4b8",
+      "verdict": "confirmed_deterministic",
+      "reason": "For a sealed endpoint inventory, certificate name matching and trust-chain validation are exact protocol predicates.",
+      "counterexample_analysis": "I tried a missing SAN, expired intermediate, untrusted root, and certificate for a different endpoint. Each fails deterministic hostname or path validation; unavailable endpoint evidence blocks instead of passing.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-21-004",
+      "revision": 1,
+      "semantic_sha256": "444520a1e6f2c3d19f8f536eedf31d9e846ab99bd903ea5fc3ac6515797e4081",
+      "verdict": "confirmed_deterministic",
+      "reason": "Certificate inventory coverage and current lifecycle-event monitoring records for four named stages are objectively queryable.",
+      "counterexample_analysis": "I tried an unmonitored manually issued certificate, a renewal failure without an event, and a revocation feed that stopped. Complete certificate inventory and freshness checks expose each.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-21-012",
+      "revision": 1,
+      "semantic_sha256": "826d735f1f3dbfbc8f8172635631d38e3aa262241bc1bf56ffd56ec984c295b9",
+      "verdict": "confirmed_deterministic",
+      "reason": "An approved parent-origin set and effective frame-policy behavior give exact allowed and rejected embedding outcomes.",
+      "counterexample_analysis": "I tried an unintended external parent, wildcard subdomain, missing header on an error response, and conflicting policies. A complete response profile and browser result reject or flag each, while intended parents remain objectively policy-defined.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-21-013",
+      "revision": 1,
+      "semantic_sha256": "6d63d92b876ecf82cd19208a2b467992b91c2a4ae09980135905af1fa7fb1d68",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A finite response and browser test cannot prove MIME sniffing is disabled on every applicable route, cache, redirect, and proxy response.",
+      "counterexample_analysis": "The tested page has `nosniff`, but a static-file fallback or CDN error omits it and serves attacker-controlled content. Selected behavior tests pass while MIME sniffing remains enabled on another response.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-21-020",
+      "revision": 1,
+      "semantic_sha256": "890a9d8c5e8cbaf72f2b2e879d77b021d22090e5bb7514c07caece2f9f2827ad",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Header applicability depends on response and threat context, and a finite response-class inventory cannot enumerate all generated responses.",
+      "counterexample_analysis": "Normal and sampled error, redirect, auth, and static responses match the profile, but a framework-generated exception or proxy challenge omits a required header. Tests pass; reviewers may also disagree whether a header applies to a download response.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-21-024",
+      "revision": 1,
+      "semantic_sha256": "0634b42797891d2823a66cb350fd752b62696bc609b464346982371d03ef0750",
+      "verdict": "confirmed_deterministic",
+      "reason": "Effective proxy and load-balancer trust sources can be queried against an explicit approved configuration without subjective security meaning.",
+      "counterexample_analysis": "I tried trusting all addresses, trusting a stale proxy range, and an environment override that differs from repository config. Effective-state comparison catches each; merely having a file is insufficient.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-21-025",
+      "revision": 1,
+      "semantic_sha256": "c527194e35d3821b4b44c926a27799de807980c30b1399eb1aaefa7a940f3cbe",
+      "verdict": "rejected_nondeterministic",
+      "reason": "DNS, routing, firewall, and known origin evidence cannot prove a universal negative across IPv6, cloud hostnames, stale records, peering, and provider paths.",
+      "counterexample_analysis": "The documented IPv4 origin rejects direct internet traffic, but its IPv6 address or provider-assigned hostname remains public and bypasses the WAF. Known route queries pass while the relied-upon proxy is bypassable.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-21-028",
+      "revision": 1,
+      "semantic_sha256": "bd1bac7d89da3c43b4aeebdfe6c28d08f52942b0c4a6721cb0239227880be119",
+      "verdict": "confirmed_deterministic",
+      "reason": "A complete effective network trust and routing graph can mechanically reveal any default development or office trust edge into production.",
+      "counterexample_analysis": "I tried an allow-all office CIDR, inherited firewall group, VPN route, and development peering. Each appears as an effective graph edge without an explicit production authorization and fails; identity authorization outside the network is a separate control.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-21-029",
+      "revision": 1,
+      "semantic_sha256": "7e952770fd53f26ca51780c93bab08481bac3ca19dbd0b2d5f0f2a42a565e9fb",
+      "verdict": "confirmed_deterministic",
+      "reason": "An authenticated domain-ownership record is exactly the documentation fact requested.",
+      "counterexample_analysis": "I tried registrar screenshots with no owner, stale personal ownership, and an unapproved spreadsheet. Each fails the owner schema, authentication, or freshness policy; registrar control quality is not asserted.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-21-031",
+      "revision": 1,
+      "semantic_sha256": "afe472a791bda9159a1b837a5bfd05c93ac442466852e571753734f1549d19f5",
+      "verdict": "confirmed_deterministic",
+      "reason": "Registrar transfer-lock and modification-protection states are bounded authoritative configuration facts.",
+      "counterexample_analysis": "I tried an unlocked domain, transfer lock without modification protection, and a domain at a second registrar omitted from the record. Complete domain inventory and registrar queries fail each case.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-21-032",
+      "revision": 1,
+      "semantic_sha256": "1eba6fe868e4da650e9b7161c980be1878d7338d75d1d2e7cd9d71065e9fef9c",
+      "verdict": "confirmed_deterministic",
+      "reason": "Authoritative zone enumeration can produce a complete machine-readable DNS record inventory for the assessed domains.",
+      "counterexample_analysis": "I tried hidden wildcard records, delegated subzones, and records present only at a secondary provider. Authoritative zone and delegation enumeration includes them or returns Blocked when access is incomplete.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-21-033",
+      "revision": 1,
+      "semantic_sha256": "7611c329920e4d44cad1def96a49b8fb295974a191382d58d3f82ee626c1166a",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Provider absence does not fully define abandonment, and complete target ownership cannot be inferred for external or reclaimable services.",
+      "counterexample_analysis": "A DNS record points to an unclaimed third-party hosted-service name not present in the organization's provider inventory. The join treats the external target as out of scope or unknown and passes, while an attacker can claim the dangling resource.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-21-035",
+      "revision": 1,
+      "semantic_sha256": "2af8fa0773b24a1f0792946722bbda55441ec87f53bd6abe5d2e151b43d7cd88",
+      "verdict": "confirmed_deterministic",
+      "reason": "The statement only requires documentation of four named DNS operational topics, which a versioned record can prove exactly.",
+      "counterexample_analysis": "I tried a runbook missing recovery, a TTL-only zone export, and an obsolete change procedure. Each lacks a required current field; operational effectiveness is not claimed.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-21-038",
+      "revision": 1,
+      "semantic_sha256": "d3b4856ac2c573d158900109c32631bde6136e43dfc414c4a6b11a1c0230851a",
+      "verdict": "rejected_nondeterministic",
+      "reason": "One canary exposure proves one monitored path, not detection of every new host and service across all domains, accounts, clouds, and addresses.",
+      "counterexample_analysis": "The scanner detects an injected public host in its known cloud account, but misses a new service on an acquired domain or alternate provider. The canary and known-surface configuration pass while a newly exposed service is undetected.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-22-002",
+      "revision": 1,
+      "semantic_sha256": "1b1cc31e9cd22f3fd57f46db081b37441ef4d419d173c1f8477cf0b3e2b38fda",
+      "verdict": "rejected_nondeterministic",
+      "reason": "An analysis inventory cannot prove every runtime cryptographic implementation or contextual use, and maintained status is not always a single authoritative fact.",
+      "counterexample_analysis": "Approved maintained algorithms appear in source, but a proxy, native dependency, hardware module, or dynamically selected legacy protocol uses an unapproved implementation. The adapter passes while effective cryptography violates the rule.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-22-005",
+      "revision": 1,
+      "semantic_sha256": "dff7e4a06bd665cf1cc78784ad5fc5df4e6948d926a6f5540a53f1d5b4adc95e",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Static call-site analysis misses stored legacy hashes, framework defaults, external identity stores, runtime parameter changes, and migration behavior.",
+      "counterexample_analysis": "New password writes use the approved adaptive method in recognized source, but existing users still authenticate against unsalted legacy hashes or production lowers work factors through configuration. The AST check passes while not all passwords use the current method.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    }
+  ]
+}

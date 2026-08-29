@@ -1,0 +1,582 @@
+{
+  "schema_version": "prc.control-classification-skeptic-review/v0.1",
+  "packet_id": "skeptic-docs-engineering-02-product-and-requirements-md-part-001-part-001",
+  "primary_packet_id": "docs-engineering-02-product-and-requirements-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "controls": [
+    {
+      "control_id": "USEQ-13EC8AE3",
+      "revision": 1,
+      "semantic_sha256": "13ec8ae3578d486e1db16b94446b5791004cfb6c433fe836f88e3fe54c360cfd",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Five section names do not prove that the problem, users, scope, non-goals, and deferred features are accurately and usefully documented.",
+      "counterexample_analysis": "A document can contain those headings with TBD or one vague sentence in each. Presence passes while the product definition remains unusable.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-9DBA28BF",
+      "revision": 1,
+      "semantic_sha256": "9dba28bf6223b4f3449911743501d4faa81021bd3795326d2ece44c01c0598d3",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Criticality and applicability are product judgments, and a declared journey register cannot prove that every real onboarding, recovery, cancellation, and deletion path is included.",
+      "counterexample_analysis": "The register can mark account recovery not applicable and list one happy-path onboarding while the product has passwords and multiple cancellation routes. Schema coverage passes although critical journeys are missing.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-AFDBA1B7",
+      "revision": 1,
+      "semantic_sha256": "afdba1b7a4277b001791a3602e7a53a9ba6a2617f5e1deedf1cce88d2fc6c080",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Behavior references for seven labels do not prove that behavior is complete, coherent, or correct for every dependency and data source.",
+      "counterexample_analysis": "Each field can say show error while failing to define retry, partial state, or user impact for a stale payment response. The checklist passes but behavior remains unspecified.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-42AA91B8",
+      "revision": 1,
+      "semantic_sha256": "42aa91b8c0503f9d7027038dd77d855e57b3957d8c23b3430e3e5267fdba6b45",
+      "verdict": "confirmed_deterministic",
+      "reason": "Success, failure, stop, and rollback criteria are complete typed predicates with metrics, operators, thresholds, windows, and actions fixed before launch.",
+      "counterexample_analysis": "A missing threshold, unevaluable operator, absent action, or post-launch change fails; no product judgment is needed to verify that measurable criteria were defined.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-E84CA4EA",
+      "revision": 1,
+      "semantic_sha256": "e84ca4ea8988c17d5992adedf7dc99d2e323d553762597d6dcb2b6cec8750f05",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A role matrix cannot prove that the roles have legitimate organizational authority to pause, continue, expand, or roll back a launch.",
+      "counterexample_analysis": "An incorrectly privileged role can be listed for every action and pass membership checks while the actual authorized release owner is absent.",
+      "nondeterministic_route": "accountable_human_decision",
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-B636D78E",
+      "revision": 1,
+      "semantic_sha256": "b636d78e6875ae9c737b6abd9d80766e91cf00796d4cbde5dcc84ce2ff1cbf61",
+      "verdict": "confirmed_deterministic",
+      "reason": "Launch mode is a closed enum with objective regional or percentage parameters, so one declared mode is fully schema-validatable.",
+      "counterexample_analysis": "An unknown, missing, or parameter-incomplete mode fails; one valid configured mode passes.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-CD424A12",
+      "revision": 1,
+      "semantic_sha256": "cd424a12febb497dd9d6d8cb66b3cc5fe941dd2fa7a47e1f3cd83353ae03ba42",
+      "verdict": "confirmed_deterministic",
+      "reason": "The five named functions and canonical release record form a fixed set, and exact date and scope-digest equality is mechanically decidable.",
+      "counterexample_analysis": "Any function using a different date, release identifier, or scope digest fails the complete five-way comparison.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-E1BD3483",
+      "revision": 1,
+      "semantic_sha256": "e1bd34839efa482e090c0a253f42b73f64900c44f33cf51823f7e346593d29b5",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Typed measure fields do not prove that the observable evidence is causally relevant to the intended outcome or shows that the stated problem is reduced.",
+      "counterexample_analysis": "A strategy for reducing checkout abandonment can measure homepage visits. All metric fields are valid, but the evidence does not show the problem was reduced.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-66F98F70",
+      "revision": 1,
+      "semantic_sha256": "66f98f700995ce99cde1d8d28db405876a05715a9def76ab02d5089c4eed920f",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Nonempty non-goal and choice fields do not prove that choices are strategic, meaningful, or sufficient to prevent unbounded scope.",
+      "counterexample_analysis": "The strategy can state non-goal none and choice do work, with valid dates and owners. The record passes while scope remains unbounded.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F06D1CFF",
+      "revision": 1,
+      "semantic_sha256": "f06d1cffa04f03b157ed88f9d20dcd83c35f87a91da2bcee4306d4a8e03294cb",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The true user value exchange and applicability of money, data, attention, effort, and lock-in require product and user interpretation, not field presence.",
+      "counterexample_analysis": "A product can mark lock-in not applicable while exported data is unusable elsewhere, and describe data as email only while collecting behavior. The schema passes but the exchange is misrepresented.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-1BF8A0A2",
+      "revision": 1,
+      "semantic_sha256": "1bf8a0a2a153c8195627f66148a105bf0505ae66500f2bc1304fe94c27cd2bfe",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Identifiers and expected values do not establish meaningful assumptions about demand, willingness, behavior, channels, support, or unit economics.",
+      "counterexample_analysis": "Every class can contain assumption unknown with an arbitrary expected value. The record passes while the decision assumptions remain unstated in useful terms.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-43785162",
+      "revision": 1,
+      "semantic_sha256": "43785162418d4874ef19497c57fd66ef6e61da6d4a692da0aa95b755d25d7a0b",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Different source and method identifiers do not prove independence, evidence quality, or that stakeholder opinion is not being duplicated.",
+      "counterexample_analysis": "Two interviews with the same stakeholder can be labeled different sources and methods, or one report copied twice. Cardinality passes while the conclusion still relies on one opinion.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-0ED90387",
+      "revision": 1,
+      "semantic_sha256": "0ed903879d1f2b7911313e2d3a7258c0e5c5390380c26ad0b623a423ccfe0213",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Labels do not prove that observed behavior, stated preference, and researcher interpretation were correctly separated rather than misclassified.",
+      "counterexample_analysis": "A researcher's inference can be placed in the observed field and empty preference text added. All labels exist, yet provenance categories remain mixed.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-1EC01EEF",
+      "revision": 1,
+      "semantic_sha256": "1ec01eefd536139154c4de071a41dd0532eb4753e26f8438d5a6ca8f863e6c68",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Research field presence does not prove adequate sampling, methods, consent, limitations, or analysis, and valid consent may require ethical or legal authority.",
+      "counterexample_analysis": "A record can list convenience sample, method interview, and consent yes without an actual consent process. Every field passes while the study plan is invalid.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-AA7C1D23",
+      "revision": 1,
+      "semantic_sha256": "aa7c1d23a60eba1b0dcdeecd9f0d47d994e1009fff42eee435402b581415fd87",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Evidence-graph links do not prove that sources actually triangulate the qualitative finding, and inapplicability rationales require judgment.",
+      "counterexample_analysis": "A finding about pricing can link to an unrelated support ticket and generic market report. Every edge exists while the conclusion has not been triangulated.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-82E8E2F9",
+      "revision": 1,
+      "semantic_sha256": "82e8e2f967be8782b7ad4e46b8a8e873bdcf83b1f43f2bdc6786b765c97357e1",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Resolvable links do not prove that a requirement, constraint, or outcome faithfully translates the validated finding.",
+      "counterexample_analysis": "A finding that users need account recovery can link to a color requirement and homepage metric. The graph passes but the finding was not translated into the product.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-7B2F50E9",
+      "revision": 1,
+      "semantic_sha256": "7b2f50e91bd36a8cf8f3145dc053d9c7274b529bd9acba080a09920c638389f9",
+      "verdict": "rejected_nondeterministic",
+      "reason": "An enum label is objective, but deciding whether an artifact is truly a need, goal, constraint, requirement, or design decision depends on its meaning.",
+      "counterexample_analysis": "A fixed database choice can be labeled user need and pass enum validation while the categories are not actually distinguished.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-639F791F",
+      "revision": 1,
+      "semantic_sha256": "639f791f3223f920f039a0b44a7445e54b92d7a8b46b9d1d30808f703fcaa439",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Typed fields do not prove that the subject, behavior, conditions, thresholds, units, and tolerances form a coherent, measurable requirement.",
+      "counterexample_analysis": "A latency requirement can use users as its unit and an irrelevant tolerance while filling every field. The schema passes but the requirement is not validly stated.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_threshold"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-00B1BC4F",
+      "revision": 1,
+      "semantic_sha256": "00b1bc4f45c943dabfc556795e341fd141fc6541ac1d4f9af9d55d7921c90998",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Applicability and substantive behavior for six categories depend on feature semantics; references or rationales alone do not prove complete specification.",
+      "counterexample_analysis": "A payment feature can mark degraded behavior not applicable and use fail for every other field. All categories are present but usable behavior is not defined.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-3640A26A",
+      "revision": 1,
+      "semantic_sha256": "3640a26a5a65741d47c132eae6983d2c532923ec6fcb839b12657bb2d74c8cb7",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Data, state, timing, ordering, concurrency, retention, and authorization semantics require meaningful domain definitions, not merely typed fields.",
+      "counterexample_analysis": "Every field can say default while omitting tenant boundaries and retry ordering. Presence passes although the requirement's semantics remain unspecified.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-15B9169F",
+      "revision": 1,
+      "semantic_sha256": "15b9169fef2c609e45f5c0b609d1a30e05b7172a9b258bc944362a8463b0edcb",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Links establish graph connectivity, not that acceptance criteria and planned verification actually test the approved requirement.",
+      "counterexample_analysis": "A privacy requirement can link to an uptime threshold and a lint command. Both references resolve while no acceptance criterion or verification addresses privacy.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-52E6B01C",
+      "revision": 1,
+      "semantic_sha256": "52e6b01c8cb2199bff747c07c9d872bac9397f64bf9aeab7cca22260168d112d",
+      "verdict": "confirmed_deterministic",
+      "reason": "Content-addressed accepted revisions, effective dates, and successor links make history preservation and silent rewriting objectively verifiable.",
+      "counterexample_analysis": "Changing or deleting accepted text breaks its digest or chain; missing dates and ambiguous successors cannot pass.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-CAAD1092",
+      "revision": 1,
+      "semantic_sha256": "caad1092d72040537da956dab7797d0942652252885a5766649f8832ceece4f2",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Trace links do not prove that a derived requirement logically follows from the linked assumptions and source requirements.",
+      "counterexample_analysis": "A requirement to use a specific database can link to an assumption about mobile users. References resolve but the claimed derivation is invalid.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-92888739",
+      "revision": 1,
+      "semantic_sha256": "92888739b98b86fc1d93be6ff768ca1de1b6c632ac3fdbe6b162859fa8740528",
+      "verdict": "confirmed_deterministic",
+      "reason": "The prioritization model requirement is limited to explicit versioned definitions for the eight named criteria, which is a finite record property.",
+      "counterexample_analysis": "Omitting, merging invisibly, or leaving any criterion undefined fails; the checker does not judge the chosen weights.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-D0EAD736",
+      "revision": 1,
+      "semantic_sha256": "d0ead736d7ffe62b0846324d9006eb8558c77319866f2339b8a41da6943e8c4b",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Registry membership for known items cannot prove that all reliability, security, privacy, accessibility, maintenance, support, and debt work was identified and entered.",
+      "counterexample_analysis": "Feature and listed maintenance items can share one registry while a known accessibility remediation is kept outside it. The clause passes although the same system is not used for all work.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-1CA42AE8",
+      "revision": 1,
+      "semantic_sha256": "1ca42ae88a1da8f260b16c9fab745971fdc3237042459ee0d2d1138d3b5b0c1f",
+      "verdict": "confirmed_deterministic",
+      "reason": "Separate stakeholder-influence and mandatory-obligation fields outside the aggregate score are exact record and calculation-structure properties.",
+      "counterexample_analysis": "Hiding either input inside the score or omitting its explicit field fails the schema and score-definition inspection.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-137336BA",
+      "revision": 1,
+      "semantic_sha256": "137336ba9d23f989f0e84d1d8c81a88112bb9e67138efbd1fc7714524ecfe3d9",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Fields named uncertainty and sensitivity analysis do not prove uncertainty is quantified honestly or that sensitivity was actually analyzed.",
+      "counterexample_analysis": "A result can set uncertainty low and sensitivity none with a boilerplate warning. The record passes while presenting the score as falsely objective.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-79915E9D",
+      "revision": 1,
+      "semantic_sha256": "79915e9d752bb4260e5f3ff33d26bee9557a1e3aa1dc3804ffcc19238892304b",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Roadmap fields cannot prove that all real prerequisites, sequencing constraints, migrations, and operational work were identified.",
+      "counterexample_analysis": "A database change can mark migrations not applicable and omit a provider prerequisite while every field is populated. The record passes but dependencies remain hidden.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-5E98FA21",
+      "revision": 1,
+      "semantic_sha256": "5e98fa218ea57ab4b74a6325ed26ef6cf2b4fedf97977ac6f3f795f44c0f3caf",
+      "verdict": "confirmed_deterministic",
+      "reason": "The four roadmap states form a closed classification, so exactly one explicit state per item is mechanically decidable.",
+      "counterexample_analysis": "Missing, multiple, or invented labels fail; allowed values pass without judging priority.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-01BD0F61",
+      "revision": 1,
+      "semantic_sha256": "01bd0f6179d72138189dc2637caf39b17ab49b4088dd46edc0328c2b9297b805",
+      "verdict": "confirmed_deterministic",
+      "reason": "Versioned entry and exit predicates for every finite roadmap stage are objective structured requirements.",
+      "counterexample_analysis": "A stage missing either predicate or containing an unevaluable criterion fails; complete machine-readable criteria pass.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-10689ED1",
+      "revision": 1,
+      "semantic_sha256": "10689ed1ef91c55a9213fc01a2463fb0dfb21c90845ad894ed126a382981a265",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Materiality, legitimate decision-maker authority, and a meaningful reason are human judgments not proved by identity and nonempty-text fields.",
+      "counterexample_analysis": "A major decision can be marked non-material, or an unauthorized signer can enter because. The clause passes while material decisions and reasons remain undocumented.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-D470C55C",
+      "revision": 1,
+      "semantic_sha256": "d470c55c8f3d808b01e1ca5a45cc8909000a584841c706793d05743b1a515ee4",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Version and timestamp checks do not prove that event semantics and data-quality requirements are complete or correct for the instrumented event.",
+      "counterexample_analysis": "An event can define semantics as click and quality as valid before deployment while omitting units, identity, and duplication rules. The clause passes but semantics are undefined.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-9C795830",
+      "revision": 1,
+      "semantic_sha256": "9c795830fb7ee46a551774c6fcb399f18a520f28c552fa7b7d93a327e02e6da4",
+      "verdict": "confirmed_deterministic",
+      "reason": "The eight experiment fields and immutable preregistration time precede exposure, making preregistration completeness and timing objectively decidable.",
+      "counterexample_analysis": "Missing fields or edits after allocation starts fail; sealed pre-exposure values pass without interpreting the hypothesis quality.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-11E13BB4",
+      "revision": 1,
+      "semantic_sha256": "11e13bb4e1485d7d182ac7624ad2f851541c8364c66af08de7ebee38eca37767",
+      "verdict": "confirmed_deterministic",
+      "reason": "Versioned configuration, code digest, lineage graph, analysis artifact, and decision record are immutable experiment artifacts whose preservation is verifiable.",
+      "counterexample_analysis": "Deletion, mutation, broken lineage, or an unbound record breaks referential or digest checks and cannot pass.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-883443BC",
+      "revision": 1,
+      "semantic_sha256": "883443bc99d9bc0f6b7ade4d35df701dd71fa6ca943a6a41f1112ec53e487ff4",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Plan presence and explicit inapplicability do not establish adequate cleanup, holdout, and post-launch validation for each experimental flag.",
+      "counterexample_analysis": "A persistent experiment flag can mark cleanup not applicable and provide a one-line validation plan. All artifacts exist while lifecycle work is not actually planned.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-0B5ECDD2",
+      "revision": 1,
+      "semantic_sha256": "0b5ecdd278ca0dd3a4dda1948cc56290b9e92cef1364beaf177fbd18fcb9fba4",
+      "verdict": "confirmed_deterministic",
+      "reason": "The policy requirement is to define lifecycle states and five classes of transition or service criteria, all expressible as versioned structured predicates.",
+      "counterexample_analysis": "Missing states or unevaluable entry, support, maintenance, deprecation, or retirement criteria fail; policy wisdom is outside the control.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-E028DE12",
+      "revision": 1,
+      "semantic_sha256": "e028de120fcdd5fafbf25bab14a27dd513e11e091e3df0ac3c53f1b6db38bc77",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Recorded inventories cannot prove complete adoption, usage, customer, integration, dependency, and data populations before deprecation.",
+      "counterexample_analysis": "All six fields can exist while an untracked critical customer or integration is omitted. The timestamp passes although deprecation inputs are incomplete.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-33C4E64B",
+      "revision": 1,
+      "semantic_sha256": "33c4e64bb0c4984710586f690810b6e2129f39a3d99cf4964c68754e65eeb2a0",
+      "verdict": "confirmed_deterministic",
+      "reason": "The control asks the policy to define handling, and intake, severity, response, fix, disclosure, and exception fields for both support periods form a complete bounded schema.",
+      "counterexample_analysis": "An omitted process step or support period fails; actual case execution is assessed elsewhere.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-B5593A92",
+      "revision": 1,
+      "semantic_sha256": "b5593a922245df73383ae43ffd93055d113b7a289522225faf96d58839ac3682",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Repository dependency edges do not form a complete inventory of runtime, configuration, infrastructure, and external dependencies on retiring components.",
+      "counterexample_analysis": "No source edge can target the component while a new environment configuration or dynamically resolved plugin depends on it. Both clauses pass but a new dependency was created.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-B7C71F97",
+      "revision": 1,
+      "semantic_sha256": "b7c71f97d06b256d920d14b58f9d3beb31e4bae2d069afddeee41db5a52ea878",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The migration population and disruption-risk rule may omit customers, while send evidence does not prove the correct at-risk customers were identified and contacted.",
+      "counterexample_analysis": "All listed subjects can have progress and notices while an unlisted customer is at risk, or a risk rule wrongly marks them safe. Both clauses pass but required contact is missed.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-65B667B8",
+      "revision": 1,
+      "semantic_sha256": "65b667b8967f1e45b3c46fead9299139439d167270f00c71c3d6c9007b2d0b0e",
+      "verdict": "rejected_nondeterministic",
+      "reason": "One successful result per version pair does not define the promised operations, data shapes, durations, and failure cases needed to prove interoperability.",
+      "counterexample_analysis": "Old and new versions can pass a health check while mixed-version writes corrupt data. Every matrix cell is green but the versions are not interoperable for the transition.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-BD2D6F7B",
+      "revision": 1,
+      "semantic_sha256": "bd2d6f7b3a1432772e9c70b067620214dd38dea9b9d2ef494a37307366b502b0",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Final export, retention, deletion, legal hold, and backup behavior depend on data classification, contracts, and legal obligations, not field presence alone.",
+      "counterexample_analysis": "A plan can delete held records immediately and mark backup retention not applicable while filling every data-class row. The schema passes but required legal and data behavior is wrong.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-CD275A7D",
+      "revision": 1,
+      "semantic_sha256": "cd275a7d69d938ad7f8df722e017a6fcbde00f088d2ba68ad9808bee9c11af62",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A retirement manifest cannot prove it enumerates every credential, domain, endpoint, job, queue, infrastructure asset, and supplier access path.",
+      "counterexample_analysis": "Every listed resource can be disabled while a forgotten DNS name and supplier token remain active outside the manifest. Both clauses pass although retirement revocation is incomplete.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-0151D776",
+      "revision": 1,
+      "semantic_sha256": "0151d776181cf67c9ede9e93254211bd76671a4566ee4273a9757f595184d189",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Queries over a declared retired-asset inventory cannot prove universal reachability, billing, monitoring, or data-processing absence for omitted paths and uninstrumented events.",
+      "counterexample_analysis": "All listed assets can be unreachable and absent from queried systems while a forgotten endpoint processes data or a separate provider keeps billing. The clause passes despite an active retired asset.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    }
+  ]
+}

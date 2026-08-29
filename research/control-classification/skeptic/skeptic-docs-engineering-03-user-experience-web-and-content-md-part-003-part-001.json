@@ -1,0 +1,1301 @@
+{
+  "schema_version": "prc.control-classification-skeptic-review/v0.1",
+  "packet_id": "skeptic-docs-engineering-03-user-experience-web-and-content-md-part-003-part-001",
+  "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-003",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "controls": [
+    {
+      "control_id": "USEQ-3FBF31A0",
+      "revision": 1,
+      "semantic_sha256": "3fbf31a089b97ea56880d5b2ec8c2f29d211b95cd5787a8b32f6b969be979e40",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Configured monitors for inventoried properties do not prove complete property coverage or that all eight signal classes are actually detected and delivered.",
+      "counterexample_analysis": "All listed sites can have enabled monitors while a locale host is omitted or the manual-action query is broken. Configuration passes although required monitoring is absent.",
+      "nondeterministic_route": "contract_incomplete",
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-E73D403C",
+      "revision": 1,
+      "semantic_sha256": "e73d403c6382fd17d5a25f4a64331333db6c0447576a5ac6f1cdc8cf154dff7c",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A classification schema and counts do not prove that server events are correctly distinguished among discovery, fetch, rendering, redirect, rate-limit, and failure causes.",
+      "counterexample_analysis": "A rendering-resource failure can be mislabeled fetch while every category has counts and source events. The report passes shape checks but does not distinguish the actual problem.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-34256FC3",
+      "revision": 1,
+      "semantic_sha256": "34256fc3ba0a67135c22703db77d3ecd9c432d40d35f7e71b9a3cd2e910631db",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Grouped reports assume complete intended URL and search-engine inventories, while external indexed counts may be sampled or incomplete.",
+      "counterexample_analysis": "Every listed host and locale can report matching counts while an omitted template is largely deindexed. All groups pass but intended versus actual indexing is not fully monitored.",
+      "nondeterministic_route": "contract_incomplete",
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-A28B0595",
+      "revision": 1,
+      "semantic_sha256": "a28b0595e17ca2c6de541ae9284d39d1a28628983cc2a7f2725cab5750e12b4b",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Event ledgers can omit changes, and deciding which dashboards are relevant requires contextual judgment not supplied by annotation identity matching.",
+      "counterexample_analysis": "All recorded incidents can be annotated on one declared dashboard while an unrecorded template migration affects another dashboard. The clause passes but relevant annotations are missing.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-1680F8E4",
+      "revision": 1,
+      "semantic_sha256": "1680f8e43da67fc333ce8aa28946e54ae5525c2bc25c59fb0e67faf32b5d95ad",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Active alert definitions do not prove that queries, thresholds, and notification delivery detect sudden harmful changes for each signal.",
+      "counterexample_analysis": "Every alert can be enabled with a threshold that never fires or a broken destination. Coverage fields pass while sudden accessibility or canonical failures produce no alert.",
+      "nondeterministic_route": "contract_incomplete",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_threshold"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-0DB446A8",
+      "revision": 1,
+      "semantic_sha256": "0db446a81ab63fbb7eca8ff74a7548855f288a4fdbd5a43a9acd0c4c514f62a5",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Critical-page and error-state inventories are not complete, and selected route fixtures cannot prove correct status behavior across all authorization and failure paths.",
+      "counterexample_analysis": "Listed pages can return 404 in fixtures while an omitted account page returns 200 with Not found for another tenant. Tests pass but a critical page still gives misleading success.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-6071D598",
+      "revision": 1,
+      "semantic_sha256": "6071d598efc97932e397423ffe2f0bb5efc649852b9d7eb2325f3d048b5f22f5",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A non-automation evidence link does not prove a valid WCAG conformance basis; manual scope and conformance judgment require accessibility expertise.",
+      "counterexample_analysis": "A claim can link to a one-page manual checklist in addition to an overlay. Record validation passes although the evidence is nowhere near sufficient for WCAG conformance.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-7EB6BE46",
+      "revision": 1,
+      "semantic_sha256": "7eb6be466902e3e2072a4b2b60bfb9dc692376c02eb2e5e49c08636f380f2772",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Field retention does not prove valid applicability, complete scope and assumptions, or accountable owners, reviewers, and decision authority.",
+      "counterexample_analysis": "A package can retain placeholder scope, nominal owners, and an unauthorized reviewer with valid dates. All fields exist while the governance record is not substantively valid.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-1B7F2728",
+      "revision": 1,
+      "semantic_sha256": "1b7f27283af367004b63dca9961776230633d77990ec5d33289a140ea21333b8",
+      "verdict": "confirmed_deterministic",
+      "reason": "Exact source-revision identifiers and immutable verification records make revision binding a complete objective property.",
+      "counterexample_analysis": "A result from another or modified revision cannot pass the equality and integrity checks; missing bindings fail or block.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-5D5338EB",
+      "revision": 1,
+      "semantic_sha256": "5d5338eb2d8438fb424df2c3735df4b7604c7684e680101d1b757ee9e2e02a6e",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Severity, impact, compensating-control adequacy, and accountable ownership require judgment; required fields alone do not prove correct retained risk records.",
+      "counterexample_analysis": "A critical defect can be labeled low, link an irrelevant monitor, and name an inactive owner while all fields pass. The unresolved risk is misrepresented.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-8E12CCA7",
+      "revision": 1,
+      "semantic_sha256": "8e12cca7c941f6b64392c183ef1e75a5c1a5f80060074e3265f5e95281186984",
+      "verdict": "rejected_nondeterministic",
+      "reason": "One current postdeployment result does not prove that a continuous control continues to operate throughout relevant time and conditions.",
+      "counterexample_analysis": "A daily control can emit one success after deployment and then stop permanently. Its timestamp passes while ongoing control operation is not evidenced.",
+      "nondeterministic_route": "contract_incomplete",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-0E5A3C0E",
+      "revision": 1,
+      "semantic_sha256": "0e5a3c0e7e49dcda9776ad69ec55c655547c607d0793e17be5b71df1d557f8c2",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The change ledger cannot prove every post-snapshot change was captured, and mapping affected controls requires semantic impact judgment.",
+      "counterexample_analysis": "Every recorded commit can map to reassessed controls while an unlogged production flag change is omitted. The clause passes although affected evidence was not reassessed.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-436CB3E7",
+      "revision": 1,
+      "semantic_sha256": "436cb3e727cbf8addcd2323c9ebee83f6551870868df358a869c77ca9c491c6f",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A deployed-verification record does not prove that its protocol verifies the outcome claimed by a tool, supplier, certification, or policy.",
+      "counterexample_analysis": "A supplier security claim can link to a production health check. The record is current and bound but does not verify the claimed security outcome.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-EB22BF99",
+      "revision": 1,
+      "semantic_sha256": "eb22bf99bb83d80fa2209d794184eff08bc97bbd7ecb7d0a29ddca6255052e59",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The surface inventory may omit routes, and selecting applicable public, searchable, shareable, private, or removed states requires product judgment.",
+      "counterexample_analysis": "All listed pages can have visibility labels while an unlisted export is publicly reachable, or a private page is mislabeled public. The schema passes but intended surfaces are not identified.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-6B251F18",
+      "revision": 1,
+      "semantic_sha256": "6b251f189cd714b12624f56ddfe5c45fd4d28f955bd2b1924023b8dd93e49377",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Exact-one directory identities do not prove accepted accountable ownership for the seven accessibility, content, and discovery domains.",
+      "counterexample_analysis": "Inactive or nominal users can be assigned and resolve successfully while nobody exercises ownership. Cardinality passes without accountability.",
+      "nondeterministic_route": "accountable_human_decision",
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-0103E2BB",
+      "revision": 1,
+      "semantic_sha256": "0103e2bb65719938bf0519fd9b5f8e5ab684bd8d05e9ad7f1aabfd91e7d2ad73",
+      "verdict": "confirmed_deterministic",
+      "reason": "The seven success domains each require a metric, operator, threshold, and window, making definition and measurability objectively checkable.",
+      "counterexample_analysis": "Missing or unevaluable criteria fail; whether chosen targets are ambitious is outside this definition-only control.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-D5B7E6DD",
+      "revision": 1,
+      "semantic_sha256": "d5b7e6dd8b6210d6365d25c56eafae74e33d51cd19aeaa84efb61e9af66787dc",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Six documentation sections do not prove accurate effects on accessibility and search for every personalized state and experiment.",
+      "counterexample_analysis": "Each section can say no effect while geolocation hides content from crawlers and consent changes keyboard order. Presence passes but behavior is undocumented truthfully.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-FCC69E21",
+      "revision": 1,
+      "semantic_sha256": "fcc69e214960534da41fbbbc5a3cae0042ae6a1d937f18d8259835242c4dbff8",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Linked criteria can be irrelevant, and deciding applicability and adequate accessibility or discoverability acceptance criteria requires semantic review.",
+      "counterexample_analysis": "Every requirement can link to a generic alt text exists check while a dynamic search feature lacks indexability criteria. Links pass but acceptance coverage is missing.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-EFFCCD14",
+      "revision": 1,
+      "semantic_sha256": "effccd14e5973563d78cfec9fb22db052348320823af9efe3eb4cc07b09b433e",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Naming a methodology and populating scope and sample fields does not prove representative sampling or correct methodology application.",
+      "counterexample_analysis": "A plan can call one homepage representative of a thousand templates and pass every field. The evaluation methodology is named but not validly applied.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-3801322B",
+      "revision": 1,
+      "semantic_sha256": "3801322bc4a1236b8ab20ed1b7fb7bd0eed2e463a0b0f7c69bdb318565d35c8b",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A supported setting matrix and assertions cannot exhaust content states, and readability or loss of function requires accessibility and user judgment.",
+      "counterexample_analysis": "Fixtures can pass at one viewport while a localized modal becomes unreadable at 400 percent zoom. All approved cases pass but supported content still fails.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-A371549C",
+      "revision": 1,
+      "semantic_sha256": "a371549c78283db3c0066a1b26c122de5943aeaf7ec03667538ff47d2e9431c1",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Evidence labels for five modalities do not establish expert quality, representative users, adequate scope, or a valid conformance conclusion.",
+      "counterexample_analysis": "A trivial automated scan plus one-minute manual and user records can satisfy modality presence while critical keyboard journeys remain untested.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-6D505348",
+      "revision": 1,
+      "semantic_sha256": "6d5053487bcace022bb91cf9027ff53b7768e64827610dabeba84e7e580d03df",
+      "verdict": "confirmed_deterministic",
+      "reason": "The rule is limited to recording an exact finite metadata set with versioned references, making completeness and referential integrity bounded.",
+      "counterexample_analysis": "Missing standards, tools, platform, sample, or limitation fields fail; evaluation adequacy is judged separately.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-A4088B58",
+      "revision": 1,
+      "semantic_sha256": "a4088b58ba25f74828f2ddacddd62ebc7222a1435a27e5179452cac30b9a7309",
+      "verdict": "confirmed_deterministic",
+      "reason": "Authoritative source references expose normative status, and the three provenance labels form an exact classification enum.",
+      "counterexample_analysis": "A heuristic labeled normative conflicts with its source and fails; correctly referenced status passes deterministically.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-9F7B27E7",
+      "revision": 1,
+      "semantic_sha256": "9f7b27e70b4a09e4265dd31f41fa39107e1aa189a337f89a0e682bb93f53c45f",
+      "verdict": "confirmed_deterministic",
+      "reason": "The scoring gate has a precise invariant that any inaccessible critical journey forces failure regardless of low-value page pass counts.",
+      "counterexample_analysis": "A configuration that averages away one critical failure fails static policy evaluation; compliant decision logic passes.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-4D11DB36",
+      "revision": 1,
+      "semantic_sha256": "4d11db36962942ea9dc71a7d1b6f46f8069a79d8dec97fe3244eead2e97c449b",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Declared asynchronous-state fixtures do not enumerate every update path or prove messages are useful and timely for assistive technology.",
+      "counterexample_analysis": "A loading fixture can announce correctly while a background save failure updates silently. All listed states pass but an asynchronous update remains inaccessible.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-BA50C7B0",
+      "revision": 1,
+      "semantic_sha256": "ba50c7b040dc04710e0e1e21d54eec49e5860e10034a49cf508a0ada2778a49d",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Accessibility-tree equality to declared snapshots does not prove that semantic order and relationships remain meaningful to users through every transformation.",
+      "counterexample_analysis": "A virtualized table can match a flawed expected snapshot while screen-reader reading order is confusing. Fixtures pass but semantics are not preserved.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-1ACA514F",
+      "revision": 1,
+      "semantic_sha256": "1aca514faa7b69d5c8bccb63a8956401d1dbd7651568712dea73e35e1152e845",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The approved action inventory can omit controls, and selected keyboard paths do not prove operability across state, role, locale, and error conditions.",
+      "counterexample_analysis": "Every listed button can work by keyboard while an unlisted drag handle or error-state control still needs a pointer. The suite passes but not every actionable function is operable.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-8FBB63F5",
+      "revision": 1,
+      "semantic_sha256": "8fbb63f5e220c674703481738291d0e5f57a041321dcbbbd44675f1a0d37f27a",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Finite tab and escape tests cannot prove that no keyboard-only sequence becomes trapped across dynamic focus states and nested interactions.",
+      "counterexample_analysis": "A dialog exits in the fixture but traps focus after a validation error or nested popup. All documented exits pass while another reachable keyboard sequence remains trapped.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-DB2C10EF",
+      "revision": 1,
+      "semantic_sha256": "db2c10efab66bb0697a079a79f3cfe60b074feb68a83d80d76575cc012e89493",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Contrast and area are measurable, but clearly visible and complete focus-state coverage require visual judgment and a complete element-state inventory.",
+      "counterexample_analysis": "Every tested default control can meet thresholds while a focus ring is obscured on a patterned background or missing in an unlisted state. Numeric fixtures pass but focus is not clearly visible.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-018113B7",
+      "revision": 1,
+      "semantic_sha256": "018113b752010c6f80af42ade2339edfc1a151abdc17c2bc13ce76e31294226b",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A viewport matrix cannot exhaust overlay, keyboard, zoom, locale, and dynamic layout combinations that may obscure focused elements.",
+      "counterexample_analysis": "All standard viewports can pass while a translated banner plus virtual keyboard covers the submit button. The matrix passes but focused content is hidden in a supported combination.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-591A7C39",
+      "revision": 1,
+      "semantic_sha256": "591a7c397372bea55efe23e3f1008c290be4116dd95ce33cd8b551ac62a959fe",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Identifying repeated blocks and whether alternative navigation is equivalent requires page-structure and user-flow judgment.",
+      "counterexample_analysis": "A page can declare no repeated block or provide a skip link to the wrong landmark. The fixture passes its declared destination while repeated navigation remains burdensome.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-E3635275",
+      "revision": 1,
+      "semantic_sha256": "e3635275d8e393c15844ea7c3fd17a2ad99a16f5d136f2160376670e7f9bfffd",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Shortcut safety depends on assistive technology, browser, locale, focus, and platform combinations not bounded by a few collision tests.",
+      "counterexample_analysis": "A shortcut can remap in the tested screen reader but conflict in another supported voice or keyboard layout. All fixtures pass while a single-character conflict remains.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-54E8800E",
+      "revision": 1,
+      "semantic_sha256": "54e8800ebfdf7610aecc43b4d526ab1daa42b05c198597308b6ca1e242db380e",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The drag-action inventory may omit interactions, and same declared outcome does not prove functional equivalence across data and state paths.",
+      "counterexample_analysis": "A card reorder fixture has buttons while an unlisted map drag has no alternative, or the button loses metadata. Tests pass but drag functionality is not fully accessible.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-53DCF354",
+      "revision": 1,
+      "semantic_sha256": "53dcf3540c29ce917271e05ad275fe3cfec5b05dac6d620dbe024983b34b4f5a",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Complex-gesture inventories and declared outcomes can omit gestures or meaningful side effects, so selected alternatives do not prove universal equivalence.",
+      "counterexample_analysis": "Pinch zoom can have buttons in fixtures while a path gesture is unlisted, or the alternative skips precision state. The suite passes though a complex gesture lacks an equivalent.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-639D4B06",
+      "revision": 1,
+      "semantic_sha256": "639d4b0682cb7e46dfb3f9f37d99efda07961c0891e0a26b168aa606d3bd94e7",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Which actions need cancellation or reversal is a consequence judgment, so testing only actions marked cancellation-required can omit harmful pointer-down behavior.",
+      "counterexample_analysis": "A destructive selection can be mislabeled cancellation-not-required and commit on pointer-down. Every marked action passes while the original safety rule is violated.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-9387A6EF",
+      "revision": 1,
+      "semantic_sha256": "9387a6eff4b94fc53f265eeae39b7f86d5a6fa971e913a620fa4f381fa6e99ae",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Consequential-action classification and an approved undo path require judgment, while fixtures cannot prove reversal under all side effects.",
+      "counterexample_analysis": "A charge action can be omitted from the consequential list or its undo reverse UI state but not payment. Tests pass while consequential effects cannot truly be undone.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-59674F93",
+      "revision": 1,
+      "semantic_sha256": "59674f931c138dc503e982d8fdd97a8475daec7eceeb05d6b1d4816a76a41550",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Voice activation varies by engine, locale, pronunciation, hidden accessible names, and control state beyond a finite declared fixture set.",
+      "counterexample_analysis": "Visible text can activate in one English engine while a supported locale or duplicate label activates the wrong control. Every listed test passes but voice use still fails.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-9645FB34",
+      "revision": 1,
+      "semantic_sha256": "9645fb34712dcbe7997278c7ae8af2d3fa5fe70681e80a615c24aa36d3a43b5d",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Numeric contrast is bounded for known pixels, but identifying meaningful visuals and every responsive, interactive, theme, and data state requires specialist judgment and complete inventory.",
+      "counterexample_analysis": "Default icons can meet thresholds while an unlisted chart series or hover state does not. Tested colors pass but meaningful information still lacks required contrast.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-83473448",
+      "revision": 1,
+      "semantic_sha256": "83473448b782dfbc1637d9448a5d14be9ea4fc48e1256b19790fcb2940178670",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Presence and reachability assertions do not fully decide readability or loss of meaning across text, language, viewport, and user settings.",
+      "counterexample_analysis": "All declared English content can remain present at 200 percent while localized labels overlap and become unreadable. Fixtures pass but readability is lost.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-417FF771",
+      "revision": 1,
+      "semantic_sha256": "417ff7719a67a69b528b5e52f0688d3dadb3b391616e1e2174e7e92fcf4ec2f6",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Which preferences are available and what it means to honor each preference require platform and accessibility interpretation across incomplete combinations.",
+      "counterexample_analysis": "Reduced motion can be honored in one page while an unlisted canvas ignores it, or high contrast response is technically changed but unusable. Declared tests pass without honoring every setting.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-16826B5E",
+      "revision": 1,
+      "semantic_sha256": "16826b5e112795f4b1b1e14ef7c46cc12418dfd7666b3471ebbb95fd3ef53628",
+      "verdict": "rejected_nondeterministic",
+      "reason": "No tested sequence exceeds a threshold is weaker than no reachable visual pattern exceeds it; dynamic frames and generated content are not completely inventoried.",
+      "counterexample_analysis": "Bundled videos can pass frame analysis while an experiment generates a flashing animation at runtime. All tested sequences pass but the product can exceed seizure thresholds.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-81BE1D6D",
+      "revision": 1,
+      "semantic_sha256": "81be1d6daad4734a009c644a34f0de2364cf349d6b8e28181e340c3f7d083881",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Immediately reachable is not given a time or interaction bound, and autoplay paths can vary by browser and user state.",
+      "counterexample_analysis": "A stop control can appear after ten seconds and be called immediate, while tests on one browser pass. Users still receive uncontrolled autoplay audio.",
+      "nondeterministic_route": "contract_incomplete",
+      "nondeterministic_reason_codes": [
+        "undefined_threshold",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-B06A6E6F",
+      "revision": 1,
+      "semantic_sha256": "b06a6e6fd7f76763a0868f3cbb912c314db62ba8e9f5b2de804fbab6ce1aad22",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Caption-track presence and synchronization do not prove the captions are accurate, complete, and meaningful for prerecorded or live content.",
+      "counterexample_analysis": "A perfectly synchronized track can contain unrelated words. Timing tests pass while required captions do not communicate the audio.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-0F32C504",
+      "revision": 1,
+      "semantic_sha256": "0f32c504863d2bfd01bce078d2d79bfbd28b0e69f4c93fd0b217efecca0eef30",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Keyboard events and accessibility-tree fields are partial; visible and usable media controls require visual and assistive-technology evaluation across states.",
+      "counterexample_analysis": "Controls can have roles and accept Enter while focus is invisible or a screen reader cannot operate the timeline. Assertions pass but controls are not usable.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "undefined_protocol",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-9013CE98",
+      "revision": 1,
+      "semantic_sha256": "9013ce98f4eae7a10866b6aca50741d16975e578a6bae6f3beab6d3aa17d6276",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Programmatic or pixel visibility assertions do not fully decide perceivability of controls, errors, selection, and state in high-contrast combinations.",
+      "counterexample_analysis": "All elements can occupy visible pixels while selected and unselected states render identically to a user. Fixtures pass but state is not perceivable.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-DDF0FE8A",
+      "revision": 1,
+      "semantic_sha256": "ddf0fe8a002723269d7c92d4e9d5b735e6dff77d6edeec2967dca34741bd9767",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Distracting classification and effective user control require human judgment, so testing only marked media can omit genuinely distracting content.",
+      "counterexample_analysis": "A rapidly moving carousel can be marked not distracting and have no pause control. Every marked item passes while users cannot control the distraction.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-E35FCCCE",
+      "revision": 1,
+      "semantic_sha256": "e35fccce1638d5cdb9beaa4cfc6b95390ee8ece6f5f1ef0740e76d84f4af9781",
+      "verdict": "confirmed_deterministic",
+      "reason": "Form schema and rendered pre-submission content form finite field inventories, permitting exact comparison of required state, formats, constraints, and examples.",
+      "counterexample_analysis": "A field missing any declared instruction before submission fails; complete matching content passes without judging copy style.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-79FA79CC",
+      "revision": 1,
+      "semantic_sha256": "79fa79cc4b12325aa9a8acdd7c3c46d39c163f5945f1ba0c437202885f4c9175",
+      "verdict": "confirmed_deterministic",
+      "reason": "Form-field identities and accessibility-tree relationships make error association and multi-error summary linkage exact bounded properties.",
+      "counterexample_analysis": "An unassociated error, missing summary, or broken link to any failed field cannot pass the generated invalid-input matrix.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-FC0BCDA1",
+      "revision": 1,
+      "semantic_sha256": "fc0bcda197a3603a74984a9dcc32640096b929f7c461cca46f35d913e84c868f",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Selected recoverable errors and repeat attempts do not exhaust concurrency, retry, timeout, and side-effect paths needed to prove preservation and duplicate prevention.",
+      "counterexample_analysis": "A form can preserve input on validation errors and deduplicate sequential clicks while two concurrent retries create duplicate payments. Fixtures pass but duplicate submission remains possible.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-BB3E050D",
+      "revision": 1,
+      "semantic_sha256": "bb3e050d9cc4ed72a699b35973919f62fc127109132577ce31ba7a996278b742",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A successful alternative in declared journeys does not prove every user can authenticate without the prohibited cognitive task across recovery and risk states.",
+      "counterexample_analysis": "The happy path can use a password manager while suspicious-login recovery requires distorted CAPTCHA transcription. All listed journeys pass but authentication still depends solely on a cognitive task in a reachable state.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-375A6696",
+      "revision": 1,
+      "semantic_sha256": "375a669635b7025d678de724d54c5d2ce1ab65a8b2247395115b7e93147afa65",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Successful fixtures do not establish that multifactor and recovery methods are accessible to users with different disabilities and supported assistive technology.",
+      "counterexample_analysis": "One password manager and SMS flow can complete while the only recovery option is unusable by screen reader. Scenarios pass but accessible recovery is absent.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-9DB6D254",
+      "revision": 1,
+      "semantic_sha256": "9db6d254ad1176b542f78a6b2809f6b93b49e026d60c58fd7fc0231a1e3bdbd1",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Barrier inventories can omit inaccessible states, and determining that an alternative is accessible and equivalent requires specialist and user evidence.",
+      "counterexample_analysis": "A CAPTCHA flow can list an audio alternative that is unintelligible, or a device-loss path is omitted. Execution succeeds in fixtures while no accessible alternative exists for affected users.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-EE9AEBED",
+      "revision": 1,
+      "semantic_sha256": "ee9aebed2d6ab27e91fa3e930bf11f73861374f43340e2ab1399b33187222a8d",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A fixed error suite across four modes cannot exhaust form, account, network, and state errors or assistive-technology combinations.",
+      "counterexample_analysis": "All declared invalid-field cases can recover while session-expiry recovery loses focus in a supported screen reader. The suite passes but error recovery remains broken.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-34A9C539",
+      "revision": 1,
+      "semantic_sha256": "34a9c5396ab2ed9cd915e089236aa89d11d6bb283544dce3f55af9f8077a1d38",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Supported geometry matrices cannot exhaust keyboard types, cutouts, zoom levels, orientation, language, banners, and dynamic content combinations.",
+      "counterexample_analysis": "Standard devices can pass while a localized instruction is covered by a floating keyboard on a supported phone. Fixtures pass but controls are obscured.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-E6287819",
+      "revision": 1,
+      "semantic_sha256": "e62878197b874127b07ed977981f97ccfc12835d63066c3df5a89e3d6c07daca",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A bound suite can miss offline-specific interaction and content states, and accessibility cannot be reduced to selected automated assertions.",
+      "counterexample_analysis": "Cached pages can pass scans while offline error recovery traps keyboard focus. Every declared mode has a green suite but accessibility is not preserved.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-CACB9B46",
+      "revision": 1,
+      "semantic_sha256": "cacb9b463439edc52296a1bf93e09f7cc93a948591429b5b08d6c5d84e22faae",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Structural equality cannot prove correct reading order, alternate-text meaning, table interpretation, or link purpose after conversion.",
+      "counterexample_analysis": "A converted PDF can retain tags and alternate-text fields while the reading order is illogical and alt text wrong. Assertions pass but semantics are not preserved.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-A00433C7",
+      "revision": 1,
+      "semantic_sha256": "a00433c77b5cc34b889245a56cb54e51d7d2574d9903deb45ef187d81f70cb84",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The upgrade ledger and regression suite may omit relevant changes, assistive technologies, components, and behavioral states.",
+      "counterexample_analysis": "Every recorded browser upgrade can pass the suite while an unrecorded PDF generator update breaks a supported screen reader. Both clauses pass but compatibility regressed.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-584BDA9F",
+      "revision": 1,
+      "semantic_sha256": "584bda9fba875e591be89f65621d8a23e9086c9980852a4a88b12c1b22a6116a",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Declared API values can be internally consistent yet semantically wrong, and user-agent surface inventories may omit reachable content and states.",
+      "counterexample_analysis": "A tree can expose a control as a button with the wrong name and order while matching a flawed declaration. Tests pass but useful accessibility information is not exposed.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-43A0D27C",
+      "revision": 1,
+      "semantic_sha256": "43a0d27c48bf07faa7f3dd83d71a99ea2e2cf3daa218e4a7d3dc0e426d87bc42",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Expected snapshots can encode incorrect semantics, and transformation cases cannot exhaust reader, translation, annotation, and export behavior.",
+      "counterexample_analysis": "A translated export can match a declared tree while headings lose their meaning and reading order. Snapshot equality passes but semantics were flattened.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-07226877",
+      "revision": 1,
+      "semantic_sha256": "0722687720e2240f7522baaa659877c47f6be94309474fa8bee4d994d06468bf",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The interaction matrix cannot exhaust browser platform, extension, permission, download, history, setting, and alternative-input states.",
+      "counterexample_analysis": "Keyboard tests can pass in default chrome while a permission dialog or extension state traps focus. Approved cases pass but browser functions remain inaccessible.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-8DD986C8",
+      "revision": 1,
+      "semantic_sha256": "8dd986c8636b19fb0ce58293e5df686f2f3b0b4fda33d073106e78b6356224b8",
+      "verdict": "confirmed_deterministic",
+      "reason": "Detected regression identities and product-defect record types are exact workflow facts, so every known regression can be required to have the mandated issue type.",
+      "counterexample_analysis": "A detected regression with no defect or a non-product classification fails; unchanged content does not alter the result.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-3C4F60FD",
+      "revision": 1,
+      "semantic_sha256": "3c4f60fdfc567374d42f23f6fafc5a7e45fef95c2f1e8a2f8a3ac59b5020b245",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Which accessibility information is required depends on content semantics, so testing only metadata marked required can omit real omissions.",
+      "counterexample_analysis": "An informative image can be misclassified decorative, preventing an alt-text prompt, while all declared missing fields trigger correctly. Fixtures pass but authors are not prompted for required information.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-4F0EF52C",
+      "revision": 1,
+      "semantic_sha256": "4f0ef52ce531bcebdf5f3bac0e14c27048d51f1770f64bea9c9312c33623fe4f",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Requirement and test links do not prove that component contracts contain correct accessibility behavior or that tests verify it.",
+      "counterexample_analysis": "Every component can link a generic accessibility note to a lint test. Graph checks pass while keyboard and semantic requirements are absent.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-4202F7C4",
+      "revision": 1,
+      "semantic_sha256": "4202f7c4b92118f441b8679675b4b960489e0540a4d18a3c6b2276bf611d566a",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Documentation fields do not prove complete or correct keyboard behavior, semantics, states, constraints, and limitations for each shared component.",
+      "counterexample_analysis": "A component can fill every field with standard behavior and omit a known focus limitation. The schema passes but consumers lack required documentation.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-433B5762",
+      "revision": 1,
+      "semantic_sha256": "433b576282b271c1608a173d982d7b59b6a9ac2238059a78b62f53238a6ae978",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Individual token thresholds do not prove all token combinations remain accessible, and reviewed exceptions require accountable human judgment.",
+      "counterexample_analysis": "Each color token can pass alone while two allowed tokens combine with insufficient contrast, or an unauthorized reviewer signs an exception. Both clauses pass but inaccessible tokens remain possible.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-8C17324F",
+      "revision": 1,
+      "semantic_sha256": "8c17324f3ef7f8fac729d4365e587423fcfaab44791365b68c2ac674e940a6a0",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Whether a behavior change is breaking requires semantic judgment, and declared-change records can omit changes or communication recipients.",
+      "counterexample_analysis": "An accessibility-name change can be mislabeled nonbreaking and receive no notice while every declared break has email evidence. The clause passes but consumers were not informed.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F8516AC8",
+      "revision": 1,
+      "semantic_sha256": "f8516ac854b96378d57c48f7368055b82b8dcc280514071cefba9dce243a1f19",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The supplier register can avoid marking inaccessible components, and a linked plan can be a placeholder with no feasible replacement or isolation.",
+      "counterexample_analysis": "An inaccessible date picker can be marked acceptable, or its plan say replace someday. Record checks pass while no real mitigation plan exists.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-2AE7001B",
+      "revision": 1,
+      "semantic_sha256": "2ae7001b41dff6575511b643af1779ecc175783e870d8cb15ef264adb76664b1",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Task-evidence presence and score inputs do not prove that procurement evaluated representative tasks or interpreted accessibility correctly.",
+      "counterexample_analysis": "A vendor can receive a task score from opening its login page while critical authoring flows are inaccessible. The formula uses task evidence but not actual product accessibility.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-00EB0815",
+      "revision": 1,
+      "semantic_sha256": "00eb08156cf1f97ff99984ec87bc27336ba1367f0b9d76d750ce584fda80a52a",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Declared repeatable defect classes and artifact inventories can omit detectable rules, components, documents, and critical flows.",
+      "counterexample_analysis": "CI can run checks for listed templates while an unlisted PDF generator has repeatable heading defects. Coverage passes but automatable defects remain unchecked.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-393454F3",
+      "revision": 1,
+      "semantic_sha256": "393454f31604477e7c84e500befcac82daf8ffd49c42d79fb37f8a3a9e0b8b33",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Metadata and false-positive or false-negative fields do not prove automation is only a floor or that error rates and rule coverage are measured completely.",
+      "counterexample_analysis": "Runs can record zero false negatives without a discovery protocol and be used as conformance proof. All fields pass while automation governance violates the rule.",
+      "nondeterministic_route": "contract_incomplete",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-0532FA61",
+      "revision": 1,
+      "semantic_sha256": "0532fa615a70dfe293e80a32c530a0d2a324cde856d2b80cb67c64d0081debbf",
+      "verdict": "rejected_nondeterministic",
+      "reason": "One current script per named area does not prove scripts cover meaningful journeys, platforms, states, and expected outcomes.",
+      "counterexample_analysis": "The keyboard script can test only Tab on the homepage and the cognitive script can be empty boilerplate. Library coverage passes while manual testing is inadequate.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-53280330",
+      "revision": 1,
+      "semantic_sha256": "5328033006df5ea198c1dbafa94be525cb5975cbbf2381baaaf86cf487ab3a20",
+      "verdict": "confirmed_deterministic",
+      "reason": "Feedback-form schema and submission validation can directly prove that diagnosis disclosure is neither present nor required.",
+      "counterexample_analysis": "A required diagnosis field or diagnosis-dependent validation fails; successful diagnosis-free submission passes.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-A6A392BF",
+      "revision": 1,
+      "semantic_sha256": "a6a392bf87bb951b08f52b862c6499b29a3afd137c4a3d4aeddac68a270e68dc",
+      "verdict": "confirmed_deterministic",
+      "reason": "The exposing input-mode or assistive-technology identity and retest environment are exact defect-record bindings, making same-mode successful retest objectively checkable.",
+      "counterexample_analysis": "A fix tested only with another mode, with no original mode identity, or with a failing retest cannot pass.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F6CFFA0D",
+      "revision": 1,
+      "semantic_sha256": "f6cffa0dfe1c65d3ba263c75d547b818c0ce92ceec2abf7aabd43be001a26f62",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Backlog fields do not prove accountable ownership, correct impact and affected surfaces, useful workaround, or valid closure evidence.",
+      "counterexample_analysis": "A critical screen-reader defect can be labeled minor, name an inactive owner, and close against an unrelated screenshot. The record passes but the backlog is not truthful.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-0C55957B",
+      "revision": 1,
+      "semantic_sha256": "0c55957b0f8f5d46302532e3f7bc790be673c8a018d58fbe1f4a100e51bc54a2",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Monitored supplier changes and a bound suite do not prove complete third-party inventory, change detection, or adequate accessibility regression coverage.",
+      "counterexample_analysis": "An embedded widget can update outside the monitored version feed, or the suite checks only contrast. Recorded changes pass while a supplier regression reaches users.",
+      "nondeterministic_route": "contract_incomplete",
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-4FE30275",
+      "revision": 1,
+      "semantic_sha256": "4fe302758853da6af889019638a0c13f6301d4bfd892f0e89556278d36c229cc",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Recorded diffs can omit real scope or limitation changes, and a review record does not prove a valid specialist review.",
+      "counterexample_analysis": "All logged changes can link to signed reviews while a known new limitation is never recorded. The clause passes although statements remain stale.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-E969C3C9",
+      "revision": 1,
+      "semantic_sha256": "e969c3c98462031ca8daa6c9a0ab25be5967d7467913a832ffed150959402b68",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Exact-one identities do not prove accepted accountable ownership for technical SEO, editorial, international, migration, or monitoring duties.",
+      "counterexample_analysis": "Nominal or inactive accounts can fill every domain and resolve successfully while no one owns the work.",
+      "nondeterministic_route": "accountable_human_decision",
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-D33DFAE7",
+      "revision": 1,
+      "semantic_sha256": "d33dfae7bd32f26801b106061905fc5f55af29e3ba0c5363edf1a13c9cabb0db",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Which engines, regional services, vertical products, and crawlers matter is a product and market judgment that a list cannot validate.",
+      "counterexample_analysis": "The record can omit a regional engine used by customers and still be structurally complete. It documents a list, but not the services that actually matter.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-8959440E",
+      "revision": 1,
+      "semantic_sha256": "8959440e65d8597ff1a0781f544c1407e964d7f91adbec9c68b258e5233d754d",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Five policy sections do not prove lawful licensing, training, archival, and retrieval decisions or usable crawler rules.",
+      "counterexample_analysis": "Each heading can contain allow as text while contracts prohibit training use. Presence passes but the crawler policy is substantively wrong.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-625225E7",
+      "revision": 1,
+      "semantic_sha256": "625225e71c22097b54d0e736c239a3068b64bd2c4943e29df7e167b8dabb858f",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Documentation distinction is bounded, but the confidential-asset inventory and access probes cannot prove no asset relies only on crawler compliance.",
+      "counterexample_analysis": "Every listed secret page can require login while an unlisted private PDF is protected only by robots.txt. Both clauses pass but confidentiality still relies on crawler behavior.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-B9CD4463",
+      "revision": 1,
+      "semantic_sha256": "b9cd4463a3b13bcf197604e3bcf1277ee4c2c8d269f9fca5d30543b67c150a5d",
+      "verdict": "rejected_nondeterministic",
+      "reason": "An intended-public URL inventory cannot prove completeness, and graph reachability in one crawl does not guarantee stable discovery across variants and dynamic states.",
+      "counterexample_analysis": "All listed pages can be reachable while an omitted locale page has no link, or a temporary experiment link disappears. The graph passes but not every intended page is stably discoverable.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-838FA31D",
+      "revision": 1,
+      "semantic_sha256": "838fa31d521ef19c375bd38535338c8567adca7ba22849c2d87e694521d084ac",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Private-page classifications can omit or misclassify resources, and one unauthenticated probe does not cover alternate hosts, methods, caches, and object URLs.",
+      "counterexample_analysis": "Every listed private page can reject GET while an unlisted export or HEAD/object-store URL remains public. Tests pass but a page that must remain private is exposed.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-B4F0B76C",
+      "revision": 1,
+      "semantic_sha256": "b4f0b76cee76df8c03e98ede7f74b8c44c53b7743053d3993b8bf6c6636d963b",
+      "verdict": "rejected_nondeterministic",
+      "reason": "RFC parsing is deterministic, but the universal confidentiality claim depends on a complete asset and access-path inventory not established by tests.",
+      "counterexample_analysis": "All robots files can conform and listed confidential pages require auth while an omitted document relies only on Disallow. Both clauses pass but robots.txt substitutes for protection.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-50530FEB",
+      "revision": 1,
+      "semantic_sha256": "50530febc5fefdef94f51a2d8f1e647a38b0043aeb9582a477ec3659a8330145",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Relevant host and protocol inventories are assumed complete, and configured monitors do not prove every live robots file is reachable and consistent.",
+      "counterexample_analysis": "Listed HTTPS hosts can pass while an HTTP, regional, or legacy host serves a different invalid robots file. Both clauses pass but consistency is incomplete.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-39597E04",
+      "revision": 1,
+      "semantic_sha256": "39597e04ff6745f04b9ecfc1e380f20cf7f68e5fbf18cd0c6950407eb5b05653",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Public-but-nonindexable resource and crawler inventories can omit URLs or variants, so passing retrieval tests do not prove universal directive exposure.",
+      "counterexample_analysis": "Every listed URL can return noindex to one crawler while an unlisted parameter variant or locale lacks it. Tests pass but public nonindexable content can be indexed.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-4D234580",
+      "revision": 1,
+      "semantic_sha256": "4d234580500acb8b90316bc4ca9e6b5038de835cb46710627f384b299366e169",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Declared intent determines the required mechanism and can be wrong or incomplete; the resource inventory can also omit robots-only protections.",
+      "counterexample_analysis": "A confidential download can be mislabeled crawl-only and use Disallow, or remain outside the inventory. Every declared intent passes while robots.txt still substitutes for authentication.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-85574DF8",
+      "revision": 1,
+      "semantic_sha256": "85574df82cdbd867e3e733f2fc6bb39f2ec6e605ac8f26ed9a8770a221ba85d9",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Deleted URL and internal-link inventories cannot prove that every deletion and dynamically generated link is included.",
+      "counterexample_analysis": "All listed deletions can return correct status and disappear from crawled links while an omitted locale URL remains 200 and linked from a script. Both clauses pass but deleted content remains.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-CFC54B83",
+      "revision": 1,
+      "semantic_sha256": "cfc54b835aa6e97caaee0e110e66797a00f155195247eef948cbcd6e28593174",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Which maintenance is short and which routes are affected are not objectively complete, so declared-state probes can omit misleading success pages.",
+      "counterexample_analysis": "Listed API routes can return 503 while an omitted critical page returns 200 with maintenance text. Tests pass but short maintenance still uses misleading success.",
+      "nondeterministic_route": "contract_incomplete",
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "undefined_threshold"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-4539572E",
+      "revision": 1,
+      "semantic_sha256": "4539572e11428b162e2f88f54667a6baf6f46e59afb252bda0e3941bce90c4e6",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Declared error fixtures cannot enumerate every missing identifier, authorization state, dependency failure, and dynamically rendered error body.",
+      "counterexample_analysis": "Known cases can return 404 while an untested malformed ID returns 200 with an error message. The suite passes but a soft error remains.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-01A25EAE",
+      "revision": 1,
+      "semantic_sha256": "01a25eaeb2039b72892220748a491acb7762ff02717192e5560c375bec26ca60",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Route families and a bounded crawl limit cannot prove absence of inputs that trigger larger or cyclic URL expansion beyond the tested frontier.",
+      "counterexample_analysis": "A calendar passes a 10,000-URL simulation while one date parameter creates infinite future pages after that bound. Both clauses pass but a crawl trap exists.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-6908CAC0",
+      "revision": 1,
+      "semantic_sha256": "6908cac0ebcd5e7c283f7c956a14f854205ebf886a8d1ccc1e1dd119b8552585",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Private media inventories and public probes cannot prove coverage of every CDN alias, signed-link state, cache, method, and document asset.",
+      "counterexample_analysis": "All listed private files can reject unauthenticated GET while an omitted CDN alias exposes the same bytes. Tests pass but private media remains public.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-B8CC27A7",
+      "revision": 1,
+      "semantic_sha256": "b8cc27a78ed951df9248cedaf19fb05c800d12712865ca1a776f30b93ef02310",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Current public tests for declared controls do not prove that every deployed crawl and indexing control was identified or tested with complete outcomes.",
+      "counterexample_analysis": "All registered directives can have a result while an unlisted canonical rule or locale header is untested. The clause passes but production controls are not fully tested.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-2A892965",
+      "revision": 1,
+      "semantic_sha256": "2a892965aaa302684e3c0e725f5cb79b64030d3bffe222f1ad2e91f2eb1d34ae",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Declared canonical and locale intent can be incomplete or wrong, and the URL inventory cannot prove coverage of every rendered and generated representation.",
+      "counterexample_analysis": "All listed URLs can align while an omitted parameter page points to the wrong locale canonical, or the intended target itself is mistaken. Checks pass but declarations remain misaligned.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    }
+  ]
+}

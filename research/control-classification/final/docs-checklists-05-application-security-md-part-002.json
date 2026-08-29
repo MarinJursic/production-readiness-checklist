@@ -1,0 +1,347 @@
+{
+  "schema_version": "prc.control-classification-final/v0.1",
+  "packet_id": "docs-checklists-05-application-security-md-part-002",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "source_path": "docs/checklists/05-application-security.md",
+  "control_count": 17,
+  "controls": [
+    {
+      "control_id": "PRC-22-007",
+      "revision": 1,
+      "semantic_sha256": "bd42d718f9f7b298964cea704024790be5befb165af4f2ab7b68f7dea3980f99",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Pinned scanners can find keys in sealed inputs, but proving universal absence across source, logs, artifacts, frontend bundles, and configuration requires complete inventories and perfect detection that generic scanners cannot guarantee.",
+      "deterministic_clauses": [
+        {
+          "statement": "A pinned secret analyzer reports no recognized private-key or key-material findings in the complete sealed repository and artifact inventory.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-22-008",
+      "revision": 1,
+      "semantic_sha256": "bb287179a08ad3e13937110e74628bfbb48eedbeeb3010d63251237298bf3be6",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Least privilege depends on which identities genuinely need each key operation for business and recovery duties; role enumeration alone cannot decide necessity.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-22-009",
+      "revision": 1,
+      "semantic_sha256": "3ca71dc0f27fdcbf4cb10b0232bfb0d8efe2d56c7f1016627bcb2ed1d65d6c76",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The key sets are only complete if every runtime, embedded, derived, imported, certificate, and externally managed key is discovered; environment key-management evidence is not automatically authoritative for that universe.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Production and staging share an AES key embedded in application configuration, but it is absent from the queried KMS inventory. The inventoried KMS identifiers are disjoint, so both clauses pass while production and non-production still share a key."
+    },
+    {
+      "control_id": "PRC-22-010",
+      "revision": 1,
+      "semantic_sha256": "bc798a66c5274469435d45b8e1d187a61a3bde831d556aa08bb8cc53a8132303",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Key-purpose labels and reuse can be compared, but the phrase where appropriate requires cryptographic threat and design judgment about which purposes require separation.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every inventoried key has a declared purpose and all cross-purpose key reuse is enumerated.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-22-011",
+      "revision": 1,
+      "semantic_sha256": "0af770adf7930d062dd8769e26e93084e93c131691cc3ddf19742094021d9228",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Provider, algorithm, and version provenance proves an approved interface was named, not that the implementation obtained unpredictable entropy or avoided fixed seeds, broken wrappers, or compromised generators.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "undefined_protocol"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A wrapper calls an approved provider and records its approved version but always supplies a fixed seed, producing predictable keys. Provenance matches the allowlist, so the proposal passes although secure randomness was not used."
+    },
+    {
+      "control_id": "PRC-22-012",
+      "revision": 1,
+      "semantic_sha256": "7bdc6c70c7c9e7ce52830f30172d732b2f48ec38b8ca281146e894b189b386fe",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Observed nonce duplication and disallowed constructions are checkable, but universal unpredictability and complete uniqueness across all executions cannot be proven by a bounded sample alone.",
+      "deterministic_clauses": [
+        {
+          "statement": "A bounded verifier rejects known nonce reuse and constructions forbidden by the versioned cryptographic policy.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-22-013",
+      "revision": 1,
+      "semantic_sha256": "dc30b9ec27d8948792535afa21b9f9e65c25d6ffe8711729ab4d35ea9caf6d4d",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The capability test covers key-manager state transitions but does not define the complete consumer inventory or prove that applications, data formats, caches, rollback, and old-key reads support rotation and versioning.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "The KMS test creates and activates version two successfully, but the production application hard-codes version one and cannot decrypt data after rotation. The proposed test passes while the assessed system does not support rotation."
+    },
+    {
+      "control_id": "PRC-22-014",
+      "revision": 1,
+      "semantic_sha256": "3e2f99957eed332b9685ec5d5b045f7db61d22502c5d6ddd140524f934b36b01",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "A bounded rotation test cannot prove that every item of existing required data remains recoverable, and the statement does not define a complete data inventory or verification protocol.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-22-015",
+      "revision": 1,
+      "semantic_sha256": "1e0db69ff874a12aebac64f481591513734c6e043054e63424b0d80cdf3c0e7d",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Revocation capability and elapsed test time are measurable, but promptly has no stated threshold and the acceptable deadline depends on risk and operating policy.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every inventoried key-management implementation has a current executed revocation test with start and completion timestamps.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "undefined_threshold",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-22-016",
+      "revision": 1,
+      "semantic_sha256": "3b405ac6477bb2fddbd30180e9fb1787efa52626844b1dae3cc9fcb555560d27",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "A transcript containing required records does not establish that the exercise passed, used a representative compromise, or successfully completed revocation, replacement, recovery, communication, and verification outcomes.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "The exercise follows the playbook but fails to revoke the compromised signing key; the transcript still contains every required outcome record, including the failed revocation. Both clauses pass even though the response playbook failed its test."
+    },
+    {
+      "control_id": "PRC-22-017",
+      "revision": 1,
+      "semantic_sha256": "a2c99981743107372efd0e41a9072f25e8f2f042f15a4b09882dca0b71d6ae38",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Key references in recovery records can be checked, but deciding which keys are required and whether their continuity treatment is secure needs architecture, recovery, and cryptographic judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every key marked recovery-required in the approved key inventory references a continuity and recovery record.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child",
+        "undefined_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-22-018",
+      "revision": 1,
+      "semantic_sha256": "5f99ca65f6ad749e9fd72211a42a6af358131641cf3547211179af2b72f74aca",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The original statement requires defined lifecycle behavior, not proof that erasure is effective or safe, and the clause exactly requires triggers, scope, expected effects, and recovery limitations in a versioned policy.",
+      "deterministic_clauses": [
+        {
+          "statement": "The key lifecycle policy defines key-deletion and cryptographic-erasure triggers, affected data scope, expected effects, and recovery limitations.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "I tried a policy with undesirable deletion timing: it may be poor policy, but that is outside this definition-only statement. A missing trigger, missing data scope, missing erasure semantics, or stale policy fails the bounded record check."
+    },
+    {
+      "control_id": "PRC-22-019",
+      "revision": 1,
+      "semantic_sha256": "b62427846e56eeb2fc026dc7487320351c2601ca35e9961b81bd42fed0cf7896",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The proposed ownership join assumes an exhaustive lifecycle-object inventory without bounding discovery across repositories, binaries, devices, external providers, manually imported certificates, and derived or embedded keys.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A webhook signing key stored directly in a deployment secret is omitted from the lifecycle inventory and has no owner. Every inventoried object has an active owner, so the checker passes while the universal statement is false."
+    },
+    {
+      "control_id": "PRC-22-020",
+      "revision": 1,
+      "semantic_sha256": "fd8fc042c1d886e3f191ab8390af862e9aa2fa55593c0192a1720b2a93593374",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Policy identifiers and negative conformance tests are deterministic, but inappropriate keys and the unbounded set of malformed inputs cannot be exhaustively established by a generic finite test suite.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every signature verifier rejects algorithms and key identifiers forbidden by the versioned approved cryptographic policy in a bounded conformance suite.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        },
+        {
+          "statement": "Every signature verifier passes the versioned malformed-input negative test corpus without accepting an invalid case.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-22-021",
+      "revision": 1,
+      "semantic_sha256": "46617ddb600b3c1c7e3c94fe73cbf8f45e9f43f938b9e2feab8770f117384f92",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Known insecure random APIs can be found, but identifying every security-sensitive identifier and proving all generation paths use a CSPRNG requires complete semantic call-path coverage.",
+      "deterministic_clauses": [
+        {
+          "statement": "A bounded source analyzer reports all calls to random-generation APIs forbidden by the versioned cryptographic policy.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-22-022",
+      "revision": 1,
+      "semantic_sha256": "2c69f43fb908fc065b96af16f3490220aad816d671d25377f779891de42b939d",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "SBOM and source analysis can inventory known cryptographic packages, but hidden platform, provider, transitive, and runtime cryptography prevents a generic bounded checker from proving completeness.",
+      "deterministic_clauses": [
+        {
+          "statement": "The release SBOM and dependency graph identify all packages explicitly recognized as cryptographic by the versioned dependency classifier.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "PRC-22-023",
+      "revision": 1,
+      "semantic_sha256": "fe0b82841781ddc7af14a7dfa796de4bc865ecf9ea6be4cba08e2ab69d214395",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Known sensitive-data flows into listed sinks can be detected, but sensitivity and whether a copy is unnecessary require privacy, operational, and product judgment, while universal absence is unbounded.",
+      "deterministic_clauses": [
+        {
+          "statement": "A bounded data-flow analyzer reports every recognized sensitive-data flow into analytics, logging, caching, search, or backup sinks.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "legal_or_specialist_authority",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    }
+  ]
+}

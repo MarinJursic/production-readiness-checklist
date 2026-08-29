@@ -1,0 +1,275 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-checklists-07-reliability-operations-md-part-001-part-002",
+  "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 11,
+  "controls": [
+    {
+      "control_id": "PRC-33-029",
+      "revision": 1,
+      "semantic_sha256": "3820be4519cc8d383fe1661f204c9fa022eb55bdd5df2080ef59dc9f9e61d87b",
+      "statement": "Continuity procedures cover customer support, communications, and essential manual operations.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 282
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "33. Backups, disaster recovery, and continuity"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The three named continuity topics can be required as explicit procedure sections; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Continuity procedures cover customer support, communications, and essential manual operations.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-33-030",
+      "revision": 1,
+      "semantic_sha256": "ed1cf6814c7c686672de5ff509328a260c9977c0aeccfd26c96e5e624216ee44",
+      "statement": "Recovery tests produce retained evidence and corrective actions.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 283
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "33. Backups, disaster recovery, and continuity"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Every recovery test can be joined to retained execution evidence and tracked corrective actions; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Recovery tests produce retained evidence and corrective actions.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-34-001",
+      "revision": 1,
+      "semantic_sha256": "049579b29a3d14cb4fbbc4fcade312c943fa0b4540f0669df603c59b3dd310a3",
+      "statement": "The deployment plan identifies exact artifacts and target environments.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 289
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "34. Deployment and release engineering"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "A deployment plan can be checked for exact immutable artifact identifiers and target environments; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The deployment plan identifies exact artifacts and target environments.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-34-002",
+      "revision": 1,
+      "semantic_sha256": "5aabc80ffa902abc5374e9c1ba246d874ab954fd081d7f84425b1fa4414837de",
+      "statement": "The plan identifies migrations, configuration changes, infrastructure changes, flags, and external dependencies.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 290
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "34. Deployment and release engineering"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The five named deployment change and dependency classes can be required in the plan; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The plan identifies migrations, configuration changes, infrastructure changes, flags, and external dependencies.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-34-003",
+      "revision": 1,
+      "semantic_sha256": "1cec2d4e598040f5c5bc0036017c8de605ccef8535853f1664bcd7dbd457ec54",
+      "statement": "Required approvals are complete.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 291
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "34. Deployment and release engineering"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Every approval required by the selected release policy can be joined to a valid authenticated approval record; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Required approvals are complete.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-34-005",
+      "revision": 1,
+      "semantic_sha256": "b1eb67f0ea1e0c7fc15a39cd8fdd873408e16b11f2673e1bf9e68158c11001d5",
+      "statement": "The person deploying cannot silently substitute an unapproved artifact.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 293
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "34. Deployment and release engineering"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Approved artifact digests, deployment provenance, and immutable audit events can prove no silent substitution; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The person deploying cannot silently substitute an unapproved artifact.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-34-006",
+      "revision": 1,
+      "semantic_sha256": "ca3ae84f4a89b556f0bf81858d28d358cc70b06a5d45327898a2bc2591d04000",
+      "statement": "Predeployment checks validate environment health and capacity.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 294
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "34. Deployment and release engineering"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Named environment health and capacity thresholds permit exact predeployment gate tests; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Predeployment checks validate environment health and capacity.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-34-007",
+      "revision": 1,
+      "semantic_sha256": "4c1dfc7eda4f95443ff7cb845bb9025a922451d57e68b4a962b1da650bc1619d",
+      "statement": "Required backups or recovery points exist.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 295
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "34. Deployment and release engineering"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Required backup or recovery-point identifiers can be queried for existence and freshness before deployment; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Required backups or recovery points exist.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-34-008",
+      "revision": 1,
+      "semantic_sha256": "5e919aa20d6d623edab225df54692ef278e897647969b385ed4f52d1341e823a",
+      "statement": "Database migration steps and ordering are explicit.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 296
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "34. Deployment and release engineering"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Migration steps and their total ordering can be required as explicit plan fields; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Database migration steps and ordering are explicit.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-34-013",
+      "revision": 1,
+      "semantic_sha256": "ab7bd55abdf712852e814ec6f6b248b4a21193fcb678cc95b10d0e6db9022e36",
+      "statement": "Automated health gates examine user-facing success, latency, errors, saturation, and business integrity.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 301
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "34. Deployment and release engineering"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Versioned health-gate definitions can require exact user success, latency, error, saturation, and business-integrity signals; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Automated health gates examine user-facing success, latency, errors, saturation, and business integrity.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-34-015",
+      "revision": 1,
+      "semantic_sha256": "0e37af7f6edcde04c41e67677d73944612fc7c0866bd09a2081539469ab891e2",
+      "statement": "Rollout pauses automatically or operationally on defined signals.",
+      "source": {
+        "path": "docs/checklists/07-reliability-operations.md",
+        "line": 303
+      },
+      "heading_trail": [
+        "Reliability and operations",
+        "34. Deployment and release engineering"
+      ],
+      "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Defined signal predicates and rollout state transitions can objectively prove automatic or operator pause; therefore the complete rule has an objective repeatable result with bounded authoritative evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Rollout pauses automatically or operationally on defined signals.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    }
+  ]
+}

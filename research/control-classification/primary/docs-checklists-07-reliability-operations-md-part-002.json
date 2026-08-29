@@ -1,0 +1,896 @@
+{
+  "schema_version": "prc.control-classification-review/v0.1",
+  "packet_id": "docs-checklists-07-reliability-operations-md-part-002",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "source_path": "docs/checklists/07-reliability-operations.md",
+  "controls": [
+    {
+      "control_id": "PRC-34-016",
+      "revision": 1,
+      "semantic_sha256": "bec9d95f07c9f7b3cbdab97920c0aaebb2b3159ab1b1978081704c795e255214",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "A versioned release record can objectively show that explicit stop and rollback criteria existed before the recorded launch time.",
+      "deterministic_clauses": [
+        {
+          "statement": "The authenticated release record contains nonempty stop criteria and rollback criteria whose effective timestamp precedes the launch timestamp.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-34-017",
+      "revision": 1,
+      "semantic_sha256": "e652eae604f82cbd3bb9169f1c153b5bd6526c1e69cce882445021ba578b6c3b",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "Quickly has no maximum initiation time or defined rollback start event, so identical timing evidence has no fixed pass boundary.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_threshold",
+        "undefined_protocol"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-34-018",
+      "revision": 1,
+      "semantic_sha256": "2b0376f52601825975472c4d34d858111d80dafb568122aa6274cd496fd66c42",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "A current rollback rehearsal can be proven by an authenticated execution record tied to the release artifact, configuration, and rollback procedure.",
+      "deterministic_clauses": [
+        {
+          "statement": "A bounded rollback rehearsal completed and produced an authenticated result bound to the assessed artifact, configuration, and rollback procedure versions.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-34-019",
+      "revision": 1,
+      "semantic_sha256": "2e7a89ffa5f96fe659ea0230286023268ae6ccde8f6240eb94249cbd5e5cf386",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Versioned migration and event-contract inventories plus fixed backward-compatibility tests can decide rollback compatibility for the release scope.",
+      "deterministic_clauses": [
+        {
+          "statement": "The release manifest enumerates every database migration and event-contract change introduced by the assessed release.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "The previous application artifact passes the approved compatibility tests against every inventoried resulting database schema and event contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-34-020",
+      "revision": 1,
+      "semantic_sha256": "4b72d08da7b0cab3b23130cb4dace9ecd7ae737ac17735476b8303575084bf18",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "A roll-forward rehearsal record is objective, but deciding that rollback is unsafe and that this alternative covers the relevant failure modes requires context.",
+      "deterministic_clauses": [
+        {
+          "statement": "Each release marked rollback-prohibited has a successful roll-forward recovery rehearsal bound to the assessed release and procedure versions.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-34-021",
+      "revision": 1,
+      "semantic_sha256": "c05390801cda953cc4cb92d077adc072db52873221a8a099a1d83d7b59c724a9",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The prior deployment record identifies exact artifact and configuration versions whose current retrievability and integrity can be queried.",
+      "deterministic_clauses": [
+        {
+          "statement": "The previous successful deployment record identifies the exact artifact digest and configuration version.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Both identified versions remain retrievable and match their recorded immutable digests.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-34-022",
+      "revision": 1,
+      "semantic_sha256": "155f220ff5ff675a5420eeac891ad4cb49c5ae32b55d1faed0629a0e633ae443",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Flag mappings and disable tests are objective, but identifying risky behavior, deciding where flags are appropriate, and judging true independence are contextual.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every behavior mapped to a release feature flag has a current bounded test showing that the flag disables that behavior without redeployment.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-34-023",
+      "revision": 1,
+      "semantic_sha256": "e9b93d8b8c2c806cd3aebb4951b54f20f1d033853c492fd5bdbb541cfb6fce2b",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "An approved finite traffic-routing scenario matrix and authenticated test results can prove that both traffic shifting and load-balancer behavior were tested.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every scenario in the versioned traffic-shifting and load-balancer test matrix has a current authenticated execution result bound to the assessed configuration.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-34-024",
+      "revision": 1,
+      "semantic_sha256": "dbf7cf1fccc2520ab28531540dfa4bbcf82226e4009d764e134d24c33248d4bb",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The planning claim can be decided from a release record that maps each affected cache or CDN surface to an explicit invalidation action and owner.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every affected cache and CDN surface in the release inventory has a versioned invalidation action, trigger, owner, and verification step.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-34-025",
+      "revision": 1,
+      "semantic_sha256": "409b129f2a488225dc5b7db7383440045795dd28b1cb5344f036e840c658d585",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "A finite DNS change set can be matched to a dated plan containing old and new values, TTL changes, propagation timing, and reversal steps.",
+      "deterministic_clauses": [
+        {
+          "statement": "Each DNS change in the release inventory has documented old and new values, TTL timing, propagation timing, execution order, and reversal steps.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-34-026",
+      "revision": 1,
+      "semantic_sha256": "91f2ee61779c25abb683bb6bfe6adaf3f1e2261ec078efbd4a02f5d949dc38cf",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Certificate changes are finite resources, so plan coverage and active expiry, handshake, and issuance monitoring can be checked from records and environment state.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every certificate change in the release inventory has a versioned execution and rollback plan.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Every changed certificate endpoint has active authenticated monitoring for expiry, successful issuance or renewal, and TLS handshake state.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-34-027",
+      "revision": 1,
+      "semantic_sha256": "bcc0fa222fb54d8ccfe3dcf300b3eafaf9477d8df8041d24777b244a00bbb270",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "Provider readiness depends on provider commitments, capacity, change risk, and accountable acceptance; a status page or acknowledgement cannot prove the full claim.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-34-028",
+      "revision": 1,
+      "semantic_sha256": "9415699ef9014dd24e3bac52ef46bfd5d47e67d147dbec1593bc45310e0d02c2",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Current quotas and planned demand are measurable, but where an increase is needed depends on workload forecasts, safety margin, and risk tolerance not fixed here.",
+      "deterministic_clauses": [
+        {
+          "statement": "Current rate-limit and quota values for every inventoried dependency are captured and compared with the release plan's versioned demand targets.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_threshold",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-34-029",
+      "revision": 1,
+      "semantic_sha256": "eb7873e9368a6280fbe30fc912d49ebd416f2154f66f8ff54c4a8df52d4fb859",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Whether a worker and scheduled-job deployment order is safe depends on application semantics, state transitions, concurrency, and failure modes not defined by this rule.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-34-030",
+      "revision": 1,
+      "semantic_sha256": "2aca064b1dc9945cf7679a8f3f46826dbadb88e4eb97d9be09882bb3e9e9df20",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Known deployment steps can be mapped to documentation, but criticality is contextual and no bounded evidence can prove that no unknown step remains only in a person's memory.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every step in the approved deployment procedure inventory is present in a versioned runbook or executable deployment definition.",
+          "checker_family": "structured_document",
+          "evidence_authority": "repository"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-34-031",
+      "revision": 1,
+      "semantic_sha256": "d8b38a8b39673493cc7d9a04535b523c9cb69f7f3a38481b2f60e12902eb2fb2",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Manual-step counts, scripts, and peer approvals are observable, but minimized and where practical require a cost, risk, and feasibility judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every manual deployment step in the approved procedure inventory is explicitly marked, and every such step has an authenticated peer-check record for the release.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Each procedure step marked scripted resolves to a versioned executable automation artifact.",
+          "checker_family": "inventory_fact",
+          "evidence_authority": "repository"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-34-032",
+      "revision": 1,
+      "semantic_sha256": "1d9f8e699f18e42421eebb07c56b88e12c06189653742a86bd79aafd5e570a11",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "A rehearsal can be recorded, but deciding that it covered the complete procedure and that the environment was production-like requires contextual similarity and scope judgments.",
+      "deterministic_clauses": [
+        {
+          "statement": "An authenticated rehearsal record maps executed step identifiers to every step in the approved deployment procedure version.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_threshold",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-34-033",
+      "revision": 1,
+      "semantic_sha256": "68c90f922781e1a7390e8f6969c760149566be2324ca1dc0ea9a73abe310c724",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rosters and acknowledgements are objective, but which specialties and providers are needed and whether people are meaningfully available require an accountable launch decision.",
+      "deterministic_clauses": [
+        {
+          "statement": "The launch record contains current duty rosters, contact routes, coverage times, and acknowledgements for each role declared required by the release plan.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-34-034",
+      "revision": 1,
+      "semantic_sha256": "224d52960ee17bc62b05771a76ee95e6762ba3fe3456eda0fa3cfcc5b9c9d47c",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "Support and communications readiness requires people to judge staffing, message suitability, escalation coverage, and expected customer impact for this release.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-34-035",
+      "revision": 1,
+      "semantic_sha256": "cf1da6e3e9ff246a08b9eca109e3aeeacd108104de561f98ee1ac19874cdfdb4",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "Adequate observation and rollback time has no stated minimum, risk model, or completion-time distribution, so a fixed schedule cannot decide the claim.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_threshold",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-34-036",
+      "revision": 1,
+      "semantic_sha256": "0f1ea5574595ceab363ce78e25e019ed6359ed69a2529c97e0a095dd31470975",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "A sealed deployment execution manifest and append-only audit stream can establish complete event coverage for the finite actions in one deployment.",
+      "deterministic_clauses": [
+        {
+          "statement": "The deployment orchestrator produces a complete execution manifest enumerating every automated and recorded manual action for the deployment identifier.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        },
+        {
+          "statement": "Every manifested action has an immutable audit event containing actor, action, target, result, and timestamp.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-35-001",
+      "revision": 1,
+      "semantic_sha256": "752d225071bc69874df27dcb0f190f47d5a5fcfc8727095207af965e2f4e79be",
+      "classification": "deterministic",
+      "route": "artifact_verification",
+      "reason": "The expected release digest and the digest of the artifact running in the target environment can be compared byte for byte.",
+      "deterministic_clauses": [
+        {
+          "statement": "The digest reported by every deployed instance equals the immutable artifact digest in the approved release manifest.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-35-002",
+      "revision": 1,
+      "semantic_sha256": "08b2f903c2fd3ab1fe8635eb186d1faa489e6e2eb8c6ed13acaf82b961470fe1",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "A versioned desired-state manifest can be compared exactly with authenticated runtime configuration and feature-flag queries for the deployed scope.",
+      "deterministic_clauses": [
+        {
+          "statement": "The approved release manifest identifies the expected configuration version and every expected feature-flag value for the target environment.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Authenticated runtime queries equal the manifested configuration version and feature-flag values on every deployed target.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-35-003",
+      "revision": 1,
+      "semantic_sha256": "0fa97e8dcf7507c670a4341ea2602d8bfb1a1f2c05838cd33b96ef9196d21dc5",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Expected schema fingerprints and migration identifiers are finite release inputs that can be compared with authenticated database state and migration history.",
+      "deterministic_clauses": [
+        {
+          "statement": "The release manifest enumerates expected schema fingerprints and migration identifiers for every target database.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Authenticated database queries match every expected schema fingerprint and show every expected migration completed successfully exactly once.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-35-004",
+      "revision": 1,
+      "semantic_sha256": "6e63b6962689376c36dd290f7e3882c74d9f7a0fc24629f94a423975bf754801",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Counts, totals, constraints, and checksums can be compared mechanically, but choosing complete business invariants and judging their meaning requires domain ownership.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated post-migration queries match every expected row count, numeric total, constraint result, and checksum in the versioned migration verification manifest.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "Every explicitly registered business-invariant predicate returns its declared passing result for the migrated dataset.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-35-005",
+      "revision": 1,
+      "semantic_sha256": "0328a12180f666fb5bc906071c95ca32d8fcf082dc9b78e7ac06ac58246a5d35",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Smoke-test execution is objective, but identifying every critical journey and deciding that a test is safe to run against production require contextual and accountable judgments.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every journey in the approved critical-journey manifest has a current successful smoke-test result bound to the deployed release.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "human_accountability",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-35-006",
+      "revision": 1,
+      "semantic_sha256": "8f75e42be0356bfc860fb48e9d4ad674de829fb7e693a76f4c3c94d10e5c6e71",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "Capability declarations and fixed expected outcomes allow bounded authentication tests to prove coverage of login, logout, recovery, and privileged authentication.",
+      "deterministic_clauses": [
+        {
+          "statement": "Each applicable login, logout, account-recovery, and privileged-authentication scenario in the versioned capability matrix has a current successful execution result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-35-007",
+      "revision": 1,
+      "semantic_sha256": "2fa6d1e9187f0747811678572191f3e936ca960c90b1c7578a654a77e270741b",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "A versioned authorization matrix supplies finite role, tenant, action, and expected allow-or-deny cases whose execution can be checked exactly.",
+      "deterministic_clauses": [
+        {
+          "statement": "The applicable authorization suite exercises at least two declared roles and two declared tenants across the versioned allow-and-deny matrix and every case passes.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-35-008",
+      "revision": 1,
+      "semantic_sha256": "f4f48dd7a68579a5e81106c560fd40be227c9c737bef6d0f73a167802a1c59c3",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Declared route, service, worker, and job inventories can bound each applicable path class and link every item to a fixed verification result.",
+      "deterministic_clauses": [
+        {
+          "statement": "The assessed capability inventory enumerates all applicable public, authenticated, administrative, API, worker, and scheduled-job paths.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "Every inventoried path has a current successful verification result against its versioned expected outcome.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-35-009",
+      "revision": 1,
+      "semantic_sha256": "ebb1b07e40475cec9db6331d281867ac539e3cd150341398fa2a4c031af4b3ea",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Known integrations can run fixed verification tests, but criticality and the open-ended phrase other critical integrations require a context-owned complete scope decision.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every integration in the approved critical-integration inventory has a current successful verification result against a versioned expected contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-35-010",
+      "revision": 1,
+      "semantic_sha256": "d4f07466e063e68e318eeffdb05c1edc4de7c864c46125011e5a5e2f2ac1b37f",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "A versioned endpoint policy can define exact TLS, certificate, redirect, CORS, cache-control, and security-header expectations for bounded network probes.",
+      "deterministic_clauses": [
+        {
+          "statement": "The approved endpoint inventory defines expected TLS versions, certificate identities, redirects, CORS policy, cache controls, and security headers for each endpoint.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Authenticated bounded probes of every inventoried endpoint match every declared network and HTTP policy expectation.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-35-011",
+      "revision": 1,
+      "semantic_sha256": "3036f0c2de2ea68a56ead23e8bc48177af5f80a6bcf8d0c16df5133c10d6e663",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "A versioned cache contract supplies exact hit, miss, expiry, purge, variation, and CDN expectations that finite request sequences can verify.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every applicable scenario in the approved CDN and cache behavior contract has a current successful bounded request-sequence result for the deployed release.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-35-012",
+      "revision": 1,
+      "semantic_sha256": "5847cf15ab8fca5f0b951f303ba8c484d0f5dccb0fd64a3a15deb9e29a5ad1f4",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Metric snapshots and review records are objective, but a meaningful review of errors, latency, saturation, queues, databases, and dependencies requires accountable interpretation.",
+      "deterministic_clauses": [
+        {
+          "statement": "The post-deployment record includes time-aligned evidence for errors, latency, traffic, saturation, queues, database health, and each inventoried dependency metric.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-35-013",
+      "revision": 1,
+      "semantic_sha256": "1017f40d300aff33cbf89ae4f5ee7fbd068a22dc14bd194e4255412b3d2608d4",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Bounded analyzers can flag known patterns, but unexpected exceptions are context-dependent and proving absence of data leakage across free-form logs and traces is unbounded.",
+      "deterministic_clauses": [
+        {
+          "statement": "The bounded post-deployment log and trace window has results from the approved exception detectors and secret or sensitive-data pattern scanners.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-35-014",
+      "revision": 1,
+      "semantic_sha256": "f19c7ad6a36d591aca7bf62e2734452d2bee72ee528f576139bec712f34ad72c",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Complete declared monitor inventories and fixed trigger or probe tests can verify active alert routing and synthetic monitoring for the deployed targets.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every alert and synthetic monitor in the approved production-monitor inventory is enabled and targets the deployed production scope.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "Each inventoried alert route and synthetic monitor has a current successful trigger or probe result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-35-015",
+      "revision": 1,
+      "semantic_sha256": "07212c5381f28dcb2777e5a32f1684fd04141ece1aa2f15a0a01efc14cad7b00",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "A versioned experiment definition can identify canary, control, metrics, and windows, allowing exact computation and storage of their outcome comparison.",
+      "deterministic_clauses": [
+        {
+          "statement": "The rollout record defines the canary cohort, control cohort, observation window, and comparison metric formulas.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "An authenticated comparison result exists for every declared metric using the recorded canary and control observations.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-35-016",
+      "revision": 1,
+      "semantic_sha256": "27b01941d67aabeb9f5ed1e2fdaaeb890419ba2a877f14eae153f1d905fb0704",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "An approved indicator registry can define exact analytics queries, windows, expected values, and thresholds that authenticated production data can verify.",
+      "deterministic_clauses": [
+        {
+          "statement": "The release plan enumerates every applicable analytics and business indicator with its query, time window, expected value or range, and comparison rule.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Authenticated observations for every declared indicator satisfy its versioned comparison rule for the post-deployment window.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-35-017",
+      "revision": 1,
+      "semantic_sha256": "14f807ef81c630a211ebe3d92f522f337be5c2b066cb730220163f1d672ef8ce",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Changed routes and automated accessibility results are observable, but selecting critical journeys and performing a meaningful spot check include contextual and human evaluation.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every changed journey marked critical in the approved release manifest has a dated accessibility check record tied to the deployed release.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Each declared spot-check target has the results of the approved bounded automated accessibility probes.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "human_accountability",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-35-018",
+      "revision": 1,
+      "semantic_sha256": "248f20af5b208b13c148352e960ce751ffd5f62ea16fc189c083ea46bdace026",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "A versioned support handoff manifest can enumerate expected telemetry and documents, and authenticated delivery or access records can prove receipt.",
+      "deterministic_clauses": [
+        {
+          "statement": "The release handoff manifest enumerates every telemetry view and document expected by customer support with exact versions and recipients.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Every expected recipient has authenticated delivery or access evidence for every manifested telemetry view and document version.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-35-019",
+      "revision": 1,
+      "semantic_sha256": "82c48318c83f261a2775a04a41f09ef3ed2753bed7f94f3bddf6be562c3bbbca",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Counts and rates can be computed, but unexpected has no baseline or threshold here, and abuse and fraud classification may require investigation and domain judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated post-deployment measurements exist for abuse, fraud, failed payments, duplicate operations, and support volume over the declared comparison windows.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "undefined_threshold",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-35-020",
+      "revision": 1,
+      "semantic_sha256": "890cbd2adf1714e3ac6024ae053f4e4884a046abdce25f0eda6ffa5f04198dfe",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "A signed observation plan can define the heightened monitor set and exact time interval, while monitor and telemetry records prove continuous activation.",
+      "deterministic_clauses": [
+        {
+          "statement": "The approved observation plan defines the start, end, and exact additional or intensified monitors that constitute heightened monitoring for this release.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Authenticated monitor configuration and telemetry records show every planned heightened monitor active throughout the entire agreed interval.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-35-021",
+      "revision": 1,
+      "semantic_sha256": "e0cacd3e27eaba9ca44d5d3e66cd0ac18bf079190331567dd5833c8236e7713a",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Because the thresholds are predefined, time-aligned metric and rollout records can decide whether every crossing prevented further expansion.",
+      "deterministic_clauses": [
+        {
+          "statement": "The approved rollout record defines each expansion-stop metric, threshold, comparison operator, evaluation window, and associated rollout scope.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "For every recorded threshold crossing, authenticated rollout events show no later expansion and show a stop action at or before the allowed reaction deadline.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-35-022",
+      "revision": 1,
+      "semantic_sha256": "d5901812c49c62a5b1def8cb448904a0b8b979b56bbab7eefeaffb52a6e8007c",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "Recognizing an unexplained anomaly, judging an explanation, and choosing rollback versus incident declaration are accountable operational decisions, not mechanical facts.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-35-023",
+      "revision": 1,
+      "semantic_sha256": "07d64e3243db85b669227bebefa086f82185eaef505e734cbb400117b82d06f5",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The requirement is to record a decision, so an authenticated release record with one allowed final state, actor, time, and release binding decides it exactly.",
+      "deterministic_clauses": [
+        {
+          "statement": "The release record contains exactly one final decision from go, hold, rollback, or incident with an accountable actor, timestamp, and assessed release identifier.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-35-024",
+      "revision": 1,
+      "semantic_sha256": "8315f3a63c6e96863dbc67d4ea0d003972b5ea2b280bc4aaaa463e5cb80285d6",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "Deferred observations and temporary controls are finite release-record items that can each be linked to a dated follow-up review with an owner.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every deferred observation and temporary control in the final release record links to a scheduled follow-up review with date, owner, scope, and release identifier.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    }
+  ]
+}

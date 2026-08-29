@@ -1,0 +1,3761 @@
+{
+  "schema_version": "prc.control-classification-packet/v0.1",
+  "packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-003",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "source_path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+  "control_count": 250,
+  "controls": [
+    {
+      "control_id": "USEQ-791F51DA",
+      "revision": 1,
+      "semantic_sha256": "791f51daeb8f60a47ac7d9e679770460505063d7c59c859abaf91bd0bbef1415",
+      "statement": "Include correctness, latency, availability, freshness, capacity, and support response where relevant.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 669
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Platform reliability, SLOs, observability, and support"
+      ]
+    },
+    {
+      "control_id": "USEQ-8121C780",
+      "revision": 1,
+      "semantic_sha256": "8121c78086198cfe51ca383df76e45bea23dfee7362231cdc2e91ddd6628b205",
+      "statement": "Ensure platform objectives are compatible with the reliability objectives of dependent products.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 670
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Platform reliability, SLOs, observability, and support"
+      ]
+    },
+    {
+      "control_id": "USEQ-B52AE8A4",
+      "revision": 1,
+      "semantic_sha256": "b52ae8a40af08f9d58b03c991436c9a32f1e3d0a1f291ddc56a3a5e73bc61853",
+      "statement": "Monitor platform dependencies, quotas, certificate expiry, identity, DNS, artifact storage, and control planes.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 671
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Platform reliability, SLOs, observability, and support"
+      ]
+    },
+    {
+      "control_id": "USEQ-87EFFA25",
+      "revision": 1,
+      "semantic_sha256": "87effa25b8aed593b263fd0c0c61370c41210dc08235c38c485b84c6dcbeb32b",
+      "statement": "Provide synthetic checks for critical self-service journeys.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 672
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Platform reliability, SLOs, observability, and support"
+      ]
+    },
+    {
+      "control_id": "USEQ-263E0518",
+      "revision": 1,
+      "semantic_sha256": "263e05182975875f6741e3f78f6258ce26c8e1ded78606e6b74aeb53d62b5fd3",
+      "statement": "Expose service status and known incidents to platform users.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 673
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Platform reliability, SLOs, observability, and support"
+      ]
+    },
+    {
+      "control_id": "USEQ-2ADCF482",
+      "revision": 1,
+      "semantic_sha256": "2adcf48292e157c28ba27a0aed36d954b282b6629f88b493fda3b290b4585f7c",
+      "statement": "Use error budgets or an equivalent policy to balance feature work with reliability work.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 674
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Platform reliability, SLOs, observability, and support"
+      ]
+    },
+    {
+      "control_id": "USEQ-40DBA950",
+      "revision": 1,
+      "semantic_sha256": "40dba950b7336d1bd63821434eb19efbcfd2e681841fdbb9dcbdca87269ecffe",
+      "statement": "Provide runbooks and on-call ownership for platform components whose failure blocks delivery or recovery.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 675
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Platform reliability, SLOs, observability, and support"
+      ]
+    },
+    {
+      "control_id": "USEQ-B6288BBC",
+      "revision": 1,
+      "semantic_sha256": "b6288bbcb900e828d284daf97293c1447ae9c4c48869dd9a6e6c9c880a35cb50",
+      "statement": "Ensure support personnel can diagnose problems without inappropriate access to product secrets or customer data.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 676
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Platform reliability, SLOs, observability, and support"
+      ]
+    },
+    {
+      "control_id": "USEQ-62FDFE99",
+      "revision": 1,
+      "semantic_sha256": "62fdfe99e6c19e624e8b6290aebb5a13e5fb1a98e8105b12c4760994d28835aa",
+      "statement": "Define support channels, hours, severity, escalation, and expected response.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 677
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Platform reliability, SLOs, observability, and support"
+      ]
+    },
+    {
+      "control_id": "USEQ-D2E7BAC3",
+      "revision": 1,
+      "semantic_sha256": "d2e7bac39a5eed2a1d8fae77bac632a976d28f15458e67547943d2c66e970e44",
+      "statement": "Capture repeated support requests as product or documentation defects.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 678
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Platform reliability, SLOs, observability, and support"
+      ]
+    },
+    {
+      "control_id": "USEQ-98754BDB",
+      "revision": 1,
+      "semantic_sha256": "98754bdbe59e5bdb6e952d8e2dc67f85aa5bb46332068f2362225761c7046fed",
+      "statement": "Test platform disaster recovery and restore, including source, configuration, registries, metadata, identity, and signing material.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 679
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Platform reliability, SLOs, observability, and support"
+      ]
+    },
+    {
+      "control_id": "USEQ-0B9A6478",
+      "revision": 1,
+      "semantic_sha256": "0b9a6478f6240a7481121731988e958f74b8651743a110d3966e5190af69ddf1",
+      "statement": "Ensure product teams can continue critical incident response if the normal platform is unavailable.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 680
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Platform reliability, SLOs, observability, and support"
+      ]
+    },
+    {
+      "control_id": "USEQ-F7346E05",
+      "revision": 1,
+      "semantic_sha256": "f7346e058f969cda562dc42ed4e793ec91ceaf0599c9768f97c015cf3df5fb1c",
+      "statement": "Publish maintenance, degradation, and emergency change procedures.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 681
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Platform reliability, SLOs, observability, and support"
+      ]
+    },
+    {
+      "control_id": "USEQ-58A2631E",
+      "revision": 1,
+      "semantic_sha256": "58a2631ea83d41619cfa6bcd58f5ab491f31ae1a0c51fa9cf9be73c50ccf242b",
+      "statement": "Measure whether engineers can understand and complete common tasks without memorizing undocumented system details.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 685
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Cognitive load, flow, accessibility, and inclusive tooling"
+      ]
+    },
+    {
+      "control_id": "USEQ-C802111B",
+      "revision": 1,
+      "semantic_sha256": "c802111b10ca2c10e0b4fc7700a9e1e35c841903b0f2174246738c4f7fe98008",
+      "statement": "Reduce unnecessary tool switching, duplicate data entry, repeated authentication, and manual translation between systems.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 686
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Cognitive load, flow, accessibility, and inclusive tooling"
+      ]
+    },
+    {
+      "control_id": "USEQ-6924F2DC",
+      "revision": 1,
+      "semantic_sha256": "6924f2dc154f64f3d3509492909096a72958044b55eba8c4e052927d430a549f",
+      "statement": "Provide clear defaults while revealing advanced options progressively.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 687
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Cognitive load, flow, accessibility, and inclusive tooling"
+      ]
+    },
+    {
+      "control_id": "USEQ-C31E7F6F",
+      "revision": 1,
+      "semantic_sha256": "c31e7f6f084c6282db1cc1c174baf01a6410b8baa429c2d339c923c6796b59c0",
+      "statement": "Use consistent terminology, navigation, status, and error patterns across engineering tools.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 688
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Cognitive load, flow, accessibility, and inclusive tooling"
+      ]
+    },
+    {
+      "control_id": "USEQ-09A914D6",
+      "revision": 1,
+      "semantic_sha256": "09a914d645c0ba3954926e398fa4f1f550ca77fd977099145a5056d0b4400521",
+      "statement": "Keep documentation searchable from the point of need.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 689
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Cognitive load, flow, accessibility, and inclusive tooling"
+      ]
+    },
+    {
+      "control_id": "USEQ-A3E724DF",
+      "revision": 1,
+      "semantic_sha256": "a3e724dff1056bdaf7ba9bece998dafa3f264cc10cbc4b7ed971adb657d7eaab",
+      "statement": "Protect focus time and minimize unnecessary notifications, approvals, meetings, and interrupt-driven work.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 690
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Cognitive load, flow, accessibility, and inclusive tooling"
+      ]
+    },
+    {
+      "control_id": "USEQ-6A7F9660",
+      "revision": 1,
+      "semantic_sha256": "6a7f96600fbf5017662b49bbeef20eb812469e54e8a57d188ca68960e40400d1",
+      "statement": "Design tooling so users can recover from errors without recreating environments or waiting for privileged intervention.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 691
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Cognitive load, flow, accessibility, and inclusive tooling"
+      ]
+    },
+    {
+      "control_id": "USEQ-14E7881C",
+      "revision": 1,
+      "semantic_sha256": "14e7881c14dbe618233301eb4e283999a1aab96a77974dae7093468473d68f7a",
+      "statement": "Make internal tools keyboard accessible and compatible with relevant assistive technologies.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 692
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Cognitive load, flow, accessibility, and inclusive tooling"
+      ]
+    },
+    {
+      "control_id": "USEQ-91534D82",
+      "revision": 1,
+      "semantic_sha256": "91534d82534b88b23715bc1a1ea9090bd2de4cb27c61f71b8728933955a7600b",
+      "statement": "Provide sufficient contrast, scalable text, non-color cues, captions, and accessible documents in engineering systems.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 693
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Cognitive load, flow, accessibility, and inclusive tooling"
+      ]
+    },
+    {
+      "control_id": "USEQ-7C591DBF",
+      "revision": 1,
+      "semantic_sha256": "7c591dbfd2ba570587610609f92a01cc3018e97a6378e7642521deb95ebb4a8c",
+      "statement": "Ensure remote, distributed, part-time, and differently located team members have equivalent access to workflows and information.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 694
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Cognitive load, flow, accessibility, and inclusive tooling"
+      ]
+    },
+    {
+      "control_id": "USEQ-CE9D204D",
+      "revision": 1,
+      "semantic_sha256": "ce9d204d598683b132f031e9d65242cb19c3eb74e0c5c917437b7f48b2562505",
+      "statement": "Avoid relying on informal spoken knowledge, office proximity, or one time zone for essential decisions.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 695
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Cognitive load, flow, accessibility, and inclusive tooling"
+      ]
+    },
+    {
+      "control_id": "USEQ-DC4B7B0A",
+      "revision": 1,
+      "semantic_sha256": "dc4b7b0a8ee8383fe75f8ceeb1e61149af899bab68fe7a14f109bc70f81fae20",
+      "statement": "Provide psychologically safe ways to report friction, errors, and harmful metrics.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 696
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Cognitive load, flow, accessibility, and inclusive tooling"
+      ]
+    },
+    {
+      "control_id": "USEQ-DAD6FF8C",
+      "revision": 1,
+      "semantic_sha256": "dad6ff8c035419efb75e33a40882116630025c51f008cc1e4c429b243349332d",
+      "statement": "Do not interpret struggle with inaccessible or poorly designed tools as individual underperformance.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 697
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Cognitive load, flow, accessibility, and inclusive tooling"
+      ]
+    },
+    {
+      "control_id": "USEQ-C7C144EB",
+      "revision": 1,
+      "semantic_sha256": "c7c144ebc53f6d6853513b0472cb4b8f622d5c855f1a976155c97bdc5f5a959c",
+      "statement": "Include cognitive load, feedback loops, and flow state in improvement research.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 698
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Cognitive load, flow, accessibility, and inclusive tooling"
+      ]
+    },
+    {
+      "control_id": "USEQ-4275296E",
+      "revision": 1,
+      "semantic_sha256": "4275296e2459b5982c06cc333318965872b46d374eae632e8ab44bf3ee90c26d",
+      "statement": "Provide task-oriented documentation for common workflows and reference documentation for interfaces and policies.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 702
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Documentation, learning, and knowledge continuity"
+      ]
+    },
+    {
+      "control_id": "USEQ-EB41F750",
+      "revision": 1,
+      "semantic_sha256": "eb41f750cccab837e4ed91d8eb52a6baf3863ace895b0b99a5c8610765953069",
+      "statement": "Keep one discoverable authoritative source for each instruction or contract.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 703
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Documentation, learning, and knowledge continuity"
+      ]
+    },
+    {
+      "control_id": "USEQ-01E6CBBE",
+      "revision": 1,
+      "semantic_sha256": "01e6cbbe8dbdf37583ae4148189f63a0c67356e6083a4d83b3efdbd25c233e45",
+      "statement": "Generate reference material from source where reliable while retaining reviewed explanations and examples.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 704
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Documentation, learning, and knowledge continuity"
+      ]
+    },
+    {
+      "control_id": "USEQ-3B0A5ED4",
+      "revision": 1,
+      "semantic_sha256": "3b0a5ed4ec4515c2cde7e050a1c97e366eea05f265d4d5de0bc1154f8a4c288b",
+      "statement": "Test documentation examples and commands continuously where practical.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 705
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Documentation, learning, and knowledge continuity"
+      ]
+    },
+    {
+      "control_id": "USEQ-891BB07B",
+      "revision": 1,
+      "semantic_sha256": "891bb07b9952bb5382923ff8f18af4d8c3ffc07f736979687de29689bd4c9bb3",
+      "statement": "Label versions, prerequisites, scope, owner, last review date, and known limitations.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 706
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Documentation, learning, and knowledge continuity"
+      ]
+    },
+    {
+      "control_id": "USEQ-726AC92D",
+      "revision": 1,
+      "semantic_sha256": "726ac92d03aec8c462523c5234206f25db6090d68e7747b8673f886afc2ab2a6",
+      "statement": "Archive or redirect obsolete documentation so search does not lead users to unsupported paths.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 707
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Documentation, learning, and knowledge continuity"
+      ]
+    },
+    {
+      "control_id": "USEQ-D916210E",
+      "revision": 1,
+      "semantic_sha256": "d916210ea89b643e4e2170f4241d59e21ff1bfad3dc970a90fa93739a2bf8f0d",
+      "statement": "Provide onboarding journeys, architecture overviews, troubleshooting guides, and conceptual explanations.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 708
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Documentation, learning, and knowledge continuity"
+      ]
+    },
+    {
+      "control_id": "USEQ-63D39C0B",
+      "revision": 1,
+      "semantic_sha256": "63d39c0b8afff7e96b79d2151b282d226e4d135e056f1c3975adec06f774a36c",
+      "statement": "Record material decisions and trade-offs in durable decision records.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 709
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Documentation, learning, and knowledge continuity"
+      ]
+    },
+    {
+      "control_id": "USEQ-33FAD702",
+      "revision": 1,
+      "semantic_sha256": "33fad7020e98ada3de55faf2838b00d244e5e3f9ddddcd6a3ef8f206927a44ea",
+      "statement": "Ensure runbooks identify safe and destructive actions clearly.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 710
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Documentation, learning, and knowledge continuity"
+      ]
+    },
+    {
+      "control_id": "USEQ-24B646C7",
+      "revision": 1,
+      "semantic_sha256": "24b646c74998318dec37338ee32156e61114d58c51a0af63dde041db25477923",
+      "statement": "Provide learning environments that cannot affect production or real users.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 711
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Documentation, learning, and knowledge continuity"
+      ]
+    },
+    {
+      "control_id": "USEQ-D82CEC22",
+      "revision": 1,
+      "semantic_sha256": "d82cec2290c8428d0d803fa52b0233f2a502b74e63edbda231c1f4bd67aaa3b0",
+      "statement": "Use communities of practice, office hours, and support channels to supplement—not replace—durable documentation.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 712
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Documentation, learning, and knowledge continuity"
+      ]
+    },
+    {
+      "control_id": "USEQ-2B54E2F5",
+      "revision": 1,
+      "semantic_sha256": "2b54e2f5d9d0132866c2633fec82bc718e2233f04b83b9de75b8ab9291a8b84b",
+      "statement": "Measure documentation task success, search failure, repeated questions, and stale-page reports.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 713
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Documentation, learning, and knowledge continuity"
+      ]
+    },
+    {
+      "control_id": "USEQ-983B5F26",
+      "revision": 1,
+      "semantic_sha256": "983b5f26cc5cd2ef4c590c87042a2939f5317da95375aabda033599b849359d7",
+      "statement": "Plan knowledge transfer before owner changes, organizational moves, or supplier exit.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 714
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Documentation, learning, and knowledge continuity"
+      ]
+    },
+    {
+      "control_id": "USEQ-4BDCFFCF",
+      "revision": 1,
+      "semantic_sha256": "4bdcffcf4b1bce5bac20ca4f9412a30650a875c65c27630b001c50a9bcf6405c",
+      "statement": "Keep emergency and recovery documentation available outside the systems it is needed to restore.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 715
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Documentation, learning, and knowledge continuity"
+      ]
+    },
+    {
+      "control_id": "USEQ-CB8F61D4",
+      "revision": 1,
+      "semantic_sha256": "cb8f61d4ed1a3784611d8b4219f1e3ac91b8d5c86b986c69433dfb5603b3a31f",
+      "statement": "Use multiple outcome and experience measures; no single metric represents developer productivity.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 719
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Delivery performance and developer-experience measurement"
+      ]
+    },
+    {
+      "control_id": "USEQ-7AA62376",
+      "revision": 1,
+      "semantic_sha256": "7aa623766f7028612f1101f82eff7c9a45a52b28bf2d89057803bd4ea9f37e35",
+      "statement": "Use DORA delivery metrics at an appropriate service or team level to understand throughput and instability.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 720
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Delivery performance and developer-experience measurement"
+      ]
+    },
+    {
+      "control_id": "USEQ-B0B6D105",
+      "revision": 1,
+      "semantic_sha256": "b0b6d105416549a723540916a7699559e552c09655dd16aca2b2cff8edc0a74f",
+      "statement": "As of the 2026 DORA model, consider change lead time, deployment frequency, failed deployment recovery time, change fail rate, and deployment rework rate together.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 721
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Delivery performance and developer-experience measurement"
+      ]
+    },
+    {
+      "control_id": "USEQ-83FDD06F",
+      "revision": 1,
+      "semantic_sha256": "83fdd06f8b98fd3b758c62a7f547834b5d1698b4c2a65f37bb8d1fe1a9cb0909",
+      "statement": "Use SPACE dimensions to balance satisfaction and well-being, performance, activity, communication and collaboration, and efficiency and flow.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 722
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Delivery performance and developer-experience measurement"
+      ]
+    },
+    {
+      "control_id": "USEQ-4586EC60",
+      "revision": 1,
+      "semantic_sha256": "4586ec6024fd59cd09ca52e6a9ea615520cfa70c40639785597d46d517dc3ab9",
+      "statement": "Use DevEx dimensions such as feedback loops, cognitive load, and flow state to diagnose friction.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 723
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Delivery performance and developer-experience measurement"
+      ]
+    },
+    {
+      "control_id": "USEQ-F58BC741",
+      "revision": 1,
+      "semantic_sha256": "f58bc7418eac0b0e718ce6ae629ac03ba6e498070a488d788120d98419e87dc1",
+      "statement": "Combine quantitative telemetry with confidential qualitative research.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 724
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Delivery performance and developer-experience measurement"
+      ]
+    },
+    {
+      "control_id": "USEQ-20223EB5",
+      "revision": 1,
+      "semantic_sha256": "20223eb5292fb0fb0abfad1056f09dae1e2e86795230384c8f2bf13c7c591769",
+      "statement": "Measure systems and team conditions rather than ranking individuals by commits, lines, tickets, reviews, hours, or tool activity.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 725
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Delivery performance and developer-experience measurement"
+      ]
+    },
+    {
+      "control_id": "USEQ-95ED4C79",
+      "revision": 1,
+      "semantic_sha256": "95ed4c795c790d6e6fe1fff8666434238eb0ccfb15adcef5667b63196fb815b2",
+      "statement": "Do not use activity metrics as direct proxies for value, quality, difficulty, or individual contribution.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 726
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Delivery performance and developer-experience measurement"
+      ]
+    },
+    {
+      "control_id": "USEQ-D208E392",
+      "revision": 1,
+      "semantic_sha256": "d208e392e6470d3865cd12e206458deebfdfce48d6507c64624a124b84607cec",
+      "statement": "Expect measures to change behavior and assess gaming, fear, inequity, and surveillance risk before collection.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 727
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Delivery performance and developer-experience measurement"
+      ]
+    },
+    {
+      "control_id": "USEQ-2184C875",
+      "revision": 1,
+      "semantic_sha256": "2184c8752c55c9e18c11efe16f04a0cbeaa2cee6924b252215b06a0483ac2583",
+      "statement": "Collect only data necessary for the stated improvement purpose and apply privacy, access, retention, and transparency controls.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 728
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Delivery performance and developer-experience measurement"
+      ]
+    },
+    {
+      "control_id": "USEQ-F3060494",
+      "revision": 1,
+      "semantic_sha256": "f3060494cf75bbaba3e83e2fc4928b5a8c8140eb7d87bf0be7dff6a577164458",
+      "statement": "Segment metrics by workflow and context without exposing or penalizing small groups.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 729
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Delivery performance and developer-experience measurement"
+      ]
+    },
+    {
+      "control_id": "USEQ-5355662B",
+      "revision": 1,
+      "semantic_sha256": "5355662bccfbc2e750a8265dcd28e89ca9165e313cdca47a228e40aaf1d76065",
+      "statement": "Look for trade-offs: faster throughput can coexist with more rework, instability, burnout, or support burden.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 730
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Delivery performance and developer-experience measurement"
+      ]
+    },
+    {
+      "control_id": "USEQ-5A698497",
+      "revision": 1,
+      "semantic_sha256": "5a698497b81e5f01b1c132f1e71b7e7d423e66cc18b75d2d5d29aab31c102b88",
+      "statement": "Use trends and experiments to evaluate interventions rather than claiming causality from correlation alone.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 731
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Delivery performance and developer-experience measurement"
+      ]
+    },
+    {
+      "control_id": "USEQ-CF1326C5",
+      "revision": 1,
+      "semantic_sha256": "cf1326c54f41081917daa87d48642a3269b6246c4d81b4607bd27a46d767c8ba",
+      "statement": "Publish metric definitions, limitations, owners, and decision rules.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 732
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Delivery performance and developer-experience measurement"
+      ]
+    },
+    {
+      "control_id": "USEQ-2F8B10C6",
+      "revision": 1,
+      "semantic_sha256": "2f8b10c673ebe9ea6b245be717caea2456ea90329bd2bf024b12fc24c6f73d97",
+      "statement": "Map the end-to-end path from idea or defect to validated user outcome, including queues, handoffs, approvals, and rework.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 736
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Continuous improvement and value-stream management"
+      ]
+    },
+    {
+      "control_id": "USEQ-B8A5DC21",
+      "revision": 1,
+      "semantic_sha256": "b8a5dc21c779dac2532d7b30d47812d89014556453e18f8057e2b39729df376d",
+      "statement": "Measure touch time, wait time, blocked time, rework, abandonment, and failure demand.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 737
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Continuous improvement and value-stream management"
+      ]
+    },
+    {
+      "control_id": "USEQ-FF953623",
+      "revision": 1,
+      "semantic_sha256": "ff953623884b0b0daa8fea403a65b380081b92742d4374cf280f21c442b9c4aa",
+      "statement": "Improve the largest system constraint rather than optimizing local activity that increases downstream queues.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 738
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Continuous improvement and value-stream management"
+      ]
+    },
+    {
+      "control_id": "USEQ-6A5A19D4",
+      "revision": 1,
+      "semantic_sha256": "6a5a19d4cc1372e3e7ac3f80a3e802bdb533964295e122eb8df6722875d2dae9",
+      "statement": "Work in small batches to shorten feedback and reduce integration and rollback risk.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 739
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Continuous improvement and value-stream management"
+      ]
+    },
+    {
+      "control_id": "USEQ-A13C5E1E",
+      "revision": 1,
+      "semantic_sha256": "a13c5e1e2b6fdaa0a15ec6181bcc96a7a2aad3db889f189a0e42d78aa88106fc",
+      "statement": "Use experiments with baseline, hypothesis, expected effect, guardrails, and review date.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 740
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Continuous improvement and value-stream management"
+      ]
+    },
+    {
+      "control_id": "USEQ-B517A398",
+      "revision": 1,
+      "semantic_sha256": "b517a398ed331de69b22d3a2060bc5e7f496ecfd3b8c5f3ea3ffb58f1bb3e1ea",
+      "statement": "Include product quality, user value, reliability, security, accessibility, privacy, and team well-being as guardrails.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 741
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Continuous improvement and value-stream management"
+      ]
+    },
+    {
+      "control_id": "USEQ-9C9CBB20",
+      "revision": 1,
+      "semantic_sha256": "9c9cbb207932030346f11df08b603fd35bdb4c3561e981542929a10d0f2d7995",
+      "statement": "Review whether standardization removes friction or prevents teams from solving distinct problems.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 742
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Continuous improvement and value-stream management"
+      ]
+    },
+    {
+      "control_id": "USEQ-E325A12A",
+      "revision": 1,
+      "semantic_sha256": "e325a12a80b68911a72f57fc09dcf5ef35b635d508c5bdc83bb3866508216a23",
+      "statement": "Automate repetitive deterministic toil and remove the source of recurring toil where possible.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 743
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Continuous improvement and value-stream management"
+      ]
+    },
+    {
+      "control_id": "USEQ-7ABD2C5B",
+      "revision": 1,
+      "semantic_sha256": "7abd2c5bb9f5d7ab15ae55fb44cc5ef6626b4f4584340a1bfb84d2e6634781c9",
+      "statement": "Keep manual judgment where ambiguity, ethics, safety, or contextual risk requires it.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 744
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Continuous improvement and value-stream management"
+      ]
+    },
+    {
+      "control_id": "USEQ-DC44A0E3",
+      "revision": 1,
+      "semantic_sha256": "dc44a0e3d1c263364a2b95a65b8b5adb70554708bc9120f3a3dd5cd744781eba",
+      "statement": "Prioritize improvements from observed friction, incident lessons, support demand, and user research.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 745
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Continuous improvement and value-stream management"
+      ]
+    },
+    {
+      "control_id": "USEQ-BD769EB9",
+      "revision": 1,
+      "semantic_sha256": "bd769eb981f13fe5b7fa442e4b2b50ffb5d3542c3a90665ed1a979bfe2367d1b",
+      "statement": "Share successful patterns without declaring them universal before context is understood.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 746
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Continuous improvement and value-stream management"
+      ]
+    },
+    {
+      "control_id": "USEQ-F0AE0BFF",
+      "revision": 1,
+      "semantic_sha256": "f0ae0bff95124b80917d1b9e1eea048e3dbbe177b13b5843c34fdd687da4454b",
+      "statement": "Retire metrics and processes that no longer lead to useful decisions.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 747
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Continuous improvement and value-stream management"
+      ]
+    },
+    {
+      "control_id": "USEQ-188FE891",
+      "revision": 1,
+      "semantic_sha256": "188fe89110a6b33515c1b29b05b719d7b765750e182f0009757f2a73f78e3132",
+      "statement": "Review improvement effects after enough time to observe adoption and secondary consequences.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 748
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Continuous improvement and value-stream management"
+      ]
+    },
+    {
+      "control_id": "USEQ-441F16D2",
+      "revision": 1,
+      "semantic_sha256": "441f16d2869d797dc37654bb14da856f6115fe33bd89c2ded903f1c8ce254cae",
+      "statement": "Capture lessons in platform capabilities, policies, documentation, and organization design.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 749
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Continuous improvement and value-stream management"
+      ]
+    },
+    {
+      "control_id": "USEQ-F2A1D89A",
+      "revision": 1,
+      "semantic_sha256": "f2a1d89a80f46aaa8449f86647fa18f640d39d716ba6bfa6291bbe9504a43aec",
+      "statement": "Attribute major platform costs to capabilities and outcomes without creating incentives to hide necessary use.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 753
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Cost, capacity, and sustainability of engineering systems"
+      ]
+    },
+    {
+      "control_id": "USEQ-D68D0A9D",
+      "revision": 1,
+      "semantic_sha256": "d68d0a9dab12308fca14f49c346d3500bf2d2c0e4eebd25753fcb7f63cc62342",
+      "statement": "Forecast build, test, storage, network, runner, artifact, logging, and environment demand.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 754
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Cost, capacity, and sustainability of engineering systems"
+      ]
+    },
+    {
+      "control_id": "USEQ-1A4066FD",
+      "revision": 1,
+      "semantic_sha256": "1a4066fded7e7618b6620c2b35a7ae4e98741dc67f2fc12af85ebeb6983bf484",
+      "statement": "Use quotas and budgets that protect shared resources while allowing legitimate bursts and incident response.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 755
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Cost, capacity, and sustainability of engineering systems"
+      ]
+    },
+    {
+      "control_id": "USEQ-49E28DF3",
+      "revision": 1,
+      "semantic_sha256": "49e28df300c7f0b8ff619afafc79bd6f41dfd83d1667a07b185bd11ca07b9db2",
+      "statement": "Monitor queue saturation, wait time, cache effectiveness, idle environments, abandoned resources, and data growth.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 756
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Cost, capacity, and sustainability of engineering systems"
+      ]
+    },
+    {
+      "control_id": "USEQ-2C2CAF70",
+      "revision": 1,
+      "semantic_sha256": "2c2caf70e7f2e09721b8e6153f9595eeaa323adf5c41d9c89f0c7ce0eaa62b28",
+      "statement": "Automatically expire or suspend unused ephemeral resources after a visible grace period.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 757
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Cost, capacity, and sustainability of engineering systems"
+      ]
+    },
+    {
+      "control_id": "USEQ-990ED243",
+      "revision": 1,
+      "semantic_sha256": "990ed24343f76aaa999d2046c78c733780fd529490914c4ca8c9fca705f4cefb",
+      "statement": "Keep retention aligned with legal, audit, diagnostic, and reproducibility needs.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 758
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Cost, capacity, and sustainability of engineering systems"
+      ]
+    },
+    {
+      "control_id": "USEQ-344C24AA",
+      "revision": 1,
+      "semantic_sha256": "344c24aaddc1c0a838ce3b55730c9a0e211913cb9ff81d1e177475e8993716a0",
+      "statement": "Minimize duplicate artifact, dependency, test-data, and log storage while preserving integrity and provenance.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 759
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Cost, capacity, and sustainability of engineering systems"
+      ]
+    },
+    {
+      "control_id": "USEQ-28FE7C91",
+      "revision": 1,
+      "semantic_sha256": "28fe7c919a1a5f79957d114782c8b000cc7f68b001a2e382b7e91b216b7641b7",
+      "statement": "Choose efficient architectures and workload scheduling without shifting hidden cost to developers or product reliability.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 760
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Cost, capacity, and sustainability of engineering systems"
+      ]
+    },
+    {
+      "control_id": "USEQ-3B939CA0",
+      "revision": 1,
+      "semantic_sha256": "3b939ca0f87f0345f5b4c90220d4f93f20f9c6001b274005c68d987c7192b58b",
+      "statement": "Measure environmental and resource impact where material and avoid unsupported sustainability claims.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 761
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Cost, capacity, and sustainability of engineering systems"
+      ]
+    },
+    {
+      "control_id": "USEQ-69D55612",
+      "revision": 1,
+      "semantic_sha256": "69d556126fa7efa352b6aab29178b478794f83d4e0d939af1a61bf0fb733625d",
+      "statement": "Plan capacity for organizational growth, launch spikes, regional failure, and supplier quotas.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 762
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Cost, capacity, and sustainability of engineering systems"
+      ]
+    },
+    {
+      "control_id": "USEQ-39710937",
+      "revision": 1,
+      "semantic_sha256": "39710937d77e844e083a1f93d4bc1aaadc2bd49cdf9a6b62eb314ea2debd0ca2",
+      "statement": "Ensure cost controls cannot silently delete evidence, disable security checks, or block emergency recovery.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 763
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Cost, capacity, and sustainability of engineering systems"
+      ]
+    },
+    {
+      "control_id": "USEQ-514E0CD0",
+      "revision": 1,
+      "semantic_sha256": "514e0cd0623d99ef276e2fff235b46b97fe965f774d2337d68046b397b3a9992",
+      "statement": "Review supplier pricing, egress, licensing, and exit costs before deep integration.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 764
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Cost, capacity, and sustainability of engineering systems"
+      ]
+    },
+    {
+      "control_id": "USEQ-07373DFE",
+      "revision": 1,
+      "semantic_sha256": "07373dfe64f70cdcc06a8928616704c20a4b10779512d6d40ff06ced8a9827e9",
+      "statement": "Provide teams with actionable cost visibility and safe optimization guidance.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 765
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Cost, capacity, and sustainability of engineering systems"
+      ]
+    },
+    {
+      "control_id": "USEQ-BBCAACB3",
+      "revision": 1,
+      "semantic_sha256": "bbcaacb36fa8ca4f167b62383399bd8b15a17130a4718f74ae7420a5d9a97c3d",
+      "statement": "Validate cost improvements against delivery, quality, reliability, and developer-experience guardrails.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 766
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Cost, capacity, and sustainability of engineering systems"
+      ]
+    },
+    {
+      "control_id": "USEQ-0E1655B8",
+      "revision": 1,
+      "semantic_sha256": "0e1655b8ebf7f72ca1f25632aad0d50e904819268ca9ff63a4cee93694fd8beb",
+      "statement": "Document dependencies on proprietary APIs, formats, identity, networking, build services, registries, and control planes.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 770
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Portability, interoperability, and escape paths"
+      ]
+    },
+    {
+      "control_id": "USEQ-8A0CF5CF",
+      "revision": 1,
+      "semantic_sha256": "8a0cf5cfbcda9ad931dcc4b513047936790c49ece714be861e4907efd56950e3",
+      "statement": "Use open or well-documented interfaces where they materially reduce lock-in and improve interoperability.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 771
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Portability, interoperability, and escape paths"
+      ]
+    },
+    {
+      "control_id": "USEQ-4018176E",
+      "revision": 1,
+      "semantic_sha256": "4018176e317fc189ab721616e81cf4579e9a06c2262636b5dfd3ccdbe18576d6",
+      "statement": "Keep source, configuration, metadata, artifacts, logs, and data exportable in usable forms.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 772
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Portability, interoperability, and escape paths"
+      ]
+    },
+    {
+      "control_id": "USEQ-91A133AE",
+      "revision": 1,
+      "semantic_sha256": "91a133aedb1254924141a8c34ca59046beeab300f53d063a0969a4d7a524d40a",
+      "statement": "Test restore or reconstruction outside the primary platform when continuity objectives require it.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 773
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Portability, interoperability, and escape paths"
+      ]
+    },
+    {
+      "control_id": "USEQ-97037A86",
+      "revision": 1,
+      "semantic_sha256": "97037a866c948055be75255794975df964361e5f8dca3687c4686271782eb4ad",
+      "statement": "Define which platform abstractions intentionally hide provider details and which provider capabilities remain visible.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 774
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Portability, interoperability, and escape paths"
+      ]
+    },
+    {
+      "control_id": "USEQ-49BA0A1C",
+      "revision": 1,
+      "semantic_sha256": "49ba0a1c01ab0983f35147b1dbabd6649141e5288c58cf59a10bda65c69a1bc8",
+      "statement": "Avoid lowest-common-denominator abstractions that remove valuable capability without a real portability requirement.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 775
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Portability, interoperability, and escape paths"
+      ]
+    },
+    {
+      "control_id": "USEQ-54067417",
+      "revision": 1,
+      "semantic_sha256": "540674170e1072b6daff7825c8a7b2000b468447dd73366194d39c81a2af1701",
+      "statement": "Provide escape hatches that preserve essential security, audit, and ownership controls.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 776
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Portability, interoperability, and escape paths"
+      ]
+    },
+    {
+      "control_id": "USEQ-AC2E75BF",
+      "revision": 1,
+      "semantic_sha256": "ac2e75bfaf59aa00907095f1727d8460330b5955b7bd149da92845686e79de95",
+      "statement": "Document the operational burden transferred to teams that leave the recommended path.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 777
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Portability, interoperability, and escape paths"
+      ]
+    },
+    {
+      "control_id": "USEQ-F300483C",
+      "revision": 1,
+      "semantic_sha256": "f300483c10e9855369bc7c8d5dc71027a6c191cf7c9203be86271503be51de04",
+      "statement": "Keep external interfaces versioned independently of internal implementation where practical.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 778
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Portability, interoperability, and escape paths"
+      ]
+    },
+    {
+      "control_id": "USEQ-47566BF2",
+      "revision": 1,
+      "semantic_sha256": "47566bf2374b8fe980733aad3840b5a625eb721bde68b444702ea0ab959ea59c",
+      "statement": "Maintain replacement and exit plans for critical suppliers and unsupported internal tools.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 779
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Portability, interoperability, and escape paths"
+      ]
+    },
+    {
+      "control_id": "USEQ-30CCD67D",
+      "revision": 1,
+      "semantic_sha256": "30ccd67d850ba9e8419fe4676948a23bc0484a20494836dcdc9ef18a74c89dd2",
+      "statement": "Assess whether platform failure can prevent access to source, builds, deployment, observability, or recovery simultaneously.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 780
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Portability, interoperability, and escape paths"
+      ]
+    },
+    {
+      "control_id": "USEQ-9934131E",
+      "revision": 1,
+      "semantic_sha256": "9934131e391acc50aaca276a6868ec08c96537cc9d34f55a8d142ef232cee0d7",
+      "statement": "Prevent one identity or control-plane dependency from becoming the only emergency path.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 781
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Portability, interoperability, and escape paths"
+      ]
+    },
+    {
+      "control_id": "USEQ-6EAB87B3",
+      "revision": 1,
+      "semantic_sha256": "6eab87b3f0185e01c8d8164e768aa79d665afda7e2a672a88beddb59035e08c0",
+      "statement": "Rehearse migration of at least the most critical artifacts and metadata.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 782
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Portability, interoperability, and escape paths"
+      ]
+    },
+    {
+      "control_id": "USEQ-746C0E26",
+      "revision": 1,
+      "semantic_sha256": "746c0e260ba1ae387e71b7792919211a7a6c6d2d8d3f3afee977ae2a146e7184",
+      "statement": "Review portability requirements based on business continuity and bargaining risk, not ideology.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 783
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Portability, interoperability, and escape paths"
+      ]
+    },
+    {
+      "control_id": "USEQ-D19BE27B",
+      "revision": 1,
+      "semantic_sha256": "d19be27b2b4704f9076482303658a1397cb19c530816db0b3d299557be647c8a",
+      "statement": "Publish lifecycle states such as experimental, supported, deprecated, maintenance-only, and retired.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 787
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Lifecycle, deprecation, and platform retirement"
+      ]
+    },
+    {
+      "control_id": "USEQ-9372CB8C",
+      "revision": 1,
+      "semantic_sha256": "9372cb8c98c83b7069e23a3e85db3bd7b032b550fb76057387cf0e0f3c266788",
+      "statement": "Define support and compatibility expectations for each state.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 788
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Lifecycle, deprecation, and platform retirement"
+      ]
+    },
+    {
+      "control_id": "USEQ-A7ABBFA6",
+      "revision": 1,
+      "semantic_sha256": "a7abbfa676838175d49c26f53aab7f18acc98b8a64246f955bd246c6b33caa0a",
+      "statement": "Identify actual consumers before deprecation and communicate through channels they use.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 789
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Lifecycle, deprecation, and platform retirement"
+      ]
+    },
+    {
+      "control_id": "USEQ-8D189C10",
+      "revision": 1,
+      "semantic_sha256": "8d189c1050684340521d356fe5cb7f0b8a9c12cfcfb23d9b4f07e8d13a29903a",
+      "statement": "Provide migration tooling, documentation, examples, validation, and support.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 790
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Lifecycle, deprecation, and platform retirement"
+      ]
+    },
+    {
+      "control_id": "USEQ-669B7C08",
+      "revision": 1,
+      "semantic_sha256": "669b7c084770210bf93e163bedfef4a8cc854af9fe121e2264b6dcb23b239f55",
+      "statement": "Monitor remaining use and unknown consumers.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 791
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Lifecycle, deprecation, and platform retirement"
+      ]
+    },
+    {
+      "control_id": "USEQ-6EE88A72",
+      "revision": 1,
+      "semantic_sha256": "6ee88a7293f0a40f235edfe66575635c40bbd1d46470832ceea1efeeceaf6632",
+      "statement": "Avoid indefinite dual operation without explicit cost and risk acceptance.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 792
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Lifecycle, deprecation, and platform retirement"
+      ]
+    },
+    {
+      "control_id": "USEQ-68A53B3C",
+      "revision": 1,
+      "semantic_sha256": "68a53b3c569a740f4d48c87025a3b33d474bdfe0c44f68889837e20d7dda2738",
+      "statement": "Preserve required artifacts, evidence, audit history, and data during retirement.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 793
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Lifecycle, deprecation, and platform retirement"
+      ]
+    },
+    {
+      "control_id": "USEQ-5AD5C402",
+      "revision": 1,
+      "semantic_sha256": "5ad5c402c0f03c53efd25fddeabc325978c871e9cebdb008530e596456ded0ca",
+      "statement": "Revoke credentials, identities, network access, secrets, signing keys, webhooks, and automation associated with retired capabilities.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 794
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Lifecycle, deprecation, and platform retirement"
+      ]
+    },
+    {
+      "control_id": "USEQ-45B505EF",
+      "revision": 1,
+      "semantic_sha256": "45b505ef8ace7d530c94fa1f9b1c3a220f569e1e1a33f9066ab8d8f2871e1ea0",
+      "statement": "Delete or archive obsolete resources according to retention and privacy requirements.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 795
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Lifecycle, deprecation, and platform retirement"
+      ]
+    },
+    {
+      "control_id": "USEQ-FF09ED1C",
+      "revision": 1,
+      "semantic_sha256": "ff09ed1c37a78b1e7929caff6cc84cb3e3fda08527dcbe956accde28f734e2af",
+      "statement": "Remove old paths from templates, documentation, policy, onboarding, and catalogs.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 796
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Lifecycle, deprecation, and platform retirement"
+      ]
+    },
+    {
+      "control_id": "USEQ-7CBE6D66",
+      "revision": 1,
+      "semantic_sha256": "7cbe6d66f0c58a076f7ca13d0e3ad6a9fb8742ba388ef88de6c4021ee76a6b85",
+      "statement": "Confirm that retirement does not break incident recovery or historical rebuilds.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 797
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Lifecycle, deprecation, and platform retirement"
+      ]
+    },
+    {
+      "control_id": "USEQ-36237DAD",
+      "revision": 1,
+      "semantic_sha256": "36237dad5c43afec3a4c7a6da7aa0aedc1bb16cdf7fc8039151581fb9c7d8b11",
+      "statement": "Review lessons from adoption, support, and retirement before replacing the capability.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 798
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Lifecycle, deprecation, and platform retirement"
+      ]
+    },
+    {
+      "control_id": "USEQ-69BACE4D",
+      "revision": 1,
+      "semantic_sha256": "69bace4d840e09695153c78fbf2af030f1aba2aa0a67602d2f7792a29c440801",
+      "statement": "Keep a rollback window until migration validation is complete.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 799
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Lifecycle, deprecation, and platform retirement"
+      ]
+    },
+    {
+      "control_id": "USEQ-C42204DA",
+      "revision": 1,
+      "semantic_sha256": "c42204dadeff46947dbef22e71fabbf834f12a5f487790e6b6173210f0e3e8ce",
+      "statement": "Reassign ownership explicitly when platform responsibilities move between teams or suppliers.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 800
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Lifecycle, deprecation, and platform retirement"
+      ]
+    },
+    {
+      "control_id": "USEQ-CB04A4EC",
+      "revision": 1,
+      "semantic_sha256": "cb04a4ec0c9f270a4dae29d5633a7d7c2e686dc6b35fd7d9daeb4254570591a2",
+      "statement": "Block rollout when the platform cannot identify owners, affected users, supported scope, or recovery responsibility.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 804
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Platform and developer-experience release blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-0CD5999D",
+      "revision": 1,
+      "semantic_sha256": "0cd5999da8d5f31d9bad0faa50fd41704a0c981b7365f6bd566388137cea843d",
+      "statement": "Block rollout when a mandatory path is less secure or less reliable than the path it replaces.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 805
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Platform and developer-experience release blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-A882ABAF",
+      "revision": 1,
+      "semantic_sha256": "a882abaf64226118a3451c7c34168f6d9789339975865eda925d81e46b6ea7af",
+      "statement": "Block rollout when self-service can create irreversible, privileged, publicly exposed, or unowned resources without adequate controls.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 806
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Platform and developer-experience release blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-24631885",
+      "revision": 1,
+      "semantic_sha256": "24631885c76034db8c424f5de48b13a97bbbe73fc507096b775ebd47910fde54",
+      "statement": "Block rollout when critical workflows cannot be diagnosed or recovered without the unavailable platform itself.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 807
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Platform and developer-experience release blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-742B58F7",
+      "revision": 1,
+      "semantic_sha256": "742b58f76f359d6ea1cfab4e64e20e98ba4955082762b615d7bdcf458ac1b958",
+      "statement": "Block rollout when generated templates contain unsupported, vulnerable, unlicensed, or unowned components.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 808
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Platform and developer-experience release blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-7A5FFA5E",
+      "revision": 1,
+      "semantic_sha256": "7a5ffa5e1aa2ec6150467f3171d1c8736a15a2202d3d015f53e268d14db5959f",
+      "statement": "Block rollout when policy enforcement produces material false positives without a working exception and support process.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 809
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Platform and developer-experience release blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-FF503F0F",
+      "revision": 1,
+      "semantic_sha256": "ff503f0f150c6434d375246e6d3fd4d1692c5721a0c810fcde1e181775e99824",
+      "statement": "Block rollout when adoption is measured only by mandate or activity and user outcomes are unknown.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 810
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Platform and developer-experience release blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-DA19EDF9",
+      "revision": 1,
+      "semantic_sha256": "da19edf9ea53684bf45f0501eee760e8200b2fc58dc6a632bea737ecc3819316",
+      "statement": "Block rollout when accessibility barriers prevent authorized engineers from completing essential tasks.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 811
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Platform and developer-experience release blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-9863D445",
+      "revision": 1,
+      "semantic_sha256": "9863d445dad3e5112936e748af32be1a1818780100269034bbc630e2745b5284",
+      "statement": "Block rollout when telemetry constitutes undisclosed individual surveillance or creates harmful performance incentives.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 812
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Platform and developer-experience release blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-DE6F930B",
+      "revision": 1,
+      "semantic_sha256": "de6f930b8dfc4cb32633f90776f04a3258a90582b1fa4059ffb3445b9e37f6c3",
+      "statement": "Require evidence from representative teams, including first-time users and high-risk workflows.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 813
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Platform and developer-experience release blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-34527B32",
+      "revision": 1,
+      "semantic_sha256": "34527b32b78fdda6ead6d31ff1e47185fea2b3c6d2767df6ad8422e2db43deaa",
+      "statement": "Require documented SLOs, on-call ownership, rollback, support, migration, and deprecation plans for critical platform services.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 814
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Platform and developer-experience release blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-5EBA2B57",
+      "revision": 1,
+      "semantic_sha256": "5eba2b57311d8c1a3acae86b9b64efeb961720d0ca7cedc27f0ce62aa79c0816",
+      "statement": "Confirm that product teams retain enough knowledge and access to operate and recover their systems.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 815
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Platform and developer-experience release blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-7EA98BC7",
+      "revision": 1,
+      "semantic_sha256": "7ea98bc7a66ec801ed4a2ac5a50abbf5b9e71c2d79c3f6cc602fc0a7c7d0b8ca",
+      "statement": "Confirm that cost, capacity, identity, supplier, and concentration risks are understood and accepted.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 816
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Platform and developer-experience release blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-08C12DD5",
+      "revision": 1,
+      "semantic_sha256": "cb986900d1cdee17174b964b208551e962e812307e03531b8c6cf1be1b58e5f6",
+      "statement": "Confirm that the platform improves the total value stream rather than only the platform team’s local metrics.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 817
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Platform Engineering, Developer Experience, and Engineering Effectiveness",
+        "Platform and developer-experience release blockers"
+      ]
+    },
+    {
+      "control_id": "USEQ-47D22600",
+      "revision": 1,
+      "semantic_sha256": "47d22600d2c3159272c455755d009aa1091d6d9c987dd1e517570f66d8dba7cc",
+      "statement": "Define the assets governed across hardware, software, cloud, data, identities, certificates, domains, repositories, build systems, services, licenses, documentation, and suppliers.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 825
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "IT and software asset governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-5EFC0327",
+      "revision": 1,
+      "semantic_sha256": "5efc0327ca33144852dfd687678e6bdd752d9d22286c61ba83ac86bdbe43d1ca",
+      "statement": "Assign an accountable owner, custodian, business purpose, criticality, lifecycle state, location, and support status to each material asset.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 826
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "IT and software asset governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-6327CC41",
+      "revision": 1,
+      "semantic_sha256": "6327cc4104c36c8c4da56b759524bef9355fea90930461e2ffbfdec91bc7ebfc",
+      "statement": "Maintain one authoritative or reconciled asset inventory with unique identifiers.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 827
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "IT and software asset governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-F339AB78",
+      "revision": 1,
+      "semantic_sha256": "f339ab783e1ef5da06faf66b0f5a452d8cdd80d36848518aa135bd59fdacb856",
+      "statement": "Discover assets continuously enough to detect unknown, abandoned, duplicated, shadow, and unauthorized resources.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 828
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "IT and software asset governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-4408FB18",
+      "revision": 1,
+      "semantic_sha256": "4408fb184660b2f568791c574659899c0d203314de2f84bac93a39af1dc2af21",
+      "statement": "Reconcile technical discovery with financial, procurement, identity, network, configuration, and service records.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 829
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "IT and software asset governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-60452413",
+      "revision": 1,
+      "semantic_sha256": "60452413ed84530eefec1a9e35b21fa445306384b549ff78bf6250e6901386c6",
+      "statement": "Record relationships among assets, services, data, owners, dependencies, contracts, and customers.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 830
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "IT and software asset governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-2FC61C58",
+      "revision": 1,
+      "semantic_sha256": "2fc61c584d4444083692fd4b27ad2aa2ee8ddf107cb951dfff93a5d2b6fff548",
+      "statement": "Classify assets by confidentiality, integrity, availability, privacy, safety, financial, and legal impact.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 831
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "IT and software asset governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-BBF0269D",
+      "revision": 1,
+      "semantic_sha256": "bbf0269db9fae71c7b99bf34ade56a08619ce5843c1f5de56edeb0e027ecc9d6",
+      "statement": "Define lifecycle states and required controls from request and acquisition through deployment, operation, transfer, retirement, and disposal.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 832
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "IT and software asset governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-E3B57237",
+      "revision": 1,
+      "semantic_sha256": "e3b572372f71dc0446fafdb8abc5568388d2e06edb9f581f543ab342e0cb0819",
+      "statement": "Prevent an asset from entering production without ownership, support, monitoring, security, backup, and retirement expectations.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 833
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "IT and software asset governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-6DD907B9",
+      "revision": 1,
+      "semantic_sha256": "6dd907b99d4e79ecfdc8bed0804edd57180a99c62fbe0ab02c1d9d3aad54afb3",
+      "statement": "Review inventory completeness and accuracy periodically and after major organizational or platform change.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 834
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "IT and software asset governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-D7D10F08",
+      "revision": 1,
+      "semantic_sha256": "d7d10f089fd68aa56734950c038ef5970a244945722958a148d9711979483cf4",
+      "statement": "Protect the asset inventory because it contains sensitive architecture and ownership information.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 835
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "IT and software asset governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-A91E76D3",
+      "revision": 1,
+      "semantic_sha256": "a91e76d3a86148a66237fd6989c99d7e708cf488d86641037586acb8c76db6d3",
+      "statement": "Preserve historical asset and ownership state for incident, audit, cost, and lifecycle analysis.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 836
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "IT and software asset governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-C2BEC642",
+      "revision": 1,
+      "semantic_sha256": "c2bec642aa938b5539957c860977806942a3c273eb77508aee259186221d123c",
+      "statement": "Link acquired assets to approved requirements, funding, supplier, contract, entitlement, and accountable owner.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 840
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Acquisition, entitlement, and licensing"
+      ]
+    },
+    {
+      "control_id": "USEQ-BDA3E93B",
+      "revision": 1,
+      "semantic_sha256": "bda3e93ba98cff6eafa3ce62748fe35537a39545fb3ff9e8d1c4afec5b9cb4d9",
+      "statement": "Verify license, subscription, support, geographic, user, device, capacity, environment, and redistribution rights before use.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 841
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Acquisition, entitlement, and licensing"
+      ]
+    },
+    {
+      "control_id": "USEQ-9F40C6C0",
+      "revision": 1,
+      "semantic_sha256": "9f40c6c044facd82c27ae809902fb7b6e5b210c10ff20e12fb49ce893098908f",
+      "statement": "Track renewal, notice, termination, price-adjustment, true-up, support, and end-of-life dates.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 842
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Acquisition, entitlement, and licensing"
+      ]
+    },
+    {
+      "control_id": "USEQ-90D325A9",
+      "revision": 1,
+      "semantic_sha256": "90d325a980ff7ffed65d1d5eee1d89294899f0f30202da11fc5a5614c25f4259",
+      "statement": "Prevent unauthorized software, services, plugins, packages, and devices from becoming production dependencies.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 843
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Acquisition, entitlement, and licensing"
+      ]
+    },
+    {
+      "control_id": "USEQ-C68F693C",
+      "revision": 1,
+      "semantic_sha256": "c68f693cc41fa152dee09a72d1e04eb52a9b60e23af64ffd8c6d4a4750676aa1",
+      "statement": "Identify free, trial, community, and evaluation services that lack production rights or support.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 844
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Acquisition, entitlement, and licensing"
+      ]
+    },
+    {
+      "control_id": "USEQ-A87D5AB1",
+      "revision": 1,
+      "semantic_sha256": "a87d5ab163ec37cdae37cff5c037dbea62e8d6416bf3ce5762853add99295db6",
+      "statement": "Avoid collecting more licenses or cloud capacity than can be governed responsibly.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 845
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Acquisition, entitlement, and licensing"
+      ]
+    },
+    {
+      "control_id": "USEQ-F929714B",
+      "revision": 1,
+      "semantic_sha256": "f929714b900c5483a60570b025432035cf323936b0ca09e9cac0c742e36cafd5",
+      "statement": "Detect under-licensing, over-licensing, duplicate subscriptions, dormant seats, and unused reserved capacity.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 846
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Acquisition, entitlement, and licensing"
+      ]
+    },
+    {
+      "control_id": "USEQ-C3E997C5",
+      "revision": 1,
+      "semantic_sha256": "c3e997c559258d8c23a5e314b4abc926db65973abbbb05dd3f3b57573290b54d",
+      "statement": "Record supplier and product identifiers sufficiently to distinguish similarly named assets.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 847
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Acquisition, entitlement, and licensing"
+      ]
+    },
+    {
+      "control_id": "USEQ-20E81856",
+      "revision": 1,
+      "semantic_sha256": "20e8185600b16ee05f43307269db7c6c6c377548f7522beb8c6239a800d82901",
+      "statement": "Retain proof of entitlement and contractual terms for the required period.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 848
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Acquisition, entitlement, and licensing"
+      ]
+    },
+    {
+      "control_id": "USEQ-0B64BF62",
+      "revision": 1,
+      "semantic_sha256": "0b64bf62cf97bb2f713b436d3ee84c26cf6bbe827a8e425d4236ddfc9312493f",
+      "statement": "Ensure acquisition terms cover continuity, security updates, data return, audit, and exit where material.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 849
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Acquisition, entitlement, and licensing"
+      ]
+    },
+    {
+      "control_id": "USEQ-D738D8F6",
+      "revision": 1,
+      "semantic_sha256": "d738d8f6bcde585643040850c414133c1edae7aecc58aaff258f23c2b8535124",
+      "statement": "Assign individual custody for portable assets and privileged credentials where appropriate.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 853
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Asset assignment, custody, and use"
+      ]
+    },
+    {
+      "control_id": "USEQ-40C843EB",
+      "revision": 1,
+      "semantic_sha256": "40c843ebf27be586c242e75f19cf0caf7efdf4a486aff6ee2774117cb90bef61",
+      "statement": "Record transfers, loans, repairs, loss, return, reassignment, and disposal.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 854
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Asset assignment, custody, and use"
+      ]
+    },
+    {
+      "control_id": "USEQ-7D4EF0D8",
+      "revision": 1,
+      "semantic_sha256": "7d4ef0d81518cdb694983c0d3413692aeb7fef1719e2ad9d913d904ee743b46b",
+      "statement": "Require users to acknowledge handling responsibilities proportionate to sensitivity.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 855
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Asset assignment, custody, and use"
+      ]
+    },
+    {
+      "control_id": "USEQ-11330086",
+      "revision": 1,
+      "semantic_sha256": "11330086b903c731c007a07318373ce02c28e192d67d8affd0915a94ada122b4",
+      "statement": "Restrict asset use to authorized purposes and environments.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 856
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Asset assignment, custody, and use"
+      ]
+    },
+    {
+      "control_id": "USEQ-9D66D98F",
+      "revision": 1,
+      "semantic_sha256": "9d66d98fe6e50ea592f50d0e3655eb74eecd4b39138ea39e6f33b48df5c8b3d0",
+      "statement": "Prevent production assets from being repurposed for testing without controlled sanitization and approval.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 857
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Asset assignment, custody, and use"
+      ]
+    },
+    {
+      "control_id": "USEQ-61F13688",
+      "revision": 1,
+      "semantic_sha256": "61f136882794bc116669aac3ee0a0dc4cd888ec9b62106e9164c24cea39eb81b",
+      "statement": "Ensure shared assets have clear administration, accountability, and access records.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 858
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Asset assignment, custody, and use"
+      ]
+    },
+    {
+      "control_id": "USEQ-95BBBD9D",
+      "revision": 1,
+      "semantic_sha256": "95bbbd9d69c428a9dda5f5b59fb2bf35b1800a2f96952fdbd8c30d8838d34519",
+      "statement": "Reconcile assets during personnel, supplier, office, and organizational transitions.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 859
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Asset assignment, custody, and use"
+      ]
+    },
+    {
+      "control_id": "USEQ-1102BC52",
+      "revision": 1,
+      "semantic_sha256": "1102bc52698d27c4025a97b96ec98e2f893c26b222982d88537021d145e2054b",
+      "statement": "Investigate missing, stale, unresponsive, or ownerless assets.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 860
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Asset assignment, custody, and use"
+      ]
+    },
+    {
+      "control_id": "USEQ-F82AEC89",
+      "revision": 1,
+      "semantic_sha256": "f82aec893440f8b75d4bb30c09b5a3afffdbb7f56ed47fa6ce8ae4bdafd758bf",
+      "statement": "Revoke access and recover assets promptly during offboarding.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 861
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Asset assignment, custody, and use"
+      ]
+    },
+    {
+      "control_id": "USEQ-BCC8A948",
+      "revision": 1,
+      "semantic_sha256": "bcc8a948eb4950c1886cd46be71b336c4f911f6e850fa6c27b661733522bf64e",
+      "statement": "Inventory deployed applications, services, libraries, images, functions, jobs, APIs, endpoints, agents, and management planes.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 865
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Software, service, and cloud asset lifecycle"
+      ]
+    },
+    {
+      "control_id": "USEQ-F0FA28E9",
+      "revision": 1,
+      "semantic_sha256": "f0fa28e9443b795ae6519b00a41838d4350d18ad0c5ed335b3d165c41171454b",
+      "statement": "Record exact versions, editions, regions, accounts, projects, environments, and deployment identifiers.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 866
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Software, service, and cloud asset lifecycle"
+      ]
+    },
+    {
+      "control_id": "USEQ-2C9BCEDC",
+      "revision": 1,
+      "semantic_sha256": "2c9bcedc44f4d774e5163f97411627e01f899b5b13d55d9339dc2bf383719bb5",
+      "statement": "Identify unsupported, end-of-life, unmaintained, and unpatchable components.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 867
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Software, service, and cloud asset lifecycle"
+      ]
+    },
+    {
+      "control_id": "USEQ-404CE25B",
+      "revision": 1,
+      "semantic_sha256": "404ce25bc1d7fafd176066332880c652a514f21e32e8bb12b2b5de1c715abb0b",
+      "statement": "Track public exposure and externally reachable management interfaces.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 868
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Software, service, and cloud asset lifecycle"
+      ]
+    },
+    {
+      "control_id": "USEQ-DBD981E5",
+      "revision": 1,
+      "semantic_sha256": "dbd981e5c8df000d31d0fe0fe700f7de77b4642ba2680af7b559ee9a378e3729",
+      "statement": "Identify software installed outside approved deployment or package mechanisms.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 869
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Software, service, and cloud asset lifecycle"
+      ]
+    },
+    {
+      "control_id": "USEQ-4521F0FD",
+      "revision": 1,
+      "semantic_sha256": "4521f0fdf96a993987204612d65971e04b9eca3cc572d227b9e9264af508634d",
+      "statement": "Detect abandoned cloud resources, storage, addresses, domains, certificates, secrets, snapshots, and service accounts.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 870
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Software, service, and cloud asset lifecycle"
+      ]
+    },
+    {
+      "control_id": "USEQ-53BFB44D",
+      "revision": 1,
+      "semantic_sha256": "53bfb44d9c3e7f7cb8564055a5b981d3eb855b18dc50ba9c0b120d3f172f725a",
+      "statement": "Link every running workload to reviewed source, build provenance, artifact, configuration, owner, and service.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 871
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Software, service, and cloud asset lifecycle"
+      ]
+    },
+    {
+      "control_id": "USEQ-7E25ABA0",
+      "revision": 1,
+      "semantic_sha256": "7e25aba0e9330599b66bd60b4a779de5ac0dc2e84434a8ad0e3d1b3264c61468",
+      "statement": "Maintain approved and prohibited technology lists with documented exception processes.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 872
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Software, service, and cloud asset lifecycle"
+      ]
+    },
+    {
+      "control_id": "USEQ-59EF6776",
+      "revision": 1,
+      "semantic_sha256": "59ef6776cba19442750afb09560c665d443451c9d506e08d0743cf5ad911e24a",
+      "statement": "Define patch, upgrade, replacement, and retirement plans before support expires.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 873
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Software, service, and cloud asset lifecycle"
+      ]
+    },
+    {
+      "control_id": "USEQ-DE68E9CE",
+      "revision": 1,
+      "semantic_sha256": "de68e9cecf096781473af22da66ef1d257912c4ed398e3c1f9eaf45eed99bc95",
+      "statement": "Verify that decommissioning removes traffic, access, data, credentials, billing, monitoring, DNS, and dependencies.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 874
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Software, service, and cloud asset lifecycle"
+      ]
+    },
+    {
+      "control_id": "USEQ-B7D56A01",
+      "revision": 1,
+      "semantic_sha256": "b7d56a01d79c54ee861617108e557cb0b7f8b6d454d5d1ca1e4c6aabae1c6423",
+      "statement": "Retain required historical artifacts and documentation for support and investigation.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 875
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Software, service, and cloud asset lifecycle"
+      ]
+    },
+    {
+      "control_id": "USEQ-70E4676E",
+      "revision": 1,
+      "semantic_sha256": "70e4676e98ad627640c9752394fea502fa52fd7dd089e9c0752bee5fdbb90d18",
+      "statement": "Define which products, components, documents, schemas, models, infrastructure, policies, and tools are configuration items.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 879
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Configuration-management planning"
+      ]
+    },
+    {
+      "control_id": "USEQ-9E197CB5",
+      "revision": 1,
+      "semantic_sha256": "9e197cb50eb0cd25ef102a10c1fba4eaf89debefbea24bd7ffa122bd8cfe2c2d",
+      "statement": "Assign unique identifiers and version conventions to configuration items.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 880
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Configuration-management planning"
+      ]
+    },
+    {
+      "control_id": "USEQ-16AFEC0D",
+      "revision": 1,
+      "semantic_sha256": "16afec0d4c7b9ea3482f024309953d70d9bda04a904d773ced7c05f00328dcf4",
+      "statement": "Define authoritative repositories and custodians for each configuration-item class.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 881
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Configuration-management planning"
+      ]
+    },
+    {
+      "control_id": "USEQ-A9FA1137",
+      "revision": 1,
+      "semantic_sha256": "a9fa11374188db35c7ea86efd38b1063a724c62ff641f4490a4bf93b57406b17",
+      "statement": "Establish baselines at meaningful lifecycle and release points.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 882
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Configuration-management planning"
+      ]
+    },
+    {
+      "control_id": "USEQ-ADC79C0E",
+      "revision": 1,
+      "semantic_sha256": "adc79c0e40df590cde2547b10adf94fbcafc8b5e0796c29ed5fb90bdbee345bc",
+      "statement": "Define who may propose, review, approve, implement, verify, and audit changes.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 883
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Configuration-management planning"
+      ]
+    },
+    {
+      "control_id": "USEQ-A2BA66FC",
+      "revision": 1,
+      "semantic_sha256": "a2ba66fc76eb168259e5e31cbf28db96fac3f2e3f8cb0b134c573765c3bf8742",
+      "statement": "Scale control rigor according to criticality and consequence.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 884
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Configuration-management planning"
+      ]
+    },
+    {
+      "control_id": "USEQ-C21F7C87",
+      "revision": 1,
+      "semantic_sha256": "c21f7c873708331e9d9d9b322442b5510eb327c58517898ca05c86e3a02ee19c",
+      "statement": "Include supplier-provided and customer-controlled configuration where it affects outcomes.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 885
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Configuration-management planning"
+      ]
+    },
+    {
+      "control_id": "USEQ-205CA0F6",
+      "revision": 1,
+      "semantic_sha256": "205ca0f6ba42ccc4e9fe11957bf523cb37963b463b1f3dc41bdd863662a1ec62",
+      "statement": "Define emergency and temporary-change procedures with retrospective review and expiry.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 886
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Configuration-management planning"
+      ]
+    },
+    {
+      "control_id": "USEQ-AA3E4353",
+      "revision": 1,
+      "semantic_sha256": "aa3e4353bbc09f953b0d5498bd33c6e9834ba436c5cb81a1e0444a90e38a3f81",
+      "statement": "Document configuration relationships and compatibility constraints.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 887
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Configuration-management planning"
+      ]
+    },
+    {
+      "control_id": "USEQ-BB179760",
+      "revision": 1,
+      "semantic_sha256": "bb1797600044cbad7ac655d62815dfd6cbc5a8518ebe19dbbf313c2d3fad6675",
+      "statement": "Preserve the configuration-management plan and evidence with the product lifecycle record.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 888
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Configuration-management planning"
+      ]
+    },
+    {
+      "control_id": "USEQ-33E78AD8",
+      "revision": 1,
+      "semantic_sha256": "33e78ad88524c1e3e6df1a8dc41d5c250c86ec954c70b4f4352acc39f662d8a9",
+      "statement": "Identify every item required to reproduce, operate, support, verify, recover, and retire a release.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 892
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Configuration identification and baselines"
+      ]
+    },
+    {
+      "control_id": "USEQ-989F2CFE",
+      "revision": 1,
+      "semantic_sha256": "989f2cfefb68ec91265aaceb55851c84f920d21d8ec0b772eef163040b54174d",
+      "statement": "Include source, dependencies, build definitions, tool versions, infrastructure, schema, data migrations, runtime configuration, flags, secrets references, certificates, models, prompts, documentation, and tests as applicable.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 893
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Configuration identification and baselines"
+      ]
+    },
+    {
+      "control_id": "USEQ-4BC4CCAE",
+      "revision": 1,
+      "semantic_sha256": "4bc4ccaee9429beba6d39496c3076d1fc8db9cb57de4635222537e667c911aa9",
+      "statement": "Record immutable digests or equivalent identifiers for deployable and evidentiary artifacts.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 894
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Configuration identification and baselines"
+      ]
+    },
+    {
+      "control_id": "USEQ-6A253B4C",
+      "revision": 1,
+      "semantic_sha256": "6a253b4cb55a6426633f33bd2dc141fa0a98c8b65d201a1e1ad5f6ef96c58f0c",
+      "statement": "Define which parts of a baseline are immutable and which may change operationally.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 895
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Configuration identification and baselines"
+      ]
+    },
+    {
+      "control_id": "USEQ-DCF98B7D",
+      "revision": 1,
+      "semantic_sha256": "dcf98b7db3744266a48fa06dfdb280555b37498d1ea5720337913fcd93b5615f",
+      "statement": "Include environment-specific configuration and external-service versions in the operational baseline.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 896
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Configuration identification and baselines"
+      ]
+    },
+    {
+      "control_id": "USEQ-899A62A9",
+      "revision": 1,
+      "semantic_sha256": "8ca5d47abb4617c4eaf6332465b9a747c3675a22f04a9ec816a427335afacf7e",
+      "statement": "Prevent ambiguous labels such as “latest,” “current,” or “production” from being the sole identifier.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 897
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Configuration identification and baselines"
+      ]
+    },
+    {
+      "control_id": "USEQ-5823C219",
+      "revision": 1,
+      "semantic_sha256": "5823c2198004319d381f76512d6d97d811a24d1fe8c9ea3a7a55a61f8d96805d",
+      "statement": "Maintain links among requirements, changes, configuration items, builds, tests, approvals, and deployments.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 898
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Configuration identification and baselines"
+      ]
+    },
+    {
+      "control_id": "USEQ-D50778E8",
+      "revision": 1,
+      "semantic_sha256": "d50778e855c4137ead5cd7d365906593f3fdd5ec604ce479a1f9ab3786c41694",
+      "statement": "Preserve prior known-good baselines needed for rollback and investigation.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 899
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Configuration identification and baselines"
+      ]
+    },
+    {
+      "control_id": "USEQ-0889583B",
+      "revision": 1,
+      "semantic_sha256": "0889583bf6aa820ac3f23ed81499b7535b88d76a959d220ee887240806bb88f3",
+      "statement": "Detect missing, duplicate, conflicting, and orphaned configuration records.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 900
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Configuration identification and baselines"
+      ]
+    },
+    {
+      "control_id": "USEQ-709323D1",
+      "revision": 1,
+      "semantic_sha256": "709323d1f14fa7c36adf259c1b7149ce7aaafc8e8b7fdc093e3f2134aac1ee79",
+      "statement": "Verify the documented baseline against the actual deployed state.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 901
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Configuration identification and baselines"
+      ]
+    },
+    {
+      "control_id": "USEQ-FC3E698D",
+      "revision": 1,
+      "semantic_sha256": "fc3e698dc55d0e35a89dd502ec662bf377ab133d9807ee552c2e0640df37b55d",
+      "statement": "Require every material configuration change to state purpose, scope, risk, dependencies, testing, rollout, rollback, owner, and approval.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 905
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Change control and configuration status accounting"
+      ]
+    },
+    {
+      "control_id": "USEQ-43388938",
+      "revision": 1,
+      "semantic_sha256": "43388938ce0c230ed6ba0de54e3ed665304054439ca3823d5cfea5d8adca8fd9",
+      "statement": "Assess impacts across components, data, users, suppliers, obligations, documentation, and operations.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 906
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Change control and configuration status accounting"
+      ]
+    },
+    {
+      "control_id": "USEQ-79CA7209",
+      "revision": 1,
+      "semantic_sha256": "79ca7209458141fac3e10312b19ff6055f98fba9519eae2c772baa9d4b37968b",
+      "statement": "Prevent unauthorized direct change to controlled production configuration.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 907
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Change control and configuration status accounting"
+      ]
+    },
+    {
+      "control_id": "USEQ-504287F4",
+      "revision": 1,
+      "semantic_sha256": "504287f493609365ec6dd65b6b5951b58b7d2b11464648b1a3504eb9d0a7b532",
+      "statement": "Record who changed what, when, why, from which previous state, and with what result.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 908
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Change control and configuration status accounting"
+      ]
+    },
+    {
+      "control_id": "USEQ-A2D17FE8",
+      "revision": 1,
+      "semantic_sha256": "a2d17fe8dc7cc169d1613cbaf4c97f9a4fcac72566fc29c0465da76d13078380",
+      "statement": "Track proposed, approved, implemented, verified, deployed, rolled-back, superseded, and retired states.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 909
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Change control and configuration status accounting"
+      ]
+    },
+    {
+      "control_id": "USEQ-E33E127B",
+      "revision": 1,
+      "semantic_sha256": "e33e127b49b7d30ecb8acea08fd57bf2f295009a7b7df734b7499c035c3dc476",
+      "statement": "Ensure rejected and canceled changes cannot be deployed accidentally.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 910
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Change control and configuration status accounting"
+      ]
+    },
+    {
+      "control_id": "USEQ-11CF89FF",
+      "revision": 1,
+      "semantic_sha256": "11cf89ff8b7d6bad6aaa986f45a519303be8510aa775da733de0be8769fd6061",
+      "statement": "Detect and reconcile configuration drift.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 911
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Change control and configuration status accounting"
+      ]
+    },
+    {
+      "control_id": "USEQ-A049228C",
+      "revision": 1,
+      "semantic_sha256": "a049228c9fc8fc706a901336005bbab52682c57180429184ef632ff90ae6cb77",
+      "statement": "Make emergency changes visible and subject to prompt retrospective review.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 912
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Change control and configuration status accounting"
+      ]
+    },
+    {
+      "control_id": "USEQ-755987E5",
+      "revision": 1,
+      "semantic_sha256": "755987e5e4c5cfa3bec779c8da8ee8625acf4c947b56767ee6b5d8789d84494a",
+      "statement": "Ensure temporary settings, elevated access, diagnostics, and feature flags expire or are removed.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 913
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Change control and configuration status accounting"
+      ]
+    },
+    {
+      "control_id": "USEQ-71E0C724",
+      "revision": 1,
+      "semantic_sha256": "71e0c72450ede977a9e357d27e26fc320aaf20da05179e1ffae3ba27de7c4029",
+      "statement": "Report baseline status, open deviations, pending changes, and unresolved discrepancies to decision-makers.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 914
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Change control and configuration status accounting"
+      ]
+    },
+    {
+      "control_id": "USEQ-D0653183",
+      "revision": 1,
+      "semantic_sha256": "d06531838a827ed493ddf9f59b7e820cef90b800a17df87494ab65eea2d6a5f5",
+      "statement": "Prevent change records from being closed before implementation and verification evidence exists.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 915
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Change control and configuration status accounting"
+      ]
+    },
+    {
+      "control_id": "USEQ-3117AB90",
+      "revision": 1,
+      "semantic_sha256": "3117ab90f679e8db99b678281d1dd465f8c15da4837dfb791006fa435fd91315",
+      "statement": "Verify that each baseline is complete, internally consistent, approved, retrievable, and reproducible.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 919
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Configuration verification and audit"
+      ]
+    },
+    {
+      "control_id": "USEQ-FEC62FEC",
+      "revision": 1,
+      "semantic_sha256": "fec62fec70094a089c4f9d512aed615a164269b3415fd04d64522d3751897df4",
+      "statement": "Compare deployed, running, documented, and approved configuration.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 920
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Configuration verification and audit"
+      ]
+    },
+    {
+      "control_id": "USEQ-F752B649",
+      "revision": 1,
+      "semantic_sha256": "f752b649943d999d53d4fa145cb1fa5ea760a02ca96cdebf0176f88017480a0b",
+      "statement": "Audit whether change-control procedures were followed and effective.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 921
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Configuration verification and audit"
+      ]
+    },
+    {
+      "control_id": "USEQ-2F4DE3A8",
+      "revision": 1,
+      "semantic_sha256": "2f4de3a8aff7db3c5c9f23843b4b48de4a48a014a551314ab8e5a37168835bbd",
+      "statement": "Verify that generated artifacts can be traced to declared inputs and tools.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 922
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Configuration verification and audit"
+      ]
+    },
+    {
+      "control_id": "USEQ-8CD13776",
+      "revision": 1,
+      "semantic_sha256": "8cd1377658dfb70d6c621af3312d2a3bbf5e4e9d9675b6d476dac425c297dea5",
+      "statement": "Detect unapproved components, hidden defaults, local patches, manual edits, and undocumented overrides.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 923
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Configuration verification and audit"
+      ]
+    },
+    {
+      "control_id": "USEQ-0C0D4B9F",
+      "revision": 1,
+      "semantic_sha256": "0c0d4b9fe6ced10d9eee640d8677e90e7b7ca30985f83898cfae652ca72492f7",
+      "statement": "Verify that rollback artifacts, migrations, keys, and documentation remain usable.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 924
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Configuration verification and audit"
+      ]
+    },
+    {
+      "control_id": "USEQ-9886EAF3",
+      "revision": 1,
+      "semantic_sha256": "9886eaf31126df7ad34ff7efdd9103d34b6518184dbba0ceeecb991ab2d6b27d",
+      "statement": "Sample high-risk settings for secure and correct values.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 925
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Configuration verification and audit"
+      ]
+    },
+    {
+      "control_id": "USEQ-3082692A",
+      "revision": 1,
+      "semantic_sha256": "3082692a4cc9b4539e295f9a43742f965cd99bea03831b2065c2ba5be49cc8d7",
+      "statement": "Reconcile configuration after incidents, failover, disaster recovery, and provider restoration.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 926
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Configuration verification and audit"
+      ]
+    },
+    {
+      "control_id": "USEQ-94277832",
+      "revision": 1,
+      "semantic_sha256": "94277832e58d5dae790ffefed2d820b9781ea2e0426b4d821bf874ba50f6c7d5",
+      "statement": "Record discrepancies, owners, corrective actions, and effectiveness checks.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 927
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Configuration verification and audit"
+      ]
+    },
+    {
+      "control_id": "USEQ-868E9E2E",
+      "revision": 1,
+      "semantic_sha256": "868e9e2e7ea08f3a347a2903f15630005f4d4f2f62b51cb25117967db8b72069",
+      "statement": "Treat inability to identify the production baseline as a release blocker.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 928
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Configuration verification and audit"
+      ]
+    },
+    {
+      "control_id": "USEQ-C2FBDFF0",
+      "revision": 1,
+      "semantic_sha256": "c2fbdff0d8effa10b0e938e24bf9e78997677ca08998408d1ffc9979c92b7195",
+      "statement": "Inventory tools that can create, modify, test, approve, build, sign, deploy, monitor, diagnose, migrate, or destroy production assets.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 932
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Engineering-tool inventory and qualification"
+      ]
+    },
+    {
+      "control_id": "USEQ-35C25338",
+      "revision": 1,
+      "semantic_sha256": "35c253382e00e845f39162f4c93d73d057f630bc39bc27accbb0f29bb7b36043",
+      "statement": "Classify tools by the consequence of incorrect output, compromise, unavailability, or misuse.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 933
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Engineering-tool inventory and qualification"
+      ]
+    },
+    {
+      "control_id": "USEQ-5A38E631",
+      "revision": 1,
+      "semantic_sha256": "5a38e63148599da828c028cd12ae5568caa0eb2f5d486a4dd06eedd841036e0c",
+      "statement": "Record tool owner, supplier, version, configuration, privileges, data access, support status, and integrations.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 934
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Engineering-tool inventory and qualification"
+      ]
+    },
+    {
+      "control_id": "USEQ-92D287A4",
+      "revision": 1,
+      "semantic_sha256": "92d287a48b93eaecd0aa556c18970170f487343853a099b3d9302c126f27b3f5",
+      "statement": "Define expected behavior and acceptance criteria for tools whose output supports critical decisions.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 935
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Engineering-tool inventory and qualification"
+      ]
+    },
+    {
+      "control_id": "USEQ-190FA346",
+      "revision": 1,
+      "semantic_sha256": "190fa346240351ac5ae5a783c0aae02698e04e57e5e04353fe854cb662fb08f9",
+      "statement": "Validate or qualify tools proportionate to their role and risk.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 936
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Engineering-tool inventory and qualification"
+      ]
+    },
+    {
+      "control_id": "USEQ-53E9BA34",
+      "revision": 1,
+      "semantic_sha256": "53e9ba34940a30f6800dac292db087cb360240f5df52a7854e182e52422d91b9",
+      "statement": "Independently verify tool output when an undetected tool error could create unacceptable harm.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 937
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Engineering-tool inventory and qualification"
+      ]
+    },
+    {
+      "control_id": "USEQ-5BF8AE95",
+      "revision": 1,
+      "semantic_sha256": "5bf8ae95e25b082c979a70b52f5b6705f88690e3c0e58834bcbdab2c68589524",
+      "statement": "Use known-answer tests, reference cases, cross-tool comparison, or manual review where appropriate.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 938
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Engineering-tool inventory and qualification"
+      ]
+    },
+    {
+      "control_id": "USEQ-31FA56CF",
+      "revision": 1,
+      "semantic_sha256": "31fa56cf06391626bbb2c3cdd01c2d5d9f401736624303e383416055195e3015",
+      "statement": "Record tool limitations, false-positive and false-negative behavior, unsupported inputs, and operating constraints.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 939
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Engineering-tool inventory and qualification"
+      ]
+    },
+    {
+      "control_id": "USEQ-6B714CFD",
+      "revision": 1,
+      "semantic_sha256": "6b714cfde3c4c6c322285219ac8144f4d92fc9c1319ca86cd7a877fe4b3a1599",
+      "statement": "Requalify tools after material version, configuration, plugin, model, rule-set, or environment changes.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 940
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Engineering-tool inventory and qualification"
+      ]
+    },
+    {
+      "control_id": "USEQ-3BCEA6C5",
+      "revision": 1,
+      "semantic_sha256": "3bcea6c55f13572bff5fd8f1877f11f653a5a6242f35e4788a229e3bfad43fd0",
+      "statement": "Prevent unreviewed extensions and plugins from gaining toolchain privileges.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 941
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Engineering-tool inventory and qualification"
+      ]
+    },
+    {
+      "control_id": "USEQ-64FCAB05",
+      "revision": 1,
+      "semantic_sha256": "64fcab0502bcb526711b911a35001b8877ba1c858ff6fef144b424ca0c85f6b3",
+      "statement": "Verify AI-assisted tools separately for the tasks and context in which their output is relied upon.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 942
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Engineering-tool inventory and qualification"
+      ]
+    },
+    {
+      "control_id": "USEQ-5B569CEA",
+      "revision": 1,
+      "semantic_sha256": "5b569cea1d53c9e8cc8217e4347a109aff1d9c43a22f5723f6053fce41b1ba9e",
+      "statement": "Use individual identities and strong authentication for engineering and management tools.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 946
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Toolchain access and integrity"
+      ]
+    },
+    {
+      "control_id": "USEQ-BCD3314F",
+      "revision": 1,
+      "semantic_sha256": "bcd3314fa4857df190b3ba36ff27b46f6fa37b7707eda24776ee5740bb44801d",
+      "statement": "Apply least privilege to repositories, pipelines, registries, signing, deployment, cloud, data, and monitoring systems.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 947
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Toolchain access and integrity"
+      ]
+    },
+    {
+      "control_id": "USEQ-46326F4E",
+      "revision": 1,
+      "semantic_sha256": "46326f4edbf6c83c8e186a33c86dcb8fb814b4e8e9a11ccc98251bd4cdd75f58",
+      "statement": "Separate untrusted contribution contexts from secrets and production authority.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 948
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Toolchain access and integrity"
+      ]
+    },
+    {
+      "control_id": "USEQ-DB33526C",
+      "revision": 1,
+      "semantic_sha256": "db33526cc9a95fcebd70d369d87b6f9ae622f1c40c6f25a88cc4e5bdce794f96",
+      "statement": "Protect tool configuration, policies, workflows, rules, and plugins with review and version control.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 949
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Toolchain access and integrity"
+      ]
+    },
+    {
+      "control_id": "USEQ-1D612C9C",
+      "revision": 1,
+      "semantic_sha256": "1d612c9ce0f8565cff432ad3dbb84b96c0464a869de9be31ed74380b61cac03b",
+      "statement": "Record administrative and high-impact tool actions.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 950
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Toolchain access and integrity"
+      ]
+    },
+    {
+      "control_id": "USEQ-2CD634D1",
+      "revision": 1,
+      "semantic_sha256": "2cd634d1c4019393b77c479bab62461a54d1d2a3db4789ce8bdd1401b0800f2f",
+      "statement": "Monitor unusual access, token use, configuration change, artifact publication, and approval behavior.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 951
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Toolchain access and integrity"
+      ]
+    },
+    {
+      "control_id": "USEQ-32C3102B",
+      "revision": 1,
+      "semantic_sha256": "32c3102b370ed09e8863ce3d499ef25143b180c0d64a65ea9b14bfe3097a36d1",
+      "statement": "Rotate and revoke tool credentials, tokens, certificates, deploy keys, and integration secrets.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 952
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Toolchain access and integrity"
+      ]
+    },
+    {
+      "control_id": "USEQ-D268F72B",
+      "revision": 1,
+      "semantic_sha256": "d268f72b9b6dba7defc7e2c7cdc7863fa2c6895ca237fc0478f81a860664439d",
+      "statement": "Prevent one compromised tool from silently changing source, tests, artifacts, and evidence without independent detection.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 953
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Toolchain access and integrity"
+      ]
+    },
+    {
+      "control_id": "USEQ-5AC58356",
+      "revision": 1,
+      "semantic_sha256": "5ac583560d2a2248e13dd3aa873230846823f1ad83d109260ad961f9e044d613",
+      "statement": "Use artifact signing, provenance, immutable logs, separation of duties, or equivalent controls to reduce toolchain trust concentration.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 954
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Toolchain access and integrity"
+      ]
+    },
+    {
+      "control_id": "USEQ-2E9EE695",
+      "revision": 1,
+      "semantic_sha256": "2e9ee695dd98d8b6f5efe279edda92b95fd6f9305d8321d2a47e1ff4b2630a9d",
+      "statement": "Back up and test recovery of repositories, configurations, pipelines, registries, evidence, and documentation.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 955
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Toolchain access and integrity"
+      ]
+    },
+    {
+      "control_id": "USEQ-D8872F98",
+      "revision": 1,
+      "semantic_sha256": "d8872f98a921844380c1c5cd697f7c7be2054d77705f13db1b5ad4e4c62b611c",
+      "statement": "Maintain alternate access and recovery methods for identity-provider or control-plane failure.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 956
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Toolchain access and integrity"
+      ]
+    },
+    {
+      "control_id": "USEQ-9EF2F036",
+      "revision": 1,
+      "semantic_sha256": "9ef2f036b156215402692fdc7bcd374b47a812fe45df7c43c1a7b90bccdd648e",
+      "statement": "Include toolchain compromise in incident-response and continuity exercises.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 957
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Toolchain access and integrity"
+      ]
+    },
+    {
+      "control_id": "USEQ-714190FE",
+      "revision": 1,
+      "semantic_sha256": "714190fe38e9089b785d63c9d761b461d4411852117bd2bee29808f1989aec7d",
+      "statement": "Define service objectives for critical engineering tools and workflows.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 961
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Toolchain availability, performance, and developer safety"
+      ]
+    },
+    {
+      "control_id": "USEQ-6879B287",
+      "revision": 1,
+      "semantic_sha256": "6879b2872d8da214a433d89af95081b1f0ff94f60c1fe4d6b832bbd061f388eb",
+      "statement": "Monitor availability, latency, queueing, capacity, error rate, and data integrity.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 962
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Toolchain availability, performance, and developer safety"
+      ]
+    },
+    {
+      "control_id": "USEQ-00E9100D",
+      "revision": 1,
+      "semantic_sha256": "00e9100de5f29265a7a0ffeb62429185413eaa950da70e50e542ff942b821531",
+      "statement": "Avoid making one tool or administrator the sole path to build, release, restore, or investigate.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 963
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Toolchain availability, performance, and developer safety"
+      ]
+    },
+    {
+      "control_id": "USEQ-7213309B",
+      "revision": 1,
+      "semantic_sha256": "7213309b8a08be93c7bce48302e858de9e4a30d0553d1290a77843919543c369",
+      "statement": "Provide safe degraded workflows for urgent security or recovery work.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 964
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Toolchain availability, performance, and developer safety"
+      ]
+    },
+    {
+      "control_id": "USEQ-0D23F8EE",
+      "revision": 1,
+      "semantic_sha256": "0d23f8eea1baa9ec77231ce43ce36d39f5e191834becdb53205d757aca54e02d",
+      "statement": "Prevent tool outages from encouraging uncontrolled local workarounds or secret sharing.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 965
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Toolchain availability, performance, and developer safety"
+      ]
+    },
+    {
+      "control_id": "USEQ-44ACC81E",
+      "revision": 1,
+      "semantic_sha256": "44acc81e097ea6c1302a517f31066039564b0067d4bf1d45238b3d32cdd355a8",
+      "statement": "Protect developers from misleading partial success, stale results, and silently skipped checks.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 966
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Toolchain availability, performance, and developer safety"
+      ]
+    },
+    {
+      "control_id": "USEQ-CC01C62E",
+      "revision": 1,
+      "semantic_sha256": "cc01c62eadae4cbe2a5f69e6e205e036d832f07ad6ca3da8ad297677c91e9604",
+      "statement": "Make required gates, failures, retries, and evidence status clear.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 967
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Toolchain availability, performance, and developer safety"
+      ]
+    },
+    {
+      "control_id": "USEQ-D478B533",
+      "revision": 1,
+      "semantic_sha256": "d478b53324bfdbe4f09080ebab1f2c1617fc1d8ddc9dc3a3567853bf0c31ad1e",
+      "statement": "Preserve work and allow safe resumption after interruption.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 968
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Toolchain availability, performance, and developer safety"
+      ]
+    },
+    {
+      "control_id": "USEQ-E66C02D0",
+      "revision": 1,
+      "semantic_sha256": "e66c02d0f48e8c0e6edee5aac4b1b5a49ddf8c1fe62c1959e47f7b18c68fffc9",
+      "statement": "Test toolchain recovery and backlog processing after outage.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 969
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Toolchain availability, performance, and developer safety"
+      ]
+    },
+    {
+      "control_id": "USEQ-AACF05BE",
+      "revision": 1,
+      "semantic_sha256": "aacf05beff02351b3f5760429cf3377ccfe27813896f63ea997e37f915777b1a",
+      "statement": "Capacity-plan repositories, runners, registries, logs, artifact stores, and test environments.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 970
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Toolchain availability, performance, and developer safety"
+      ]
+    },
+    {
+      "control_id": "USEQ-7B9E1A6F",
+      "revision": 1,
+      "semantic_sha256": "7b9e1a6fa82dcca9c2a173540a0df7362fbc20e9759a539a1c39d2590ba02593",
+      "statement": "Define retirement criteria for assets, configurations, tools, services, licenses, and platforms.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 974
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Retirement, disposal, and audit"
+      ]
+    },
+    {
+      "control_id": "USEQ-392818A7",
+      "revision": 1,
+      "semantic_sha256": "392818a7a6969a3d6284122a79cf2c002e56034336794daf2dad6589570e90e5",
+      "statement": "Confirm dependencies and consumers before retirement.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 975
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Retirement, disposal, and audit"
+      ]
+    },
+    {
+      "control_id": "USEQ-C4ACDFF7",
+      "revision": 1,
+      "semantic_sha256": "c4acdff764a3adff31486ba977689862e995782e54d8aafea405c6e2542a88a2",
+      "statement": "Preserve required data, records, evidence, source, artifacts, keys, and documentation.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 976
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Retirement, disposal, and audit"
+      ]
+    },
+    {
+      "control_id": "USEQ-B87013D8",
+      "revision": 1,
+      "semantic_sha256": "b87013d8993f455ae69ab18bd7f6b829321367037f7b972ccf051ef9eebe8b1d",
+      "statement": "Remove access, integrations, routes, accounts, credentials, certificates, data, backups, and billing according to the retirement plan.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 977
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Retirement, disposal, and audit"
+      ]
+    },
+    {
+      "control_id": "USEQ-72EC7BEC",
+      "revision": 1,
+      "semantic_sha256": "72ec7bec76cdb59b272aebf0e29ab36f4d1357cbec7859a5ac107a95369b9a56",
+      "statement": "Sanitize or destroy physical and logical storage appropriately.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 978
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Retirement, disposal, and audit"
+      ]
+    },
+    {
+      "control_id": "USEQ-A40FB25C",
+      "revision": 1,
+      "semantic_sha256": "a40fb25ce6f4a7329b060a581c1cf2f655ff7acab506fedeea9b41ca2fec589d",
+      "statement": "Update inventories, ownership, diagrams, support records, and financial systems.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 979
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Retirement, disposal, and audit"
+      ]
+    },
+    {
+      "control_id": "USEQ-D5B4C02F",
+      "revision": 1,
+      "semantic_sha256": "d5b4c02f442bd312f0611c34396e7acd2e41e58bd4e42d49f0da9ba3c7e671e7",
+      "statement": "Verify no production traffic or authoritative updates still reach the retired asset.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 980
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Retirement, disposal, and audit"
+      ]
+    },
+    {
+      "control_id": "USEQ-2581CD16",
+      "revision": 1,
+      "semantic_sha256": "2581cd16fb6d6014672c4928535a489ad132ce1e908f90226ef6beadf5f4a3ae",
+      "statement": "Monitor for attempted use after retirement.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 981
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Retirement, disposal, and audit"
+      ]
+    },
+    {
+      "control_id": "USEQ-06B4C16D",
+      "revision": 1,
+      "semantic_sha256": "06b4c16d0150c8ea867db16e3ba9a53e54cb6437c7de7aa29d0a2f3fb74fde82",
+      "statement": "Record residual obligations and retained components.",
+      "source": {
+        "path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+        "line": 982
+      },
+      "heading_trail": [
+        "Developer experience, platform, and delivery",
+        "Final Gap Closure — IT Asset Management, Configuration Management, and Toolchain Trust",
+        "Retirement, disposal, and audit"
+      ]
+    }
+  ]
+}

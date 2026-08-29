@@ -1,0 +1,505 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-001-part-002",
+  "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 19,
+  "controls": [
+    {
+      "control_id": "USEQ-952B24B4",
+      "revision": 1,
+      "semantic_sha256": "952b24b420edfb52b1426dde3d1f6ff2a37df559ba6084d7ea30f79560fc1302",
+      "statement": "Provide a kill switch for tool use and a separate capability to disable the model while preserving essential deterministic product functions.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 281
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Generative AI, retrieval, prompts, tools, and agents"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Separate switch controls can be exercised for tool access and model disablement while deterministic functions are checked for availability.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Tests verify an independent tool kill switch and model-disable switch while registered essential deterministic functions remain available.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F3DA7D88",
+      "revision": 1,
+      "semantic_sha256": "f3da7d883dea837686d204fc6abfe4f242a5ba73ee8b8311227d43404c5bd4cf",
+      "statement": "Use version control and review for training code, inference code, prompts, policies, feature definitions, data transformations, evaluation logic, deployment manifests, and infrastructure.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 285
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "MLOps, deployment, and release engineering"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-001",
+      "primary_route": "local_static",
+      "primary_reason": "Repository policy can require version control and review across all nine listed AI source and deployment artifact classes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Changes to training code, inference code, prompts, policies, features, transformations, evaluation logic, manifests, and infrastructure require versioned review.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-13FDD0E8",
+      "revision": 1,
+      "semantic_sha256": "13fdd0e82fa1d48490604ef0fedfadad5bff9906ca01608d74a23eff94501429",
+      "statement": "Use immutable identifiers for models, datasets, prompts, retrieval indexes, feature definitions, policies, and evaluation suites.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 286
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "MLOps, deployment, and release engineering"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-001",
+      "primary_route": "artifact_verification",
+      "primary_reason": "All seven named release component types can be required to carry immutable content identifiers.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Models, datasets, prompts, indexes, feature definitions, policies, and evaluation suites use immutable identifiers.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EDEEF0CC",
+      "revision": 1,
+      "semantic_sha256": "edeef0cc6d7ebbee887895fd14b73e2d112ea9d290a83af16e2a5c3836862b3b",
+      "statement": "Separate development, experimentation, validation, shadow, canary, and production environments and data access.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 288
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "MLOps, deployment, and release engineering"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Environment identifiers, credentials, and data-access policies can be checked for separation across all six lifecycle stages.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Development, experiment, validation, shadow, canary, and production environments and data-access scopes are distinct.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-60454DA3",
+      "revision": 1,
+      "semantic_sha256": "60454da3e44716029b681a3bfcd4dcced725e42ad501ceaa2ac920068e7c4212",
+      "statement": "Require reproducible, authenticated, integrity-checked build and promotion paths for models and associated artifacts.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 289
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "MLOps, deployment, and release engineering"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-001",
+      "primary_route": "artifact_verification",
+      "primary_reason": "Build and promotion evidence can verify reproducibility, authenticated provenance, and integrity for model release artifacts.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every promoted model and associated artifact has reproducible build evidence, authenticated provenance, and verified integrity.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7C1585D4",
+      "revision": 1,
+      "semantic_sha256": "7c1585d4be8424a4873b54ab2810599f6306bf91b0153e3d0c0fef3a894c763f",
+      "statement": "Prevent direct manual replacement of a production model or prompt without an auditable emergency process.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 290
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "MLOps, deployment, and release engineering"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Production mutation permissions can deny direct replacement and allow only an auditable emergency workflow.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Direct manual model or prompt replacement is denied except through the approved emergency process, which emits an audit record.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3BC056D6",
+      "revision": 1,
+      "semantic_sha256": "3bc056d67ef1c5daa880265fbd53fa7bbee9a322c39bcc4ad68445c115edb60c",
+      "statement": "Validate feature and preprocessing equivalence between training and serving.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 291
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "MLOps, deployment, and release engineering"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Training and serving feature transformations can be compared on a fixed fixture set for exact or declared equivalent outputs.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Feature and preprocessing outputs match between training and serving on the approved equivalence fixtures.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1EEA8D0C",
+      "revision": 1,
+      "semantic_sha256": "1eea8d0c2b36196605d544c477eb5d2bea4fb14e5dd7eafcc2caf7369ad5c66a",
+      "statement": "Use a model registry or equivalent controlled inventory with stages, owners, evidence, approvals, and retirement state.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 292
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "MLOps, deployment, and release engineering"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "A controlled model inventory can be checked for all six required lifecycle and governance fields.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every model registry entry records stage, owner, evidence, approvals, and retirement state.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9CCF6F87",
+      "revision": 1,
+      "semantic_sha256": "9ccf6f876df1a56b78ad498a441cb2f00c71d5a8920a09a3226ff3e46951893c",
+      "statement": "Package required tokenizer, preprocessing, schema, policy, calibration, and compatibility metadata with the model release.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 293
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "MLOps, deployment, and release engineering"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-001",
+      "primary_route": "artifact_verification",
+      "primary_reason": "A model release package can be inspected for all six explicitly required associated metadata artifacts.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every model release includes tokenizer, preprocessing, schema, policy, calibration, and compatibility metadata.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-767F858F",
+      "revision": 1,
+      "semantic_sha256": "767f858f321fedf7f29ff07dd66d595ac094ca9196aa1626a123a3050494a65b",
+      "statement": "Test backward and forward compatibility among model, client, feature, schema, retrieval, prompt, tool, and output consumers.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 294
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "MLOps, deployment, and release engineering"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A finite compatibility matrix can exercise all eight explicitly named producer and consumer component types.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Backward and forward compatibility tests cover model, client, feature, schema, retrieval, prompt, tool, and output consumers.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8002BB09",
+      "revision": 1,
+      "semantic_sha256": "8002bb095aa10d23bdbbb243b0cdba5c36a88ed1fbf13b4bb23dae9918d76155",
+      "statement": "Define automated and human rollout gates for quality, safety, security, fairness, latency, throughput, availability, cost, and business integrity.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 296
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "MLOps, deployment, and release engineering"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Rollout-gate definitions can be checked for automated and human gates across all ten required dimensions.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Rollout policy defines automated and human gates for quality, safety, security, fairness, latency, throughput, availability, cost, and business integrity.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-67F31DA5",
+      "revision": 1,
+      "semantic_sha256": "67f31da5d29af539a155719d533389696b32364c723c2506fa7ca27b927cf72f",
+      "statement": "Test rollback and roll-forward, including state, memory, embeddings, cache, and schema compatibility.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 298
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "MLOps, deployment, and release engineering"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Rollback and forward tests can exercise each of the five explicitly named state and compatibility dimensions.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Current rollback and roll-forward tests cover state, memory, embeddings, cache, and schema compatibility.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2EEA3BC7",
+      "revision": 1,
+      "semantic_sha256": "2eea3bc75ddbb9b76a88cd2da16d44a9ce00cbc37f23cea6c506caa4737c0e1e",
+      "statement": "Prevent online learning, feedback updates, and self-modification from entering production without bounded, reviewed promotion.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 300
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "MLOps, deployment, and release engineering"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Production mutation paths can require numeric bounds, review, and controlled promotion for online or self-modifying updates.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Online learning, feedback updates, and self-modification cannot reach production without bounded execution evidence and approved promotion.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-683E2947",
+      "revision": 1,
+      "semantic_sha256": "683e29479d6b7dc662aaa258562b7662b9c674e6505dbc44cd4343a0ff9f5a89",
+      "statement": "Validate accelerator, runtime, compiler, quantization, serving engine, batching, and hardware changes as model changes when output can differ.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 301
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "MLOps, deployment, and release engineering"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Each listed platform change can run before-and-after output comparison and trigger model-change validation when outputs differ.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Accelerator, runtime, compiler, quantization, engine, batching, and hardware changes run output-difference tests and renewed validation on any difference.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-37EF3EDD",
+      "revision": 1,
+      "semantic_sha256": "37ef3eddedc0c8caba488458504dbbfc7462dc0e01bf3359a6c5a92831419c27",
+      "statement": "Capacity-test inference, retrieval, safety filters, tool services, queues, and provider quotas under peak and abuse load.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 302
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "MLOps, deployment, and release engineering"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Peak and abuse load scenarios can exercise all six named AI-serving dependencies and quotas.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Capacity tests cover inference, retrieval, safety filters, tool services, queues, and provider quotas under peak and abuse load.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-58DDDF7C",
+      "revision": 1,
+      "semantic_sha256": "58dddf7c6d5bb25b994244bc5e25fe94e992e007835050a16dddec377ec4f320",
+      "statement": "Use admission control, prioritization, backpressure, caching, batching, and load shedding without violating isolation, freshness, or user safety.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 303
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "MLOps, deployment, and release engineering"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Load-control tests can exercise every named mechanism against declared isolation, freshness, and safety invariants.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Admission control, priority, backpressure, caching, batching, and load shedding preserve registered isolation, freshness, and user-safety invariants.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-014BF5FE",
+      "revision": 1,
+      "semantic_sha256": "014bf5fe2c5cbc36130648fa6ac107f4e4507195ab9b223c7bc910f68630138d",
+      "statement": "Monitor cost per task, token or compute amplification, runaway agents, retry storms, and unexpectedly expensive inputs.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 304
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "MLOps, deployment, and release engineering"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Monitoring can be queried for all five explicitly named cost and amplification indicators.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Production monitoring tracks cost per task, token or compute amplification, runaway agents, retry storms, and expensive-input anomalies.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-45CF19C0",
+      "revision": 1,
+      "semantic_sha256": "45cf19c0aca4ac3d221e09bb4d91e2d43d58b963bdf535d3604b9fd63c416700",
+      "statement": "Include AI components in deployment records, configuration drift detection, disaster recovery, and production-readiness evidence.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 305
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "MLOps, deployment, and release engineering"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Operational records can be checked to include AI components in all four required release and recovery processes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "AI components appear in deployment records, drift detection, disaster recovery, and production-readiness evidence.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FFCBD920",
+      "revision": 1,
+      "semantic_sha256": "ffcbd920d75ea67e5200285b61b5796112dbbc5d10c551f125c8c4d84d5244ad",
+      "statement": "Define production indicators for input quality, output quality, safety, security, fairness, refusal, calibration, latency, availability, saturation, cost, and user outcomes.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 309
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Production monitoring, drift, and feedback loops"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The production indicator catalog can be checked for every one of the thirteen explicitly named dimensions.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Production indicators cover input quality, output quality, safety, security, fairness, refusal, calibration, latency, availability, saturation, cost, and user outcomes.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1286 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-engineering-06-application-services-and-apis-md-part-002-part-001",
+  "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 51,
+  "controls": [
+    {
+      "control_id": "USEQ-2E8EB9F7",
+      "revision": 1,
+      "semantic_sha256": "2e8eb9f71f1c10f1e881ba070d0d8d9f3ff4cf0bc524adf8c51b8dea6ff6f4ee",
+      "statement": "Make repeated execution safe or explicitly prevented.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 357
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Data and state transition"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Make repeated execution safe or explicitly prevented.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Make repeated execution safe or explicitly prevented.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F4B43A58",
+      "revision": 1,
+      "semantic_sha256": "f4b43a5811116c1bb47dcbe85923ac5caf811a20b8c6f28c3187b317c104ead4",
+      "statement": "Verify counts, totals, checksums, constraints, samples, and business invariants before and after transition.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 358
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Data and state transition"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Verify counts, totals, checksums, constraints, samples, and business invariants before and after transition.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Verify counts, totals, checksums, constraints, samples, and business invariants before and after transition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9C8BBE5C",
+      "revision": 1,
+      "semantic_sha256": "9c8bbe5c04294e092e2338be2d29ca3577501a1a556a0d53a06071db38fc8379",
+      "statement": "Maintain a protected recovery point before destructive transformation.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 360
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Data and state transition"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Maintain a protected recovery point before destructive transformation.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Maintain a protected recovery point before destructive transformation.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3376BB06",
+      "revision": 1,
+      "semantic_sha256": "3376bb06c0d3b7e3538bdac715679be844775c1a68bf490e08f4f7cce052ebe8",
+      "statement": "Document whether rollback is possible after each point of no return.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 361
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Data and state transition"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Document whether rollback is possible after each point of no return.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Document whether rollback is possible after each point of no return.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6E36BDB8",
+      "revision": 1,
+      "semantic_sha256": "6e36bdb8eb62ae32d62e4ed57d5328169d2b7c84e48196b4fb99a7c50cf89c44",
+      "statement": "Provide a tested roll-forward plan when rollback cannot restore a valid state.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 362
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Data and state transition"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Provide a tested roll-forward plan when rollback cannot restore a valid state.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Provide a tested roll-forward plan when rollback cannot restore a valid state.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C03712FC",
+      "revision": 1,
+      "semantic_sha256": "c03712fcec411ea2b0b6901fa47f524a56ebb2d6e33e45a42868934b620fae1e",
+      "statement": "Dispose of temporary copies and migration credentials after verified completion.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 364
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Data and state transition"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Dispose of temporary copies and migration credentials after verified completion.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Dispose of temporary copies and migration credentials after verified completion.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8DADCE97",
+      "revision": 1,
+      "semantic_sha256": "8dadce9706bf6355bad4d510e3c8f79861c0e9919ebe593e0d61ea152417a4a5",
+      "statement": "Define supported installation, upgrade, downgrade, replacement, and removal paths.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 368
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Installation, upgrade, coexistence, and replacement"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Define supported installation, upgrade, downgrade, replacement, and removal paths.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define supported installation, upgrade, downgrade, replacement, and removal paths.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0AA61EFD",
+      "revision": 1,
+      "semantic_sha256": "0aa61efd42b284c430f6992ddeefe1fc4d42c18e532ab2d83d7adb5335568353",
+      "statement": "Test fresh installation and upgrade from every supported starting state.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 369
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Installation, upgrade, coexistence, and replacement"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Test fresh installation and upgrade from every supported starting state.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Test fresh installation and upgrade from every supported starting state.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F52F674A",
+      "revision": 1,
+      "semantic_sha256": "f52f674a2b64cb391b73ff51dd95bbbd4f9eff4eb79fecaccdcc3c5e781fd6cd",
+      "statement": "Test interrupted installation and upgrade recovery.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 370
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Installation, upgrade, coexistence, and replacement"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Test interrupted installation and upgrade recovery.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Test interrupted installation and upgrade recovery.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2ADF602E",
+      "revision": 1,
+      "semantic_sha256": "2adf602e31ac34dfa03e247bd4777a8123724c5c0f127d4c39f2e2a191e58c5d",
+      "statement": "Verify prerequisites before making irreversible changes.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 371
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Installation, upgrade, coexistence, and replacement"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Verify prerequisites before making irreversible changes.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Verify prerequisites before making irreversible changes.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-43BE7891",
+      "revision": 1,
+      "semantic_sha256": "43be7891b28d66ad7ecbd85f46bca8e6fefd6f726d6820a53358c3d10d4fda69",
+      "statement": "Detect insufficient storage, permission, version, capacity, or connectivity before transition.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 372
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Installation, upgrade, coexistence, and replacement"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Detect insufficient storage, permission, version, capacity, or connectivity before transition.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Detect insufficient storage, permission, version, capacity, or connectivity before transition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-981573E3",
+      "revision": 1,
+      "semantic_sha256": "981573e34d605534adf39344b42025575f7a7e0a6332288fcb5567f805451dce",
+      "statement": "Keep old and new versions compatible during rolling or phased change where coexistence occurs.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 373
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Installation, upgrade, coexistence, and replacement"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Keep old and new versions compatible during rolling or phased change where coexistence occurs.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Keep old and new versions compatible during rolling or phased change where coexistence occurs.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B9F93CB2",
+      "revision": 1,
+      "semantic_sha256": "b9f93cb228a49bdee12a65f807a2a20d031d9d98be71ae404aca33f1c7af9611",
+      "statement": "Prevent incompatible mixed versions from serving traffic together.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 374
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Installation, upgrade, coexistence, and replacement"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Prevent incompatible mixed versions from serving traffic together.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Prevent incompatible mixed versions from serving traffic together.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9C5C4DDD",
+      "revision": 1,
+      "semantic_sha256": "9c5c4ddd9cb5045b5d53171f8e66ff5a65e863b8527c27440320a0529eb71afa",
+      "statement": "Define ownership and cleanup of old binaries, images, schemas, services, routes, secrets, and scheduled jobs.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 375
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Installation, upgrade, coexistence, and replacement"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Define ownership and cleanup of old binaries, images, schemas, services, routes, secrets, and scheduled jobs.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define ownership and cleanup of old binaries, images, schemas, services, routes, secrets, and scheduled jobs.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1408D4CC",
+      "revision": 1,
+      "semantic_sha256": "1408d4cc0f51028aecf7e9db75dc44a139205062f0cf2f0b7bd31c61843ad6fa",
+      "statement": "Verify that uninstall or decommission removes access, listeners, scheduled work, credentials, and sensitive data as intended.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 378
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Installation, upgrade, coexistence, and replacement"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Verify that uninstall or decommission removes access, listeners, scheduled work, credentials, and sensitive data as intended.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Verify that uninstall or decommission removes access, listeners, scheduled work, credentials, and sensitive data as intended.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3670663F",
+      "revision": 1,
+      "semantic_sha256": "3670663f15460a0dd4e1a26eb9046d53a7118b78e85c51f46d83bcff0b99350a",
+      "statement": "Ensure replacement does not leave dangling DNS, routes, queues, webhooks, or trust relationships.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 379
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Installation, upgrade, coexistence, and replacement"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Ensure replacement does not leave dangling DNS, routes, queues, webhooks, or trust relationships.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Ensure replacement does not leave dangling DNS, routes, queues, webhooks, or trust relationships.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EC5CA0BF",
+      "revision": 1,
+      "semantic_sha256": "ec5ca0bf8eb3c6057575f46a1ca3f4dbfc8bbc12f8adc8e9a64a467468f2e4a4",
+      "statement": "Validate compatibility with supported clients, agents, extensions, and external systems.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 380
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Installation, upgrade, coexistence, and replacement"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Validate compatibility with supported clients, agents, extensions, and external systems.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Validate compatibility with supported clients, agents, extensions, and external systems.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A4050E06",
+      "revision": 1,
+      "semantic_sha256": "a4050e06a56a93af0d0e813032107b1e25b56bb3c5e396c9e664698910a2ab2d",
+      "statement": "Provide a clear version-identification and support-status mechanism.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 381
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Installation, upgrade, coexistence, and replacement"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Provide a clear version-identification and support-status mechanism.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Provide a clear version-identification and support-status mechanism.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BC2B199B",
+      "revision": 1,
+      "semantic_sha256": "bc2b199bf1340814167b2d9fa5be6c7a74b7a51b5857049c7fc1f54c80f70daf",
+      "statement": "Monitor adoption and detect stranded or unsupported versions.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 382
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Installation, upgrade, coexistence, and replacement"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Monitor adoption and detect stranded or unsupported versions.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Monitor adoption and detect stranded or unsupported versions.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6024C9B1",
+      "revision": 1,
+      "semantic_sha256": "6024c9b173364b34aa0af8c20fb69d96ffaff147bc9a8035c766325c3dee8b80",
+      "statement": "Define operational acceptance criteria before development is complete.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 388
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Operational transition and handover"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Define operational acceptance criteria before development is complete.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define operational acceptance criteria before development is complete.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D083AE3C",
+      "revision": 1,
+      "semantic_sha256": "d083ae3cffcd2d857d4c73b8d99217b0f98fc0da436f11dbec5360a3eefdcc62",
+      "statement": "Include observability, alerts, runbooks, support, capacity, continuity, security, privacy, access, and cost in acceptance criteria.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 389
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Operational transition and handover"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Include observability, alerts, runbooks, support, capacity, continuity, security, privacy, access, and cost in acceptance criteria.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Include observability, alerts, runbooks, support, capacity, continuity, security, privacy, access, and cost in acceptance criteria.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E53D5660",
+      "revision": 1,
+      "semantic_sha256": "e53d56602a19560a812fb6eaad6d7327d76368596c5223166694f3d8f7b35166",
+      "statement": "Identify the organization and individuals authorized to accept operational responsibility.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 390
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Operational transition and handover"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Identify the organization and individuals authorized to accept operational responsibility.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Identify the organization and individuals authorized to accept operational responsibility.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AEECABED",
+      "revision": 1,
+      "semantic_sha256": "aeecabed99b22c69d09c59d536bd4d7b9fbba3af7681cb88e45885cca47b9ad0",
+      "statement": "Provide architecture, dependency, data, configuration, deployment, recovery, and known-risk documentation.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 392
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Operational transition and handover"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Provide architecture, dependency, data, configuration, deployment, recovery, and known-risk documentation.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Provide architecture, dependency, data, configuration, deployment, recovery, and known-risk documentation.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F845B223",
+      "revision": 1,
+      "semantic_sha256": "f845b2233ee224903f7dae79de0abc4f814a048eb455c55126b7e34300c8cb6c",
+      "statement": "Transfer outstanding incidents, defects, exceptions, workarounds, debt, and supplier commitments explicitly.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 393
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Operational transition and handover"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Transfer outstanding incidents, defects, exceptions, workarounds, debt, and supplier commitments explicitly.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Transfer outstanding incidents, defects, exceptions, workarounds, debt, and supplier commitments explicitly.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3BF30324",
+      "revision": 1,
+      "semantic_sha256": "3bf303244518472f9179475c607083c81aab865c4f406306963b5c95628a0900",
+      "statement": "Validate that monitoring covers the actual production deployment.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 394
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Operational transition and handover"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Validate that monitoring covers the actual production deployment.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Validate that monitoring covers the actual production deployment.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-23FADC9E",
+      "revision": 1,
+      "semantic_sha256": "23fadc9ebc26d336e8bab120f1348c0389177cdc48d3b2895c90e4b2a5a69782",
+      "statement": "Validate escalation, paging, status communication, and provider support routes.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 395
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Operational transition and handover"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Validate escalation, paging, status communication, and provider support routes.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Validate escalation, paging, status communication, and provider support routes.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D5B7F955",
+      "revision": 1,
+      "semantic_sha256": "d5b7f95536b2700c340836fbab97cfe6b8d9e762ce26592e80d2165ae8074907",
+      "statement": "Exercise common and severe runbooks with the receiving team.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 396
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Operational transition and handover"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Exercise common and severe runbooks with the receiving team.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Exercise common and severe runbooks with the receiving team.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-94EBD701",
+      "revision": 1,
+      "semantic_sha256": "94ebd701c996aa225c6ac6704a71d87df72da635bd6ab51616b6b46d831c5194",
+      "statement": "Verify backup restoration, rollback, failover, and credential-recovery procedures.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 397
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Operational transition and handover"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Verify backup restoration, rollback, failover, and credential-recovery procedures.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Verify backup restoration, rollback, failover, and credential-recovery procedures.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DB24571C",
+      "revision": 1,
+      "semantic_sha256": "db24571c29a4765061d0b572a540b695ef27408603c0b6dfd8a7ff324e2a88ab",
+      "statement": "Establish a bounded enhanced-support period for high-risk transitions.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 398
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Operational transition and handover"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Establish a bounded enhanced-support period for high-risk transitions.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Establish a bounded enhanced-support period for high-risk transitions.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-977F0AD1",
+      "revision": 1,
+      "semantic_sha256": "977f0ad111ec8b27cb745ec86febb25b13392e9ca4347f47b8bbacfbefe6ba35",
+      "statement": "Define who owns decisions during the overlap between delivery and operations.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 399
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Operational transition and handover"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Define who owns decisions during the overlap between delivery and operations.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define who owns decisions during the overlap between delivery and operations.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F3B48A5C",
+      "revision": 1,
+      "semantic_sha256": "f3b48a5cbd5844ebe655d4d22870b8496b47208da8bd8bb745342e1c10455dcb",
+      "statement": "Measure early-life incidents, support demand, performance, data integrity, and user outcomes.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 400
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Operational transition and handover"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Measure early-life incidents, support demand, performance, data integrity, and user outcomes.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Measure early-life incidents, support demand, performance, data integrity, and user outcomes.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-76528E47",
+      "revision": 1,
+      "semantic_sha256": "76528e477e9eb602b9855c240a26b7646864381f2abe756dfae0cf70e3e994ed",
+      "statement": "Document the exact profile, extensions, versions, and interpretations used.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 411
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Open standards and interoperability"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Document the exact profile, extensions, versions, and interpretations used.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Document the exact profile, extensions, versions, and interpretations used.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F7E0BF1B",
+      "revision": 1,
+      "semantic_sha256": "f7e0bf1b5b177bbe4d8b7dcd74347e75718cd846a38227b9794dfccaa279509e",
+      "statement": "Do not claim standards conformance without passing the applicable normative requirements and declared profile.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 413
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Open standards and interoperability"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Do not claim standards conformance without passing the applicable normative requirements and declared profile.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Do not claim standards conformance without passing the applicable normative requirements and declared profile.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BA413359",
+      "revision": 1,
+      "semantic_sha256": "ba413359b8bee2a61e826e1ab5f0c230b35c1c042b3926962bb745ff221bf145",
+      "statement": "Monitor standard deprecation, errata, security guidance, and replacement work.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 417
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Open standards and interoperability"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Monitor standard deprecation, errata, security guidance, and replacement work.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Monitor standard deprecation, errata, security guidance, and replacement work.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4F165C23",
+      "revision": 1,
+      "semantic_sha256": "4f165c23501b74d698780da413851e238337d938baa36bf2f412b7ecade9a134",
+      "statement": "Ensure conformance tests themselves are versioned, reviewed, and representative.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 419
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Open standards and interoperability"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Ensure conformance tests themselves are versioned, reviewed, and representative.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Ensure conformance tests themselves are versioned, reviewed, and representative.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D633A4FE",
+      "revision": 1,
+      "semantic_sha256": "d633a4fe8fc11802dd5878e2c98f749c6c2545551b8dd156c31b65a4c825858f",
+      "statement": "Define what must remain portable: data, metadata, identities, permissions, configurations, workflows, policies, logs, models, prompts, keys, and history.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 423
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Portability, exitability, and reversibility"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Define what must remain portable: data, metadata, identities, permissions, configurations, workflows, policies, logs, models, prompts, keys, and history.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define what must remain portable: data, metadata, identities, permissions, configurations, workflows, policies, logs, models, prompts, keys, and history.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-31D5679B",
+      "revision": 1,
+      "semantic_sha256": "31d5679b6fc30a53b0d21ae2de511ed1cbc508bf3d9b2c1f3f63aeef136305fe",
+      "statement": "Provide export in documented, durable, independently parseable formats.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 424
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Portability, exitability, and reversibility"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Provide export in documented, durable, independently parseable formats.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Provide export in documented, durable, independently parseable formats.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C28B29B6",
+      "revision": 1,
+      "semantic_sha256": "c28b29b64301400cc97d391b36eaa92390173f2a6ca14e74aa64afe5127e2e3e",
+      "statement": "Include enough metadata and semantics to interpret exported values correctly.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 425
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Portability, exitability, and reversibility"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Include enough metadata and semantics to interpret exported values correctly.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Include enough metadata and semantics to interpret exported values correctly.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3A7150A3",
+      "revision": 1,
+      "semantic_sha256": "3a7150a397485c822d2f79d0474a8638206a76d45e87eeef61ddfa3ce1723472",
+      "statement": "Preserve relationships, ordering, provenance, and integrity across export and import.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 426
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Portability, exitability, and reversibility"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Preserve relationships, ordering, provenance, and integrity across export and import.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Preserve relationships, ordering, provenance, and integrity across export and import.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-42F63C13",
+      "revision": 1,
+      "semantic_sha256": "42f63c1313482180bc8b6bfb434f9161cf6431d28d8185623e0e384dd0e4add1",
+      "statement": "Test import into an alternate implementation or a documented reconstruction process.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 428
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Portability, exitability, and reversibility"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Test import into an alternate implementation or a documented reconstruction process.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Test import into an alternate implementation or a documented reconstruction process.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BA991AC6",
+      "revision": 1,
+      "semantic_sha256": "ba991ac64ccaeeaf919c5c33de91696c98c30f356fb0178c8a63c0c373abdb0f",
+      "statement": "Measure the time, cost, bandwidth, downtime, and expertise required to exit.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 429
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Portability, exitability, and reversibility"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Measure the time, cost, bandwidth, downtime, and expertise required to exit.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Measure the time, cost, bandwidth, downtime, and expertise required to exit.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-67CB5775",
+      "revision": 1,
+      "semantic_sha256": "67cb5775393d3c790422f5806f794999adb483fafd6f82bc9e9009a8b322a51f",
+      "statement": "Ensure encryption and signing keys required for export or validation remain available under controlled recovery.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 433
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Portability, exitability, and reversibility"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Ensure encryption and signing keys required for export or validation remain available under controlled recovery.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Ensure encryption and signing keys required for export or validation remain available under controlled recovery.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F432B8C9",
+      "revision": 1,
+      "semantic_sha256": "f432b8c9a3636cdea1ffffbe985cfbfd2f1cf6fa997d2fd0301894b08155242c",
+      "statement": "Define how external identities, domains, certificates, and trust relationships transfer.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 434
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Portability, exitability, and reversibility"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Define how external identities, domains, certificates, and trust relationships transfer.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define how external identities, domains, certificates, and trust relationships transfer.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8094CE35",
+      "revision": 1,
+      "semantic_sha256": "8094ce355c21b9bd185652f8b1819eaf7448d5d6c18b1bb79a5244d19dd084ab",
+      "statement": "Remove old-provider access and residual data after verified migration.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 437
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Portability, exitability, and reversibility"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Remove old-provider access and residual data after verified migration.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Remove old-provider access and residual data after verified migration.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BFEAA140",
+      "revision": 1,
+      "semantic_sha256": "bfeaa1402fc999afc7838d1a6f58ca2580cabab3afd3fed65712b7f3fac77b54",
+      "statement": "Verify the old system cannot continue accepting authoritative updates after cutover.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 438
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Portability, exitability, and reversibility"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Verify the old system cannot continue accepting authoritative updates after cutover.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Verify the old system cannot continue accepting authoritative updates after cutover.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CEEE0784",
+      "revision": 1,
+      "semantic_sha256": "ceee078409df9bbe2252793714f12ca2a488a62a32bb03a0f3b9407a96f8977f",
+      "statement": "Record residual dependencies that remain after declared exit.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 439
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Portability, exitability, and reversibility"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Record residual dependencies that remain after declared exit.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Record residual dependencies that remain after declared exit.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AA309E1F",
+      "revision": 1,
+      "semantic_sha256": "aa309e1f22bcc2209b5eefb0797fea6d303488446f6f283cc239512ff3d7cf5d",
+      "statement": "Trace each integration requirement to contract evidence and representative tests.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 443
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Integration assurance and release gates"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Trace each integration requirement to contract evidence and representative tests.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Trace each integration requirement to contract evidence and representative tests.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CB5A99DA",
+      "revision": 1,
+      "semantic_sha256": "cb5a99da9b6e2ed48176a80b0429dac2b81686d4f699f38785a430ab23e3666b",
+      "statement": "Test partial completion, ambiguous outcomes, duplicate delivery, and reconciliation.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 446
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Integration assurance and release gates"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Test partial completion, ambiguous outcomes, duplicate delivery, and reconciliation.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Test partial completion, ambiguous outcomes, duplicate delivery, and reconciliation.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-455260BF",
+      "revision": 1,
+      "semantic_sha256": "455260bf4da82ab8a58b54e811bbf130b2772bdd2cab06cd2c518378c7f3dcbf",
+      "statement": "Test behavior when each critical participant is unavailable or nonconforming.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 447
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Integration assurance and release gates"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Test behavior when each critical participant is unavailable or nonconforming.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Test behavior when each critical participant is unavailable or nonconforming.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C0D99348",
+      "revision": 1,
+      "semantic_sha256": "c0d99348d2ded6853fbe932a496645685ec745b023103245c22e29ed451eda84",
+      "statement": "Verify that logs and traces permit cross-boundary diagnosis without exposing restricted data.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 448
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Integration assurance and release gates"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Verify that logs and traces permit cross-boundary diagnosis without exposing restricted data.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Verify that logs and traces permit cross-boundary diagnosis without exposing restricted data.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8FFC64D0",
+      "revision": 1,
+      "semantic_sha256": "8ffc64d008234076c27c0b45ea3b9d349c353e836901fbb63d39ade130a27ba3",
+      "statement": "Preserve the integration baseline, evidence, exceptions, and exact component versions with the release.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 452
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Integration assurance and release gates"
+      ],
+      "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Preserve the integration baseline, evidence, exceptions, and exact component versions with the release.” is deterministic with a sealed transition or integration inventory, versioned contract, and exact record or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Preserve the integration baseline, evidence, exceptions, and exact component versions with the release.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    }
+  ]
+}

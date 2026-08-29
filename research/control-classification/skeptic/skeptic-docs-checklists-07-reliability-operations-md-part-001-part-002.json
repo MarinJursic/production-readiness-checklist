@@ -1,0 +1,143 @@
+{
+  "schema_version": "prc.control-classification-skeptic-review/v0.1",
+  "packet_id": "skeptic-docs-checklists-07-reliability-operations-md-part-001-part-002",
+  "primary_packet_id": "docs-checklists-07-reliability-operations-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "controls": [
+    {
+      "control_id": "PRC-33-029",
+      "revision": 1,
+      "semantic_sha256": "3820be4519cc8d383fe1661f204c9fa022eb55bdd5df2080ef59dc9f9e61d87b",
+      "verdict": "confirmed_deterministic",
+      "reason": "The statement requires documentation coverage of three named continuity topics, which exact current procedure sections can prove.",
+      "counterexample_analysis": "I tried a customer-support contact list without continuity steps, communications only, and manual operations omitted. Each fails the required section and action schema; effectiveness is not asserted.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-33-030",
+      "revision": 1,
+      "semantic_sha256": "ed1cf6814c7c686672de5ff509328a260c9977c0aeccfd26c96e5e624216ee44",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Retained records can show evidence and action entries, but they cannot prove every recovery-test failure or weakness was recognized and converted into corrective action.",
+      "counterexample_analysis": "A recovery drill records timestamps and a minor action while silently missing that restored data is inconsistent. The evidence/action join passes, but the test did not produce the corrective action required for the actual failure.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-34-001",
+      "revision": 1,
+      "semantic_sha256": "049579b29a3d14cb4fbbc4fcade312c943fa0b4540f0669df603c59b3dd310a3",
+      "verdict": "confirmed_deterministic",
+      "reason": "Immutable artifact identifiers and explicit target-environment identifiers are exact deployment-plan fields.",
+      "counterexample_analysis": "I tried a mutable tag, an environment class without the target instance, and a digest for another release. Exact identity and binding checks fail each.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-34-002",
+      "revision": 1,
+      "semantic_sha256": "5aabc80ffa902abc5374e9c1ba246d874ab954fd081d7f84425b1fa4414837de",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Five section headings do not prove identification of every actual migration, runtime flag, infrastructure mutation, and external dependency.",
+      "counterexample_analysis": "The plan has all five fields but leaves migrations empty while the artifact performs a startup schema migration and calls a newly introduced external service. Schema validation passes while actual changes and dependencies are unidentified.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-34-003",
+      "revision": 1,
+      "semantic_sha256": "1cec2d4e598040f5c5bc0036017c8de605ccef8535853f1664bcd7dbd457ec54",
+      "verdict": "confirmed_deterministic",
+      "reason": "A versioned release policy is authoritative for required approvals, and authenticated approval records form an exact completeness join.",
+      "counterexample_analysis": "I tried a missing security approval, expired approver authority, approval for a different digest, and duplicate approval replacing separation of duties. Policy, identity, artifact, and role bindings fail each.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-34-005",
+      "revision": 1,
+      "semantic_sha256": "b1eb67f0ea1e0c7fc15a39cd8fdd873408e16b11f2673e1bf9e68158c11001d5",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Artifact records alone do not prove the deployed bytes, every deployment path, or immutable audit behavior asserted in the reason.",
+      "counterexample_analysis": "The deployer uses a manual target-environment command to substitute an unapproved digest and suppresses the deployment record. The approved artifact verifies correctly, so artifact evidence passes while actual deployment is silently substituted.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-34-006",
+      "revision": 1,
+      "semantic_sha256": "ca3ae84f4a89b556f0bf81858d28d358cc70b06a5d45327898a2bc2591d04000",
+      "verdict": "confirmed_deterministic",
+      "reason": "Named health and capacity thresholds plus a predeployment execution gate give fixed numeric pass and fail outcomes.",
+      "counterexample_analysis": "I tried stale health evidence, capacity below the approved headroom, a missing required signal, and checks after deployment. Freshness, threshold, completeness, and event ordering fail each.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-34-007",
+      "revision": 1,
+      "semantic_sha256": "4c1dfc7eda4f95443ff7cb845bb9025a922451d57e68b4a962b1da650bc1619d",
+      "verdict": "confirmed_deterministic",
+      "reason": "Policy-required backup identifiers, creation timestamps, integrity state, and freshness are authoritative queryable facts before deployment.",
+      "counterexample_analysis": "I tried an expired recovery point, backup for another database, incomplete snapshot, and evidence created after deployment. Scope, status, freshness, and ordering reject each.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-34-008",
+      "revision": 1,
+      "semantic_sha256": "5e919aa20d6d623edab225df54692ef278e897647969b385ed4f52d1341e823a",
+      "verdict": "confirmed_deterministic",
+      "reason": "Explicit migration steps and a total order are bounded structural properties of a versioned deployment plan.",
+      "counterexample_analysis": "I tried unordered parallel steps with an undeclared dependency, a referenced but missing step, and prose saying `run migrations`. Graph completeness and explicit command/action fields fail each.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-34-013",
+      "revision": 1,
+      "semantic_sha256": "ab7bd55abdf712852e814ec6f6b248b4a21193fcb678cc95b10d0e6db9022e36",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Signal names can exist while user success and business integrity metrics are irrelevant, incomplete, or semantically wrong.",
+      "counterexample_analysis": "A gate labels HTTP 200 rate as both user success and business integrity; payments are double-charged while all five named metric fields remain green. Configuration passes, but the gate does not genuinely examine business integrity.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-34-015",
+      "revision": 1,
+      "semantic_sha256": "0e37af7f6edcde04c41e67677d73944612fc7c0866bd09a2081539469ab891e2",
+      "verdict": "confirmed_deterministic",
+      "reason": "For a complete defined-signal policy, signal injection and rollout state transitions objectively establish automatic or operational pause behavior.",
+      "counterexample_analysis": "I tried each defined threshold, a missing signal, an operator acknowledgment without pause, and a pause after further rollout. Exact signal, state, and timing evidence fails each nonpause case.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    }
+  ]
+}

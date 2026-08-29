@@ -1,0 +1,2351 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-engineering-03-user-experience-web-and-content-md-part-004-part-001",
+  "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 84,
+  "controls": [
+    {
+      "control_id": "USEQ-235346A8",
+      "revision": 1,
+      "semantic_sha256": "235346a8c38bd58da37ef6d531ce6e37ff179a1abcf52bfb2e31b047a98af8ab",
+      "statement": "Normalize host, scheme, trailing-slash, case, encoding, and default-document variants consistently.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 981
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "URLs, canonicalization, redirects, site architecture, and links"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Normalize host, scheme, trailing-slash, case, encoding, and default-document variants consistently.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A21A412A",
+      "revision": 1,
+      "semantic_sha256": "a21a412a6522629fd7c90c7c3b993351cef38e3345a526f619daca3d921a7483",
+      "statement": "Prevent open redirects and untrusted redirect targets.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 982
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "URLs, canonicalization, redirects, site architecture, and links"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Prevent open redirects and untrusted redirect targets.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-79E91255",
+      "revision": 1,
+      "semantic_sha256": "79e912553f23ea251efb4255c041a22ccdc3526a266c80ecf0811cc812243e9f",
+      "statement": "Use appropriate attributes for sponsored, untrusted user-generated, and intentionally non-endorsed links.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 989
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "URLs, canonicalization, redirects, site architecture, and links"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Use appropriate attributes for sponsored, untrusted user-generated, and intentionally non-endorsed links.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D5EEA737",
+      "revision": 1,
+      "semantic_sha256": "d5eea7378a71b90adf51664b6d5462b52db996a0f966198e0677487fd74fd01a",
+      "statement": "Document URL ownership and change approval for critical public routes.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 993
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "URLs, canonicalization, redirects, site architecture, and links"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Document URL ownership and change approval for critical public routes.” defines a bounded ownership, provenance, plan, monitoring, state-model, alarm, role, or handover record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains complete in-scope entries with every explicit owner, field, state, metric, version, date, approval, provenance link, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EAA91E46",
+      "revision": 1,
+      "semantic_sha256": "eaa91e4611eed27c8bfe1f5ae1d15b1c9d1f4f113ba326e20ef69b9a66a12f61",
+      "statement": "Test both initial server responses and rendered output for pages that depend on client-side execution.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 998
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Rendering, JavaScript, mobile parity, and search performance"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Test both initial server responses and rendered output for pages that depend on client-side execution.” names a closed rendering, migration, interaction, or automation scenario set whose authenticated test execution and expected outcomes can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution evidence covers every scenario in the approved protocol for the exact revision and records the required expected outcome for each case.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-097BA4D0",
+      "revision": 1,
+      "semantic_sha256": "097ba4d0161b47869d1d60c15c3307cd92e6ac23798ff8f7963a900fc8366274",
+      "statement": "Use responsive behavior or explicit alternate relationships consistently when separate mobile URLs exist.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1005
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Rendering, JavaScript, mobile parity, and search performance"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Use responsive behavior or explicit alternate relationships consistently when separate mobile URLs exist.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D60F26B0",
+      "revision": 1,
+      "semantic_sha256": "d60f26b00288779640792391430e8cfcc12dc086111f9865738c0dec9dd41010",
+      "statement": "Ensure lazy-loaded content and images can be discovered without unsupported scrolling or interaction.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1007
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Rendering, JavaScript, mobile parity, and search performance"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Ensure lazy-loaded content and images can be discovered without unsupported scrolling or interaction.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-56F842F4",
+      "revision": 1,
+      "semantic_sha256": "56f842f4946c066e3441764561411aafed64c14229c2a2721a319c5406f83c24",
+      "statement": "Keep critical rendered links in the document structure rather than generating them only after opaque events.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1008
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Rendering, JavaScript, mobile parity, and search performance"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Keep critical rendered links in the document structure rather than generating them only after opaque events.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6B6351C1",
+      "revision": 1,
+      "semantic_sha256": "6b6351c12644af07c450cf92dfa8d335fc98fa4db551e631dca99dadd8766582",
+      "statement": "Meet approved user-performance budgets and monitor Core Web Vitals using field data where applicable.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1009
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Rendering, JavaScript, mobile parity, and search performance"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Meet approved user-performance budgets and monitor Core Web Vitals using field data where applicable.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1F4F7014",
+      "revision": 1,
+      "semantic_sha256": "1f4f70140762e004a81274a6f37c6f4389db0d4ad0b3195fc0aeed64856c9b25",
+      "statement": "Test rendering and indexing after framework, browser, CDN, bot-detection, consent, or edge-compute changes.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1014
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Rendering, JavaScript, mobile parity, and search performance"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Test rendering and indexing after framework, browser, CDN, bot-detection, consent, or edge-compute changes.” names a closed rendering, migration, interaction, or automation scenario set whose authenticated test execution and expected outcomes can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution evidence covers every scenario in the approved protocol for the exact revision and records the required expected outcome for each case.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F8B7471E",
+      "revision": 1,
+      "semantic_sha256": "f8b7471eb9f6a1f36741fec23043db47879d501bc78d3c8ec948ec5f6475cdf0",
+      "statement": "Split and index large sitemaps within protocol limits and monitor retrieval failures.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1020
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Sitemaps, metadata, structured data, media, and result presentation"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Split and index large sitemaps within protocol limits and monitor retrieval failures.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7ACEC211",
+      "revision": 1,
+      "semantic_sha256": "7acec211b22d6c0bae06c220b09ab04e2f34771af6b2368eb6ad8b734d29e22c",
+      "statement": "Remove deleted, redirected, duplicate, noindex, private, and erroring URLs from sitemaps.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1021
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Sitemaps, metadata, structured data, media, and result presentation"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Remove deleted, redirected, duplicate, noindex, private, and erroring URLs from sitemaps.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-532EA584",
+      "revision": 1,
+      "semantic_sha256": "532ea584dc6a6c96d5f4f8f1646b04bb4fa47a31837c18cb4a9a5afa3c39ef97",
+      "statement": "Validate structured data syntax, required properties, types, URLs, dates, prices, availability, identity, and relationships.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1026
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Sitemaps, metadata, structured data, media, and result presentation"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Validate structured data syntax, required properties, types, URLs, dates, prices, availability, identity, and relationships.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B6CAF88F",
+      "revision": 1,
+      "semantic_sha256": "b6caf88f2321d0920875250ba0f9a1ce6460e7e0dd7a9ce4306c072a38e716fc",
+      "statement": "Test metadata and structured data after templates, CMS, localization, product feeds, inventory, or pricing logic changes.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1035
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Sitemaps, metadata, structured data, media, and result presentation"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Test metadata and structured data after templates, CMS, localization, product feeds, inventory, or pricing logic changes.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8244B358",
+      "revision": 1,
+      "semantic_sha256": "8244b35817b4a28ff1390cacb964e293535bf18146f104c3b47e95faa4eb2744",
+      "statement": "Use valid BCP 47 language tags and declare page language and regional variation accurately.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1039
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "International and multilingual discoverability"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Use valid BCP 47 language tags and declare page language and regional variation accurately.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3ABDCE0A",
+      "revision": 1,
+      "semantic_sha256": "3abdce0a266c544569547be472bdf2c320e8c013773458e4a31dfec5a7ee8686",
+      "statement": "Provide stable distinct URLs for localized content when independent indexing is intended.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1041
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "International and multilingual discoverability"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Provide stable distinct URLs for localized content when independent indexing is intended.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3CA1A6EE",
+      "revision": 1,
+      "semantic_sha256": "3ca1a6ee3f116ca01e5cd8c340399f08efb17abf08955369255a0fc40658ef17",
+      "statement": "Use reciprocal alternate-language annotations such as `hreflang` consistently when supported and applicable.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1042
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "International and multilingual discoverability"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Use reciprocal alternate-language annotations such as `hreflang` consistently when supported and applicable.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-70B062EB",
+      "revision": 1,
+      "semantic_sha256": "70b062eba383edb20e4f973f609503f240141f9616953dba613d44b2c5167af3",
+      "statement": "Include a self-reference and an appropriate fallback where alternate-language annotations require them.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1043
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "International and multilingual discoverability"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Include a self-reference and an appropriate fallback where alternate-language annotations require them.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-80D06A16",
+      "revision": 1,
+      "semantic_sha256": "80d06a1634be5bd82ae2d44a6fbc83fd1215d058a6218ad0e7ea74af3bc3317a",
+      "statement": "Ensure canonical and alternate-language signals do not contradict each other.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1044
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "International and multilingual discoverability"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Ensure canonical and alternate-language signals do not contradict each other.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7B2A7EE1",
+      "revision": 1,
+      "semantic_sha256": "7b2a7ee11754a241f8a12d1cdbdc6634e8c986a5888b452ec746ed1b8f00310b",
+      "statement": "Do not automatically redirect users or crawlers solely by inferred language or location without an accessible override and stable URL.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1046
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "International and multilingual discoverability"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Do not automatically redirect users or crawlers solely by inferred language or location without an accessible override and stable URL.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0D4E0314",
+      "revision": 1,
+      "semantic_sha256": "0d4e0314469e3fd5b58f065284e51796b9b963e3e8b01bfc80e42ef3aeee4dbc",
+      "statement": "Allow users and crawlers to reach every supported locale through crawlable links.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1047
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "International and multilingual discoverability"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Allow users and crawlers to reach every supported locale through crawlable links.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6E51BB7D",
+      "revision": 1,
+      "semantic_sha256": "6e51bb7d2f8e2b0581f9b3da1281a521a2b7dbb7fdbd9048392cd620759f5d87",
+      "statement": "Use qualified human review for high-impact, legal, safety, medical, financial, and culturally sensitive content.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1049
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "International and multilingual discoverability"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Use qualified human review for high-impact, legal, safety, medical, financial, and culturally sensitive content.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-748B12CD",
+      "revision": 1,
+      "semantic_sha256": "748b12cdec8455e5526addfe49329b0160673d9c2e61e1cb1709b777ed38cbf4",
+      "statement": "Preserve translated titles, descriptions, alternate text, captions, structured data, and error content.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1050
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "International and multilingual discoverability"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Preserve translated titles, descriptions, alternate text, captions, structured data, and error content.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-516A203A",
+      "revision": 1,
+      "semantic_sha256": "516a203ad98bf0c469f8ffa9ef2fc9f651f9e56b4c60ae071b03deba2821c244",
+      "statement": "Monitor each locale separately for indexing, errors, search demand, content staleness, and broken alternate mappings.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1051
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "International and multilingual discoverability"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Monitor each locale separately for indexing, errors, search demand, content staleness, and broken alternate mappings.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-69E6DA5E",
+      "revision": 1,
+      "semantic_sha256": "69e6da5e0731985e366d3c9a1ba5ba4900bf8c408fb18424cb5d0c1ce0e5a1ff",
+      "statement": "Retire or redirect locales deliberately when support ends, and communicate the change to users.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1052
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "International and multilingual discoverability"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Retire or redirect locales deliberately when support ends, and communicate the change to users.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-72E01ED6",
+      "revision": 1,
+      "semantic_sha256": "72e01ed6c53eb576c49b4a7e67e9b92af08acde8a47f4608af05ae9b372130dc",
+      "statement": "Give every material public content area an accountable owner, intended audience, purpose, review cadence, and retirement rule.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1056
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Content quality, editorial governance, trust, and provenance"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Give every material public content area an accountable owner, intended audience, purpose, review cadence, and retirement rule.” defines a bounded ownership, provenance, plan, monitoring, state-model, alarm, role, or handover record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains complete in-scope entries with every explicit owner, field, state, metric, version, date, approval, provenance link, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-88073B7A",
+      "revision": 1,
+      "semantic_sha256": "88073b7a92810c14189d338aa4f89e53686a857649de8cffb318abd08c4334af",
+      "statement": "Ensure generated content is reviewed for factuality, unsafe advice, plagiarism, licensing, bias, privacy, and fabricated sources.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1065
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Content quality, editorial governance, trust, and provenance"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Ensure generated content is reviewed for factuality, unsafe advice, plagiarism, licensing, bias, privacy, and fabricated sources.” defines a bounded ownership, provenance, plan, monitoring, state-model, alarm, role, or handover record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains complete in-scope entries with every explicit owner, field, state, metric, version, date, approval, provenance link, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E3D759B4",
+      "revision": 1,
+      "semantic_sha256": "e3d759b495c2c91a907309a370f0e0db17ae41f5c23ad6cb89b163e7eb6fba1b",
+      "statement": "Preserve provenance, approvals, source material, licenses, and change history for regulated or high-trust content.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1072
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Content quality, editorial governance, trust, and provenance"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Preserve provenance, approvals, source material, licenses, and change history for regulated or high-trust content.” defines a bounded ownership, provenance, plan, monitoring, state-model, alarm, role, or handover record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains complete in-scope entries with every explicit owner, field, state, metric, version, date, approval, provenance link, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-68F88426",
+      "revision": 1,
+      "semantic_sha256": "68f884266caeccb95c496801e77f73913320637f5a07561d06b3bea194134866",
+      "statement": "Create a search and accessibility impact plan before domain, URL, CMS, rendering, design-system, navigation, localization, or content migrations.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1079
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Migrations, monitoring, incident response, and release gates"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Create a search and accessibility impact plan before domain, URL, CMS, rendering, design-system, navigation, localization, or content migrations.” defines a bounded ownership, provenance, plan, monitoring, state-model, alarm, role, or handover record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains complete in-scope entries with every explicit owner, field, state, metric, version, date, approval, provenance link, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-635F7843",
+      "revision": 1,
+      "semantic_sha256": "635f784368551aa789861934651852351b89926430f749df192e72c1181fd4a1",
+      "statement": "Inventory and map old URLs, titles, metadata, canonical signals, alternate-language relationships, structured data, content, and accessibility behaviors.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1080
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Migrations, monitoring, incident response, and release gates"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Inventory and map old URLs, titles, metadata, canonical signals, alternate-language relationships, structured data, content, and accessibility behaviors.” defines a bounded ownership, provenance, plan, monitoring, state-model, alarm, role, or handover record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains complete in-scope entries with every explicit owner, field, state, metric, version, date, approval, provenance link, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C3C380C4",
+      "revision": 1,
+      "semantic_sha256": "c3c380c421f3aa5743a6f1d4c366b3e360932855e324da01feae42e0282f48c2",
+      "statement": "Test redirects, status codes, canonicalization, sitemaps, robots, noindex, rendering, metadata, structured data, accessibility, and performance before cutover.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1082
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Migrations, monitoring, incident response, and release gates"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Test redirects, status codes, canonicalization, sitemaps, robots, noindex, rendering, metadata, structured data, accessibility, and performance before cutover.” names a closed rendering, migration, interaction, or automation scenario set whose authenticated test execution and expected outcomes can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution evidence covers every scenario in the approved protocol for the exact revision and records the required expected outcome for each case.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B2D6EBB1",
+      "revision": 1,
+      "semantic_sha256": "b2d6ebb13477e0bcff019e89f5435908b1cf1b03ccfd76b8ed867c615a4957a9",
+      "statement": "Keep rollback or rapid correction paths for broken public access, indexing, navigation, or critical accessibility.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1083
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Migrations, monitoring, incident response, and release gates"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Keep rollback or rapid correction paths for broken public access, indexing, navigation, or critical accessibility.” defines a bounded ownership, provenance, plan, monitoring, state-model, alarm, role, or handover record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains complete in-scope entries with every explicit owner, field, state, metric, version, date, approval, provenance link, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C8B3010A",
+      "revision": 1,
+      "semantic_sha256": "c8b3010a03c1333e0cbf31532302eac505b6bc4644bf12e6d09a51bec9b82d78",
+      "statement": "Monitor crawl failures, indexing changes, canonical conflicts, structured-data errors, manual actions, security issues, and traffic anomalies after release.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1084
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Migrations, monitoring, incident response, and release gates"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Monitor crawl failures, indexing changes, canonical conflicts, structured-data errors, manual actions, security issues, and traffic anomalies after release.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AA34BD2A",
+      "revision": 1,
+      "semantic_sha256": "aa34bd2aa421256c6c7091389a54ab482e0c3abf63900f8ed8a28b74d6c026e7",
+      "statement": "Monitor critical task accessibility, automated defect trends, support reports, and third-party regressions after release.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1085
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Migrations, monitoring, incident response, and release gates"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Monitor critical task accessibility, automated defect trends, support reports, and third-party regressions after release.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-42E0CA7F",
+      "revision": 1,
+      "semantic_sha256": "42e0ca7f0cd305ce75bbeaeab6b5b584d006559f4c797f50262a79afe88ecd59",
+      "statement": "Annotate monitoring with releases, migrations, experiments, template changes, and crawler-policy changes.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1086
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Migrations, monitoring, incident response, and release gates"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Annotate monitoring with releases, migrations, experiments, template changes, and crawler-policy changes.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-22D2A29C",
+      "revision": 1,
+      "semantic_sha256": "22d2a29c9639d16184383bf190b2637060f61e8ba20f58b9e857fd331e6576bb",
+      "statement": "Define stop, rollback, and escalation criteria before launch.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1091
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Migrations, monitoring, incident response, and release gates"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define stop, rollback, and escalation criteria before launch.” defines a bounded ownership, provenance, plan, monitoring, state-model, alarm, role, or handover record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains complete in-scope entries with every explicit owner, field, state, metric, version, date, approval, provenance link, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-22F07F8C",
+      "revision": 1,
+      "semantic_sha256": "22f07f8ca1dbb2a40c8dabd1e86b6b414d2552fafa469ba6e7e0f0e84190b76a",
+      "statement": "Block release when critical content is inaccessible, unintended private content is indexable, intended public content cannot be rendered, or primary routes produce incorrect status or canonical behavior.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1092
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Migrations, monitoring, incident response, and release gates"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Block release when critical content is inaccessible, unintended private content is indexable, intended public content cannot be rendered, or primary routes produce incorrect status or canonical behavior.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-08B33170",
+      "revision": 1,
+      "semantic_sha256": "08b33170d8e82526b0857a0743561dcc3dbcee5d57bf37af1475753364f917b3",
+      "statement": "Require sign-off from accessibility, content, product, security/privacy, and discoverability owners for high-impact migrations.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1094
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Migrations, monitoring, incident response, and release gates"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Require sign-off from accessibility, content, product, security/privacy, and discoverability owners for high-impact migrations.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FF92E18E",
+      "revision": 1,
+      "semantic_sha256": "ff92e18e3a5f9256b985301638ad01897de5f032f19290f4325863c4a56d8c45",
+      "statement": "Every applicable control in this document passes with current evidence, or an authorized exception meets all exception requirements.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1100
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Completion rule"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Every applicable control in this document passes with current evidence, or an authorized exception meets all exception requirements.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A3C013FA",
+      "revision": 1,
+      "semantic_sha256": "a3c013fa9593f5d4397f0e17ff54fd343ab05f2674ee366b4731b21f98c7de86",
+      "statement": "Owners have defined ongoing monitoring, reassessment triggers, and review dates so that completion does not become a one-time claim.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1102
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Accessibility, SEO, Content Quality, and Digital Discoverability",
+        "Completion rule"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Owners have defined ongoing monitoring, reassessment triggers, and review dates so that completion does not become a one-time claim.” defines a bounded ownership, provenance, plan, monitoring, state-model, alarm, role, or handover record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains complete in-scope entries with every explicit owner, field, state, metric, version, date, approval, provenance link, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2A552C91",
+      "revision": 1,
+      "semantic_sha256": "2387c80ef2e4ab360908637ba56101e26847b75747a0a5c749e3c3e7544da3f1",
+      "statement": "Document each role’s goals, authority, competence, working conditions, information needs, constraints, and foreseeable errors.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1111
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Human-factors governance and context of use"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Document each role’s goals, authority, competence, working conditions, information needs, constraints, and foreseeable errors.” defines a bounded ownership, provenance, plan, monitoring, state-model, alarm, role, or handover record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains complete in-scope entries with every explicit owner, field, state, metric, version, date, approval, provenance link, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-39A892D6",
+      "revision": 1,
+      "semantic_sha256": "39a892d67d0914a7fea94ab59a6f177ae40e07bd513ca852b3f1ae5c6de3f9fc",
+      "statement": "Include routine work, peak demand, degraded operation, emergencies, maintenance, recovery, and handover conditions in the context-of-use analysis.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1113
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Human-factors governance and context of use"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Include routine work, peak demand, degraded operation, emergencies, maintenance, recovery, and handover conditions in the context-of-use analysis.” defines a bounded ownership, provenance, plan, monitoring, state-model, alarm, role, or handover record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains complete in-scope entries with every explicit owner, field, state, metric, version, date, approval, provenance link, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9A16A5C6",
+      "revision": 1,
+      "semantic_sha256": "9a16a5c6a4ca6b8231aad9d19c508178762a39a149c2927034276cf95ee4ba3a",
+      "statement": "Assign accountable ownership for human-factors risks and corrective actions.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1117
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Human-factors governance and context of use"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Assign accountable ownership for human-factors risks and corrective actions.” defines a bounded ownership, provenance, plan, monitoring, state-model, alarm, role, or handover record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains complete in-scope entries with every explicit owner, field, state, metric, version, date, approval, provenance link, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-77332F89",
+      "revision": 1,
+      "semantic_sha256": "77332f895d57ac9940f9d27acfd28ba8dbbf536f887fa6eb63c93dee26513c8e",
+      "statement": "Define measurable human-performance outcomes such as task success, error rate, completion time, workload, recovery, comprehension, and trust calibration.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1120
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Human-factors governance and context of use"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define measurable human-performance outcomes such as task success, error rate, completion time, workload, recovery, comprehension, and trust calibration.” defines a bounded ownership, provenance, plan, monitoring, state-model, alarm, role, or handover record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains complete in-scope entries with every explicit owner, field, state, metric, version, date, approval, provenance link, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AB0DA53A",
+      "revision": 1,
+      "semantic_sha256": "ab0da53a0ba764e09364d8037ce907157dea86c338ba957d546d69ff2cd15da1",
+      "statement": "Establish release-blocking thresholds for unacceptable operator error, excessive workload, inaccessible controls, or misleading system feedback.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1121
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Human-factors governance and context of use"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Establish release-blocking thresholds for unacceptable operator error, excessive workload, inaccessible controls, or misleading system feedback.” defines a bounded ownership, provenance, plan, monitoring, state-model, alarm, role, or handover record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains complete in-scope entries with every explicit owner, field, state, metric, version, date, approval, provenance link, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A813B589",
+      "revision": 1,
+      "semantic_sha256": "a813b589419333aa54fd8ec45399668cb2a50384f142d14151f37f65619a6586",
+      "statement": "Reassess the context of use when roles, staffing, automation, interfaces, procedures, locations, or risk levels change.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1122
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Human-factors governance and context of use"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Reassess the context of use when roles, staffing, automation, interfaces, procedures, locations, or risk levels change.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BA3769AE",
+      "revision": 1,
+      "semantic_sha256": "ba3769ae28a27dd70b7ba2af8f1d09e2f159769ce6d4ee2de952641a25931cc2",
+      "statement": "Preserve evidence of human-factors research, design rationale, evaluations, limitations, and unresolved risks.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1123
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Human-factors governance and context of use"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Preserve evidence of human-factors research, design rationale, evaluations, limitations, and unresolved risks.” defines a bounded ownership, provenance, plan, monitoring, state-model, alarm, role, or handover record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains complete in-scope entries with every explicit owner, field, state, metric, version, date, approval, provenance link, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E16E8D1B",
+      "revision": 1,
+      "semantic_sha256": "e16e8d1b10bdd585e329be0943b2f6e8f5f1108e32a708375799d73479865081",
+      "statement": "Mark stale information and display its source and age when freshness affects decisions.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1142
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Mental workload, attention, and cognitive demand"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Mark stale information and display its source and age when freshness affects decisions.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D06DE367",
+      "revision": 1,
+      "semantic_sha256": "d06de3674911594c74bae7516b2c56c4c86e4161cfec627b2edd857c58f1f77f",
+      "statement": "Monitor whether production workload, queue size, or staffing changes invalidate the evaluated workload assumptions.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1146
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Mental workload, attention, and cognitive demand"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Monitor whether production workload, queue size, or staffing changes invalidate the evaluated workload assumptions.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-ABA0C499",
+      "revision": 1,
+      "semantic_sha256": "aba0c499c4456c00732d6102ba1881bea2ede1cd86596cd732b97ec3c93f776a",
+      "statement": "Distinguish requested, accepted, queued, executing, completed, partially completed, canceled, rolled back, and indeterminate states.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1151
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Situation awareness and system-state visibility"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Distinguish requested, accepted, queued, executing, completed, partially completed, canceled, rolled back, and indeterminate states.” defines a bounded ownership, provenance, plan, monitoring, state-model, alarm, role, or handover record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains complete in-scope entries with every explicit owner, field, state, metric, version, date, approval, provenance link, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5160A553",
+      "revision": 1,
+      "semantic_sha256": "5160a55304bbfbdc1cd9d2390f73b41de3a225bb1ef18d20e91676317b0117d8",
+      "statement": "Provide previews for bulk, destructive, irreversible, cross-tenant, or high-cost changes.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1154
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Situation awareness and system-state visibility"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Provide previews for bulk, destructive, irreversible, cross-tenant, or high-cost changes.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1C852350",
+      "revision": 1,
+      "semantic_sha256": "1c8523504d965c8c58c1551d8234e9f69cd5844d77ade091b89bd370eb3e9161",
+      "statement": "Ensure status indicators reflect authoritative system state rather than optimistic client assumptions.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1158
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Situation awareness and system-state visibility"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Ensure status indicators reflect authoritative system state rather than optimistic client assumptions.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AB406DFB",
+      "revision": 1,
+      "semantic_sha256": "ab406dfb3884741daed1fb8b66fc89cf27269d553b3bb698521bf609d66000ad",
+      "statement": "Prevent success messages from appearing before the authoritative operation succeeds.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1159
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Situation awareness and system-state visibility"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Prevent success messages from appearing before the authoritative operation succeeds.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-12D988CB",
+      "revision": 1,
+      "semantic_sha256": "12d988cbc5f7a9b3b41b91ee28b3c20dc0917a4b5eca1e7e8d47e6e252436085",
+      "statement": "Provide a reliable way to inspect the final result of consequential actions.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1160
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Situation awareness and system-state visibility"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Provide a reliable way to inspect the final result of consequential actions.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-65FBB13B",
+      "revision": 1,
+      "semantic_sha256": "65fbb13bb6861000cbc3f7541b5bc4490ec5fb1b93edc8e18f5241a9e052efca",
+      "statement": "Make concurrent edits, conflicts, locks, and pending approvals visible.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1162
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Situation awareness and system-state visibility"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Make concurrent edits, conflicts, locks, and pending approvals visible.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F38882AC",
+      "revision": 1,
+      "semantic_sha256": "f38882acd411d44a5bf17ca152ff743220ca20436cbc957745690c059fcde980",
+      "statement": "Define a purpose, owner, severity, audience, response, and expiry for every operational alarm or notification.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1168
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Alarms, alerts, notifications, and interruption design"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define a purpose, owner, severity, audience, response, and expiry for every operational alarm or notification.” defines a bounded ownership, provenance, plan, monitoring, state-model, alarm, role, or handover record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains complete in-scope entries with every explicit owner, field, state, metric, version, date, approval, provenance link, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-02E00509",
+      "revision": 1,
+      "semantic_sha256": "02e00509bdea3486c01b47d849a2d232ef59dc80c752f8d790a7507f1cadb680",
+      "statement": "State what happened, who or what is affected, when it began, current severity, and the recommended next action.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1174
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Alarms, alerts, notifications, and interruption design"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “State what happened, who or what is affected, when it began, current severity, and the recommended next action.” defines a bounded ownership, provenance, plan, monitoring, state-model, alarm, role, or handover record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains complete in-scope entries with every explicit owner, field, state, metric, version, date, approval, provenance link, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E6D37933",
+      "revision": 1,
+      "semantic_sha256": "e6d3793367efeca05993b3040a44bf16ccdba0ec14f2099643918aecad6f7a5f",
+      "statement": "Preserve critical notifications across channel or device failure.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1177
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Alarms, alerts, notifications, and interruption design"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Preserve critical notifications across channel or device failure.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AAB9C8C0",
+      "revision": 1,
+      "semantic_sha256": "aab9c8c0a0277be19958eb9a568b3e80f4cf14adf7a0a7d43859af21ba0aed92",
+      "statement": "Ensure acknowledgment does not imply resolution.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1178
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Alarms, alerts, notifications, and interruption design"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Ensure acknowledgment does not imply resolution.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-734401CD",
+      "revision": 1,
+      "semantic_sha256": "734401cdb5e3e68874b7f80590adcf3a89cb9d74a2290b7722fdd204f0410261",
+      "statement": "Escalate unacknowledged or unresolved alarms according to impact and time.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1179
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Alarms, alerts, notifications, and interruption design"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Escalate unacknowledged or unresolved alarms according to impact and time.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-39882218",
+      "revision": 1,
+      "semantic_sha256": "39882218634d85193f2436c749be78ecd78052df982ff1f5f8f46cf6578c0e36",
+      "statement": "Prevent indefinite silencing, muting, snoozing, or suppression of critical alarms.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1180
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Alarms, alerts, notifications, and interruption design"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Prevent indefinite silencing, muting, snoozing, or suppression of critical alarms.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AF409BCA",
+      "revision": 1,
+      "semantic_sha256": "af409bca5f4ced1c7faadb04e6ab419d05bdd5aa2654d86a0ade323a080f7544",
+      "statement": "Record who suppressed an alarm, why, for how long, and under what compensating monitoring.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1181
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Alarms, alerts, notifications, and interruption design"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Record who suppressed an alarm, why, for how long, and under what compensating monitoring.” defines a bounded ownership, provenance, plan, monitoring, state-model, alarm, role, or handover record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains complete in-scope entries with every explicit owner, field, state, metric, version, date, approval, provenance link, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8F6C0C32",
+      "revision": 1,
+      "semantic_sha256": "8f6c0c32aa6b6aa2589c8bd966e5270b0cef6a09e558a59669bff482cd46a209",
+      "statement": "Measure nuisance rate, missed-event rate, response time, and operator workload.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1183
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Alarms, alerts, notifications, and interruption design"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Measure nuisance rate, missed-event rate, response time, and operator workload.” defines a bounded ownership, provenance, plan, monitoring, state-model, alarm, role, or handover record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains complete in-scope entries with every explicit owner, field, state, metric, version, date, approval, provenance link, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3FE97034",
+      "revision": 1,
+      "semantic_sha256": "3fe97034e291ba567318c259f9d8246c4deb441541a27215f435de903d73227e",
+      "statement": "Review alarm floods and repeated dismissals as design defects.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1184
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Alarms, alerts, notifications, and interruption design"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Review alarm floods and repeated dismissals as design defects.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5C37698B",
+      "revision": 1,
+      "semantic_sha256": "5c37698b43f731bae5dfcf87a16cf2c7b0534444edda23d6d0b2c1d7276308b2",
+      "statement": "Avoid relying on color, sound, motion, or a single channel alone for critical information.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1186
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Alarms, alerts, notifications, and interruption design"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Avoid relying on color, sound, motion, or a single channel alone for critical information.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0C50C691",
+      "revision": 1,
+      "semantic_sha256": "0c50c69150025c9600e64941438d3d0e9844c89a837193a0e9842b41a30d3dc7",
+      "statement": "Distinguish recommendations, warnings, hard prohibitions, and legally required choices.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1195
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Usable security and privacy"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Distinguish recommendations, warnings, hard prohibitions, and legally required choices.” defines a bounded ownership, provenance, plan, monitoring, state-model, alarm, role, or handover record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains complete in-scope entries with every explicit owner, field, state, metric, version, date, approval, provenance link, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7348B9D9",
+      "revision": 1,
+      "semantic_sha256": "7348b9d9c104182d4b7642fbd3eee45ac06e8b8b55e4c71aa1f77f0a4abef2b8",
+      "statement": "Show the exact account, organization, tenant, resource, audience, scope, duration, and privilege being granted.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1198
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Usable security and privacy"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Show the exact account, organization, tenant, resource, audience, scope, duration, and privilege being granted.” defines a bounded ownership, provenance, plan, monitoring, state-model, alarm, role, or handover record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains complete in-scope entries with every explicit owner, field, state, metric, version, date, approval, provenance link, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C567208A",
+      "revision": 1,
+      "semantic_sha256": "c567208a3994c738bc649834fb808d4034d4fcb1031a7157733bdb90f5551c04",
+      "statement": "Make privacy settings reflect actual backend behavior and downstream processing.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1212
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Usable security and privacy"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Make privacy settings reflect actual backend behavior and downstream processing.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9124EC32",
+      "revision": 1,
+      "semantic_sha256": "9124ec32d45cfbb5509a6681fe49ee0bacf461ac212fd51b8f08c36d5fe0530f",
+      "statement": "Monitor security-control abandonment, repeated bypass, support burden, and error as usability indicators.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1214
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Usable security and privacy"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Monitor security-control abandonment, repeated bypass, support burden, and error as usability indicators.” defines a bounded ownership, provenance, plan, monitoring, state-model, alarm, role, or handover record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains complete in-scope entries with every explicit owner, field, state, metric, version, date, approval, provenance link, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A73F5710",
+      "revision": 1,
+      "semantic_sha256": "a73f5710a7dcd9f3c0d0065e794af967a90a4909355780b046c18702b4670c58",
+      "statement": "Preserve work after validation errors, session expiry, network loss, or recoverable failure.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1225
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Human error prevention, tolerance, and recovery"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Preserve work after validation errors, session expiry, network loss, or recoverable failure.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2BD6C29C",
+      "revision": 1,
+      "semantic_sha256": "2bd6c29c2e05cef8c67eace1205dc45543ae4ce7f7e23eca75f54e82db761945",
+      "statement": "Prevent retry from duplicating charges, messages, records, or destructive effects.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1228
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Human error prevention, tolerance, and recovery"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Prevent retry from duplicating charges, messages, records, or destructive effects.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-967EE82E",
+      "revision": 1,
+      "semantic_sha256": "967ee82ef56cc6b5e58650fb452b49de173be36b1c96d5aee6b25af4f70fb680",
+      "statement": "Provide reconciliation when the system cannot know whether an external action completed.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1230
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Human error prevention, tolerance, and recovery"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Provide reconciliation when the system cannot know whether an external action completed.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A8F84FD1",
+      "revision": 1,
+      "semantic_sha256": "a8f84fd12ed6f118c2d1bc05167c0a83955d8be6de42230712ffcb8f0fbfc416",
+      "statement": "Prevent one mistaken bulk selection from affecting an unbounded population.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1231
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Human error prevention, tolerance, and recovery"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Prevent one mistaken bulk selection from affecting an unbounded population.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A8477083",
+      "revision": 1,
+      "semantic_sha256": "a8477083b20e6fd5f290bbd1bb36fd68abc800a30bed03d3cdf6e4cc2aa44b5a",
+      "statement": "Analyze near misses and recovered errors, not only incidents that caused harm.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1235
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Human error prevention, tolerance, and recovery"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Analyze near misses and recovered errors, not only incidents that caused harm.” defines a bounded ownership, provenance, plan, monitoring, state-model, alarm, role, or handover record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains complete in-scope entries with every explicit owner, field, state, metric, version, date, approval, provenance link, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7434557A",
+      "revision": 1,
+      "semantic_sha256": "7434557a220cd5cbb1c421ec6c9f6442a5e69d6b62909d1efca8b84a90a7d65f",
+      "statement": "Define which decisions remain human, which are automated, and which require shared control.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1240
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Human–automation interaction and decision support"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define which decisions remain human, which are automated, and which require shared control.” defines a bounded ownership, provenance, plan, monitoring, state-model, alarm, role, or handover record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains complete in-scope entries with every explicit owner, field, state, metric, version, date, approval, provenance link, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E4F11AA5",
+      "revision": 1,
+      "semantic_sha256": "e4f11aa5490dd435cf8a047c80ea3da0c8661ed4106527e4f700cc834de6cdff",
+      "statement": "Assign accountability for outcomes even when automation selects or executes the action.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1241
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Human–automation interaction and decision support"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Assign accountability for outcomes even when automation selects or executes the action.” defines a bounded ownership, provenance, plan, monitoring, state-model, alarm, role, or handover record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains complete in-scope entries with every explicit owner, field, state, metric, version, date, approval, provenance link, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A3AB4FAD",
+      "revision": 1,
+      "semantic_sha256": "a3ab4fadb881fe75072242a803433551ad9704cafa719312cbe1138c2e9025bc",
+      "statement": "Record overrides and outcomes without discouraging justified intervention.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1248
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Human–automation interaction and decision support"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Record overrides and outcomes without discouraging justified intervention.” defines a bounded ownership, provenance, plan, monitoring, state-model, alarm, role, or handover record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains complete in-scope entries with every explicit owner, field, state, metric, version, date, approval, provenance link, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D77DF566",
+      "revision": 1,
+      "semantic_sha256": "d77df566fdc7ff3ccd6104b875e04b83d842e548ca0b67c0244cf7b9f166645f",
+      "statement": "Test automation interaction across normal, edge, degraded, and adversarial conditions.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1255
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Human–automation interaction and decision support"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Test automation interaction across normal, edge, degraded, and adversarial conditions.” names a closed rendering, migration, interaction, or automation scenario set whose authenticated test execution and expected outcomes can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution evidence covers every scenario in the approved protocol for the exact revision and records the required expected outcome for each case.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9BF88D5A",
+      "revision": 1,
+      "semantic_sha256": "9bf88d5a5387f199cb42d456dd8f4bb8ab77a8e7ee1cc84e06c74e073b49e05b",
+      "statement": "Monitor whether real-world automation performance or operator behavior departs from evaluated assumptions.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1256
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Human–automation interaction and decision support"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Monitor whether real-world automation performance or operator behavior departs from evaluated assumptions.” defines a bounded ownership, provenance, plan, monitoring, state-model, alarm, role, or handover record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains complete in-scope entries with every explicit owner, field, state, metric, version, date, approval, provenance link, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1C4167A5",
+      "revision": 1,
+      "semantic_sha256": "1c4167a59e273c6899663bb7910807f8de0d2a90df0685336f543deee0549764",
+      "statement": "Provide overlap and structured handover for ongoing incidents, migrations, releases, and high-risk operations.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1265
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Staffing, fatigue, shifts, and handovers"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Provide overlap and structured handover for ongoing incidents, migrations, releases, and high-risk operations.” defines a bounded ownership, provenance, plan, monitoring, state-model, alarm, role, or handover record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains complete in-scope entries with every explicit owner, field, state, metric, version, date, approval, provenance link, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-76A1AB5D",
+      "revision": 1,
+      "semantic_sha256": "76a1ab5d6101bcb67ccbc311ae085f092453db358aa5654819f7a956c4f3af38",
+      "statement": "Include current state, recent changes, unresolved alarms, risks, decisions, and next actions in handover records.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1266
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Staffing, fatigue, shifts, and handovers"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Include current state, recent changes, unresolved alarms, risks, decisions, and next actions in handover records.” defines a bounded ownership, provenance, plan, monitoring, state-model, alarm, role, or handover record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains complete in-scope entries with every explicit owner, field, state, metric, version, date, approval, provenance link, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2F7EFB21",
+      "revision": 1,
+      "semantic_sha256": "2f7efb2119ca392724fcd96df5642c388dfed9d2190d6c224391a39f820c31d0",
+      "statement": "Provide backup personnel for every critical operational capability.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1269
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Staffing, fatigue, shifts, and handovers"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Provide backup personnel for every critical operational capability.” defines a bounded ownership, provenance, plan, monitoring, state-model, alarm, role, or handover record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains complete in-scope entries with every explicit owner, field, state, metric, version, date, approval, provenance link, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CDAF1A2F",
+      "revision": 1,
+      "semantic_sha256": "cdaf1a2f012a8293ca31088d8c122b2083442e483378606ab11ae32686a21559",
+      "statement": "Include contractors, suppliers, and outsourced operators in staffing and handover design.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1272
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Staffing, fatigue, shifts, and handovers"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Include contractors, suppliers, and outsourced operators in staffing and handover design.” defines a bounded ownership, provenance, plan, monitoring, state-model, alarm, role, or handover record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains complete in-scope entries with every explicit owner, field, state, metric, version, date, approval, provenance link, or lifecycle attribute required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-69D2A7A8",
+      "revision": 1,
+      "semantic_sha256": "69d2a7a82f24a0ee8654c52e7f51a88a3b4d32b676b8cba92d53dbfc52378a49",
+      "statement": "Review human-capacity assumptions before launches, seasonal peaks, migrations, and organizational changes.",
+      "source": {
+        "path": "docs/engineering/03-user-experience-web-and-content.md",
+        "line": 1273
+      },
+      "heading_trail": [
+        "User experience, web, and content",
+        "Final Gap Closure — Human Factors, Operator Experience, and Usable Security",
+        "Staffing, fatigue, shifts, and handovers"
+      ],
+      "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-004",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Review human-capacity assumptions before launches, seasonal peaks, migrations, and organizational changes.” can be evaluated through exact joins or comparisons across complete route, page, locale, alarm, action, role, configuration, timestamp, and evidence authorities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope route, page, locale, content item, alarm, action, role, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, browser, environment, or event evidence satisfies every approved exact identity, state, timing, relationship, delivery, isolation, or threshold condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    }
+  ]
+}

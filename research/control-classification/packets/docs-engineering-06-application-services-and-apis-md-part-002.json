@@ -1,0 +1,1241 @@
+{
+  "schema_version": "prc.control-classification-packet/v0.1",
+  "packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "source_path": "docs/engineering/06-application-services-and-apis.md",
+  "control_count": 82,
+  "controls": [
+    {
+      "control_id": "USEQ-2E8EB9F7",
+      "revision": 1,
+      "semantic_sha256": "2e8eb9f71f1c10f1e881ba070d0d8d9f3ff4cf0bc524adf8c51b8dea6ff6f4ee",
+      "statement": "Make repeated execution safe or explicitly prevented.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 357
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Data and state transition"
+      ]
+    },
+    {
+      "control_id": "USEQ-F4B43A58",
+      "revision": 1,
+      "semantic_sha256": "f4b43a5811116c1bb47dcbe85923ac5caf811a20b8c6f28c3187b317c104ead4",
+      "statement": "Verify counts, totals, checksums, constraints, samples, and business invariants before and after transition.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 358
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Data and state transition"
+      ]
+    },
+    {
+      "control_id": "USEQ-DFD47D97",
+      "revision": 1,
+      "semantic_sha256": "dfd47d97c2db8578a9b9546f7c18fe36984d73d255ee223de6369718f8b6ac94",
+      "statement": "Reconcile downstream caches, indexes, analytics, replicas, exports, and integrations.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 359
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Data and state transition"
+      ]
+    },
+    {
+      "control_id": "USEQ-9C8BBE5C",
+      "revision": 1,
+      "semantic_sha256": "9c8bbe5c04294e092e2338be2d29ca3577501a1a556a0d53a06071db38fc8379",
+      "statement": "Maintain a protected recovery point before destructive transformation.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 360
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Data and state transition"
+      ]
+    },
+    {
+      "control_id": "USEQ-3376BB06",
+      "revision": 1,
+      "semantic_sha256": "3376bb06c0d3b7e3538bdac715679be844775c1a68bf490e08f4f7cce052ebe8",
+      "statement": "Document whether rollback is possible after each point of no return.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 361
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Data and state transition"
+      ]
+    },
+    {
+      "control_id": "USEQ-6E36BDB8",
+      "revision": 1,
+      "semantic_sha256": "6e36bdb8eb62ae32d62e4ed57d5328169d2b7c84e48196b4fb99a7c50cf89c44",
+      "statement": "Provide a tested roll-forward plan when rollback cannot restore a valid state.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 362
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Data and state transition"
+      ]
+    },
+    {
+      "control_id": "USEQ-8A020852",
+      "revision": 1,
+      "semantic_sha256": "8a0208521bb6274890705e28897ba7354f0095d9d6bbe13c83a27f024b02b35d",
+      "statement": "Prevent transition from re-enabling revoked identities, deleted data, expired consent, or obsolete credentials.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 363
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Data and state transition"
+      ]
+    },
+    {
+      "control_id": "USEQ-C03712FC",
+      "revision": 1,
+      "semantic_sha256": "c03712fcec411ea2b0b6901fa47f524a56ebb2d6e33e45a42868934b620fae1e",
+      "statement": "Dispose of temporary copies and migration credentials after verified completion.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 364
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Data and state transition"
+      ]
+    },
+    {
+      "control_id": "USEQ-8DADCE97",
+      "revision": 1,
+      "semantic_sha256": "8dadce9706bf6355bad4d510e3c8f79861c0e9919ebe593e0d61ea152417a4a5",
+      "statement": "Define supported installation, upgrade, downgrade, replacement, and removal paths.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 368
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Installation, upgrade, coexistence, and replacement"
+      ]
+    },
+    {
+      "control_id": "USEQ-0AA61EFD",
+      "revision": 1,
+      "semantic_sha256": "0aa61efd42b284c430f6992ddeefe1fc4d42c18e532ab2d83d7adb5335568353",
+      "statement": "Test fresh installation and upgrade from every supported starting state.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 369
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Installation, upgrade, coexistence, and replacement"
+      ]
+    },
+    {
+      "control_id": "USEQ-F52F674A",
+      "revision": 1,
+      "semantic_sha256": "f52f674a2b64cb391b73ff51dd95bbbd4f9eff4eb79fecaccdcc3c5e781fd6cd",
+      "statement": "Test interrupted installation and upgrade recovery.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 370
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Installation, upgrade, coexistence, and replacement"
+      ]
+    },
+    {
+      "control_id": "USEQ-2ADF602E",
+      "revision": 1,
+      "semantic_sha256": "2adf602e31ac34dfa03e247bd4777a8123724c5c0f127d4c39f2e2a191e58c5d",
+      "statement": "Verify prerequisites before making irreversible changes.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 371
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Installation, upgrade, coexistence, and replacement"
+      ]
+    },
+    {
+      "control_id": "USEQ-43BE7891",
+      "revision": 1,
+      "semantic_sha256": "43be7891b28d66ad7ecbd85f46bca8e6fefd6f726d6820a53358c3d10d4fda69",
+      "statement": "Detect insufficient storage, permission, version, capacity, or connectivity before transition.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 372
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Installation, upgrade, coexistence, and replacement"
+      ]
+    },
+    {
+      "control_id": "USEQ-981573E3",
+      "revision": 1,
+      "semantic_sha256": "981573e34d605534adf39344b42025575f7a7e0a6332288fcb5567f805451dce",
+      "statement": "Keep old and new versions compatible during rolling or phased change where coexistence occurs.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 373
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Installation, upgrade, coexistence, and replacement"
+      ]
+    },
+    {
+      "control_id": "USEQ-B9F93CB2",
+      "revision": 1,
+      "semantic_sha256": "b9f93cb228a49bdee12a65f807a2a20d031d9d98be71ae404aca33f1c7af9611",
+      "statement": "Prevent incompatible mixed versions from serving traffic together.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 374
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Installation, upgrade, coexistence, and replacement"
+      ]
+    },
+    {
+      "control_id": "USEQ-9C5C4DDD",
+      "revision": 1,
+      "semantic_sha256": "9c5c4ddd9cb5045b5d53171f8e66ff5a65e863b8527c27440320a0529eb71afa",
+      "statement": "Define ownership and cleanup of old binaries, images, schemas, services, routes, secrets, and scheduled jobs.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 375
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Installation, upgrade, coexistence, and replacement"
+      ]
+    },
+    {
+      "control_id": "USEQ-32032AB7",
+      "revision": 1,
+      "semantic_sha256": "32032ab7394806f16a3441a7db69345e37e85d128fa6e803231be0665033eeaa",
+      "statement": "Preserve user configuration and data unless explicit informed replacement is required.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 376
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Installation, upgrade, coexistence, and replacement"
+      ]
+    },
+    {
+      "control_id": "USEQ-E5A346BD",
+      "revision": 1,
+      "semantic_sha256": "e5a346bd38c32121e72145aaf8b7fd8a33e173eeff5450a76628f8ac7109d3e5",
+      "statement": "Avoid overwriting locally controlled settings without a documented policy.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 377
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Installation, upgrade, coexistence, and replacement"
+      ]
+    },
+    {
+      "control_id": "USEQ-1408D4CC",
+      "revision": 1,
+      "semantic_sha256": "1408d4cc0f51028aecf7e9db75dc44a139205062f0cf2f0b7bd31c61843ad6fa",
+      "statement": "Verify that uninstall or decommission removes access, listeners, scheduled work, credentials, and sensitive data as intended.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 378
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Installation, upgrade, coexistence, and replacement"
+      ]
+    },
+    {
+      "control_id": "USEQ-3670663F",
+      "revision": 1,
+      "semantic_sha256": "3670663f15460a0dd4e1a26eb9046d53a7118b78e85c51f46d83bcff0b99350a",
+      "statement": "Ensure replacement does not leave dangling DNS, routes, queues, webhooks, or trust relationships.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 379
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Installation, upgrade, coexistence, and replacement"
+      ]
+    },
+    {
+      "control_id": "USEQ-EC5CA0BF",
+      "revision": 1,
+      "semantic_sha256": "ec5ca0bf8eb3c6057575f46a1ca3f4dbfc8bbc12f8adc8e9a64a467468f2e4a4",
+      "statement": "Validate compatibility with supported clients, agents, extensions, and external systems.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 380
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Installation, upgrade, coexistence, and replacement"
+      ]
+    },
+    {
+      "control_id": "USEQ-A4050E06",
+      "revision": 1,
+      "semantic_sha256": "a4050e06a56a93af0d0e813032107b1e25b56bb3c5e396c9e664698910a2ab2d",
+      "statement": "Provide a clear version-identification and support-status mechanism.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 381
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Installation, upgrade, coexistence, and replacement"
+      ]
+    },
+    {
+      "control_id": "USEQ-BC2B199B",
+      "revision": 1,
+      "semantic_sha256": "bc2b199bf1340814167b2d9fa5be6c7a74b7a51b5857049c7fc1f54c80f70daf",
+      "statement": "Monitor adoption and detect stranded or unsupported versions.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 382
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Installation, upgrade, coexistence, and replacement"
+      ]
+    },
+    {
+      "control_id": "USEQ-7700A5E8",
+      "revision": 1,
+      "semantic_sha256": "7700a5e824580f0409a325c3dd017db183e2e3c6bee9260c1d7e4c76760fa17c",
+      "statement": "Define forced-update conditions only when proportionate to security, safety, or compatibility risk.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 383
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Installation, upgrade, coexistence, and replacement"
+      ]
+    },
+    {
+      "control_id": "USEQ-58EC2595",
+      "revision": 1,
+      "semantic_sha256": "58ec25957dd3f00ccb2da19092293307634e1ca108cf148ad03296fbe750339f",
+      "statement": "Ensure emergency update mechanisms are authenticated, authorized, resilient, and recoverable.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 384
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Installation, upgrade, coexistence, and replacement"
+      ]
+    },
+    {
+      "control_id": "USEQ-6024C9B1",
+      "revision": 1,
+      "semantic_sha256": "6024c9b173364b34aa0af8c20fb69d96ffaff147bc9a8035c766325c3dee8b80",
+      "statement": "Define operational acceptance criteria before development is complete.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 388
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Operational transition and handover"
+      ]
+    },
+    {
+      "control_id": "USEQ-D083AE3C",
+      "revision": 1,
+      "semantic_sha256": "d083ae3cffcd2d857d4c73b8d99217b0f98fc0da436f11dbec5360a3eefdcc62",
+      "statement": "Include observability, alerts, runbooks, support, capacity, continuity, security, privacy, access, and cost in acceptance criteria.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 389
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Operational transition and handover"
+      ]
+    },
+    {
+      "control_id": "USEQ-E53D5660",
+      "revision": 1,
+      "semantic_sha256": "e53d56602a19560a812fb6eaad6d7327d76368596c5223166694f3d8f7b35166",
+      "statement": "Identify the organization and individuals authorized to accept operational responsibility.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 390
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Operational transition and handover"
+      ]
+    },
+    {
+      "control_id": "USEQ-20552B69",
+      "revision": 1,
+      "semantic_sha256": "20552b69017e855c86344170a774334769c63998bdd567c7bdf44cb7af0d3af8",
+      "statement": "Do not transfer responsibility before operators have access, competence, evidence, and a stable support path.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 391
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Operational transition and handover"
+      ]
+    },
+    {
+      "control_id": "USEQ-AEECABED",
+      "revision": 1,
+      "semantic_sha256": "aeecabed99b22c69d09c59d536bd4d7b9fbba3af7681cb88e45885cca47b9ad0",
+      "statement": "Provide architecture, dependency, data, configuration, deployment, recovery, and known-risk documentation.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 392
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Operational transition and handover"
+      ]
+    },
+    {
+      "control_id": "USEQ-F845B223",
+      "revision": 1,
+      "semantic_sha256": "f845b2233ee224903f7dae79de0abc4f814a048eb455c55126b7e34300c8cb6c",
+      "statement": "Transfer outstanding incidents, defects, exceptions, workarounds, debt, and supplier commitments explicitly.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 393
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Operational transition and handover"
+      ]
+    },
+    {
+      "control_id": "USEQ-3BF30324",
+      "revision": 1,
+      "semantic_sha256": "3bf303244518472f9179475c607083c81aab865c4f406306963b5c95628a0900",
+      "statement": "Validate that monitoring covers the actual production deployment.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 394
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Operational transition and handover"
+      ]
+    },
+    {
+      "control_id": "USEQ-23FADC9E",
+      "revision": 1,
+      "semantic_sha256": "23fadc9ebc26d336e8bab120f1348c0389177cdc48d3b2895c90e4b2a5a69782",
+      "statement": "Validate escalation, paging, status communication, and provider support routes.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 395
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Operational transition and handover"
+      ]
+    },
+    {
+      "control_id": "USEQ-D5B7F955",
+      "revision": 1,
+      "semantic_sha256": "d5b7f95536b2700c340836fbab97cfe6b8d9e762ce26592e80d2165ae8074907",
+      "statement": "Exercise common and severe runbooks with the receiving team.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 396
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Operational transition and handover"
+      ]
+    },
+    {
+      "control_id": "USEQ-94EBD701",
+      "revision": 1,
+      "semantic_sha256": "94ebd701c996aa225c6ac6704a71d87df72da635bd6ab51616b6b46d831c5194",
+      "statement": "Verify backup restoration, rollback, failover, and credential-recovery procedures.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 397
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Operational transition and handover"
+      ]
+    },
+    {
+      "control_id": "USEQ-DB24571C",
+      "revision": 1,
+      "semantic_sha256": "db24571c29a4765061d0b572a540b695ef27408603c0b6dfd8a7ff324e2a88ab",
+      "statement": "Establish a bounded enhanced-support period for high-risk transitions.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 398
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Operational transition and handover"
+      ]
+    },
+    {
+      "control_id": "USEQ-977F0AD1",
+      "revision": 1,
+      "semantic_sha256": "977f0ad111ec8b27cb745ec86febb25b13392e9ca4347f47b8bbacfbefe6ba35",
+      "statement": "Define who owns decisions during the overlap between delivery and operations.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 399
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Operational transition and handover"
+      ]
+    },
+    {
+      "control_id": "USEQ-F3B48A5C",
+      "revision": 1,
+      "semantic_sha256": "f3b48a5cbd5844ebe655d4d22870b8496b47208da8bd8bb745342e1c10455dcb",
+      "statement": "Measure early-life incidents, support demand, performance, data integrity, and user outcomes.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 400
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Operational transition and handover"
+      ]
+    },
+    {
+      "control_id": "USEQ-5BAB2070",
+      "revision": 1,
+      "semantic_sha256": "5bab2070896f8c7e144e1282bf23302fd2518a1e51a88491d040a430c2a45773",
+      "statement": "Prevent project closure from hiding unresolved operational risk.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 401
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Operational transition and handover"
+      ]
+    },
+    {
+      "control_id": "USEQ-62D52CC9",
+      "revision": 1,
+      "semantic_sha256": "62d52cc9348e1e98875378ee263f4def0ed60319d9914c42aba4e49bce7bff02",
+      "statement": "Obtain explicit acceptance or record a no-go decision with unresolved conditions.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 402
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Operational transition and handover"
+      ]
+    },
+    {
+      "control_id": "USEQ-1308B666",
+      "revision": 1,
+      "semantic_sha256": "1308b6661d4e41c39e8c8aafcbbde17c3600e3cc9c1f1d5efd1c92c06ef34195",
+      "statement": "Prefer stable, publicly documented, broadly implementable standards when they satisfy the requirement.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 406
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Open standards and interoperability"
+      ]
+    },
+    {
+      "control_id": "USEQ-B6D67C32",
+      "revision": 1,
+      "semantic_sha256": "b6d67c32b50e78fa1d964946932ced0f46524d354c67caedc29e732941928145",
+      "statement": "Select standards based on semantic fit, maturity, governance, security, accessibility, adoption, and lifecycle support.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 407
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Open standards and interoperability"
+      ]
+    },
+    {
+      "control_id": "USEQ-F60A0D39",
+      "revision": 1,
+      "semantic_sha256": "f60a0d39caaa1c304e606255325b87df840727fc98d27e03a9325396bd1e0e17",
+      "statement": "Distinguish an open specification from an implementation that still depends on proprietary behavior.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 408
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Open standards and interoperability"
+      ]
+    },
+    {
+      "control_id": "USEQ-7F700ED0",
+      "revision": 1,
+      "semantic_sha256": "7f700ed06639d45beb57802cac24cbb9735b057d1f2c0a659a25776370677a6a",
+      "statement": "Verify interoperability with more than one implementation when avoiding lock-in is material.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 409
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Open standards and interoperability"
+      ]
+    },
+    {
+      "control_id": "USEQ-B9C1C86F",
+      "revision": 1,
+      "semantic_sha256": "b9c1c86f92c6176c3e93c8ebc86b2aec485cf87c6f01696cdad3d311da0080fa",
+      "statement": "Avoid optional profiles so broad that implementations cannot predictably interoperate.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 410
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Open standards and interoperability"
+      ]
+    },
+    {
+      "control_id": "USEQ-76528E47",
+      "revision": 1,
+      "semantic_sha256": "76528e477e9eb602b9855c240a26b7646864381f2abe756dfae0cf70e3e994ed",
+      "statement": "Document the exact profile, extensions, versions, and interpretations used.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 411
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Open standards and interoperability"
+      ]
+    },
+    {
+      "control_id": "USEQ-7C246FB0",
+      "revision": 1,
+      "semantic_sha256": "7c246fb016e59aaa7fd81f49a731cde5bf62623f31ecb7a0b981f9438170ff16",
+      "statement": "Contribute discovered ambiguities or defects back to the relevant standards or community process where feasible.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 412
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Open standards and interoperability"
+      ]
+    },
+    {
+      "control_id": "USEQ-F7E0BF1B",
+      "revision": 1,
+      "semantic_sha256": "f7e0bf1b5b177bbe4d8b7dcd74347e75718cd846a38227b9794dfccaa279509e",
+      "statement": "Do not claim standards conformance without passing the applicable normative requirements and declared profile.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 413
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Open standards and interoperability"
+      ]
+    },
+    {
+      "control_id": "USEQ-5ABC83D4",
+      "revision": 1,
+      "semantic_sha256": "5abc83d473ad64fd96563b15f5d2eeaf340d9c581a5f869c824de4c7a44320fb",
+      "statement": "Preserve protocol and data semantics when translating between standards.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 414
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Open standards and interoperability"
+      ]
+    },
+    {
+      "control_id": "USEQ-6EACA1A3",
+      "revision": 1,
+      "semantic_sha256": "6eaca1a3283f373629c3406e429c05927daa2b7d5fc960a098ed5762dbd490f9",
+      "statement": "Avoid proprietary identifiers, formats, or extensions where durable exchange is required unless an open mapping exists.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 415
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Open standards and interoperability"
+      ]
+    },
+    {
+      "control_id": "USEQ-86F9640A",
+      "revision": 1,
+      "semantic_sha256": "86f9640ae00f1935903e4163c167fb498ab1e73aca51b89a9f835c2e4f9656ab",
+      "statement": "Provide accessible and localized representations where the standard supports human presentation.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 416
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Open standards and interoperability"
+      ]
+    },
+    {
+      "control_id": "USEQ-BA413359",
+      "revision": 1,
+      "semantic_sha256": "ba413359b8bee2a61e826e1ab5f0c230b35c1c042b3926962bb745ff221bf145",
+      "statement": "Monitor standard deprecation, errata, security guidance, and replacement work.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 417
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Open standards and interoperability"
+      ]
+    },
+    {
+      "control_id": "USEQ-9FA5189E",
+      "revision": 1,
+      "semantic_sha256": "9fa5189e49902d8018dd5c9c550cc5bc6183be7655df8bf4ab862478d275a5f8",
+      "statement": "Plan migration before a protocol, format, or algorithm becomes unsupported.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 418
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Open standards and interoperability"
+      ]
+    },
+    {
+      "control_id": "USEQ-4F165C23",
+      "revision": 1,
+      "semantic_sha256": "4f165c23501b74d698780da413851e238337d938baa36bf2f412b7ecade9a134",
+      "statement": "Ensure conformance tests themselves are versioned, reviewed, and representative.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 419
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Open standards and interoperability"
+      ]
+    },
+    {
+      "control_id": "USEQ-D633A4FE",
+      "revision": 1,
+      "semantic_sha256": "d633a4fe8fc11802dd5878e2c98f749c6c2545551b8dd156c31b65a4c825858f",
+      "statement": "Define what must remain portable: data, metadata, identities, permissions, configurations, workflows, policies, logs, models, prompts, keys, and history.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 423
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Portability, exitability, and reversibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-31D5679B",
+      "revision": 1,
+      "semantic_sha256": "31d5679b6fc30a53b0d21ae2de511ed1cbc508bf3d9b2c1f3f63aeef136305fe",
+      "statement": "Provide export in documented, durable, independently parseable formats.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 424
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Portability, exitability, and reversibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-C28B29B6",
+      "revision": 1,
+      "semantic_sha256": "c28b29b64301400cc97d391b36eaa92390173f2a6ca14e74aa64afe5127e2e3e",
+      "statement": "Include enough metadata and semantics to interpret exported values correctly.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 425
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Portability, exitability, and reversibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-3A7150A3",
+      "revision": 1,
+      "semantic_sha256": "3a7150a397485c822d2f79d0474a8638206a76d45e87eeef61ddfa3ce1723472",
+      "statement": "Preserve relationships, ordering, provenance, and integrity across export and import.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 426
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Portability, exitability, and reversibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-EE11B49B",
+      "revision": 1,
+      "semantic_sha256": "ee11b49bff940f442b510dc6a82e9ef5afd7abcd34ff1926b3b5ffa94de657a4",
+      "statement": "Avoid exports that are technically complete but operationally unusable without proprietary services.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 427
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Portability, exitability, and reversibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-42F63C13",
+      "revision": 1,
+      "semantic_sha256": "42f63c1313482180bc8b6bfb434f9161cf6431d28d8185623e0e384dd0e4add1",
+      "statement": "Test import into an alternate implementation or a documented reconstruction process.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 428
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Portability, exitability, and reversibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-BA991AC6",
+      "revision": 1,
+      "semantic_sha256": "ba991ac64ccaeeaf919c5c33de91696c98c30f356fb0178c8a63c0c373abdb0f",
+      "statement": "Measure the time, cost, bandwidth, downtime, and expertise required to exit.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 429
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Portability, exitability, and reversibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-E74B188D",
+      "revision": 1,
+      "semantic_sha256": "e74b188de305fe070947b28932516d1cc456d23650e3dd8a87923c6a7dd53390",
+      "statement": "Avoid unbounded data-egress, termination, or support barriers without explicit risk acceptance.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 430
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Portability, exitability, and reversibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-1467A309",
+      "revision": 1,
+      "semantic_sha256": "1467a3092e86fcac3e313ed8286f0a03543195ac341f11c0104e1ed3703e8c61",
+      "statement": "Maintain source, build, configuration, documentation, and operating rights needed for continuity where appropriate.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 431
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Portability, exitability, and reversibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-4F0B7BC5",
+      "revision": 1,
+      "semantic_sha256": "4f0b7bc5f298ef80e3205724af7b0f4c9658328980051f73842f0dca70be7c8a",
+      "statement": "Preserve access to historical versions and tools needed to interpret retained records.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 432
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Portability, exitability, and reversibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-67CB5775",
+      "revision": 1,
+      "semantic_sha256": "67cb5775393d3c790422f5806f794999adb483fafd6f82bc9e9009a8b322a51f",
+      "statement": "Ensure encryption and signing keys required for export or validation remain available under controlled recovery.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 433
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Portability, exitability, and reversibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-F432B8C9",
+      "revision": 1,
+      "semantic_sha256": "f432b8c9a3636cdea1ffffbe985cfbfd2f1cf6fa997d2fd0301894b08155242c",
+      "statement": "Define how external identities, domains, certificates, and trust relationships transfer.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 434
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Portability, exitability, and reversibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-485E486B",
+      "revision": 1,
+      "semantic_sha256": "485e486bf84c35ad99e3ec10ae12be0f998d31b1302576c39d7ac450755a5963",
+      "statement": "Test provider, region, account, and organization migration before an emergency.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 435
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Portability, exitability, and reversibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-13ADCC69",
+      "revision": 1,
+      "semantic_sha256": "13adcc691ce6ee315d40d14be61501618f6d98eca2d664a8e4df86fb037a2ae0",
+      "statement": "Maintain alternate contact, billing, and administrative access routes during transition.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 436
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Portability, exitability, and reversibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-8094CE35",
+      "revision": 1,
+      "semantic_sha256": "8094ce355c21b9bd185652f8b1819eaf7448d5d6c18b1bb79a5244d19dd084ab",
+      "statement": "Remove old-provider access and residual data after verified migration.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 437
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Portability, exitability, and reversibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-BFEAA140",
+      "revision": 1,
+      "semantic_sha256": "bfeaa1402fc999afc7838d1a6f58ca2580cabab3afd3fed65712b7f3fac77b54",
+      "statement": "Verify the old system cannot continue accepting authoritative updates after cutover.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 438
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Portability, exitability, and reversibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-CEEE0784",
+      "revision": 1,
+      "semantic_sha256": "ceee078409df9bbe2252793714f12ca2a488a62a32bb03a0f3b9407a96f8977f",
+      "statement": "Record residual dependencies that remain after declared exit.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 439
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Portability, exitability, and reversibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-AA309E1F",
+      "revision": 1,
+      "semantic_sha256": "aa309e1f22bcc2209b5eefb0797fea6d303488446f6f283cc239512ff3d7cf5d",
+      "statement": "Trace each integration requirement to contract evidence and representative tests.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 443
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Integration assurance and release gates"
+      ]
+    },
+    {
+      "control_id": "USEQ-CDB2259B",
+      "revision": 1,
+      "semantic_sha256": "cdb2259b1c1112ba069848c9551e4942ba73a97027e9fd3374d13687878e73b2",
+      "statement": "Verify end-to-end critical journeys across actual organizational and technical boundaries.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 444
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Integration assurance and release gates"
+      ]
+    },
+    {
+      "control_id": "USEQ-A877BF6B",
+      "revision": 1,
+      "semantic_sha256": "a877bf6b23a612c2553cc8cbafc211feba6982c730e8e972dbdea530f0c1b634",
+      "statement": "Verify security, privacy, accessibility, records, performance, and recovery behavior across the complete chain.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 445
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Integration assurance and release gates"
+      ]
+    },
+    {
+      "control_id": "USEQ-CB5A99DA",
+      "revision": 1,
+      "semantic_sha256": "cb5a99da9b6e2ed48176a80b0429dac2b81686d4f699f38785a430ab23e3666b",
+      "statement": "Test partial completion, ambiguous outcomes, duplicate delivery, and reconciliation.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 446
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Integration assurance and release gates"
+      ]
+    },
+    {
+      "control_id": "USEQ-455260BF",
+      "revision": 1,
+      "semantic_sha256": "455260bf4da82ab8a58b54e811bbf130b2772bdd2cab06cd2c518378c7f3dcbf",
+      "statement": "Test behavior when each critical participant is unavailable or nonconforming.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 447
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Integration assurance and release gates"
+      ]
+    },
+    {
+      "control_id": "USEQ-C0D99348",
+      "revision": 1,
+      "semantic_sha256": "c0d99348d2ded6853fbe932a496645685ec745b023103245c22e29ed451eda84",
+      "statement": "Verify that logs and traces permit cross-boundary diagnosis without exposing restricted data.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 448
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Integration assurance and release gates"
+      ]
+    },
+    {
+      "control_id": "USEQ-BF26F79B",
+      "revision": 1,
+      "semantic_sha256": "bf26f79b5076a6923615321ee452b8912819f6412156bc785eedeb7851adce0f",
+      "statement": "Confirm support teams can identify ownership and escalate across organizations.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 449
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Integration assurance and release gates"
+      ]
+    },
+    {
+      "control_id": "USEQ-0FFCF015",
+      "revision": 1,
+      "semantic_sha256": "0ffcf015333f060d70d97ae1dd64fad46acff6dc4eff65710862eecfb9b2e8e8",
+      "statement": "Treat unresolved contract ambiguity, untested migration, missing rollback, or unknown failure behavior as release blockers when impact is material.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 450
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Integration assurance and release gates"
+      ]
+    },
+    {
+      "control_id": "USEQ-B38FFB2D",
+      "revision": 1,
+      "semantic_sha256": "b38ffb2dc23a3b003b5b69da498f24f3e274bc0bcfeb7ad95bb3d0951e7ae43f",
+      "statement": "Obtain explicit acceptance from every organization assuming material operational responsibility.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 451
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Integration assurance and release gates"
+      ]
+    },
+    {
+      "control_id": "USEQ-8FFC64D0",
+      "revision": 1,
+      "semantic_sha256": "8ffc64d008234076c27c0b45ea3b9d349c353e836901fbb63d39ade130a27ba3",
+      "statement": "Preserve the integration baseline, evidence, exceptions, and exact component versions with the release.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 452
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Integration assurance and release gates"
+      ]
+    },
+    {
+      "control_id": "USEQ-E63864C3",
+      "revision": 1,
+      "semantic_sha256": "e63864c327916dc806b91712962e6b7350b6f3cf9c4172a6c21d16f541092560",
+      "statement": "Re-run affected assurance after any material interface or transition change.",
+      "source": {
+        "path": "docs/engineering/06-application-services-and-apis.md",
+        "line": 453
+      },
+      "heading_trail": [
+        "Application services and APIs",
+        "Final Gap Closure — Integration, Transition, Open Standards, and Exitability",
+        "Integration assurance and release gates"
+      ]
+    }
+  ]
+}

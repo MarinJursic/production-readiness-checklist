@@ -1,0 +1,666 @@
+{
+  "schema_version": "prc.control-classification-skeptic-review/v0.1",
+  "packet_id": "skeptic-docs-engineering-06-application-services-and-apis-md-part-002-part-001",
+  "primary_packet_id": "docs-engineering-06-application-services-and-apis-md-part-002",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "controls": [
+    {
+      "control_id": "USEQ-2E8EB9F7",
+      "revision": 1,
+      "semantic_sha256": "2e8eb9f71f1c10f1e881ba070d0d8d9f3ff4cf0bc524adf8c51b8dea6ff6f4ee",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Finite replay fixtures over a declared transition inventory cannot prove repeated execution is safe or prevented across every side effect, callback, race, and retry path.",
+      "counterexample_analysis": "An unlisted notification side effect fires twice when a migration step is replayed, while every declared database effect is idempotent. The proposed suite passes.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F4B43A58",
+      "revision": 1,
+      "semantic_sha256": "f4b43a5811116c1bb47dcbe85923ac5caf811a20b8c6f28c3187b317c104ead4",
+      "verdict": "confirmed_deterministic",
+      "reason": "The rule requires explicit before-and-after verification using six named evidence classes, which bound snapshots, formulas, constraints, samples, and invariant results can prove occurred.",
+      "counterexample_analysis": "I tried a checksum only after transition, totals without a pre-state binding, and an invariant from another migration; exact evidence-class, time, and transition joins fail each.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-9C8BBE5C",
+      "revision": 1,
+      "semantic_sha256": "9c8bbe5c04294e092e2338be2d29ca3577501a1a556a0d53a06071db38fc8379",
+      "verdict": "confirmed_deterministic",
+      "reason": "A protected recovery artifact with immutable identity, access controls, integrity proof, and timestamp before the exact destructive step is a bounded fact.",
+      "counterexample_analysis": "I tried a snapshot created after transformation, a writable copy, and an artifact with no restore identity; ordering, protection, and integrity checks reject each. Recovery success is separate.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-3376BB06",
+      "revision": 1,
+      "semantic_sha256": "3376bb06c0d3b7e3538bdac715679be844775c1a68bf490e08f4f7cce052ebe8",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A field saying rollback is possible does not prove that claim, while the inventory can omit a real point of no return or necessary state condition.",
+      "counterexample_analysis": "A migration marks rollback possible despite irreversible external notifications and omits that point from the state map. Every listed point has a yes-or-no field, so the proposal passes.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-6E36BDB8",
+      "revision": 1,
+      "semantic_sha256": "6e36bdb8eb62ae32d62e4ed57d5328169d2b7c84e48196b4fb99a7c50cf89c44",
+      "verdict": "confirmed_deterministic",
+      "reason": "For a contract-defined nonrollback state, a versioned roll-forward plan plus authenticated execution against its fixed oracle proves that it was provided and tested.",
+      "counterexample_analysis": "I tried a plan without execution, a test for a rollback-capable state, and evidence for another transition revision; applicability and binding checks fail each. Universal future recovery is not asserted.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-C03712FC",
+      "revision": 1,
+      "semantic_sha256": "c03712fcec411ea2b0b6901fa47f524a56ebb2d6e33e45a42868934b620fae1e",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Temporary-copy and credential inventories cannot independently enumerate every database snapshot, export, cache, workstation copy, provider token, and derived credential.",
+      "counterexample_analysis": "A migration CSV remains on an operator laptop but is absent from the inventory. Every registered copy and credential is deleted after completion, so the proposal passes.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-8DADCE97",
+      "revision": 1,
+      "semantic_sha256": "8dadce9706bf6355bad4d510e3c8f79861c0e9919ebe593e0d61ea152417a4a5",
+      "verdict": "confirmed_deterministic",
+      "reason": "The support policy can enumerate five exact lifecycle path types and their supported source and target states in a versioned transition graph.",
+      "counterexample_analysis": "I tried omitting downgrade, adding a path without start state, and conflicting support statuses; enum, graph, and version checks reject each. Whether implementations work is not claimed.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-0AA61EFD",
+      "revision": 1,
+      "semantic_sha256": "0aa61efd42b284c430f6992ddeefe1fc4d42c18e532ab2d83d7adb5335568353",
+      "verdict": "confirmed_deterministic",
+      "reason": "Supported starting states are policy-defined and finite, so exact execution records for fresh install and every state-to-target upgrade decide test coverage.",
+      "counterexample_analysis": "I tried an untested supported version, a fresh-install run bound to another artifact, and duplicate evidence masking a missing state; set equality and artifact joins fail each.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F52F674A",
+      "revision": 1,
+      "semantic_sha256": "f52f674a2b64cb391b73ff51dd95bbbd4f9eff4eb79fecaccdcc3c5e781fd6cd",
+      "verdict": "rejected_nondeterministic",
+      "reason": "An interrupted-install fixture set cannot exhaust interruption points, filesystem and process timing, partial writes, reboots, and external side effects.",
+      "counterexample_analysis": "Recovery works at two approved checkpoints but corrupts state if power fails between a rename and metadata update. Every declared fixture passes.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-2ADF602E",
+      "revision": 1,
+      "semantic_sha256": "2adf602e31ac34dfa03e247bd4777a8123724c5c0f127d4c39f2e2a191e58c5d",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The prerequisite inventory can omit dependencies, and identifying every irreversible change and sufficient prerequisite requires semantic and operational judgment.",
+      "counterexample_analysis": "An installer deletes the old schema before checking backup credentials; that prerequisite and step are omitted from the contract. Listed irreversible steps check their fields and pass.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-43BE7891",
+      "revision": 1,
+      "semantic_sha256": "43be7891b28d66ad7ecbd85f46bca8e6fefd6f726d6820a53358c3d10d4fda69",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Fixture thresholds do not prove all transition paths detect every storage, permission, version, capacity, and connectivity insufficiency before side effects begin.",
+      "counterexample_analysis": "A provider quota is exhausted but absent from capacity prerequisites; local negative fixtures all fail early. The proposal passes while transition starts and later fails.",
+      "nondeterministic_route": "contract_incomplete",
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-981573E3",
+      "revision": 1,
+      "semantic_sha256": "981573e34d605534adf39344b42025575f7a7e0a6332288fcb5567f805451dce",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Compatibility during coexistence spans versions, states, schemas, traffic, data, clients, and failure interleavings that a finite matrix cannot exhaust.",
+      "counterexample_analysis": "Happy-path requests work between adjacent versions, but an old worker misreads a new retry event. Every approved compatibility fixture passes.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-B9F93CB2",
+      "revision": 1,
+      "semantic_sha256": "b9f93cb228a49bdee12a65f807a2a20d031d9d98be71ae404aca33f1c7af9611",
+      "verdict": "confirmed_deterministic",
+      "reason": "An authoritative compatibility matrix and deployment inventory can make the prohibited mixed-version pairs exact, while routing state proves no such pair serves together.",
+      "counterexample_analysis": "I tried a forbidden pair in one region, a stale matrix, and an instance omitted from the deployment snapshot; complete target joins or freshness checks reject each.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-9C5C4DDD",
+      "revision": 1,
+      "semantic_sha256": "9c5c4ddd9cb5045b5d53171f8e66ff5a65e863b8527c27440320a0529eb71afa",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Old-artifact inventories can omit binaries, images, schemas, services, routes, secrets, and jobs, letting them evade owner and cleanup definitions.",
+      "counterexample_analysis": "A forgotten scheduled job and secret remain outside the registry while all listed old assets have owners and cleanup dates. The proposal passes.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-1408D4CC",
+      "revision": 1,
+      "semantic_sha256": "1408d4cc0f51028aecf7e9db75dc44a139205062f0cf2f0b7bd31c61843ad6fa",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Uninstall evidence cannot prove absence across every access path, listener, scheduler, credential store, replica, cache, backup, and sensitive-data copy.",
+      "counterexample_analysis": "A regional listener and provider credential survive but are absent from the decommission inventory. All declared resources are removed, so the proposal passes.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-3670663F",
+      "revision": 1,
+      "semantic_sha256": "3670663f15460a0dd4e1a26eb9046d53a7118b78e85c51f46d83bcff0b99350a",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Proving no dangling DNS, routes, queues, webhooks, or trust relationships requires complete cross-provider inventories and absence evidence unavailable from declared fixtures alone.",
+      "counterexample_analysis": "A webhook subscription at an old provider remains active but is unregistered. Every listed relationship is removed, so the proposal passes.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-EC5CA0BF",
+      "revision": 1,
+      "semantic_sha256": "ec5ca0bf8eb3c6057575f46a1ca3f4dbfc8bbc12f8adc8e9a64a467468f2e4a4",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Supported-consumer inventories can omit variants, and finite compatibility fixtures cannot prove behavior across every client, agent, extension, and external state.",
+      "counterexample_analysis": "A supported browser extension with cached old schema fails after upgrade but is absent from the matrix. All declared consumers pass.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-A4050E06",
+      "revision": 1,
+      "semantic_sha256": "a4050e06a56a93af0d0e813032107b1e25b56bb3c5e396c9e664698910a2ab2d",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A mechanism can expose exact values yet remain unclear to users or operators, so record and fixture checks cannot decide the full clarity claim.",
+      "counterexample_analysis": "The CLI prints an opaque build hash and hidden support code requiring a lookup table. Tests find both fields, but informed users cannot identify version or support status clearly.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-BC2B199B",
+      "revision": 1,
+      "semantic_sha256": "bc2b199bf1340814167b2d9fa5be6c7a74b7a51b5857049c7fc1f54c80f70daf",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Adoption telemetry cannot prove complete device and deployment coverage, while stranded status and actionable detection depend on policy and connectivity context.",
+      "counterexample_analysis": "Offline clients never report and are omitted; dashboards show all observed versions supported. The proposal passes while a large stranded version population exists.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-6024C9B1",
+      "revision": 1,
+      "semantic_sha256": "6024c9b173364b34aa0af8c20fb69d96ffaff147bc9a8035c766325c3dee8b80",
+      "verdict": "confirmed_deterministic",
+      "reason": "Authenticated acceptance criteria with an effective timestamp before the recorded development-complete event fully decide this ordering requirement.",
+      "counterexample_analysis": "I tried criteria created afterward, a draft without effective status, and a timestamp for another release; status, release, and time joins reject each. Criteria quality is not claimed.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-D083AE3C",
+      "revision": 1,
+      "semantic_sha256": "d083ae3cffcd2d857d4c73b8d99217b0f98fc0da436f11dbec5360a3eefdcc62",
+      "verdict": "confirmed_deterministic",
+      "reason": "The acceptance-criteria schema has ten explicitly named subjects, so exact nonempty sections bound to the transition decide inclusion.",
+      "counterexample_analysis": "I tried omitting privacy, merging capacity into cost with no capacity rule, and using a stale runbook link; topic and freshness validation reject each.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-E53D5660",
+      "revision": 1,
+      "semantic_sha256": "e53d56602a19560a812fb6eaad6d7327d76368596c5223166694f3d8f7b35166",
+      "verdict": "confirmed_deterministic",
+      "reason": "An authority registry can identify the exact organization and individual identities currently authorized to accept operational responsibility.",
+      "counterexample_analysis": "I tried a team without individuals, an expired role grant, and a person from another service; identity, authority, scope, and freshness checks fail each. Wisdom of delegation is separate.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-AEECABED",
+      "revision": 1,
+      "semantic_sha256": "aeecabed99b22c69d09c59d536bd4d7b9fbba3af7681cb88e45885cca47b9ad0",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Document presence does not prove substantive architecture, recovery, or known-risk coverage, and the known-risk and dependency inventories can omit material items.",
+      "counterexample_analysis": "Seven files exist but contain placeholders, and an undocumented provider dependency and risk are absent. Link checks pass while the required documentation is incomplete.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F845B223",
+      "revision": 1,
+      "semantic_sha256": "f845b2233ee224903f7dae79de0abc4f814a048eb455c55126b7e34300c8cb6c",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Outstanding-item registers cannot independently prove every incident, defect, exception, workaround, debt item, and supplier commitment was captured and transferred.",
+      "counterexample_analysis": "A verbal supplier commitment and hidden production workaround are omitted; every registered item has a receiving owner. The proposal passes.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-3BF30324",
+      "revision": 1,
+      "semantic_sha256": "3bf303244518472f9179475c607083c81aab865c4f406306963b5c95628a0900",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A deployment inventory can omit targets, and monitor presence does not establish meaningful coverage of actual dependencies, failure modes, and user outcomes.",
+      "counterexample_analysis": "A manually deployed regional worker has no monitor but is absent from inventory; listed services have shallow health checks. All joins pass while production coverage is incomplete.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-23FADC9E",
+      "revision": 1,
+      "semantic_sha256": "23fadc9ebc26d336e8bab120f1348c0389177cdc48d3b2895c90e4b2a5a69782",
+      "verdict": "confirmed_deterministic",
+      "reason": "Four explicitly named support routes can each be exercised with authenticated delivery, recipient, timing, and acknowledgment evidence for the exact handover.",
+      "counterexample_analysis": "I tried a page without acknowledgment, status communication to the wrong audience, and an expired provider contact; route-specific or freshness checks reject each.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-D5B7F955",
+      "revision": 1,
+      "semantic_sha256": "d5b7f95536b2700c340836fbab97cfe6b8d9e762ce26592e80d2165ae8074907",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Which runbooks are common or severe and whether an exercise meaningfully represents them requires operational judgment; inventories can omit difficult procedures.",
+      "counterexample_analysis": "A trivial restart is labelled severe and exercised, while database corruption is omitted. Every declared common and severe runbook has a receiving-team record, so the proposal passes.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-94EBD701",
+      "revision": 1,
+      "semantic_sha256": "94ebd701c996aa225c6ac6704a71d87df72da635bd6ab51616b6b46d831c5194",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Finite exercises cannot verify backup restoration, rollback, failover, and credential recovery across all failure states, data shapes, dependencies, and expiry conditions.",
+      "counterexample_analysis": "The four happy-path drills pass, but restoring an older encrypted backup fails after key rotation. Approved fixtures pass while a procedure remains invalid.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-DB24571C",
+      "revision": 1,
+      "semantic_sha256": "db24571c29a4765061d0b572a540b695ef27408603c0b6dfd8a7ff324e2a88ab",
+      "verdict": "rejected_nondeterministic",
+      "reason": "High-risk transition classification requires accountable risk judgment, and a transition can be downgraded or omitted before bounded-support-period checks run.",
+      "counterexample_analysis": "A financially consequential migration is labelled ordinary and gets no enhanced support. Every transition marked high-risk has start and end times, so the proposal passes.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-977F0AD1",
+      "revision": 1,
+      "semantic_sha256": "977f0ad111ec8b27cb745ec86febb25b13392e9ca4347f47b8bbacfbefe6ba35",
+      "verdict": "confirmed_deterministic",
+      "reason": "A versioned overlap interval and decision-area matrix can assign one current accountable owner to each area, fully deciding the definition fact.",
+      "counterexample_analysis": "I tried a gap between delivery and operations, two conflicting owners, and an expired authority record; interval, uniqueness, and authority checks reject each.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F3B48A5C",
+      "revision": 1,
+      "semantic_sha256": "f3b48a5cbd5844ebe655d4d22870b8496b47208da8bd8bb745342e1c10455dcb",
+      "verdict": "confirmed_deterministic",
+      "reason": "The rule asks for measurement of five named early-life subjects; a defined early-life window and metric records with units, sources, and observations prove occurrence.",
+      "counterexample_analysis": "I tried no user-outcome metric, data integrity without a formula, and observations outside the window; category, schema, and time checks reject each. Favorable outcomes are not required.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-76528E47",
+      "revision": 1,
+      "semantic_sha256": "76528e477e9eb602b9855c240a26b7646864381f2abe756dfae0cf70e3e994ed",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A document can list profile metadata but cannot prove it captures the exact extensions and interpretations actually used by every integration implementation.",
+      "counterexample_analysis": "A consumer applies an undocumented enum interpretation while both sides reference the same versioned profile. Record fields pass despite runtime interpretation drift.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F7E0BF1B",
+      "revision": 1,
+      "semantic_sha256": "f7e0bf1b5b177bbe4d8b7dcd74347e75718cd846a38227b9794dfccaa279509e",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Applicable normative requirements and complete conformance claims require standards expertise; a declared test suite can omit or misinterpret a mandatory clause.",
+      "counterexample_analysis": "A profile claims conformance after tests exclude a conditionally mandatory requirement. All registered tests pass, but specialist reading shows the claim is invalid.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-BA413359",
+      "revision": 1,
+      "semantic_sha256": "ba413359b8bee2a61e826e1ab5f0c230b35c1c042b3926962bb745ff221bf145",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Standard and guidance inventories can omit issuing bodies, profiles, errata channels, and security notices; a configured subscription does not prove active monitoring.",
+      "counterexample_analysis": "A security erratum for an extension is published on an unlisted channel. Every registered feed is current, so the proposal passes while guidance is missed.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-4F165C23",
+      "revision": 1,
+      "semantic_sha256": "4f165c23501b74d698780da413851e238337d938baa36bf2f412b7ecade9a134",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Version and review records are bounded, but whether conformance tests are representative of normative behavior and real implementations is contextual.",
+      "counterexample_analysis": "A suite covers only common valid messages yet is approved as representative; boundary and error behavior is absent. Metadata passes while representation is inadequate.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-D633A4FE",
+      "revision": 1,
+      "semantic_sha256": "d633a4fe8fc11802dd5878e2c98f749c6c2545551b8dd156c31b65a4c825858f",
+      "verdict": "confirmed_deterministic",
+      "reason": "The portability policy names twelve closed asset categories and can require an explicit portable or not-required decision and scope for each.",
+      "counterexample_analysis": "I tried omitting prompts, leaving keys unspecified, and using an unknown category value; exact category-set and enum validation reject each. Portability implementation is separate.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-31D5679B",
+      "revision": 1,
+      "semantic_sha256": "31d5679b6fc30a53b0d21ae2de511ed1cbc508bf3d9b2c1f3f63aeef136305fe",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Format documentation and a successful parser run do not establish that a format is durable or independently parseable across time, tools, and complete exports.",
+      "counterexample_analysis": "A custom format parses only with an unpublished project library and mutable online schema, yet the fixture parser succeeds. The proposal passes without durable independent interpretation.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-C28B29B6",
+      "revision": 1,
+      "semantic_sha256": "c28b29b64301400cc97d391b36eaa92390173f2a6ca14e74aa64afe5127e2e3e",
+      "verdict": "rejected_nondeterministic",
+      "reason": "`Enough` metadata and correct interpretation require semantic and user judgment; schema field presence cannot prove units, meanings, nulls, and relationships are understood.",
+      "counterexample_analysis": "The export includes field names but omits that amounts are minor currency units. All required metadata slots are nonempty, yet an independent consumer interprets values incorrectly.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-3A7150A3",
+      "revision": 1,
+      "semantic_sha256": "3a7150a397485c822d2f79d0474a8638206a76d45e87eeef61ddfa3ce1723472",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Finite round-trip fixtures cannot prove preservation of every relationship, ordering rule, provenance chain, and integrity constraint over all data shapes.",
+      "counterexample_analysis": "Simple fixtures round-trip, but a cyclic relationship loses provenance and tie ordering on a larger dataset. Every approved case passes.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-42F63C13",
+      "revision": 1,
+      "semantic_sha256": "42f63c1313482180bc8b6bfb434f9161cf6431d28d8185623e0e384dd0e4add1",
+      "verdict": "confirmed_deterministic",
+      "reason": "The statement requires an import test into one alternate implementation or a tested documented reconstruction path; authenticated execution proves that occurrence.",
+      "counterexample_analysis": "I tried a parser from the original implementation, a reconstruction document with no execution, and evidence for another export version; independence, execution, and version checks fail each.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-BA991AC6",
+      "revision": 1,
+      "semantic_sha256": "ba991ac64ccaeeaf919c5c33de91696c98c30f356fb0178c8a63c0c373abdb0f",
+      "verdict": "confirmed_deterministic",
+      "reason": "A scoped exit exercise can record the five named quantities with units, method, interval, and participant-role evidence, making measurement occurrence exact.",
+      "counterexample_analysis": "I tried missing downtime, cost without currency, and expertise estimated with no role or hours; schema checks reject each. Whether the exercise predicts every future exit is not asserted.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-67CB5775",
+      "revision": 1,
+      "semantic_sha256": "67cb5775393d3c790422f5806f794999adb483fafd6f82bc9e9009a8b322a51f",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Required-key inventories can omit keys, and current availability or one recovery exercise does not prove controlled recovery will remain possible under disaster and revocation states.",
+      "counterexample_analysis": "A provider-held signing key is omitted; registered keys recover in the test. The proposal passes although a required export signature can no longer be validated.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "undefined_protocol",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F432B8C9",
+      "revision": 1,
+      "semantic_sha256": "f432b8c9a3636cdea1ffffbe985cfbfd2f1cf6fa997d2fd0301894b08155242c",
+      "verdict": "confirmed_deterministic",
+      "reason": "A transition plan can define transfer procedures for four explicitly named trust-asset categories with owner, target, sequence, and acceptance state.",
+      "counterexample_analysis": "I tried omitting domains, a certificate plan without target ownership, and identities linked to another transition; topic and scope checks reject each. Successful transfer is separate.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-8094CE35",
+      "revision": 1,
+      "semantic_sha256": "8094ce355c21b9bd185652f8b1819eaf7448d5d6c18b1bb79a5244d19dd084ab",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Old-provider access and residual-data inventories cannot prove absence across backups, logs, replicas, caches, support tools, credentials, and provider-controlled systems.",
+      "counterexample_analysis": "A provider retains a backup and support token not listed in the exit manifest. Every declared asset is removed, so the proposal passes.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-BFEAA140",
+      "revision": 1,
+      "semantic_sha256": "bfeaa1402fc999afc7838d1a6f58ca2580cabab3afd3fed65712b7f3fac77b54",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A negative fixture on declared interfaces cannot prove the old system cannot accept authoritative writes through queues, jobs, database paths, admin tools, or cached credentials.",
+      "counterexample_analysis": "An old batch API still updates records but is absent from the endpoint set. Listed APIs reject writes after cutover, so the proposal passes.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-CEEE0784",
+      "revision": 1,
+      "semantic_sha256": "ceee078409df9bbe2252793714f12ca2a488a62a32bb03a0f3b9407a96f8977f",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A residual-dependency record cannot independently discover every remaining provider call, identifier, credential, data copy, contract, and operational reliance.",
+      "counterexample_analysis": "A DNS dependency on the old provider remains but is omitted. Every recorded residual dependency has complete fields, so the proposal passes.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-AA309E1F",
+      "revision": 1,
+      "semantic_sha256": "aa309e1f22bcc2209b5eefb0797fea6d303488446f6f283cc239512ff3d7cf5d",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Requirement inventories can omit integration obligations, and whether tests are representative and evidence actually supports each contract requires contextual review.",
+      "counterexample_analysis": "A partner timeout requirement is absent; listed requirements link to trivial happy-path tests. Every row traces successfully while integration assurance remains incomplete.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-CB5A99DA",
+      "revision": 1,
+      "semantic_sha256": "cb5a99da9b6e2ed48176a80b0429dac2b81686d4f699f38785a430ab23e3666b",
+      "verdict": "confirmed_deterministic",
+      "reason": "The rule is test occurrence for four explicitly named integration failure conditions, which distinct authenticated fixtures and bound outcomes can prove.",
+      "counterexample_analysis": "I tried using duplicate delivery as ambiguous outcome, omitting reconciliation, and stale partial-completion evidence; category identity and revision checks reject each.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-455260BF",
+      "revision": 1,
+      "semantic_sha256": "455260bf4da82ab8a58b54e811bbf130b2772bdd2cab06cd2c518378c7f3dcbf",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Critical-participant classification and completeness require risk judgment, while `nonconforming` spans an unbounded set of malformed, delayed, inconsistent, and adversarial behaviors.",
+      "counterexample_analysis": "A payment provider's inconsistent duplicate response is untested because the provider is labelled noncritical. Every declared participant has two fixtures, so the proposal passes.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-C0D99348",
+      "revision": 1,
+      "semantic_sha256": "c0d99348d2ded6853fbe932a496645685ec745b023103245c22e29ed451eda84",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Whether traces permit diagnosis is contextual, and identifying restricted or unnecessary data across all log values requires security and privacy authority.",
+      "counterexample_analysis": "A fixture trace follows one request, but production correlation breaks at an async boundary and error logs expose a customer identifier. Declared tests pass while diagnosis and privacy fail.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-8FFC64D0",
+      "revision": 1,
+      "semantic_sha256": "8ffc64d008234076c27c0b45ea3b9d349c353e836901fbb63d39ade130a27ba3",
+      "verdict": "confirmed_deterministic",
+      "reason": "Immutable release artifacts can bind the exact integration baseline, evidence set, exception records, and component versions to one release digest.",
+      "counterexample_analysis": "I tried a missing exception file, a component version without digest, and evidence from another release; completeness, integrity, and release joins reject each. Evidence adequacy is not asserted.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    }
+  ]
+}

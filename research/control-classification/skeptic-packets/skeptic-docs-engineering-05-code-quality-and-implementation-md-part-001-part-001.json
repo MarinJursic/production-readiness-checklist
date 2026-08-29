@@ -1,0 +1,1991 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-engineering-05-code-quality-and-implementation-md-part-001-part-001",
+  "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 76,
+  "controls": [
+    {
+      "control_id": "USEQ-1A47E1A7",
+      "revision": 1,
+      "semantic_sha256": "1a47e1a759aab606a6d06df3522c939c80c47d026c331d06be29852953f72248",
+      "statement": "Every critical journey passes positive, negative, boundary, invalid-input, empty-state, maximum-size, and high-volume tests.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 15
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Functional Correctness and Business Logic",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Every critical journey passes positive, negative, boundary, invalid-input, empty-state, maximum-size, and high-volume tests.” names a closed journey, race, transition, contract, dependency, resource, flag, version, or migration test protocol whose authenticated outcome is objective.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution covers every case in the approved test matrix for the exact revision and records the required expected result for each scenario.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CA554C6A",
+      "revision": 1,
+      "semantic_sha256": "ca554c6a68aee7e0ee2e5b8274035e2f37aaf14406fac86253f5e8e7029d49d5",
+      "statement": "Race conditions are tested around balances, inventory, permissions, limits, quotas, and state transitions.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 17
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Functional Correctness and Business Logic",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Race conditions are tested around balances, inventory, permissions, limits, quotas, and state transitions.” names a closed journey, race, transition, contract, dependency, resource, flag, version, or migration test protocol whose authenticated outcome is objective.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution covers every case in the approved test matrix for the exact revision and records the required expected result for each scenario.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C2C592DA",
+      "revision": 1,
+      "semantic_sha256": "c2c592da26043cc304f68a5b2c82265c6ba4cc5049937125c5858d48bb08e963",
+      "statement": "Invalid state-transition ordering is rejected.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 18
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Functional Correctness and Business Logic",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Invalid state-transition ordering is rejected.” names a closed journey, race, transition, contract, dependency, resource, flag, version, or migration test protocol whose authenticated outcome is objective.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution covers every case in the approved test matrix for the exact revision and records the required expected result for each scenario.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-55D4825F",
+      "revision": 1,
+      "semantic_sha256": "55d4825fdffcbb2f3016609170bf5e708b61439bb2238ea57a7818474f22cd4c",
+      "statement": "Limits and quotas are enforced at a trusted server-side boundary.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 24
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Functional Correctness and Business Logic",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Limits and quotas are enforced at a trusted server-side boundary.” can be decided by exact joins across complete code, configuration, flag, interface, consumer, event, review, and migration inventories with bound evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope configuration, flag, interface, consumer, migration stage, change, reviewer, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, event, or execution evidence satisfies every approved exact state, timing, authorization, traceability, migration, or review condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FDCA6C71",
+      "revision": 1,
+      "semantic_sha256": "fdca6c7137566b6c5daa14dd83dbc48b0abf779949bcfd2eb0afb5213ae1fee5",
+      "statement": "A current operating entry point or README exists.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 61
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Maintainability and Long-Term Operability",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “A current operating entry point or README exists.” defines a bounded documentation, policy, contract, taxonomy, configuration, dependency, review, or lifecycle record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains every explicit command, convention, contract field, owner, metric, schema attribute, lifecycle date, review field, or evidence link required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F564C015",
+      "revision": 1,
+      "semantic_sha256": "f564c0155872b14a6b3ea74bfc0c79451e35fa938ee4c421930ace3f120d9372",
+      "statement": "Architecture, data flow, dependencies, deployment, recovery, and local setup are documented.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 62
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Maintainability and Long-Term Operability",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Architecture, data flow, dependencies, deployment, recovery, and local setup are documented.” defines a bounded documentation, policy, contract, taxonomy, configuration, dependency, review, or lifecycle record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains every explicit command, convention, contract field, owner, metric, schema attribute, lifecycle date, review field, or evidence link required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AB553CE4",
+      "revision": 1,
+      "semantic_sha256": "ab553ce4cdb5c89ea927427dacbd7ea5673d14ddeb55a59afa8660b77ec45284",
+      "statement": "Build, test, migration, deployment, and troubleshooting commands are documented.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 63
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Maintainability and Long-Term Operability",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Build, test, migration, deployment, and troubleshooting commands are documented.” defines a bounded documentation, policy, contract, taxonomy, configuration, dependency, review, or lifecycle record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains every explicit command, convention, contract field, owner, metric, schema attribute, lifecycle date, review field, or evidence link required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F1784541",
+      "revision": 1,
+      "semantic_sha256": "f17845417961591008ed99070de7a3c6c4899050c4393bb2f79666412e156c59",
+      "statement": "Coding, review, testing, security, release, and support conventions are documented.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 64
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Maintainability and Long-Term Operability",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Coding, review, testing, security, release, and support conventions are documented.” defines a bounded documentation, policy, contract, taxonomy, configuration, dependency, review, or lifecycle record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains every explicit command, convention, contract field, owner, metric, schema attribute, lifecycle date, review field, or evidence link required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3FF4CC5B",
+      "revision": 1,
+      "semantic_sha256": "3ff4cc5bcdbbd9b04e5801d5ae1af0016c79f40b9a00657d0efa846f26af9ba5",
+      "statement": "Complexity, coupling, and operational burden are reviewed.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 66
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Maintainability and Long-Term Operability",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Complexity, coupling, and operational burden are reviewed.” defines a bounded documentation, policy, contract, taxonomy, configuration, dependency, review, or lifecycle record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains every explicit command, convention, contract field, owner, metric, schema attribute, lifecycle date, review field, or evidence link required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6EF014F9",
+      "revision": 1,
+      "semantic_sha256": "6ef014f95d9a1bf143462adde078d3d97d8ab16ca5718f5343c216cbb80d7459",
+      "statement": "Runtime, platform, protocol, certificate, and dependency end-of-support dates are tracked.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 68
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Maintainability and Long-Term Operability",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Runtime, platform, protocol, certificate, and dependency end-of-support dates are tracked.” defines a bounded documentation, policy, contract, taxonomy, configuration, dependency, review, or lifecycle record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains every explicit command, convention, contract field, owner, metric, schema attribute, lifecycle date, review field, or evidence link required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2B9BF81E",
+      "revision": 1,
+      "semantic_sha256": "2b9bf81e544a11dc0b4dc305be3a1926f3ed25d95d3d21af6434b55176b90461",
+      "statement": "Technical debt affecting reliability, security, privacy, accessibility, or operability is recorded.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 69
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Maintainability and Long-Term Operability",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Technical debt affecting reliability, security, privacy, accessibility, or operability is recorded.” defines a bounded documentation, policy, contract, taxonomy, configuration, dependency, review, or lifecycle record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains every explicit command, convention, contract field, owner, metric, schema attribute, lifecycle date, review field, or evidence link required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BBB6533E",
+      "revision": 1,
+      "semantic_sha256": "bbb6533e9fcf6a225f023612ef8cd605f86142c86b588a0810ab4816f7f999d7",
+      "statement": "API, data, feature, and client deprecation policies exist.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 70
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Maintainability and Long-Term Operability",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “API, data, feature, and client deprecation policies exist.” defines a bounded documentation, policy, contract, taxonomy, configuration, dependency, review, or lifecycle record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains every explicit command, convention, contract field, owner, metric, schema attribute, lifecycle date, review field, or evidence link required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FA1B43F8",
+      "revision": 1,
+      "semantic_sha256": "fa1b43f884d635ecc28c3ac6c0d414615dc8799ffceda8f9851df62d323366d0",
+      "statement": "Support personnel are trained on released behavior.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 71
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Maintainability and Long-Term Operability",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Support personnel are trained on released behavior.” can be decided by exact joins across complete code, configuration, flag, interface, consumer, event, review, and migration inventories with bound evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope configuration, flag, interface, consumer, migration stage, change, reviewer, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, event, or execution evidence satisfies every approved exact state, timing, authorization, traceability, migration, or review condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F534424C",
+      "revision": 1,
+      "semantic_sha256": "f534424c427a6f04bfad69400916863d2936a55adc3b30cd925f437f3e0683f1",
+      "statement": "Maintenance windows and communications are defined.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 73
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Maintainability and Long-Term Operability",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Maintenance windows and communications are defined.” defines a bounded documentation, policy, contract, taxonomy, configuration, dependency, review, or lifecycle record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains every explicit command, convention, contract field, owner, metric, schema attribute, lifecycle date, review field, or evidence link required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-51159B9E",
+      "revision": 1,
+      "semantic_sha256": "51159b9e7838ebfc0816e71aa51f17e2daf35d843dcdcf056e6ba3fb9a535484",
+      "statement": "Decommissioning, end-of-service export, retention, archival, and secure deletion have documented plans.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 74
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Maintainability and Long-Term Operability",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Decommissioning, end-of-service export, retention, archival, and secure deletion have documented plans.” defines a bounded documentation, policy, contract, taxonomy, configuration, dependency, review, or lifecycle record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains every explicit command, convention, contract field, owner, metric, schema attribute, lifecycle date, review field, or evidence link required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-660F0A5E",
+      "revision": 1,
+      "semantic_sha256": "660f0a5e80464627ac914d7372ec8ecbeb9c88a87c45d24f5b47da13fe10d4ed",
+      "statement": "Treat warnings, static-analysis findings, and undefined behavior according to an explicit policy.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 94
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Treat warnings, static-analysis findings, and undefined behavior according to an explicit policy.” defines a bounded documentation, policy, contract, taxonomy, configuration, dependency, review, or lifecycle record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains every explicit command, convention, contract field, owner, metric, schema attribute, lifecycle date, review field, or evidence link required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DAF77C8F",
+      "revision": 1,
+      "semantic_sha256": "daf77c8f6238aabf0704e7d1ce9e9a8541eace85ed99d4aadd4e799996e1abb8",
+      "statement": "Use a consistent machine-enforced style so review focuses on behavior and design.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 114
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Readability, Naming, and Style",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "local_static",
+      "primary_reason": "The control “Use a consistent machine-enforced style so review focuses on behavior and design.” is an exact source-policy property that a complete syntax-aware inventory and pinned analyzer can check without executing untrusted project code.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "A pinned syntax-aware analyzer checks the complete sealed source inventory for the approved machine-enforced style or structured-error contract and reports no violating construct.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C484D3B0",
+      "revision": 1,
+      "semantic_sha256": "c484d3b0aeeef79675096dcb273899bd9d44c453ae12edaa384754a3b8c04744",
+      "statement": "Define each public contract's purpose, inputs, outputs, errors, side effects, timing, ordering, ownership, and security expectations.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 142
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Abstractions, Interfaces, and Contracts",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define each public contract's purpose, inputs, outputs, errors, side effects, timing, ordering, ownership, and security expectations.” defines a bounded documentation, policy, contract, taxonomy, configuration, dependency, review, or lifecycle record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains every explicit command, convention, contract field, owner, metric, schema attribute, lifecycle date, review field, or evidence link required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4EDDA552",
+      "revision": 1,
+      "semantic_sha256": "4edda552f023e5ce0c78ddd0f88b9f3ca0b21b334ab7a12eb603a36ac02d80e9",
+      "statement": "State preconditions, postconditions, invariants, and exceptional behavior.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 143
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Abstractions, Interfaces, and Contracts",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “State preconditions, postconditions, invariants, and exceptional behavior.” defines a bounded documentation, policy, contract, taxonomy, configuration, dependency, review, or lifecycle record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains every explicit command, convention, contract field, owner, metric, schema attribute, lifecycle date, review field, or evidence link required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-66DD52CA",
+      "revision": 1,
+      "semantic_sha256": "66dd52ca128c17ffc37f06207ce0e12863aa2f91a711dbf814421597c084b119",
+      "statement": "Make mutability and ownership explicit.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 150
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Abstractions, Interfaces, and Contracts",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Make mutability and ownership explicit.” defines a bounded documentation, policy, contract, taxonomy, configuration, dependency, review, or lifecycle record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains every explicit command, convention, contract field, owner, metric, schema attribute, lifecycle date, review field, or evidence link required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1C9AF441",
+      "revision": 1,
+      "semantic_sha256": "1c9af441e7675619301f474d8626954c8d7d2720bbb4a29805efc9000afd0d3c",
+      "statement": "Define compatibility and versioning before publishing a contract outside one change boundary.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 154
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Abstractions, Interfaces, and Contracts",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define compatibility and versioning before publishing a contract outside one change boundary.” defines a bounded documentation, policy, contract, taxonomy, configuration, dependency, review, or lifecycle record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains every explicit command, convention, contract field, owner, metric, schema attribute, lifecycle date, review field, or evidence link required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-12574552",
+      "revision": 1,
+      "semantic_sha256": "1257455277dfd2721f6a1171ba872ef79b3b973cdf4d5d4b1da75dfc00d68713",
+      "statement": "Test contracts independently from implementations and across every substitute.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 155
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Abstractions, Interfaces, and Contracts",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Test contracts independently from implementations and across every substitute.” names a closed journey, race, transition, contract, dependency, resource, flag, version, or migration test protocol whose authenticated outcome is objective.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution covers every case in the approved test matrix for the exact revision and records the required expected result for each scenario.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-73588D8A",
+      "revision": 1,
+      "semantic_sha256": "73588d8aba250e6600e92ceb1f0be1a01018c3c22edac1182dc5ad23f5647991",
+      "statement": "Document performance and resource characteristics when consumers can depend on them.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 158
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Abstractions, Interfaces, and Contracts",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Document performance and resource characteristics when consumers can depend on them.” defines a bounded documentation, policy, contract, taxonomy, configuration, dependency, review, or lifecycle record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains every explicit command, convention, contract field, owner, metric, schema attribute, lifecycle date, review field, or evidence link required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-38607061",
+      "revision": 1,
+      "semantic_sha256": "38607061f888c8f6087f8d76d8aff49b148efe11607120f67cce15edda64f11f",
+      "statement": "Define cancellation, timeout, retry, and idempotency semantics for remote or long-running contracts.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 159
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Abstractions, Interfaces, and Contracts",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define cancellation, timeout, retry, and idempotency semantics for remote or long-running contracts.” defines a bounded documentation, policy, contract, taxonomy, configuration, dependency, review, or lifecycle record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains every explicit command, convention, contract field, owner, metric, schema attribute, lifecycle date, review field, or evidence link required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A1CE1F63",
+      "revision": 1,
+      "semantic_sha256": "a1ce1f636d374ec0bfc9377860e961a335acec7085cfcd9f1c4363d689111660",
+      "statement": "Retire obsolete interfaces through monitored migration rather than indefinite parallel support.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 160
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Abstractions, Interfaces, and Contracts",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Retire obsolete interfaces through monitored migration rather than indefinite parallel support.” can be decided by exact joins across complete code, configuration, flag, interface, consumer, event, review, and migration inventories with bound evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope configuration, flag, interface, consumer, migration stage, change, reviewer, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, event, or execution evidence satisfies every approved exact state, timing, authorization, traceability, migration, or review condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0903254E",
+      "revision": 1,
+      "semantic_sha256": "0903254e9c8aaf0655970616062dd14f76366df7a78585f67ad190b9bc85f0cc",
+      "statement": "Define an error taxonomy that distinguishes validation, conflict, authorization, not-found, dependency, resource, timeout, cancellation, integrity, and internal failures.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 168
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Error Handling and Defensive Programming",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define an error taxonomy that distinguishes validation, conflict, authorization, not-found, dependency, resource, timeout, cancellation, integrity, and internal failures.” defines a bounded documentation, policy, contract, taxonomy, configuration, dependency, review, or lifecycle record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains every explicit command, convention, contract field, owner, metric, schema attribute, lifecycle date, review field, or evidence link required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A45DF449",
+      "revision": 1,
+      "semantic_sha256": "a45df449024bd73285fcfbb8f0ad8e6646d11112297c2aeab468d36da771fa68",
+      "statement": "Test error injection at every material dependency and state transition.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 186
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Error Handling and Defensive Programming",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Test error injection at every material dependency and state transition.” names a closed journey, race, transition, contract, dependency, resource, flag, version, or migration test protocol whose authenticated outcome is objective.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution covers every case in the approved test matrix for the exact revision and records the required expected result for each scenario.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-718A1C3D",
+      "revision": 1,
+      "semantic_sha256": "718a1c3d0c46d76b8dfb12e000564acef1c38af2039d40674d7b4758d27fe854",
+      "statement": "Monitor unexpected error classes and repeated recoveries as signals of systemic defects.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 187
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Error Handling and Defensive Programming",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Monitor unexpected error classes and repeated recoveries as signals of systemic defects.” defines a bounded documentation, policy, contract, taxonomy, configuration, dependency, review, or lifecycle record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains every explicit command, convention, contract field, owner, metric, schema attribute, lifecycle date, review field, or evidence link required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-12D8A914",
+      "revision": 1,
+      "semantic_sha256": "12d8a914e843f4a076d62b8ac3137cbd688c42e01447aec55f04077181494c38",
+      "statement": "Bound pools, queues, buffers, caches, batches, and concurrency.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 205
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Resource Lifecycle, Memory, and Cleanup",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Bound pools, queues, buffers, caches, batches, and concurrency.” can be decided by exact joins across complete code, configuration, flag, interface, consumer, event, review, and migration inventories with bound evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope configuration, flag, interface, consumer, migration stage, change, reviewer, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, event, or execution evidence satisfies every approved exact state, timing, authorization, traceability, migration, or review condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3A5B2F4F",
+      "revision": 1,
+      "semantic_sha256": "3a5b2f4f5eaf7970306dbfa874e04b7449924917876b292c93374b1bbc66feb7",
+      "statement": "Measure memory, allocation, handle, connection, and thread behavior under sustained load.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 213
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Resource Lifecycle, Memory, and Cleanup",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Measure memory, allocation, handle, connection, and thread behavior under sustained load.” names a closed journey, race, transition, contract, dependency, resource, flag, version, or migration test protocol whose authenticated outcome is objective.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution covers every case in the approved test matrix for the exact revision and records the required expected result for each scenario.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3E450704",
+      "revision": 1,
+      "semantic_sha256": "3e4507041101f0a0e8d33dbbddf29df679448f840a61aed71f8435361a001895",
+      "statement": "Test resource exhaustion and recovery.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 214
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Resource Lifecycle, Memory, and Cleanup",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Test resource exhaustion and recovery.” names a closed journey, race, transition, contract, dependency, resource, flag, version, or migration test protocol whose authenticated outcome is objective.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution covers every case in the approved test matrix for the exact revision and records the required expected result for each scenario.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EB0A5E6E",
+      "revision": 1,
+      "semantic_sha256": "eb0a5e6e873fa501a2f9b8f6e9dd2dcf1f4f45ea39c8f317fa76ab31db10bda7",
+      "statement": "Make spill, eviction, rejection, and load-shedding behavior explicit.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 215
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Resource Lifecycle, Memory, and Cleanup",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Make spill, eviction, rejection, and load-shedding behavior explicit.” defines a bounded documentation, policy, contract, taxonomy, configuration, dependency, review, or lifecycle record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains every explicit command, convention, contract field, owner, metric, schema attribute, lifecycle date, review field, or evidence link required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-13140E4F",
+      "revision": 1,
+      "semantic_sha256": "13140e4f8134e41126ce38235b119796702c0e314eac29300c6e2783178a68f9",
+      "statement": "Make resource limits configurable, validated, documented, and observable.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 218
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Resource Lifecycle, Memory, and Cleanup",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Make resource limits configurable, validated, documented, and observable.” defines a bounded documentation, policy, contract, taxonomy, configuration, dependency, review, or lifecycle record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains every explicit command, convention, contract field, owner, metric, schema attribute, lifecycle date, review field, or evidence link required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D464A4C5",
+      "revision": 1,
+      "semantic_sha256": "d464a4c5dc3519f99cc07b3108c593587f2e4b1840f90da75f06d3aca5dfce47",
+      "statement": "Define which state is shared, immutable, thread-confined, message-owned, or synchronized.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 228
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Concurrent, Asynchronous, and Parallel Code",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define which state is shared, immutable, thread-confined, message-owned, or synchronized.” defines a bounded documentation, policy, contract, taxonomy, configuration, dependency, review, or lifecycle record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains every explicit command, convention, contract field, owner, metric, schema attribute, lifecycle date, review field, or evidence link required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2854EA57",
+      "revision": 1,
+      "semantic_sha256": "2854ea575b6e3fcd5942bbd5492560a8bc9a40fb9aba27c82429add8b20c73f2",
+      "statement": "Define ordering and completion semantics explicitly.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 235
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Concurrent, Asynchronous, and Parallel Code",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define ordering and completion semantics explicitly.” defines a bounded documentation, policy, contract, taxonomy, configuration, dependency, review, or lifecycle record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains every explicit command, convention, contract field, owner, metric, schema attribute, lifecycle date, review field, or evidence link required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B4C195BA",
+      "revision": 1,
+      "semantic_sha256": "b4c195ba5b402bf3b22ec5515c30a82aaaeb769ba51f231b27c33947b467f203",
+      "statement": "Test under randomized scheduling, high contention, slow dependencies, cancellation, and shutdown.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 242
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Concurrent, Asynchronous, and Parallel Code",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Test under randomized scheduling, high contention, slow dependencies, cancellation, and shutdown.” names a closed journey, race, transition, contract, dependency, resource, flag, version, or migration test protocol whose authenticated outcome is objective.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution covers every case in the approved test matrix for the exact revision and records the required expected result for each scenario.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4D867D6C",
+      "revision": 1,
+      "semantic_sha256": "4d867d6c0e45e5dbae2e82884f0fbba1935bfccc86f7f47374ca17441a0e015a",
+      "statement": "Document memory visibility and consistency assumptions where the execution model requires it.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 244
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Concurrent, Asynchronous, and Parallel Code",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Document memory visibility and consistency assumptions where the execution model requires it.” defines a bounded documentation, policy, contract, taxonomy, configuration, dependency, review, or lifecycle record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains every explicit command, convention, contract field, owner, metric, schema attribute, lifecycle date, review field, or evidence link required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2C7B2D29",
+      "revision": 1,
+      "semantic_sha256": "2c7b2d29e15613711de794d772c741f9c138a4667b6d6539034fb175fc082d0b",
+      "statement": "Define a schema, type, allowed range, default, sensitivity, owner, and description for every configuration value.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 254
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Configuration and Feature-Flag Code Quality",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define a schema, type, allowed range, default, sensitivity, owner, and description for every configuration value.” defines a bounded documentation, policy, contract, taxonomy, configuration, dependency, review, or lifecycle record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains every explicit command, convention, contract field, owner, metric, schema attribute, lifecycle date, review field, or evidence link required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3AE6779A",
+      "revision": 1,
+      "semantic_sha256": "3ae6779a215d54de8cc396e056429058ac183a8b7c745a0cad79eef61ee14e44",
+      "statement": "Make precedence across defaults, files, environment, remote sources, and command-line input explicit.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 256
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Configuration and Feature-Flag Code Quality",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Make precedence across defaults, files, environment, remote sources, and command-line input explicit.” defines a bounded documentation, policy, contract, taxonomy, configuration, dependency, review, or lifecycle record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains every explicit command, convention, contract field, owner, metric, schema attribute, lifecycle date, review field, or evidence link required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C0A2F9FB",
+      "revision": 1,
+      "semantic_sha256": "c0a2f9fb663ad54f51d42e86eda1d219fc43b524f2603ad00223dddf5e8a886d",
+      "statement": "Version configuration with the release or maintain equivalent auditable traceability.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 260
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Configuration and Feature-Flag Code Quality",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Version configuration with the release or maintain equivalent auditable traceability.” defines a bounded documentation, policy, contract, taxonomy, configuration, dependency, review, or lifecycle record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains every explicit command, convention, contract field, owner, metric, schema attribute, lifecycle date, review field, or evidence link required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-98F39A05",
+      "revision": 1,
+      "semantic_sha256": "98f39a055d6a7151a5a31bd0213a49e9ea8b9ff6c65cd2085c0448a735472d60",
+      "statement": "Make dynamic configuration updates atomic, observable, authorized, and reversible.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 261
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Configuration and Feature-Flag Code Quality",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Make dynamic configuration updates atomic, observable, authorized, and reversible.” can be decided by exact joins across complete code, configuration, flag, interface, consumer, event, review, and migration inventories with bound evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope configuration, flag, interface, consumer, migration stage, change, reviewer, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, event, or execution evidence satisfies every approved exact state, timing, authorization, traceability, migration, or review condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-81C2964A",
+      "revision": 1,
+      "semantic_sha256": "81c2964a80eac5f6be41e0faf751c30aa3f53492f18218e338b4d02252d1a32f",
+      "statement": "Define stale-cache, unavailable-source, and partial-update behavior.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 262
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Configuration and Feature-Flag Code Quality",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define stale-cache, unavailable-source, and partial-update behavior.” defines a bounded documentation, policy, contract, taxonomy, configuration, dependency, review, or lifecycle record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains every explicit command, convention, contract field, owner, metric, schema attribute, lifecycle date, review field, or evidence link required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F3EE8B38",
+      "revision": 1,
+      "semantic_sha256": "f3ee8b3823bdd86feddacb3541497a8f9781415ccafd73bdc1dc9091c7e2170f",
+      "statement": "Treat flags as temporary lifecycle-managed code with owner, purpose, default, scope, creation date, and removal date.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 263
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Configuration and Feature-Flag Code Quality",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Treat flags as temporary lifecycle-managed code with owner, purpose, default, scope, creation date, and removal date.” defines a bounded documentation, policy, contract, taxonomy, configuration, dependency, review, or lifecycle record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains every explicit command, convention, contract field, owner, metric, schema attribute, lifecycle date, review field, or evidence link required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-340326EC",
+      "revision": 1,
+      "semantic_sha256": "340326ec327a29fc0b886460d9ad5dc899010bd6de9a36e52632fdacf6e39503",
+      "statement": "Test both flag states and material combinations before exposure.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 264
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Configuration and Feature-Flag Code Quality",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Test both flag states and material combinations before exposure.” names a closed journey, race, transition, contract, dependency, resource, flag, version, or migration test protocol whose authenticated outcome is objective.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution covers every case in the approved test matrix for the exact revision and records the required expected result for each scenario.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-985ADD85",
+      "revision": 1,
+      "semantic_sha256": "985add859b7221e71b0e95f05a92d28a682d2fa362598f96409a09d7fc01acec",
+      "statement": "Restrict and audit high-impact flag changes.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 266
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Configuration and Feature-Flag Code Quality",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Restrict and audit high-impact flag changes.” can be decided by exact joins across complete code, configuration, flag, interface, consumer, event, review, and migration inventories with bound evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope configuration, flag, interface, consumer, migration stage, change, reviewer, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, event, or execution evidence satisfies every approved exact state, timing, authorization, traceability, migration, or review condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BB0F7387",
+      "revision": 1,
+      "semantic_sha256": "bb0f738783fd8f2f56150bc3846604be83f643c8f1fdf465568b585b4d65fdfe",
+      "statement": "Ensure configuration changes cannot bypass validation, deployment controls, or segregation of duties.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 270
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Configuration and Feature-Flag Code Quality",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Ensure configuration changes cannot bypass validation, deployment controls, or segregation of duties.” can be decided by exact joins across complete code, configuration, flag, interface, consumer, event, review, and migration inventories with bound evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope configuration, flag, interface, consumer, migration stage, change, reviewer, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, event, or execution evidence satisfies every approved exact state, timing, authorization, traceability, migration, or review condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6A2615C9",
+      "revision": 1,
+      "semantic_sha256": "6a2615c9b921dcc89452767fece3c5e22c9219e0bb8a5bc9e7f541bca3973b17",
+      "statement": "Provide configuration drift detection and reconstruction.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 272
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Configuration and Feature-Flag Code Quality",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Provide configuration drift detection and reconstruction.” can be decided by exact joins across complete code, configuration, flag, interface, consumer, event, review, and migration inventories with bound evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope configuration, flag, interface, consumer, migration stage, change, reviewer, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, event, or execution evidence satisfies every approved exact state, timing, authorization, traceability, migration, or review condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-555D7538",
+      "revision": 1,
+      "semantic_sha256": "555d753840e9b5084c6f21940c28aff8add53636d27d0fadd921775e8738bbde",
+      "statement": "Include configuration in incident, rollback, and reproducibility evidence.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 273
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Configuration and Feature-Flag Code Quality",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Include configuration in incident, rollback, and reproducibility evidence.” defines a bounded documentation, policy, contract, taxonomy, configuration, dependency, review, or lifecycle record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains every explicit command, convention, contract field, owner, metric, schema attribute, lifecycle date, review field, or evidence link required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-184D1160",
+      "revision": 1,
+      "semantic_sha256": "184d116024101df7535fccb33c4b43a6873815a55b07597dc2ac87ebc83a51bc",
+      "statement": "Use trusted sources and verify package identity, namespace, signature, hash, or provenance as available.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 283
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Dependency Selection and Hygiene",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "artifact_verification",
+      "primary_reason": "The control “Use trusted sources and verify package identity, namespace, signature, hash, or provenance as available.” is decidable from immutable package constraints, provenance, and final artifact contents compared with the approved dependency or reviewed-change manifest.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The immutable artifact, dependency manifest, lock constraints, and provenance evidence match the approved identities, versions, digests, and intended-content set exactly.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-71972C15",
+      "revision": 1,
+      "semantic_sha256": "71972c15a7bfa0425935b0f37674de83d996b8055cf4f6d8a931b0602ed47a51",
+      "statement": "Pin versions or constraints tightly enough to prevent unreviewed substitution.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 284
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Dependency Selection and Hygiene",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "artifact_verification",
+      "primary_reason": "The control “Pin versions or constraints tightly enough to prevent unreviewed substitution.” is decidable from immutable package constraints, provenance, and final artifact contents compared with the approved dependency or reviewed-change manifest.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The immutable artifact, dependency manifest, lock constraints, and provenance evidence match the approved identities, versions, digests, and intended-content set exactly.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2FA33CEA",
+      "revision": 1,
+      "semantic_sha256": "2fa33cea53ef94871c9e4701d12a802093b63a44ef7936a4f2ee52ef10446aa7",
+      "statement": "Record direct and transitive dependencies in a machine-readable inventory.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 285
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Dependency Selection and Hygiene",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Record direct and transitive dependencies in a machine-readable inventory.” defines a bounded documentation, policy, contract, taxonomy, configuration, dependency, review, or lifecycle record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains every explicit command, convention, contract field, owner, metric, schema attribute, lifecycle date, review field, or evidence link required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D4E7F5C7",
+      "revision": 1,
+      "semantic_sha256": "d4e7f5c7a2b4766cef1dd9005718d961c63f9e063cd101548471a40d452ae122",
+      "statement": "Separate build, development, optional, and runtime dependencies.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 286
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Dependency Selection and Hygiene",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Separate build, development, optional, and runtime dependencies.” defines a bounded documentation, policy, contract, taxonomy, configuration, dependency, review, or lifecycle record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains every explicit command, convention, contract field, owner, metric, schema attribute, lifecycle date, review field, or evidence link required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EA32C05E",
+      "revision": 1,
+      "semantic_sha256": "ea32c05ef2d1c881132f967eeae379f2195d29d9fce84a0dc524ea4f40ca4a4b",
+      "statement": "Test supported versions and upgrade paths.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 292
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Dependency Selection and Hygiene",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Test supported versions and upgrade paths.” names a closed journey, race, transition, contract, dependency, resource, flag, version, or migration test protocol whose authenticated outcome is objective.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution covers every case in the approved test matrix for the exact revision and records the required expected result for each scenario.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B09FE69D",
+      "revision": 1,
+      "semantic_sha256": "b09fe69d6a34307a3ee7204d9dc887762dc0e48fd00364e5952bee5f03030b78",
+      "statement": "Automate updates while preserving review, test, provenance, and rollback gates.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 293
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Dependency Selection and Hygiene",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Automate updates while preserving review, test, provenance, and rollback gates.” can be decided by exact joins across complete code, configuration, flag, interface, consumer, event, review, and migration inventories with bound evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope configuration, flag, interface, consumer, migration stage, change, reviewer, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, event, or execution evidence satisfies every approved exact state, timing, authorization, traceability, migration, or review condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9A64DA9A",
+      "revision": 1,
+      "semantic_sha256": "9a64da9a33d7e0123f67eb2ddca077d250069c25c78b6e0bbc251d21df950291",
+      "statement": "Monitor newly disclosed vulnerabilities and compromised releases after deployment.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 294
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Dependency Selection and Hygiene",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "A complete deployed dependency inventory and approved advisory sources allow current vulnerability and compromised-release monitoring evidence to be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every deployed dependency has current authenticated read-only advisory evidence from each approved vulnerability and compromise source.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "external_registry"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-55D2754E",
+      "revision": 1,
+      "semantic_sha256": "55d2754ee0266589cbc305a807211bcbe5de8d71b580844b88b97ad41c2074c3",
+      "statement": "Maintain an emergency process to revoke, replace, rebuild, and redeploy a compromised dependency.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 297
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Dependency Selection and Hygiene",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Maintain an emergency process to revoke, replace, rebuild, and redeploy a compromised dependency.” defines a bounded documentation, policy, contract, taxonomy, configuration, dependency, review, or lifecycle record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains every explicit command, convention, contract field, owner, metric, schema attribute, lifecycle date, review field, or evidence link required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F0B1DD9F",
+      "revision": 1,
+      "semantic_sha256": "f0b1dd9f76ff54a481f7516eb395b3238b2e9e22dca9bdbee12073b2e5020a7b",
+      "statement": "Track local patches and forks with ownership and upstream strategy.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 298
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Dependency Selection and Hygiene",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Track local patches and forks with ownership and upstream strategy.” defines a bounded documentation, policy, contract, taxonomy, configuration, dependency, review, or lifecycle record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains every explicit command, convention, contract field, owner, metric, schema attribute, lifecycle date, review field, or evidence link required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-696A7B67",
+      "revision": 1,
+      "semantic_sha256": "696a7b67c9342af5db0288c1c20204b3453beca316997f515de2b060ab9a3a16",
+      "statement": "Verify the final artifact contains only intended dependency content.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 300
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Dependency Selection and Hygiene",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "artifact_verification",
+      "primary_reason": "The control “Verify the final artifact contains only intended dependency content.” is decidable from immutable package constraints, provenance, and final artifact contents compared with the approved dependency or reviewed-change manifest.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The immutable artifact, dependency manifest, lock constraints, and provenance evidence match the approved identities, versions, digests, and intended-content set exactly.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9B50CC48",
+      "revision": 1,
+      "semantic_sha256": "9b50cc482c05ad85b920bf8c20a7ce97b2f120fd664ac26c33dea0dfbb0685c1",
+      "statement": "Define the problem, desired quality improvement, boundaries, risks, and measurable completion criteria.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 308
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Refactoring and Legacy Code",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define the problem, desired quality improvement, boundaries, risks, and measurable completion criteria.” defines a bounded documentation, policy, contract, taxonomy, configuration, dependency, review, or lifecycle record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains every explicit command, convention, contract field, owner, metric, schema attribute, lifecycle date, review field, or evidence link required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E52095B1",
+      "revision": 1,
+      "semantic_sha256": "e52095b1bdb12abcd3403e84ba674131ef3d27716e9c5ebaa18a82b67d141745",
+      "statement": "Establish characterization tests or other evidence for current required behavior before structural change.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 309
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Refactoring and Legacy Code",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Establish characterization tests or other evidence for current required behavior before structural change.” can be decided by exact joins across complete code, configuration, flag, interface, consumer, event, review, and migration inventories with bound evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope configuration, flag, interface, consumer, migration stage, change, reviewer, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, event, or execution evidence satisfies every approved exact state, timing, authorization, traceability, migration, or review condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-48D1C437",
+      "revision": 1,
+      "semantic_sha256": "48d1c437e23a1f15ab79a37ba324419007a965e728501777e1517217f6f1233c",
+      "statement": "Preserve public contracts or provide a controlled migration.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 313
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Refactoring and Legacy Code",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Preserve public contracts or provide a controlled migration.” can be decided by exact joins across complete code, configuration, flag, interface, consumer, event, review, and migration inventories with bound evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope configuration, flag, interface, consumer, migration stage, change, reviewer, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, event, or execution evidence satisfies every approved exact state, timing, authorization, traceability, migration, or review condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6CD08E3B",
+      "revision": 1,
+      "semantic_sha256": "6cd08e3be0102da32871db095970316b5693c1ea3630e694b3a0d6a27c41d657",
+      "statement": "Remove dead paths, compatibility shims, stale flags, and old data only after consumers have migrated.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 317
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Refactoring and Legacy Code",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Remove dead paths, compatibility shims, stale flags, and old data only after consumers have migrated.” can be decided by exact joins across complete code, configuration, flag, interface, consumer, event, review, and migration inventories with bound evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope configuration, flag, interface, consumer, migration stage, change, reviewer, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, event, or execution evidence satisfies every approved exact state, timing, authorization, traceability, migration, or review condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BED93E1D",
+      "revision": 1,
+      "semantic_sha256": "bed93e1d456fe103655613e4e5c8f3c467a4f668ced3a5fb730358885eca466a",
+      "statement": "Keep data migrations resumable and auditable.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 318
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Refactoring and Legacy Code",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Keep data migrations resumable and auditable.” can be decided by exact joins across complete code, configuration, flag, interface, consumer, event, review, and migration inventories with bound evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope configuration, flag, interface, consumer, migration stage, change, reviewer, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, event, or execution evidence satisfies every approved exact state, timing, authorization, traceability, migration, or review condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-89E1A165",
+      "revision": 1,
+      "semantic_sha256": "89e1a16561058e38e58196b311a90584ebe4f4eca35d0ba4f41d650e2705adaa",
+      "statement": "Preserve historical decision context and document new constraints.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 322
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Refactoring and Legacy Code",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Preserve historical decision context and document new constraints.” defines a bounded documentation, policy, contract, taxonomy, configuration, dependency, review, or lifecycle record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains every explicit command, convention, contract field, owner, metric, schema attribute, lifecycle date, review field, or evidence link required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DA219C26",
+      "revision": 1,
+      "semantic_sha256": "da219c260a404574cbc86d5839c421536ea32ef62fadfa937ede21c46f2923e9",
+      "statement": "Avoid permanent dual systems without an owner and exit date.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 324
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Refactoring and Legacy Code",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Avoid permanent dual systems without an owner and exit date.” defines a bounded documentation, policy, contract, taxonomy, configuration, dependency, review, or lifecycle record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains every explicit command, convention, contract field, owner, metric, schema attribute, lifecycle date, review field, or evidence link required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DEE55F32",
+      "revision": 1,
+      "semantic_sha256": "dee55f3209afeecdc58941a7ad069a4f4652e7ac434a158999897c76e43fbd93",
+      "statement": "Include operators, support, security, data, and users in modernization impact review.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 325
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Refactoring and Legacy Code",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Include operators, support, security, data, and users in modernization impact review.” defines a bounded documentation, policy, contract, taxonomy, configuration, dependency, review, or lifecycle record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains every explicit command, convention, contract field, owner, metric, schema attribute, lifecycle date, review field, or evidence link required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-354B29AD",
+      "revision": 1,
+      "semantic_sha256": "354b29ad8aa63f112e2b273f1601d98c12716e803ff31c01d7b2e3a68da709ff",
+      "statement": "Retire obsolete infrastructure, credentials, data, and suppliers after migration completes.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 327
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Refactoring and Legacy Code",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Retire obsolete infrastructure, credentials, data, and suppliers after migration completes.” can be decided by exact joins across complete code, configuration, flag, interface, consumer, event, review, and migration inventories with bound evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope configuration, flag, interface, consumer, migration stage, change, reviewer, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, event, or execution evidence satisfies every approved exact state, timing, authorization, traceability, migration, or review condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-04CD3D8D",
+      "revision": 1,
+      "semantic_sha256": "04cd3d8d005e47d74b51ba50d585376e4bb2e8a82fd179de317a97f23344493e",
+      "statement": "Define review objectives, required reviewers, independence, evidence, and approval rules according to risk.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 335
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Code Review and Work-Product Review",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define review objectives, required reviewers, independence, evidence, and approval rules according to risk.” defines a bounded documentation, policy, contract, taxonomy, configuration, dependency, review, or lifecycle record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains every explicit command, convention, contract field, owner, metric, schema attribute, lifecycle date, review field, or evidence link required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-39D96811",
+      "revision": 1,
+      "semantic_sha256": "39d968118b319ee8ab558c9793ac8b866b3c6c3f0dcdbdceb705531f210df7a9",
+      "statement": "Provide context, requirement links, design rationale, risk, test evidence, migration, rollout, and rollback information.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 337
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Code Review and Work-Product Review",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Provide context, requirement links, design rationale, risk, test evidence, migration, rollout, and rollback information.” defines a bounded documentation, policy, contract, taxonomy, configuration, dependency, review, or lifecycle record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains every explicit command, convention, contract field, owner, metric, schema attribute, lifecycle date, review field, or evidence link required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-561E2A9E",
+      "revision": 1,
+      "semantic_sha256": "561e2a9e86d47f26f3e5f70af06fc2f3ab9a0d68ba3db17421a1a55bf0555043",
+      "statement": "Examine deleted and generated content as well as added lines.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 340
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Code Review and Work-Product Review",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Examine deleted and generated content as well as added lines.” defines a bounded documentation, policy, contract, taxonomy, configuration, dependency, review, or lifecycle record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains every explicit command, convention, contract field, owner, metric, schema attribute, lifecycle date, review field, or evidence link required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-02E7213F",
+      "revision": 1,
+      "semantic_sha256": "02e7213fe41111dc4787568762ab6160b772593f473bcfe489b2543f091582fa",
+      "statement": "Prevent authors from approving their own material changes.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 344
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Code Review and Work-Product Review",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Prevent authors from approving their own material changes.” can be decided by exact joins across complete code, configuration, flag, interface, consumer, event, review, and migration inventories with bound evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope configuration, flag, interface, consumer, migration stage, change, reviewer, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, event, or execution evidence satisfies every approved exact state, timing, authorization, traceability, migration, or review condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-235B0220",
+      "revision": 1,
+      "semantic_sha256": "235b02201c728a271069741a4f8c0f171ea4ac0a6e14764563708bd71ff782ed",
+      "statement": "Resolve review comments explicitly; do not dismiss findings through status changes without rationale.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 345
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Code Review and Work-Product Review",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Resolve review comments explicitly; do not dismiss findings through status changes without rationale.” defines a bounded documentation, policy, contract, taxonomy, configuration, dependency, review, or lifecycle record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains every explicit command, convention, contract field, owner, metric, schema attribute, lifecycle date, review field, or evidence link required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D61F1909",
+      "revision": 1,
+      "semantic_sha256": "d61f190989cc68594ca91cd41bfb58354d7c5dda2b05f8534bbde684e9823f4a",
+      "statement": "Distinguish blocking defects, required follow-up, questions, and optional suggestions.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 346
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Code Review and Work-Product Review",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Distinguish blocking defects, required follow-up, questions, and optional suggestions.” defines a bounded documentation, policy, contract, taxonomy, configuration, dependency, review, or lifecycle record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains every explicit command, convention, contract field, owner, metric, schema attribute, lifecycle date, review field, or evidence link required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2BA69F57",
+      "revision": 1,
+      "semantic_sha256": "2ba69f577eab823fb489700a1c980e997924c133d8613d5f7fe459931aded5cc",
+      "statement": "Re-review materially changed code after approval.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 347
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Code Review and Work-Product Review",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Re-review materially changed code after approval.” can be decided by exact joins across complete code, configuration, flag, interface, consumer, event, review, and migration inventories with bound evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope configuration, flag, interface, consumer, migration stage, change, reviewer, or operational subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, event, or execution evidence satisfies every approved exact state, timing, authorization, traceability, migration, or review condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7DB8FB57",
+      "revision": 1,
+      "semantic_sha256": "7db8fb575acfa17744b5e6bf271f3423b9cd4b801fc8773eb9f2985e70369049",
+      "statement": "Record exceptional bypasses and perform prompt retrospective review.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 348
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Code Review and Work-Product Review",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Record exceptional bypasses and perform prompt retrospective review.” defines a bounded documentation, policy, contract, taxonomy, configuration, dependency, review, or lifecycle record whose explicit fields can be validated exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative record set contains every explicit command, convention, contract field, owner, metric, schema attribute, lifecycle date, review field, or evidence link required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CA466120",
+      "revision": 1,
+      "semantic_sha256": "ca466120483d9f0ae6488106e95acf26ece511567502ed267d1af41feb5166de",
+      "statement": "Verify the merged artifact and configuration still match the reviewed change.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 354
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Code Review and Work-Product Review",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+      "primary_route": "artifact_verification",
+      "primary_reason": "The control “Verify the merged artifact and configuration still match the reviewed change.” is decidable from immutable package constraints, provenance, and final artifact contents compared with the approved dependency or reviewed-change manifest.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The immutable artifact, dependency manifest, lock constraints, and provenance evidence match the approved identities, versions, digests, and intended-content set exactly.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    }
+  ]
+}

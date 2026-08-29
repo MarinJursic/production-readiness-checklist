@@ -1,0 +1,1130 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-checklists-03-source-build-supply-chain-md-part-001-part-001",
+  "primary_packet_id": "docs-checklists-03-source-build-supply-chain-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 41,
+  "controls": [
+    {
+      "control_id": "PRC-07-001",
+      "revision": 1,
+      "semantic_sha256": "51f3eb627b33ff010188b0e0fe63b93f76fc512f1dc5c3976994c1a31fc640d4",
+      "statement": "One authoritative source repository is identified.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 9
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "7. Source control and change management"
+      ],
+      "primary_packet_id": "docs-checklists-03-source-build-supply-chain-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "An authenticated project record can identify exactly one repository as authoritative for the assessed source scope.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The assessed project record identifies exactly one authoritative source repository.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-07-005",
+      "revision": 1,
+      "semantic_sha256": "7ffd677a9bf43364caed3830ef5f13460b385da3ad6a70bf17fed0347aaf6471",
+      "statement": "Protected branches prevent unreviewed direct changes.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 13
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "7. Source control and change management"
+      ],
+      "primary_packet_id": "docs-checklists-03-source-build-supply-chain-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Authoritative repository rules can be queried to prove that every protected target branch rejects direct changes lacking a recorded review.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every in-scope protected branch requires a recorded approving review before a direct change can land.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "No configured branch-rule bypass permits an unreviewed direct change for the assessed principals.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-07-008",
+      "revision": 1,
+      "semantic_sha256": "052c0ba9aac2e66836a60ecbdf9a6c4d5faf1d3e3e9671601d88940220894ab2",
+      "statement": "Review cannot be bypassed silently by administrators.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 16
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "7. Source control and change management"
+      ],
+      "primary_packet_id": "docs-checklists-03-source-build-supply-chain-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Complete administrator bypass settings and immutable audit behavior can be checked against versioned repository-platform semantics.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every administrator review-bypass path emits an immutable attributable audit event.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "No administrator can disable or erase review-bypass recording within the assessed repository control plane.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-07-009",
+      "revision": 1,
+      "semantic_sha256": "32e7b292379a932144859e1a55cb2090235d0b6dff5adc8c6a78c1ac98b8da0c",
+      "statement": "Merge requirements include the required automated checks.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 17
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "7. Source control and change management"
+      ],
+      "primary_packet_id": "docs-checklists-03-source-build-supply-chain-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "A versioned required-check policy can be compared exactly with the merge requirements on every in-scope target branch.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every automated check required by the selected policy is a mandatory merge condition on each in-scope branch.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-07-012",
+      "revision": 1,
+      "semantic_sha256": "24a5c64dcf4131481543ba784349a5009b8ead08489a2f9cd8a30802ee42ca05",
+      "statement": "Changes are traceable from requirement or issue to code, review, build, artifact, and deployment.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 20
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "7. Source control and change management"
+      ],
+      "primary_packet_id": "docs-checklists-03-source-build-supply-chain-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Authenticated identifiers can join the complete change inventory to issue, review, build, artifact, and deployment records without interpretation.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every in-scope change links to an authenticated requirement or issue and review record.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Every in-scope change links through build provenance to an immutable artifact digest.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        },
+        {
+          "statement": "Every deployed in-scope artifact digest links to its deployment record.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-07-013",
+      "revision": 1,
+      "semantic_sha256": "9f9174de567fa5c29901da39d4eaa657c17d08099120706a83fd3727de9350e1",
+      "statement": "Commit history and release tags are protected against unauthorized rewriting.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 21
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "7. Source control and change management"
+      ],
+      "primary_packet_id": "docs-checklists-03-source-build-supply-chain-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Repository ref-protection configuration and authorized principal lists objectively determine whether commits and release tags can be rewritten.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "All in-scope protected branches and release-tag namespaces reject rewriting by unauthorized principals.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-07-014",
+      "revision": 1,
+      "semantic_sha256": "98c9a85654674b37ce42b1482edfea63dd962afde1c791ab3ba6283f6c812280",
+      "statement": "Secret scanning covers current changes and repository history.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 22
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "7. Source control and change management"
+      ],
+      "primary_packet_id": "docs-checklists-03-source-build-supply-chain-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Versioned secret-scanner execution evidence can prove coverage of both the current change set and every reachable historical revision.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "A versioned secret scanner successfully analyzed the complete current change set.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        },
+        {
+          "statement": "A versioned secret scanner successfully analyzed the complete reachable repository history for the assessed revision.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-07-019",
+      "revision": 1,
+      "semantic_sha256": "f6a638a73d0c4b6cb2d80e950764dbcc45acb1eb24a1d4b41c6aa02310c4739a",
+      "statement": "Departed personnel and obsolete automation identities no longer have access.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 27
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "7. Source control and change management"
+      ],
+      "primary_packet_id": "docs-checklists-03-source-build-supply-chain-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Authoritative personnel and automation lifecycle records can be joined to the complete repository-principal inventory to find remaining access.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "No repository principal mapped to a departed person retains repository access.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "No automation identity marked obsolete in the authoritative lifecycle record retains repository access.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-08-001",
+      "revision": 1,
+      "semantic_sha256": "fd052fbe66d134d62feb72e7e4697d981a3811a922c44cba4daffa6049a34e4f",
+      "statement": "Builds run from reviewed source.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 36
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "8. Build, CI/CD, and artifact integrity"
+      ],
+      "primary_packet_id": "docs-checklists-03-source-build-supply-chain-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Build provenance can bind every build input revision to an authenticated review status for that exact source revision.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every assessed build provenance record identifies the exact source revision used.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        },
+        {
+          "statement": "Every identified build source revision has the review evidence required by the selected branch policy.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-08-002",
+      "revision": 1,
+      "semantic_sha256": "6d06dcc047fa775b412d9180303e07625a361d7d70c8faa825b757e41c496562",
+      "statement": "Builds are automated and repeatable.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 37
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "8. Build, CI/CD, and artifact integrity"
+      ],
+      "primary_packet_id": "docs-checklists-03-source-build-supply-chain-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Authenticated build records prove automated execution, and a sealed repeated-build protocol can compare outputs using the approved equivalence policy.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every assessed build was executed by the declared automated build system.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        },
+        {
+          "statement": "Repeated builds from identical declared inputs satisfy the versioned output-equivalence policy.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-08-003",
+      "revision": 1,
+      "semantic_sha256": "e43d672c3a433f3537b9ed16f66f238281a02e0f8deba71196883e87f4afcf3e",
+      "statement": "A clean build produces equivalent output from the same declared inputs.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 38
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "8. Build, CI/CD, and artifact integrity"
+      ],
+      "primary_packet_id": "docs-checklists-03-source-build-supply-chain-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A sealed clean-build experiment with a named equivalence policy can repeatedly compare outputs from the exact same declared inputs.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "A clean repeated build from identical declared inputs satisfies the approved output-equivalence predicate.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-08-005",
+      "revision": 1,
+      "semantic_sha256": "9345733e0e39d915f84618a3a535c58c4139b50edfbdd0777312f67cd6bd76f2",
+      "statement": "Builds fail closed when required verification cannot run.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 40
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "8. Build, CI/CD, and artifact integrity"
+      ],
+      "primary_packet_id": "docs-checklists-03-source-build-supply-chain-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The approved verification inventory and CI outcome rules can prove that unavailable mandatory checks block rather than permit a build.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every verification required by the selected policy is represented in the build gate.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "An unavailable, errored, or missing required verification produces a non-passing build outcome.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-08-006",
+      "revision": 1,
+      "semantic_sha256": "223ad841c7447d2d6c38d17c7feadd8a7bd8d94f6b03927f6297da14c5c189b9",
+      "statement": "The production artifact is built once and promoted, not independently rebuilt in each environment.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 41
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "8. Build, CI/CD, and artifact integrity"
+      ],
+      "primary_packet_id": "docs-checklists-03-source-build-supply-chain-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Build provenance and environment deployment records can prove that one immutable digest is promoted without environment-specific rebuilding.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The production release has exactly one build provenance record for its immutable artifact digest.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        },
+        {
+          "statement": "Every promoted environment records the same artifact digest and no independent rebuild provenance.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-08-007",
+      "revision": 1,
+      "semantic_sha256": "803be60cd2ef66ce3a38dce79978b786fe8d41b87bb016ab4496c15a851e3b14",
+      "statement": "Deployable artifacts are immutable.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 42
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "8. Build, CI/CD, and artifact integrity"
+      ],
+      "primary_packet_id": "docs-checklists-03-source-build-supply-chain-md-part-001",
+      "primary_route": "artifact_verification",
+      "primary_reason": "Registry metadata and a bounded mutation check can determine whether every deployable artifact digest is immutable after publication.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every deployable artifact is addressed by immutable digest and rejects replacement of content at that identity.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-08-008",
+      "revision": 1,
+      "semantic_sha256": "cb3db715ee8b2695414ff1d5dad92aa88a6a05d2cb562e03b8bba7f9d12f4f55",
+      "statement": "Every artifact has a cryptographic digest.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 43
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "8. Build, CI/CD, and artifact integrity"
+      ],
+      "primary_packet_id": "docs-checklists-03-source-build-supply-chain-md-part-001",
+      "primary_route": "artifact_verification",
+      "primary_reason": "A complete artifact inventory can be checked mechanically for a valid cryptographic digest bound to each artifact's exact bytes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every in-scope artifact has a valid cryptographic digest that matches its exact bytes.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-08-009",
+      "revision": 1,
+      "semantic_sha256": "b60d4ed82d8313f6492192f2356208d40053ca3d384c37bc152ea90a912f8612",
+      "statement": "Build provenance records source, builder, inputs, commands or workflow, time, and output digest.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 44
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "8. Build, CI/CD, and artifact integrity"
+      ],
+      "primary_packet_id": "docs-checklists-03-source-build-supply-chain-md-part-001",
+      "primary_route": "artifact_verification",
+      "primary_reason": "The explicitly listed provenance fields and their artifact binding can be validated without judging build quality.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every build provenance record contains source, builder, complete declared inputs, commands or workflow, time, and output digest.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        },
+        {
+          "statement": "The provenance output digest matches the exact assessed artifact bytes.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-08-010",
+      "revision": 1,
+      "semantic_sha256": "0ddadff15ebc9b078c8ae50c853b4a8ddb9c97342d761a088e825c8aea00aba1",
+      "statement": "Artifact signatures or attestations are verified before deployment.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 45
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "8. Build, CI/CD, and artifact integrity"
+      ],
+      "primary_packet_id": "docs-checklists-03-source-build-supply-chain-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Cryptographic verification results and deployment event ordering objectively show whether a valid signature or attestation was checked first.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Each deployed artifact has a valid signature or attestation under the selected trust policy.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        },
+        {
+          "statement": "Successful signature or attestation verification precedes the corresponding deployment event.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-08-012",
+      "revision": 1,
+      "semantic_sha256": "8048a09692c91a7623647ecd0d565d1798ea36924f568bee1e5cce69b6d86c71",
+      "statement": "Build and signing keys are stored outside source code and build output.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 47
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "8. Build, CI/CD, and artifact integrity"
+      ],
+      "primary_packet_id": "docs-checklists-03-source-build-supply-chain-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "An authoritative key inventory and complete source and artifact inventories can prove the configured storage location and absence of known key material.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every build or signing key in the authoritative inventory is stored in an approved external key or secret store.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "No inventoried build or signing private-key material occurs in the complete assessed source or build outputs.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-08-014",
+      "revision": 1,
+      "semantic_sha256": "865c067c58d269c5da02d792ad34b9f4ce9df994ee96843a9e8054734cb61aff",
+      "statement": "Untrusted contribution workflows cannot access production secrets.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 49
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "8. Build, CI/CD, and artifact integrity"
+      ],
+      "primary_packet_id": "docs-checklists-03-source-build-supply-chain-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Trust classification, workflow permissions, secret bindings, and a bounded untrusted-run test can prove that production secrets are unavailable.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every workflow triggered by an untrusted contribution has no configured production-secret binding.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "A bounded untrusted-contribution execution cannot read any production secret in the authoritative secret inventory.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-08-015",
+      "revision": 1,
+      "semantic_sha256": "a02abdfed1f2cb55a79971d18b622eb8603a32dbefa8433edd02053e3f054c3b",
+      "statement": "Pull-request builds cannot overwrite trusted release artifacts.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 50
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "8. Build, CI/CD, and artifact integrity"
+      ],
+      "primary_packet_id": "docs-checklists-03-source-build-supply-chain-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Registry permissions and an isolated pull-request build attempt can prove that untrusted build identities cannot replace trusted artifacts.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Pull-request build identities lack overwrite permission for every trusted release artifact namespace.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "A bounded pull-request build cannot overwrite an existing trusted release artifact.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-08-017",
+      "revision": 1,
+      "semantic_sha256": "41fcbe717d0af089c8fe24d4dc5c982ed627417b43c97003166ee7b6cfb30e32",
+      "statement": "Pipeline definitions receive the same review protection as application code.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 52
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "8. Build, CI/CD, and artifact integrity"
+      ],
+      "primary_packet_id": "docs-checklists-03-source-build-supply-chain-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Path coverage and repository review rules can be compared exactly to prove equal protection for pipeline and application definitions.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Pipeline-definition paths are covered by review requirements at least as strong as the application-code paths in the selected policy.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-08-018",
+      "revision": 1,
+      "semantic_sha256": "011dc0aed20f7fd36d9ea9b49ec04ac70cd29f625c65a08494d2ee075963e014",
+      "statement": "Required unit, integration, security, policy, and packaging checks cannot be skipped silently.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 53
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "8. Build, CI/CD, and artifact integrity"
+      ],
+      "primary_packet_id": "docs-checklists-03-source-build-supply-chain-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A complete required-check policy, merge-gate settings, and audit behavior can prove that missing or bypassed checks never become silent success.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every required unit, integration, security, policy, and packaging check is enforced by the protected merge or release gate.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "Every allowed bypass of a required check creates an immutable attributable non-success or exception record.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-08-019",
+      "revision": 1,
+      "semantic_sha256": "5374f4e9fe797f91dadb67b39d0ffad5f0792251a0bc6b2876f15c293be554ad",
+      "statement": "Failed or canceled checks cannot be misrepresented as passed.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 54
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "8. Build, CI/CD, and artifact integrity"
+      ],
+      "primary_packet_id": "docs-checklists-03-source-build-supply-chain-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A bounded matrix of failed, canceled, missing, and successful jobs can verify the CI aggregator's exact reported status.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Failed, canceled, and missing required checks never produce a passed aggregate build or release status.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-08-020",
+      "revision": 1,
+      "semantic_sha256": "5ab8d31bbff232c97eecc0b09d5ccf79864ffacb60e74f023a05281946f23970",
+      "statement": "Artifact registries enforce authentication, authorization, immutability, and retention.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 55
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "8. Build, CI/CD, and artifact integrity"
+      ],
+      "primary_packet_id": "docs-checklists-03-source-build-supply-chain-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Registry configuration and conformance queries can test authentication, authorization, immutability, and the approved retention policy independently.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every in-scope artifact registry requires authenticated access according to the selected access policy.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "Every in-scope artifact registry enforces the selected authorization and immutability policy.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "Every in-scope artifact registry enforces the versioned project retention policy.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-08-021",
+      "revision": 1,
+      "semantic_sha256": "789ed32938b3a2184c7ad25efec4b9b34d9ccd6ae4f44a07f58adfd81de5b871",
+      "statement": "The previous known-good artifact remains available.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 56
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "8. Build, CI/CD, and artifact integrity"
+      ],
+      "primary_packet_id": "docs-checklists-03-source-build-supply-chain-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The approved known-good release record identifies an immutable digest whose current availability can be queried directly from the registry.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "An authenticated release record identifies the previous known-good artifact digest.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "The identified previous known-good artifact digest is currently retrievable from an approved registry.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-08-023",
+      "revision": 1,
+      "semantic_sha256": "793f79b91db4658b5cd18c0ee8c1d3040f384f86355bf6fec3b1f4bdcc438570",
+      "statement": "Build caches cannot substitute unverified or cross-trust artifacts.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 58
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "8. Build, CI/CD, and artifact integrity"
+      ],
+      "primary_packet_id": "docs-checklists-03-source-build-supply-chain-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Versioned trust zones, cache-key provenance, integrity checks, and an adversarial cache test can decide the stated substitution property.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every build-cache input is bound to verified integrity metadata and its declared trust zone.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        },
+        {
+          "statement": "A bounded unverified or cross-trust cache substitution attempt is rejected.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-08-024",
+      "revision": 1,
+      "semantic_sha256": "7c05f34f30b1bb604762d6a51c95007598b63bc22e7f00850986c345b0baaf38",
+      "statement": "Release tags, artifacts, provenance, and deployment records agree.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 59
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "8. Build, CI/CD, and artifact integrity"
+      ],
+      "primary_packet_id": "docs-checklists-03-source-build-supply-chain-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Immutable identifiers and digests allow an exact join and equality comparison across tags, artifacts, provenance, and deployments.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Each release tag resolves to the source revision recorded in its build provenance.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        },
+        {
+          "statement": "Each provenance output digest equals the corresponding release artifact digest.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        },
+        {
+          "statement": "Each deployment record names the same artifact digest as its release artifact and provenance.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-09-001",
+      "revision": 1,
+      "semantic_sha256": "3816b61e4f3b5fb76f55d2e33f31b2a9fb15dd678d060449abb50f4d92b08f16",
+      "statement": "Generate an SBOM for every released application artifact.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 69
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "9. Dependencies, SBOM, and licenses"
+      ],
+      "primary_packet_id": "docs-checklists-03-source-build-supply-chain-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A complete released-artifact inventory can be joined by digest to a valid SBOM record for every application artifact.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every released application artifact digest has exactly one valid bound SBOM record.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-09-002",
+      "revision": 1,
+      "semantic_sha256": "f4fac65520816624cc190010739e9ef17f62c2f7bee7048b5cb72298fe151f75",
+      "statement": "Include direct and transitive components.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 70
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "9. Dependencies, SBOM, and licenses"
+      ],
+      "primary_packet_id": "docs-checklists-03-source-build-supply-chain-md-part-001",
+      "primary_route": "artifact_verification",
+      "primary_reason": "The complete dependency graph and final artifact inventory can be compared with the SBOM to detect missing direct or transitive components.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The SBOM includes every direct and transitive component found in the authoritative dependency graph and final artifact inventory.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-09-003",
+      "revision": 1,
+      "semantic_sha256": "598ffdb5b2c743e758a70ee303e6d61d1bf6c76c0a6b906a53a3b0f277c2f1d8",
+      "statement": "Include runtime, operating-system, container, client, server, plugin, model, and embedded components as applicable.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 71
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "9. Dependencies, SBOM, and licenses"
+      ],
+      "primary_packet_id": "docs-checklists-03-source-build-supply-chain-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Applicability for each listed component class can be derived from complete artifact and deployment inventories, then compared to the SBOM.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every applicable runtime, operating-system, container, client, server, plugin, model, and embedded component appears in the bound SBOM.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-09-004",
+      "revision": 1,
+      "semantic_sha256": "32496def6af1eef434376cbf7304a9dbd5e37821503e2a16279cc68476a50dca",
+      "statement": "Distinguish build-only, development-only, optional, and runtime dependencies.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 72
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "9. Dependencies, SBOM, and licenses"
+      ],
+      "primary_packet_id": "docs-checklists-03-source-build-supply-chain-md-part-001",
+      "primary_route": "artifact_verification",
+      "primary_reason": "Authoritative package metadata and build graphs can assign the listed dependency scopes and verify that the SBOM preserves them.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every SBOM dependency is classified as build-only, development-only, optional, runtime, or another explicitly supported non-overlapping scope.",
+          "checker_family": "package_metadata",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-09-005",
+      "revision": 1,
+      "semantic_sha256": "51ebb3e76e27a5a7c6e8b67977e19f1485a415e44b610ef85a06faa72be81cfa",
+      "statement": "Record exact versions, package identifiers, sources, hashes, and relationships.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 73
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "9. Dependencies, SBOM, and licenses"
+      ],
+      "primary_packet_id": "docs-checklists-03-source-build-supply-chain-md-part-001",
+      "primary_route": "artifact_verification",
+      "primary_reason": "Each explicitly listed SBOM field and dependency relationship has a machine-readable value that can be checked against authoritative metadata.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every SBOM component records its exact version, package identifier, source, and hash.",
+          "checker_family": "package_metadata",
+          "evidence_authority": "artifact"
+        },
+        {
+          "statement": "Every SBOM dependency relationship matches the authoritative dependency and artifact graph.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-09-007",
+      "revision": 1,
+      "semantic_sha256": "fbf6b416502e4a2ca3582b654ad9de6cc01289c6dee276d7f5b23df8cd699b52",
+      "statement": "Link the SBOM to the released artifact digest.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 75
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "9. Dependencies, SBOM, and licenses"
+      ],
+      "primary_packet_id": "docs-checklists-03-source-build-supply-chain-md-part-001",
+      "primary_route": "artifact_verification",
+      "primary_reason": "The SBOM subject identifier can be compared exactly with the cryptographic digest of the released artifact bytes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Each SBOM names a subject digest equal to the digest of its exact released artifact.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-09-008",
+      "revision": 1,
+      "semantic_sha256": "eb7d51fa154ebd9e502ddc0d224c22f55c81d19cf5d080968fc3d8f50d31cb35",
+      "statement": "Verify the SBOM against the final packaged artifact.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 76
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "9. Dependencies, SBOM, and licenses"
+      ],
+      "primary_packet_id": "docs-checklists-03-source-build-supply-chain-md-part-001",
+      "primary_route": "artifact_verification",
+      "primary_reason": "A bounded artifact parser can compare the final packaged contents and dependency graph with the bound SBOM without source-only assumptions.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The bound SBOM component inventory matches the complete supported inventory extracted from the final packaged artifact.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-09-009",
+      "revision": 1,
+      "semantic_sha256": "42582eb9db53f5effd85521b8e4aabc04bb1c8cb65eda79a6f1f2d9046028438",
+      "statement": "Ensure no unexpected undeclared components are present.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 77
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "9. Dependencies, SBOM, and licenses"
+      ],
+      "primary_packet_id": "docs-checklists-03-source-build-supply-chain-md-part-001",
+      "primary_route": "artifact_verification",
+      "primary_reason": "A complete final-artifact component inventory can be differenced against the declared bound SBOM, with unsupported formats returning Blocked.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "No component extracted from the complete supported final-artifact inventory is absent from the bound SBOM declaration.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-09-011",
+      "revision": 1,
+      "semantic_sha256": "ca23bea74dce7ac99480134519826ad22f9b1ada744b397c902dce43d5b25768",
+      "statement": "Remove unsupported and end-of-life dependencies.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 79
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "9. Dependencies, SBOM, and licenses"
+      ],
+      "primary_packet_id": "docs-checklists-03-source-build-supply-chain-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A complete component inventory can be joined to authoritative publisher and registry lifecycle records for support and end-of-life status.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "No component in the complete dependency inventory is marked unsupported or end-of-life by its authoritative lifecycle source for the assessed version.",
+          "checker_family": "package_metadata",
+          "evidence_authority": "external_registry"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-09-012",
+      "revision": 1,
+      "semantic_sha256": "571cea4a2c6c75eb7fe2700514a5e52e9e2c9c23fd3fb8713814054f06dc7586",
+      "statement": "Check whether dependencies come from intended publishers and registries.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 80
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "9. Dependencies, SBOM, and licenses"
+      ],
+      "primary_packet_id": "docs-checklists-03-source-build-supply-chain-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "An approved publisher and registry policy can be compared exactly with locked dependency identities and authoritative registry metadata.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every dependency resolves from a registry allowed by the versioned project policy.",
+          "checker_family": "package_metadata",
+          "evidence_authority": "repository"
+        },
+        {
+          "statement": "Every dependency publisher identity matches the publisher allowed by the versioned project policy and authoritative registry metadata.",
+          "checker_family": "package_metadata",
+          "evidence_authority": "external_registry"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-09-015",
+      "revision": 1,
+      "semantic_sha256": "7ebe711e6e85d021559b561fbbb4ff13ecbddc92378748c373a7ee8ddf1f7c97",
+      "statement": "Monitor upstream security advisories.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 83
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "9. Dependencies, SBOM, and licenses"
+      ],
+      "primary_packet_id": "docs-checklists-03-source-build-supply-chain-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The complete dependency inventory and approved advisory-source policy can be compared to authenticated subscription and ingestion records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every dependency ecosystem in scope is covered by at least one approved upstream advisory source.",
+          "checker_family": "package_metadata",
+          "evidence_authority": "external_registry"
+        },
+        {
+          "statement": "Each approved advisory source has a current successful monitoring or ingestion record.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-09-016",
+      "revision": 1,
+      "semantic_sha256": "ed332d73536af8e4960c9ad0b5b7a2baa3b573b9492e5a1e1ba30081915487bd",
+      "statement": "Continuously scan released components for newly disclosed vulnerabilities.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 84
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "9. Dependencies, SBOM, and licenses"
+      ],
+      "primary_packet_id": "docs-checklists-03-source-build-supply-chain-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Released component inventories and authenticated event-driven or policy-cadenced scan records can prove continuing vulnerability coverage.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every supported released component remains registered with the approved vulnerability-monitoring service.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "Newly disclosed vulnerability data triggers or is included within the approved maximum scan cadence for every supported release.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-09-022",
+      "revision": 1,
+      "semantic_sha256": "10fcbad9a16daf8df1027f3c8a4edcf2fe2ac2602fe749b2f20d6e55d51df8b6",
+      "statement": "Document ownership of vendored, forked, or internally patched components.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 90
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "9. Dependencies, SBOM, and licenses"
+      ],
+      "primary_packet_id": "docs-checklists-03-source-build-supply-chain-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A complete component inventory can be joined exactly to authenticated ownership records for each vendored, forked, or patched component.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every vendored, forked, or internally patched component in the complete inventory has a current authenticated owner record.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-09-027",
+      "revision": 1,
+      "semantic_sha256": "323c5a4d7de6d1dc643cd772a4e793762577c748e5fe3c443a69247178d17921",
+      "statement": "Retain SBOMs for historical releases and incident investigation.",
+      "source": {
+        "path": "docs/checklists/03-source-build-supply-chain.md",
+        "line": 95
+      },
+      "heading_trail": [
+        "Source, build, and supply chain",
+        "9. Dependencies, SBOM, and licenses"
+      ],
+      "primary_packet_id": "docs-checklists-03-source-build-supply-chain-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Historical release and incident inventories can be compared exactly with retained digest-bound SBOM records under the approved retention policy.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every historical release required by the retention policy has a retrievable SBOM bound to its artifact digest.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        },
+        {
+          "statement": "Every incident-required SBOM remains retrievable for the incident investigation retention period.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    }
+  ]
+}

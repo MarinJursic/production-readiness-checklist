@@ -1,6 +1,8 @@
 # Contributing
 
 Thanks for helping make production-readiness reviews clearer and more useful.
+Decision ownership, material-change review, maintainer access, conflicts of
+interest, and project continuity are described in [GOVERNANCE.md](GOVERNANCE.md).
 
 ## Good contributions
 

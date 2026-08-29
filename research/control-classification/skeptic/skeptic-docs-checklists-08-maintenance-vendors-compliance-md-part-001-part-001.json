@@ -1,0 +1,326 @@
+{
+  "schema_version": "prc.control-classification-skeptic-review/v0.1",
+  "packet_id": "skeptic-docs-checklists-08-maintenance-vendors-compliance-md-part-001-part-001",
+  "primary_packet_id": "docs-checklists-08-maintenance-vendors-compliance-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "controls": [
+    {
+      "control_id": "PRC-36-002",
+      "revision": 1,
+      "semantic_sha256": "20019981fe6295a2a22c00d806b44ec8b4cba30c86bece7604a373e714835ab1",
+      "verdict": "confirmed_deterministic",
+      "reason": "The statement requires documentation of five named subjects, so current versioned sections or links fully decide it.",
+      "counterexample_analysis": "I tried architecture diagrams without recovery, dependency lists without data flow, and stale deployment notes. Required topic mapping and freshness fail each; correctness of the design is not claimed.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-36-003",
+      "revision": 1,
+      "semantic_sha256": "0c160985ec1702168ee40668300f8804e0bd826338d377d415bb3de48bde3bd3",
+      "verdict": "rejected_nondeterministic",
+      "reason": "One sealed setup execution cannot establish reproducibility across supported machines, architectures, network states, time, and mutable dependencies.",
+      "counterexample_analysis": "The setup succeeds twice on the test image but relies on an unpinned package that later changes or fails on another supported architecture. The bounded run passes while the development setup is not reproducible.",
+      "nondeterministic_route": "empirical_protocol_undefined",
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-36-004",
+      "revision": 1,
+      "semantic_sha256": "75e424d872b029dbf5fb29f870c665ab106f6d751a117c7528ee4bcd395cf231",
+      "verdict": "confirmed_deterministic",
+      "reason": "Nonempty current build and test command documentation is the complete narrow fact requested.",
+      "counterexample_analysis": "I tried package scripts without documentation, a build command only, and commands for an obsolete toolchain. Presence, category, and version binding fail each.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-36-005",
+      "revision": 1,
+      "semantic_sha256": "3167b39ef583515650422605009268ca19cdf4b0c8536d692178a1358443b6d1",
+      "verdict": "confirmed_deterministic",
+      "reason": "The four named convention areas are exact versioned-documentation requirements.",
+      "counterexample_analysis": "I tried coding and review conventions only, release notes instead of release conventions, and an unapproved draft. Topic and authentication checks fail each.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-36-011",
+      "revision": 1,
+      "semantic_sha256": "93b6558176b2c7defb603c30df466f55c130f7f0d953ef0452cbe8b2450a204b",
+      "verdict": "confirmed_deterministic",
+      "reason": "A current accountable owner and explicit dependency-update cadence are bounded policy fields.",
+      "counterexample_analysis": "I tried a departed owner, `regularly` without a duration, and separate policies that omit transitive dependencies. Identity, numeric cadence, and scope schema fail each.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-36-012",
+      "revision": 1,
+      "semantic_sha256": "0ce4a0f99b469d52a380f64d9f31bdb33dbc8793cd55d760f6d94adff324c15b",
+      "verdict": "confirmed_deterministic",
+      "reason": "Given a complete runtime and platform inventory, authoritative lifecycle dates can be mechanically joined and freshness-tracked.",
+      "counterexample_analysis": "I tried an unknown version, missing vendor date, stale cached lifecycle source, and an unregistered deployed runtime. Inventory and source binding either fail or return Blocked rather than Pass.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-36-014",
+      "revision": 1,
+      "semantic_sha256": "0ffee804686cf724a063ad451c68e9ed41e9ccabd32968c253623c8fbefd7c96",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Checking declared workarounds does not prove every temporary bypass, inline patch, feature toggle, and operational exception was identified as a workaround.",
+      "counterexample_analysis": "A temporary production flag bypasses validation but is never entered in the workaround register. Every declared item has an owner and expiry, so the join passes while a temporary workaround has neither.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-36-015",
+      "revision": 1,
+      "semantic_sha256": "8df3b9e80af5e4040dbf9e4ba79e27cdc990eab2091c53686aa7f73cdaf7e205",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Structured inventories can omit code-level shims, stale flags, provider-side flags, and compatibility behavior not labeled as such.",
+      "counterexample_analysis": "All registered flags have removal plans, but a legacy compatibility branch embedded in code is not inventoried. The record join passes while a compatibility shim lacks a removal plan.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-36-016",
+      "revision": 1,
+      "semantic_sha256": "ade2d5f9127b20d163eb28426cd1f95eca225f18eda6de107fbf993ca7200bfa",
+      "verdict": "confirmed_deterministic",
+      "reason": "Existence and current version of both API and data deprecation policies are exact record facts.",
+      "counterexample_analysis": "I tried API-only policy, migration guide without policy authority, and expired data policy. Required types, authentication, and freshness fail each.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-36-021",
+      "revision": 1,
+      "semantic_sha256": "ee8311a5f5d8e17701f9e77b73ed3fadeb4f77774fcf483c5a33e8e4034f91d9",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Direct support-role queries and audit events do not cover shared credentials, derived exports, provider support, or indirect data access.",
+      "counterexample_analysis": "Approved support console reads are restricted and audited, but a shared analytics export lets support staff read customer data without an access event. Known policy joins pass while support access is neither restricted nor audited.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-36-024",
+      "revision": 1,
+      "semantic_sha256": "af7b84abf3b6f9d6041dfc56b2c2393a8a19b31a2abc232b8111c7e0dcd882f7",
+      "verdict": "confirmed_deterministic",
+      "reason": "Defined maintenance windows and status-communication rules are exact policy fields.",
+      "counterexample_analysis": "I tried a calendar without communication rules, vague `off peak` windows, and an obsolete status channel. Schema, threshold, and freshness fail each.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-36-027",
+      "revision": 1,
+      "semantic_sha256": "894a3a34f2b40d53d9c9e6c897f36ebe7a53b743c8e071edc413ada2c386143e",
+      "verdict": "confirmed_deterministic",
+      "reason": "The four named decommissioning and data-lifecycle topics can be required in one current authenticated plan.",
+      "counterexample_analysis": "I tried retention and deletion without export, export without decommissioning, and a secure-deletion tool note without a lifecycle plan. Topic mapping rejects each.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-37-002",
+      "revision": 1,
+      "semantic_sha256": "4884d1405cd8e3cc4d980d85d65437cbe99fcc4c39e746318ff73a52e0554f57",
+      "verdict": "rejected_nondeterministic",
+      "reason": "An authoritative vendor register can omit shadow SaaS, nested subprocessors, developer accounts, and provider-like hosted services.",
+      "counterexample_analysis": "Every registered provider has six fields, but a team uploads customer data to an unregistered external AI service. The record check passes while a provider has no purpose, owner, access, permissions, regions, or criticality record.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-37-007",
+      "revision": 1,
+      "semantic_sha256": "615fc9f0627ace1f99a75287de60c846f2fce6563ac17928f26319333ffe24f8",
+      "verdict": "confirmed_deterministic",
+      "reason": "Effective provider account identifiers and environment bindings make sandbox/production separation an exact equality and permission check.",
+      "counterexample_analysis": "I tried shared credentials, same tenant with overlapping data when policy requires separate accounts, and production keys in sandbox. Effective account and identity binding fail each.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-37-008",
+      "revision": 1,
+      "semantic_sha256": "b13d450ce1d9d1ef21f96c199ff955991f06a4e53fa096cb3ded65750d7bb0fc",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A single isolated secret replacement does not prove every integration credential type and rotation path works without interruption.",
+      "counterexample_analysis": "The tested API key rotates, but a webhook-signing secret or provider-issued certificate cannot be rotated without recreating the integration. The selected exercise passes while integration secrets are not generally rotatable.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-37-012",
+      "revision": 1,
+      "semantic_sha256": "42b0394159ad28e97720df98a7a056fa0b8509b5805c1c1dae50c21cf76c63af",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Supported static data-flow analysis cannot cover dynamic SDKs, callbacks, deserialization, provider-hosted code, or all trust-boundary uses.",
+      "counterexample_analysis": "Known JSON responses enter validation, but an SDK callback supplies a field used directly in a command or template. The AST inventory omits the indirect flow and passes while provider input is trusted.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-37-013",
+      "revision": 1,
+      "semantic_sha256": "99bad2a81a346d5abc4d17f0484f97d26536397cf0b3942f3c06f530fa227e8e",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Finite callback authentication and replay fixtures do not prove all aliases, encodings, concurrent deliveries, nodes, and replay windows are protected.",
+      "counterexample_analysis": "The documented endpoint rejects unsigned sequential duplicates, but a legacy callback alias or concurrent duplicate on separate nodes is accepted twice. The inventory tests pass while callbacks lack full protection.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-37-014",
+      "revision": 1,
+      "semantic_sha256": "fff23e3bcbfee937a6bfe5a578d34ce47b443cc5d67c62ac4b05047c24d4add5",
+      "verdict": "confirmed_deterministic",
+      "reason": "Provider API versions, authoritative deprecation dates, subscriptions, and ingestion freshness are bounded monitoring facts.",
+      "counterexample_analysis": "I tried an untracked active version, stale feed, missing deprecation date, and monitoring attached to another account. Version and source joins fail each or block when the provider publishes no authoritative date.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-37-015",
+      "revision": 1,
+      "semantic_sha256": "c7c525245f1f3b17a7c29406d10d6d56d7796ed322e117776ead6ac4e33caabd",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Delivery of one signed test notification does not prove all provider channels and actual breaking-change notices reach an accountable owner.",
+      "counterexample_analysis": "The provider's status webhook reaches the owner in the exercise, but contractual breaking changes arrive only in an unmonitored portal. The canary passes while a real notification does not reach anyone accountable.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-37-017",
+      "revision": 1,
+      "semantic_sha256": "9408c4b94f6d58500cf664d884dfa7c6a349bf1a9cda3c700c34951c60f88e54",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Subscriptions and text ingestion do not establish that data-use changes are recognized; interpreting policy changes requires privacy and legal judgment.",
+      "counterexample_analysis": "A provider rewrites terms to permit model training using indirect wording. The page snapshot is successfully ingested and monitoring is current, but no system flags the substantive data-use change. Configuration passes while the change is unmonitored.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-37-018",
+      "revision": 1,
+      "semantic_sha256": "42155e6dc6f2f69c4d432c97a8b43b43b689ab562bc66b8b1b2c46e4a7a00dab",
+      "verdict": "confirmed_deterministic",
+      "reason": "For each registered integration, a kill-switch exercise can objectively verify cessation of calls and data flow.",
+      "counterexample_analysis": "I tried disabling only UI access, queued calls continuing, cached exports continuing, and automatic reenabling. Bound telemetry and state checks fail each; the switch passes only when the integration is actually disabled.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-37-019",
+      "revision": 1,
+      "semantic_sha256": "0e4068561436cecd8f62d9d4aaffd649af19e6bfa3cbae45c53d93c4fbb4a3f8",
+      "verdict": "confirmed_deterministic",
+      "reason": "Provider criticality is supplied by the approved inventory, and presence of at least one current plan type is an exact record predicate.",
+      "counterexample_analysis": "I tried a critical provider with generic vendor notes, stale export instructions, and a plan lacking an owner. Plan type, scope, freshness, and ownership fail each.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-37-020",
+      "revision": 1,
+      "semantic_sha256": "847db25206538b159fa7d53d5f495a22fd33df5cf60c5d0817c813a07394938f",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A known incident fixture and retained lineage cannot prove the lineage graph includes every copied, transformed, cached, exported, and deleted record.",
+      "counterexample_analysis": "The test incident traces direct provider IDs, but a derived record lost the provider lineage during aggregation and is omitted from the result. The known fixture passes while the app cannot identify all affected records.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "undefined_protocol"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-37-021",
+      "revision": 1,
+      "semantic_sha256": "ac07e507a4f6fccb27b35437985f43acfb9e336998e5459258aed7010f459d31",
+      "verdict": "confirmed_deterministic",
+      "reason": "Status source and escalation contact entries for every inventoried provider are exact incident-runbook fields.",
+      "counterexample_analysis": "I tried a provider status URL without escalation, stale contacts, and a critical provider absent from the runbook. Inventory, topic, and freshness checks fail each.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-37-022",
+      "revision": 1,
+      "semantic_sha256": "b7f22c3f5d153baa208c7691d7e274a27b5d7d8e556336c27fa15420183b9304",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Direct credential and access queries do not cover inherited groups, shared tokens, offline exports, cached grants, and data retained by the provider.",
+      "counterexample_analysis": "A terminated provider's named account is disabled, but a shared integration key or previously issued export remains accessible. Effective queries over known identities pass while the provider still has data access.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-38-032",
+      "revision": 1,
+      "semantic_sha256": "a45e1c3da592afaa209bb0856d01c592da6e5c99f3a77d11e1abfa2630dc1a74",
+      "verdict": "confirmed_deterministic",
+      "reason": "Once qualified authorities supply the applicable obligation set, deadlines and current tracking status are exact record facts.",
+      "counterexample_analysis": "I tried a missing renewal, deadline without owner, overdue filing marked open, and stale review date. Obligation joins and status/date predicates fail each; deciding legal applicability is upstream of this tracking rule.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    }
+  ]
+}

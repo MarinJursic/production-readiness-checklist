@@ -53,10 +53,15 @@ with the positional project path.
 
 `prc quick` selects the 18-assertion `prc/quick` local profile. `prc scan`
 selects the 40-assertion core local profile. `prc full codex` and
-`prc full claude` select the core profile plus advisory AI review of every
-active control. `quick` rejects AI-provider flags, and both aliases reject a
-profile override so their meaning cannot be silently changed. Every mode still
-includes all 10,042 controls in the complete report.
+`prc full claude` select the core profile plus advisory AI review of all 9,356
+reviewed nondeterministic controls. The 686 reviewed deterministic controls are
+never handed to AI for a verdict; supported exact programs use authoritative
+collectors and all other programs remain honestly Blocked. `full` uses deep review, four parallel provider
+batches, and one primary subagent per rule plus one independent skeptical
+subagent per batch. Codex full review also selects `xhigh` reasoning. `quick`
+rejects AI-provider flags, and both aliases reject a profile override so their
+meaning cannot be silently changed. Every mode still includes all 10,042
+controls in the complete report.
 
 Human output creates one detailed standalone HTML report by default. The file is
 created privately outside the target, its absolute path is printed, and an
@@ -84,6 +89,12 @@ disposition. Cited paths and lines are snapshot-location validated, while the
 AI claims remain explicitly `advisory_unverified`. Provider launch,
 timeout, secret-screening, or protocol failures return `4`. See
 [safe AI control review](ai-control-review.md).
+
+If a later provider batch fails, every earlier schema-checked batch remains in
+the private resume cache and is included in a report marked `partial`. The
+report is written before code `4` is returned. Repeating the same command
+revalidates and reuses matching completed batches, then sends only unfinished
+work. A partial advisory review cannot make a control Pass.
 
 The default `--exit-policy profile` maps `profile_satisfied` to `0`, `no_go` to
 `1`, and incomplete, blocked, or manual-evidence states to `2`. A policy or

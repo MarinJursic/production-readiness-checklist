@@ -1,0 +1,3507 @@
+{
+  "schema_version": "prc.control-classification-review/v0.1",
+  "packet_id": "docs-engineering-04-architecture-and-design-md-part-001",
+  "source_path": "docs/engineering/04-architecture-and-design.md",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "controls": [
+    {
+      "control_id": "USEQ-B7EF282B",
+      "revision": 1,
+      "semantic_sha256": "b7ef282b14d3827cb1cb88a428aef9d61328389899996a615ea24707ddd501b2",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The full rule is mixed: diagram artifacts are checkable but current and complete system understanding needs semantic review.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-85AF022E",
+      "revision": 1,
+      "semantic_sha256": "85af022e50a258e8d6c5cfc4caa732525d617fa29e4d6491ed1fe489ba94a4e1",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The full rule is mixed: boundary annotations are checkable but identifying every real boundary needs architectural and threat judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-7E6F1FE2",
+      "revision": 1,
+      "semantic_sha256": "7e6f1fe286e9fb211b082401a83620c3969365925da4a4872796f9421a2a0c6b",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The full rule is mixed: data-flow annotations are checkable but complete sensitive-data discovery is unbounded and semantic.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-ABB67AFA",
+      "revision": 1,
+      "semantic_sha256": "abb67afa6a32007aee266d7c9abd2c25f749aeae780bacca0b29666a53c52fc8",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The full rule is mixed: inventory records are checkable but identifying every hidden stateful or shared dependency needs system judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-7FEE35E5",
+      "revision": 1,
+      "semantic_sha256": "7fee35e5b1e1aae2d09ddbfe9914711ee5235b8b07d6ea21b4c1d9ce2e23776f",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Identify single points of failure, circular dependencies, and hidden dependencies.” is not deterministic because its central terms require product, system, trade-off, risk, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-6BDC92D9",
+      "revision": 1,
+      "semantic_sha256": "6bdc92d910cf546a419665e442d816eba4a43dea5a02ddafd898d7ca175d14e4",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “Record material architecture decisions, rejected alternatives, and tradeoffs.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Record material architecture decisions, rejected alternatives, and tradeoffs.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-92FE8B5B",
+      "revision": 1,
+      "semantic_sha256": "92fe8b5b9254258543d0f3e8e252f368d2842fde50f478db9f2920ab1e196db0",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The full rule is mixed: document timestamps and deployment facts are checkable but material change and semantic agreement need review.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-71BDCCBE",
+      "revision": 1,
+      "semantic_sha256": "71bdccbe19de3d07cbad988ee8d1a06b1fbf274ee8a610c7b4d13c6ae8428a39",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Include all actors, trust boundaries, entry points, data stores, external systems, and administrative paths.” is not deterministic because its central terms require product, system, trade-off, risk, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-25F8A29F",
+      "revision": 1,
+      "semantic_sha256": "25f8a29f6a87727053fb0378e323825eae223289ae711aec86bf7b10f5dc8707",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Model identity spoofing, unauthorized modification, information disclosure, denial of service, repudiation, and privilege escalation.” is not deterministic because its central terms require product, system, trade-off, risk, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-47D7BDB8",
+      "revision": 1,
+      "semantic_sha256": "47d7bdb88e297865498ef27d5573398bbbd531f20273935c419e0a403a5520b5",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Model business-logic abuse, insider threats, compromised administrators, dependency compromise, and build-system compromise.” is not deterministic because its central terms require product, system, trade-off, risk, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-A1FE2F54",
+      "revision": 1,
+      "semantic_sha256": "a1fe2f5416d679d51cf5ba9e45714b32e37472ffc677b01679fe9980a0368f12",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Model tenant escape, scraping, spam, fraud, automation, economic abuse, backup attacks, and support-channel social engineering.” is not deterministic because its central terms require product, system, trade-off, risk, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-E37A2788",
+      "revision": 1,
+      "semantic_sha256": "e37a27887b5a8242534eb2f13c7fbf6a0fc61d71fbf5467becf1341199aedfee",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The full rule is mixed: traceability links are checkable but converting threats into adequate requirements, controls, and tests needs security judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-60FB538E",
+      "revision": 1,
+      "semantic_sha256": "60fb538e315791f4fda2b5327c40ac0ca71fc19af783a15a684c849025d49c70",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The full rule is mixed: review records are checkable but whether a change is material and the model remains adequate needs judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-266638A7",
+      "revision": 1,
+      "semantic_sha256": "266638a7e5241434d83c912cc7a19dbc05aa2038b7df98f4dec3b5b5b5c48bd9",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “Performance objectives are defined for every critical journey.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Performance objectives are defined for every critical journey.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-50B6A12E",
+      "revision": 1,
+      "semantic_sha256": "50b6a12ececc45b2c880edba14d25a51266bcbb14bee38561dc53b0eb4999504",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “Objectives use meaningful percentiles rather than averages alone.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Objectives use meaningful percentiles rather than averages alone.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-C8C2C6FB",
+      "revision": 1,
+      "semantic_sha256": "c8c2c6fb8d70c4b0a81772c2eafb5f8691c005e17852af3a68505b3227805c7c",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “Frontend and backend performance budgets are documented.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Frontend and backend performance budgets are documented.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-FE0DF97B",
+      "revision": 1,
+      "semantic_sha256": "fe0df97b8a661e2460cec544cb8c237268d5289aeca773f1afad96b6079c97ef",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "The rule “Public pages meet approved loading, interaction, visual-stability, rendering, and responsiveness targets.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Public pages meet approved loading, interaction, visual-stability, rendering, and responsiveness targets.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-5EFABA0A",
+      "revision": 1,
+      "semantic_sha256": "5efaba0a23306bdd3ba68f6a90442e90e09ef1884afc85b3cc5d1e26a227796e",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “API latency targets are defined by endpoint or journey.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: API latency targets are defined by endpoint or journey.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-29D46E0C",
+      "revision": 1,
+      "semantic_sha256": "29d46e0cf6096e433b732e77a9f1db03b155d10f57d90e07376bb47f3da05807",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “Database-query latency, count, and volume are measured.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Database-query latency, count, and volume are measured.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-2F6D8929",
+      "revision": 1,
+      "semantic_sha256": "2f6d892940081b5e88fbac3e71cf1470181442f7460afc70e54cb485ff20c24d",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Excessive queries, repeated fetches, blocking operations, and unbounded responses are eliminated.” is not deterministic because it promises completeness or behavior across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-DED09D7D",
+      "revision": 1,
+      "semantic_sha256": "ded09d7dcdaea18d822027e049c31bab3698bee2a73fc4be426d07fea39b461e",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The full rule is mixed: numeric payload bounds are exact but appropriate compression depends on content, clients, privacy, and cost.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-E555726F",
+      "revision": 1,
+      "semantic_sha256": "e555726ffe5b77120d669fa9161843f9f1fd116c8d26ce7231acb1ebbcd7c0dc",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Images, fonts, scripts, styles, media, and critical resources are delivered efficiently.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-757AF87D",
+      "revision": 1,
+      "semantic_sha256": "757af87d14677a739e4c30e8d3d54536970300975cbd9a9391236e6996d3c50f",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Noncritical work is deferred without harming accessibility, correctness, or user trust.” is not deterministic because its central terms require product, system, trade-off, risk, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F2B2306F",
+      "revision": 1,
+      "semantic_sha256": "f2b2306f1d31a449785ea384426bd98b818218ff02be3e156a315c9d0ba96fb3",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "The rule “Cache and CDN behavior is validated.” is not deterministic because it requests empirical evidence without complete fixtures, environments, coverage, outcome oracles, or freshness rules.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-C79EF036",
+      "revision": 1,
+      "semantic_sha256": "c79ef036cf2732bed603ba0cc95a29ac0e5e9cdc403d3dd63e737090e9175a05",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “Connection, thread, worker, and resource pools are sized and monitored.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Connection, thread, worker, and resource pools are sized and monitored.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-770BCF5A",
+      "revision": 1,
+      "semantic_sha256": "770bcf5a77986ab9b48f589f51e762c7a6a796f6c13cb5f1967eeba93b82ad8b",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Memory, CPU, connection, file-descriptor, storage, and resource leaks are investigated.” is not deterministic because it promises completeness or behavior across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-7ECBBCC3",
+      "revision": 1,
+      "semantic_sha256": "7ecbbcc38f43c1c30b2246333b08996c773a3c88e3953e26cc4ae0f6adfb6564",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “Long-running and resource-intensive requests have limits.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Long-running and resource-intensive requests have limits.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F1EB0182",
+      "revision": 1,
+      "semantic_sha256": "f1eb018203dc8e0c928453e50ac4902e9a0dba2a500e1ddb748b99464c0e10ab",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "The rule “Performance is tested with realistic authentication, authorization, data volume, cache state, devices, and networks.” is not deterministic because it requests empirical evidence without complete fixtures, environments, coverage, outcome oracles, or freshness rules.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-115511BC",
+      "revision": 1,
+      "semantic_sha256": "115511bcebe3b941722aa7f5b3f10ed94a3aee79e361ebf2a593378644723524",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Client telemetry does not materially harm performance.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-7D6F12FE",
+      "revision": 1,
+      "semantic_sha256": "7d6f12fecede5e3f3dfc79f68c178fed801a69fe8755a5b0a8850981e73982f4",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Performance objectives connect to user and business outcomes.” is not deterministic because its central terms require product, system, trade-off, risk, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-7C17A636",
+      "revision": 1,
+      "semantic_sha256": "7c17a6367edd8d434632ff4131c06f03f55c70b612ece846e6e684e4775c68d8",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Forecast data, file, index, queue, log, telemetry, and backup growth.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-59F42DD9",
+      "revision": 1,
+      "semantic_sha256": "59f42dd95a38a6b8c2cf6838cfda5596254b8387a1c62186224a2cf7be14bb0f",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Identify the maximum safe capacity of every critical component.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-5AFFD98A",
+      "revision": 1,
+      "semantic_sha256": "5affd98ab3f8ddd810d94b43da31bc6fe3fcc51e0002ed049dbb922dbf023be8",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "The rule “Load tests use realistic request mixes, authorization, data distributions, and dependency behavior.” is not deterministic because it requests empirical evidence without complete fixtures, environments, coverage, outcome oracles, or freshness rules.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-C3395046",
+      "revision": 1,
+      "semantic_sha256": "c339504648c45a402fce1346b5027041a46444b7c9b93f4eedcb45b3a0ea38b7",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “Provider quotas, account limits, concurrency limits, and regional limits are reviewed.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Provider quotas, account limits, concurrency limits, and regional limits are reviewed.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-EDA216F8",
+      "revision": 1,
+      "semantic_sha256": "eda216f8adf5bff1aee049054e1005cd0c3be4300980cb80797b9eeb69fd218d",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Database connections, locks, storage, replicas, and input/output have sufficient headroom.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-35154E0E",
+      "revision": 1,
+      "semantic_sha256": "35154e0ed769c2c74aa711a89ceebd78c044ae46aff4e84fee5009b75288a3e9",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Queue, cache, load-balancer, network, worker, and telemetry systems have sufficient headroom.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-1E625D17",
+      "revision": 1,
+      "semantic_sha256": "1e625d17a787c310efcfe0d252a72cc31501868a849fbf5c1452ea47d46c6d7c",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Scaling does not overload databases or dependencies.” is not deterministic because it promises completeness or behavior across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-2AD26751",
+      "revision": 1,
+      "semantic_sha256": "2ad267515a97fcb91bfd3b1238c3b025a9abc52314cb9fc3e4bf166ec2e1ac90",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Capacity remains sufficient during the failures the architecture promises to survive.” is not deterministic because it promises completeness or behavior across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-46DF8678",
+      "revision": 1,
+      "semantic_sha256": "46df8678377a9a62c3d009ccf2ee2d21b1c372f314e59fcb23461c03d9401c53",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Rate limits and per-user or per-tenant quotas protect shared capacity fairly.” is not deterministic because its central terms require product, system, trade-off, risk, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-18CF671E",
+      "revision": 1,
+      "semantic_sha256": "18cf671e320ff93db7d536bbb75d0bf1dce953b8698665bb26cfd36753970bc5",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Retry storms and thundering-herd behavior are prevented.” is not deterministic because it promises completeness or behavior across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-A072D92D",
+      "revision": 1,
+      "semantic_sha256": "a072d92d5cc9be1597d961ca5c7d3a804ef2585842da67a4443df60d55fa3e0d",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “DDoS and volumetric-abuse scenarios are reviewed.” is not deterministic because its central terms require product, system, trade-off, risk, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-980A606F",
+      "revision": 1,
+      "semantic_sha256": "980a606f20151524a4a37858c4fd228ca33c0be080ccea4f0867a13f2c218f4f",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Capacity alerts provide enough time to act.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-FC5F896F",
+      "revision": 1,
+      "semantic_sha256": "fc5f896f2c99166ac16dc8696e33f283ad4d7175195a2f18904ca723f241a559",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “Expected and peak operational cost are modeled.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Expected and peak operational cost are modeled.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-EEE57AB0",
+      "revision": 1,
+      "semantic_sha256": "eee57ab05f54c2d99dd6fa204bab61fd2bb92cd95811e3999105d6c69ae9fcb9",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Cost controls do not silently terminate essential operation.” is not deterministic because it promises completeness or behavior across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-7ED2ED65",
+      "revision": 1,
+      "semantic_sha256": "7ed2ed65b5042e9d36bdb3cb59aa5aaae527c3124ce4d5bebfb8c23953a4011f",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “SLOs cover important availability, latency, correctness, durability, freshness, and quality outcomes.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: SLOs cover important availability, latency, correctness, durability, freshness, and quality outcomes.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F64F6149",
+      "revision": 1,
+      "semantic_sha256": "f64f61490a526f1f310d2bbfc6994f3c2561ef3b1cc7773806ac18b8eed96fff",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Product and engineering stakeholders approve the SLOs.” is not deterministic because its pass condition is an accountable stakeholder approval that an automated checker may not replace.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-745E0AA2",
+      "revision": 1,
+      "semantic_sha256": "745e0aa2216f10bd41ef21c577bcdfb0130adf40558deab6e6e03b39c52c6c21",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Critical dependency reliability is compatible with the product SLO or engineered around.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-D2574104",
+      "revision": 1,
+      "semantic_sha256": "d25741045b0dd0d6776a162ab158fa598d4b96ae041a34771ff34e14fdd57dae",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The full rule is mixed: retry limits and delay are exact but where jitter is appropriate and an operation is safe need semantic review.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-2D2086B8",
+      "revision": 1,
+      "semantic_sha256": "2d2086b86292b7273cca08de9cca5df0440551c5eaddb4dcb32e1ab06708dfe8",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Bulkheads or equivalent isolation prevent one workload from exhausting all capacity.” is not deterministic because it promises completeness or behavior across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-4D1F0F17",
+      "revision": 1,
+      "semantic_sha256": "4d1f0f17b7eb0df8a3cce4c51d69dade799440da0c858bf4c30bbd01767c15f2",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Optional functionality failure does not unnecessarily fail the whole product.” is not deterministic because it promises completeness or behavior across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-37A811EC",
+      "revision": 1,
+      "semantic_sha256": "37a811ec4a4c3cd60aa748a247e13b78d1f9fcf16f385abc8cb60803f69247b7",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "The rule “Instances stop receiving new work before shutdown.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Instances stop receiving new work before shutdown.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-942757E2",
+      "revision": 1,
+      "semantic_sha256": "942757e20114c66223b2bd106b0b581d9cde99e26c890ca24ca78a3e2179b3ad",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “In-flight work is completed, transferred, canceled safely, or retried during shutdown.” is not deterministic because it promises completeness or behavior across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-77C403FB",
+      "revision": 1,
+      "semantic_sha256": "77c403fb7d66fda7c0cf1824ebd25e85105bf762c482de437bff38a88c09f936",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Shared control planes, identity systems, networks, storage, DNS, providers, and dependencies are included in failure analysis.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-5DDDC794",
+      "revision": 1,
+      "semantic_sha256": "5dddc794ae16bd3061c1516bcef00b666cd9c8287b4c663c845c76ca8448db95",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "The rule “Network delay, packet loss, partition, and DNS failure have been tested.” is not deterministic because it requests empirical evidence without complete fixtures, environments, coverage, outcome oracles, or freshness rules.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-2BF79B16",
+      "revision": 1,
+      "semantic_sha256": "2bf79b1681ceed8ce66e0e71f64c1cfa517f8032ebee191443931d49e74c8182",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "The rule “Dependency timeout, malformed response, throttling, partial failure, and outage have been tested.” is not deterministic because it requests empirical evidence without complete fixtures, environments, coverage, outcome oracles, or freshness rules.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-43D7583F",
+      "revision": 1,
+      "semantic_sha256": "43d7583fe613f8122c30bb765cdd8766ec7415114367820921330ba1b668b803",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "The rule “Database failover, replication lag, and split-brain prevention have been tested.” is not deterministic because it requests empirical evidence without complete fixtures, environments, coverage, outcome oracles, or freshness rules.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-282499CC",
+      "revision": 1,
+      "semantic_sha256": "282499cc1a165fb5d2b73522324701b04db50a014c579a275ad31f00ce6579e1",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "The rule “Disk-full, memory pressure, CPU exhaustion, file-descriptor exhaustion, connection exhaustion, and quota exhaustion have been tested.” is not deterministic because it requests empirical evidence without complete fixtures, environments, coverage, outcome oracles, or freshness rules.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-93CA6FC2",
+      "revision": 1,
+      "semantic_sha256": "93ca6fc25a401c2521d90b6cb36389051aea8941cb3f4d9365dd43f8b40332bd",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule “Clock skew, time-service failure, certificate expiry, and key expiry have been considered.” is not deterministic because its full meaning requires qualified legal, safety, environmental, procurement, or domain authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-DD1DC2AE",
+      "revision": 1,
+      "semantic_sha256": "dd1dc2ae1584acc02e870a64728f5bb5902e3e48227a546be42c10ad34e82dc2",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "The rule “Scheduled jobs handle overlapping and missed execution.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Scheduled jobs handle overlapping and missed execution.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-997091C4",
+      "revision": 1,
+      "semantic_sha256": "997091c4517a7b308f3a2a122b79bf4ea3b11213759a7be8823077dc4d2d6217",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "The rule “Controlled fault injection or equivalent resilience tests are completed for high-risk paths.” is not deterministic because it requests empirical evidence without complete fixtures, environments, coverage, outcome oracles, or freshness rules.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-90967BDC",
+      "revision": 1,
+      "semantic_sha256": "90967bdc7b07f96b0fcbb696a47029a687cead7a1ede44e500c7f7b3323736c5",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "The rule “Recovery time from tested failures meets approved objectives.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Recovery time from tested failures meets approved objectives.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-1A22CF85",
+      "revision": 1,
+      "semantic_sha256": "1a22cf85fbe2bdbacace7fed80674a5cd6e3cbd084b0cac63bc18784ecfb1664",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “Identify the system of interest, environment, stakeholders, concerns, boundaries, assumptions, and lifecycle stage.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Identify the system of interest, environment, stakeholders, concerns, boundaries, assumptions, and lifecycle stage.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-75264C89",
+      "revision": 1,
+      "semantic_sha256": "75264c8906037eedda5ab4ede3e70c21c481321a46ec3045a109b8a6b95af6cf",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Use viewpoints and models suited to each stakeholder concern rather than one overloaded diagram.” is not deterministic because its central terms require product, system, trade-off, risk, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-E4AB9272",
+      "revision": 1,
+      "semantic_sha256": "e4ab92720f46f80ad022a81584539a3913b1538d7e5dddaee3cff9832e57fbba",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Describe structure, behavior, data, deployment, trust, operations, failure, and evolution where material.” is not deterministic because its central terms require product, system, trade-off, risk, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-58B869F6",
+      "revision": 1,
+      "semantic_sha256": "58b869f62a3f8d2831af84b26d24ddd1e9c6b6685046772e3135322fe6161e5c",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Maintain consistency among architecture descriptions, source, infrastructure, configuration, data flows, and deployment reality.” is not deterministic because its central terms require product, system, trade-off, risk, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-B5A29AFF",
+      "revision": 1,
+      "semantic_sha256": "b5a29aff052bea311a45b70ffaf152e3da5b1e10ca5e307c49cca721f10f3cca",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “Record material decisions with context, options, forces, evidence, trade-offs, consequences, owner, status, and revisit triggers.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Record material decisions with context, options, forces, evidence, trade-offs, consequences, owner, status, and revisit triggers.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-1FF9E601",
+      "revision": 1,
+      "semantic_sha256": "1ff9e60170dea58a79c089c3d684ed59d60d3750009a275d50c92785a03a91dc",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Separate architecture constraints from temporary implementation choices.” is not deterministic because its central terms require product, system, trade-off, risk, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-1BC99AA6",
+      "revision": 1,
+      "semantic_sha256": "1bc99aa679bdd479a2ad7724bca743906adf98657cf9ff55c75ac969e759c691",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The full rule is mixed: invariant records and automated checks are exact but where automation is practical needs engineering judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-8141B679",
+      "revision": 1,
+      "semantic_sha256": "8141b67908a5fddfaabb1ce0b6765df7a08594bccf39d33771063ddd3de31380",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Assess quality-attribute trade-offs explicitly instead of optimizing one dimension in isolation.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F20D0829",
+      "revision": 1,
+      "semantic_sha256": "f20d0829bccfa9cae407e614e234fc377957ff32a909ab2498b491e1ae325724",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "The rule “Use prototypes, models, benchmarks, and experiments to reduce high-impact uncertainty.” is not deterministic because it requests empirical evidence without complete fixtures, environments, coverage, outcome oracles, or freshness rules.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-2E0281F9",
+      "revision": 1,
+      "semantic_sha256": "2e0281f999ed527389fa158fd533e37de65be953b64a99688b6ef4b246885d1d",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Review architecture before irreversible commitment and after material change.” is not deterministic because its central terms require product, system, trade-off, risk, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-5EB6F214",
+      "revision": 1,
+      "semantic_sha256": "5eb6f2141c25be0b04c8ed59b5ca928f5fa19ccdb9e04941de7524dc8fce70f2",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Measure architecture conformance without freezing legitimate evolution.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-A0F4735A",
+      "revision": 1,
+      "semantic_sha256": "a0f4735a789db8afce68245cabf80bf962fcd514430ab82a311e970576592679",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “Document intentional violations and migration plans.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Document intentional violations and migration plans.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-82F9AE01",
+      "revision": 1,
+      "semantic_sha256": "82f9ae0103aa6e621ae53a6eb0ecfe43cdb040095637f6b839d516bd93dd4b2b",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “Retire superseded decisions while preserving history and rationale.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Retire superseded decisions while preserving history and rationale.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-1573BEF1",
+      "revision": 1,
+      "semantic_sha256": "1573bef16b82e911779e2fb8346d481ea0a0320f3f1ff7a00562bd0be811c414",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Make architecture understandable to implementers, operators, security reviewers, product owners, and maintainers.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-36885CEE",
+      "revision": 1,
+      "semantic_sha256": "36885cee53bb2e670400b07eb05150f82afa73f51378ded17be3bba9dc22e2c0",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Treat architecture as a continuous decision process, not a one-time phase or document.” is not deterministic because its central terms require product, system, trade-off, risk, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-5DDCF0A7",
+      "revision": 1,
+      "semantic_sha256": "5ddcf0a75ce3410dc91b7a4f2d9a9bbcf1a12aeebd23db1c9634fc5b62f2778f",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Partition the system around cohesive responsibilities and change drivers.” is not deterministic because its central terms require product, system, trade-off, risk, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-23D2EB3B",
+      "revision": 1,
+      "semantic_sha256": "23d2eb3b0b4d8680954efa898db3011ecebb0857813a6c2728c361ae34bd2908",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “Give each module a clear purpose, owner, public contract, and prohibited dependencies.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Give each module a clear purpose, owner, public contract, and prohibited dependencies.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-304665CA",
+      "revision": 1,
+      "semantic_sha256": "304665ca6864c7430d1171ae933bb819e675aada05acb8919d475a9600c60a8b",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Keep internal representation and implementation details hidden behind stable boundaries.” is not deterministic because its central terms require product, system, trade-off, risk, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-8381689B",
+      "revision": 1,
+      "semantic_sha256": "8381689b08ab420eb8c49a37e1c2acb5d5709a3f3fc0d59da804ab87e16618a9",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Minimize knowledge of remote internals, shared mutable state, temporal order, deployment topology, and incidental data shape.” is not deterministic because its central terms require product, system, trade-off, risk, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-14246510",
+      "revision": 1,
+      "semantic_sha256": "14246510035452db2585014f45b595f87f0aeca1f39704b6bc1f498b7ea1a4e8",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Prefer explicit dependencies over ambient globals, service locators, hidden context, or action at a distance.” is not deterministic because its central terms require product, system, trade-off, risk, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-0F67185A",
+      "revision": 1,
+      "semantic_sha256": "0f67185a68e356fd8b48de1108ccd520d6835f490cba727a38b70b8d96302679",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Direct dependencies toward more stable policies and abstractions where this reduces change propagation.” is not deterministic because its central terms require product, system, trade-off, risk, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-6B114385",
+      "revision": 1,
+      "semantic_sha256": "6b114385a924da9aea12b2438f5b36ca4b6d68a7065787bc1f773d22d1c3183c",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The full rule is mixed: dependency cycles are detectable but acceptable containment and temporary unavoidability require trade-off judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-68249BC7",
+      "revision": 1,
+      "semantic_sha256": "68249bc7f4f271a9f18bf135dc06820b5f91780f08b761a156d5ca036c59b227",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Use dependency graphs and change-impact evidence to identify excessive coupling.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-2CD29CD6",
+      "revision": 1,
+      "semantic_sha256": "2cd29cd6b3c860fd9b6ecab2434b7dd327b6285abeda315770e96c6d591703b3",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "The rule “Ensure modules can be tested in isolation with realistic contracts.” is not deterministic because it requests empirical evidence without complete fixtures, environments, coverage, outcome oracles, or freshness rules.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-78091092",
+      "revision": 1,
+      "semantic_sha256": "78091092b6c53ef5bac0331551449c0ae8206962391b00daafa26adfcb0afe1a",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Prevent shared utility modules from becoming unowned dumping grounds.” is not deterministic because its central terms require product, system, trade-off, risk, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-0D9E38D0",
+      "revision": 1,
+      "semantic_sha256": "0d9e38d0d1104f034c6246655531ab54b47c8ecb93f6b40d653c27b0f6262d3c",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Keep boundary crossings observable and failure-aware.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-52DDF534",
+      "revision": 1,
+      "semantic_sha256": "52ddf534a0406bea5bde50ce3f5b17191bf9937fb7ed68654a1dd25f4529d10a",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Align consistency, authorization, privacy, and ownership boundaries intentionally.” is not deterministic because its central terms require product, system, trade-off, risk, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-2A32526C",
+      "revision": 1,
+      "semantic_sha256": "2a32526ca3cadfa914903b214b3f0da63b9afe147a5def4ac3e05927988360d2",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Do not split components solely to imitate a fashionable architecture or maximize service count.” is not deterministic because its central terms require product, system, trade-off, risk, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-88759DC9",
+      "revision": 1,
+      "semantic_sha256": "88759dc9351d7d2eb0a47be244fde9b731a301eff1988c8ed4913f7145cbbd95",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Do not combine unrelated responsibilities solely to avoid interface design.” is not deterministic because its central terms require product, system, trade-off, risk, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-54ED85FF",
+      "revision": 1,
+      "semantic_sha256": "54ed85ff65e4056e7988778d698c9fadfb6867b5413e15f918629f47954441d2",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Refactor boundaries when recurring changes, incidents, or coordination costs show the current partition is wrong.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-E0114593",
+      "revision": 1,
+      "semantic_sha256": "e01145934183454dce65d18fdfd6ee29d385d5107262e91446f4e6487c40af10",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Give each unit one coherent reason to change at its chosen level of abstraction.” is not deterministic because its central terms require product, system, trade-off, risk, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-FE7895A8",
+      "revision": 1,
+      "semantic_sha256": "fe7895a83182d952cf4320e9c2b4398c441cbd8d73442cc40c7b7c45fbd55cd4",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Separate policies that change for different stakeholders, rates, or reasons.” is not deterministic because its central terms require product, system, trade-off, risk, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-1CDB0D32",
+      "revision": 1,
+      "semantic_sha256": "1cdb0d329cc27900720ea6c1d99ce250cd2a3aaf82fc86bc06a41e6566f4f7d0",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Prefer extension through stable composition or explicit variation points when recurring change is evidenced.” is not deterministic because its central terms require product, system, trade-off, risk, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-9FB8CD95",
+      "revision": 1,
+      "semantic_sha256": "9fb8cd95fec2cecb8fb74503dd2604ea89f128d465c37e21aee5acc3f9feaf87",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Do not introduce speculative extension mechanisms without a credible variation need.” is not deterministic because its central terms require product, system, trade-off, risk, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-41BCD681",
+      "revision": 1,
+      "semantic_sha256": "41bcd681e114b915a2c91f2a525524cf6b6f8845d6b7fceafb9b4ce739f80362",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "The rule “Ensure replacements preserve all required preconditions, postconditions, invariants, side effects, error semantics, timing, and security properties.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Ensure replacements preserve all required preconditions, postconditions, invariants, side effects, error semantics, timing, and security properties.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-09BDE112",
+      "revision": 1,
+      "semantic_sha256": "09bde112ac00f35363d91c6247eb2905cb8f341db79c2f472001d92d24c4276e",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "The rule “Do not strengthen accepted inputs or weaken promised outputs in substitutes.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Do not strengthen accepted inputs or weaken promised outputs in substitutes.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-D55AB3F0",
+      "revision": 1,
+      "semantic_sha256": "d55ab3f0e0da22b52c6bd481a12541323f039de3e583c948a91d148702ecbb6b",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Keep interfaces focused on cohesive client needs rather than provider convenience.” is not deterministic because its central terms require product, system, trade-off, risk, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-53F17C85",
+      "revision": 1,
+      "semantic_sha256": "53f17c854e2bf26be02531d0f643f0c5dc1c19c6e1b44d007b2ce4186a45772c",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Prevent clients from depending on operations or data they do not use.” is not deterministic because its central terms require product, system, trade-off, risk, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-377A5E6F",
+      "revision": 1,
+      "semantic_sha256": "377a5e6fcaf6a4ff595c5786661cd9f7ea151ea7ca03c12fe179fd5e28e14fa1",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Depend on stable contracts at policy boundaries when doing so reduces volatility and improves testability.” is not deterministic because its central terms require product, system, trade-off, risk, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-5B6C66DD",
+      "revision": 1,
+      "semantic_sha256": "5b6c66ddcb8889e67eb7f3d3a6ff5020ba8d4896c9c97c8e8cddb26c8571854f",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Keep dependency inversion from degenerating into unnecessary wrappers over stable trivial behavior.” is not deterministic because its central terms require product, system, trade-off, risk, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-589E6801",
+      "revision": 1,
+      "semantic_sha256": "589e68016f8d86eef867c6479e22d2abe6863b771eea66a07afce76b6463252c",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “Make ownership and lifetime of injected dependencies explicit.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Make ownership and lifetime of injected dependencies explicit.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-6F19C350",
+      "revision": 1,
+      "semantic_sha256": "6f19c3502aa2744b350ce07191901795820aeddbac20139a2ae3bce15fd57c21",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "The rule “Test contract conformance across implementations and substitutes.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Test contract conformance across implementations and substitutes.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F873BE85",
+      "revision": 1,
+      "semantic_sha256": "f873be855a37c3c6304b2bc4ba8a685db1144cb86213d46b2af42b97124e9093",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Review SOLID choices together with simplicity, performance, locality, and cognitive load.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-7CEC4E2E",
+      "revision": 1,
+      "semantic_sha256": "7cec4e2e3326246cf53e77a3cc7b9448495af5baff15142c5c652ea5014d4b4a",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Use composition over inheritance when inheritance does not represent a true substitutable relationship.” is not deterministic because its central terms require product, system, trade-off, risk, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-1CAE0CA5",
+      "revision": 1,
+      "semantic_sha256": "1cae0ca521eb5d15df2c6e52e2500f3eb0eb33624356b7488450824321dde18e",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Refactor violations when they cause change amplification, fragile tests, unsafe substitution, or duplicated policy.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-63328DA4",
+      "revision": 1,
+      "semantic_sha256": "63328da4b4f60c36e8ef028a36bf6d3b8bca295d5018e0ded8a465c9dc3e6255",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Eliminate duplicated authoritative knowledge that can diverge, not merely visually similar code.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-56BA4427",
+      "revision": 1,
+      "semantic_sha256": "56ba4427091608188229f80a2f75b5132912f3a35f85dd3ef909e4f93e9feff4",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The full rule is mixed: declared sources of truth are checkable but practicality and complete fact coverage require architecture judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-3299DB14",
+      "revision": 1,
+      "semantic_sha256": "3299db14f571fbcefd601e5166bd636607854160e28a09f2c13b8e699a2c4acf",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Allow local duplication when premature unification would couple unrelated change drivers.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-14D7C72C",
+      "revision": 1,
+      "semantic_sha256": "14d7c72c688895a8b0d0b22f495e36716d1b2f0d5447266b6f6e22c14900062c",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Prefer the simplest design that satisfies current requirements, quality attributes, and credible near-term evolution.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F89D2CC5",
+      "revision": 1,
+      "semantic_sha256": "f89d2cc58cb9e2f57db612cdec997ea18c11e7f2a7536a840d20654347111c19",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Measure simplicity by ease of understanding, change, testing, operation, and failure recovery—not line count alone.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-EC772E63",
+      "revision": 1,
+      "semantic_sha256": "ec772e633ef6d3703c44bf3e2cd0f89cc81e78528394d4f13d902aac908600c3",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Avoid frameworks, layers, services, abstractions, configuration, and indirection without demonstrated benefit.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-030DFE3C",
+      "revision": 1,
+      "semantic_sha256": "030dfe3c52c427634f0454b15922d7e8c76bdd70b68b4a0f4e6785b82ed55006",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Do not implement optionality, scale, integrations, or policies unsupported by an evidenced requirement.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-6CC29A15",
+      "revision": 1,
+      "semantic_sha256": "6cc29a15722558a3f1ebd25d2d1b29b7cf0001373ffd2d607fd46d8f80ec9384",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Preserve reversible seams around high-uncertainty decisions without building the unused future behind them.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-B7421394",
+      "revision": 1,
+      "semantic_sha256": "b74213941d0123fded37ada90b9408db7a5fdd07772d9ec11dc0cd121f72569c",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The full rule is mixed: syntactically unreachable items are detectable but stale, obsolete, and compatibility intent require semantic review.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-74681E5C",
+      "revision": 1,
+      "semantic_sha256": "74681e5c79734fb52eebe73c055a6cf7e9603adc311094035f31dba423438b64",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Choose the least powerful language, data format, permission, and mechanism that safely solves the problem.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-DC1822ED",
+      "revision": 1,
+      "semantic_sha256": "dc1822ed4e7eaffa7df6311e0c4c7ab29df2647855a374cbb265a52b0e334578",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Make ordinary paths obvious and exceptional paths explicit.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-DEDCD75F",
+      "revision": 1,
+      "semantic_sha256": "dedcd75f2e42e495e2f205e21bd87754e787b544558419013fe5416928c99340",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Prefer boring, understood technology for undifferentiated problems unless evidence justifies novelty.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-0B5AA3F8",
+      "revision": 1,
+      "semantic_sha256": "0b5aa3f8c3d73cbb4afd514dc7492cbe2f3f0d4e9db8b1836e7f2c7936384b37",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Reevaluate abstractions after the third real variation rather than applying a mechanical occurrence count.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-8C36A70B",
+      "revision": 1,
+      "semantic_sha256": "8c36a70bad41c284aaec29dc2291b1a8bbd9f3a555503ffd22ba982da281eb87",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “Document intentional duplication or complexity where trade-offs make it safer.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Document intentional duplication or complexity where trade-offs make it safer.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-4A3D04B2",
+      "revision": 1,
+      "semantic_sha256": "4a3d04b215baefebb2a7942db82c10541e6200d5ecf417369c637361a64811d6",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Treat cognitive load and operational burden as first-class costs in design review.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-D46D1FB1",
+      "revision": 1,
+      "semantic_sha256": "d46d1fb1ed1db993e7385c7a27dd03f51be3a7b1c7b334ef3c29591a2a49e8df",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Reuse stable knowledge and capabilities only when consumers share genuinely compatible semantics and quality needs.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-0B6B90C2",
+      "revision": 1,
+      "semantic_sha256": "0b6b90c25ba8f06d92f4f3e3045263c664d2d7bfaded68f8b1f9d6de6ea4063d",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “Define the reusable asset's scope, supported contexts, assumptions, constraints, ownership, and service level.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define the reusable asset's scope, supported contexts, assumptions, constraints, ownership, and service level.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-AF935A66",
+      "revision": 1,
+      "semantic_sha256": "af935a66a1fee3e153f03ac473d8f9fd69f03ae51f8ae3b45b73323bca344817",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Separate common core behavior from explicit, bounded variation points.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-4A789DEC",
+      "revision": 1,
+      "semantic_sha256": "4a789dece88cfeb6ef53aff988ca66535198c4ec4bbec082831fefac11e46807",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "The rule “Avoid configuration that permits invalid or untested combinations.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Avoid configuration that permits invalid or untested combinations.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-31292BBF",
+      "revision": 1,
+      "semantic_sha256": "31292bbff5681232c7accb52e94c7efb8410becd13d28af4ee2c060edadc62ce",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Design contracts for consumers rather than exposing provider internals.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-18804590",
+      "revision": 1,
+      "semantic_sha256": "1880459092f454d6fee15be52f37631766f44a3fbca6930d64527cdcbcbcfcdd",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “Version reusable assets and publish compatibility, deprecation, and migration policy.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Version reusable assets and publish compatibility, deprecation, and migration policy.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-B88AF508",
+      "revision": 1,
+      "semantic_sha256": "b88af508e54e32e0f1fff20cd2b6651e88ef18ba467c8f233e77dc80105b8b9a",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The full rule is mixed: supported-variant test records are checkable but representative combinations require coverage judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment",
+        "undefined_protocol"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-07414832",
+      "revision": 1,
+      "semantic_sha256": "07414832cacc4336ec6abd91cbdcb4c1af49dbcdf9f183ad4722456d8bfbd9d1",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “Provide reference examples, integration tests, and failure semantics.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Provide reference examples, integration tests, and failure semantics.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-5CFEC70E",
+      "revision": 1,
+      "semantic_sha256": "5cfec70eb84cf7a907a85e8726fa10293189f4579ad59ad04d0649b14b150a8e",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “Track consumers so security fixes and breaking changes can be coordinated.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Track consumers so security fixes and breaking changes can be coordinated.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-7F342BF9",
+      "revision": 1,
+      "semantic_sha256": "7f342bf979548c8d49a3ed218abadefa6957721d952694a9486a938c33f050a8",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Avoid copy-and-paste forks that lose provenance and maintenance unless isolation is an intentional trade-off.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-76C0FA3F",
+      "revision": 1,
+      "semantic_sha256": "76c0fa3f3fe9d14cdc5dacdb7f6f56387334666a2beab9aab9ab30887fe59666",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Avoid central shared platforms that become mandatory bottlenecks without consumer governance.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-ED0786E2",
+      "revision": 1,
+      "semantic_sha256": "ed0786e29651763181069e402090d1211306b9a964f49efe930f08f22f72deb3",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Measure reuse by reduced total lifecycle cost and consistent quality, not raw adoption count.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-DEC303C0",
+      "revision": 1,
+      "semantic_sha256": "dec303c0495add9d49e8031b377dd8572607a6c5c177bcbd0c1c6bd7d66f3258",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “Allow teams to leave a shared asset through documented interfaces and data portability.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Allow teams to leave a shared asset through documented interfaces and data portability.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-D45B9C85",
+      "revision": 1,
+      "semantic_sha256": "d45b9c85358ad7a65f2a9d1bda7965c1b638e876ff9bfb28669164b795b81980",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Fund maintenance, support, security, documentation, and evolution of shared assets.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-B3DBC424",
+      "revision": 1,
+      "semantic_sha256": "b3dbc424a709e01d54261f041919c4ed43258e539470a1371b096d2a4214292b",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Retire variants and consumers that no longer justify their complexity.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-26BE905D",
+      "revision": 1,
+      "semantic_sha256": "26be905d804d1b410c5ff77d5efd91e16fc9729978e82d27111ad3f6451c258e",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The full rule is mixed: owner fields are checkable but a complete inventory of every hidden stateful element is unbounded.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-B98CE1BB",
+      "revision": 1,
+      "semantic_sha256": "b98ce1bbefd6cbc16ce77eb8fdaa4dd759ed9d775243fab073c7b2c7ae796cab",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “Distinguish domain state, session state, presentation state, configuration, cache, derived state, and transient workflow state.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Distinguish domain state, session state, presentation state, configuration, cache, derived state, and transient workflow state.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-75AA9FEC",
+      "revision": 1,
+      "semantic_sha256": "75aa9fecd8e67495a504bf1f9a650213687c1478a1e952cbfcca56746d568b63",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “Define state schema, invariants, legal transitions, initiating actors, guards, side effects, and terminal states.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define state schema, invariants, legal transitions, initiating actors, guards, side effects, and terminal states.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-AE50A4B1",
+      "revision": 1,
+      "semantic_sha256": "ae50a4b1e059cf6ad1ef3cff2002733ec87b01ec89f6bb9c499056ccdc34d050",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “Maintain one authoritative source for each fact and make replicas or projections explicitly derived.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Maintain one authoritative source for each fact and make replicas or projections explicitly derived.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-C64C66B8",
+      "revision": 1,
+      "semantic_sha256": "c64c66b835688b5e3aeda99cec6e8c6e29b06070c6c0abb2a86a0d9b1cd4876a",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Prevent impossible, ambiguous, partially committed, or silently divergent state.” is not deterministic because it promises completeness or behavior across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-A8E226BC",
+      "revision": 1,
+      "semantic_sha256": "a8e226bc9106496343dbb0f4056159ffb0ff99d34e08077219ab8ce713f1f03b",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “Define consistency, durability, freshness, ordering, and conflict-resolution requirements per state.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define consistency, durability, freshness, ordering, and conflict-resolution requirements per state.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-3044BFD8",
+      "revision": 1,
+      "semantic_sha256": "3044bfd8202b22fdb6ca439d2311c20937f2544cb8d49106b8013b3095c2bc61",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Make transitions atomic where partial effects are unacceptable.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-1E57B9D5",
+      "revision": 1,
+      "semantic_sha256": "1e57b9d5d075510479d698dd6914949e12e425126de096311052018b7eed549f",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Use idempotency, versioning, compare-and-set, or equivalent controls for repeated and concurrent updates.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-C58A7755",
+      "revision": 1,
+      "semantic_sha256": "c58a7755ba5954cee1ec520723aba4eb17e3a5fad907126dc99e6b0072ba5f5e",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “Define initialization, hydration, synchronization, invalidation, expiry, persistence, migration, and reset behavior.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define initialization, hydration, synchronization, invalidation, expiry, persistence, migration, and reset behavior.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-0CC0C3BA",
+      "revision": 1,
+      "semantic_sha256": "0cc0c3ba9304e2ed8d1b117ef3ab6e15fa2265b629939cdc4d025d40bcf87a3b",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Preserve user work across retries, navigation, process restart, failover, and offline recovery where required.” is not deterministic because it promises completeness or behavior across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-48B58C2F",
+      "revision": 1,
+      "semantic_sha256": "48b58c2fe974206f600a7572aae3c52b09d89d7826b22fba02974a51d20b525d",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Avoid hidden mutable global state and uncontrolled two-way synchronization.” is not deterministic because it promises completeness or behavior across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-734F3AB7",
+      "revision": 1,
+      "semantic_sha256": "734f3ab71b2ff5afebcc5e3417f2e4608675b57399d60cd9775b3e167bdd1777",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Ensure authorization and tenant context are part of security-sensitive state decisions.” is not deterministic because its central terms require product, system, trade-off, risk, or adequacy judgment and no complete objective oracle is supplied.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-1AA2772B",
+      "revision": 1,
+      "semantic_sha256": "1aa2772b4eedc7314b45250e5f545b3d49570a724959250c52612a863df27971",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The full rule is mixed: audit event fields are exact but diagnostic sufficiency and sensitive-value exposure need security judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-229E45DB",
+      "revision": 1,
+      "semantic_sha256": "229e45db8fafa9de1dde0edd7d1294fb0fe7cb7d0040dcd500bfa1b28ff6b37f",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "The rule “Test transition coverage, illegal transitions, races, stale reads, duplicate events, and recovery.” is not deterministic because it requests empirical evidence without complete fixtures, environments, coverage, outcome oracles, or freshness rules.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-6EEAAF05",
+      "revision": 1,
+      "semantic_sha256": "6eeaaf05f5391abed755088c4b84061d4ba5c01a931f95fc752351bc0beed490",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Provide repair and reconciliation for state divergence that cannot be eliminated.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F0C80A36",
+      "revision": 1,
+      "semantic_sha256": "f0c80a369180c24fb8cdd33ec241e02391f0f0be932c3581f0f8ac66312f0be3",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The full rule is mixed: declared concurrency resources are checkable but discovering every actor, ordering dependency, contention point, and invariant needs analysis.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment",
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-7AA2FAF0",
+      "revision": 1,
+      "semantic_sha256": "7aa2faf0ca61a6d5596e0ff8e1f7828c0e6b8737b08fb6de212dfd83a7c3b015",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “State the required consistency and isolation semantics rather than relying on platform defaults.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: State the required consistency and isolation semantics rather than relying on platform defaults.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-B8D912A4",
+      "revision": 1,
+      "semantic_sha256": "b8d912a428bff579b5a622cf063bbc97d1fc8d65c692ca3bc68552f0c3c2cf9c",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Keep transaction boundaries aligned with business invariants.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-0F565CB8",
+      "revision": 1,
+      "semantic_sha256": "0f565cb8834e36ef237f9b90bd715bb5b34aa7d9d2b5e2cf0c553deda720cc2b",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Minimize transaction duration and avoid interactive or external work inside locks where possible.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-38CF7C87",
+      "revision": 1,
+      "semantic_sha256": "38cf7c879d6440c2123015b7e887acf15b0e6f73783eb870fed48f4158f4a194",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Prevent lost updates, dirty reads, nonrepeatable decisions, duplicate effects, overselling, double spending, and stale authorization.” is not deterministic because it promises completeness or behavior across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F35EF8BD",
+      "revision": 1,
+      "semantic_sha256": "f35ef8bd9d5154063de33bc5d04a9538673d6cf4f4c74127ce21282ecf67f10e",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Use optimistic or pessimistic control deliberately based on conflict rate and failure cost.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-EEE5F2CD",
+      "revision": 1,
+      "semantic_sha256": "eee5f2cd61450adfda9d8e2e45d06a807480ef58c6fa72fee33e9b3c69ecbd6f",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "The rule “Make retried operations idempotent or detect duplicate execution.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Make retried operations idempotent or detect duplicate execution.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-C5529D7D",
+      "revision": 1,
+      "semantic_sha256": "c5529d7de45ee9f9b746bc4c64ed7d2b9d737abda370c2b966ed1dcee1e086e0",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “Define ordering and conflict-resolution behavior for asynchronous and replicated updates.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define ordering and conflict-resolution behavior for asynchronous and replicated updates.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-5EE1E09A",
+      "revision": 1,
+      "semantic_sha256": "5ee1e09a0c6f704a3b8734f04e5df1cc81e524b6ffbd8d78e127c70c143265b4",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Avoid distributed transactions unless their guarantees and failure modes are required and understood.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-C19A4201",
+      "revision": 1,
+      "semantic_sha256": "c19a420172362e73c2a8879c40b444c38593dab46c733abc9e622c6bb81bba84",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Use sagas or compensating actions only when compensation semantics are valid and observable.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-CF270649",
+      "revision": 1,
+      "semantic_sha256": "cf2706496071ff93374b7b15e3a344aba949af5e719cc2213c538b274731dac0",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Prevent deadlock, livelock, starvation, priority inversion, and unbounded contention.” is not deterministic because it promises completeness or behavior across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-EB0270A6",
+      "revision": 1,
+      "semantic_sha256": "eb0270a6d1ca2ed000edca7718287c224f1807c8daa76bc125c905b433388f80",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "The rule “Bound queues, locks, semaphores, pools, and parallelism.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Bound queues, locks, semaphores, pools, and parallelism.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-55723B56",
+      "revision": 1,
+      "semantic_sha256": "55723b569753606d2918e9612a6c6fed5b084a91e4f8f8b52b05d3b0993647dd",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "The rule “Propagate cancellation, deadlines, and backpressure across concurrent work.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Propagate cancellation, deadlines, and backpressure across concurrent work.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-619FC931",
+      "revision": 1,
+      "semantic_sha256": "619fc931676b3e531a8403a245b4274694f03082e4417cc804b22eb5fe661069",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "The rule “Test with deterministic scheduling, stress, race detection, fault injection, and invariant checking as appropriate.” is not deterministic because it requests empirical evidence without complete fixtures, environments, coverage, outcome oracles, or freshness rules.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-515CE6F8",
+      "revision": 1,
+      "semantic_sha256": "515ce6f853190a0e2f929a7f9122f862421dfbf752c469e7666685e5dc4ffe67",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Reconcile and repair after partial failure without concealing lost or duplicated work.” is not deterministic because it promises completeness or behavior across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-AF6746E0",
+      "revision": 1,
+      "semantic_sha256": "af6746e01c4441563e4f76083854fe3af3fd887c675678711bda7610f0b5e5c9",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Treat every remote call as fallible, delayed, duplicated, reordered, throttled, or unavailable.” is not deterministic because it promises completeness or behavior across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-FFA324F3",
+      "revision": 1,
+      "semantic_sha256": "ffa324f30c06a55965963e50259738e9bb1102b818e0e6aedefcb55670fc24ad",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “Define timeouts, deadlines, retry eligibility, backoff, jitter, circuit breaking, and fallback per dependency.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define timeouts, deadlines, retry eligibility, backoff, jitter, circuit breaking, and fallback per dependency.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-334E0DEF",
+      "revision": 1,
+      "semantic_sha256": "334e0def77f23b26a68712a4dfb07fdaca6cd14d8c3a0bac3b2cce59f8ee92e5",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Prevent retry amplification across layers.” is not deterministic because it promises completeness or behavior across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-3D388A4E",
+      "revision": 1,
+      "semantic_sha256": "3d388a4ee7efd1915ca78da7f0cac6774edd808e11184582b13c42a169df8eed",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “Define message delivery, ordering, partitioning, retention, replay, and deduplication semantics.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define message delivery, ordering, partitioning, retention, replay, and deduplication semantics.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-69C4BB2C",
+      "revision": 1,
+      "semantic_sha256": "69c4bb2c1a17c42b3348b9502b7aaaa5ae0d896c3b0e33ae594b1ce0fc671cb3",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "The rule “Make consumers idempotent when duplicate delivery is possible.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Make consumers idempotent when duplicate delivery is possible.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-A06A1E8F",
+      "revision": 1,
+      "semantic_sha256": "a06a1e8f5f873deb9356a06573ba735b99febaffcd8e658df26a580268f294c5",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "The rule “Use immutable event facts and version schemas compatibly.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use immutable event facts and version schemas compatibly.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-903E625E",
+      "revision": 1,
+      "semantic_sha256": "903e625e673fe2db7a6ca4b1491609342aa79c7393396a6660ff17dcd5f3db80",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Do not expose internal database change as a public event contract without an intentional compatibility layer.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-1459B13E",
+      "revision": 1,
+      "semantic_sha256": "1459b13ef1bdf25300f49f7f70a45d0afb5beb98093d6471d99de30b8a8d3d06",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Use outbox, inbox, transactional messaging, or reconciliation where state and event consistency matters.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-8B7F37FF",
+      "revision": 1,
+      "semantic_sha256": "8b7f37ffb00d36bd9fc1977196887ace4cfd19d8b4d74343a053e8d142d76c83",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “Bound queues and define overload, dead-letter, poison-message, and replay behavior.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Bound queues and define overload, dead-letter, poison-message, and replay behavior.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-5D391FD0",
+      "revision": 1,
+      "semantic_sha256": "5d391fd07421dd7bd25202a04ce6c6fb145255dd7eca3f0f5a189a6138d3e9d1",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Preserve tenant, identity, trace, privacy, and authorization context across asynchronous boundaries.” is not deterministic because it promises completeness or behavior across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-4CE2BAE8",
+      "revision": 1,
+      "semantic_sha256": "4ce2bae8877d1276dcbd6fce659e9d7aa2f0818514aa34afcaa37f1655e70ac8",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "The rule “Make causality and correlation observable without assuming a single global clock.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Make causality and correlation observable without assuming a single global clock.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-AC6ABDAD",
+      "revision": 1,
+      "semantic_sha256": "ac6abdad6ecc3aa6186fb2ad5dc43cf437f55d80a3d63cb0846dfd60b8a70527",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Design for network partitions and independent service evolution.” is not deterministic because it promises completeness or behavior across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-4D924CD6",
+      "revision": 1,
+      "semantic_sha256": "4d924cd690e45aada643b26178cc0ac1d28c8497402053a131154b2dd667c0cf",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Avoid synchronous dependency chains that create fragile availability coupling.” is not deterministic because it promises completeness or behavior across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-AADFF352",
+      "revision": 1,
+      "semantic_sha256": "aadff3527cc8412498656eaac4041ca18bdb6e0aa82dc0833286829daebc2590",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "The rule “Test partial failure, stale replicas, clock skew, split-brain, failover, rebalancing, and consumer lag.” is not deterministic because it requests empirical evidence without complete fixtures, environments, coverage, outcome oracles, or freshness rules.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-85E0AA6D",
+      "revision": 1,
+      "semantic_sha256": "85e0aa6d3e844b750427a6be2b267edb2e346ff8914baab0958e6a43f1d72c5b",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Provide reconciliation capable of detecting missing, duplicated, delayed, or contradictory effects.” is not deterministic because it promises completeness or behavior across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-C0D91FC2",
+      "revision": 1,
+      "semantic_sha256": "c0d91fc27ed2a4027d8263d3d43e2ed2ca260b3a79d6025d06a6aeb8ab9b6953",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Design interfaces from consumer tasks and domain contracts rather than internal storage models.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-8A67B399",
+      "revision": 1,
+      "semantic_sha256": "8a67b399c4b04c95f328b515a4e5293b63ee01c0dfb1a3824d6b70c8003116cc",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “Define ownership, intended consumers, trust level, availability, latency, consistency, and support expectations.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define ownership, intended consumers, trust level, availability, latency, consistency, and support expectations.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-7414620B",
+      "revision": 1,
+      "semantic_sha256": "7414620ba573a3b54bebadbfbc75303fa065f0e458cd8fc5d7b44313cb050470",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “Use explicit schemas for requests, responses, events, errors, and compatibility rules.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use explicit schemas for requests, responses, events, errors, and compatibility rules.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-EF1356E3",
+      "revision": 1,
+      "semantic_sha256": "ef1356e32d6752a101bb3866dab2ea5b9659dad17365b29a98cf2c104909a0a7",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Choose synchronous, asynchronous, batch, stream, or file integration according to semantics and failure tolerance.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-90712C5E",
+      "revision": 1,
+      "semantic_sha256": "90712c5e11eea63e7f8ed0c0246a088f897887d9e0fe0d2db7e3b6ad273776ca",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Keep transport concerns separate from domain behavior where practical.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-1D682327",
+      "revision": 1,
+      "semantic_sha256": "1d68232781feba10f6a7bd4883e5345bebf1914504a0cad1fe80df9e4bececd6",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “Make authentication, authorization, tenant, privacy, and data-classification requirements part of the contract.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Make authentication, authorization, tenant, privacy, and data-classification requirements part of the contract.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-31636598",
+      "revision": 1,
+      "semantic_sha256": "3163659867e249cd9a29eaaffb877b39c6535d61c9b0728e9b845587cdec290c",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Use stable identifiers and avoid leaking implementation-specific keys without need.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-3A484AC5",
+      "revision": 1,
+      "semantic_sha256": "3a484ac52e76b610786f7b3791bf7c073ce0e8d1f5e10c3aa54615591319aa67",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “Define pagination, filtering, sorting, concurrency, idempotency, rate, quota, and bulk semantics.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define pagination, filtering, sorting, concurrency, idempotency, rate, quota, and bulk semantics.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-FF5EBA4B",
+      "revision": 1,
+      "semantic_sha256": "ff5eba4b2fef70f3425dff0cbdd811b01bbf57252dcf6959eda6dfa346b0f22a",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “Use consistent error taxonomy and distinguish retryable, terminal, conflict, validation, authorization, and dependency failures.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use consistent error taxonomy and distinguish retryable, terminal, conflict, validation, authorization, and dependency failures.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-2D10E138",
+      "revision": 1,
+      "semantic_sha256": "2d10e1386f1d0e72f8c64ec9791c7cd0f954b0a7830a5b76ff22a9bc3786567a",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Avoid chatty interfaces and cyclic service dependencies.” is not deterministic because it promises completeness or behavior across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-41F02F93",
+      "revision": 1,
+      "semantic_sha256": "41f02f93f3f9bd198a3b5a662b6ad24451f9d8692f29b5de49006bd2ba5902e3",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Support independent deployment through consumer-driven contracts and compatible evolution.” is not deterministic because it promises completeness or behavior across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-D5680902",
+      "revision": 1,
+      "semantic_sha256": "d5680902229b55d488c003ddc8f92dddfd16ef465712db5bb6e5768e0f49721e",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “Define deprecation, discovery, change notification, migration, and retirement.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define deprecation, discovery, change notification, migration, and retirement.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-1B7657B0",
+      "revision": 1,
+      "semantic_sha256": "1b7657b0a3b8b08f4f5ac1e755680be854fb36fa7d9b5690bbced34d043c2b70",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “Make external calls observable and attributable to user and business journeys.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Make external calls observable and attributable to user and business journeys.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-CCDE0B28",
+      "revision": 1,
+      "semantic_sha256": "ccde0b28a187b0dbf23184dcdd90f1e63df04a1c13c79b455bedb4d36a016a51",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Provide reconciliation for integrations that can lose or duplicate effects.” is not deterministic because it promises completeness or behavior across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-FA82C923",
+      "revision": 1,
+      "semantic_sha256": "fa82c923ea71b9ea10d90e0dd8c4ab2ceef413e8dc1bb7511bd0f987f6fb02e7",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Evaluate whether an interface should exist before creating another permanent compatibility obligation.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-02B1B35B",
+      "revision": 1,
+      "semantic_sha256": "02b1b35b86864e9fd512b83e8588638967624d3c000267394d26fc36824af712",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Identify expected change dimensions and isolate the most volatile policies from stable mechanisms.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-E2513FAC",
+      "revision": 1,
+      "semantic_sha256": "e2513fac97e41af4be49f989e3d135e6b8a477d5374788e5e7b721fa4e22172d",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Prefer reversible decisions where uncertainty is high.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-AFAA0716",
+      "revision": 1,
+      "semantic_sha256": "afaa07164ea229533a65682358d8f9467fc4d95b2acf273a4850cb3c73d5e41d",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Make schemas, protocols, configuration, data, and deployment capable of compatible staged evolution.” is not deterministic because it promises completeness or behavior across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-A720D7E2",
+      "revision": 1,
+      "semantic_sha256": "a720d7e2f27e48d2e6154ebcf55b146352c25fef78f7b32e21831ba71f3ba98b",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Design migrations before introducing states that cannot be changed safely.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-44AED881",
+      "revision": 1,
+      "semantic_sha256": "44aed88114f20cc6204e7dd781ebadb874758d0f5fb72d6a137577924346ad96",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “Track technical debt as a specific obligation with cause, consequence, interest, owner, and remediation trigger.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Track technical debt as a specific obligation with cause, consequence, interest, owner, and remediation trigger.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F8D2AC51",
+      "revision": 1,
+      "semantic_sha256": "f8d2ac512dd26ede1fcccd58825a0d2d3c83763b0dd9850a97e1d1fddc2e7e99",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Distinguish deliberate short-term debt from accidental complexity, defects, missing controls, and obsolete technology.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-1EBB28D7",
+      "revision": 1,
+      "semantic_sha256": "1ebb28d77e47240626ffe000cf6e75bdd578a170b8b7b7aa30983cde3bb95929",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule “Do not use technical debt as a label to hide security, privacy, accessibility, or reliability nonconformance.” is not deterministic because its full meaning requires qualified legal, safety, environmental, procurement, or domain authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-12D1C014",
+      "revision": 1,
+      "semantic_sha256": "12d1c014ac0356145838d763bffacca7061b0772b6dc50c7ca71b2814a6ea075",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “Measure change lead time, regression rate, dependency impact, coordination cost, and operational burden.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Measure change lead time, regression rate, dependency impact, coordination cost, and operational burden.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F8A23259",
+      "revision": 1,
+      "semantic_sha256": "f8a232598bf3958a2c76fd3ab9ea2b4bbd3e081ce0ed72c4dbf8f135aaa8c8ca",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "The rule “Use automated architecture and compatibility checks for critical invariants.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use automated architecture and compatibility checks for critical invariants.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-DDA66628",
+      "revision": 1,
+      "semantic_sha256": "dda666281894d8f872fcaa70e85fa110668b8d7d0003e46b9a5212b53f46fe6f",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Keep replacement seams around volatile external providers and end-of-life components.” is not deterministic because it promises completeness or behavior across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F8700B34",
+      "revision": 1,
+      "semantic_sha256": "f8700b3464781bb191de7f25e468ab1766448fca3466a100a89729272f6ba34c",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "The rule “Remove compatibility layers after consumers migrate.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Remove compatibility layers after consumers migrate.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-096571F7",
+      "revision": 1,
+      "semantic_sha256": "096571f7ff4dc504eaa5514032fd099122cb8ba7a8ae30780c77aff74ef600c4",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Reserve capacity for modernization and debt reduction based on evidence of risk and cost.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-3D11DC31",
+      "revision": 1,
+      "semantic_sha256": "3d11dc310b22e3de9798e52bdc6518cfb9c827110219196a4b7a992f870911e3",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "The rule “Validate that refactoring changes structure without silently changing behavior.” is not deterministic because it requests empirical evidence without complete fixtures, environments, coverage, outcome oracles, or freshness rules.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-49148D13",
+      "revision": 1,
+      "semantic_sha256": "49148d13282618f12ab158707bf2e7d34619e47faee736edf0aad55979feb164",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "The rule “Use strangler, parallel run, shadowing, dual read/write, or other migration patterns only with reconciliation and exit criteria.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use strangler, parallel run, shadowing, dual read/write, or other migration patterns only with reconciliation and exit criteria.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-06593DDA",
+      "revision": 1,
+      "semantic_sha256": "06593dda03568c7efa501b4f803395f0a76e557e8137a0696642af213050f9cd",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Review whether the architecture still fits scale, team topology, risk, and product strategy.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-EA5D38F6",
+      "revision": 1,
+      "semantic_sha256": "ea5d38f68913eb6e181ef4284410574e12e7affec2b6d22895a7b81b85fa3439",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “Define supported environments, clients, protocols, formats, versions, locales, and integration partners.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define supported environments, clients, protocols, formats, versions, locales, and integration partners.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-02149480",
+      "revision": 1,
+      "semantic_sha256": "02149480c78790b759ccc79d7d6564833d285f1d489a6254dc05c1e2016d4b21",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Use open, stable, documented standards when they satisfy requirements.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F91ACE3D",
+      "revision": 1,
+      "semantic_sha256": "f91ace3de7cd3f4d89e1ad4dd4654a653e82c54a21ddc38555d0ca1a940d9fcd",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “Document intentional proprietary dependencies and the value that justifies them.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Document intentional proprietary dependencies and the value that justifies them.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-D16FB36D",
+      "revision": 1,
+      "semantic_sha256": "d16fb36db7e5b898b74c512309962b8a9568e98aaee4be996c98c69b7f0bdb01",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Separate domain data and policy from provider-specific control planes where practical.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-8300060F",
+      "revision": 1,
+      "semantic_sha256": "8300060f269ba40793f9dd3bc388de9c17f402967e10229d09fe9372385235e9",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Maintain export and import paths for data, configuration, identities, and audit history where continuity requires them.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F46E5E03",
+      "revision": 1,
+      "semantic_sha256": "f46e5e0323d08eed0c6948baed8939a30cedd43f666c7989283fb802c645df91",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “Define backward, forward, source, binary, schema, behavioral, and operational compatibility as applicable.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define backward, forward, source, binary, schema, behavioral, and operational compatibility as applicable.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F1600F03",
+      "revision": 1,
+      "semantic_sha256": "f1600f03a0aea1683be6a2e7ac188496ddc72c9d608416ef6fb8510ef39d62b2",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "The rule “Test mixed-version operation and rolling upgrades where versions coexist.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Test mixed-version operation and rolling upgrades where versions coexist.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-236C9C7F",
+      "revision": 1,
+      "semantic_sha256": "236c9c7f51635894bd784806878dee9cfd81570dda1d4508c13368c194f651cd",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Use capability negotiation rather than unreliable version inference when appropriate.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-74E9981A",
+      "revision": 1,
+      "semantic_sha256": "74e9981aac449dc31571275026d2472d01b615296e545c56a04ff8b56fde2b93",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Avoid undocumented behavior and implementation quirks as required contracts.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-B7411A36",
+      "revision": 1,
+      "semantic_sha256": "b7411a3629a093c7f7a688e08a1502c3a6980ecff01dff487c6b77886c1cd718",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Preserve semantic meaning across serialization, precision, time zones, encodings, and locales.” is not deterministic because it promises completeness or behavior across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-796DD1B7",
+      "revision": 1,
+      "semantic_sha256": "796dd1b76394dd204f0dc0b35857e4e3fee0423e544ee8c24d722bef88a42f97",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "The rule “Make migration tooling resumable, observable, reversible or safely roll-forward, and reconcilable.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Make migration tooling resumable, observable, reversible or safely roll-forward, and reconcilable.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-7E1C1315",
+      "revision": 1,
+      "semantic_sha256": "7e1c1315c905b4127bbde7be55aff6cf7b32485a8dfa05bc9235840c7227c95d",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "The rule “Validate backups and recovery in the intended alternate environment where portability is a continuity control.” is not deterministic because it requests empirical evidence without complete fixtures, environments, coverage, outcome oracles, or freshness rules.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-4207A34E",
+      "revision": 1,
+      "semantic_sha256": "4207a34e7e8959b995457a229202de1bcadec18060842dd98ed4539f1c23545e",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “Track end-of-support dates for platforms and protocols.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Track end-of-support dates for platforms and protocols.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-B923EBAE",
+      "revision": 1,
+      "semantic_sha256": "b923ebaedce651a44cf52e04bcee36b959edc49b8180d924e00f46aa17a19340",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "The rule “Do not promise portability that has never been tested.” is not deterministic because it requests empirical evidence without complete fixtures, environments, coverage, outcome oracles, or freshness rules.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-32F43E0B",
+      "revision": 1,
+      "semantic_sha256": "32f43e0b9c71c04eedab071f6b63fad1ad671da5e53bcd5f93962d4b2fd3949a",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule “Review lock-in at major procurement and architecture decisions, including exit cost and time.” is not deterministic because its full meaning requires qualified legal, safety, environmental, procurement, or domain authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-551A99E3",
+      "revision": 1,
+      "semantic_sha256": "551a99e343677dceffae467da79b06752a8c8a1857123f51b320e782dbd7a08a",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Define sustainability objectives alongside performance, reliability, cost, and user outcomes.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-25AE787D",
+      "revision": 1,
+      "semantic_sha256": "25ae787dc75e9ed9f4b69de3295755031f60837bf0fadda56dd18213d8be1903",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Measure energy, carbon, compute, memory, storage, network transfer, and hardware utilization where material.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-CAB0969B",
+      "revision": 1,
+      "semantic_sha256": "cab0969b87a2d8d5859b897b84d5deade76da809fae92a5286aaa0884a6668fc",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “Use a transparent measurement boundary, time period, allocation method, data source, and uncertainty statement.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use a transparent measurement boundary, time period, allocation method, data source, and uncertainty statement.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-BB0D2BE5",
+      "revision": 1,
+      "semantic_sha256": "bb0d2be56655646ca2f848e42e95b3f8daf8a90c67c78c173497eaad97715c7f",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Reduce unnecessary computation, polling, transfer, storage, duplication, and retention.” is not deterministic because it promises completeness or behavior across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-E75C31D5",
+      "revision": 1,
+      "semantic_sha256": "e75c31d564ef1d5e263acb193a8fc0b6e8ddfefb0cca07eb89a961e95b007132",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Prefer efficient algorithms and data structures where end-to-end impact is material.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-2C908E41",
+      "revision": 1,
+      "semantic_sha256": "2c908e411dfc1d3d869e28de4475b6514bef5910f31a76684da6d66f8d45affe",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Scale resources to actual demand without degrading required resilience or latency.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-5961E742",
+      "revision": 1,
+      "semantic_sha256": "5961e7421297070fb5f13da19ad8961fed0d54cf14a75b84b5cf8b01ba363d60",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Use batching, caching, compression, scheduling, and locality only when correctness and freshness remain satisfied.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-7BF9F781",
+      "revision": 1,
+      "semantic_sha256": "7bf9f781d20e24661f88e30ffd7608f539c994114a3616e4ad32dd644cbe6e9e",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "The rule “Extend useful system and device lifetime by avoiding needless client requirements and upgrade pressure.” is not deterministic because it omits the exact scope, policy, states, thresholds, exceptions, or outcomes needed for a judgment-free checker.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-A0321258",
+      "revision": 1,
+      "semantic_sha256": "a03212585a5bf133bdedf6e4a5f7db55e08c30b3565ee266089a374b63bf6a2b",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule “Consider embodied impact and hardware turnover, not only runtime energy.” is not deterministic because its full meaning requires qualified legal, safety, environmental, procurement, or domain authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-96E7974E",
+      "revision": 1,
+      "semantic_sha256": "96e7974e5182dca0b56b1305265aa2a00588d732ecca4983eb2876c06383f418",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule “Choose regions, schedules, and providers with environmental impact in mind where business and resilience constraints permit.” is not deterministic because its full meaning requires qualified legal, safety, environmental, procurement, or domain authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-AE0A9E6E",
+      "revision": 1,
+      "semantic_sha256": "ae0a9e6ed2aa632b47e3b20829b68e6830dbb47ada18446396df3746232faee3",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Avoid shifting emissions or cost to users, suppliers, or other lifecycle stages without accounting for it.” is not deterministic because it promises completeness or behavior across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-E9DA33B5",
+      "revision": 1,
+      "semantic_sha256": "e9da33b5a4136b45d6a8efba1400b21f6ced4f1d7d8cf84fe4167f6b4f36913a",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Make measurement and optimization privacy-preserving.” is not deterministic because it promises completeness or behavior across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-C30BCEBE",
+      "revision": 1,
+      "semantic_sha256": "c30bcebe2bb86efe3057233e23396cd4ff314d56b5902df7ed14e4845d51cdab",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The rule “Prevent efficiency targets from reducing accessibility, security, reliability, or user control.” is not deterministic because it promises completeness or behavior across runtime, external, dynamic, or future paths that bounded evidence cannot exhaust.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-D0C9688D",
+      "revision": 1,
+      "semantic_sha256": "d0c9688dd828d9333e7813f14637b589a785b696acc3cb59ca9f34381c0d468d",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule “Include environmental requirements in supplier and architecture decisions.” is not deterministic because its full meaning requires qualified legal, safety, environmental, procurement, or domain authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-2FBFB7E2",
+      "revision": 1,
+      "semantic_sha256": "2fbfb7e21a661b42d1ab0c92356e3e5984f4cf5ddd45b4fcb840eae21f91b3cf",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The rule “Review regressions and publish internally auditable progress against baselines.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; the required record fields or bounded results are exact comparisons.",
+      "deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Review regressions and publish internally auditable progress against baselines.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    }
+  ]
+}

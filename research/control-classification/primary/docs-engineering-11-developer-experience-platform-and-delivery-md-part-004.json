@@ -1,0 +1,53 @@
+{
+  "schema_version": "prc.control-classification-review/v0.1",
+  "packet_id": "docs-engineering-11-developer-experience-platform-and-delivery-md-part-004",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "source_path": "docs/engineering/11-developer-experience-platform-and-delivery.md",
+  "controls": [
+    {
+      "control_id": "USEQ-AB436474",
+      "revision": 1,
+      "semantic_sha256": "ab436474528d41063976f82ccc79557bb0164421ba42b8a1d41e17d947008c42",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Completeness, accuracy, timeliness, and control effectiveness are not given a bounded audit protocol, authoritative inventory, or approved thresholds, and effectiveness still requires contextual judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol",
+        "undefined_scope",
+        "undefined_threshold"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-662CE68B",
+      "revision": 1,
+      "semantic_sha256": "662ce68b4b6709f51237512c8b1d6ead2f0c9c06333abf34b0bebc2e06701af3",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Support status and configuration traceability can be compared for a declared complete inventory, but proving that no unknown critical asset exists and judging whether a high-impact tool is qualified are not bounded by this rule.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every technology in the complete declared production inventory has an authoritative lifecycle status that is allowed by the approved support policy.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "Every item in the complete declared production-configuration inventory is joined to its required authenticated traceability record.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child",
+        "unbounded_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    }
+  ]
+}

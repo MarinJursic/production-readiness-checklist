@@ -1,0 +1,986 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-engineering-07-data-and-information-lifecycle-md-part-003-part-002",
+  "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-003",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 39,
+  "controls": [
+    {
+      "control_id": "USEQ-EF106894",
+      "revision": 1,
+      "semantic_sha256": "ef106894d5fe67cb984ef79fbfbb07234765ebc99e613d07bebfcf17ce68a2a3",
+      "statement": "Define who can issue, approve, modify, release, and audit a legal or investigative hold.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 869
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Final Gap Closure — Data Accountability, eDiscovery, Legal Holds, and Evidentiary Integrity",
+        "Legal holds and preservation duties"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Define who can issue, approve, modify, release, and audit a legal or investigative hold.” is deterministic with a sealed information-asset or matter inventory, versioned lifecycle or custody contract, and exact record, hash, manifest, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define who can issue, approve, modify, release, and audit a legal or investigative hold.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-501834EB",
+      "revision": 1,
+      "semantic_sha256": "501834eb6458bc6778665f53aa05b7ead9188af415c9c9fd6f5fda91f50ed9ba",
+      "statement": "Define the matter scope, custodians, data sources, subjects, date ranges, preservation method, and responsible owners.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 871
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Final Gap Closure — Data Accountability, eDiscovery, Legal Holds, and Evidentiary Integrity",
+        "Legal holds and preservation duties"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Define the matter scope, custodians, data sources, subjects, date ranges, preservation method, and responsible owners.” is deterministic with a sealed information-asset or matter inventory, versioned lifecycle or custody contract, and exact record, hash, manifest, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define the matter scope, custodians, data sources, subjects, date ranges, preservation method, and responsible owners.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B6755AD2",
+      "revision": 1,
+      "semantic_sha256": "b6755ad24c6dc1ca0f511ded603ae06eeef2ff2d18a3ae8356eba5321eb315b8",
+      "statement": "Suspend conflicting deletion, overwrite, rotation, compaction, archival expiry, and account-closure processes.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 872
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Final Gap Closure — Data Accountability, eDiscovery, Legal Holds, and Evidentiary Integrity",
+        "Legal holds and preservation duties"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Suspend conflicting deletion, overwrite, rotation, compaction, archival expiry, and account-closure processes.” is deterministic with a sealed information-asset or matter inventory, versioned lifecycle or custody contract, and exact record, hash, manifest, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Suspend conflicting deletion, overwrite, rotation, compaction, archival expiry, and account-closure processes.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1E1EFD59",
+      "revision": 1,
+      "semantic_sha256": "1e1efd59f31d1bb6d22246988f314f6a105dd86c2190ab00c01777476e96ea7a",
+      "statement": "Track hold coverage, acknowledgment, collection, changes, exceptions, and release.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 877
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Final Gap Closure — Data Accountability, eDiscovery, Legal Holds, and Evidentiary Integrity",
+        "Legal holds and preservation duties"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Track hold coverage, acknowledgment, collection, changes, exceptions, and release.” is deterministic with a sealed information-asset or matter inventory, versioned lifecycle or custody contract, and exact record, hash, manifest, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Track hold coverage, acknowledgment, collection, changes, exceptions, and release.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-666E4FF9",
+      "revision": 1,
+      "semantic_sha256": "666e4ff9872329c6732914c1ac661a5ee2e85631b6202866dbfcc774e4f88801",
+      "statement": "Validate that technical holds actually stop disposition in each relevant repository.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 879
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Final Gap Closure — Data Accountability, eDiscovery, Legal Holds, and Evidentiary Integrity",
+        "Legal holds and preservation duties"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Validate that technical holds actually stop disposition in each relevant repository.” is deterministic with a sealed information-asset or matter inventory, versioned lifecycle or custody contract, and exact record, hash, manifest, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Validate that technical holds actually stop disposition in each relevant repository.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6A030672",
+      "revision": 1,
+      "semantic_sha256": "6a030672d8ef5501bb084f1653f89babae2f9400a90f7c3cc1a86472dbd77939",
+      "statement": "Monitor repository migrations and account offboarding so holds remain effective.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 880
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Final Gap Closure — Data Accountability, eDiscovery, Legal Holds, and Evidentiary Integrity",
+        "Legal holds and preservation duties"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Monitor repository migrations and account offboarding so holds remain effective.” is deterministic with a sealed information-asset or matter inventory, versioned lifecycle or custody contract, and exact record, hash, manifest, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Monitor repository migrations and account offboarding so holds remain effective.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D4BAC821",
+      "revision": 1,
+      "semantic_sha256": "d4bac821dba2a59e0372973844867cd649e4c622a7c84667c6a25d0999169d75",
+      "statement": "Release holds through an authorized documented process when preservation duty ends.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 881
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Final Gap Closure — Data Accountability, eDiscovery, Legal Holds, and Evidentiary Integrity",
+        "Legal holds and preservation duties"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Release holds through an authorized documented process when preservation duty ends.” is deterministic with a sealed information-asset or matter inventory, versioned lifecycle or custody contract, and exact record, hash, manifest, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Release holds through an authorized documented process when preservation duty ends.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1EFE79A1",
+      "revision": 1,
+      "semantic_sha256": "1efe79a1a9cf33161c557192acf338acb435701381dec397090410aa4a4d726a",
+      "statement": "Resume ordinary retention and defensible disposition after release without deleting information still subject to another hold.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 882
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Final Gap Closure — Data Accountability, eDiscovery, Legal Holds, and Evidentiary Integrity",
+        "Legal holds and preservation duties"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Resume ordinary retention and defensible disposition after release without deleting information still subject to another hold.” is deterministic with a sealed information-asset or matter inventory, versioned lifecycle or custody contract, and exact record, hash, manifest, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Resume ordinary retention and defensible disposition after release without deleting information still subject to another hold.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7DE623E7",
+      "revision": 1,
+      "semantic_sha256": "7de623e7335c52ff876a19b32ecd6099b63e7095ef973dfc3b8dbf12b56b8568",
+      "statement": "Preserve evidence of hold issuance, operation, validation, and release.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 883
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Final Gap Closure — Data Accountability, eDiscovery, Legal Holds, and Evidentiary Integrity",
+        "Legal holds and preservation duties"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Preserve evidence of hold issuance, operation, validation, and release.” is deterministic with a sealed information-asset or matter inventory, versioned lifecycle or custody contract, and exact record, hash, manifest, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Preserve evidence of hold issuance, operation, validation, and release.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8C9A995F",
+      "revision": 1,
+      "semantic_sha256": "8c9a995f893a0941506e1e175cf21ec93222c3a902380b625e49c29240de0829",
+      "statement": "Use repeatable, documented, and validated collection procedures.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 889
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Final Gap Closure — Data Accountability, eDiscovery, Legal Holds, and Evidentiary Integrity",
+        "Defensible preservation and collection"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Use repeatable, documented, and validated collection procedures.” is deterministic with a sealed information-asset or matter inventory, versioned lifecycle or custody contract, and exact record, hash, manifest, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use repeatable, documented, and validated collection procedures.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-14580CAC",
+      "revision": 1,
+      "semantic_sha256": "14580cac1b2902fca580f22b856f9d705b96ef97b454b752e3c1d31358e60293",
+      "statement": "Record who collected what, when, where, how, under whose authority, and using which tools and versions.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 890
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Final Gap Closure — Data Accountability, eDiscovery, Legal Holds, and Evidentiary Integrity",
+        "Defensible preservation and collection"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Record who collected what, when, where, how, under whose authority, and using which tools and versions.” is deterministic with a sealed information-asset or matter inventory, versioned lifecycle or custody contract, and exact record, hash, manifest, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Record who collected what, when, where, how, under whose authority, and using which tools and versions.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-65B40E66",
+      "revision": 1,
+      "semantic_sha256": "65b40e668ca74972170578e6987ae8428e3738c2189210c984e0d9f7c72f8c0f",
+      "statement": "Calculate and retain integrity hashes or equivalent fixity evidence where appropriate.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 891
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Final Gap Closure — Data Accountability, eDiscovery, Legal Holds, and Evidentiary Integrity",
+        "Defensible preservation and collection"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Calculate and retain integrity hashes or equivalent fixity evidence where appropriate.” is deterministic with a sealed information-asset or matter inventory, versioned lifecycle or custody contract, and exact record, hash, manifest, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Calculate and retain integrity hashes or equivalent fixity evidence where appropriate.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E6E5A19C",
+      "revision": 1,
+      "semantic_sha256": "e6e5a19c3ebd592edbc95d0271304a8968a7380cdafbb5294b16371e0f4a1f2d",
+      "statement": "Preserve source time-zone and clock information.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 892
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Final Gap Closure — Data Accountability, eDiscovery, Legal Holds, and Evidentiary Integrity",
+        "Defensible preservation and collection"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Preserve source time-zone and clock information.” is deterministic with a sealed information-asset or matter inventory, versioned lifecycle or custody contract, and exact record, hash, manifest, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Preserve source time-zone and clock information.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2F2046BA",
+      "revision": 1,
+      "semantic_sha256": "2f2046ba96b6faa4252224d08bb2735ff5f02a2daa8f6eaaf55cc2b8f6d857e2",
+      "statement": "Document unavoidable transformations, normalization, filtering, or loss.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 894
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Final Gap Closure — Data Accountability, eDiscovery, Legal Holds, and Evidentiary Integrity",
+        "Defensible preservation and collection"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Document unavoidable transformations, normalization, filtering, or loss.” is deterministic with a sealed information-asset or matter inventory, versioned lifecycle or custody contract, and exact record, hash, manifest, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Document unavoidable transformations, normalization, filtering, or loss.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5DD374B2",
+      "revision": 1,
+      "semantic_sha256": "5dd374b2914b0135346857f57d75e098760d17e87b10d953e1deec2766924bbb",
+      "statement": "Preserve references between messages, attachments, comments, revisions, and source records.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 897
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Final Gap Closure — Data Accountability, eDiscovery, Legal Holds, and Evidentiary Integrity",
+        "Defensible preservation and collection"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Preserve references between messages, attachments, comments, revisions, and source records.” is deterministic with a sealed information-asset or matter inventory, versioned lifecycle or custody contract, and exact record, hash, manifest, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Preserve references between messages, attachments, comments, revisions, and source records.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7006D883",
+      "revision": 1,
+      "semantic_sha256": "7006d883ba34778d181893ed47d21a8780dd4bc37b231077326b4b9979d12419",
+      "statement": "Validate collection completeness through counts, samples, queries, reconciliation, or independent review.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 900
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Final Gap Closure — Data Accountability, eDiscovery, Legal Holds, and Evidentiary Integrity",
+        "Defensible preservation and collection"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Validate collection completeness through counts, samples, queries, reconciliation, or independent review.” is deterministic with a sealed information-asset or matter inventory, versioned lifecycle or custody contract, and exact record, hash, manifest, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Validate collection completeness through counts, samples, queries, reconciliation, or independent review.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F5E05710",
+      "revision": 1,
+      "semantic_sha256": "f5e0571016b3bf2df1edf24ea238fa29108d089f7299899f44b62411e417810c",
+      "statement": "Retain collection logs, errors, exclusions, retry history, and unresolved gaps.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 901
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Final Gap Closure — Data Accountability, eDiscovery, Legal Holds, and Evidentiary Integrity",
+        "Defensible preservation and collection"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Retain collection logs, errors, exclusions, retry history, and unresolved gaps.” is deterministic with a sealed information-asset or matter inventory, versioned lifecycle or custody contract, and exact record, hash, manifest, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Retain collection logs, errors, exclusions, retry history, and unresolved gaps.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2AA81182",
+      "revision": 1,
+      "semantic_sha256": "2aa81182b4aadb84d8ef1501bb8403c6a5158316e439146edef6a854d0a2e554",
+      "statement": "Assign a unique identifier to each collected evidence set and material item.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 906
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Final Gap Closure — Data Accountability, eDiscovery, Legal Holds, and Evidentiary Integrity",
+        "Chain of custody and evidentiary integrity"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Assign a unique identifier to each collected evidence set and material item.” is deterministic with a sealed information-asset or matter inventory, versioned lifecycle or custody contract, and exact record, hash, manifest, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Assign a unique identifier to each collected evidence set and material item.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-052AE940",
+      "revision": 1,
+      "semantic_sha256": "052ae9400e949c5f570c6656c8709a460eb9a9b18c0affd61234cb229e5f0c36",
+      "statement": "Maintain an unbroken record of possession, transfer, access, copying, transformation, and disposition.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 907
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Final Gap Closure — Data Accountability, eDiscovery, Legal Holds, and Evidentiary Integrity",
+        "Chain of custody and evidentiary integrity"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Maintain an unbroken record of possession, transfer, access, copying, transformation, and disposition.” is deterministic with a sealed information-asset or matter inventory, versioned lifecycle or custody contract, and exact record, hash, manifest, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Maintain an unbroken record of possession, transfer, access, copying, transformation, and disposition.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-143D9842",
+      "revision": 1,
+      "semantic_sha256": "143d9842e4c0c4814b31e132a285f6b41827c2d1b56e94c3bfb9800a787877f8",
+      "statement": "Restrict evidence access to authorized individuals with a documented purpose.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 908
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Final Gap Closure — Data Accountability, eDiscovery, Legal Holds, and Evidentiary Integrity",
+        "Chain of custody and evidentiary integrity"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Restrict evidence access to authorized individuals with a documented purpose.” is deterministic with a sealed information-asset or matter inventory, versioned lifecycle or custody contract, and exact record, hash, manifest, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Restrict evidence access to authorized individuals with a documented purpose.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-39C82E33",
+      "revision": 1,
+      "semantic_sha256": "39c82e332f6bb1f0ea96782ab40cc8bfd4bc5d74fa47eb44e6fc89c99a0d69f5",
+      "statement": "Verify integrity before and after transfer, processing, restoration, and production.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 910
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Final Gap Closure — Data Accountability, eDiscovery, Legal Holds, and Evidentiary Integrity",
+        "Chain of custody and evidentiary integrity"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Verify integrity before and after transfer, processing, restoration, and production.” is deterministic with a sealed information-asset or matter inventory, versioned lifecycle or custody contract, and exact record, hash, manifest, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Verify integrity before and after transfer, processing, restoration, and production.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2C35861F",
+      "revision": 1,
+      "semantic_sha256": "2c35861f23fd9af5df1ab20ae8334f74feb40996226bab2e30d82cacb380676e",
+      "statement": "Preserve original evidence separately from working copies.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 911
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Final Gap Closure — Data Accountability, eDiscovery, Legal Holds, and Evidentiary Integrity",
+        "Chain of custody and evidentiary integrity"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Preserve original evidence separately from working copies.” is deterministic with a sealed information-asset or matter inventory, versioned lifecycle or custody contract, and exact record, hash, manifest, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Preserve original evidence separately from working copies.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A993560C",
+      "revision": 1,
+      "semantic_sha256": "a993560c6ae4a515f005e7d3e2a68702479a3d5c9c36bd891847eba10749d81c",
+      "statement": "Record tool versions, configuration, time, environment, and operator for material processing.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 912
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Final Gap Closure — Data Accountability, eDiscovery, Legal Holds, and Evidentiary Integrity",
+        "Chain of custody and evidentiary integrity"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Record tool versions, configuration, time, environment, and operator for material processing.” is deterministic with a sealed information-asset or matter inventory, versioned lifecycle or custody contract, and exact record, hash, manifest, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Record tool versions, configuration, time, environment, and operator for material processing.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B63156A8",
+      "revision": 1,
+      "semantic_sha256": "b63156a8064ff26bd46ee36d49de0868eb38e0b86a413bfbab29524dfd5ab988",
+      "statement": "Document known tool limitations and parsing failures.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 914
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Final Gap Closure — Data Accountability, eDiscovery, Legal Holds, and Evidentiary Integrity",
+        "Chain of custody and evidentiary integrity"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Document known tool limitations and parsing failures.” is deterministic with a sealed information-asset or matter inventory, versioned lifecycle or custody contract, and exact record, hash, manifest, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Document known tool limitations and parsing failures.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1292500D",
+      "revision": 1,
+      "semantic_sha256": "1292500dd5a8cfac205b1bbdebcfedea1676c614ebe3e14546e14a103138467c",
+      "statement": "Protect audit and custody records from unauthorized modification or deletion.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 915
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Final Gap Closure — Data Accountability, eDiscovery, Legal Holds, and Evidentiary Integrity",
+        "Chain of custody and evidentiary integrity"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Protect audit and custody records from unauthorized modification or deletion.” is deterministic with a sealed information-asset or matter inventory, versioned lifecycle or custody contract, and exact record, hash, manifest, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Protect audit and custody records from unauthorized modification or deletion.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1111C3BC",
+      "revision": 1,
+      "semantic_sha256": "1111c3bcddbf40ef72305b649b6e542275ab41f3057ea3bee57ec28ff960af14",
+      "statement": "Use secure, authenticated transfer channels and recipient verification.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 916
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Final Gap Closure — Data Accountability, eDiscovery, Legal Holds, and Evidentiary Integrity",
+        "Chain of custody and evidentiary integrity"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Use secure, authenticated transfer channels and recipient verification.” is deterministic with a sealed information-asset or matter inventory, versioned lifecycle or custody contract, and exact record, hash, manifest, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use secure, authenticated transfer channels and recipient verification.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CC7E87FB",
+      "revision": 1,
+      "semantic_sha256": "cc7e87fbbc1cb5c5a6b2af2b78283d14013eeba31900ecbadef689408737ce1c",
+      "statement": "Maintain controlled evidence storage during provider or platform migration.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 917
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Final Gap Closure — Data Accountability, eDiscovery, Legal Holds, and Evidentiary Integrity",
+        "Chain of custody and evidentiary integrity"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Maintain controlled evidence storage during provider or platform migration.” is deterministic with a sealed information-asset or matter inventory, versioned lifecycle or custody contract, and exact record, hash, manifest, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Maintain controlled evidence storage during provider or platform migration.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AA4171CE",
+      "revision": 1,
+      "semantic_sha256": "aa4171cea81eb00c9f01a08c6513730302bfec01d5beae3afabd1f7ca35683a7",
+      "statement": "Define authorized destruction and retain proof of disposition when evidence is no longer required.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 919
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Final Gap Closure — Data Accountability, eDiscovery, Legal Holds, and Evidentiary Integrity",
+        "Chain of custody and evidentiary integrity"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Define authorized destruction and retain proof of disposition when evidence is no longer required.” is deterministic with a sealed information-asset or matter inventory, versioned lifecycle or custody contract, and exact record, hash, manifest, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define authorized destruction and retain proof of disposition when evidence is no longer required.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-18028100",
+      "revision": 1,
+      "semantic_sha256": "18028100476b39c34a4df4b4b944e2239a176b54411544b966e151ce4d6602b2",
+      "statement": "Define processing rules, search methods, filters, deduplication, threading, date handling, and exclusions before use.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 923
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Final Gap Closure — Data Accountability, eDiscovery, Legal Holds, and Evidentiary Integrity",
+        "Processing, search, review, and production"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Define processing rules, search methods, filters, deduplication, threading, date handling, and exclusions before use.” is deterministic with a sealed information-asset or matter inventory, versioned lifecycle or custody contract, and exact record, hash, manifest, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define processing rules, search methods, filters, deduplication, threading, date handling, and exclusions before use.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F91F42B5",
+      "revision": 1,
+      "semantic_sha256": "f91f42b548cdd7ae3611f3366e55caed77047922db67f904087cf97ed4b72a51",
+      "statement": "Document search terms, versions, iterations, reviewers, and decision rationale.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 926
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Final Gap Closure — Data Accountability, eDiscovery, Legal Holds, and Evidentiary Integrity",
+        "Processing, search, review, and production"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Document search terms, versions, iterations, reviewers, and decision rationale.” is deterministic with a sealed information-asset or matter inventory, versioned lifecycle or custody contract, and exact record, hash, manifest, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Document search terms, versions, iterations, reviewers, and decision rationale.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DCAE9F4C",
+      "revision": 1,
+      "semantic_sha256": "dcae9f4cde48b90002d068cab64d28af59fec01453b16c998d1aedbf9aa9eb1c",
+      "statement": "Preserve the ability to reproduce the processed population and result set.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 927
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Final Gap Closure — Data Accountability, eDiscovery, Legal Holds, and Evidentiary Integrity",
+        "Processing, search, review, and production"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Preserve the ability to reproduce the processed population and result set.” is deterministic with a sealed information-asset or matter inventory, versioned lifecycle or custody contract, and exact record, hash, manifest, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Preserve the ability to reproduce the processed population and result set.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-25FE2994",
+      "revision": 1,
+      "semantic_sha256": "25fe2994c77323b54389239d24add1a91dbcceef80278b745a421b44770bc96c",
+      "statement": "Keep original and normalized representations linked.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 928
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Final Gap Closure — Data Accountability, eDiscovery, Legal Holds, and Evidentiary Integrity",
+        "Processing, search, review, and production"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Keep original and normalized representations linked.” is deterministic with a sealed information-asset or matter inventory, versioned lifecycle or custody contract, and exact record, hash, manifest, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Keep original and normalized representations linked.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E0A87576",
+      "revision": 1,
+      "semantic_sha256": "e0a87576f3af4e1d93c6e7c087563a8fea52360196a55f853f19747787d34bce",
+      "statement": "Apply redaction without altering unredacted source evidence.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 933
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Final Gap Closure — Data Accountability, eDiscovery, Legal Holds, and Evidentiary Integrity",
+        "Processing, search, review, and production"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Apply redaction without altering unredacted source evidence.” is deterministic with a sealed information-asset or matter inventory, versioned lifecycle or custody contract, and exact record, hash, manifest, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Apply redaction without altering unredacted source evidence.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EF45812D",
+      "revision": 1,
+      "semantic_sha256": "ef45812d8510389004e94495ec8a402d0e7da89157861f357475a9197940865e",
+      "statement": "Validate redactions cannot be reversed through layers, metadata, hidden text, or alternate representations.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 934
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Final Gap Closure — Data Accountability, eDiscovery, Legal Holds, and Evidentiary Integrity",
+        "Processing, search, review, and production"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Validate redactions cannot be reversed through layers, metadata, hidden text, or alternate representations.” is deterministic with a sealed information-asset or matter inventory, versioned lifecycle or custody contract, and exact record, hash, manifest, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Validate redactions cannot be reversed through layers, metadata, hidden text, or alternate representations.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C589DC56",
+      "revision": 1,
+      "semantic_sha256": "c589dc5664e56c48ff21b28e46c995d0786f67702a42bdefc14c4ea2cf32cb3e",
+      "statement": "Verify productions include agreed fields, metadata, numbering, formats, load files, and relationships.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 935
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Final Gap Closure — Data Accountability, eDiscovery, Legal Holds, and Evidentiary Integrity",
+        "Processing, search, review, and production"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Verify productions include agreed fields, metadata, numbering, formats, load files, and relationships.” is deterministic with a sealed information-asset or matter inventory, versioned lifecycle or custody contract, and exact record, hash, manifest, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Verify productions include agreed fields, metadata, numbering, formats, load files, and relationships.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-75CD5DEE",
+      "revision": 1,
+      "semantic_sha256": "75cd5dee6c7157018a6868233023db2490f1b92e4f444f781a8503def0fcb094",
+      "statement": "Encrypt and authenticate productions in transit and at rest.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 937
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Final Gap Closure — Data Accountability, eDiscovery, Legal Holds, and Evidentiary Integrity",
+        "Processing, search, review, and production"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Encrypt and authenticate productions in transit and at rest.” is deterministic with a sealed information-asset or matter inventory, versioned lifecycle or custody contract, and exact record, hash, manifest, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Encrypt and authenticate productions in transit and at rest.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-094254BF",
+      "revision": 1,
+      "semantic_sha256": "094254bf84ab9b67be315f3bbeaecc5be3ce82b87b966568c253788116957def",
+      "statement": "Record what was produced, to whom, when, under what authority, and with which integrity evidence.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 938
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Final Gap Closure — Data Accountability, eDiscovery, Legal Holds, and Evidentiary Integrity",
+        "Processing, search, review, and production"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Record what was produced, to whom, when, under what authority, and with which integrity evidence.” is deterministic with a sealed information-asset or matter inventory, versioned lifecycle or custody contract, and exact record, hash, manifest, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Record what was produced, to whom, when, under what authority, and with which integrity evidence.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-338A4A7F",
+      "revision": 1,
+      "semantic_sha256": "338a4a7fc00d6663a03970da12ad62bf08297fe3acbdb665db4c0399280bc565",
+      "statement": "Retain production validation and exception records.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 939
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Final Gap Closure — Data Accountability, eDiscovery, Legal Holds, and Evidentiary Integrity",
+        "Processing, search, review, and production"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Retain production validation and exception records.” is deterministic with a sealed information-asset or matter inventory, versioned lifecycle or custody contract, and exact record, hash, manifest, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Retain production validation and exception records.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4040EE6C",
+      "revision": 1,
+      "semantic_sha256": "4040ee6ceb40375485ad200bd577798ba18608b0c3c187b0fd0c3d039d841f06",
+      "statement": "Keep investigative and litigation data separate from ordinary analytics and product use.",
+      "source": {
+        "path": "docs/engineering/07-data-and-information-lifecycle.md",
+        "line": 950
+      },
+      "heading_trail": [
+        "Data and information lifecycle",
+        "Final Gap Closure — Data Accountability, eDiscovery, Legal Holds, and Evidentiary Integrity",
+        "Privacy, proportionality, privilege, and cross-border constraints"
+      ],
+      "primary_packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Keep investigative and litigation data separate from ordinary analytics and product use.” is deterministic with a sealed information-asset or matter inventory, versioned lifecycle or custody contract, and exact record, hash, manifest, or fixture oracle.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Keep investigative and litigation data separate from ordinary analytics and product use.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    }
+  ]
+}

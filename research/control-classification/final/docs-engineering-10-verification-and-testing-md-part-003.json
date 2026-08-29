@@ -1,0 +1,2220 @@
+{
+  "schema_version": "prc.control-classification-final/v0.1",
+  "packet_id": "docs-engineering-10-verification-and-testing-md-part-003",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "source_path": "docs/engineering/10-verification-and-testing.md",
+  "control_count": 136,
+  "controls": [
+    {
+      "control_id": "USEQ-4050C11D",
+      "revision": 1,
+      "semantic_sha256": "4050c11db43252a639f61d774f5c9333720dbfbc7f87a64fac1be91bfd655b3e",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. Each defect in the authoritative ledger can be checked for the ten exact affected-scope, impact, workaround and ownership fields.",
+      "deterministic_clauses": [
+        {
+          "statement": "Record each defect with affected requirement, users, versions, environments, data, severity, detectability, workaround, and owner.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "A defect missing customer exposure data, affected versions or owner leaves a deterministic schema or registry-join failure."
+    },
+    {
+      "control_id": "USEQ-BC455E22",
+      "revision": 1,
+      "semantic_sha256": "bc455e22808263b3b10315f5e680c6ef090c6ed2b3794ea7274f069c72bf7618",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Classify impact using user harm, security, privacy, integrity, financial, accessibility, safety, legal, operational, and reputational dimensions.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-F0B8342C",
+      "revision": 1,
+      "semantic_sha256": "f0b8342c5f28f3d69ffa920205bc18ca937cd9e2b481870739af4f4771066b4c",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Prioritize by actual risk and exposure rather than age or raw count alone.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-CD7C7286",
+      "revision": 1,
+      "semantic_sha256": "cd7c7286ac3bc654e7c1bf790f4a95b74fb92a182a990f1f0beb6b978a57aa65",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "When possible is a contextual exception, and reproduction occurrence does not prove the defect was exercised against the truly affected released artifact.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A team can declare exact-artifact reproduction impossible and use a convenient build even though the release image is available and behaves differently."
+    },
+    {
+      "control_id": "USEQ-1B6B2359",
+      "revision": 1,
+      "semantic_sha256": "1b6b2359a644d50ee08e61ed64d5e9f250a0965ff8b88b552a7c5a27009f543c",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Identify the first point in the lifecycle where the defect could reasonably have been prevented or detected.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-AC327620",
+      "revision": 1,
+      "semantic_sha256": "ac3276204d74e8134526ed0d64fd9a14cc5fbe3be93dac7c60657037e3ad6d93",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Perform root-cause analysis for serious, recurring, systemic, or escaped defects.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-ECAA299C",
+      "revision": 1,
+      "semantic_sha256": "ecaa299c99dc304a685d616e1a1988dee67fa7cc1a745657e1e7d7c46c065d3c",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Distinguish triggering condition, proximate technical cause, contributing conditions, organizational cause, and control failure.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-279BAC2D",
+      "revision": 1,
+      "semantic_sha256": "279bac2d331f4383209ee9d163ef31ecaae91dc6314fbb0cb4e615f2b4814660",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Search for variants across shared code, products, versions, configurations, data, and processes.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-59366EFE",
+      "revision": 1,
+      "semantic_sha256": "59366efe8e2ef9419d935c51d2881a180346df9c40df4e67df6271d4a495aa55",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Verify fixes through targeted tests, broader regression, and production monitoring where appropriate.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-9B2BE606",
+      "revision": 1,
+      "semantic_sha256": "9b2be60680b446b472fa6c95972e7125ef0427e22839a689210897667c38c9ef",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Several counts and times are computable, but escaped defects, recurrence and complete customer exposure depend on discovering and linking all real failures.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "The dashboard can report all eight measures while an unreported customer defect and a semantically recurring issue are absent from the ledger."
+    },
+    {
+      "control_id": "USEQ-F2870EFC",
+      "revision": 1,
+      "semantic_sha256": "f2870efc3463f7d4ebdce3b2de270561ac20577ef67d122313a5eaaef49e5572",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Use metrics to improve the system rather than rank individuals or encourage defect concealment.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-28C4F691",
+      "revision": 1,
+      "semantic_sha256": "28c4f691050e2da41c488d139f60d99e4fe55133115d9dbd3f1d74c2f1a014d1",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Determining which of five assurance failures caused a defect requires causal analysis, production representativeness judgment and evidence interpretation.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A review can check every category and blame a missing assertion while the real cause was an unrealistic production model."
+    },
+    {
+      "control_id": "USEQ-003E4BB9",
+      "revision": 1,
+      "semantic_sha256": "003e4bb95901af8edd7c8a61e01d0e89ae348c3234fa23a59abb2748d14cab7a",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Artifact edits are observable, but deciding how lessons should change seven practices and whether the changes embody the lesson is contextual.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "All seven artifacts can receive superficial updates while the coding rule and runbook still permit the same defect mechanism."
+    },
+    {
+      "control_id": "USEQ-2BC9A7C5",
+      "revision": 1,
+      "semantic_sha256": "2bc9a7c580fbee9b5936fa5834e6525cfdc292f924fb64d6e8b740b31b576cad",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Evidence presence cannot demonstrate corrective-action effectiveness without a causal protocol, observation horizon and recurrence oracle.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A corrective action can close after one passing test while the defect still recurs under an untested production condition."
+    },
+    {
+      "control_id": "USEQ-7945FABA",
+      "revision": 1,
+      "semantic_sha256": "7945faba76a03dc74c041be4c1d9a18cd8caf49fb6a7f26fa3e4d5cb309ddc92",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Periodically assess whether the assurance portfolio finds the defect classes and user harms that matter most.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-ECC22163",
+      "revision": 1,
+      "semantic_sha256": "ecc221639e5dfe88d21e6e74e139added76c5d61a03294d3ebcf2893f789f51e",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. A release gate can join the authoritative critical-item registry to current, unexpired verification-evidence identities and block any missing edge.",
+      "deterministic_clauses": [
+        {
+          "statement": "Block release when a critical requirement, user journey, safety property, authorization boundary, data invariant, recovery objective, or mandatory standard lacks current verification evidence.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "A critical journey or mandatory standard with stale or absent evidence creates a deterministic no-go condition."
+    },
+    {
+      "control_id": "USEQ-06A9124D",
+      "revision": 1,
+      "semantic_sha256": "06a9124d3e2e6c30181d51adfe5c2346fd6e4c2d8ae07c6b2869656107a30833",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. Exact artifact, configuration, schema, flag, environment and dependency identities can be bound to both test results and the release manifest.",
+      "deterministic_clauses": [
+        {
+          "statement": "Block release when tests ran against a different artifact, configuration, schema, feature-flag state, environment, or dependency set than the intended production release.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "Any mismatch in the six identities fails the provenance equality check and blocks the release."
+    },
+    {
+      "control_id": "USEQ-4D20534E",
+      "revision": 1,
+      "semantic_sha256": "4d20534eebf7e609394f74d86968058aee11acf0bbf568577b93f06fbf862c40",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. The required-test ledger can deterministically reject skipped, suppressed, quarantined or retry-only passes lacking an approved retry explanation.",
+      "deterministic_clauses": [
+        {
+          "statement": "Block release when required tests were skipped, suppressed, quarantined, or passed only after unexplained retries.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "A required test hidden in quarantine or passing only after an unexplained rerun cannot reach the release-approved state."
+    },
+    {
+      "control_id": "USEQ-9BC293BB",
+      "revision": 1,
+      "semantic_sha256": "9bc293bb4f1906048d7860c726f32933acd03f09ae14e38c258c9b051989c6be",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Block release when a serious intermittent, nondeterministic, or environment-dependent failure remains unexplained.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-F84F4311",
+      "revision": 1,
+      "semantic_sha256": "f84f43115ae0b0fa933379acd70ad858f8b31224938a49761c7a404442affa77",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Block release when expected results, test data, tools, or environments are known to be invalid or unrepresentative.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-9D68BDCB",
+      "revision": 1,
+      "semantic_sha256": "9d68bdcbbed661502c8b360a94278950ce2c4292a0ffc00e8375c021a124577e",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Block release when performance, capacity, resilience, migration, rollback, or restoration behavior is unknown for expected operating conditions.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-941A1A9C",
+      "revision": 1,
+      "semantic_sha256": "941a1a9cb09d99cccfe2f36af38a62e64691fe0f0bf32850160629cf24b647aa",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Block release when critical test coverage relies exclusively on mocks, snapshots, superficial assertions, or aggregate percentages.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-C6187362",
+      "revision": 1,
+      "semantic_sha256": "c618736260c9820f03ce1920b12d2d7e47f63316c6c6cab57c543fb2ba90623f",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Block release when material conformance, interoperability, accessibility, security, privacy, or regulatory claims exceed the tested scope.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-D601267F",
+      "revision": 1,
+      "semantic_sha256": "d601267fc70beb7cd493f08ed731ad6ec98cfc9e7ee538c22039253be7c8d027",
+      "classification": "deterministic",
+      "route": "artifact_verification",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. The evidence package can be validated for the fourteen exact strategy, scope, traceability, execution, result, limitation and approval artifact classes.",
+      "deterministic_clauses": [
+        {
+          "statement": "Retain the test strategy, scope, requirements traceability, models, data, environments, tools, versions, results, defects, exclusions, limitations, exceptions, and approvals.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "Omitting test data, exclusions or approvals breaks the signed package manifest and its finite completeness schema."
+    },
+    {
+      "control_id": "USEQ-F55894B6",
+      "revision": 1,
+      "semantic_sha256": "f55894b627eb8c68754affeaf7f297e478c07eed3cad6135039609f44b1bb61c",
+      "classification": "deterministic",
+      "route": "artifact_verification",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. For every policy-tagged high-impact item, the package can require either immutable raw evidence or an independently replayable evidence recipe.",
+      "deterministic_clauses": [
+        {
+          "statement": "Retain raw or reproducible evidence for high-impact calculations, performance measurements, resilience experiments, and independent assessments.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "A high-impact resilience experiment with only a summary and no raw trace or reproducible recipe fails the exact evidence alternative."
+    },
+    {
+      "control_id": "USEQ-DC9036BC",
+      "revision": 1,
+      "semantic_sha256": "dc9036bc7d93cff9ddb56b45092a4c1c3404ba292e9abf1699aefed2e3972130",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "No bounded source establishes all insufficiently tested defect classes and conditions; a document can only list recognized gaps.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "The document can contain several gap classes while omitting the very failure condition the team has not modeled."
+    },
+    {
+      "control_id": "USEQ-62ABC3B0",
+      "revision": 1,
+      "semantic_sha256": "62abc3b0993824c3036ff0733a92cf88c71fc5d04af51cac5009745a4bad56d2",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Require an authorized owner to accept residual assurance uncertainty explicitly and time-bound any compensating monitoring.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-3D261C6C",
+      "revision": 1,
+      "semantic_sha256": "3d261c6cb3584165671ecf3fa02b896f11a4fc1261470d1c5194e9d0ba927c59",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Monitoring and incident-response records do not prove they can detect and contain every risk that preproduction testing could not cover.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A detector and runbook can exist while an untested risk emits no signal or exceeds the containment path's authority."
+    },
+    {
+      "control_id": "USEQ-2AE6772C",
+      "revision": 1,
+      "semantic_sha256": "2ae6772c1ebe3380f2e71fc88a646b0b0655fdd4837e8456b914bc03be5b2b45",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule requires interpreting whether the final assurance prose presents testing as proof that no defects exist; a policy or phrase list cannot decide that meaning.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A statement can avoid banned literal phrases yet still imply that testing proves the release defect-free, so a bounded record or token check can pass while the rule is broken."
+    },
+    {
+      "control_id": "USEQ-67C9E2FD",
+      "revision": 1,
+      "semantic_sha256": "67c9e2fd1e17a8e33aa2cc0346d7337aa6201bbf2e94835d1d2d71ec63c711f5",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. A versioned assurance-scope record can define the nine finite qualities, harms, obligations, claims, systems and context dimensions.",
+      "deterministic_clauses": [
+        {
+          "statement": "Define the qualities, harms, obligations, claims, systems, versions, environments, users, and operating conditions that require assurance.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "If users, versions or operating conditions lack scope definitions, the exact nine-dimension schema fails."
+    },
+    {
+      "control_id": "USEQ-FB59BCD1",
+      "revision": 1,
+      "semantic_sha256": "fb59bcd16b091764e21a8b6282a105b5ceb0fec2806fb1e8aa0a53a7c67f052a",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Scale assurance rigor according to consequence, uncertainty, novelty, exposure, complexity, and reversibility.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-0CF01C55",
+      "revision": 1,
+      "semantic_sha256": "0cf01c5539226cd4754b62dd44eff7aafc4c782b392278d927dc3b6a72613bd7",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "A stakeholder list cannot prove every relying person or organization and supported decision was discovered, especially external or indirect reliance.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "All known stakeholders can be mapped while a regulator, customer operator or downstream decision maker remains omitted."
+    },
+    {
+      "control_id": "USEQ-D99B9218",
+      "revision": 1,
+      "semantic_sha256": "d99b9218cda63539523dd9ff70708e29111edb21687c79b6bc53d139d8b8c764",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Define the required confidence level and what residual uncertainty is acceptable.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-0EB55A7C",
+      "revision": 1,
+      "semantic_sha256": "0eb55a7c16d860230c7110842d62a3e6e688616902a074a5ec7b37e3297d630a",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. An evidence schema can require each item to use one of four distinct types: implementation, operation, outcome or absence of known failure.",
+      "deterministic_clauses": [
+        {
+          "statement": "Distinguish evidence of implementation, evidence of control operation, evidence of outcome, and evidence of absence of known failure.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "An outcome record mislabeled as implementation evidence or an untyped item violates the exact enum and case schema."
+    },
+    {
+      "control_id": "USEQ-1283600A",
+      "revision": 1,
+      "semantic_sha256": "1283600afe321f842af4797e03f97c07180a5849e38595f04ad01ad0ebdbffbe",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Use multiple complementary assurance methods when one method cannot support the required confidence.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-19F7A4D0",
+      "revision": 1,
+      "semantic_sha256": "19f7a4d0574f84cfac5e9dc74ff804c6327d72e673256b15775bdffcb21b5210",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. A versioned independence policy can define requirements for the six finite activities: design review, verification, validation, audit, certification and risk acceptance.",
+      "deterministic_clauses": [
+        {
+          "statement": "Define independence requirements for design review, verification, validation, audit, certification, and risk acceptance.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "If certification or risk acceptance lacks an independence rule, the exact activity-policy mapping fails."
+    },
+    {
+      "control_id": "USEQ-BFC07AAB",
+      "revision": 1,
+      "semantic_sha256": "bfc07aab0a1f6d9fdf17aef7746313d2c5c86288c73347d7208f2b4f983c5a2b",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Ensure assurance planning begins with requirements and architecture rather than after implementation.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-511BD294",
+      "revision": 1,
+      "semantic_sha256": "511bd294b5111b0eb6d587ae9ee546fce42d1eb73916b38dc3faa1f088ff3594",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Budget time, tools, environments, representative data, specialists, and remediation capacity for assurance.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-734F6033",
+      "revision": 1,
+      "semantic_sha256": "734f603338603b3b046178fefefd3326f77070c5274c6049f10bd67046099da4",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Fields can exist, but completeness of limitations, exclusions, assumptions and dependencies is open-ended and freshness can depend on undiscovered changes.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Every section can be populated while a material supplier assumption and its resulting stale evidence remain unrecorded."
+    },
+    {
+      "control_id": "USEQ-2B085AD7",
+      "revision": 1,
+      "semantic_sha256": "2b085ad73e759f33b19939e330a420e4b71c254c36cc714691e6d2837bacdb23",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Treat assurance as a lifecycle activity that continues through change, operation, incident, and retirement.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-A3008EA4",
+      "revision": 1,
+      "semantic_sha256": "a3008ea49f2eec7982f8ea73d821f4b83518cdd0569f3e351dfb1701fb422427",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Materiality, clarity, boundedness and testability are semantic qualities requiring expert interpretation rather than record-field presence.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A claim can have scope and test fields yet remain vague about acceptable harm and therefore not be meaningfully testable."
+    },
+    {
+      "control_id": "USEQ-6B2A8983",
+      "revision": 1,
+      "semantic_sha256": "6b2a8983c69c9551721599fbb9dd34169bbe8cdbd9136a05f2990bd1ecfadb2e",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. Each assurance claim can be checked for exact system, release, configuration, environment, period and operational-context identities.",
+      "deterministic_clauses": [
+        {
+          "statement": "State the exact system, release, configuration, environment, period, and operational context covered by the claim.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "A claim missing its configuration digest or covered period fails the finite six-field scope binding."
+    },
+    {
+      "control_id": "USEQ-01943631",
+      "revision": 1,
+      "semantic_sha256": "019436313c001cc47ccce2db0fbf2ec3d05c888ef31920ad2c04a355c3932fd7",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Whether a claim is broad, decomposition is complete and subclaims are independently supportable requires argument and domain judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A broad safety claim can be split into two syntactically separate subclaims that share the same unsupported assumption."
+    },
+    {
+      "control_id": "USEQ-67DF1B66",
+      "revision": 1,
+      "semantic_sha256": "67df1b66410ac914eadc30cb19891aae54b1f2c02b8419e27b22e8cdf0c5ed52",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Provide an explicit argument explaining why the evidence supports each claim.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-D6EC7E3B",
+      "revision": 1,
+      "semantic_sha256": "d6ec7e3b35b32093243267e6ecbb0355f05cb1be5536521c2886518785e9baa4",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "A case can list five argument fields without proving all assumptions and dependencies or that inference rules capture the real reasoning.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child",
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Every section can exist while a hidden independence assumption makes the conclusion invalid."
+    },
+    {
+      "control_id": "USEQ-ACEEAD05",
+      "revision": 1,
+      "semantic_sha256": "aceead05e35b7837c07d96984ad477cab42c84e497c240ea24ace6ce619afafb",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Graph completeness can prove that each subclaim has an edge, but the rule also requires the linked evidence to be relevant, which needs contextual interpretation.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "An unrelated artifact can be labeled supports and satisfy every referential-integrity check while leaving the subclaim substantively unsupported."
+    },
+    {
+      "control_id": "USEQ-0A2301F0",
+      "revision": 1,
+      "semantic_sha256": "0a2301f05c6156865f593a280f072b39b1069803319224d0496ba5786a3b5b0b",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. The typed assurance graph can forbid any evidence path that cycles back to the same claim, making circular support exactly detectable.",
+      "deterministic_clauses": [
+        {
+          "statement": "Avoid circular reasoning in which a claim is used as evidence for itself.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "A claim directly or transitively used as its own evidence creates a graph cycle and cannot pass."
+    },
+    {
+      "control_id": "USEQ-5DDCFB45",
+      "revision": 1,
+      "semantic_sha256": "5ddcfb4592d8d289458601330e2d2925a1f21853564a96e63768a6094661bc68",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Avoid replacing an outcome claim with evidence that a process or document exists.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-6CC47215",
+      "revision": 1,
+      "semantic_sha256": "6cc47215ebc04a6fa1cc01ede9fb7f31f17a830962a62b5c53772f77a8dda70c",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Include counterclaims, defeaters, alternative explanations, and known contrary evidence.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-100AD69F",
+      "revision": 1,
+      "semantic_sha256": "100ad69faba948d16420e2e48496e6ed66d9a6c25fa219e77f0af5e904d4e158",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Explain why identified defeaters are eliminated, controlled, monitored, or accepted.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-5C92AC6C",
+      "revision": 1,
+      "semantic_sha256": "5c92ac6cb71f4ae6f8cd0ae53324be5404ee67ce11fc72e68bca489508f0c360",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Show how claims interact across security, privacy, safety, accessibility, reliability, correctness, and compliance.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-B9AA39F0",
+      "revision": 1,
+      "semantic_sha256": "b9aa39f09b152a9a624cd942bb06a093f40e935697992bacc7c014e6f0348eb2",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. Claim records can use distinct, nonoverlapping types for design intent and deployed behavior with type-specific evidence authorities.",
+      "deterministic_clauses": [
+        {
+          "statement": "Distinguish claims about design intent from claims about deployed behavior.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "A deployed-behavior conclusion supported only as design intent fails the claim-type and authority schema."
+    },
+    {
+      "control_id": "USEQ-14D36863",
+      "revision": 1,
+      "semantic_sha256": "14d3686311beb3a5411882eda5a540756ba7d87b524cd6a7ad4e67a57d973f02",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. The claim schema can distinguish expected behavior from demonstrated behavior and require result evidence only for the demonstrated type.",
+      "deterministic_clauses": [
+        {
+          "statement": "Distinguish expected behavior from demonstrated behavior.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "Relabeling a specification as a demonstrated observation violates the exact evidence-authority constraint."
+    },
+    {
+      "control_id": "USEQ-E917726C",
+      "revision": 1,
+      "semantic_sha256": "e917726c8f21e3f85162bb49945f5f5298dce8650017c31b809cdce8e43354cb",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Keep the assurance case readable and reviewable by the intended decision-makers.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-3C79C82C",
+      "revision": 1,
+      "semantic_sha256": "3c79c82c23db50c95d5951d94a2dab8b271b0aeaffa3580662d8eba76849d370",
+      "classification": "deterministic",
+      "route": "artifact_verification",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. An assurance case can be content-versioned and cryptographically bound to immutable release and evidence identifiers.",
+      "deterministic_clauses": [
+        {
+          "statement": "Version the assurance case and tie it to immutable release and evidence identifiers.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "Changing the release artifact or an evidence item invalidates the stored digests and case binding."
+    },
+    {
+      "control_id": "USEQ-993D84C7",
+      "revision": 1,
+      "semantic_sha256": "993d84c754504caf5dc181e74feef908e65da2af7440afdd70e5d492a3914423",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. Evidence acceptance criteria can be versioned and timestamped before the earliest result that relies on them.",
+      "deterministic_clauses": [
+        {
+          "statement": "Define evidence acceptance criteria before relying on results.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "Criteria created after a test result or absent from its evidence type fail the temporal and registry checks."
+    },
+    {
+      "control_id": "USEQ-F473BC2E",
+      "revision": 1,
+      "semantic_sha256": "f473bc2e05642171967c37e7255a9d64e301bd2395f6587c3de4993a854f0504",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Prefer is not a deterministic obligation, and representativeness of a nonproduction configuration requires contextual similarity and risk judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A team can claim preference while repeatedly accepting evidence from a convenient configuration that omits a production-only dependency."
+    },
+    {
+      "control_id": "USEQ-7D363841",
+      "revision": 1,
+      "semantic_sha256": "7d36384197228b3c07c11dbac1d0029b8edb639c116c7d2b583d97db6876880d",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. Each evidence record can be checked for the ten exact provenance, execution-context, scope and result fields.",
+      "deterministic_clauses": [
+        {
+          "statement": "Record evidence source, method, tool, version, operator, environment, data, time, scope, and result.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "Missing tool version, operator, data identity or execution time creates an exact schema failure."
+    },
+    {
+      "control_id": "USEQ-E6AD6762",
+      "revision": 1,
+      "semantic_sha256": "e6ad6762ae70b9e5b9f8f2cf06560b3213d7582369f5d8e46e07ab0cb14cde71",
+      "classification": "deterministic",
+      "route": "artifact_verification",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. A content-addressed provenance graph can require an unbroken chain through requirement, source, build, deployment, execution and observation.",
+      "deterministic_clauses": [
+        {
+          "statement": "Establish provenance from requirement and source through build, deployment, execution, and observation.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "An observation not linked to its deployed artifact or build source leaves a deterministic missing edge."
+    },
+    {
+      "control_id": "USEQ-FF35E31B",
+      "revision": 1,
+      "semantic_sha256": "ff35e31b6f9691a57d95b22d0433b4a0177b308f03c1da16d7343a1fc61cebf3",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Structured records cannot prove protection against every unauthorized alteration or deletion path across evidence stores, backups and administrators.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Signed evidence can reveal modification yet a privileged recovery account can delete both an item and its unreplicated index."
+    },
+    {
+      "control_id": "USEQ-98FB3D02",
+      "revision": 1,
+      "semantic_sha256": "98fb3d0234ff7cbf806c04ed21fe9da055237f4dc951e4f7680078c20082ef09",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Materiality, correct calibration, substantive tool validation and completeness of known limitations require technical judgment and independent standards.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A record can show current calibration and validation while the procedure uses an inappropriate reference range and misses a material bias."
+    },
+    {
+      "control_id": "USEQ-043971A5",
+      "revision": 1,
+      "semantic_sha256": "043971a5c9909c2568cc02e8aa38fb617dbfb3e9c757dc6e93c2c81b2679ea8f",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Confirm that test or audit samples represent the relevant population and risk.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-ADA14CE9",
+      "revision": 1,
+      "semantic_sha256": "ada14ce9b2416b0a6ff1a569f4a29cdbe276ca617504fc0e8d59a89dc0023a50",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Quantify uncertainty, confidence, coverage, error rates, and detection limits where meaningful.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-F16DCC81",
+      "revision": 1,
+      "semantic_sha256": "f16dcc81af7ee9e0e3706c65e8ca65a3fbba308da9f435c91e58e5041d2c0787",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Distinguish absence of observed failure from evidence that failure is sufficiently unlikely.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-2963F4D9",
+      "revision": 1,
+      "semantic_sha256": "2963f4d9acb0305d075f8431d6f9149ff010a770fc3b147f6784818dc0f77afd",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Do not treat test count, code coverage, policy count, or scan count alone as proof of quality.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-453FDEAE",
+      "revision": 1,
+      "semantic_sha256": "453fdeae0513221cb0559db0f6abab23905ba9b1c66dc9e5d8dbbc26132a8aea",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Combine static, dynamic, analytical, operational, and human evidence as appropriate.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-E0A35E0B",
+      "revision": 1,
+      "semantic_sha256": "e0a35e0b1d4facf5e486ae3997b49c61953230140e9bb8dcde4e9a81c7d1ebbb",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Use independent reproduction for high-consequence calculations, models, migrations, or tests where practical.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-A6DE513F",
+      "revision": 1,
+      "semantic_sha256": "a6de513f2654a7fb4afdab9cbfcec0a9b76bff5ae038434401b25eaa95e58700",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Resolve contradictory evidence rather than choosing the favorable result silently.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-2BADD314",
+      "revision": 1,
+      "semantic_sha256": "2badd314f33b74bd3b0cca96e73fb59bd9fcc815c05cf799964817f5134dc264",
+      "classification": "deterministic",
+      "route": "artifact_verification",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. Every evidence item in the ledger can retain immutable content and disposition even when failed, inconclusive, excluded or superseded.",
+      "deterministic_clauses": [
+        {
+          "statement": "Preserve failed, inconclusive, excluded, and superseded evidence with its disposition.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "Deleting a failed result or superseding it without a disposition breaks the append-only ledger chain."
+    },
+    {
+      "control_id": "USEQ-EB04BD9A",
+      "revision": 1,
+      "semantic_sha256": "eb04bd9a7a1a7cad957a4ea275eba4a208d451031f0e74de8d4cc512f80c8961",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. A versioned policy can assign explicit validity periods and invalidating event types to each evidence class.",
+      "deterministic_clauses": [
+        {
+          "statement": "Define evidence validity periods and events that make evidence stale.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "An evidence class without expiry or stale-event rules fails the finite policy mapping."
+    },
+    {
+      "control_id": "USEQ-C278CEB3",
+      "revision": 1,
+      "semantic_sha256": "c278ceb334d7efc68670f6e1c1fe94e90443ebacf105d777feb3d7d1f8bbd3c5",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Materiality and complete detection of source, dependency, configuration, data, environment, threat and usage changes are contextual and unbounded.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child",
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Configured events can recollect evidence while an indirect dependency update is missed or a usage change is wrongly deemed immaterial."
+    },
+    {
+      "control_id": "USEQ-1BA3206E",
+      "revision": 1,
+      "semantic_sha256": "1ba3206e526fae0e8140e377b448066999abe325a588b669b6ceae17726fbe87",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Future retrievability and interpretability for the full required period depend on storage survival, formats, tools and changing retention authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Evidence can be readable today while its proprietary decoder or encryption key becomes unavailable before retention ends."
+    },
+    {
+      "control_id": "USEQ-A309E8E6",
+      "revision": 1,
+      "semantic_sha256": "a309e8e6b7e959b4886014f0ceb5558943f12f5c60f0e6453dc2457d1c85d60a",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Failure-consequence classification for all components, data and decisions requires complete inventory plus safety, security and business judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child",
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Every registered item can receive a class while an omitted function or understated compromise consequence produces a false pass."
+    },
+    {
+      "control_id": "USEQ-E19EECAD",
+      "revision": 1,
+      "semantic_sha256": "e19eecad86713bd56b298659b46ee04df2a5d2ff4dee1a4d931a3423995dd4f0",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. For every registered integrity class, a policy can define the five exact rigor, independence, coverage, formality and retention requirements.",
+      "deterministic_clauses": [
+        {
+          "statement": "Define assurance rigor, independence, coverage, formality, and evidence retention for each class.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "A class missing mathematical rigor rules or evidence retention fails the finite class-policy join."
+    },
+    {
+      "control_id": "USEQ-A72314F7",
+      "revision": 1,
+      "semantic_sha256": "a72314f71c1901fd91b4c3317b02fe35a89eece9ba8451884e504686ba6e4ecb",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Apply the highest relevant assurance level to shared components whose failure can affect higher-criticality functions.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-B3F7905C",
+      "revision": 1,
+      "semantic_sha256": "b3f7905cd3ee52e2d698d1656ee607061c19564bdeea02621e214b5fd516870c",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Prevent low-assurance dependencies from silently determining high-assurance outcomes.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-4D9F7786",
+      "revision": 1,
+      "semantic_sha256": "4d9f7786ae5782bda7a957845e239fd6254e611e7b8be9356d554cd73341fe06",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Use stronger specification, traceability, review, analysis, and verification for higher-criticality behavior.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-96C2BFD1",
+      "revision": 1,
+      "semantic_sha256": "96c2bfd1c00cb5046a86582e2d3d9101f2b4f3855687cf0bea0b2813c38e9c4d",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Use diverse or independent methods where common-mode verification failure would be unacceptable.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-4FF2DB8D",
+      "revision": 1,
+      "semantic_sha256": "4ff2db8de4bf766158102d16f3bd0ec9fb2f54bc1b4bfc6836c6080a5c6b4282",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Require qualified specialists for domains such as safety, cryptography, accessibility, privacy, finance, or formal verification when warranted.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-C6D28252",
+      "revision": 1,
+      "semantic_sha256": "c6d28252d5c12d3988d2aee66019f75372284c106df93214b36a47ed694635a2",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. A versioned policy can define exact triggering conditions for formal methods, exhaustive analysis, proof, model checking and justified bounds.",
+      "deterministic_clauses": [
+        {
+          "statement": "Define when formal methods, exhaustive analysis, proof, model checking, or mathematically justified bounds are required.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "If model checking has no applicability condition, the five-method policy matrix is incomplete."
+    },
+    {
+      "control_id": "USEQ-B7FB7430",
+      "revision": 1,
+      "semantic_sha256": "b7fb7430f9feadf2d1e889b85dd65f5c2895395eca856e8aeb57f8ebf5255a15",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Document why a selected assurance level is sufficient.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-07963687",
+      "revision": 1,
+      "semantic_sha256": "07963687e92d703748532db4d3e087375b4c44eef8b9fbf9a188f82dc73c526e",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Review records do not prove every relevant architecture, exposure, user or consequence change was detected and correctly recognized as affecting classification.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "All tracked change events can trigger review while an unrecorded exposure change leaves the integrity class stale."
+    },
+    {
+      "control_id": "USEQ-3ABADEBD",
+      "revision": 1,
+      "semantic_sha256": "3abadebdc869bd31b38727daeb83630266ac3406a15bd6ebb1b63a65438b6606",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. An assurance-activity registry can assign each activity an allowed self-review or required independent-review mode under versioned policy.",
+      "deterministic_clauses": [
+        {
+          "statement": "Define which assurance activities may be self-reviewed and which require organizational or technical independence.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "An activity requiring independence but approved solely by its performer violates the exact activity-policy join."
+    },
+    {
+      "control_id": "USEQ-7E738595",
+      "revision": 1,
+      "semantic_sha256": "7e738595bddc6cf1531fd5a6b65de4e9164388c10d8ebb0eba8309d6b0d48b4c",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. Identity and responsibility records can deterministically prevent the sole delivery owner from being the only approver of policy-tagged material residual risk.",
+      "deterministic_clauses": [
+        {
+          "statement": "Prevent the person solely responsible for delivery outcomes from being the only approver of material residual risk.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "A material risk with one approver who is its sole delivery owner fails the separation-of-approval constraint."
+    },
+    {
+      "control_id": "USEQ-ADBD2C5E",
+      "revision": 1,
+      "semantic_sha256": "adbd2c5ed1cc412ff0fb5eb2a09f72dd474ac22b99a832f49a412a991d732ba3",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Access grants can be recorded, but complete evidence and source availability plus access to all relevant environments and personnel are open-ended.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A reviewer can have the listed permissions while a supplier artifact or key operator needed for the review remains unavailable."
+    },
+    {
+      "control_id": "USEQ-24426703",
+      "revision": 1,
+      "semantic_sha256": "24426703b1139f355195d003c3e27d6df5d4a6365658f696111940b6e30c7112",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "Only the reviewer can authoritatively disclose personal conflicts, incentives, prior involvement and relationships; records cannot prove absence of undisclosed conflicts.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Every form can be complete while a reviewer hides a supplier financial relationship."
+    },
+    {
+      "control_id": "USEQ-9F1C648A",
+      "revision": 1,
+      "semantic_sha256": "9f1c648a822ea50d3768f60ab3679d62e27afa127c8f2ac3d35f46a6677fcb64",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "Whether independence is impaired and whether recusal, rotation or supplementation restores it requires accountable organizational judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A reviewer can be supplemented on paper while retaining decisive influence despite a serious conflict."
+    },
+    {
+      "control_id": "USEQ-25DE0302",
+      "revision": 1,
+      "semantic_sha256": "25de03024f1043ba7b6753ae2f41a04dd4e44158aee196cc9b5511dba7992a39",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "Reviewer competence in a system, assurance method and domain is a human qualification and performance judgment, not a schema fact.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Certificates and experience fields can be complete while the reviewer lacks practical competence for the specialized method."
+    },
+    {
+      "control_id": "USEQ-15D97639",
+      "revision": 1,
+      "semantic_sha256": "15d97639c08929c4388feef9b0c8228af3ef0c3237ac94c1869ef24a4b649df3",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Protect reviewers from retaliation or pressure to weaken findings.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-ED2D15CF",
+      "revision": 1,
+      "semantic_sha256": "ed2d15cfc0c7b82ea775af8897094d9bd2476e9614a32e92a2b32fa4ba24e87f",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "A record cannot prove that every dissenting opinion and unresolved finding was voiced and preserved; human participants control disclosure.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "The decision file can retain submitted dissent while a reviewer is pressured not to record a material objection."
+    },
+    {
+      "control_id": "USEQ-AFC0B80B",
+      "revision": 1,
+      "semantic_sha256": "afc0b80b6bca05517da0bce2c544af3f305f7a2282526a8c73a17f13be8d6f86",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. Every policy-tagged material adverse conclusion can require a management identity, explicit response text, disposition and timestamp.",
+      "deterministic_clauses": [
+        {
+          "statement": "Require management to respond explicitly to material adverse assurance conclusions.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "An adverse conclusion with silence or an implicit approval has no linked response and fails the ledger join."
+    },
+    {
+      "control_id": "USEQ-1D117647",
+      "revision": 1,
+      "semantic_sha256": "6a4bcb7f6c8349a57d4500bb390e19dc2dc80e01c86e8dd48a0fda4b14e1b141",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Determining when advisory involvement compromises audit or certification objectivity is a professional, regulatory and conflict-of-interest judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Separate team names can appear in records while shared incentives and prior design responsibility still compromise independence."
+    },
+    {
+      "control_id": "USEQ-0C690882",
+      "revision": 1,
+      "semantic_sha256": "0c6908820077c195e8b798c8d7857ac8e69b01d798743a5e41e9b9dfbbd06ab0",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Periodicity can be scheduled, but provider quality, consistency and missed-defect patterns require outcome interpretation and an incomplete defect oracle.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child",
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A provider can receive strong scores from recorded reviews while repeatedly missing a defect class that has not yet been recognized."
+    },
+    {
+      "control_id": "USEQ-03CE6FB0",
+      "revision": 1,
+      "semantic_sha256": "03ce6fb07dff40a32e1f024e1f591fbdf1e04d6adfc996ebd4b2a43286dc55d8",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. A conformance claim can be checked for exact normative requirement identity, version, profile, scope and selected options.",
+      "deterministic_clauses": [
+        {
+          "statement": "Identify the exact normative requirements, version, profile, scope, and options used for a conformance claim.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "A claim missing its profile or using an unversioned standard fails the six-part normative binding."
+    },
+    {
+      "control_id": "USEQ-273415BD",
+      "revision": 1,
+      "semantic_sha256": "273415bdc0b2baa1c14d6dc9ca057e97770ea4b6899ca9729cfe8e78fd5525fe",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Distinguish full conformance, partial conformance, compatibility, alignment, certification, attestation, and self-assessment.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-EF9F966C",
+      "revision": 1,
+      "semantic_sha256": "ef9f966c4967074af7a92a87cb47bf149bb7e356c7d0cfbb3ed38128e367da8e",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Do not imply certification by citing a standard that was only used as guidance.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-F7D4B6BC",
+      "revision": 1,
+      "semantic_sha256": "f7d4b6bcc224d175f09ef4d18602b848010cfe8dfabbadb0c62155b667e6502d",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. Every claimed requirement in the sealed conformance profile can be joined to evidence and an explicit disposition.",
+      "deterministic_clauses": [
+        {
+          "statement": "Map every claimed requirement to evidence and disposition.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "A claimed requirement without evidence or disposition creates a deterministic missing mapping."
+    },
+    {
+      "control_id": "USEQ-FAD45C35",
+      "revision": 1,
+      "semantic_sha256": "fad45c353bb4bba41e4c99fff76f0bc94d85a3863583417d7b7e81e7c61b8f8c",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. The conformance record can require finite sections for permitted deviations, extensions, optional features and inherited controls.",
+      "deterministic_clauses": [
+        {
+          "statement": "Record permitted deviations, extensions, optional features, and inherited controls.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "Omitting an enabled optional feature or recorded deviation breaks the exact four-section profile schema."
+    },
+    {
+      "control_id": "USEQ-70F1E6CA",
+      "revision": 1,
+      "semantic_sha256": "70f1e6cacca46e4be2f1d068e72e915f08b6dedc4dc1523db75e65d6e49b2da5",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Interoperability test occurrence cannot prove independent implementations work together across all operations, versions, states and platforms.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Two implementations can pass a handshake fixture while failing an untested migration or error-recovery interaction."
+    },
+    {
+      "control_id": "USEQ-0AAEEBDE",
+      "revision": 1,
+      "semantic_sha256": "0aaeebde1e6850b313e472d64e6bf4dcb3900bffbeab1cd6149b2e74da76416c",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Whether exclusions invalidate the intended conformance claim is a semantic and sometimes legal interpretation of normative requirements.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A record can mark an exclusion harmless while it removes a mandatory capability central to the advertised profile."
+    },
+    {
+      "control_id": "USEQ-93D22446",
+      "revision": 1,
+      "semantic_sha256": "93d22446635145e525dd26dd659b6c56a8f4c0aeeafb5487b1fb7591d8f4882a",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. An audit or certificate record can require explicit start and end time plus the exact covered product-version set.",
+      "deterministic_clauses": [
+        {
+          "statement": "State the time period and product versions covered by an audit or certificate.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "A certificate lacking a covered version or period fails the finite scope schema."
+    },
+    {
+      "control_id": "USEQ-263D9220",
+      "revision": 1,
+      "semantic_sha256": "263d9220494d8ec72fc1d79a6c20a5d3d0695db797ea57d17d1b6cf2b3b2b483",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Ensure marketing, procurement, customer, and regulatory statements match the assurance scope exactly.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-2BC823F8",
+      "revision": 1,
+      "semantic_sha256": "2bc823f861af1f5b7bd38da4a5fbf8f2a1e218c67cafe0e93436a961e8806d1c",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. A certificate register can track expiry, surveillance, conditions, exceptions and renewal obligations as five exact state fields.",
+      "deterministic_clauses": [
+        {
+          "statement": "Track certificate expiry, surveillance, conditions, exceptions, and renewal obligations.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "A certificate with an unrecorded renewal duty or expired surveillance date fails the registry rules."
+    },
+    {
+      "control_id": "USEQ-1281EF2B",
+      "revision": 1,
+      "semantic_sha256": "1281ef2b945de163715d41e03b47a82df74db5e09efe04dd03d6ea95ea56bf48",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Materiality and certification impact of architecture, supplier, location, process and product changes require assessor and regulatory judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A reassessment form can exist while a significant supplier-location change is misclassified as immaterial and outside certificate scope."
+    },
+    {
+      "control_id": "USEQ-30397AF4",
+      "revision": 1,
+      "semantic_sha256": "30397af4252dac33be7e179dafc9d9ad975d5171d372eb5d795601ba5fbac58e",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Withdraw or correct claims promptly when evidence no longer supports them.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-2A1264FC",
+      "revision": 1,
+      "semantic_sha256": "2a1264fc50916c03803d501bacd7181a84466ebe9b88ff3c3e65dbdae3948fbc",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Maintain procedures for regulator, customer, auditor, and public verification of appropriate claims.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-01F30AE1",
+      "revision": 1,
+      "semantic_sha256": "01f30ae1675affc0957e3d3930de18c348dfcaed31a82b24cb074286a4fab39f",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Identifying every assurance claim dependent on five external-control categories requires a complete claim and dependency graph that its own records cannot prove.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "All registered links can be present while an open-source transitive dependency or customer-operated control is omitted."
+    },
+    {
+      "control_id": "USEQ-229D6F8B",
+      "revision": 1,
+      "semantic_sha256": "229d6f8b907436a2be3b80a4ff8d146000bd7b72f4bff5a4d575a95bd95094b1",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Correctly drawing inherited, shared and direct control boundaries depends on contracts, architecture and responsibility interpretation, not labels alone.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Every control can receive one label while a shared supplier responsibility is incorrectly assigned as inherited and leaves a gap."
+    },
+    {
+      "control_id": "USEQ-31EDBB67",
+      "revision": 1,
+      "semantic_sha256": "31edbb676715e8cd318cd13a06fa506cbd701ccfa4a35539d452a6546e1f06a9",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Obtain evidence sufficient for the actual dependency and risk rather than relying on a generic certificate alone.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-6EBAC76D",
+      "revision": 1,
+      "semantic_sha256": "6ebac76dd7ca858ff9a42edfeedaaf4114318b7fb0e9281c0840ecbefb314040",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. Supplier assurance scope fields can be exactly compared with the consumed service, region, data class, configuration and usage period records.",
+      "deterministic_clauses": [
+        {
+          "statement": "Verify that supplier assurance scope includes the service, region, data, configuration, and time period used.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "An attestation for another region or configuration fails the five-dimensional scope intersection."
+    },
+    {
+      "control_id": "USEQ-2B60BF65",
+      "revision": 1,
+      "semantic_sha256": "2b60bf65487343dd0ec33f1933db8ea4317ca7f828efc7872bb576084e5785db",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Assess gaps between supplier controls and product requirements.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-4B7E3419",
+      "revision": 1,
+      "semantic_sha256": "4b7e3419ecc9feecbc3c57cc73e34fc87265341bf49e87909b2e08c632d8099b",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Test integration assumptions and customer-configurable controls independently.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-7D7FB635",
+      "revision": 1,
+      "semantic_sha256": "7d7fb6355be0642515acfe60cc4ff1caa40ee7bfa0743959d3410502c9d7ea2d",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Monitoring all supplier changes, incidents, expired attestations and scope reductions requires complete suppliers and external publication channels.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Configured feeds can be current while a subcontractor incident or private scope reduction is never received."
+    },
+    {
+      "control_id": "USEQ-A892799B",
+      "revision": 1,
+      "semantic_sha256": "a892799b25dcc5be0a120c957b2b964de8a112ed1e94e69e54d14a8c327ccb2e",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "A clause label cannot prove that contracts provide enforceable evidence availability and transition rights; legal scope and remedies require counsel.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A contract can contain both headings while exceptions make the rights unusable during termination."
+    },
+    {
+      "control_id": "USEQ-44E74665",
+      "revision": 1,
+      "semantic_sha256": "44e7466582ab77683899efd1aef56ea8c748f5f0ad358fc1fac36bdc2d874f0b",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Which unavailable evidence requires compensation and whether a control adequately compensates are contextual risk and assurance judgments.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Every missing artifact can link to a control while the control does not address the lost assurance property."
+    },
+    {
+      "control_id": "USEQ-6647217A",
+      "revision": 1,
+      "semantic_sha256": "6647217a6ae59d4c52955c9493502ebd241d02982575e4278f96bf20f6daa6ee",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Do not transfer accountability merely because an activity is outsourced.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-7FBB7982",
+      "revision": 1,
+      "semantic_sha256": "7fbb798204ad8b569a2cb05f398292ea6f5309750b5b75e7e4dd8dd45f78bc88",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. For every registered assurance claim, a policy can define production indicators explicitly typed as supporting or challenging evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Define production indicators that continue to support or challenge assurance claims.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "A claim with no challenge indicator or an untyped metric fails the exact claim-to-indicator mapping."
+    },
+    {
+      "control_id": "USEQ-79BEB4A9",
+      "revision": 1,
+      "semantic_sha256": "79beb4a95d3910b420423f6b80aec858871c9070a599c55e38b9f6a525d4a24c",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Relevant outcomes and effective monitoring across nine quality domains require contextual applicability and complete telemetry and behavior coverage.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child",
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Nine dashboards can exist while an inaccessible workflow or privacy harm emits no monitored signal."
+    },
+    {
+      "control_id": "USEQ-272E383B",
+      "revision": 1,
+      "semantic_sha256": "272e383ba7bac5ffc1ede12680952d8c073f1714ebe88f37e6a4b4032ce44b7c",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Determining which claims seven operational-event types affect requires causal and semantic impact judgment beyond record linking.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Every recorded incident can link to a claim while a complaint revealing an invalid assumption is linked to the wrong conclusion."
+    },
+    {
+      "control_id": "USEQ-B354E1E9",
+      "revision": 1,
+      "semantic_sha256": "b354e1e93dd71d1274d9117c691bca3d9d845ddb9b4f62235d09726a9670972a",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Recognizing that operational evidence contradicts an assumption is semantic reasoning; a workflow can only enforce reopening after that judgment is made.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A production metric can directly falsify an assumption yet remain unflagged, so no automatic reopen occurs."
+    },
+    {
+      "control_id": "USEQ-8F326500",
+      "revision": 1,
+      "semantic_sha256": "8f326500e9f45bd7bd2d6218794cabe4d461f32bd4b13de586b4fab761d93782",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Complete configuration and deployment change detection plus correct evidence-impact analysis cannot be proved from configured change records.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Known changes can invalidate evidence while an out-of-band flag or deployment mutation is missed."
+    },
+    {
+      "control_id": "USEQ-F2A92C95",
+      "revision": 1,
+      "semantic_sha256": "f2a92c95b7e8eae657431035d99b26938d004db06084eeccaa881b8f8d87a9d0",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Where risk warrants control testing and what continuous or scheduled cadence is adequate require risk and threshold judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child",
+        "undefined_threshold"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A critical control can receive a rare scheduled test after being rated low risk without sound justification."
+    },
+    {
+      "control_id": "USEQ-69FFB927",
+      "revision": 1,
+      "semantic_sha256": "69ffb927ba69e003ba804d55bc3b9e9fca617d670f0d6c76b0bf75884a405ac7",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Use production verification safely and within privacy and reliability constraints.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-DC2E122D",
+      "revision": 1,
+      "semantic_sha256": "dc2e122d57cfdbde9a2df5a41371db469f0f711f5d3317074644911ecce90497",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Enough telemetry to evaluate trends and reconstruct historical claim validity is an open-ended sufficiency and interpretability judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Retention can meet a stated duration while missing event dimensions needed to test a past assurance assumption."
+    },
+    {
+      "control_id": "USEQ-83870806",
+      "revision": 1,
+      "semantic_sha256": "83870806caab92621d0fc536d50df200b06d804756aa57e1d2e00844ebe87a45",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Major changes, new threats and changed obligations require contextual or legal recognition, and complete external event detection is unbounded.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "mixed_with_nondeterministic_child",
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Recorded incidents can trigger review while a new applicable threat or obligation is missed or deemed nonmajor."
+    },
+    {
+      "control_id": "USEQ-73001BBE",
+      "revision": 1,
+      "semantic_sha256": "73001bbefabf3160f37d695a81b40940a255b8e7430c1623552b5616bd13c61d",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "When an obligation ends and which retention requirements still apply require legal authority and contextual system-lifecycle interpretation.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A closed-service record can trigger deletion while a regulatory evidence-retention duty remains in force."
+    },
+    {
+      "control_id": "USEQ-BACE71B2",
+      "revision": 1,
+      "semantic_sha256": "bace71b2c622accccdd8564e899de7982945de64d17612ae08411b2baa8d115c",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. Every assurance case tagged material can require a completed, versioned challenge-review record with reviewer and challenged-claim identities.",
+      "deterministic_clauses": [
+        {
+          "statement": "Conduct a structured challenge review of each material assurance case.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "A material case lacking challenge review or using a review of another version fails the exact ledger join."
+    },
+    {
+      "control_id": "USEQ-E4B0B27B",
+      "revision": 1,
+      "semantic_sha256": "e4b0b27b7d57d3230d98808ddefda5cd1a30e5134edfe04996769a35789af31e",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Claim precision, evidence relevance, argument validity and limitation visibility are substantive argument-quality judgments, not field-presence facts.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A neatly structured case can link irrelevant evidence through an invalid inference while every section appears complete."
+    },
+    {
+      "control_id": "USEQ-CA8CE5F9",
+      "revision": 1,
+      "semantic_sha256": "ca8ce5f96c54c703fec3027f4b48c420babd0866015788f40eea6311f7c6ef25",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Include qualified representatives from product, engineering, operations, security, privacy, accessibility, data, legal, and safety as applicable.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-6C6059E7",
+      "revision": 1,
+      "semantic_sha256": "6c6059e7ff560cf5d96113945b3cff9758166250a0bb670ad6908c7eccbb64d5",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Open defects and exceptions can be joined to the assurance case, but whether each is meaningfully reflected in claim scope and confidence requires semantic judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Every open item can have a case link while the claim text and conclusion ignore its actual impact."
+    },
+    {
+      "control_id": "USEQ-5797F11A",
+      "revision": 1,
+      "semantic_sha256": "5797f11a595eba436c58b47e3347802a8d33b8be2ebeaff42055f7f940db4313",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. A release gate can map criticality, evidence freshness, defeater resolution and independence policy states to mandatory no-go outcomes.",
+      "deterministic_clauses": [
+        {
+          "statement": "Treat unsupported critical claims, stale evidence, unresolved defeaters, or inadequate independence as no-go conditions.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "A critical unsupported claim, stale evidence, open defeater or policy-failing reviewer state cannot pass the exact gate table."
+    },
+    {
+      "control_id": "USEQ-54B2A382",
+      "revision": 1,
+      "semantic_sha256": "54b2a3828a33e5b86e9eb191d9f8b179c59a604c40f6a10235616443ac20dc4b",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The rule “Require explicit risk acceptance for residual uncertainty that remains within policy.” is not deterministic because its full meaning requires accountable judgment about harm, confidence, sufficiency, independence, representativeness, specialist competence, or residual risk.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-498728F8",
+      "revision": 1,
+      "semantic_sha256": "498728f8ece96ee681d7a354b750741ea9fd892ad7938405f128ad90de06d803",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. The decision ledger can record actor identity and one of five exact actions: review, challenge, approve, reject or conditional accept.",
+      "deterministic_clauses": [
+        {
+          "statement": "Record who reviewed, challenged, approved, rejected, or conditionally accepted the case.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "An approval without reviewer identity or an untyped conditional decision fails the finite event schema."
+    },
+    {
+      "control_id": "USEQ-9513B3E9",
+      "revision": 1,
+      "semantic_sha256": "9513b3e9f122e1720df0a34320dd047222dae2483539c3849ed61803794e5278",
+      "classification": "deterministic",
+      "route": "artifact_verification",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. The exact assurance-case digest can be preserved and bound to the released artifact and production-configuration digests.",
+      "deterministic_clauses": [
+        {
+          "statement": "Preserve the exact assurance case with the released artifact and production configuration.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "Changing the case, artifact or configuration breaks the three-way immutable identity binding."
+    },
+    {
+      "control_id": "USEQ-775F8E10",
+      "revision": 1,
+      "semantic_sha256": "775f8e100492539cb17fa1a737af3d3ab8408f4a88df6b8f9d771f4f8345a9fd",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. A provisional-claim policy can define the exact required post-release observations and require them before the final transition.",
+      "deterministic_clauses": [
+        {
+          "statement": "Define post-release observations required before a provisional claim becomes final.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "Finalizing with a missing observation or before its bounded window closes violates the state-transition guard."
+    },
+    {
+      "control_id": "USEQ-A4A4897A",
+      "revision": 1,
+      "semantic_sha256": "a4a4897ab6ba9fd899be69613d9450eb07f1e4866ecb5ee088fc0f92564b32cf",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. Approval state can deterministically revoke when a versioned required condition, monitoring check or compensating-control state becomes failed.",
+      "deterministic_clauses": [
+        {
+          "statement": "Revoke approval when required conditions, monitoring, or compensating controls fail.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "A failed required control with approval still active violates the exact dependency-triggered revocation rule."
+    }
+  ]
+}

@@ -1,0 +1,2474 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002-part-001",
+  "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 93,
+  "controls": [
+    {
+      "control_id": "USEQ-5C19854F",
+      "revision": 1,
+      "semantic_sha256": "5c19854ff6f451fc6c30dfa589d3f4f8ba5e46f7e73480843e9616e297a40f71",
+      "statement": "Separate user preference from factual correctness, safety, legal compliance, and protected rights.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 315
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Production monitoring, drift, and feedback loops"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Separate user preference from factual correctness, safety, legal compliance, and protected rights.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-27A8B5D5",
+      "revision": 1,
+      "semantic_sha256": "27a8b5d5703ed270e282a779cffee89037e5768f7e5a9ffa699f5634cb620fe1",
+      "statement": "Track harmful exposure and downstream impact, not only the number of generated outputs or blocked requests.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 317
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Production monitoring, drift, and feedback loops"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Track harmful exposure and downstream impact, not only the number of generated outputs or blocked requests.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1257C1CC",
+      "revision": 1,
+      "semantic_sha256": "1257c1cc03a619386804241fcf2a5b9bceede4ffd048fae1815d7c523afc1d80",
+      "statement": "Monitor model and provider changes using recurring golden tests, behavioral fingerprints, and change-point analysis.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 319
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Production monitoring, drift, and feedback loops"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Monitor model and provider changes using recurring golden tests, behavioral fingerprints, and change-point analysis.” joins bounded model, provider, identity, permission, workflow, artifact, environment, or supply-chain authorities whose required bindings can be reconciled exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI capability, review, approval, inventory, lifecycle, or action record contains every explicitly required state and evidence binding.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Compare the linked versioned policy, artifact, deployment, identity, permission, registry, or execution evidence and fail closed on missing, unreviewed, or mismatched identities.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CB3AFE81",
+      "revision": 1,
+      "semantic_sha256": "cb3afe81c78beeb69ce4f39d3ac2f7fdddd13420ebd5492162db2da11557e1e6",
+      "statement": "Define when drift triggers investigation, recalibration, retraining, policy change, rollback, restricted scope, or suspension.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 322
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Production monitoring, drift, and feedback loops"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define when drift triggers investigation, recalibration, retraining, policy change, rollback, restricted scope, or suspension.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5795AC64",
+      "revision": 1,
+      "semantic_sha256": "5795ac6416674f09513e4b9c5fd21061dbf0e3ab43c056e34dcc874f853879bb",
+      "statement": "Track unresolved model limitations, recurring user corrections, escalations, appeals, incidents, and near misses.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 323
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Production monitoring, drift, and feedback loops"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Track unresolved model limitations, recurring user corrections, escalations, appeals, incidents, and near misses.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F7E09645",
+      "revision": 1,
+      "semantic_sha256": "f7e09645a0ad293edfc24e2ce5fbf5dbd0824c57d68f06295cb0eed5545420b7",
+      "statement": "Maintain an external reporting path for affected users, researchers, customers, and security reporters.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 326
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Production monitoring, drift, and feedback loops"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Maintain an external reporting path for affected users, researchers, customers, and security reporters.” requires a finite reporting, disablement, deletion, injection, interface, mutation, confirmation, or rerun test whose declared result can be observed exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Run the registered bounded protocol and verify authenticated evidence records the exact inputs, identity and permission context, expected transitions, side effects, cleanup, and successful result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-61953451",
+      "revision": 1,
+      "semantic_sha256": "61953451656505cfa9362e4715fe290656b6fd0e5d61a861e9842e4821261585",
+      "statement": "Define the exact role, authority, competence, workload, information, and response time required of human reviewers.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 330
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Human oversight, explanations, and recourse"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define the exact role, authority, competence, workload, information, and response time required of human reviewers.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5283D0F9",
+      "revision": 1,
+      "semantic_sha256": "5283d0f914ca65fba668c58b5fd2e1bca8ae6b8e287b7f07112c70fe771eb00e",
+      "statement": "Measure reviewer disagreement, override, fatigue, consistency, delay, and error.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 334
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Human oversight, explanations, and recourse"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Measure reviewer disagreement, override, fatigue, consistency, delay, and error.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-09AA097A",
+      "revision": 1,
+      "semantic_sha256": "09aa097a6d44670dc72cfbf980793d01b7238c896a570fd89a07c2281ef1ab2b",
+      "statement": "Record consequential human overrides and reasons without discouraging justified correction.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 336
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Human oversight, explanations, and recourse"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Record consequential human overrides and reasons without discouraging justified correction.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-82AF898D",
+      "revision": 1,
+      "semantic_sha256": "82af898d60f60e899e03b9628ac30eea9fee4bec55925b6cfbe7b48410fb6885",
+      "statement": "Track restoration and remediation after a successful appeal, including downstream records and notifications.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 343
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Human oversight, explanations, and recourse"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Track restoration and remediation after a successful appeal, including downstream records and notifications.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4E890ABE",
+      "revision": 1,
+      "semantic_sha256": "4e890abe8cf9cd6ef305e29dc316112fa704f2c1cfbb19f442990d2c0a2387fc",
+      "statement": "Maintain system documentation describing purpose, architecture, data, models, prompts, tools, operating domain, metrics, limitations, risks, controls, owners, and change history.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 348
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Transparency, documentation, and assurance"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Maintain system documentation describing purpose, architecture, data, models, prompts, tools, operating domain, metrics, limitations, risks, controls, owners, and change history.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-33B02D9F",
+      "revision": 1,
+      "semantic_sha256": "33b02d9f3eed15dbc0bcd9c12dbfc6897f31658ad089ee6e43caac4a854b44b0",
+      "statement": "Maintain an auditable mapping from risks to controls, tests, monitoring, incidents, and responsible owners.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 356
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Transparency, documentation, and assurance"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Maintain an auditable mapping from risks to controls, tests, monitoring, incidents, and responsible owners.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A687DF4E",
+      "revision": 1,
+      "semantic_sha256": "a687df4e4696409026135fccf7ce24a00aa9ffcc8061ac4c726cc63b2bf57696",
+      "statement": "Review documentation whenever the system changes and make stale documents visibly invalid.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 359
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Transparency, documentation, and assurance"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Review documentation whenever the system changes and make stale documents visibly invalid.” joins bounded model, provider, identity, permission, workflow, artifact, environment, or supply-chain authorities whose required bindings can be reconciled exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI capability, review, approval, inventory, lifecycle, or action record contains every explicitly required state and evidence binding.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Compare the linked versioned policy, artifact, deployment, identity, permission, registry, or execution evidence and fail closed on missing, unreviewed, or mismatched identities.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7E3E586D",
+      "revision": 1,
+      "semantic_sha256": "7e3e586df68f475c13372f64a7b82228ecc30d3cd1f12b115f0eabd7671b9340",
+      "statement": "Define approved AI coding, review, documentation, testing, design, operations, and support tools and the data classifications each may receive.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 363
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI-assisted software engineering"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define approved AI coding, review, documentation, testing, design, operations, and support tools and the data classifications each may receive.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DC32CD99",
+      "revision": 1,
+      "semantic_sha256": "dc32cd99102cdb31260476cb396292750373d22a345326d719bddf3ae3ee7026",
+      "statement": "Configure provider retention, training, sharing, logging, regional processing, and access settings according to organizational policy.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 365
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI-assisted software engineering"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Configure provider retention, training, sharing, logging, regional processing, and access settings according to organizational policy.” joins bounded model, provider, identity, permission, workflow, artifact, environment, or supply-chain authorities whose required bindings can be reconciled exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI capability, review, approval, inventory, lifecycle, or action record contains every explicitly required state and evidence binding.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Compare the linked versioned policy, artifact, deployment, identity, permission, registry, or execution evidence and fail closed on missing, unreviewed, or mismatched identities.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0E18CBD8",
+      "revision": 1,
+      "semantic_sha256": "0e18cbd8c9ebfa5e0a1d005565b3433bf9e30be83efce3166f0f5ddd02d453b0",
+      "statement": "Treat generated code, tests, configurations, commands, infrastructure, migrations, dependencies, licenses, and documentation as untrusted contributions requiring accountable human review.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 366
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI-assisted software engineering"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Treat generated code, tests, configurations, commands, infrastructure, migrations, dependencies, licenses, and documentation as untrusted contributions requiring accountable human review.” joins bounded model, provider, identity, permission, workflow, artifact, environment, or supply-chain authorities whose required bindings can be reconciled exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI capability, review, approval, inventory, lifecycle, or action record contains every explicitly required state and evidence binding.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Compare the linked versioned policy, artifact, deployment, identity, permission, registry, or execution evidence and fail closed on missing, unreviewed, or mismatched identities.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-482FDF4A",
+      "revision": 1,
+      "semantic_sha256": "482fdf4afc8ff02374d4d2d67b8a17563011208074d6244e142f55b858fc0df9",
+      "statement": "Require the same requirement, architecture, security, privacy, accessibility, test, review, and release controls for generated and manually written work.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 368
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI-assisted software engineering"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "local_static",
+      "primary_reason": "The control “Require the same requirement, architecture, security, privacy, accessibility, test, review, and release controls for generated and manually written work.” defines an exact review, approval, evidence, confirmation, or execution gate whose fail-closed workflow behavior can be checked from versioned policy and fixtures.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Inspect the versioned CI or agent policy and run fixtures proving the governed output or action cannot advance without the explicitly required review, evidence, independence, or confirmation state.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-86CAAD7F",
+      "revision": 1,
+      "semantic_sha256": "86caad7f6a172efc124ecb006cdea6edc3101bba16b6744a2a7031bbbe34b6ee",
+      "statement": "Require explicit review for authentication, authorization, cryptography, payments, privacy, data deletion, migrations, infrastructure, safety, and incident code.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 375
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI-assisted software engineering"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "local_static",
+      "primary_reason": "The control “Require explicit review for authentication, authorization, cryptography, payments, privacy, data deletion, migrations, infrastructure, safety, and incident code.” defines an exact review, approval, evidence, confirmation, or execution gate whose fail-closed workflow behavior can be checked from versioned policy and fixtures.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Inspect the versioned CI or agent policy and run fixtures proving the governed output or action cannot advance without the explicitly required review, evidence, independence, or confirmation state.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CC9F4CF0",
+      "revision": 1,
+      "semantic_sha256": "cc9f4cf066b37d85b99688f2ca3893093ddb0c27e35b1c2cee7a1dded2fab126",
+      "statement": "Prevent agents from committing, opening privileged changes, modifying policies, rotating secrets, deploying, deleting resources, or changing production without scoped identity, policy gates, audit, and required approval.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 376
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI-assisted software engineering"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Prevent agents from committing, opening privileged changes, modifying policies, rotating secrets, deploying, deleting resources, or changing production without scoped identity, policy gates, audit, and required approval.” joins bounded model, provider, identity, permission, workflow, artifact, environment, or supply-chain authorities whose required bindings can be reconciled exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI capability, review, approval, inventory, lifecycle, or action record contains every explicitly required state and evidence binding.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Compare the linked versioned policy, artifact, deployment, identity, permission, registry, or execution evidence and fail closed on missing, unreviewed, or mismatched identities.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-54BE67BA",
+      "revision": 1,
+      "semantic_sha256": "54be67ba358d4635660c83a9a0d50b5b2f6d56909a0a6e2b3f83b2d415f5f09d",
+      "statement": "Treat issue text, documentation, dependency files, comments, test output, web pages, and repository content as possible indirect instructions to coding agents.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 379
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI-assisted software engineering"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Treat issue text, documentation, dependency files, comments, test output, web pages, and repository content as possible indirect instructions to coding agents.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1765CB7B",
+      "revision": 1,
+      "semantic_sha256": "1765cb7b3ea4659959da311dfc577a72f580a7a5f5caf3c40b33669b16d5c167",
+      "statement": "Measure AI-assisted development using quality, reliability, security, review effort, rework, learning, flow, and outcomes rather than generated volume or apparent speed alone.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 380
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI-assisted software engineering"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Measure AI-assisted development using quality, reliability, security, review effort, rework, learning, flow, and outcomes rather than generated volume or apparent speed alone.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-29A64D47",
+      "revision": 1,
+      "semantic_sha256": "29a64d47f5a153a3ef18555bd01dc68f26938d6cd86a6457af5d9622cd555a8c",
+      "statement": "Provide training on verification, security, privacy, licensing, prompt injection, overreliance, and tool limitations.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 382
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI-assisted software engineering"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Provide training on verification, security, privacy, licensing, prompt injection, overreliance, and tool limitations.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6A8DD723",
+      "revision": 1,
+      "semantic_sha256": "6a8dd723f13a5f432add3a10f893b08058fd9b83f1904b78f304908ee3035c1f",
+      "statement": "Preserve meaningful authorship and review accountability in commit, approval, and incident records.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 383
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI-assisted software engineering"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Preserve meaningful authorship and review accountability in commit, approval, and incident records.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0993C353",
+      "revision": 1,
+      "semantic_sha256": "0993c353f7d548248e3e7615a5f1974b899575411a9ceb3b72e5a4e3ad594dce",
+      "statement": "Define incident categories for harmful output, data leakage, unauthorized action, model compromise, poisoning, provider change, systemic bias, safety-control failure, model theft, fraud, and widespread misinformation.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 389
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI incidents, recovery, and retirement"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define incident categories for harmful output, data leakage, unauthorized action, model compromise, poisoning, provider change, systemic bias, safety-control failure, model theft, fraud, and widespread misinformation.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DE662B2B",
+      "revision": 1,
+      "semantic_sha256": "de662b2b1b53a8948b94d2af07dd660ce13899f60e0cec6fbda9e0ae7d962ac5",
+      "statement": "Make incident detection, declaration, containment, evidence preservation, communication, recovery, and post-incident review part of the ordinary response program.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 390
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI incidents, recovery, and retirement"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Make incident detection, declaration, containment, evidence preservation, communication, recovery, and post-incident review part of the ordinary response program.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A7317A41",
+      "revision": 1,
+      "semantic_sha256": "a7317a417b1e34bf5044c4aa263a0e6a0147d09017d7e214dff547f088a15bd2",
+      "statement": "Define retraining and reevaluation criteria after incidents; do not resume solely because the immediate symptom disappeared.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 397
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI incidents, recovery, and retirement"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define retraining and reevaluation criteria after incidents; do not resume solely because the immediate symptom disappeared.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B22A2372",
+      "revision": 1,
+      "semantic_sha256": "b22a237244c7398ea20279fe9616fd95d1fa12bbb6c382f5b4ed76273825db72",
+      "statement": "Do not allow model output to authorize itself, bypass deterministic access control, or directly trigger high-impact action without independent controls.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 409
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI release blockers"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Do not allow model output to authorize itself, bypass deterministic access control, or directly trigger high-impact action without independent controls.” joins bounded model, provider, identity, permission, workflow, artifact, environment, or supply-chain authorities whose required bindings can be reconciled exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI capability, review, approval, inventory, lifecycle, or action record contains every explicitly required state and evidence binding.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Compare the linked versioned policy, artifact, deployment, identity, permission, registry, or execution evidence and fail closed on missing, unreviewed, or mismatched identities.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5D5D0DDC",
+      "revision": 1,
+      "semantic_sha256": "5d5d0ddcb881817ca67e5a84f877b77369c4e2e33d322fca140efea767024f1c",
+      "statement": "Do not use AI-generated code or infrastructure in production without accountable review and the same evidence required for human-authored work.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 416
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI release blockers"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "local_static",
+      "primary_reason": "The control “Do not use AI-generated code or infrastructure in production without accountable review and the same evidence required for human-authored work.” defines an exact review, approval, evidence, confirmation, or execution gate whose fail-closed workflow behavior can be checked from versioned policy and fixtures.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Inspect the versioned CI or agent policy and run fixtures proving the governed output or action cannot advance without the explicitly required review, evidence, independence, or confirmation state.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0E231454",
+      "revision": 1,
+      "semantic_sha256": "0e2314540b2b6e11b2014a5d2bbd53bc53ecb358e773474049ceff2c3ad7b6e2",
+      "statement": "Assign an accountable owner for each approved tool, provider, model family, deployment mode, integration, and use case.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 426
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "AI-assisted engineering governance and permitted use"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Assign an accountable owner for each approved tool, provider, model family, deployment mode, integration, and use case.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9F2C9B84",
+      "revision": 1,
+      "semantic_sha256": "9f2c9b8486f72827f393102e5d9a259182f4eb9481e7086f23aa79a8325cecdd",
+      "statement": "Require risk review before AI is used for security controls, authorization rules, cryptography, safety logic, financial calculations, migrations, production changes, legal interpretation, or other high-consequence work.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 428
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "AI-assisted engineering governance and permitted use"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Require risk review before AI is used for security controls, authorization rules, cryptography, safety logic, financial calculations, migrations, production changes, legal interpretation, or other high-consequence work.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3FB8AC14",
+      "revision": 1,
+      "semantic_sha256": "3fb8ac14853abaea1d374ffafa05a41e0a7a57a88512bb0a1fdca566ae0ddf46",
+      "statement": "Distinguish advisory assistance from delegated decision-making and autonomous execution.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 429
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "AI-assisted engineering governance and permitted use"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Distinguish advisory assistance from delegated decision-making and autonomous execution.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7322984E",
+      "revision": 1,
+      "semantic_sha256": "7322984ed7e4cb145ac72f3f08b63b9c613c95211bf563b8e48637a130fac34e",
+      "statement": "Ensure a named human remains accountable for every accepted artifact, decision, change, deployment, and communication produced with AI assistance.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 430
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "AI-assisted engineering governance and permitted use"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Ensure a named human remains accountable for every accepted artifact, decision, change, deployment, and communication produced with AI assistance.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3B2F2EE8",
+      "revision": 1,
+      "semantic_sha256": "3b2f2ee8ef6f861894d5d07f149490bc21bc774703deaf83716fc0f1530b642d",
+      "statement": "Define the minimum review and verification required for each class of AI-generated output.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 433
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "AI-assisted engineering governance and permitted use"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define the minimum review and verification required for each class of AI-generated output.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EE003D19",
+      "revision": 1,
+      "semantic_sha256": "ee003d19cb480a027cbac30450cb60fb70873fe533ae2987353c739c8e867e0e",
+      "statement": "Prohibit bypassing review, testing, separation of duties, change control, or release gates because content was generated quickly.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 434
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "AI-assisted engineering governance and permitted use"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "local_static",
+      "primary_reason": "The control “Prohibit bypassing review, testing, separation of duties, change control, or release gates because content was generated quickly.” defines an exact review, approval, evidence, confirmation, or execution gate whose fail-closed workflow behavior can be checked from versioned policy and fixtures.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Inspect the versioned CI or agent policy and run fixtures proving the governed output or action cannot advance without the explicitly required review, evidence, independence, or confirmation state.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AB9ADB62",
+      "revision": 1,
+      "semantic_sha256": "ab9adb6244c135e257a7c174436290bc7165066fcafb73161d4cf7ca9a02c53c",
+      "statement": "Train users in hallucination, automation bias, data leakage, prompt injection, insecure code, fabricated citations, licensing uncertainty, and overreliance risks.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 436
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "AI-assisted engineering governance and permitted use"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Train users in hallucination, automation bias, data leakage, prompt injection, insecure code, fabricated citations, licensing uncertainty, and overreliance risks.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3F338012",
+      "revision": 1,
+      "semantic_sha256": "3f33801235b0667b450c9b2f237bd8d1725fe364f9f3201823f1617a73163930",
+      "statement": "Review governance after model changes, provider terms changes, incidents, new integrations, new agent capabilities, or expansion into higher-risk work.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 438
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "AI-assisted engineering governance and permitted use"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Review governance after model changes, provider terms changes, incidents, new integrations, new agent capabilities, or expansion into higher-risk work.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5F29B160",
+      "revision": 1,
+      "semantic_sha256": "5f29b160195f5ab8e942865dd1e4c54175723280f304d3b5ba98c952cf203fa0",
+      "statement": "Record the provider, model identifier, model version or update channel, hosting location, integration version, enabled features, data flows, tools, plugins, and permissions for each AI capability.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 443
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Tool, model, provider, and integration inventory"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Record the provider, model identifier, model version or update channel, hosting location, integration version, enabled features, data flows, tools, plugins, and permissions for each AI capability.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-746C8D31",
+      "revision": 1,
+      "semantic_sha256": "746c8d3112ec91e622d946b04e3d9ea4d4fcd4a4b3e4dfd983def096bd8f1e2e",
+      "statement": "Record whether prompts, files, code, outputs, telemetry, feedback, embeddings, and metadata are retained or used for provider training.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 444
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Tool, model, provider, and integration inventory"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Record whether prompts, files, code, outputs, telemetry, feedback, embeddings, and metadata are retained or used for provider training.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AC2FD44B",
+      "revision": 1,
+      "semantic_sha256": "ac2fd44b848d8577c4adc0682b5756e0e691f5a87a13060b3087c3c0240bb4ca",
+      "statement": "Record the contractual terms, service levels, security commitments, privacy terms, subprocessors, data locations, deletion behavior, and incident-notification obligations.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 445
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Tool, model, provider, and integration inventory"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Record the contractual terms, service levels, security commitments, privacy terms, subprocessors, data locations, deletion behavior, and incident-notification obligations.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-29597410",
+      "revision": 1,
+      "semantic_sha256": "295974101e8a189a540f663038d59adb7c58c1cf323345db8c928750af5072b8",
+      "statement": "Identify whether model behavior can change without an explicit customer-controlled version update.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 446
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Tool, model, provider, and integration inventory"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Identify whether model behavior can change without an explicit customer-controlled version update.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-054DF3AB",
+      "revision": 1,
+      "semantic_sha256": "054df3ab03ed2280e940b1738fcb6e0d53d31962f201b44b988358fc336b4394",
+      "statement": "Monitor model deprecation, behavior changes, safety-policy changes, context limits, pricing changes, and regional availability.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 448
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Tool, model, provider, and integration inventory"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "The control “Monitor model deprecation, behavior changes, safety-policy changes, context limits, pricing changes, and regional availability.” names concrete AI-use, provider-lifecycle, or dependency-lifecycle state that can be read from an authorized monitoring environment and compared exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Read the authorized monitoring or management system and verify current observations exist for every named signal with bound provider, model, tool, dependency, owner, and immutable query timestamp.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BC94E90D",
+      "revision": 1,
+      "semantic_sha256": "bc94e90d45cb0757b57d340fad95cb69ab8d29ec556672ff1a2b80e6159503c3",
+      "statement": "Use organization-managed identities and configuration rather than uncontrolled personal accounts for business use.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 451
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Tool, model, provider, and integration inventory"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Use organization-managed identities and configuration rather than uncontrolled personal accounts for business use.” joins bounded model, provider, identity, permission, workflow, artifact, environment, or supply-chain authorities whose required bindings can be reconciled exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI capability, review, approval, inventory, lifecycle, or action record contains every explicitly required state and evidence binding.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Compare the linked versioned policy, artifact, deployment, identity, permission, registry, or execution evidence and fail closed on missing, unreviewed, or mismatched identities.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8BFAB4A7",
+      "revision": 1,
+      "semantic_sha256": "8bfab4a7553bac58aadfb7fa1badaa818e45c0b87746d4bb43cb75675b08060a",
+      "statement": "Review integration webhooks, OAuth grants, tokens, local file access, network access, and command execution.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 453
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Tool, model, provider, and integration inventory"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Review integration webhooks, OAuth grants, tokens, local file access, network access, and command execution.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-81875F3C",
+      "revision": 1,
+      "semantic_sha256": "81875f3c6b54b6882835e97bc5e4cccd37407f62a43b9e1151c22480ba52b71e",
+      "statement": "Ensure provider compromise or outage has an isolation, disablement, replacement, and continuity plan.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 454
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Tool, model, provider, and integration inventory"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Ensure provider compromise or outage has an isolation, disablement, replacement, and continuity plan.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-58409064",
+      "revision": 1,
+      "semantic_sha256": "584090647be27fd7f81fcf64efeae0d277394af62fc669a8a6f2ea7854768d9f",
+      "statement": "Verify that disabling the AI feature also removes active credentials, agents, callbacks, scheduled tasks, and data flows.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 455
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Tool, model, provider, and integration inventory"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Verify that disabling the AI feature also removes active credentials, agents, callbacks, scheduled tasks, and data flows.” requires a finite reporting, disablement, deletion, injection, interface, mutation, confirmation, or rerun test whose declared result can be observed exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Run the registered bounded protocol and verify authenticated evidence records the exact inputs, identity and permission context, expected transitions, side effects, cleanup, and successful result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F936BCAB",
+      "revision": 1,
+      "semantic_sha256": "f936bcab7ec9227288f315cc5093d6557d8be89a29da4c8a1fd7ef755a67c698",
+      "statement": "Reconcile the approved inventory with actual network, repository, identity, procurement, and endpoint telemetry.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 456
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Tool, model, provider, and integration inventory"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Reconcile the approved inventory with actual network, repository, identity, procurement, and endpoint telemetry.” joins bounded model, provider, identity, permission, workflow, artifact, environment, or supply-chain authorities whose required bindings can be reconciled exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI capability, review, approval, inventory, lifecycle, or action record contains every explicitly required state and evidence binding.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Compare the linked versioned policy, artifact, deployment, identity, permission, registry, or execution evidence and fail closed on missing, unreviewed, or mismatched identities.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-46F439A2",
+      "revision": 1,
+      "semantic_sha256": "46f439a226295522e55a65cfa83ef5ea2eb030260a3d2a49dd99022dfa90a931",
+      "statement": "Expire temporary pilots automatically unless they receive formal approval.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 457
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Tool, model, provider, and integration inventory"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "local_static",
+      "primary_reason": "The control “Expire temporary pilots automatically unless they receive formal approval.” defines an exact review, approval, evidence, confirmation, or execution gate whose fail-closed workflow behavior can be checked from versioned policy and fixtures.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Inspect the versioned CI or agent policy and run fixtures proving the governed output or action cannot advance without the explicitly required review, evidence, independence, or confirmation state.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-19F84B67",
+      "revision": 1,
+      "semantic_sha256": "19f84b6707c6727a67bc8d77711ee8cd9fb6c50621c2f1996115f60d21a9576c",
+      "statement": "Classify source code, prompts, tickets, designs, logs, customer data, credentials, vulnerabilities, contracts, and documents before they are supplied to an AI system.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 461
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Confidentiality, privacy, data minimization, and intellectual property"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Classify source code, prompts, tickets, designs, logs, customer data, credentials, vulnerabilities, contracts, and documents before they are supplied to an AI system.” joins bounded model, provider, identity, permission, workflow, artifact, environment, or supply-chain authorities whose required bindings can be reconciled exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI capability, review, approval, inventory, lifecycle, or action record contains every explicitly required state and evidence binding.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Compare the linked versioned policy, artifact, deployment, identity, permission, registry, or execution evidence and fail closed on missing, unreviewed, or mismatched identities.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3227DC4E",
+      "revision": 1,
+      "semantic_sha256": "3227dc4edc511c9bdc2b0a4c072a30bf9f279e4b4d7e7515fb8c9dc99a047e83",
+      "statement": "Prevent tools from automatically indexing repositories, drives, conversations, or documents beyond the approved scope.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 465
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Confidentiality, privacy, data minimization, and intellectual property"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Prevent tools from automatically indexing repositories, drives, conversations, or documents beyond the approved scope.” joins bounded model, provider, identity, permission, workflow, artifact, environment, or supply-chain authorities whose required bindings can be reconciled exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI capability, review, approval, inventory, lifecycle, or action record contains every explicitly required state and evidence binding.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Compare the linked versioned policy, artifact, deployment, identity, permission, registry, or execution evidence and fail closed on missing, unreviewed, or mismatched identities.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9555C8D3",
+      "revision": 1,
+      "semantic_sha256": "9555c8d3bd186bcc6ae51d8b3b6286ef7b683ceef14568fdce0489638b157cc5",
+      "statement": "Document legitimate purpose, access, retention, and review for AI-use telemetry.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 474
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Confidentiality, privacy, data minimization, and intellectual property"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Document legitimate purpose, access, retention, and review for AI-use telemetry.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-69C5D0B6",
+      "revision": 1,
+      "semantic_sha256": "69c5d0b6aca55b51eddd4a0a491879b8c1df0f6960023a78fd1124fb4f66bd9c",
+      "statement": "Test deletion and account termination across local caches, provider stores, embeddings, logs, and integrations.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 475
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Confidentiality, privacy, data minimization, and intellectual property"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Test deletion and account termination across local caches, provider stores, embeddings, logs, and integrations.” requires a finite reporting, disablement, deletion, injection, interface, mutation, confirmation, or rerun test whose declared result can be observed exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Run the registered bounded protocol and verify authenticated evidence records the exact inputs, identity and permission context, expected transitions, side effects, cleanup, and successful result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-525FCCE0",
+      "revision": 1,
+      "semantic_sha256": "525fcce0cf719120d8a87affea977712212a40a70755ca2b9c39ea8ad6bd526e",
+      "statement": "Treat user prompts, retrieved documents, source comments, issue text, web content, dependency metadata, tool output, and model output as untrusted input.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 479
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Prompt, context, retrieval, and instruction integrity"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Treat user prompts, retrieved documents, source comments, issue text, web content, dependency metadata, tool output, and model output as untrusted input.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FC5D2312",
+      "revision": 1,
+      "semantic_sha256": "fc5d23122674ba16bc2905c03727485a44168a0f6bb6ad54d4d6206c2db5d72a",
+      "statement": "Do not rely on prompt wording alone to enforce authorization, confidentiality, financial limits, safety, or change-control policy.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 481
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Prompt, context, retrieval, and instruction integrity"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Do not rely on prompt wording alone to enforce authorization, confidentiality, financial limits, safety, or change-control policy.” joins bounded model, provider, identity, permission, workflow, artifact, environment, or supply-chain authorities whose required bindings can be reconciled exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI capability, review, approval, inventory, lifecycle, or action record contains every explicitly required state and evidence binding.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Compare the linked versioned policy, artifact, deployment, identity, permission, registry, or execution evidence and fail closed on missing, unreviewed, or mismatched identities.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D1A9A000",
+      "revision": 1,
+      "semantic_sha256": "d1a9a00031ec1d6c89e89a8e6c92938e7f22e2dabcb1ebd17ef6e9387091f612",
+      "statement": "Validate identity, authorization, tenant, data classification, and purpose before retrieving or supplying context.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 482
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Prompt, context, retrieval, and instruction integrity"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Validate identity, authorization, tenant, data classification, and purpose before retrieving or supplying context.” joins bounded model, provider, identity, permission, workflow, artifact, environment, or supply-chain authorities whose required bindings can be reconciled exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI capability, review, approval, inventory, lifecycle, or action record contains every explicitly required state and evidence binding.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Compare the linked versioned policy, artifact, deployment, identity, permission, registry, or execution evidence and fail closed on missing, unreviewed, or mismatched identities.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-22B94B7A",
+      "revision": 1,
+      "semantic_sha256": "22b94b7a03e16e1d98ed4fa92b5ab98bd84178ba22151ea37137884623d0ce0d",
+      "statement": "Apply access control before retrieval rather than filtering unauthorized results after they have reached the model.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 483
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Prompt, context, retrieval, and instruction integrity"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Apply access control before retrieval rather than filtering unauthorized results after they have reached the model.” joins bounded model, provider, identity, permission, workflow, artifact, environment, or supply-chain authorities whose required bindings can be reconciled exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI capability, review, approval, inventory, lifecycle, or action record contains every explicitly required state and evidence binding.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Compare the linked versioned policy, artifact, deployment, identity, permission, registry, or execution evidence and fail closed on missing, unreviewed, or mismatched identities.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5BD7D44C",
+      "revision": 1,
+      "semantic_sha256": "5bd7d44c05c8b454ff8c10070d3fe812dd4c98caa5cc17f6a5dad6463325d320",
+      "statement": "Limit the sources, domains, paths, repositories, branches, documents, and record types the system may retrieve.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 486
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Prompt, context, retrieval, and instruction integrity"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Limit the sources, domains, paths, repositories, branches, documents, and record types the system may retrieve.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-17A2E4C0",
+      "revision": 1,
+      "semantic_sha256": "17a2e4c0949c7b833502098619ab77100f3f5eec8462d4f302b05ecf1cde9ac1",
+      "statement": "Record source provenance and freshness for material facts used in generated output.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 487
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Prompt, context, retrieval, and instruction integrity"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Record source provenance and freshness for material facts used in generated output.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DA4C03E8",
+      "revision": 1,
+      "semantic_sha256": "da4c03e8d7df977b3e8573d4d4da39b93ba4c758a799dbe10fc13e8cf2ab5bfc",
+      "statement": "Make context expiration, refresh, and invalidation rules explicit after source changes or permission changes.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 492
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Prompt, context, retrieval, and instruction integrity"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Make context expiration, refresh, and invalidation rules explicit after source changes or permission changes.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3B2A4D90",
+      "revision": 1,
+      "semantic_sha256": "3b2a4d9089228b29aabef5a1f12786ce246b7229cd584fa44f5e0a65a10160a7",
+      "statement": "Test the system with conflicting instructions, malicious comments, deceptive filenames, encoded payloads, and poisoned retrieval content.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 493
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Prompt, context, retrieval, and instruction integrity"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Test the system with conflicting instructions, malicious comments, deceptive filenames, encoded payloads, and poisoned retrieval content.” requires a finite reporting, disablement, deletion, injection, interface, mutation, confirmation, or rerun test whose declared result can be observed exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Run the registered bounded protocol and verify authenticated evidence records the exact inputs, identity and permission context, expected transitions, side effects, cleanup, and successful result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-27ADA51E",
+      "revision": 1,
+      "semantic_sha256": "27ada51e60fd53a388ce9b901a65c0a2840d546fc1f012bfa3c64bc52f00800f",
+      "statement": "Require independent review for high-impact AI-generated changes even when the generator also performs a review.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 499
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Human accountability, review, and automation-bias controls"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "local_static",
+      "primary_reason": "The control “Require independent review for high-impact AI-generated changes even when the generator also performs a review.” defines an exact review, approval, evidence, confirmation, or execution gate whose fail-closed workflow behavior can be checked from versioned policy and fixtures.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Inspect the versioned CI or agent policy and run fixtures proving the governed output or action cannot advance without the explicitly required review, evidence, independence, or confirmation state.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-159E86E9",
+      "revision": 1,
+      "semantic_sha256": "159e86e9731130fe08deecb7232f17fa10620569f31c0f369ba25ba710c76146",
+      "statement": "Prevent the same AI output from serving as implementation, expected result, reviewer, and approval evidence without independent validation.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 501
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Human accountability, review, and automation-bias controls"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Prevent the same AI output from serving as implementation, expected result, reviewer, and approval evidence without independent validation.” joins bounded model, provider, identity, permission, workflow, artifact, environment, or supply-chain authorities whose required bindings can be reconciled exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI capability, review, approval, inventory, lifecycle, or action record contains every explicitly required state and evidence binding.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Compare the linked versioned policy, artifact, deployment, identity, permission, registry, or execution evidence and fail closed on missing, unreviewed, or mismatched identities.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1023D68F",
+      "revision": 1,
+      "semantic_sha256": "1023d68f63520ac6dec92b675caf02f5df548ca3494d445b38ae31b6fd5fd4e2",
+      "statement": "Use checklists and evidence prompts that direct reviewers to correctness, security, privacy, performance, accessibility, maintainability, licensing, and operational impact.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 502
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Human accountability, review, and automation-bias controls"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Use checklists and evidence prompts that direct reviewers to correctness, security, privacy, performance, accessibility, maintainability, licensing, and operational impact.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-35A8F0B6",
+      "revision": 1,
+      "semantic_sha256": "35a8f0b6d5647a98956b8d6e322d958a6e84bf42076b2b0accea611725c02326",
+      "statement": "Require explicit approval for deletions, migrations, permission changes, security-control changes, and production commands.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 506
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Human accountability, review, and automation-bias controls"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "local_static",
+      "primary_reason": "The control “Require explicit approval for deletions, migrations, permission changes, security-control changes, and production commands.” defines an exact review, approval, evidence, confirmation, or execution gate whose fail-closed workflow behavior can be checked from versioned policy and fixtures.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Inspect the versioned CI or agent policy and run fixtures proving the governed output or action cannot advance without the explicitly required review, evidence, independence, or confirmation state.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5B11CA85",
+      "revision": 1,
+      "semantic_sha256": "5b11ca858e79f16911ee5e9b0d9502d4e623b0628a4726676afa78dba54fdad1",
+      "statement": "Use dual control for irreversible, financially consequential, safety-related, or organization-wide actions.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 507
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Human accountability, review, and automation-bias controls"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "local_static",
+      "primary_reason": "The control “Use dual control for irreversible, financially consequential, safety-related, or organization-wide actions.” defines an exact review, approval, evidence, confirmation, or execution gate whose fail-closed workflow behavior can be checked from versioned policy and fixtures.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Inspect the versioned CI or agent policy and run fixtures proving the governed output or action cannot advance without the explicitly required review, evidence, independence, or confirmation state.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A0D8343C",
+      "revision": 1,
+      "semantic_sha256": "a0d8343c12eaecea44808f1f6817bbcec14b1baee5b56b76ce760ee9f570eb2a",
+      "statement": "Design interfaces to show uncertainty, missing evidence, tool actions, changed files, affected systems, and unresolved warnings.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 509
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Human accountability, review, and automation-bias controls"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Design interfaces to show uncertainty, missing evidence, tool actions, changed files, affected systems, and unresolved warnings.” requires a finite reporting, disablement, deletion, injection, interface, mutation, confirmation, or rerun test whose declared result can be observed exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Run the registered bounded protocol and verify authenticated evidence records the exact inputs, identity and permission context, expected transitions, side effects, cleanup, and successful result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EC36170F",
+      "revision": 1,
+      "semantic_sha256": "ec36170f32f5e7397f950327be1523de52e652485fc318efc5644f05c29ee4ba",
+      "statement": "Retain accountability records for accepted high-impact outputs and decisions.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 511
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Human accountability, review, and automation-bias controls"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Retain accountability records for accepted high-impact outputs and decisions.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BB79B60F",
+      "revision": 1,
+      "semantic_sha256": "bb79b60fa974e81105efdbac9a515fef6dadfdfd3c4f7c6619158b491b04260a",
+      "statement": "Apply every ordinary code-quality, architecture, security, privacy, performance, accessibility, and maintainability rule to AI-generated code without reduction.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 515
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "AI-generated source code and implementation quality"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "local_static",
+      "primary_reason": "The control “Apply every ordinary code-quality, architecture, security, privacy, performance, accessibility, and maintainability rule to AI-generated code without reduction.” defines an exact review, approval, evidence, confirmation, or execution gate whose fail-closed workflow behavior can be checked from versioned policy and fixtures.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Inspect the versioned CI or agent policy and run fixtures proving the governed output or action cannot advance without the explicitly required review, evidence, independence, or confirmation state.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-471DDE50",
+      "revision": 1,
+      "semantic_sha256": "471dde504d5c1d125abc8de03eb3acfaac6ad9950f9419a7b3edfeb0f192f1f3",
+      "statement": "Require generated public interfaces and persistent schemas to undergo normal compatibility and evolution review.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 527
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "AI-generated source code and implementation quality"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "local_static",
+      "primary_reason": "The control “Require generated public interfaces and persistent schemas to undergo normal compatibility and evolution review.” defines an exact review, approval, evidence, confirmation, or execution gate whose fail-closed workflow behavior can be checked from versioned policy and fixtures.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Inspect the versioned CI or agent policy and run fixtures proving the governed output or action cannot advance without the explicitly required review, evidence, independence, or confirmation state.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-592A4BA4",
+      "revision": 1,
+      "semantic_sha256": "592a4ba4bba9e9711ff7471c1d540ce3f849ccd7fbcc45222f364ea7daea15b9",
+      "statement": "Retain regression tests for defects found in generated code and update organizational guidance to prevent recurrence.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 529
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "AI-generated source code and implementation quality"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Retain regression tests for defects found in generated code and update organizational guidance to prevent recurrence.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-BF92D3B4",
+      "revision": 1,
+      "semantic_sha256": "bf92d3b4d393a56aa45c931496f76d7bdf404fa020b765a38899888b25e1f243",
+      "statement": "Prevent the same model context from generating code and expected outputs without independent oracle validation.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 534
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "AI-generated tests, fixtures, and verification artifacts"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Prevent the same model context from generating code and expected outputs without independent oracle validation.” joins bounded model, provider, identity, permission, workflow, artifact, environment, or supply-chain authorities whose required bindings can be reconciled exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI capability, review, approval, inventory, lifecycle, or action record contains every explicitly required state and evidence binding.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Compare the linked versioned policy, artifact, deployment, identity, permission, registry, or execution evidence and fail closed on missing, unreviewed, or mismatched identities.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7BAE92AE",
+      "revision": 1,
+      "semantic_sha256": "7bae92aeec2e047ea62c549e7f75bcbf1df726e6d29abc8001bfacd42a93e522",
+      "statement": "Verify that tests fail when the intended behavior is deliberately broken.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 535
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "AI-generated tests, fixtures, and verification artifacts"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Verify that tests fail when the intended behavior is deliberately broken.” requires a finite reporting, disablement, deletion, injection, interface, mutation, confirmation, or rerun test whose declared result can be observed exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Run the registered bounded protocol and verify authenticated evidence records the exact inputs, identity and permission context, expected transitions, side effects, cleanup, and successful result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-ED97CA2A",
+      "revision": 1,
+      "semantic_sha256": "ed97ca2a0150c3b5bae09435945581bae7b1fd8c13c9cb4e3f8f8068afc8a3ff",
+      "statement": "Control randomness and retain seeds for generated property, fuzz, and scenario tests.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 540
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "AI-generated tests, fixtures, and verification artifacts"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Control randomness and retain seeds for generated property, fuzz, and scenario tests.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F7978D60",
+      "revision": 1,
+      "semantic_sha256": "f7978d6063a40848cef37a410391ebf95319c811b5dc065ed5172ce79ba43359",
+      "statement": "Do not count generated test volume as quality evidence without coverage, assertion, and fault-detection analysis.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 547
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "AI-generated tests, fixtures, and verification artifacts"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Do not count generated test volume as quality evidence without coverage, assertion, and fault-detection analysis.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1CD27635",
+      "revision": 1,
+      "semantic_sha256": "1cd27635de15e26ad3d95c4df726aaf6717cd06fa8574d3e26ce3765c177ffc1",
+      "statement": "Require alternatives, tradeoffs, consequences, and reversal strategy in material generated design decisions.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 556
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "AI-generated requirements, designs, architecture, and decisions"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Require alternatives, tradeoffs, consequences, and reversal strategy in material generated design decisions.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AE086A58",
+      "revision": 1,
+      "semantic_sha256": "ae086a58c9334c8ac0dda0a3e2baa93d8bf523e80862848ee9e9a253aa29b35c",
+      "statement": "Revalidate generated designs after requirements, providers, standards, risks, or constraints change.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 565
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "AI-generated requirements, designs, architecture, and decisions"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Revalidate generated designs after requirements, providers, standards, risks, or constraints change.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-24BBED4A",
+      "revision": 1,
+      "semantic_sha256": "24bbed4a1b7eb2864ac801c58da2f3e1ab04c67bc6af0460bb8384c92daeb60d",
+      "statement": "Treat generated infrastructure, deployment, policy, database, query, migration, and operational code as high-impact executable artifacts.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 569
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "AI-generated infrastructure, configuration, queries, and migrations"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Treat generated infrastructure, deployment, policy, database, query, migration, and operational code as high-impact executable artifacts.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-802762AD",
+      "revision": 1,
+      "semantic_sha256": "802762adc08eb13096cee2e012b556a128344accd3e4486db40711fbd42fd25e",
+      "statement": "Run schema validation, static analysis, policy checks, security analysis, plan or dry-run review, and peer review before execution.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 570
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "AI-generated infrastructure, configuration, queries, and migrations"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "local_static",
+      "primary_reason": "The control “Run schema validation, static analysis, policy checks, security analysis, plan or dry-run review, and peer review before execution.” defines an exact review, approval, evidence, confirmation, or execution gate whose fail-closed workflow behavior can be checked from versioned policy and fixtures.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Inspect the versioned CI or agent policy and run fixtures proving the governed output or action cannot advance without the explicitly required review, evidence, independence, or confirmation state.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-764B2420",
+      "revision": 1,
+      "semantic_sha256": "764b24201464af62fd049733f9528555c8e1162c6e97bdcc52fd418f79d902d4",
+      "statement": "Verify resource names, accounts, regions, networks, identities, permissions, quotas, retention, encryption, and deletion protection.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 571
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "AI-generated infrastructure, configuration, queries, and migrations"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Verify resource names, accounts, regions, networks, identities, permissions, quotas, retention, encryption, and deletion protection.” joins bounded model, provider, identity, permission, workflow, artifact, environment, or supply-chain authorities whose required bindings can be reconciled exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI capability, review, approval, inventory, lifecycle, or action record contains every explicitly required state and evidence binding.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Compare the linked versioned policy, artifact, deployment, identity, permission, registry, or execution evidence and fail closed on missing, unreviewed, or mismatched identities.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F7C0B574",
+      "revision": 1,
+      "semantic_sha256": "f7c0b5742ce3da847fad33499659b2e406ca20bc10cbe75f8e87dfe416a5faf6",
+      "statement": "Require previews and explicit confirmation before destructive or irreversible actions.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 577
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "AI-generated infrastructure, configuration, queries, and migrations"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Require previews and explicit confirmation before destructive or irreversible actions.” requires a finite reporting, disablement, deletion, injection, interface, mutation, confirmation, or rerun test whose declared result can be observed exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Run the registered bounded protocol and verify authenticated evidence records the exact inputs, identity and permission context, expected transitions, side effects, cleanup, and successful result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D20D5B1C",
+      "revision": 1,
+      "semantic_sha256": "d20d5b1cfb480c39c11440b2ddbbfc6e5ab1d57fe45263f534c4c91a0cf6ab7c",
+      "statement": "Prevent agents from executing production commands with credentials inherited from a developer session without controlled elevation.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 578
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "AI-generated infrastructure, configuration, queries, and migrations"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Prevent agents from executing production commands with credentials inherited from a developer session without controlled elevation.” joins bounded model, provider, identity, permission, workflow, artifact, environment, or supply-chain authorities whose required bindings can be reconciled exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI capability, review, approval, inventory, lifecycle, or action record contains every explicitly required state and evidence binding.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Compare the linked versioned policy, artifact, deployment, identity, permission, registry, or execution evidence and fail closed on missing, unreviewed, or mismatched identities.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6A91D81E",
+      "revision": 1,
+      "semantic_sha256": "6a91d81ea2e1047fe4e79c15b7675c699a7f731db7f9b72c6b08ea30bb8c1daf",
+      "statement": "Use isolated sandboxes and nonproduction environments for generated command experimentation.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 579
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "AI-generated infrastructure, configuration, queries, and migrations"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Use isolated sandboxes and nonproduction environments for generated command experimentation.” joins bounded model, provider, identity, permission, workflow, artifact, environment, or supply-chain authorities whose required bindings can be reconciled exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI capability, review, approval, inventory, lifecycle, or action record contains every explicitly required state and evidence binding.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Compare the linked versioned policy, artifact, deployment, identity, permission, registry, or execution evidence and fail closed on missing, unreviewed, or mismatched identities.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-53136269",
+      "revision": 1,
+      "semantic_sha256": "53136269b59e841df307d36e9b71fa22ef2251c5d3d75013f9936ec38f0babef",
+      "statement": "Record exact generated commands, plans, affected resources, approvals, execution output, and resulting state.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 580
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "AI-generated infrastructure, configuration, queries, and migrations"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Record exact generated commands, plans, affected resources, approvals, execution output, and resulting state.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7D1589E9",
+      "revision": 1,
+      "semantic_sha256": "7d1589e9c1a0d363181e8dbd215ae3e3306a9a059fc2c6b40da11ad8244adf48",
+      "statement": "Maintain a tested rollback or recovery path before high-impact generated changes are applied.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 583
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "AI-generated infrastructure, configuration, queries, and migrations"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Maintain a tested rollback or recovery path before high-impact generated changes are applied.” joins bounded model, provider, identity, permission, workflow, artifact, environment, or supply-chain authorities whose required bindings can be reconciled exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI capability, review, approval, inventory, lifecycle, or action record contains every explicitly required state and evidence binding.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Run the registered rollback or recovery protocol for the exact generated change and verify the restored artifact and environment identities match the approved recovery target.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A42E53F8",
+      "revision": 1,
+      "semantic_sha256": "a42e53f8531f3357e40b147ae20cedc0ce7d96ff9ab53291af49850c13801b43",
+      "statement": "Verify every suggested package, image, action, plugin, model, data set, API, and service exists and comes from the intended publisher.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 587
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Dependencies, packages, licenses, and generated supply-chain choices"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "The control “Verify every suggested package, image, action, plugin, model, data set, API, and service exists and comes from the intended publisher.” requires exact existence and publisher identity for declared third-party items, which an authenticated read-only registry query can decide.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Query the authoritative registry for each declared package, image, action, plugin, model, data set, API, or service and verify canonical identity, existence, publisher, and requested version.",
+          "checker_family": "package_metadata",
+          "evidence_authority": "external_registry"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-ED0BD0F8",
+      "revision": 1,
+      "semantic_sha256": "ed0bd0f8f8e0bb31c1b833bf7585e961f42aa2a228ad567e6f5fc6eac3c3d85c",
+      "statement": "Check spelling, namespace, registry, repository, ownership, signatures, provenance, release history, and known compromise before adoption.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 588
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Dependencies, packages, licenses, and generated supply-chain choices"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Check spelling, namespace, registry, repository, ownership, signatures, provenance, release history, and known compromise before adoption.” joins bounded model, provider, identity, permission, workflow, artifact, environment, or supply-chain authorities whose required bindings can be reconciled exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI capability, review, approval, inventory, lifecycle, or action record contains every explicitly required state and evidence binding.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Compare the linked versioned policy, artifact, deployment, identity, permission, registry, or execution evidence and fail closed on missing, unreviewed, or mismatched identities.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-69099CAD",
+      "revision": 1,
+      "semantic_sha256": "69099cadd2632cf0f0f35de1397bb8bf81a052311781d94c8a7a3982546c9c82",
+      "statement": "Pin or constrain dependencies according to supply-chain policy and generate updated SBOM and provenance evidence.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 592
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Dependencies, packages, licenses, and generated supply-chain choices"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Pin or constrain dependencies according to supply-chain policy and generate updated SBOM and provenance evidence.” joins bounded model, provider, identity, permission, workflow, artifact, environment, or supply-chain authorities whose required bindings can be reconciled exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI capability, review, approval, inventory, lifecycle, or action record contains every explicitly required state and evidence binding.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Compare the linked versioned policy, artifact, deployment, identity, permission, registry, or execution evidence and fail closed on missing, unreviewed, or mismatched identities.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0D1E4378",
+      "revision": 1,
+      "semantic_sha256": "0d1e437899751b62bbdebb509eddf36be073f313612ade82c9e9f1a69aba8b33",
+      "statement": "Require architecture review before generated changes introduce a new database, queue, framework, cloud service, model provider, or operational platform.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 597
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Dependencies, packages, licenses, and generated supply-chain choices"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "local_static",
+      "primary_reason": "The control “Require architecture review before generated changes introduce a new database, queue, framework, cloud service, model provider, or operational platform.” defines an exact review, approval, evidence, confirmation, or execution gate whose fail-closed workflow behavior can be checked from versioned policy and fixtures.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Inspect the versioned CI or agent policy and run fixtures proving the governed output or action cannot advance without the explicitly required review, evidence, independence, or confirmation state.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6C07A1CF",
+      "revision": 1,
+      "semantic_sha256": "6c07a1cf29e4d60e160f5e9d5da31329280dbc62efa8c0714c2feb61a673bf6a",
+      "statement": "Monitor AI-suggested dependencies for advisories, ownership change, deprecation, and malicious releases after adoption.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 598
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Dependencies, packages, licenses, and generated supply-chain choices"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "The control “Monitor AI-suggested dependencies for advisories, ownership change, deprecation, and malicious releases after adoption.” names concrete AI-use, provider-lifecycle, or dependency-lifecycle state that can be read from an authorized monitoring environment and compared exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Read the authorized monitoring or management system and verify current observations exist for every named signal with bound provider, model, tool, dependency, owner, and immutable query timestamp.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-31D5D8DE",
+      "revision": 1,
+      "semantic_sha256": "31d5d8debd625d5177f3bc39cc0134f8996c57da6118746e5fac537b911f2a9e",
+      "statement": "Record why each new dependency is necessary and who owns its lifecycle.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 599
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Dependencies, packages, licenses, and generated supply-chain choices"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Record why each new dependency is necessary and who owns its lifecycle.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4C7730ED",
+      "revision": 1,
+      "semantic_sha256": "4c7730ed6f0f11795d38df84abaf4efa1c0480ce1ca78bfb1aaaa9e2ba9d143f",
+      "statement": "Include models, prompts, adapters, embeddings, data sets, and agent tools in relevant supply-chain inventories.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 601
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Dependencies, packages, licenses, and generated supply-chain choices"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Include models, prompts, adapters, embeddings, data sets, and agent tools in relevant supply-chain inventories.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E1582655",
+      "revision": 1,
+      "semantic_sha256": "e1582655b38e4f078f32377258b4641c8deeb579890e932023981bf981b87526",
+      "statement": "Define each agent capability explicitly, including files, repositories, commands, network destinations, APIs, credentials, data, and environments it may access.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 605
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Agentic tools, autonomous execution, and capability containment"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define each agent capability explicitly, including files, repositories, commands, network destinations, APIs, credentials, data, and environments it may access.” defines explicit AI-system, reviewer, incident, provider, prompt, tool, policy, evaluation, command, dependency, or accountability fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI, tool, review, incident, architecture, command, or dependency record contains every named field, role, state, category, source, version, permission, metric, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DBCE39F6",
+      "revision": 1,
+      "semantic_sha256": "dbce39f6c96aa743404056bd05f6f63bd1d28715e1a76530d6863a17e34550bd",
+      "statement": "Use separate identities and sandboxes for agents rather than sharing a user or production administrator session.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 607
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Agentic tools, autonomous execution, and capability containment"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Use separate identities and sandboxes for agents rather than sharing a user or production administrator session.” joins bounded model, provider, identity, permission, workflow, artifact, environment, or supply-chain authorities whose required bindings can be reconciled exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized AI capability, review, approval, inventory, lifecycle, or action record contains every explicitly required state and evidence binding.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Compare the linked versioned policy, artifact, deployment, identity, permission, registry, or execution evidence and fail closed on missing, unreviewed, or mismatched identities.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A1439915",
+      "revision": 1,
+      "semantic_sha256": "a143991576be2e6a6e215c3996bae7f647795d9f0b42099121363faa7b1d8f3f",
+      "statement": "Require human confirmation at clearly identified boundaries for destructive, external, privileged, financial, production, publication, and communication actions.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 609
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI-Assisted Engineering, Agentic Development, and Content Provenance",
+        "Agentic tools, autonomous execution, and capability containment"
+      ],
+      "primary_packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-002",
+      "primary_route": "local_static",
+      "primary_reason": "The control “Require human confirmation at clearly identified boundaries for destructive, external, privileged, financial, production, publication, and communication actions.” defines an exact review, approval, evidence, confirmation, or execution gate whose fail-closed workflow behavior can be checked from versioned policy and fixtures.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Inspect the versioned CI or agent policy and run fixtures proving the governed output or action cannot advance without the explicitly required review, evidence, independence, or confirmation state.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    }
+  ]
+}

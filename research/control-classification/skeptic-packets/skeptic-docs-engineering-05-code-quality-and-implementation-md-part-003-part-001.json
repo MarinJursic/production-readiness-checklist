@@ -1,0 +1,2061 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-engineering-05-code-quality-and-implementation-md-part-003-part-001",
+  "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 82,
+  "controls": [
+    {
+      "control_id": "USEQ-9EA13006",
+      "revision": 1,
+      "semantic_sha256": "9ea130062e2c6946eadd6d82afb99209256466208e5dd8d6048a67dde6a200a1",
+      "statement": "Define measurable quality gates for correctness, maintainability, reliability, security, performance, testability, and operability.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 677
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Quality requirements, ownership, and boundaries"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define measurable quality gates for correctness, maintainability, reliability, security, performance, testability, and operability.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define measurable quality gates for correctness, maintainability, reliability, security, performance, testability, and operability.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-62BF7DDD",
+      "revision": 1,
+      "semantic_sha256": "62bf7ddd2711c3624bdc7fa431c57b8f05f4bcce5341ed0a96efe190ff49f849",
+      "statement": "Document assumptions about inputs, ordering, timing, consistency, scale, trust, environment, and dependencies.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 679
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Quality requirements, ownership, and boundaries"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Document assumptions about inputs, ordering, timing, consistency, scale, trust, environment, and dependencies.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Document assumptions about inputs, ordering, timing, consistency, scale, trust, environment, and dependencies.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2B266C16",
+      "revision": 1,
+      "semantic_sha256": "2b266c1652c2ad85165d5de3cd248a269dc74ad0c4ca4957223cc201587fd565",
+      "statement": "Ensure temporary code, experiments, bypasses, compatibility shims, and migrations have owners and removal conditions.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 682
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Quality requirements, ownership, and boundaries"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Ensure temporary code, experiments, bypasses, compatibility shims, and migrations have owners and removal conditions.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Ensure temporary code, experiments, bypasses, compatibility shims, and migrations have owners and removal conditions.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DD170383",
+      "revision": 1,
+      "semantic_sha256": "dd170383631699c38f926c3f5083446dc70abe7c6cd7f36714f96339d7d73320",
+      "statement": "Define preconditions, postconditions, invariants, state transitions, side effects, and error outcomes for important behavior.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 689
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Specifications, contracts, invariants, and correctness"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define preconditions, postconditions, invariants, state transitions, side effects, and error outcomes for important behavior.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define preconditions, postconditions, invariants, state transitions, side effects, and error outcomes for important behavior.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DA2FF151",
+      "revision": 1,
+      "semantic_sha256": "da2ff151d639d6329148a48620e5427a63dd7902c66ade7031ec7e985734be8e",
+      "statement": "Define behavior for empty, missing, malformed, duplicate, stale, conflicting, maximum, minimum, and out-of-order inputs.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 692
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Specifications, contracts, invariants, and correctness"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define behavior for empty, missing, malformed, duplicate, stale, conflicting, maximum, minimum, and out-of-order inputs.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define behavior for empty, missing, malformed, duplicate, stale, conflicting, maximum, minimum, and out-of-order inputs.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C8FE1A2E",
+      "revision": 1,
+      "semantic_sha256": "c8fe1a2ec663807d5578c9fe5f228eb44a1ef51f72502d59e5b1d761341babf2",
+      "statement": "Define behavior for partial completion, interruption, timeout, cancellation, retry, and recovery.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 693
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Specifications, contracts, invariants, and correctness"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define behavior for partial completion, interruption, timeout, cancellation, retry, and recovery.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define behavior for partial completion, interruption, timeout, cancellation, retry, and recovery.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2F31C3BE",
+      "revision": 1,
+      "semantic_sha256": "2f31c3beb1afa88505a347381580fe0a9a3769bda6908107a2e06416f63fa3a4",
+      "statement": "Define consistency, ordering, atomicity, durability, freshness, and idempotency requirements explicitly.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 694
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Specifications, contracts, invariants, and correctness"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define consistency, ordering, atomicity, durability, freshness, and idempotency requirements explicitly.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define consistency, ordering, atomicity, durability, freshness, and idempotency requirements explicitly.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-77A2171A",
+      "revision": 1,
+      "semantic_sha256": "77a2171a576e9dd0a420beea4ae4e8e105567666d42f8eae29104fba0d0e4c9d",
+      "statement": "Keep business rules in one authoritative, testable location or ensure replicated rules are generated and verified from one source.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 695
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Specifications, contracts, invariants, and correctness"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Keep business rules in one authoritative, testable location or ensure replicated rules are generated and verified from one source.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Keep business rules in one authoritative, testable location or ensure replicated rules are generated and verified from one source.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DAE95EAC",
+      "revision": 1,
+      "semantic_sha256": "dae95eacc95f1da50e243542539dcf4388568afd6351b18cd5bf856c9c408c5f",
+      "statement": "Ensure assertions and diagnostics do not change required production semantics when disabled.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 699
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Specifications, contracts, invariants, and correctness"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Ensure assertions and diagnostics do not change required production semantics when disabled.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Ensure assertions and diagnostics do not change required production semantics when disabled.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D6652FBA",
+      "revision": 1,
+      "semantic_sha256": "d6652fbad6255ba4a3d97cc1d74cd864e94f0d290f8ef329770c6a304249ce24",
+      "statement": "Keep specification and implementation changes synchronized and reviewed together.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 704
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Specifications, contracts, invariants, and correctness"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Keep specification and implementation changes synchronized and reviewed together.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Keep specification and implementation changes synchronized and reviewed together.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E43DC013",
+      "revision": 1,
+      "semantic_sha256": "e43dc013eb33327ab731f36fc01b50db79a9255aca1bec72d9ef63e680e15883",
+      "statement": "Document intentional violations of a design principle and the trade-off that makes the violation safer or simpler.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 721
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Simplicity, SOLID, DRY, KISS, YAGNI, and proportional design"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Document intentional violations of a design principle and the trade-off that makes the violation safer or simpler.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Document intentional violations of a design principle and the trade-off that makes the violation safer or simpler.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FFD3A39D",
+      "revision": 1,
+      "semantic_sha256": "ffd3a39de93e87467130fefd680b68e3eccd975926d826fca74e07888ecdbf17",
+      "statement": "Make dependencies explicit in interfaces, construction, configuration, or documented runtime contracts.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 729
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Modularity, cohesion, coupling, and dependency direction"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Make dependencies explicit in interfaces, construction, configuration, or documented runtime contracts.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Make dependencies explicit in interfaces, construction, configuration, or documented runtime contracts.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FE04149F",
+      "revision": 1,
+      "semantic_sha256": "fe04149fbc1dbba7567039e95672eed6e755e59ed1f2cfe35711043585b30d2e",
+      "statement": "Use formatting and automated style rules consistently so review focuses on behavior.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 754
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Readability, naming, comments, and local reasoning"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Use formatting and automated style rules consistently so review focuses on behavior.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use formatting and automated style rules consistently so review focuses on behavior.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F482985B",
+      "revision": 1,
+      "semantic_sha256": "f482985b1d8f3a2941c592c67f858cfdc3b3cc2f204affde34d6e7e9a4a611c9",
+      "statement": "Remove commented-out code and obsolete explanations; version control is the history.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 757
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Readability, naming, comments, and local reasoning"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Remove commented-out code and obsolete explanations; version control is the history.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Remove commented-out code and obsolete explanations; version control is the history.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-51D2BF8A",
+      "revision": 1,
+      "semantic_sha256": "51d2bf8a1fac9891e060ec78566d9eb94000c9da7cd557ee64c22ed2ffa583b3",
+      "statement": "Mark generated code, generated sections, and source-of-truth locations clearly.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 758
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Readability, naming, comments, and local reasoning"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Mark generated code, generated sections, and source-of-truth locations clearly.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Mark generated code, generated sections, and source-of-truth locations clearly.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0A5F8102",
+      "revision": 1,
+      "semantic_sha256": "0a5f810267fa57b4a7157836491685958db66cf029feda53aa0b5939e0ec5fc9",
+      "statement": "Do not use sentinel values that collide with valid domain values.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 766
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Types, values, validation, nullability, and data representation"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Do not use sentinel values that collide with valid domain values.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Do not use sentinel values that collide with valid domain values.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6A357CE5",
+      "revision": 1,
+      "semantic_sha256": "6a357ce5819473ef60ff61902bce484651beffb152ecbd38617e3d6086603a91",
+      "statement": "Preserve unknown fields or reject them intentionally according to the compatibility contract.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 771
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Types, values, validation, nullability, and data representation"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Preserve unknown fields or reject them intentionally according to the compatibility contract.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Preserve unknown fields or reject them intentionally according to the compatibility contract.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-06BBD221",
+      "revision": 1,
+      "semantic_sha256": "06bbd221622f8c948fe639e56e95bc76653a5685598ad4a184e61ae2da48b3f7",
+      "statement": "Define default values explicitly and distinguish omitted values from supplied defaults when behavior differs.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 773
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Types, values, validation, nullability, and data representation"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define default values explicitly and distinguish omitted values from supplied defaults when behavior differs.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define default values explicitly and distinguish omitted values from supplied defaults when behavior differs.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DD9D56FD",
+      "revision": 1,
+      "semantic_sha256": "dd9d56fd80c155b966b0e2ff9a0492cfea6171a4463099accf068f3b37a913d3",
+      "statement": "Constrain collections, recursion, nesting, and graphs to safe bounds.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 776
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Types, values, validation, nullability, and data representation"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Constrain collections, recursion, nesting, and graphs to safe bounds.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Constrain collections, recursion, nesting, and graphs to safe bounds.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1FFA1E56",
+      "revision": 1,
+      "semantic_sha256": "1ffa1e5604f5e484b646ca122e336b955af0995889da4db4ed403bd62d97e37b",
+      "statement": "Define an error taxonomy that distinguishes invalid input, expected business outcomes, transient dependency failure, permanent failure, conflict, authorization denial, and programmer defect.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 783
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Errors, exceptions, cancellation, and defensive behavior"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define an error taxonomy that distinguishes invalid input, expected business outcomes, transient dependency failure, permanent failure, conflict, authorization denial, and programmer defect.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define an error taxonomy that distinguishes invalid input, expected business outcomes, transient dependency failure, permanent failure, conflict, authorization denial, and programmer defect.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-61DA8691",
+      "revision": 1,
+      "semantic_sha256": "61da86910645fee6cec9d008d6b5a0c4608348574d14c4be5ae6e7db5ecdd6a9",
+      "statement": "Use error types or structures that let callers make safe decisions without parsing human-readable text.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 784
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Errors, exceptions, cancellation, and defensive behavior"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Use error types or structures that let callers make safe decisions without parsing human-readable text.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use error types or structures that let callers make safe decisions without parsing human-readable text.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-97FD1F80",
+      "revision": 1,
+      "semantic_sha256": "97fd1f806449a1ddb950973f2ff2d086651249d6c2898931780d362a908fe23d",
+      "statement": "Ensure cleanup occurs on success, failure, cancellation, timeout, and abrupt termination as far as the platform permits.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 788
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Errors, exceptions, cancellation, and defensive behavior"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Ensure cleanup occurs on success, failure, cancellation, timeout, and abrupt termination as far as the platform permits.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Ensure cleanup occurs on success, failure, cancellation, timeout, and abrupt termination as far as the platform permits.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E517601F",
+      "revision": 1,
+      "semantic_sha256": "e517601f7986a7c9adfc260f3fa2bd7f96f82c8cfb746109cc5f848a8d8ab269",
+      "statement": "Propagate cancellation and deadlines through dependent operations.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 789
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Errors, exceptions, cancellation, and defensive behavior"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Propagate cancellation and deadlines through dependent operations.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Propagate cancellation and deadlines through dependent operations.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6844C27F",
+      "revision": 1,
+      "semantic_sha256": "6844c27f9db2199a2ee554a2667a5790c82bb1c61cbd433f89c7786cc6184f60",
+      "statement": "Distinguish user cancellation from failure in product behavior and telemetry.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 790
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Errors, exceptions, cancellation, and defensive behavior"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Distinguish user cancellation from failure in product behavior and telemetry.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Distinguish user cancellation from failure in product behavior and telemetry.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0CE498E4",
+      "revision": 1,
+      "semantic_sha256": "0ce498e45e00960b991c6a45a19e30d0ce1862de9a381c9719d6eb734de55d3d",
+      "statement": "Apply backoff and jitter and honor server or dependency retry guidance.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 792
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Errors, exceptions, cancellation, and defensive behavior"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Apply backoff and jitter and honor server or dependency retry guidance.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Apply backoff and jitter and honor server or dependency retry guidance.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F65C7D19",
+      "revision": 1,
+      "semantic_sha256": "f65c7d19f574114512030fe0951a029db0d599444b141c2aa562ac0fcf313742",
+      "statement": "Prevent retry amplification, duplicate side effects, and infinite retry loops.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 793
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Errors, exceptions, cancellation, and defensive behavior"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Prevent retry amplification, duplicate side effects, and infinite retry loops.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Prevent retry amplification, duplicate side effects, and infinite retry loops.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-37702BA8",
+      "revision": 1,
+      "semantic_sha256": "37702ba8d0d988f8c4832dadeaa62500146299202330dd4b17bc6603be191013",
+      "statement": "Make state ownership, lifecycle, transitions, persistence, and reset behavior explicit.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 802
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "State, side effects, lifecycle, and idempotency"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Make state ownership, lifecycle, transitions, persistence, and reset behavior explicit.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Make state ownership, lifecycle, transitions, persistence, and reset behavior explicit.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3EB68BF3",
+      "revision": 1,
+      "semantic_sha256": "3eb68bf3c2f5b66380bf89dcc54a33c23c2cd5910ed64c146d27f6fe1666d37c",
+      "statement": "Use explicit state machines for workflows with consequential or nontrivial transitions.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 803
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "State, side effects, lifecycle, and idempotency"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Use explicit state machines for workflows with consequential or nontrivial transitions.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use explicit state machines for workflows with consequential or nontrivial transitions.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D9B4B237",
+      "revision": 1,
+      "semantic_sha256": "d9b4b23793ac36cb8c7af03c68b6e007e687a155f7539ab94751190f78ffaff5",
+      "statement": "When derived state is stored, define invalidation, reconciliation, and source-of-truth rules.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 808
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "State, side effects, lifecycle, and idempotency"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “When derived state is stored, define invalidation, reconciliation, and source-of-truth rules.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: When derived state is stored, define invalidation, reconciliation, and source-of-truth rules.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-57546D0C",
+      "revision": 1,
+      "semantic_sha256": "57546d0c7407df52a840ec377b0a281b92f8050be9515f8915a4e70ece42e8f7",
+      "statement": "Define behavior for duplicate, late, missing, and out-of-order events.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 811
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "State, side effects, lifecycle, and idempotency"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define behavior for duplicate, late, missing, and out-of-order events.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define behavior for duplicate, late, missing, and out-of-order events.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-47D45544",
+      "revision": 1,
+      "semantic_sha256": "47d45544ad7e1da43d8acb747f601258fdb493ad7f9f083d860d2ea41efd7e02",
+      "statement": "Version persisted state and provide controlled migration paths.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 813
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "State, side effects, lifecycle, and idempotency"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Version persisted state and provide controlled migration paths.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Version persisted state and provide controlled migration paths.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-62C77BAB",
+      "revision": 1,
+      "semantic_sha256": "62c77babe6531932cf69976022e83cd57b8dded9f9ec1a1ba1f9cad88fa612f6",
+      "statement": "Identify every shared mutable resource and define its concurrency model.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 821
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Concurrency, asynchronous work, and distributed correctness"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Identify every shared mutable resource and define its concurrency model.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Identify every shared mutable resource and define its concurrency model.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AF544541",
+      "revision": 1,
+      "semantic_sha256": "af544541c6aee34bb28279c061a3c79b2329061fd74bd324b976e7a3b171deed",
+      "statement": "Document whether APIs and components are thread-safe, reentrant, single-threaded, actor-confined, or externally synchronized.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 822
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Concurrency, asynchronous work, and distributed correctness"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Document whether APIs and components are thread-safe, reentrant, single-threaded, actor-confined, or externally synchronized.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Document whether APIs and components are thread-safe, reentrant, single-threaded, actor-confined, or externally synchronized.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-DAEA6A4E",
+      "revision": 1,
+      "semantic_sha256": "daea6a4ebe56f4fc4a4b08c8df76f176a064d382ffc4aac6997a114019728802",
+      "statement": "Bound concurrency, queues, buffers, and fan-out.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 828
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Concurrency, asynchronous work, and distributed correctness"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Bound concurrency, queues, buffers, and fan-out.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Bound concurrency, queues, buffers, and fan-out.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D4F9E4F1",
+      "revision": 1,
+      "semantic_sha256": "d4f9e4f1d5b338540eac942f709810b43449b693a68d7c019c5fd0155ac5194a",
+      "statement": "Document consistency trade-offs and user-visible consequences.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 835
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Concurrency, asynchronous work, and distributed correctness"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Document consistency trade-offs and user-visible consequences.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Document consistency trade-offs and user-visible consequences.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-25CDB0B9",
+      "revision": 1,
+      "semantic_sha256": "25cdb0b9adf3a7abeee0f6b190fb77fd40d5548681685f749b8afbe55ee89afb",
+      "statement": "Define rounding mode, scale, timing, allocation, tax, fee, and residual handling for financial calculations.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 844
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Numbers, money, units, limits, and quantitative correctness"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define rounding mode, scale, timing, allocation, tax, fee, and residual handling for financial calculations.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define rounding mode, scale, timing, allocation, tax, fee, and residual handling for financial calculations.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EB371EA3",
+      "revision": 1,
+      "semantic_sha256": "eb371ea3cb77ae303a1009f7a3e0e998a52c3d19de58c195f85b0544d88c3459",
+      "statement": "Define inclusive and exclusive bounds clearly.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 846
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Numbers, money, units, limits, and quantitative correctness"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define inclusive and exclusive bounds clearly.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define inclusive and exclusive bounds clearly.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E9022BE0",
+      "revision": 1,
+      "semantic_sha256": "e9022be04dd59f974a415baa8e8157a198838ce603bb61b6d08ced24279c199f",
+      "statement": "Define whether limits are per request, user, tenant, account, time window, region, or global.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 852
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Numbers, money, units, limits, and quantitative correctness"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define whether limits are per request, user, tenant, account, time window, region, or global.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define whether limits are per request, user, tenant, account, time window, region, or global.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-232C833B",
+      "revision": 1,
+      "semantic_sha256": "232c833b7e3c9b35f33993859472ad8260230a1d7fe1d9a71f5c8f38e6ca7884",
+      "statement": "Document any approximate algorithm and its accepted error bound.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 854
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Numbers, money, units, limits, and quantitative correctness"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Document any approximate algorithm and its accepted error bound.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Document any approximate algorithm and its accepted error bound.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8779E97F",
+      "revision": 1,
+      "semantic_sha256": "8779e97fe2aa6519db9ebc26bb5c3c27741c68ed12b64d1fa6dc7d9caa53e4b0",
+      "statement": "Store instants in an unambiguous time scale and retain the original zone or offset when business meaning requires it.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 858
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Time, dates, schedules, and temporal logic"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Store instants in an unambiguous time scale and retain the original zone or offset when business meaning requires it.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Store instants in an unambiguous time scale and retain the original zone or offset when business meaning requires it.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-ACBA370F",
+      "revision": 1,
+      "semantic_sha256": "acba370f8b729856f75861ab5c4f3f42fb79803e76c669fe45e0de06f1ba99a4",
+      "statement": "Use named IANA time zones for civil-time rules rather than fixed offsets when local rules matter.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 859
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Time, dates, schedules, and temporal logic"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Use named IANA time zones for civil-time rules rather than fixed offsets when local rules matter.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use named IANA time zones for civil-time rules rather than fixed offsets when local rules matter.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-29E529E7",
+      "revision": 1,
+      "semantic_sha256": "29e529e774b1f0cbc7cd3e41f945f93f5088d134c8e520f5cfb01ca9432c9341",
+      "statement": "Distinguish instants, local date-times, dates, times of day, durations, periods, deadlines, and recurring schedules.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 861
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Time, dates, schedules, and temporal logic"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Distinguish instants, local date-times, dates, times of day, durations, periods, deadlines, and recurring schedules.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Distinguish instants, local date-times, dates, times of day, durations, periods, deadlines, and recurring schedules.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7AFB4A13",
+      "revision": 1,
+      "semantic_sha256": "7afb4a1346cd08caa22d3c13443d09b3ae6ca0498a329f78fd4069b759ab253f",
+      "statement": "Use monotonic clocks for elapsed-time measurement and deadlines where wall-clock adjustment would be unsafe.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 864
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Time, dates, schedules, and temporal logic"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Use monotonic clocks for elapsed-time measurement and deadlines where wall-clock adjustment would be unsafe.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use monotonic clocks for elapsed-time measurement and deadlines where wall-clock adjustment would be unsafe.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EF634494",
+      "revision": 1,
+      "semantic_sha256": "ef6344946bdbd159f2948d5b8af07e2659e9b7887dbea7c12fe3223f687891b7",
+      "statement": "Define clock-skew tolerance for tokens, leases, caches, signatures, and distributed coordination.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 866
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Time, dates, schedules, and temporal logic"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define clock-skew tolerance for tokens, leases, caches, signatures, and distributed coordination.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define clock-skew tolerance for tokens, leases, caches, signatures, and distributed coordination.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3B5E73FE",
+      "revision": 1,
+      "semantic_sha256": "3b5e73fe853f8ba4513a4f1fd1fe91700c5d83c64c5cb5571a80f87cf963175b",
+      "statement": "Use standards-based timestamp formats such as RFC 3339 where interoperability requires them.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 867
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Time, dates, schedules, and temporal logic"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Use standards-based timestamp formats such as RFC 3339 where interoperability requires them.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use standards-based timestamp formats such as RFC 3339 where interoperability requires them.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B5224D30",
+      "revision": 1,
+      "semantic_sha256": "b5224d30c845ee0125d9e60f173792c90c5a7389c8653401358501e085f7b0d1",
+      "statement": "Include zone identifiers when an offset alone cannot preserve future or recurring civil-time meaning.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 868
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Time, dates, schedules, and temporal logic"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Include zone identifiers when an offset alone cannot preserve future or recurring civil-time meaning.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Include zone identifiers when an offset alone cannot preserve future or recurring civil-time meaning.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-17F4977A",
+      "revision": 1,
+      "semantic_sha256": "17f4977aefe694aa65d83e834cd05a426ef769cae381baafe9a6def7d4ccf0e4",
+      "statement": "Define inclusive and exclusive deadline semantics and the time zone used for cutoffs.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 869
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Time, dates, schedules, and temporal logic"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define inclusive and exclusive deadline semantics and the time zone used for cutoffs.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define inclusive and exclusive deadline semantics and the time zone used for cutoffs.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F016ED9E",
+      "revision": 1,
+      "semantic_sha256": "f016ed9e1e3a6a756d8fa0c5cbdf597e0d5eb5b38b2303611898e4b97bd7de4a",
+      "statement": "Ensure recurring jobs handle missed, repeated, and overlapping runs.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 871
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Time, dates, schedules, and temporal logic"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Ensure recurring jobs handle missed, repeated, and overlapping runs.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Ensure recurring jobs handle missed, repeated, and overlapping runs.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5EBED0C4",
+      "revision": 1,
+      "semantic_sha256": "5ebed0c431e4acc1cff912211557100bf0a4c80ab0c3b56c8c2c6153b9b6bf15",
+      "statement": "Do not use user locale to parse machine protocol timestamps.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 872
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Time, dates, schedules, and temporal logic"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Do not use user locale to parse machine protocol timestamps.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Do not use user locale to parse machine protocol timestamps.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FF9FB4C0",
+      "revision": 1,
+      "semantic_sha256": "ff9fb4c030f8fde321160cfaf6b062a2a523c8e6da15b5005e27f1e4fdf46bff",
+      "statement": "Record source, precision, and uncertainty when timestamps are evidence.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 873
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Time, dates, schedules, and temporal logic"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Record source, precision, and uncertainty when timestamps are evidence.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Record source, precision, and uncertainty when timestamps are evidence.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F29B5184",
+      "revision": 1,
+      "semantic_sha256": "f29b5184e862e5248c433a25a4dc483276a1e34c562f0c065b90d05cbec6da4c",
+      "statement": "Define the normalization form required for identifiers, comparison, search, signatures, and storage; do not normalize blindly when distinctions matter.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 878
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Unicode, localization, identifiers, and text correctness"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define the normalization form required for identifiers, comparison, search, signatures, and storage; do not normalize blindly when distinctions matter.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define the normalization form required for identifiers, comparison, search, signatures, and storage; do not normalize blindly when distinctions matter.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1E6FD2C8",
+      "revision": 1,
+      "semantic_sha256": "1e6fd2c8374d1c7daf0016cdb558ce40c71f5a0ee8aa03f142d99b933b987741",
+      "statement": "Distinguish byte length, code-unit length, code-point length, and grapheme-cluster length.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 881
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Unicode, localization, identifiers, and text correctness"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Distinguish byte length, code-unit length, code-point length, and grapheme-cluster length.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Distinguish byte length, code-unit length, code-point length, and grapheme-cluster length.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1AF27C78",
+      "revision": 1,
+      "semantic_sha256": "1af27c7899a0c36dfe78965b889c595d210b776be9b0f9280a62df118d18b2ba",
+      "statement": "Do not use locale-sensitive transformations for protocol tokens, security identifiers, hashes, or machine field names.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 884
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Unicode, localization, identifiers, and text correctness"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Do not use locale-sensitive transformations for protocol tokens, security identifiers, hashes, or machine field names.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Do not use locale-sensitive transformations for protocol tokens, security identifiers, hashes, or machine field names.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-649E0701",
+      "revision": 1,
+      "semantic_sha256": "649e070141267083d563ac18e1733ee795d73b32baabcfb0a834637dc000ac7a",
+      "statement": "Use BCP 47 language tags and Unicode CLDR data for locale behavior where applicable.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 885
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Unicode, localization, identifiers, and text correctness"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Use BCP 47 language tags and Unicode CLDR data for locale behavior where applicable.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use BCP 47 language tags and Unicode CLDR data for locale behavior where applicable.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-89D597B0",
+      "revision": 1,
+      "semantic_sha256": "89d597b00f993e1ff6e2442cbcfe092383ee49d40c6dd63da621917295d65e4b",
+      "statement": "Define canonical comparison rules for usernames, email addresses, domains, filenames, and other identifiers separately.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 887
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Unicode, localization, identifiers, and text correctness"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define canonical comparison rules for usernames, email addresses, domains, filenames, and other identifiers separately.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define canonical comparison rules for usernames, email addresses, domains, filenames, and other identifiers separately.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5373073B",
+      "revision": 1,
+      "semantic_sha256": "5373073bc334d995ce560f5545960dc9db911e71f975ae13fdfa6b15cd4ae115",
+      "statement": "Validate text encoding at boundaries and reject or replace malformed sequences according to an explicit policy.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 890
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Unicode, localization, identifiers, and text correctness"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Validate text encoding at boundaries and reject or replace malformed sequences according to an explicit policy.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Validate text encoding at boundaries and reject or replace malformed sequences according to an explicit policy.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A4B1C801",
+      "revision": 1,
+      "semantic_sha256": "a4b1c801456356780139bec962abb5ec86811d65e522b99fa3e89ccb82fbba51",
+      "statement": "Constrain parser input size, nesting, recursion, entity expansion, references, compression, and processing time.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 897
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Parsing, serialization, protocols, and interoperability"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Constrain parser input size, nesting, recursion, entity expansion, references, compression, and processing time.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Constrain parser input size, nesting, recursion, entity expansion, references, compression, and processing time.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C82D80FE",
+      "revision": 1,
+      "semantic_sha256": "c82d80fe01310c65dc681fde7e0ddd351023d9a7a65431761dfde9de6f3f1305",
+      "statement": "Define duplicate-key, unknown-field, number-range, ordering, whitespace, encoding, and invalid-token behavior.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 898
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Parsing, serialization, protocols, and interoperability"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Define duplicate-key, unknown-field, number-range, ordering, whitespace, encoding, and invalid-token behavior.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Define duplicate-key, unknown-field, number-range, ordering, whitespace, encoding, and invalid-token behavior.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7C22624C",
+      "revision": 1,
+      "semantic_sha256": "7c22624cde427eee5f22cb79bfa7856d6c678a0f6e35fa679685a1df88c2997d",
+      "statement": "Ensure producer and consumer agree on schema, version, semantics, units, defaults, nullability, and compatibility.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 900
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Parsing, serialization, protocols, and interoperability"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Ensure producer and consumer agree on schema, version, semantics, units, defaults, nullability, and compatibility.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Ensure producer and consumer agree on schema, version, semantics, units, defaults, nullability, and compatibility.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B5F47BE7",
+      "revision": 1,
+      "semantic_sha256": "b5f47be7109ce0e1b39861c325c7129bef5edb53542733d3182c6c112261dafc",
+      "statement": "Use deterministic or canonical serialization when signatures, hashes, cache keys, or reproducible comparisons depend on byte identity.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 901
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Parsing, serialization, protocols, and interoperability"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Use deterministic or canonical serialization when signatures, hashes, cache keys, or reproducible comparisons depend on byte identity.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use deterministic or canonical serialization when signatures, hashes, cache keys, or reproducible comparisons depend on byte identity.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EC2F0E8A",
+      "revision": 1,
+      "semantic_sha256": "ec2f0e8aa9a082d22af0580d2013620334ce6e831f97a95f258772c9258903fa",
+      "statement": "Do not assume JSON object member order or numeric precision beyond the agreed interoperable profile.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 902
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Parsing, serialization, protocols, and interoperability"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Do not assume JSON object member order or numeric precision beyond the agreed interoperable profile.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Do not assume JSON object member order or numeric precision beyond the agreed interoperable profile.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FA014D20",
+      "revision": 1,
+      "semantic_sha256": "fa014d2067d0baae3744d689eacb2b3367fefa32d8379e196cd429015901d0e8",
+      "statement": "Do not return a success status for a failed operation merely to simplify clients.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 904
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Parsing, serialization, protocols, and interoperability"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Do not return a success status for a failed operation merely to simplify clients.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Do not return a success status for a failed operation merely to simplify clients.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-314A66C9",
+      "revision": 1,
+      "semantic_sha256": "314a66c97f38f3332c357cb6e86a3fd2001086240245daf6aba48e2751eda017",
+      "statement": "Make safe, idempotent, and cacheable operation semantics accurate.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 905
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Parsing, serialization, protocols, and interoperability"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Make safe, idempotent, and cacheable operation semantics accurate.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Make safe, idempotent, and cacheable operation semantics accurate.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5A9B0093",
+      "revision": 1,
+      "semantic_sha256": "5a9b00933d23dd71ecc8bc5b1e8caca6e77eefd63430ee72ac95485d72087466",
+      "statement": "Set content types and character encodings explicitly and prevent content sniffing where relevant.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 907
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Parsing, serialization, protocols, and interoperability"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Set content types and character encodings explicitly and prevent content sniffing where relevant.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Set content types and character encodings explicitly and prevent content sniffing where relevant.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-ADF990FF",
+      "revision": 1,
+      "semantic_sha256": "adf990ffc88d80c1aede42f415ac5001238d226f98228cac2fdbc1eccaa1cad3",
+      "statement": "Validate media types before selecting a parser.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 908
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Parsing, serialization, protocols, and interoperability"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Validate media types before selecting a parser.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Validate media types before selecting a parser.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-74E85045",
+      "revision": 1,
+      "semantic_sha256": "74e8504572c08db9d45fd8e1df59cc3b408089ff7ff89a80e95c1d832b609df8",
+      "statement": "Keep protocol extension behavior forward-compatible and bounded.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 909
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Parsing, serialization, protocols, and interoperability"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Keep protocol extension behavior forward-compatible and bounded.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Keep protocol extension behavior forward-compatible and bounded.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D4B3F5DE",
+      "revision": 1,
+      "semantic_sha256": "d4b3f5de8026484a70a1b577d91f62e3c6f06d5dd2f57f7a190d82d798ed991d",
+      "statement": "Use explicit versioning and deprecation policies for externally consumed formats and APIs.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 910
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Parsing, serialization, protocols, and interoperability"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Use explicit versioning and deprecation policies for externally consumed formats and APIs.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use explicit versioning and deprecation policies for externally consumed formats and APIs.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B8095D09",
+      "revision": 1,
+      "semantic_sha256": "b8095d09240c6bb7d3b2365c62a168a1ae72814357273d91c586f1825ca7471b",
+      "statement": "Bound memory, disk, network, file-descriptor, process, thread, connection, and temporary-storage consumption.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 917
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Resources, memory, files, processes, and cleanup"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Bound memory, disk, network, file-descriptor, process, thread, connection, and temporary-storage consumption.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Bound memory, disk, network, file-descriptor, process, thread, connection, and temporary-storage consumption.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-897ECAE9",
+      "revision": 1,
+      "semantic_sha256": "897ecae948ee2025e803d427bfedb7b63cec19c5027e9c4228754014736abea5",
+      "statement": "When memory-unsafe code remains, use a documented migration roadmap plus compiler, runtime, sandbox, fuzzing, and isolation defenses.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 921
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Resources, memory, files, processes, and cleanup"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “When memory-unsafe code remains, use a documented migration roadmap plus compiler, runtime, sandbox, fuzzing, and isolation defenses.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: When memory-unsafe code remains, use a documented migration roadmap plus compiler, runtime, sandbox, fuzzing, and isolation defenses.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-98BA29DA",
+      "revision": 1,
+      "semantic_sha256": "98ba29daa1d33ba07b85339c65fe5fa266aea68c49e605c2896c0323c1558b6f",
+      "statement": "Use secure temporary-file creation and restrictive permissions.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 924
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Resources, memory, files, processes, and cleanup"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Use secure temporary-file creation and restrictive permissions.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use secure temporary-file creation and restrictive permissions.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3C9326DD",
+      "revision": 1,
+      "semantic_sha256": "3c9326dd6917c9bedeb228f9f346a8e8cee4489055e198595acae72603efbb93",
+      "statement": "Limit child-process permissions, environment, working directory, inherited handles, runtime, and output size.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 928
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Resources, memory, files, processes, and cleanup"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Limit child-process permissions, environment, working directory, inherited handles, runtime, and output size.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Limit child-process permissions, environment, working directory, inherited handles, runtime, and output size.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0F2C50CC",
+      "revision": 1,
+      "semantic_sha256": "0f2c50ccb986c66205c6df001fb95df07fde61712f76cc9ec4dd95cb839efe46",
+      "statement": "Log security-relevant outcomes without recording reusable credentials or unnecessary personal data.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 946
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Security, privacy, and misuse resistance in code"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Log security-relevant outcomes without recording reusable credentials or unnecessary personal data.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Log security-relevant outcomes without recording reusable credentials or unnecessary personal data.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-08007372",
+      "revision": 1,
+      "semantic_sha256": "08007372b5f69b58fabf253aa4d91d6aec8993587db453f34859410742154ecd",
+      "statement": "Map code-level weaknesses to applicable CWE classes and threat-model findings.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 947
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Security, privacy, and misuse resistance in code"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Map code-level weaknesses to applicable CWE classes and threat-model findings.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Map code-level weaknesses to applicable CWE classes and threat-model findings.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8A0C791A",
+      "revision": 1,
+      "semantic_sha256": "8a0c791a28d81000ed7be1fdd3013c7c2aaf902c3a37c0f875fa8d55cf24c128",
+      "statement": "Analyze time and space complexity for input-controlled or high-volume operations.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 954
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Performance, complexity, scalability, and efficiency"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Analyze time and space complexity for input-controlled or high-volume operations.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Analyze time and space complexity for input-controlled or high-volume operations.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-840336E3",
+      "revision": 1,
+      "semantic_sha256": "840336e3713cbbf5e60180aaa5880745faade60dd8f3bf2355a290b372a68bb1",
+      "statement": "Document performance-sensitive invariants and benchmark methodology.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 961
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Performance, complexity, scalability, and efficiency"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Document performance-sensitive invariants and benchmark methodology.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Document performance-sensitive invariants and benchmark methodology.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3250050E",
+      "revision": 1,
+      "semantic_sha256": "3250050eca1180a5cfd1bb752768b528fb23f206ebd529f6cbd4bfb532035e00",
+      "statement": "Use stable benchmarks with variance, warmup, sample size, and environment recorded.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 962
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Performance, complexity, scalability, and efficiency"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The rule “Use stable benchmarks with variance, warmup, sample size, and environment recorded.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Use stable benchmarks with variance, warmup, sample size, and environment recorded.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-F00285A1",
+      "revision": 1,
+      "semantic_sha256": "f00285a1768b8cfa696b962d7193a969b5e3167882d4d029a0a4283dc3c88ffd",
+      "statement": "Check latency percentiles and tail behavior rather than averages alone.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 963
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Performance, complexity, scalability, and efficiency"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Check latency percentiles and tail behavior rather than averages alone.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Check latency percentiles and tail behavior rather than averages alone.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0434E2D2",
+      "revision": 1,
+      "semantic_sha256": "0434e2d25fad5f5fd3f8f8dbe373b714677985f4177018b98308ece5d5cecffb",
+      "statement": "Bound background work and ensure it yields to critical user operations.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 964
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Performance, complexity, scalability, and efficiency"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Bound background work and ensure it yields to critical user operations.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Bound background work and ensure it yields to critical user operations.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-AB9DE8ED",
+      "revision": 1,
+      "semantic_sha256": "ab9de8edb1359d44e5b4ba85c1e7343b97dffe74ea73c1f75582ede38f55c459",
+      "statement": "Monitor performance regression and resource growth across releases.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 965
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Performance, complexity, scalability, and efficiency"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Monitor performance regression and resource growth across releases.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Monitor performance regression and resource growth across releases.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7208E8C0",
+      "revision": 1,
+      "semantic_sha256": "7208e8c0b63b25f59ab74f04931bf10075fe841d3ab3809fa53eec1f4d39ce54",
+      "statement": "Make randomness seedable in tests and cryptographically secure in production where security requires it.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 972
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Testability, observability, and diagnosability"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Make randomness seedable in tests and cryptographically secure in production where security requires it.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Make randomness seedable in tests and cryptographically secure in production where security requires it.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-64212472",
+      "revision": 1,
+      "semantic_sha256": "64212472c91089b632144f069bb57f42d89c7a64dadacca6adf461c6ef1defd0",
+      "statement": "Provide controlled clocks for testing time behavior.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 973
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Testability, observability, and diagnosability"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Provide controlled clocks for testing time behavior.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Provide controlled clocks for testing time behavior.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C3D32C77",
+      "revision": 1,
+      "semantic_sha256": "c3d32c77ee5599c1f769ce3376b5da883e44537cdd7b871ca53d8df8e7b402c8",
+      "statement": "Expose observable outcomes for state transitions, retries, reconciliation, queueing, and partial failure.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 974
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality, Correctness, and Maintainability",
+        "Testability, observability, and diagnosability"
+      ],
+      "primary_packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-003",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The rule “Expose observable outcomes for state transitions, retries, reconciliation, queueing, and partial failure.” is deterministic when a sealed inventory and versioned rule-specific contract define its scope; its required record fields, syntax, configuration, or bounded result are exact comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "For the sealed assessed scope, verify the versioned acceptance contract for: Expose observable outcomes for state transitions, retries, reconciliation, queueing, and partial failure.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    }
+  ]
+}

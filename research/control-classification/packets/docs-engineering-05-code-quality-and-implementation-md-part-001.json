@@ -1,0 +1,3761 @@
+{
+  "schema_version": "prc.control-classification-packet/v0.1",
+  "packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "source_path": "docs/engineering/05-code-quality-and-implementation.md",
+  "control_count": 250,
+  "controls": [
+    {
+      "control_id": "USEQ-1A47E1A7",
+      "revision": 1,
+      "semantic_sha256": "1a47e1a759aab606a6d06df3522c939c80c47d026c331d06be29852953f72248",
+      "statement": "Every critical journey passes positive, negative, boundary, invalid-input, empty-state, maximum-size, and high-volume tests.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 15
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Functional Correctness and Business Logic",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-6CEC2D29",
+      "revision": 1,
+      "semantic_sha256": "6cec2d29b4699f97f213760d25e09e9fd48b2d03970de6596e0c853c7d11b87a",
+      "statement": "Duplicate submissions, refreshes, retries, browser navigation, and network interruption do not create unintended duplicate effects or corrupt state.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 16
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Functional Correctness and Business Logic",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-CA554C6A",
+      "revision": 1,
+      "semantic_sha256": "ca554c6a68aee7e0ee2e5b8274035e2f37aaf14406fac86253f5e8e7029d49d5",
+      "statement": "Race conditions are tested around balances, inventory, permissions, limits, quotas, and state transitions.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 17
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Functional Correctness and Business Logic",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-C2C592DA",
+      "revision": 1,
+      "semantic_sha256": "c2c592da26043cc304f68a5b2c82265c6ba4cc5049937125c5858d48bb08e963",
+      "statement": "Invalid state-transition ordering is rejected.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 18
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Functional Correctness and Business Logic",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-FBD441AF",
+      "revision": 1,
+      "semantic_sha256": "fbd441afc3fd7653624093771bbd213cb07f8137ef75ec2e351d072d90a5e66d",
+      "statement": "Partial failures cannot leave ambiguous or silently inconsistent results.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 19
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Functional Correctness and Business Logic",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-4C913037",
+      "revision": 1,
+      "semantic_sha256": "4c913037d60966855ccbaeb94bd4edd441e3381b5f0af3e8bdde0235d2de62f0",
+      "statement": "Eventually consistent operations expose correct pending, completed, and failed states.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 20
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Functional Correctness and Business Logic",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-F667636D",
+      "revision": 1,
+      "semantic_sha256": "f667636dbc4228521f46533f8e89d97de878b7b28ce52793cb091e24dccb1ba4",
+      "statement": "Reconciliation detects missing, duplicated, and mismatched records.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 21
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Functional Correctness and Business Logic",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-24D602A2",
+      "revision": 1,
+      "semantic_sha256": "24d602a2b43ae7a409ff2c608503bf7c2c05023dc0787c4269ef5a958c581c88",
+      "statement": "Money uses correct decimal, currency, tax, exchange-rate, and rounding behavior.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 22
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Functional Correctness and Business Logic",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-814D36E1",
+      "revision": 1,
+      "semantic_sha256": "814d36e1c2e800e459468295863320a9a6ac86d630972f4be80ad148cc4f2d05",
+      "statement": "Unicode, normalization, collation, case behavior, and confusable characters do not create duplicates or bypasses.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 23
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Functional Correctness and Business Logic",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-55D4825F",
+      "revision": 1,
+      "semantic_sha256": "55d4825fdffcbb2f3016609170bf5e708b61439bb2238ea57a7818474f22cd4c",
+      "statement": "Limits and quotas are enforced at a trusted server-side boundary.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 24
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Functional Correctness and Business Logic",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-5FF60A0C",
+      "revision": 1,
+      "semantic_sha256": "5ff60a0c877c191571fd138f548fa2f0fe59dbc565d8d9032a49f5fba640108e",
+      "statement": "Approval and multi-person authorization workflows cannot be bypassed.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 25
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Functional Correctness and Business Logic",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-4DE12FD4",
+      "revision": 1,
+      "semantic_sha256": "4de12fd47e3f18706a6bbb6a28485767073ba31c80d00fe69b6cd0fa235ce657",
+      "statement": "Suspension and termination affect all relevant sessions, tokens, workers, integrations, and cached permissions.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 26
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Functional Correctness and Business Logic",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-D0B81370",
+      "revision": 1,
+      "semantic_sha256": "d0b813707a50308a1a90da3e181651303d8bf5c1e062768e87b01fbbc0fe7f2d",
+      "statement": "Long-running operations resume safely or fail clearly.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 27
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Functional Correctness and Business Logic",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-2136C6A9",
+      "revision": 1,
+      "semantic_sha256": "2136c6a9d2d2e1733b26cea06181bb0b7a98730ff15db07a907d245285aed791",
+      "statement": "Scheduled jobs handle missed runs, overlap, retry, and duplicate execution.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 28
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Functional Correctness and Business Logic",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-E608D673",
+      "revision": 1,
+      "semantic_sha256": "e608d6735286cb287e3e63b45a144e00c1c0ad0f111c9706111ef0606b7e8cf1",
+      "statement": "Background jobs preserve correct user, authorization, and tenant context.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 29
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Functional Correctness and Business Logic",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-04FA8EC6",
+      "revision": 1,
+      "semantic_sha256": "04fa8ec6008ff590d41c5739a78093487321af2280f948f75d182fdef1a187ff",
+      "statement": "Dead-lettered work can be inspected and replayed safely.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 30
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Functional Correctness and Business Logic",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-D138E3DB",
+      "revision": 1,
+      "semantic_sha256": "d138e3db1b10b4b5552e64daa417d61de95d8b6cca9e39253133d00adbb0cde4",
+      "statement": "Support tools cannot create unsupported or impossible states.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 31
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Functional Correctness and Business Logic",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-A0B1E367",
+      "revision": 1,
+      "semantic_sha256": "a0b1e367f1eada4a95f7972ee472bd77537842c95bc2d4e87f1f7a1351f3cb15",
+      "statement": "Error messages provide a safe, actionable next step without exposing sensitive details.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 32
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Functional Correctness and Business Logic",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-948F079B",
+      "revision": 1,
+      "semantic_sha256": "948f079bd26e544105d5ffeacffcd0938b428570bfca18acd68ec5c5bc826cd8",
+      "statement": "All untrusted input sources are identified.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 40
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Input Validation, Output Encoding, and Safe Processing",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-7C5F1359",
+      "revision": 1,
+      "semantic_sha256": "7c5f135959f5fcfe5c9cfc6a3d23f79cf73b205352d144a2dac70cc7b83049b0",
+      "statement": "Input is validated for type, syntax, range, length, structure, and allowed values.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 41
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Input Validation, Output Encoding, and Safe Processing",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-4E8F864C",
+      "revision": 1,
+      "semantic_sha256": "4e8f864c9592a9d2476d074e40aa0accb0f731ec36f1ac326852112b674a4fc9",
+      "statement": "Canonicalization and normalization occur before security-sensitive comparison.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 42
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Input Validation, Output Encoding, and Safe Processing",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-EC27C7B3",
+      "revision": 1,
+      "semantic_sha256": "ec27c7b3a1d34278b8e864ff2d11d693d61146f254bacc72b85b2f447f333156",
+      "statement": "Allowlists are used where a finite valid set exists.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 43
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Input Validation, Output Encoding, and Safe Processing",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-3A437981",
+      "revision": 1,
+      "semantic_sha256": "3a437981fef36d9720d0f6b91892a25b67568c8b591ff5fee263cb697f239f45",
+      "statement": "Operating-system commands are not constructed from untrusted input.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 44
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Input Validation, Output Encoding, and Safe Processing",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-4E590049",
+      "revision": 1,
+      "semantic_sha256": "4e590049e6e7cdee04489ab6ee03256aff9036a1d0c1beebe8c9eed45949ec35",
+      "statement": "Directory, query, search, template, expression, mail, logging, and interpreter contexts use safe APIs.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 45
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Input Validation, Output Encoding, and Safe Processing",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-D96C2840",
+      "revision": 1,
+      "semantic_sha256": "d96c28402390db8d1041d6cf91005a6f170838ee678c597176ead75e6c49e9ca",
+      "statement": "Rich text or markup is sanitized with an appropriate maintained sanitizer.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 46
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Input Validation, Output Encoding, and Safe Processing",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-1A1943A0",
+      "revision": 1,
+      "semantic_sha256": "1a1943a00079fea1e69856d512d62d79ea4fb8ee70c5171994c1cf67a543af65",
+      "statement": "Unsafe deserialization is avoided; expected types and structures are bounded.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 47
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Input Validation, Output Encoding, and Safe Processing",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-94B4DD17",
+      "revision": 1,
+      "semantic_sha256": "94b4dd175d01181e363af54007383b6c97c895b582bf67cdb7390c72d9446f23",
+      "statement": "XML processing disables unnecessary external entities and resources.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 48
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Input Validation, Output Encoding, and Safe Processing",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-F5787145",
+      "revision": 1,
+      "semantic_sha256": "f57871451e72d0c7f6447b5ee4b2900f71e882802ac005d22721648c72eb0322",
+      "statement": "Path traversal, archive traversal, symbolic-link abuse, and filesystem races are prevented or controlled.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 49
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Input Validation, Output Encoding, and Safe Processing",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-7008ECFF",
+      "revision": 1,
+      "semantic_sha256": "7008ecff4e6d20e738075c459b613c2bb44000f0bb624033a0e40c848bd48a14",
+      "statement": "Server-side request-forgery protections constrain protocol, destination, redirects, DNS resolution, and metadata endpoints.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 50
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Input Validation, Output Encoding, and Safe Processing",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-032834EB",
+      "revision": 1,
+      "semantic_sha256": "032834ebbd614356d3ad3e3bf1676ed7e8d8f06470a1c79d4339d4d424ff09f4",
+      "statement": "Header, response-splitting, log, CSV/formula, and email injection are addressed.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 51
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Input Validation, Output Encoding, and Safe Processing",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-B50A09FA",
+      "revision": 1,
+      "semantic_sha256": "b50a09fae0105d64afcf755864dec5e1751b82b10f6a475e68c431f076204517",
+      "statement": "Object and property injection through automatic binding or merging is addressed.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 52
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Input Validation, Output Encoding, and Safe Processing",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-8E9BA9B9",
+      "revision": 1,
+      "semantic_sha256": "8e9ba9b9a13fc5c470a81476807348657625393c3be06b168352d56b59cddb6d",
+      "statement": "Unicode confusables and normalization cannot bypass validation or identity checks.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 53
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Input Validation, Output Encoding, and Safe Processing",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-FDCA6C71",
+      "revision": 1,
+      "semantic_sha256": "fdca6c7137566b6c5daa14dd83dbc48b0abf779949bcfd2eb0afb5213ae1fee5",
+      "statement": "A current operating entry point or README exists.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 61
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Maintainability and Long-Term Operability",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-F564C015",
+      "revision": 1,
+      "semantic_sha256": "f564c0155872b14a6b3ea74bfc0c79451e35fa938ee4c421930ace3f120d9372",
+      "statement": "Architecture, data flow, dependencies, deployment, recovery, and local setup are documented.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 62
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Maintainability and Long-Term Operability",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-AB553CE4",
+      "revision": 1,
+      "semantic_sha256": "ab553ce4cdb5c89ea927427dacbd7ea5673d14ddeb55a59afa8660b77ec45284",
+      "statement": "Build, test, migration, deployment, and troubleshooting commands are documented.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 63
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Maintainability and Long-Term Operability",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-F1784541",
+      "revision": 1,
+      "semantic_sha256": "f17845417961591008ed99070de7a3c6c4899050c4393bb2f79666412e156c59",
+      "statement": "Coding, review, testing, security, release, and support conventions are documented.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 64
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Maintainability and Long-Term Operability",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-7CBEA80E",
+      "revision": 1,
+      "semantic_sha256": "7cbea80e462499ff834cd1404f78b2c0c0ffaead8cb7db4e850dea4d64b60cae",
+      "statement": "Critical code and systems have appropriate maintainers.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 65
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Maintainability and Long-Term Operability",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-3FF4CC5B",
+      "revision": 1,
+      "semantic_sha256": "3ff4cc5bcdbbd9b04e5801d5ae1af0016c79f40b9a00657d0efa846f26af9ba5",
+      "statement": "Complexity, coupling, and operational burden are reviewed.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 66
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Maintainability and Long-Term Operability",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-B6E04832",
+      "revision": 1,
+      "semantic_sha256": "b6e04832886ee146bf6f83e5f85932d99cbc8aca24c727a16dbdae08afd9ec7d",
+      "statement": "Dead code, obsolete paths, stale flags, and unsupported compatibility layers are removed.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 67
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Maintainability and Long-Term Operability",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-6EF014F9",
+      "revision": 1,
+      "semantic_sha256": "6ef014f95d9a1bf143462adde078d3d97d8ab16ca5718f5343c216cbb80d7459",
+      "statement": "Runtime, platform, protocol, certificate, and dependency end-of-support dates are tracked.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 68
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Maintainability and Long-Term Operability",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-2B9BF81E",
+      "revision": 1,
+      "semantic_sha256": "2b9bf81e544a11dc0b4dc305be3a1926f3ed25d95d3d21af6434b55176b90461",
+      "statement": "Technical debt affecting reliability, security, privacy, accessibility, or operability is recorded.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 69
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Maintainability and Long-Term Operability",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-BBB6533E",
+      "revision": 1,
+      "semantic_sha256": "bbb6533e9fcf6a225f023612ef8cd605f86142c86b588a0810ab4816f7f999d7",
+      "statement": "API, data, feature, and client deprecation policies exist.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 70
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Maintainability and Long-Term Operability",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-FA1B43F8",
+      "revision": 1,
+      "semantic_sha256": "fa1b43f884d635ecc28c3ac6c0d414615dc8799ffceda8f9851df62d323366d0",
+      "statement": "Support personnel are trained on released behavior.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 71
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Maintainability and Long-Term Operability",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-967C2427",
+      "revision": 1,
+      "semantic_sha256": "967c24273b6f56fa0cc966ace51e66caf2c0d9af24c8f85e446ae382bf5a2eea",
+      "statement": "Known issues and limitations are communicated accurately.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 72
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Maintainability and Long-Term Operability",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-F534424C",
+      "revision": 1,
+      "semantic_sha256": "f534424c427a6f04bfad69400916863d2936a55adc3b30cd925f437f3e0683f1",
+      "statement": "Maintenance windows and communications are defined.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 73
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Maintainability and Long-Term Operability",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-51159B9E",
+      "revision": 1,
+      "semantic_sha256": "51159b9e7838ebfc0816e71aa51f17e2daf35d843dcdcf056e6ba3fb9a535484",
+      "statement": "Decommissioning, end-of-service export, retention, archival, and secure deletion have documented plans.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 74
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Maintainability and Long-Term Operability",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-8FA820FA",
+      "revision": 1,
+      "semantic_sha256": "8fa820fa643dd07e5028b2cabd8caeb15a4a5f42314ddd0b0c369f1f76b8db1d",
+      "statement": "Make code behavior satisfy explicit requirements and preserve documented invariants.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 82
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-6992FD80",
+      "revision": 1,
+      "semantic_sha256": "6992fd80ee0a23e9dac1c8e36cb55603043a1e2b75ae7ccf4bd241a19de0935f",
+      "statement": "Choose representations, algorithms, and control flow that make correctness apparent.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 83
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-5D133AD0",
+      "revision": 1,
+      "semantic_sha256": "5d133ad090c5c0b5a265881edc5b69ab09b3fb2a03e5ea809dc851977bea2494",
+      "statement": "Keep units small enough to understand while preserving cohesive behavior.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 84
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D34491E9",
+      "revision": 1,
+      "semantic_sha256": "d34491e934e7a14cfbe6be428279311a594720d69257976d1944d9e8dcf599d8",
+      "statement": "Use clear names that reflect domain meaning, units, ownership, and side effects.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 85
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-C7003C4F",
+      "revision": 1,
+      "semantic_sha256": "c7003c4f9d6e43c86fdeec699e7a6f3551fc13d30dd3a53ffc8bf64e46e5eb77",
+      "statement": "Prefer explicit data flow, dependencies, state transitions, and error paths.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 86
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-3AB6A8DF",
+      "revision": 1,
+      "semantic_sha256": "3ab6a8df7b3c65b60d6ca25ed135fe54dbaaf81f37ee5d609bf96e39633a1071",
+      "statement": "Avoid surprising implicit conversion, mutation, global state, order dependence, and hidden I/O.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 87
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-AE80C3B2",
+      "revision": 1,
+      "semantic_sha256": "ae80c3b2696568904f65ece107c774ffa73bedee8bd4afbb3524a1721f228ce1",
+      "statement": "Validate untrusted input at trust boundaries and preserve validated types internally.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 88
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-1248940A",
+      "revision": 1,
+      "semantic_sha256": "1248940a23fbe9a3ebfceeb18c96a46793911e74d2cfe0076e553e8edb7ae627",
+      "statement": "Keep authorization, privacy, safety, and business rules in enforceable trusted locations.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 89
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-166192E3",
+      "revision": 1,
+      "semantic_sha256": "166192e305343010cb8f87c1850e630b009bccf771178f400e9e11b230ca3f6a",
+      "statement": "Handle every resource, transaction, lock, stream, handle, and subscription through a defined lifecycle.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 90
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-1D7ED71D",
+      "revision": 1,
+      "semantic_sha256": "1d7ed71d9168e82a1cece32a2e85358676089dd61cf84dd0d9afb285e677e19f",
+      "statement": "Use abstractions only when they reduce total understanding and change cost.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 91
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-0CC65394",
+      "revision": 1,
+      "semantic_sha256": "0cc6539433f5f63ec093b9881396c9e23b299327e91c3b6981b94a32462cbf67",
+      "statement": "Keep comments focused on intent, constraints, trade-offs, and non-obvious reasons rather than restating syntax.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 92
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-B6439E9E",
+      "revision": 1,
+      "semantic_sha256": "b6439e9eca2d6f12bf0637ed3b71427c33b950a755b42c632919ad88d1dc6269",
+      "statement": "Delete unreachable, obsolete, duplicated, debug, and commented-out code.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 93
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-660F0A5E",
+      "revision": 1,
+      "semantic_sha256": "660f0a5e80464627ac914d7372ec8ecbeb9c88a87c45d24f5b47da13fe10d4ed",
+      "statement": "Treat warnings, static-analysis findings, and undefined behavior according to an explicit policy.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 94
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-2C162579",
+      "revision": 1,
+      "semantic_sha256": "2c162579f025a20f1c406bc334f80f72b1d936f7fadc82619e398f5d96e36a99",
+      "statement": "Make exceptional and degraded behavior deliberate rather than accidental fall-through.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 95
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-5BA83821",
+      "revision": 1,
+      "semantic_sha256": "5ba8382185480a1e8d8b7207f49a35bce5b5c395cad3e1e9bab193d3e7f53356",
+      "statement": "Use deterministic behavior where nondeterminism is not required.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 96
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-476447F8",
+      "revision": 1,
+      "semantic_sha256": "476447f8928fb60c041320036a5b4e782d5dba1ee4e6b4b59becd7cf8d0e9604",
+      "statement": "Avoid unbounded recursion, allocation, concurrency, retries, queues, and input size.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 97
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-B80088F6",
+      "revision": 1,
+      "semantic_sha256": "b80088f6e09efce6a6043b4f34c307324edb267c3da05952bac063f2f30a23a4",
+      "statement": "Make important behavior observable without logging secrets or sensitive data.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 98
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-509CC760",
+      "revision": 1,
+      "semantic_sha256": "509cc760758d88e61cdc5dc55eeffa72be7d1de20629fb6bf7e8bf30169b798a",
+      "statement": "Keep code reviewable through focused changes and stable formatting.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 99
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-F5EA5C82",
+      "revision": 1,
+      "semantic_sha256": "f5ea5c82c849aeb2a0c4328e8aa434306ba58289f4c926f9f0351196e5adabdc",
+      "statement": "Refactor when structure obscures correctness, but verify behavior before and after change.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 100
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-22CB2FA4",
+      "revision": 1,
+      "semantic_sha256": "22cb2fa4da22217f2bd4087420b17d43757773b0cc5e1a77ae199d6b078aaee0",
+      "statement": "Do not optimize without evidence; do not ignore known high-impact inefficiency.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 101
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-E95604AB",
+      "revision": 1,
+      "semantic_sha256": "e95604abc0dfb9f0b2a5574039ff10b6ef710f975870390acfa68eeb98fe8c74",
+      "statement": "Undefined or implementation-dependent behavior can affect critical correctness.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 105
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality",
+        "Category no-go conditions"
+      ]
+    },
+    {
+      "control_id": "USEQ-E66B032D",
+      "revision": 1,
+      "semantic_sha256": "e66b032d05c8e645305a2f15d15547ced1890f1906a22aede56bb5e8eb2fcd20",
+      "statement": "Critical logic cannot be explained, reviewed, or tested by another qualified engineer.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 106
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Universal Code Quality",
+        "Category no-go conditions"
+      ]
+    },
+    {
+      "control_id": "USEQ-DAF77C8F",
+      "revision": 1,
+      "semantic_sha256": "daf77c8f6238aabf0704e7d1ce9e9a8541eace85ed99d4aadd4e799996e1abb8",
+      "statement": "Use a consistent machine-enforced style so review focuses on behavior and design.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 114
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Readability, Naming, and Style",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-9AF5256A",
+      "revision": 1,
+      "semantic_sha256": "9af5256a2c4bb5f0fc2ae907bbd51131db6873b88ed9345a76e66fdc9d436746",
+      "statement": "Name concepts using the ubiquitous domain vocabulary agreed with stakeholders.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 115
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Readability, Naming, and Style",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-51F9CDC3",
+      "revision": 1,
+      "semantic_sha256": "51f9cdc3b9fe89903c7364f4899c3502cd6f20c4a688c0f409b77951973e1bea",
+      "statement": "Name booleans and predicates so truth meaning is unambiguous.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 116
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Readability, Naming, and Style",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-73138957",
+      "revision": 1,
+      "semantic_sha256": "7313895729db97067eb6eb6f959ac86404cb2f5893716b110007ef9b38aeb9eb",
+      "statement": "Include units, time basis, currency, encoding, and coordinate system where confusion is plausible.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 117
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Readability, Naming, and Style",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-63B6EFE7",
+      "revision": 1,
+      "semantic_sha256": "63b6efe7e0a6751e1cfcf96d500f18fb65d8587d738a7417c6c879419242be15",
+      "statement": "Distinguish identifiers, display labels, secrets, tokens, user input, and trusted values through naming and types.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 118
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Readability, Naming, and Style",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-0A590DC8",
+      "revision": 1,
+      "semantic_sha256": "0a590dc8c085a8f39dbde4f98f39568dc7af45f0e5f778b84720fbe96533ce8b",
+      "statement": "Avoid abbreviations unless they are standard and unambiguous in the relevant domain.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 119
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Readability, Naming, and Style",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-AA3301B8",
+      "revision": 1,
+      "semantic_sha256": "aa3301b80818087cd37591e13596a78c73a8ab7573af8419898493ccc1aa071a",
+      "statement": "Avoid misleading legacy names when behavior has changed.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 120
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Readability, Naming, and Style",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-DC209C03",
+      "revision": 1,
+      "semantic_sha256": "dc209c030d1027606864b367f8b5e3c3fb4ea29a98788111e911f529267f70eb",
+      "statement": "Keep related logic physically and conceptually close.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 121
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Readability, Naming, and Style",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-A69D553C",
+      "revision": 1,
+      "semantic_sha256": "a69d553c3f854f7e466426a00c14f330d9218643539bbfb72222fb2520cc717d",
+      "statement": "Order code to reveal the normal flow before exceptional detail where practical.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 122
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Readability, Naming, and Style",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-403F240B",
+      "revision": 1,
+      "semantic_sha256": "403f240b2fea5c65f04253ff5005caebca35062e63f4075ab6f1e986f8321b59",
+      "statement": "Use early returns or structured decomposition to limit unnecessary nesting.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 123
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Readability, Naming, and Style",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-1B3ECB70",
+      "revision": 1,
+      "semantic_sha256": "1b3ecb70ae143b3e91e580e675f00cbbb7e64d46d48e0eaf1cfd466a180a4c31",
+      "statement": "Avoid dense expressions that hide evaluation order, side effects, or error handling.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 124
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Readability, Naming, and Style",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-4697DF3E",
+      "revision": 1,
+      "semantic_sha256": "4697df3ed6d620e7b88ca18c1f6b3e278d56a0ed5de2e82b4b960b1fa5d6887c",
+      "statement": "Replace unexplained literals with named domain concepts when meaning is not obvious.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 125
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Readability, Naming, and Style",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-E621FB99",
+      "revision": 1,
+      "semantic_sha256": "e621fb99601d01154cfd5508d46724c99d901ffcdba336b33b0746bc69866121",
+      "statement": "Use comments to explain why constraints exist, including external quirks and security assumptions.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 126
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Readability, Naming, and Style",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-1729029B",
+      "revision": 1,
+      "semantic_sha256": "1729029bba3fd9bc2d0375e7f7cf79671f8bbc3df8e27bf1a12028fd5694b87f",
+      "statement": "Keep documentation synchronized with behavior or remove misleading documentation.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 127
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Readability, Naming, and Style",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-084F8B56",
+      "revision": 1,
+      "semantic_sha256": "084f8b561fb7b8fcd78e7c5bea3f32b8d70d9d71ddeef49dae1bf7be7bcd00ce",
+      "statement": "Write error messages that identify context and action without leaking sensitive information.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 128
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Readability, Naming, and Style",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-79C6A5E7",
+      "revision": 1,
+      "semantic_sha256": "79c6a5e7c6de98592db7b784533a6beb197a30a4fe976ff04114126ed69a072d",
+      "statement": "Use consistent terminology across code, schemas, APIs, UI, logs, tests, and documentation.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 129
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Readability, Naming, and Style",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-9914FF54",
+      "revision": 1,
+      "semantic_sha256": "9914ff54d8956619ee11ed07e33fc96b07535dfba1d2ef74361358291d5c50e3",
+      "statement": "Make public contracts readable without requiring knowledge of internal implementation.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 130
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Readability, Naming, and Style",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-F8A9898C",
+      "revision": 1,
+      "semantic_sha256": "f8a9898cad3868cd1396e5357b3a8457b226001a06adbbbc65e81e83d1b231bb",
+      "statement": "Use examples for complex contracts and edge semantics.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 131
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Readability, Naming, and Style",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-CD3455A4",
+      "revision": 1,
+      "semantic_sha256": "cd3455a49f3b46020b3a9eb8dbd1ba2fb11272c199f2fffc84762810b998f210",
+      "statement": "Prefer clarity over cleverness, novelty, terseness, or stylistic performance.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 132
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Readability, Naming, and Style",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-E67B4E95",
+      "revision": 1,
+      "semantic_sha256": "e67b4e9534543c6153b09bddcafbf2ae0c41071f702ecd4b98174b1cfc43cfd3",
+      "statement": "Review readability from the perspective of a competent maintainer unfamiliar with the change.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 133
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Readability, Naming, and Style",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-F39FA898",
+      "revision": 1,
+      "semantic_sha256": "f39fa8988c79f547c030ee55063ce3de144e71049ec1951aa4890d20e9c8c164",
+      "statement": "Abstract stable domain meaning rather than superficial syntax similarity.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 141
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Abstractions, Interfaces, and Contracts",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-C484D3B0",
+      "revision": 1,
+      "semantic_sha256": "c484d3b0aeeef79675096dcb273899bd9d44c453ae12edaa384754a3b8c04744",
+      "statement": "Define each public contract's purpose, inputs, outputs, errors, side effects, timing, ordering, ownership, and security expectations.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 142
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Abstractions, Interfaces, and Contracts",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-4EDDA552",
+      "revision": 1,
+      "semantic_sha256": "4edda552f023e5ce0c78ddd0f88b9f3ca0b21b334ab7a12eb603a36ac02d80e9",
+      "statement": "State preconditions, postconditions, invariants, and exceptional behavior.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 143
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Abstractions, Interfaces, and Contracts",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-84D5B294",
+      "revision": 1,
+      "semantic_sha256": "84d5b29421c9f0c6e0bb97bfb215c9aa002ea0c1d8adef0093381db809995d22",
+      "statement": "Keep contracts smaller than implementations and free from unnecessary implementation detail.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 144
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Abstractions, Interfaces, and Contracts",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-85DDD1B8",
+      "revision": 1,
+      "semantic_sha256": "85ddd1b8e0c0d064fa2b3be36d466381884dec92f914df9fc696d6d286b666e7",
+      "statement": "Hide representation so it can evolve without changing consumers.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 145
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Abstractions, Interfaces, and Contracts",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-6F3283A1",
+      "revision": 1,
+      "semantic_sha256": "6f3283a1e43654a3aaa1c3b573e8788480bb80e09628cf9418a8dd0f6bf5b013",
+      "statement": "Use types or schemas that make invalid states difficult or impossible to represent.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 146
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Abstractions, Interfaces, and Contracts",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-51A3C767",
+      "revision": 1,
+      "semantic_sha256": "51a3c7672b303a34c345a4566394d8d8d59ee8991eea79167f3818f9c6973d45",
+      "statement": "Avoid boolean flags and parameter combinations whose semantics are unclear.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 147
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Abstractions, Interfaces, and Contracts",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-82F98FD7",
+      "revision": 1,
+      "semantic_sha256": "82f98fd700cbe96ee47835480d78e084b542c48dd924e99c801b47607fe54ccc",
+      "statement": "Prefer cohesive parameter objects or explicit variants when arguments must change together.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 148
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Abstractions, Interfaces, and Contracts",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-04B47B17",
+      "revision": 1,
+      "semantic_sha256": "04b47b173bd6fae1cef591de91e00110eb09a3c1400e73ae970841328ad5b7a0",
+      "statement": "Prevent null, missing, sentinel, and optional values from carrying multiple ambiguous meanings.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 149
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Abstractions, Interfaces, and Contracts",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-66DD52CA",
+      "revision": 1,
+      "semantic_sha256": "66dd52ca128c17ffc37f06207ce0e12863aa2f91a711dbf814421597c084b119",
+      "statement": "Make mutability and ownership explicit.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 150
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Abstractions, Interfaces, and Contracts",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-781C734B",
+      "revision": 1,
+      "semantic_sha256": "781c734b54ba943484c98e28935f5a173a8114e354189212835c88f0374e6ba1",
+      "statement": "Do not expose writable internal collections or mutable references unintentionally.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 151
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Abstractions, Interfaces, and Contracts",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-48E6F214",
+      "revision": 1,
+      "semantic_sha256": "48e6f214721be521238dffdaca2a0b90cfce82310843d5e132eef08d6cfbaa47",
+      "statement": "Keep interface segregation aligned to consumer needs.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 152
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Abstractions, Interfaces, and Contracts",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-BF0669D4",
+      "revision": 1,
+      "semantic_sha256": "bf0669d4c026c54e8b089bead621b9aa04a3d13c960bfe772659c9f9c96827ae",
+      "statement": "Provide stable error categories rather than forcing consumers to parse text.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 153
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Abstractions, Interfaces, and Contracts",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-1C9AF441",
+      "revision": 1,
+      "semantic_sha256": "1c9af441e7675619301f474d8626954c8d7d2720bbb4a29805efc9000afd0d3c",
+      "statement": "Define compatibility and versioning before publishing a contract outside one change boundary.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 154
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Abstractions, Interfaces, and Contracts",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-12574552",
+      "revision": 1,
+      "semantic_sha256": "1257455277dfd2721f6a1171ba872ef79b3b973cdf4d5d4b1da75dfc00d68713",
+      "statement": "Test contracts independently from implementations and across every substitute.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 155
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Abstractions, Interfaces, and Contracts",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-47C5760F",
+      "revision": 1,
+      "semantic_sha256": "47c5760fc09d391c95c3366ddfcd8d6a2db06b9c7fda67fcebb72ef688d7dd1d",
+      "statement": "Avoid wrapping every dependency when no policy, isolation, testability, or evolution benefit exists.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 156
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Abstractions, Interfaces, and Contracts",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D0944F6C",
+      "revision": 1,
+      "semantic_sha256": "d0944f6cbb12c9b74b51a7d3bda7ca79787dcde57f59f31570c69490370a0a08",
+      "statement": "Avoid generic abstractions that erase meaningful constraints.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 157
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Abstractions, Interfaces, and Contracts",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-73588D8A",
+      "revision": 1,
+      "semantic_sha256": "73588d8aba250e6600e92ceb1f0be1a01018c3c22edac1182dc5ad23f5647991",
+      "statement": "Document performance and resource characteristics when consumers can depend on them.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 158
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Abstractions, Interfaces, and Contracts",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-38607061",
+      "revision": 1,
+      "semantic_sha256": "38607061f888c8f6087f8d76d8aff49b148efe11607120f67cce15edda64f11f",
+      "statement": "Define cancellation, timeout, retry, and idempotency semantics for remote or long-running contracts.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 159
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Abstractions, Interfaces, and Contracts",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-A1CE1F63",
+      "revision": 1,
+      "semantic_sha256": "a1ce1f636d374ec0bfc9377860e961a335acec7085cfcd9f1c4363d689111660",
+      "statement": "Retire obsolete interfaces through monitored migration rather than indefinite parallel support.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 160
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Abstractions, Interfaces, and Contracts",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-0903254E",
+      "revision": 1,
+      "semantic_sha256": "0903254e9c8aaf0655970616062dd14f76366df7a78585f67ad190b9bc85f0cc",
+      "statement": "Define an error taxonomy that distinguishes validation, conflict, authorization, not-found, dependency, resource, timeout, cancellation, integrity, and internal failures.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 168
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Error Handling and Defensive Programming",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-DA42055F",
+      "revision": 1,
+      "semantic_sha256": "da42055f1d0f80bac68094d96487aace335a816c6bc5217c2b0ab361373c262b",
+      "statement": "Detect errors as close as practical to their source while handling them at the layer that has recovery context.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 169
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Error Handling and Defensive Programming",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-CD710602",
+      "revision": 1,
+      "semantic_sha256": "cd71060263fbc6ccff40f0e7b6631f9d1e7ef2f07a1ed0806a14743a967fdbd9",
+      "statement": "Do not ignore, overwrite, convert to success, or silently log-and-continue after an error that invalidates the operation.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 170
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Error Handling and Defensive Programming",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-50C6FF56",
+      "revision": 1,
+      "semantic_sha256": "50c6ff56bd4f716025d5b05d6231cc433aa076ba7f46e1f8e005d92562f0c22a",
+      "statement": "Preserve causal context while redacting secrets and sensitive data.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 171
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Error Handling and Defensive Programming",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-208AD931",
+      "revision": 1,
+      "semantic_sha256": "208ad931efad5c91bfe57ff2910511511e9073379161c894ec11bb281c716d19",
+      "statement": "Use structured error values rather than parsing human-readable strings.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 172
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Error Handling and Defensive Programming",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-8F5AF188",
+      "revision": 1,
+      "semantic_sha256": "8f5af188e7da4f770da50486ee43fe2791862f33e364da132d86d27901e8c4fa",
+      "statement": "Translate errors at boundaries without losing retryability, severity, and causal identity.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 173
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Error Handling and Defensive Programming",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-50874EC8",
+      "revision": 1,
+      "semantic_sha256": "50874ec8913e81b5f01cd5b15dc4eeaea84a8f75ed8902327a715c1b5ce6f63a",
+      "statement": "Fail closed for authorization, identity, privacy, safety, and integrity controls.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 174
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Error Handling and Defensive Programming",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-F69CB29C",
+      "revision": 1,
+      "semantic_sha256": "f69cb29c519b12fede59cb7e683668ceb9e7798d05b50502e019aef389742603",
+      "statement": "Avoid broad catch-all handling that masks programming defects or corrupt state.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 175
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Error Handling and Defensive Programming",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-60CEF31B",
+      "revision": 1,
+      "semantic_sha256": "60cef31bc3a0515007697ddf5fdc9f4d71408bc004481dcb0532f67c47f9799a",
+      "statement": "Ensure cleanup, rollback, lock release, and cancellation occur on every exit path.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 176
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Error Handling and Defensive Programming",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-13405F0D",
+      "revision": 1,
+      "semantic_sha256": "13405f0d30a6e7b7cb5a8750b651a25bd0e3b85b35eea03406d43b2a133f0233",
+      "statement": "Make retries explicit, bounded, delayed, and safe for the operation.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 177
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Error Handling and Defensive Programming",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-CF15A8BE",
+      "revision": 1,
+      "semantic_sha256": "cf15a8be6106bf4a22aaafd328997dc0daa8a1319bda7263d42203efa5cc1d2c",
+      "statement": "Separate user-facing guidance from diagnostic detail.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 178
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Error Handling and Defensive Programming",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-0E8AFB14",
+      "revision": 1,
+      "semantic_sha256": "0e8afb1492a8c45eebb343896b1468178dd7931247b316a667b22381ca3dea0f",
+      "statement": "Avoid exposing internal paths, queries, stack traces, keys, topology, or tenant information.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 179
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Error Handling and Defensive Programming",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-F07D674E",
+      "revision": 1,
+      "semantic_sha256": "f07d674ee6c1b4fed885fe49e9b54426d552e87fba830dcc842baf24a87b4dfe",
+      "statement": "Treat assertion and invariant failures as defects requiring investigation, not routine user errors.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 180
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Error Handling and Defensive Programming",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-3B20FCE0",
+      "revision": 1,
+      "semantic_sha256": "3b20fce0baae30bb4d62f3d9965716a43896c10c3314b00add32c12dc59dad92",
+      "statement": "Validate external assumptions and provider responses before use.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 181
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Error Handling and Defensive Programming",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-0C9AFBF3",
+      "revision": 1,
+      "semantic_sha256": "0c9afbf3c3c976784d05874223cd206e412205ca06be93a3f0c642dc9466d04e",
+      "statement": "Use defensive copies or immutable values when callers could corrupt shared state.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 182
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Error Handling and Defensive Programming",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-BACFAF4F",
+      "revision": 1,
+      "semantic_sha256": "bacfaf4f9af7b82ef5d0acbac80b97e31ef999c72a775d0feb6cbbf999934e5d",
+      "statement": "Bound input, recursion, allocation, loops, retries, and concurrency against resource exhaustion.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 183
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Error Handling and Defensive Programming",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-AA460D26",
+      "revision": 1,
+      "semantic_sha256": "aa460d26b72c730dd71db2daf1a7795fee4e9f92d0a3dcf42c263981021eb55c",
+      "statement": "Define safe fallback and degraded behavior before failures occur.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 184
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Error Handling and Defensive Programming",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-F2F9031A",
+      "revision": 1,
+      "semantic_sha256": "f2f9031acbf2545a1c9d5ab4d015e8d3fa7c89d9ab0b8881637476754081eca7",
+      "statement": "Make partial success explicit and reconcilable.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 185
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Error Handling and Defensive Programming",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-A45DF449",
+      "revision": 1,
+      "semantic_sha256": "a45df449024bd73285fcfbb8f0ad8e6646d11112297c2aeab468d36da771fa68",
+      "statement": "Test error injection at every material dependency and state transition.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 186
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Error Handling and Defensive Programming",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-718A1C3D",
+      "revision": 1,
+      "semantic_sha256": "718a1c3d0c46d76b8dfb12e000564acef1c38af2039d40674d7b4758d27fe854",
+      "statement": "Monitor unexpected error classes and repeated recoveries as signals of systemic defects.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 187
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Error Handling and Defensive Programming",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-F5CCDCCC",
+      "revision": 1,
+      "semantic_sha256": "f5ccdccc1ee44db1bbb4ae7047b29cc970e4291ae77230b80d462d1f363287e4",
+      "statement": "A critical operation can report success after losing, duplicating, corrupting, or failing to authorize its effect.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 191
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Error Handling and Defensive Programming",
+        "Category no-go conditions"
+      ]
+    },
+    {
+      "control_id": "USEQ-A1DBD310",
+      "revision": 1,
+      "semantic_sha256": "a1dbd310b5b6d5c9fb2aaf500732492c8d7da9a7ca44a288495172191a6d474f",
+      "statement": "Errors can leave security or business invariants silently violated.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 192
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Error Handling and Defensive Programming",
+        "Category no-go conditions"
+      ]
+    },
+    {
+      "control_id": "USEQ-A3BE3A81",
+      "revision": 1,
+      "semantic_sha256": "a3be3a81026305d9c8806b423d250f08accf92cee07dcdffb270eef20ec3826a",
+      "statement": "Identify every finite resource used by the code, including memory, files, sockets, connections, threads, tasks, locks, handles, subscriptions, and temporary storage.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 200
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Resource Lifecycle, Memory, and Cleanup",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-0836A8FC",
+      "revision": 1,
+      "semantic_sha256": "0836a8fc2f04ca8256117de1d5acb165b5dc3df0e43d125b7ed63df1f7471f37",
+      "statement": "Make resource ownership and transfer explicit.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 201
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Resource Lifecycle, Memory, and Cleanup",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-00041688",
+      "revision": 1,
+      "semantic_sha256": "00041688e3071a9987a5dc0d94ae12a73287367c5b8678a22c8d5567ae841267",
+      "statement": "Acquire resources as late as practical and release them as early as safe.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 202
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Resource Lifecycle, Memory, and Cleanup",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-FEF94073",
+      "revision": 1,
+      "semantic_sha256": "fef940732d260356dc1e851f5ec2944139751ff52f6a200b5ea921a6ab21120d",
+      "statement": "Use structured lifetime mechanisms so cleanup occurs on success, error, cancellation, and timeout.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 203
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Resource Lifecycle, Memory, and Cleanup",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-1AF33210",
+      "revision": 1,
+      "semantic_sha256": "1af33210ce5c3eac5eb06dcefc2afb4b13c3507f88050f20f1c0ecbd56321323",
+      "statement": "Prevent double release, use-after-release, dangling references, and ownership ambiguity.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 204
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Resource Lifecycle, Memory, and Cleanup",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-12D8A914",
+      "revision": 1,
+      "semantic_sha256": "12d8a914e843f4a076d62b8ac3137cbd688c42e01447aec55f04077181494c38",
+      "statement": "Bound pools, queues, buffers, caches, batches, and concurrency.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 205
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Resource Lifecycle, Memory, and Cleanup",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-7233DE8D",
+      "revision": 1,
+      "semantic_sha256": "7233de8d9fbfbaa48b9a611df6feb22cc905661455a251ca3cbc9993bbe41fc0",
+      "statement": "Set timeouts and cancellation for operations that can wait indefinitely.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 206
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Resource Lifecycle, Memory, and Cleanup",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-743D7427",
+      "revision": 1,
+      "semantic_sha256": "743d7427866b205dcd1a33b7e00e5e90ca14980e6837b884b94a6727cf83bd68",
+      "statement": "Avoid holding scarce resources across user input, network calls, or long computation without justification.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 207
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Resource Lifecycle, Memory, and Cleanup",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-4204983E",
+      "revision": 1,
+      "semantic_sha256": "4204983efea57207f5a1c03a1365900a3c4c521f0acf4542d0a49be4b49c289b",
+      "statement": "Size pools from measured demand and downstream capacity rather than arbitrary defaults.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 208
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Resource Lifecycle, Memory, and Cleanup",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-C16F962C",
+      "revision": 1,
+      "semantic_sha256": "c16f962cf6111605cd1dcf3a4052d9d113661a0668009df2bd6996ffe7b6e027",
+      "statement": "Prevent pool exhaustion from causing uncontrolled retry or cascading failure.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 209
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Resource Lifecycle, Memory, and Cleanup",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-353D14C8",
+      "revision": 1,
+      "semantic_sha256": "353d14c85b2c185e06a2e59bebac2f3bc6ac620ef15405a8ab1ebaab840d51ae",
+      "statement": "Clean temporary, orphaned, expired, and abandoned resources reliably.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 210
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Resource Lifecycle, Memory, and Cleanup",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-21DBD1D6",
+      "revision": 1,
+      "semantic_sha256": "21dbd1d640b39edb72c847843528182ddbf8825b96f22bd9706ab6b0d1bc84b1",
+      "statement": "Handle partial acquisition by releasing already-acquired resources.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 211
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Resource Lifecycle, Memory, and Cleanup",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-4A482940",
+      "revision": 1,
+      "semantic_sha256": "4a4829403ad61cb87668c1735729c5d2e24ceedf98c978d9b7cca5cb459fe603",
+      "statement": "Avoid unbounded object retention through listeners, closures, caches, registries, or diagnostic context.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 212
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Resource Lifecycle, Memory, and Cleanup",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-3A5B2F4F",
+      "revision": 1,
+      "semantic_sha256": "3a5b2f4f5eaf7970306dbfa874e04b7449924917876b292c93374b1bbc66feb7",
+      "statement": "Measure memory, allocation, handle, connection, and thread behavior under sustained load.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 213
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Resource Lifecycle, Memory, and Cleanup",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-3E450704",
+      "revision": 1,
+      "semantic_sha256": "3e4507041101f0a0e8d33dbbddf29df679448f840a61aed71f8435361a001895",
+      "statement": "Test resource exhaustion and recovery.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 214
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Resource Lifecycle, Memory, and Cleanup",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-EB0A5E6E",
+      "revision": 1,
+      "semantic_sha256": "eb0a5e6e873fa501a2f9b8f6e9dd2dcf1f4f45ea39c8f317fa76ab31db10bda7",
+      "statement": "Make spill, eviction, rejection, and load-shedding behavior explicit.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 215
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Resource Lifecycle, Memory, and Cleanup",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-E9F27341",
+      "revision": 1,
+      "semantic_sha256": "e9f2734134ef9849047e3ef6924d487ed2f0a6a5deef1b6088380986011a5541",
+      "statement": "Protect shared resources from noisy neighbors.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 216
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Resource Lifecycle, Memory, and Cleanup",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-24A3BDC9",
+      "revision": 1,
+      "semantic_sha256": "24a3bdc97640a1e7bd29c040a06eac7b730d580eb25761a6f1fcb20e4fe2d86d",
+      "statement": "Avoid performing cleanup that can delete another operation's or tenant's resources.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 217
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Resource Lifecycle, Memory, and Cleanup",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-13140E4F",
+      "revision": 1,
+      "semantic_sha256": "13140e4f8134e41126ce38235b119796702c0e314eac29300c6e2783178a68f9",
+      "statement": "Make resource limits configurable, validated, documented, and observable.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 218
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Resource Lifecycle, Memory, and Cleanup",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-1A94D768",
+      "revision": 1,
+      "semantic_sha256": "1a94d768e123316cf3aaed93738049ac278591550f22d214b2b1587bb8dd7edc",
+      "statement": "Verify that shutdown drains, transfers, persists, or safely abandons in-flight work.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 219
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Resource Lifecycle, Memory, and Cleanup",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D1B25825",
+      "revision": 1,
+      "semantic_sha256": "d1b2582529994e0576885e56e7f115a49a22e9a76e41775cd5cf546ada8f7f69",
+      "statement": "Use concurrency only where it provides required responsiveness, throughput, isolation, or latency benefit.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 227
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Concurrent, Asynchronous, and Parallel Code",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D464A4C5",
+      "revision": 1,
+      "semantic_sha256": "d464a4c5dc3519f99cc07b3108c593587f2e4b1840f90da75f06d3aca5dfce47",
+      "statement": "Define which state is shared, immutable, thread-confined, message-owned, or synchronized.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 228
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Concurrent, Asynchronous, and Parallel Code",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-0C811996",
+      "revision": 1,
+      "semantic_sha256": "0c811996b0c7671e22df1a9eb7e8428b2ed9c2e37acf78e8224e2324cbedc194",
+      "statement": "Prefer ownership transfer and immutability over shared mutation.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 229
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Concurrent, Asynchronous, and Parallel Code",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-8D0CC00B",
+      "revision": 1,
+      "semantic_sha256": "8d0cc00b5c7fa1101b100cf8196a9116ee0f6551fd8f91c7039d6b8027a593d3",
+      "statement": "Protect every shared invariant with a coherent synchronization strategy.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 230
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Concurrent, Asynchronous, and Parallel Code",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-EDE64E87",
+      "revision": 1,
+      "semantic_sha256": "ede64e87e30ac06093950108df23f4dce1598211d11207478c55de66c8e64fc8",
+      "statement": "Avoid blocking operations on event loops, cooperative schedulers, or latency-critical threads.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 231
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Concurrent, Asynchronous, and Parallel Code",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-6944D6B8",
+      "revision": 1,
+      "semantic_sha256": "6944d6b86b65ca69d889387aa2adbbf3b7eb098efad8a4cbedd1857ce51c9889",
+      "statement": "Bound task creation, fan-out, parallelism, queues, and in-flight work.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 232
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Concurrent, Asynchronous, and Parallel Code",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-6BCF0D32",
+      "revision": 1,
+      "semantic_sha256": "6bcf0d325a0d6332c66dd242b7adb9c253fc8cee820fd9ded60e71c32d3fbf73",
+      "statement": "Propagate cancellation, deadlines, tenant context, identity, trace context, and request scope correctly.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 233
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Concurrent, Asynchronous, and Parallel Code",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-9136B800",
+      "revision": 1,
+      "semantic_sha256": "9136b80041a2d7aa9a92ac06a73b4a63138fbb25fbcb9a02b0d7e8211a9319cc",
+      "statement": "Do not detach background work without ownership, error handling, lifecycle, and shutdown behavior.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 234
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Concurrent, Asynchronous, and Parallel Code",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-2854EA57",
+      "revision": 1,
+      "semantic_sha256": "2854ea575b6e3fcd5942bbd5492560a8bc9a40fb9aba27c82429add8b20c73f2",
+      "statement": "Define ordering and completion semantics explicitly.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 235
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Concurrent, Asynchronous, and Parallel Code",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-38212874",
+      "revision": 1,
+      "semantic_sha256": "38212874c9fdf4a26639900eb665abf5ebd3facb27539f21269b47bf8b74d2d0",
+      "statement": "Prevent races between timeout, cancellation, completion, retry, and cleanup.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 236
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Concurrent, Asynchronous, and Parallel Code",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-1AC46AF9",
+      "revision": 1,
+      "semantic_sha256": "1ac46af9676b09db99a34ab602a07e077c7ba7c4c830c03e43fb4e33ceac1239",
+      "statement": "Avoid holding locks while invoking untrusted, remote, or reentrant code.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 237
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Concurrent, Asynchronous, and Parallel Code",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-B3FAEE44",
+      "revision": 1,
+      "semantic_sha256": "b3faee44777186509522e345a6797036448038736cafa74d3d34c60fbf8e77d8",
+      "statement": "Use lock ordering or lock-free designs deliberately to prevent deadlock.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 238
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Concurrent, Asynchronous, and Parallel Code",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-A5FFFB7A",
+      "revision": 1,
+      "semantic_sha256": "a5fffb7a7df9c7d13a594952909ef86b71b1b8c1727356222eb978acf1ae9ba9",
+      "statement": "Protect against starvation, livelock, priority inversion, and unfair scheduling.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 239
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Concurrent, Asynchronous, and Parallel Code",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-8EF6EF5A",
+      "revision": 1,
+      "semantic_sha256": "8ef6ef5a38b0c1cd2e697e11cb53c81a84456a8ec3a22322e69bec27ad6053fc",
+      "statement": "Make async errors observable and attributable to the initiating work.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 240
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Concurrent, Asynchronous, and Parallel Code",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-41B0B0C5",
+      "revision": 1,
+      "semantic_sha256": "41b0b0c5f8351c032af86b3522e9d336216cce2df88199d7400470c165448a2f",
+      "statement": "Preserve idempotency when work can be retried or duplicated.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 241
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Concurrent, Asynchronous, and Parallel Code",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-B4C195BA",
+      "revision": 1,
+      "semantic_sha256": "b4c195ba5b402bf3b22ec5515c30a82aaaeb769ba51f231b27c33947b467f203",
+      "statement": "Test under randomized scheduling, high contention, slow dependencies, cancellation, and shutdown.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 242
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Concurrent, Asynchronous, and Parallel Code",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-4C15F6BF",
+      "revision": 1,
+      "semantic_sha256": "4c15f6bff74940452fecb22b63986977dcee9293ff4cea271364d1016f182f8d",
+      "statement": "Use race detectors, deterministic schedulers, model checking, or stress tools where available and appropriate.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 243
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Concurrent, Asynchronous, and Parallel Code",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-4D867D6C",
+      "revision": 1,
+      "semantic_sha256": "4d867d6c0e45e5dbae2e82884f0fbba1935bfccc86f7f47374ca17441a0e015a",
+      "statement": "Document memory visibility and consistency assumptions where the execution model requires it.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 244
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Concurrent, Asynchronous, and Parallel Code",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-272FFC6D",
+      "revision": 1,
+      "semantic_sha256": "272ffc6d914fbfacd99b6a6bb4565524d00bf6730f040ceed5085f7dfefc44a7",
+      "statement": "Treat nondeterministic test failures as defects rather than normal noise.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 245
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Concurrent, Asynchronous, and Parallel Code",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-95839798",
+      "revision": 1,
+      "semantic_sha256": "9583979864ae091c0270fceded9ba98750558964c19bda0b5733e3d4557843da",
+      "statement": "Verify that parallel execution does not violate rate, quota, ordering, or downstream capacity limits.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 246
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Concurrent, Asynchronous, and Parallel Code",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-2C7B2D29",
+      "revision": 1,
+      "semantic_sha256": "2c7b2d29e15613711de794d772c741f9c138a4667b6d6539034fb175fc082d0b",
+      "statement": "Define a schema, type, allowed range, default, sensitivity, owner, and description for every configuration value.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 254
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Configuration and Feature-Flag Code Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-88C70738",
+      "revision": 1,
+      "semantic_sha256": "88c70738984e5a99f604a4fc2333ad06d9b11075b4df072a747ae480bf95bc85",
+      "statement": "Validate all configuration before serving work and fail safely on invalid critical values.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 255
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Configuration and Feature-Flag Code Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-3AE6779A",
+      "revision": 1,
+      "semantic_sha256": "3ae6779a215d54de8cc396e056429058ac183a8b7c745a0cad79eef61ee14e44",
+      "statement": "Make precedence across defaults, files, environment, remote sources, and command-line input explicit.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 256
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Configuration and Feature-Flag Code Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-B0283141",
+      "revision": 1,
+      "semantic_sha256": "b0283141e6a923048c6c110ff5f2ec1366b8194bf33bde05f52c1f7dd17ab6de",
+      "statement": "Avoid configuration values whose meaning changes by undocumented convention.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 257
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Configuration and Feature-Flag Code Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-EEC9584F",
+      "revision": 1,
+      "semantic_sha256": "eec9584fd6ca1182c7c2e69bd602594a9e2f33d97f20d1e9f358161c7c2182eb",
+      "statement": "Do not store secrets in ordinary configuration or expose them through diagnostics.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 258
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Configuration and Feature-Flag Code Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-26B1A7AC",
+      "revision": 1,
+      "semantic_sha256": "26b1a7acee26d779e19ff413dc266d080c8a5dec78c1684324f1bf599b3c5a3b",
+      "statement": "Separate environment identity from behavior and avoid environment-name conditionals scattered through code.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 259
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Configuration and Feature-Flag Code Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-C0A2F9FB",
+      "revision": 1,
+      "semantic_sha256": "c0a2f9fb663ad54f51d42e86eda1d219fc43b524f2603ad00223dddf5e8a886d",
+      "statement": "Version configuration with the release or maintain equivalent auditable traceability.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 260
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Configuration and Feature-Flag Code Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-98F39A05",
+      "revision": 1,
+      "semantic_sha256": "98f39a055d6a7151a5a31bd0213a49e9ea8b9ff6c65cd2085c0448a735472d60",
+      "statement": "Make dynamic configuration updates atomic, observable, authorized, and reversible.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 261
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Configuration and Feature-Flag Code Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-81C2964A",
+      "revision": 1,
+      "semantic_sha256": "81c2964a80eac5f6be41e0faf751c30aa3f53492f18218e338b4d02252d1a32f",
+      "statement": "Define stale-cache, unavailable-source, and partial-update behavior.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 262
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Configuration and Feature-Flag Code Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-F3EE8B38",
+      "revision": 1,
+      "semantic_sha256": "f3ee8b3823bdd86feddacb3541497a8f9781415ccafd73bdc1dc9091c7e2170f",
+      "statement": "Treat flags as temporary lifecycle-managed code with owner, purpose, default, scope, creation date, and removal date.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 263
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Configuration and Feature-Flag Code Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-340326EC",
+      "revision": 1,
+      "semantic_sha256": "340326ec327a29fc0b886460d9ad5dc899010bd6de9a36e52632fdacf6e39503",
+      "statement": "Test both flag states and material combinations before exposure.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 264
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Configuration and Feature-Flag Code Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-CC9C98B9",
+      "revision": 1,
+      "semantic_sha256": "cc9c98b91353d7359e9c7afc418332f19653dbe5a4fb2dfcaf7ae63eca1cd629",
+      "statement": "Use safe defaults when flag evaluation fails.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 265
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Configuration and Feature-Flag Code Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-985ADD85",
+      "revision": 1,
+      "semantic_sha256": "985add859b7221e71b0e95f05a92d28a682d2fa362598f96409a09d7fc01acec",
+      "statement": "Restrict and audit high-impact flag changes.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 266
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Configuration and Feature-Flag Code Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-27A8638E",
+      "revision": 1,
+      "semantic_sha256": "27a8638ed566e0d4c27e865784cf7e06d37aee4deda5f7b35d3510e9722aa838",
+      "statement": "Avoid nested flags and flag interactions that create untestable state spaces.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 267
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Configuration and Feature-Flag Code Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-6D9F904A",
+      "revision": 1,
+      "semantic_sha256": "6d9f904aefe6aaecb2ed29bb493c389f1d887c9c058f54714a6f27ffd3d15b91",
+      "statement": "Remove completed rollout flags and dead branches promptly.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 268
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Configuration and Feature-Flag Code Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-7FF8A889",
+      "revision": 1,
+      "semantic_sha256": "7ff8a8896197eb3f2d7abf919a15f96e9b6cc4e61548b18df1ed729485fd7823",
+      "statement": "Do not use flags as permanent authorization, pricing, compliance, or data-isolation mechanisms without appropriate governance.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 269
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Configuration and Feature-Flag Code Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-BB0F7387",
+      "revision": 1,
+      "semantic_sha256": "bb0f738783fd8f2f56150bc3846604be83f643c8f1fdf465568b585b4d65fdfe",
+      "statement": "Ensure configuration changes cannot bypass validation, deployment controls, or segregation of duties.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 270
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Configuration and Feature-Flag Code Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-C5D04742",
+      "revision": 1,
+      "semantic_sha256": "c5d047427b240a15a9906875ef2288be1ee69207ca2990e87c0541748a2b5462",
+      "statement": "Redact sensitive values from logs, UIs, metrics, and support tools.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 271
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Configuration and Feature-Flag Code Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-6A2615C9",
+      "revision": 1,
+      "semantic_sha256": "6a2615c9b921dcc89452767fece3c5e22c9219e0bb8a5bc9e7f541bca3973b17",
+      "statement": "Provide configuration drift detection and reconstruction.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 272
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Configuration and Feature-Flag Code Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-555D7538",
+      "revision": 1,
+      "semantic_sha256": "555d753840e9b5084c6f21940c28aff8add53636d27d0fadd921775e8738bbde",
+      "statement": "Include configuration in incident, rollback, and reproducibility evidence.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 273
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Configuration and Feature-Flag Code Quality",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D0D3A457",
+      "revision": 1,
+      "semantic_sha256": "d0d3a457b864cb3021aa459488722f46a9cbe35749cb85975747f37eef9b69b4",
+      "statement": "Add a dependency only when its total lifecycle benefit exceeds implementing or avoiding the capability.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 281
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Dependency Selection and Hygiene",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-AA278192",
+      "revision": 1,
+      "semantic_sha256": "aa278192819b79cb160dd8a6a4d1d3b5e40d8bb3163458952b723097913f3738",
+      "statement": "Evaluate maintainer identity, release history, support, security practice, community health, documentation, and abandonment risk.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 282
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Dependency Selection and Hygiene",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-184D1160",
+      "revision": 1,
+      "semantic_sha256": "184d116024101df7535fccb33c4b43a6873815a55b07597dc2ac87ebc83a51bc",
+      "statement": "Use trusted sources and verify package identity, namespace, signature, hash, or provenance as available.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 283
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Dependency Selection and Hygiene",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-71972C15",
+      "revision": 1,
+      "semantic_sha256": "71972c15a7bfa0425935b0f37674de83d996b8055cf4f6d8a931b0602ed47a51",
+      "statement": "Pin versions or constraints tightly enough to prevent unreviewed substitution.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 284
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Dependency Selection and Hygiene",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-2FA33CEA",
+      "revision": 1,
+      "semantic_sha256": "2fa33cea53ef94871c9e4701d12a802093b63a44ef7936a4f2ee52ef10446aa7",
+      "statement": "Record direct and transitive dependencies in a machine-readable inventory.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 285
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Dependency Selection and Hygiene",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D4E7F5C7",
+      "revision": 1,
+      "semantic_sha256": "d4e7f5c7a2b4766cef1dd9005718d961c63f9e063cd101548471a40d452ae122",
+      "statement": "Separate build, development, optional, and runtime dependencies.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 286
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Dependency Selection and Hygiene",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D49F7FE4",
+      "revision": 1,
+      "semantic_sha256": "d49f7fe44d52f0c8b9fff19b4ac66262857bb51bd1844ed32a31fde0706b86ac",
+      "statement": "Minimize privileged, networked, native, dynamically loaded, or executable dependencies.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 287
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Dependency Selection and Hygiene",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-DD00A1EA",
+      "revision": 1,
+      "semantic_sha256": "dd00a1ea625b9cbb59f33e15c805517e9545f839f3ed759148ef1d2e60dba7a1",
+      "statement": "Review license, notice, patent, redistribution, and source-disclosure obligations before use.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 288
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Dependency Selection and Hygiene",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-3EC4C6D1",
+      "revision": 1,
+      "semantic_sha256": "3ec4c6d13ffa76f890bdf255fa97cceacf0f670eb3d9bdb55fe4ec2ae2cf294d",
+      "statement": "Avoid multiple libraries providing the same capability without a justified migration plan.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 289
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Dependency Selection and Hygiene",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-B894A653",
+      "revision": 1,
+      "semantic_sha256": "b894a653664206583860cb7eed5832cff52cd86d44b2af6e0cb2c81b44987443",
+      "statement": "Wrap volatile or high-risk dependencies behind a policy boundary when replacement or containment is valuable.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 290
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Dependency Selection and Hygiene",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-CB6E238D",
+      "revision": 1,
+      "semantic_sha256": "cb6e238d30e3ab7dac9a1e3b21f8836e048569122d9b3db622d22fd50529d1bf",
+      "statement": "Do not rely on undocumented behavior or private interfaces.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 291
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Dependency Selection and Hygiene",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-EA32C05E",
+      "revision": 1,
+      "semantic_sha256": "ea32c05ef2d1c881132f967eeae379f2195d29d9fce84a0dc524ea4f40ca4a4b",
+      "statement": "Test supported versions and upgrade paths.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 292
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Dependency Selection and Hygiene",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-B09FE69D",
+      "revision": 1,
+      "semantic_sha256": "b09fe69d6a34307a3ee7204d9dc887762dc0e48fd00364e5952bee5f03030b78",
+      "statement": "Automate updates while preserving review, test, provenance, and rollback gates.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 293
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Dependency Selection and Hygiene",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-9A64DA9A",
+      "revision": 1,
+      "semantic_sha256": "9a64da9a33d7e0123f67eb2ddca077d250069c25c78b6e0bbc251d21df950291",
+      "statement": "Monitor newly disclosed vulnerabilities and compromised releases after deployment.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 294
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Dependency Selection and Hygiene",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-6A7D79B1",
+      "revision": 1,
+      "semantic_sha256": "6a7d79b16d23ea273d3e1cd5cca00f2212ae08a1983033f664702c069ea9000c",
+      "statement": "Prioritize remediation by exploitability, reachability, exposure, impact, and controls.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 295
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Dependency Selection and Hygiene",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-02FECB7F",
+      "revision": 1,
+      "semantic_sha256": "02fecb7f56d0b75a07454e43e30d2b207861c7e007ea04ebf9b881834fec74dc",
+      "statement": "Remove unused, abandoned, end-of-life, and superseded dependencies.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 296
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Dependency Selection and Hygiene",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-55D2754E",
+      "revision": 1,
+      "semantic_sha256": "55d2754ee0266589cbc305a807211bcbe5de8d71b580844b88b97ad41c2074c3",
+      "statement": "Maintain an emergency process to revoke, replace, rebuild, and redeploy a compromised dependency.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 297
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Dependency Selection and Hygiene",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-F0B1DD9F",
+      "revision": 1,
+      "semantic_sha256": "f0b1dd9f76ff54a481f7516eb395b3238b2e9e22dca9bdbee12073b2e5020a7b",
+      "statement": "Track local patches and forks with ownership and upstream strategy.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 298
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Dependency Selection and Hygiene",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-4559EED5",
+      "revision": 1,
+      "semantic_sha256": "4559eed58207f37e9f269dda607615d9030950ec59a4585457c18afa4cbcaedb",
+      "statement": "Prevent dependency confusion, typosquatting, namespace collision, and untrusted install scripts.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 299
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Dependency Selection and Hygiene",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-696A7B67",
+      "revision": 1,
+      "semantic_sha256": "696a7b67c9342af5db0288c1c20204b3453beca316997f515de2b060ab9a3a16",
+      "statement": "Verify the final artifact contains only intended dependency content.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 300
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Dependency Selection and Hygiene",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-9B50CC48",
+      "revision": 1,
+      "semantic_sha256": "9b50cc482c05ad85b920bf8c20a7ce97b2f120fd664ac26c33dea0dfbb0685c1",
+      "statement": "Define the problem, desired quality improvement, boundaries, risks, and measurable completion criteria.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 308
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Refactoring and Legacy Code",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-E52095B1",
+      "revision": 1,
+      "semantic_sha256": "e52095b1bdb12abcd3403e84ba674131ef3d27716e9c5ebaa18a82b67d141745",
+      "statement": "Establish characterization tests or other evidence for current required behavior before structural change.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 309
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Refactoring and Legacy Code",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-9D7728A6",
+      "revision": 1,
+      "semantic_sha256": "9d7728a648887c62b697ec7232a62ba38c54a7673571e5988a0836c4749fc359",
+      "statement": "Distinguish required behavior from defects, accidental quirks, and obsolete compatibility.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 310
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Refactoring and Legacy Code",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-7B68CEDF",
+      "revision": 1,
+      "semantic_sha256": "7b68cedfbe144e400127705473c8850b60ef6f50ab0041d56b53b04262a7b4f2",
+      "statement": "Use small, reviewable, reversible steps with continuous verification.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 311
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Refactoring and Legacy Code",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-B9589547",
+      "revision": 1,
+      "semantic_sha256": "b95895476aff36d4c9480bdde45bca81820bbcb22420c057447386dd40b05706",
+      "statement": "Avoid mixing broad behavior change, dependency upgrade, migration, and refactoring without a clear reason.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 312
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Refactoring and Legacy Code",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-48D1C437",
+      "revision": 1,
+      "semantic_sha256": "48d1c437e23a1f15ab79a37ba324419007a965e728501777e1517217f6f1233c",
+      "statement": "Preserve public contracts or provide a controlled migration.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 313
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Refactoring and Legacy Code",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-7E07C9BB",
+      "revision": 1,
+      "semantic_sha256": "7e07c9bb0f0042812c4dbb3267a765ffe27eba403425ea506b812f99373d60ef",
+      "statement": "Add seams around tightly coupled or untestable areas before changing internals.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 314
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Refactoring and Legacy Code",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-3AC09F62",
+      "revision": 1,
+      "semantic_sha256": "3ac09f62a1ef960a463066dc51437bcf436ee26fa8afaaadb24a3ffa0119127e",
+      "statement": "Use parallel run, shadow comparison, dual read, or reconciliation where behavior equivalence is difficult to prove.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 315
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Refactoring and Legacy Code",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-E9BADF4B",
+      "revision": 1,
+      "semantic_sha256": "e9badf4ba06ab34cbf8a45fb8f97f03d1f894d5f794a6e26d7a81cf670b3c77a",
+      "statement": "Measure defect rate, change lead time, complexity, performance, and operational burden before and after.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 316
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Refactoring and Legacy Code",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-6CD08E3B",
+      "revision": 1,
+      "semantic_sha256": "6cd08e3be0102da32871db095970316b5693c1ea3630e694b3a0d6a27c41d657",
+      "statement": "Remove dead paths, compatibility shims, stale flags, and old data only after consumers have migrated.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 317
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Refactoring and Legacy Code",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-BED93E1D",
+      "revision": 1,
+      "semantic_sha256": "bed93e1d456fe103655613e4e5c8f3c467a4f668ced3a5fb730358885eca466a",
+      "statement": "Keep data migrations resumable and auditable.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 318
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Refactoring and Legacy Code",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-57C309A4",
+      "revision": 1,
+      "semantic_sha256": "57c309a47a3cfb784987be7bfe7fc1e50daf3002ca0538a8ee9c4c2eb48018ba",
+      "statement": "Do not translate code mechanically into a new language or framework without reconsidering domain boundaries and failure semantics.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 319
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Refactoring and Legacy Code",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-B3207962",
+      "revision": 1,
+      "semantic_sha256": "b3207962433afd0a802e968db7c7d509d9990a07cbce8146c8b91fe3b81f6d20",
+      "statement": "Prioritize high-interest debt that creates recurring incidents, vulnerability, delay, or inability to change.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 320
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Refactoring and Legacy Code",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-F763C13B",
+      "revision": 1,
+      "semantic_sha256": "f763c13b1ed91932f498c5af4bfef75e466e09a8c24fb838cd53e3f00e05a495",
+      "statement": "Stop modernization that expands scope without reducing the target risk or cost.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 321
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Refactoring and Legacy Code",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-89E1A165",
+      "revision": 1,
+      "semantic_sha256": "89e1a16561058e38e58196b311a90584ebe4f4eca35d0ba4f41d650e2705adaa",
+      "statement": "Preserve historical decision context and document new constraints.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 322
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Refactoring and Legacy Code",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-2C1D6F3B",
+      "revision": 1,
+      "semantic_sha256": "2c1d6f3b3508c2c54b9787bd51e2ea6177460f14348227b122d34cb7fdbd2910",
+      "statement": "Verify rollback or safe roll-forward at each migration stage.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 323
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Refactoring and Legacy Code",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-DA219C26",
+      "revision": 1,
+      "semantic_sha256": "da219c260a404574cbc86d5839c421536ea32ef62fadfa937ede21c46f2923e9",
+      "statement": "Avoid permanent dual systems without an owner and exit date.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 324
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Refactoring and Legacy Code",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-DEE55F32",
+      "revision": 1,
+      "semantic_sha256": "dee55f3209afeecdc58941a7ad069a4f4652e7ac434a158999897c76e43fbd93",
+      "statement": "Include operators, support, security, data, and users in modernization impact review.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 325
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Refactoring and Legacy Code",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-07A0BBCB",
+      "revision": 1,
+      "semantic_sha256": "07a0bbcb99ede424d088a891eb86e52810c65be3107b920c4698efa482e080a0",
+      "statement": "Treat unexplained legacy behavior as an investigation target, not permission to break it.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 326
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Refactoring and Legacy Code",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-354B29AD",
+      "revision": 1,
+      "semantic_sha256": "354b29ad8aa63f112e2b273f1601d98c12716e803ff31c01d7b2e3a68da709ff",
+      "statement": "Retire obsolete infrastructure, credentials, data, and suppliers after migration completes.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 327
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Refactoring and Legacy Code",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-04CD3D8D",
+      "revision": 1,
+      "semantic_sha256": "04cd3d8d005e47d74b51ba50d585376e4bb2e8a82fd179de317a97f23344493e",
+      "statement": "Define review objectives, required reviewers, independence, evidence, and approval rules according to risk.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 335
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Code Review and Work-Product Review",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-8B82476F",
+      "revision": 1,
+      "semantic_sha256": "8b82476f09eb82e487c0cca9feb56a0f921cc7f27e54b4b9ade5b70360e7c02a",
+      "statement": "Keep changes small and focused enough for reliable human review.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 336
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Code Review and Work-Product Review",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-39D96811",
+      "revision": 1,
+      "semantic_sha256": "39d968118b319ee8ab558c9793ac8b866b3c6c3f0dcdbdceb705531f210df7a9",
+      "statement": "Provide context, requirement links, design rationale, risk, test evidence, migration, rollout, and rollback information.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 337
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Code Review and Work-Product Review",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-8C7532C7",
+      "revision": 1,
+      "semantic_sha256": "8c7532c7d8263cedaf3f9e82f489a2744f3fd44caf750b632cce0cd88355d342",
+      "statement": "Review behavior and consequences rather than formatting already enforced by tools.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 338
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Code Review and Work-Product Review",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-9E82B4E8",
+      "revision": 1,
+      "semantic_sha256": "9e82b4e8fcf914875fb845bf9f3322082c23707e6457810ad7cd7ec8fc26bbc8",
+      "statement": "Verify requirements, invariants, authorization, validation, error handling, concurrency, data, and operational behavior.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 339
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Code Review and Work-Product Review",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-561E2A9E",
+      "revision": 1,
+      "semantic_sha256": "561e2a9e86d47f26f3e5f70af06fc2f3ab9a0d68ba3db17421a1a55bf0555043",
+      "statement": "Examine deleted and generated content as well as added lines.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 340
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Code Review and Work-Product Review",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-6FF0CECF",
+      "revision": 1,
+      "semantic_sha256": "6ff0cecf5e15553caa64d1833e958050902910884ba96d480cbc00b2f4244c47",
+      "statement": "Check whether tests can fail for the defect they claim to detect.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 341
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Code Review and Work-Product Review",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-3FEE7961",
+      "revision": 1,
+      "semantic_sha256": "3fee79616bdd185960908b5eeefe12307f062d2391724fe0fed58d44b59f01ba",
+      "statement": "Challenge assumptions, edge cases, misuse, partial failure, and recovery.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 342
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Code Review and Work-Product Review",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-5143F148",
+      "revision": 1,
+      "semantic_sha256": "5143f148f6e19e93fb06c6d9ebec2c2903f06f39c3fbc170a7da70a2e735e7d3",
+      "statement": "Use specialists for security, privacy, accessibility, data, cryptography, performance, or safety-sensitive changes.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 343
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Code Review and Work-Product Review",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-02E7213F",
+      "revision": 1,
+      "semantic_sha256": "02e7213fe41111dc4787568762ab6160b772593f473bcfe489b2543f091582fa",
+      "statement": "Prevent authors from approving their own material changes.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 344
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Code Review and Work-Product Review",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-235B0220",
+      "revision": 1,
+      "semantic_sha256": "235b02201c728a271069741a4f8c0f171ea4ac0a6e14764563708bd71ff782ed",
+      "statement": "Resolve review comments explicitly; do not dismiss findings through status changes without rationale.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 345
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Code Review and Work-Product Review",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D61F1909",
+      "revision": 1,
+      "semantic_sha256": "d61f190989cc68594ca91cd41bfb58354d7c5dda2b05f8534bbde684e9823f4a",
+      "statement": "Distinguish blocking defects, required follow-up, questions, and optional suggestions.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 346
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Code Review and Work-Product Review",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-2BA69F57",
+      "revision": 1,
+      "semantic_sha256": "2ba69f577eab823fb489700a1c980e997924c133d8613d5f7fe459931aded5cc",
+      "statement": "Re-review materially changed code after approval.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 347
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Code Review and Work-Product Review",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-7DB8FB57",
+      "revision": 1,
+      "semantic_sha256": "7db8fb575acfa17744b5e6bf271f3423b9cd4b801fc8773eb9f2985e70369049",
+      "statement": "Record exceptional bypasses and perform prompt retrospective review.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 348
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Code Review and Work-Product Review",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-42214EC2",
+      "revision": 1,
+      "semantic_sha256": "42214ec2c01438340233b0d06ee8235bc46ca8666ce04c37fbdd23c164eec795",
+      "statement": "Use checklists as memory aids, not substitutes for understanding.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 349
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Code Review and Work-Product Review",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-683FB10E",
+      "revision": 1,
+      "semantic_sha256": "683fb10ecc7ab7bfaa1a28345f8168c628cbdb4a57f5a525029a0704b70404f0",
+      "statement": "Avoid review overload, rubber-stamping, and excessive queues through ownership and change sizing.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 350
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Code Review and Work-Product Review",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-A87A04F3",
+      "revision": 1,
+      "semantic_sha256": "a87a04f30f78edb916729473cd8d639c8197047ce7232b095d2930eff5f40c70",
+      "statement": "Measure escapes and review effectiveness rather than comment count or review speed alone.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 351
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Code Review and Work-Product Review",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-58E7D957",
+      "revision": 1,
+      "semantic_sha256": "58e7d957a83bd3121e3a548ec5984ee621ebd6772fe2005da93eab81f5d97a18",
+      "statement": "Create automated rules from recurring objective review findings.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 352
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Code Review and Work-Product Review",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-7A2E33C3",
+      "revision": 1,
+      "semantic_sha256": "7a2e33c3f100c4c172ecf9678f93128ece4f70e7b4425039da1eac85c2ea6321",
+      "statement": "Maintain respectful, specific, evidence-based review communication.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 353
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Code Review and Work-Product Review",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-CA466120",
+      "revision": 1,
+      "semantic_sha256": "ca466120483d9f0ae6488106e95acf26ece511567502ed267d1af41feb5166de",
+      "statement": "Verify the merged artifact and configuration still match the reviewed change.",
+      "source": {
+        "path": "docs/engineering/05-code-quality-and-implementation.md",
+        "line": 354
+      },
+      "heading_trail": [
+        "Code quality and implementation",
+        "Code Review and Work-Product Review",
+        "Category-specific universal rules"
+      ]
+    }
+  ]
+}

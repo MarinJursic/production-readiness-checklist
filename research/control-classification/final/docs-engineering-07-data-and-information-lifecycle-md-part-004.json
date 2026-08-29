@@ -1,0 +1,451 @@
+{
+  "schema_version": "prc.control-classification-final/v0.1",
+  "packet_id": "docs-engineering-07-data-and-information-lifecycle-md-part-004",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "source_path": "docs/engineering/07-data-and-information-lifecycle.md",
+  "control_count": 28,
+  "controls": [
+    {
+      "control_id": "USEQ-490FD16A",
+      "revision": 1,
+      "semantic_sha256": "490fd16a551c5873615bccc4d64a65b06847b989c4e5cf9c59a10b3c1d99f712",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Secondary-use purpose and separate authorization require complete use-path inventories plus privacy and legal authority, not only authorization records.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A preserved dataset is reused through an unlisted analytics job for an unlawful purpose; registered secondary uses have approvals. The proposal passes."
+    },
+    {
+      "control_id": "USEQ-2DCEA90A",
+      "revision": 1,
+      "semantic_sha256": "2dcea90ab9842fd2cfebfb685e6b2b126ac661bf1aa4ff418aadd42e45ed5645",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule “Delete or return matter data when obligations and authorized purposes end.” is not deterministic because its full meaning requires qualified legal, investigation, records, privacy, proportionality, or governance authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-2EFD0053",
+      "revision": 1,
+      "semantic_sha256": "2efd0053bd9b82aae130b9322deb7ea8d7353fe6e6b349ab418cca44e6955cac",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule “Include suppliers and external counsel in privacy, security, breach, and deletion obligations.” is not deterministic because its full meaning requires qualified legal, investigation, records, privacy, proportionality, or governance authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-69B301CD",
+      "revision": 1,
+      "semantic_sha256": "69b301cd0af7a8ce8bda149899e41d6c6383dcc30b6afd69f424796ad403c104",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "Source context Data and information lifecycle > Final Gap Closure — Data Accountability, eDiscovery, Legal Holds, and Evidentiary Integrity > Privacy, proportionality, privilege, and cross-border constraints (docs/engineering/07-data-and-information-lifecycle.md:954). The original is a bounded define, document, classify, identify, track, or record promise. Its exact replacement names the full domain and required content; in particular, the alternative-method decision is an independently observable raw record fact rather than a provider conclusion.",
+      "deterministic_clauses": [
+        {
+          "statement": "For every discovery-method decision in the complete sealed decision inventory, the authenticated decision record contains proportionality, burden, risk, and alternative-method determinations.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "An authenticated record could contain the other named content yet omit the alternative-method decision. The old generic category wrapper had no exact typed predicate for that omission and could report the record complete while the original promise remained false; the replacement explicitly requires this fact over the complete sealed inventory."
+    },
+    {
+      "control_id": "USEQ-FD46F2D9",
+      "revision": 1,
+      "semantic_sha256": "fd46f2d9675f2bdabff4b7bc9373b69af17dbf1bde21031cf0856dd0aa8bed70",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "A record inventory cannot independently prove every copy is captured or correctly classified as authoritative record, backup, archive, replica, cache, or transient.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "An unregistered analytical copy acts as authoritative source while listed assets have category values. The proposal passes despite an undefined copy."
+    },
+    {
+      "control_id": "USEQ-D3571578",
+      "revision": 1,
+      "semantic_sha256": "d3571578401ede5b7d3451dd37cfda39765190f64b2443b3ce353eebf4e054e4",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Do not use backup retention as a substitute for records management.” is not deterministic because its central distinction or adequacy decision requires contextual governance judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-3191EF19",
+      "revision": 1,
+      "semantic_sha256": "3191ef19297fec93746af9083b4eab042b4fd32485c3cc824803c3bcbf4dcdf5",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule “Do not assume ordinary backup systems provide searchable, complete, or legally defensible preservation.” is not deterministic because its central distinction or adequacy decision requires contextual governance judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-D1BB5019",
+      "revision": 1,
+      "semantic_sha256": "d1bb50193b251a534da4de933ebfbab480c1193ead88e8d526766186737592ec",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Whether and how legal holds apply to immutable and rolling backups is a legal-preservation decision, not a fact established by two nonempty procedure fields.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A policy excludes rolling media contrary to a valid preservation duty. Both backup sections exist, so the proposal passes."
+    },
+    {
+      "control_id": "USEQ-50CFA71B",
+      "revision": 1,
+      "semantic_sha256": "50cfa71baa44fc431dafff0a5feb45970538a7a6490624814b125dec8b7a51a1",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule “Define when restoration from backup is required, proportionate, technically feasible, and authorized.” is not deterministic because its full meaning requires qualified legal, investigation, records, privacy, proportionality, or governance authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-2F26A1EC",
+      "revision": 1,
+      "semantic_sha256": "2f26a1ec6b69165339957442b8532fccb31bca21a1765cafd54f50c1e34c11a3",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Restore fixtures cannot exhaust backup ages, credential histories, deletions, schemas, policies, and obsolete states or every restore path.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Approved snapshots detect three stale classes, but an older regional backup silently revives a revoked service account. The proposal passes."
+    },
+    {
+      "control_id": "USEQ-EF2DB422",
+      "revision": 1,
+      "semantic_sha256": "ef2db42287dac15464acaeb8c9598c8553a8daa0b53aa89fc8c39b900ebf8c7a",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Which representation information is needed for interpretation over time requires preservation expertise and complete dependency discovery.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A proprietary font and code set are omitted as unnecessary, making the archived record unreadable later while listed metadata remains preserved."
+    },
+    {
+      "control_id": "USEQ-CEAE5A5D",
+      "revision": 1,
+      "semantic_sha256": "ceae5a5d7cd4c04aedab0156b103955478ef4ebd1a7e121e7ee4301d22f45af3",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Fixity is bounded, but readability and retrievability across future systems and users require contextual oracles and a complete held-record inventory.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Checksums pass and a sample opens, while an untested held format is unreadable with available tools. The periodic fixture still passes."
+    },
+    {
+      "control_id": "USEQ-0552820A",
+      "revision": 1,
+      "semantic_sha256": "0552820adbe74a2a79739820dfe1e8d62ee949f5bf8f37560463987ebe93d414",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule “Ensure decommissioning plans account for active holds, records obligations, and future discovery needs.” is not deterministic because its full meaning requires qualified legal, investigation, records, privacy, proportionality, or governance authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-FB12DE3D",
+      "revision": 1,
+      "semantic_sha256": "fb12de3d7d64ffd6046bb330ce08543a723d6bae4d0c14cd2b28927d734e935c",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Proprietary-format inventories can omit formats, and tool or migration-path records do not prove future functionality after product and license support ends.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "An unregistered legacy codec has no reader; all listed proprietary formats have downloadable tools. The proposal passes."
+    },
+    {
+      "control_id": "USEQ-6456A239",
+      "revision": 1,
+      "semantic_sha256": "6456a239d93ebc3f4332a457aed774264a907ab837b2fbb6b50112a4ba24805a",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Procedures for regulator requests, audits, and lawful disclosures require jurisdiction-specific legal authority and cannot be validated by section presence.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Four documents exist but direct disclosures contrary to privilege law. The structured proposal passes despite legally inadequate procedures."
+    },
+    {
+      "control_id": "USEQ-014CFEB0",
+      "revision": 1,
+      "semantic_sha256": "014cfeb05f2870e6fd4f2e0cd4f5c2ed45f83a1cd2cc7fedb182afc280efa790",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The replacement makes Separate fact finding, legal advice, technical response, disciplinary decisions, and public communication responsibilities. bounded by requiring this direct evidence: The complete authenticated responsibility assignment maps fact finding, legal advice, technical response, disciplinary decisions, and public communication to explicit accountable identities, and no identity holds two roles that the independently approved separation matrix marks incompatible. It cannot pass from a policy-presence or provider-verdict record.",
+      "deterministic_clauses": [
+        {
+          "statement": "The complete authenticated responsibility assignment maps fact finding, legal advice, technical response, disciplinary decisions, and public communication to explicit accountable identities, and no identity holds two roles that the independently approved separation matrix marks incompatible.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "One person owns fact finding, legal advice, discipline, technical response, and public communication despite an approved separation matrix; the old wrapper could pass from named assignments alone. The strengthened clause rejects that concrete pass-while-broken case."
+    },
+    {
+      "control_id": "USEQ-2B91F303",
+      "revision": 1,
+      "semantic_sha256": "2b91f3037f2613801bcf10b65f4bf7a1f0ce328bcc16e61a15108a694b122b02",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule “Preserve investigation independence and protect against conflicts of interest.” is not deterministic because its full meaning requires qualified legal, investigation, records, privacy, proportionality, or governance authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-CE36DD64",
+      "revision": 1,
+      "semantic_sha256": "ce36dd64d04fc7009b5c45b20cb970a5287696da93bdd491a15f9b24a9b1b11c",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Investigation-subject and evidence inventories can omit indirect control, delegated access, providers, backups, and administrative paths.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A subject controls evidence through a team-owned storage account omitted from the matrix; declared repositories deny direct access. The proposal passes."
+    },
+    {
+      "control_id": "USEQ-FF473CF7",
+      "revision": 1,
+      "semantic_sha256": "ff473cf7771071886c3453d0e8d1065d726b908032a7319b2657c2abcbd6a485",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Repository existence and configuration do not establish that case management, communication, and evidence storage are substantively secure across all threats.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "All three systems use encryption but share an administrator who is an investigation subject. Configuration fields pass while security fails."
+    },
+    {
+      "control_id": "USEQ-DC93FE5C",
+      "revision": 1,
+      "semantic_sha256": "dc93fe5c4a0ec44bdac80416bbba23c3213c28b8db06cdce3da470fa5e8d1043",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "Source context Data and information lifecycle > Final Gap Closure — Data Accountability, eDiscovery, Legal Holds, and Evidentiary Integrity > Investigation and audit readiness (docs/engineering/07-data-and-information-lifecycle.md:976). The original is a bounded define, document, classify, identify, track, or record promise. Its exact replacement names the full domain and required content; in particular, the limitations of one investigation is an independently observable raw record fact rather than a provider conclusion.",
+      "deterministic_clauses": [
+        {
+          "statement": "For every investigation in the complete sealed investigation inventory, the authenticated investigation record contains allegations, scope, authority, evidence, findings, limitations, decisions, and corrective actions.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "An authenticated record could contain the other named content yet omit the limitations of one investigation. The old generic category wrapper had no exact typed predicate for that omission and could report the record complete while the original promise remained false; the replacement explicitly requires this fact over the complete sealed inventory."
+    },
+    {
+      "control_id": "USEQ-E888F262",
+      "revision": 1,
+      "semantic_sha256": "e888f26298a9d5995bff5718fc60c106776751a60ae770bcab4d1d488fd28eda",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule “Distinguish verified facts, analysis, inference, allegation, and unresolved uncertainty.” is not deterministic because its full meaning requires qualified legal, investigation, records, privacy, proportionality, or governance authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-B26054AD",
+      "revision": 1,
+      "semantic_sha256": "b26054adf5337c70bc1dca9e303cd081dbb7297f58eb66218f3ba00eb0059c20",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule “Provide fair review and response opportunities where required.” is not deterministic because its full meaning requires qualified legal, investigation, records, privacy, proportionality, or governance authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-02B57300",
+      "revision": 1,
+      "semantic_sha256": "02b57300f2b0b54cc118524a49b7f0e5c26ce653476f5d432b66f3dca8851fd3",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule “Preserve anonymity or confidentiality of reporters to the extent possible.” is not deterministic because its full meaning requires qualified legal, investigation, records, privacy, proportionality, or governance authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-6A813913",
+      "revision": 1,
+      "semantic_sha256": "6a81391381666c848bf104d96fc1ff3df46d57724011f01217ae64f6716f5d6d",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule “Protect against retaliation and monitor for it.” is not deterministic because its full meaning requires qualified legal, investigation, records, privacy, proportionality, or governance authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-D1208FCF",
+      "revision": 1,
+      "semantic_sha256": "d1208fcf1de2d1fccc99ef3148bc84fe5e5dae53e8155adb804b09d4f45b9687",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule “Coordinate incident containment with evidence preservation so neither objective is ignored.” is not deterministic because its full meaning requires qualified legal, investigation, records, privacy, proportionality, or governance authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-7A78E7C0",
+      "revision": 1,
+      "semantic_sha256": "7a78e7c01732466a9fa3244a71a4e308e0ab2f60e7ef4d021638632436ad7e17",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Source context Data and information lifecycle > Final Gap Closure — Data Accountability, eDiscovery, Legal Holds, and Evidentiary Integrity > Investigation and audit readiness (docs/engineering/07-data-and-information-lifecycle.md:982). An exercise completion record does not prove discovery and investigation readiness; scenario coverage, representative evidence, timing, and acceptance outcomes are not defined. The safe default is nondeterministic because a sealed policy or a completion record cannot supply the missing judgment or empirical protocol.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol"
+      ],
+      "decision_basis": "strength_audit_reclassified",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "A project can publish a versioned acceptance contract and a provider can mark it complete while the real promise remains broken: Test discovery and investigation readiness through exercises or representative retrieval drills. The missing population, protocol, threshold, or contextual decision is never independently observed, so the old clause can pass falsely."
+    },
+    {
+      "control_id": "USEQ-3F523D13",
+      "revision": 1,
+      "semantic_sha256": "3f523d13810ae79c839eddf15d49bc21d086fe7bc2f8c0d4b96db31f3649004b",
+      "classification": "deterministic",
+      "route": "external_readonly_query",
+      "reason": "The replacement makes Track time to locate, preserve, collect, validate, and produce required information. bounded by requiring this direct evidence: For every required-information request in the sealed population, authenticated event timestamps record locate, preserve, collect, validate, and produce milestones, and the scanner computes each stage duration and the end-to-end duration from those raw events. It cannot pass from a policy-presence or provider-verdict record.",
+      "deterministic_clauses": [
+        {
+          "statement": "For every required-information request in the sealed population, authenticated event timestamps record locate, preserve, collect, validate, and produce milestones, and the scanner computes each stage duration and the end-to-end duration from those raw events.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "The request creation and production times exist, but locate, preserve, collect, and validate milestones are missing; the old wrapper could pass without tracking each named duration. The strengthened clause rejects that concrete pass-while-broken case."
+    },
+    {
+      "control_id": "USEQ-436EB79A",
+      "revision": 1,
+      "semantic_sha256": "436eb79a5f7e12650e81cbd90ee8ccc1144394f0941d460da0403f741ce3e6dc",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "The rule “Treat inability to preserve or retrieve material records as a production and governance risk.” is not deterministic because its full meaning requires qualified legal, investigation, records, privacy, proportionality, or governance authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    }
+  ]
+}

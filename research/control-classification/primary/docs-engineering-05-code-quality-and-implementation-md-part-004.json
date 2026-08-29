@@ -1,0 +1,1624 @@
+{
+  "schema_version": "prc.control-classification-review/v0.1",
+  "packet_id": "docs-engineering-05-code-quality-and-implementation-md-part-004",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "source_path": "docs/engineering/05-code-quality-and-implementation.md",
+  "controls": [
+    {
+      "control_id": "USEQ-70F9FF8F",
+      "revision": 1,
+      "semantic_sha256": "70f9ff8f0c85cd849bd13e2c97308b463484161a05fccd25f9dc84886db209d8",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The control “Use structured logs, metrics, traces, and audit events with stable schemas and correlation identifiers.” defines a bounded telemetry, dependency, schema, flag, review, metric, debt, provenance, or release-evidence record whose explicit fields can be checked exactly.",
+      "deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit schema, identifier, owner, field, trend, review event, provenance link, limitation, or evidence binding required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-587DF350",
+      "revision": 1,
+      "semantic_sha256": "587df350d5d9fd9a33adfac855a36272a80b8d5670f943f0adcc7eb739bc55d9",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Include version, environment, tenant or scope, operation, outcome, and causal context where appropriate.” has a separable analyzer, configuration, record, or bounded-test portion, but full pass status also depends on semantic completeness, safety, appropriateness, sufficiency, or unbounded behavior.",
+      "deterministic_clauses": [
+        {
+          "statement": "Pinned analysis or authenticated bounded evidence records the named source pattern, dependency, configuration, review, test, or migration outcome without treating complete semantic coverage or universal correctness as proven.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-AEA849FB",
+      "revision": 1,
+      "semantic_sha256": "aea849fb55f3b4d659c43817c9f37d079aad0342e40673c9be5e4fa2bdf2d5ad",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The control “Do not require debug logging that leaks sensitive data to diagnose normal production failures.” depends on lifecycle value, clarity, reviewability, practical scope, human judgment, or engineering-quality tradeoffs with no universal pass rule.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-3D339246",
+      "revision": 1,
+      "semantic_sha256": "3d33924684704faf68eee2d3c6736872a2616a05474832a30fa46eb9b6babd45",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The control “Keep telemetry failures from breaking critical business behavior unless audit guarantees require a fail-closed design.” depends on lifecycle value, clarity, reviewability, practical scope, human judgment, or engineering-quality tradeoffs with no universal pass rule.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-6BE98043",
+      "revision": 1,
+      "semantic_sha256": "6be980439fd734f559c32700fa65a2bfa1bca7aa29ba721b54b1ddbf7b4490b0",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Ensure sampling does not remove critical security, integrity, or rare failure evidence.” has a separable analyzer, configuration, record, or bounded-test portion, but full pass status also depends on semantic completeness, safety, appropriateness, sufficiency, or unbounded behavior.",
+      "deterministic_clauses": [
+        {
+          "statement": "Pinned analysis or authenticated bounded evidence records the named source pattern, dependency, configuration, review, test, or migration outcome without treating complete semantic coverage or universal correctness as proven.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-BB92033C",
+      "revision": 1,
+      "semantic_sha256": "bb92033c1ac897ea09cd695b6df5ddb95d8112f8374bf074f38db9d33e3af5af",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The control “Create health signals that distinguish process liveness, readiness, dependency health, correctness, and user journey success.” defines a bounded telemetry, dependency, schema, flag, review, metric, debt, provenance, or release-evidence record whose explicit fields can be checked exactly.",
+      "deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit schema, identifier, owner, field, trend, review event, provenance link, limitation, or evidence binding required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-40C08B37",
+      "revision": 1,
+      "semantic_sha256": "40c08b377e77130bd706d3c3fcbf81e2fe5b241f95c2255ece7e7050d98f6ace",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The control “Make feature flags, configuration versions, migrations, and deployment versions visible in diagnostics.” defines a bounded telemetry, dependency, schema, flag, review, metric, debt, provenance, or release-evidence record whose explicit fields can be checked exactly.",
+      "deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit schema, identifier, owner, field, trend, review event, provenance link, limitation, or evidence binding required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-2C8854E2",
+      "revision": 1,
+      "semantic_sha256": "2c8854e21928c3b44d1e09f9c14e2ea3d09fe3ccc6b67ae3512b3be5e25a0299",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "The control “Provide deterministic fixtures and builders for complex domain objects.” names a closed fixture, configuration, or defect-regression protocol whose authenticated before-and-after outcomes can be verified exactly.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution evidence covers every approved fixture, configuration combination, or pre-fix and post-fix case for the exact revision.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-99993149",
+      "revision": 1,
+      "semantic_sha256": "999931498279aaf784c317d743d08b86050c1766a6cd16fd68e87f8068420966",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The control “Keep public interfaces small enough to test exhaustively or systematically at boundaries.” depends on lifecycle value, clarity, reviewability, practical scope, human judgment, or engineering-quality tradeoffs with no universal pass rule.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-D1828585",
+      "revision": 1,
+      "semantic_sha256": "d18285859ff69d050fd7981d78fdb0656edbf8104133af70d1866035dac8b308",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The control “Use fault injection points for critical dependencies and recovery logic.” can be decided by exact joins across complete dependency, configuration, change, reviewer, generated-code, gate, migration, and release inventories with bound evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope dependency, configuration, change, generated artifact, reviewer, migration, finding, or release subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, CI, event, and execution evidence satisfies every approved exact identity, timing, authorization, gate, isolation, monitoring, or disposition condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-802A6876",
+      "revision": 1,
+      "semantic_sha256": "802a68762234bce81e46903e5067a2fe9017237ddee6ed8f694684a7194a7d6e",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The control “Validate that diagnostic code and instrumentation do not create unacceptable overhead or behavior changes.” can be decided by exact joins across complete dependency, configuration, change, reviewer, generated-code, gate, migration, and release inventories with bound evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope dependency, configuration, change, generated artifact, reviewer, migration, finding, or release subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, CI, event, and execution evidence satisfies every approved exact identity, timing, authorization, gate, isolation, monitoring, or disposition condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-00EDEF12",
+      "revision": 1,
+      "semantic_sha256": "00edef12e5565220bcd237aafde38cbfb3f4d142a42ed07b05dfa7989d53bf17",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The control “Add a dependency only when its lifecycle cost and risk are lower than implementing or avoiding the capability.” depends on lifecycle value, clarity, reviewability, practical scope, human judgment, or engineering-quality tradeoffs with no universal pass rule.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-56DBBE9E",
+      "revision": 1,
+      "semantic_sha256": "56dbbe9ebd64d435f08e0434159c265050b2252214f4c8dcf6f6b47acaeedbb9",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The control “Assess maintenance activity, ownership, support horizon, security history, license, transitive dependencies, size, portability, and replacement cost.” defines a bounded telemetry, dependency, schema, flag, review, metric, debt, provenance, or release-evidence record whose explicit fields can be checked exactly.",
+      "deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit schema, identifier, owner, field, trend, review event, provenance link, limitation, or evidence binding required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-8FA79EE4",
+      "revision": 1,
+      "semantic_sha256": "8fa79ee4c7f87eef1efc4d9541516572378dfb8708c9008e581f1173bdfca34c",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The control “Pin or constrain versions to balance reproducibility with timely security updates.” depends on lifecycle value, clarity, reviewability, practical scope, human judgment, or engineering-quality tradeoffs with no universal pass rule.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-728124AE",
+      "revision": 1,
+      "semantic_sha256": "728124aed5047c9c6eb4bd3b37222611a91714719b473a56c6ddcc85b21a5858",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Remove unused direct and transitive dependencies and unreachable bundled code.” has a separable analyzer, configuration, record, or bounded-test portion, but full pass status also depends on semantic completeness, safety, appropriateness, sufficiency, or unbounded behavior.",
+      "deterministic_clauses": [
+        {
+          "statement": "Pinned analysis or authenticated bounded evidence records the named source pattern, dependency, configuration, review, test, or migration outcome without treating complete semantic coverage or universal correctness as proven.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-3A6BB91D",
+      "revision": 1,
+      "semantic_sha256": "3a6bb91dc63dd7d51880add3ee7bf26eb34366820f67295fd9a1b8e5b194f1df",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The control “Use one authoritative configuration schema with types, constraints, defaults, documentation, and secret classification.” defines a bounded telemetry, dependency, schema, flag, review, metric, debt, provenance, or release-evidence record whose explicit fields can be checked exactly.",
+      "deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit schema, identifier, owner, field, trend, review event, provenance link, limitation, or evidence binding required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-4C6B728A",
+      "revision": 1,
+      "semantic_sha256": "4c6b728acb985da58c6b796f70f486a2875e27fd9fd66d8ff4a56d243df023a9",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Audit, reproduction, and secret-separation evidence is exact, but whether production configuration is genuinely reviewable depends on complexity, presentation, and reviewer context.",
+      "deterministic_clauses": [
+        {
+          "statement": "The production configuration has authenticated change history, reproducible version binding, and no secret values in the approved non-secret configuration surface.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-A60E84DD",
+      "revision": 1,
+      "semantic_sha256": "a60e84dd880dac327c20c66dfa1ca8ac8e4e28dfc6a4b301f2bfcbe758bbfcd3",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The control “Keep production configuration reviewable, auditable, reproducible, and separated from secrets.” can be decided by exact joins across complete dependency, configuration, change, reviewer, generated-code, gate, migration, and release inventories with bound evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope dependency, configuration, change, generated artifact, reviewer, migration, finding, or release subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, CI, event, and execution evidence satisfies every approved exact identity, timing, authorization, gate, isolation, monitoring, or disposition condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-3E5F2D86",
+      "revision": 1,
+      "semantic_sha256": "3e5f2d8658dd8388cf7c81aa8ff419c9b7f854120b5cd6a501942f9c60536199",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The control “Avoid configuration options that create untested combinatorial behavior without clear value.” depends on lifecycle value, clarity, reviewability, practical scope, human judgment, or engineering-quality tradeoffs with no universal pass rule.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-0E91A950",
+      "revision": 1,
+      "semantic_sha256": "0e91a950fd3e820396e0c9981c858e2b8ab7a668f4a7198c14a1960e9ccad5b6",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "The control “Test supported configuration and feature-flag combinations, including failure of the flag service.” names a closed fixture, configuration, or defect-regression protocol whose authenticated before-and-after outcomes can be verified exactly.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution evidence covers every approved fixture, configuration combination, or pre-fix and post-fix case for the exact revision.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-DDC54163",
+      "revision": 1,
+      "semantic_sha256": "ddc5416342642813d1eeba1e72b4bb052e50533739c7589621dd0475f470314f",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Flag ownership and lifecycle fields are exact, but whether the selected default is safe depends on user, data, failure, and rollout context.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every flag has owner, purpose, declared default, rollout plan, monitoring binding, and removal date.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-CDEE0611",
+      "revision": 1,
+      "semantic_sha256": "cdee06117271ea1cb3cbf796ba3caa5ef5028c55358c137dc44209fd426f6020",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The control “Do not use long-lived flags as an ungoverned substitute for architecture, permissions, or product plans.” depends on lifecycle value, clarity, reviewability, practical scope, human judgment, or engineering-quality tradeoffs with no universal pass rule.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-5260DD86",
+      "revision": 1,
+      "semantic_sha256": "5260dd86da5218efb1126081b3aa23834b3dccdb7b032d2c9bb0a39b4c78d2d4",
+      "classification": "deterministic",
+      "route": "artifact_verification",
+      "reason": "The control “Make generated code and artifacts reproducible from a reviewed source and trusted generator.” is objectively decidable from immutable generator, schema, template, toolchain, provenance, source, and artifact digests.",
+      "deterministic_clauses": [
+        {
+          "statement": "The generated or final artifact digest, source digest, generator identity, schema, template, toolchain, provenance, and reviewed artifact binding satisfy the approved immutable manifest.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-EC8D2059",
+      "revision": 1,
+      "semantic_sha256": "ec8d20592de04f221d8a0551bfea639e1e6b7004747bf91cb9e6fbd57bb7f92f",
+      "classification": "deterministic",
+      "route": "artifact_verification",
+      "reason": "The control “Pin and verify generators, schemas, templates, and toolchains.” is objectively decidable from immutable generator, schema, template, toolchain, provenance, source, and artifact digests.",
+      "deterministic_clauses": [
+        {
+          "statement": "The generated or final artifact digest, source digest, generator identity, schema, template, toolchain, provenance, and reviewed artifact binding satisfy the approved immutable manifest.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-B433EC66",
+      "revision": 1,
+      "semantic_sha256": "b433ec6698b44653d45080e31ffd6e4cdcc6ac7b944bb2a6cce9c36e2757718d",
+      "classification": "deterministic",
+      "route": "artifact_verification",
+      "reason": "The control “Do not manually edit generated output unless the source-of-truth and regeneration rules explicitly permit it.” is objectively decidable from immutable generator, schema, template, toolchain, provenance, source, and artifact digests.",
+      "deterministic_clauses": [
+        {
+          "statement": "The generated or final artifact digest, source digest, generator identity, schema, template, toolchain, provenance, and reviewed artifact binding satisfy the approved immutable manifest.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-0147BEB3",
+      "revision": 1,
+      "semantic_sha256": "0147beb382683abce7a44b8ea59cecec0b03e7b57d455362e11cd4278dcfcaf9",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The control “Scan generated and vendored code with the same relevant security and quality controls as handwritten code.” can be decided by exact joins across complete dependency, configuration, change, reviewer, generated-code, gate, migration, and release inventories with bound evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope dependency, configuration, change, generated artifact, reviewer, migration, finding, or release subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, CI, event, and execution evidence satisfies every approved exact identity, timing, authorization, gate, isolation, monitoring, or disposition condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-2563896F",
+      "revision": 1,
+      "semantic_sha256": "2563896f8dc857a6fd628d7622d8dd3c9f05dd9176bab1757281673bf23a4e07",
+      "classification": "deterministic",
+      "route": "artifact_verification",
+      "reason": "The control “Preserve provenance from input schema or model through generator to output artifact.” is objectively decidable from immutable generator, schema, template, toolchain, provenance, source, and artifact digests.",
+      "deterministic_clauses": [
+        {
+          "statement": "The generated or final artifact digest, source digest, generator identity, schema, template, toolchain, provenance, and reviewed artifact binding satisfy the approved immutable manifest.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-4F610242",
+      "revision": 1,
+      "semantic_sha256": "4f610242b7eb93103ade28a2cf437958fbcfe4f661b8b75d66a12365b712c093",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The control “Require review by someone other than the author for material production changes.” can be decided by exact joins across complete dependency, configuration, change, reviewer, generated-code, gate, migration, and release inventories with bound evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope dependency, configuration, change, generated artifact, reviewer, migration, finding, or release subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, CI, event, and execution evidence satisfies every approved exact identity, timing, authorization, gate, isolation, monitoring, or disposition condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-92000C1E",
+      "revision": 1,
+      "semantic_sha256": "92000c1eebec30502434072341e52e11ee51ae28aa1cfd0b6696eb84e57ce365",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The control “Match reviewers to domain, security, data, accessibility, performance, and operational risk.” depends on lifecycle value, clarity, reviewability, practical scope, human judgment, or engineering-quality tradeoffs with no universal pass rule.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-876EAEF6",
+      "revision": 1,
+      "semantic_sha256": "876eaef6bd3e04dbccd6b442369bc4468e42b73d64acaf01acc1cf0bdf663291",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The control “Review behavior, failure modes, contracts, data effects, observability, tests, rollback, and migration—not only style.” defines a bounded telemetry, dependency, schema, flag, review, metric, debt, provenance, or release-evidence record whose explicit fields can be checked exactly.",
+      "deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit schema, identifier, owner, field, trend, review event, provenance link, limitation, or evidence binding required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-2755D60A",
+      "revision": 1,
+      "semantic_sha256": "2755d60a0c036886329efd30de85f4ab78fa0efa456695f0dda711f146aab7af",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The control “Keep changes small enough to review effectively whenever practical.” depends on lifecycle value, clarity, reviewability, practical scope, human judgment, or engineering-quality tradeoffs with no universal pass rule.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-12655775",
+      "revision": 1,
+      "semantic_sha256": "1265577514f31550dfa4b1a59a3454bcd7e6d4c265d110b9b2dbae98e0a0a8c0",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Use automated formatting, linting, compilation, type checking, static analysis, dependency scanning, and secret scanning appropriate to the code.” has a separable analyzer, configuration, record, or bounded-test portion, but full pass status also depends on semantic completeness, safety, appropriateness, sufficiency, or unbounded behavior.",
+      "deterministic_clauses": [
+        {
+          "statement": "Pinned analysis or authenticated bounded evidence records the named source pattern, dependency, configuration, review, test, or migration outcome without treating complete semantic coverage or universal correctness as proven.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-43674C7E",
+      "revision": 1,
+      "semantic_sha256": "43674c7e89de1222472b55e50e4e9bb58ff4fee551d61a053bb822a5d7813fa4",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The control “Treat new warnings and high-confidence findings as failures unless a reviewed suppression explains why the finding is not applicable.” can be decided by exact joins across complete dependency, configuration, change, reviewer, generated-code, gate, migration, and release inventories with bound evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope dependency, configuration, change, generated artifact, reviewer, migration, finding, or release subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, CI, event, and execution evidence satisfies every approved exact identity, timing, authorization, gate, isolation, monitoring, or disposition condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-FE2D4DFC",
+      "revision": 1,
+      "semantic_sha256": "fe2d4dfcc6c012273563fc49afe7aa2ea3300d9601af78c052e0a8d6d0b03563",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The control “Scope suppressions narrowly, record ownership and expiry, and prevent global disabling for convenience.” can be decided by exact joins across complete dependency, configuration, change, reviewer, generated-code, gate, migration, and release inventories with bound evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope dependency, configuration, change, generated artifact, reviewer, migration, finding, or release subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, CI, event, and execution evidence satisfies every approved exact identity, timing, authorization, gate, isolation, monitoring, or disposition condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-5901EFEA",
+      "revision": 1,
+      "semantic_sha256": "5901efea37eaabb266be5f8527a2144ce79e98a9fa1d3a0a7fa5311e26a694a0",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The control “Use code-quality metrics as investigation signals rather than targets that can be gamed.” concerns organizational motive, human accountability, pressure, investigation, or understanding that cannot be proven from tool and review records alone.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-CC5B174C",
+      "revision": 1,
+      "semantic_sha256": "cc5b174c40b49ae5bb537ab7d0efcd8648a24140a775c2d9d488efd263db93d2",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The control “Track trends in complexity, duplication, dependency cycles, warnings, churn, defect density, flaky tests, coverage gaps, and technical debt.” defines a bounded telemetry, dependency, schema, flag, review, metric, debt, provenance, or release-evidence record whose explicit fields can be checked exactly.",
+      "deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit schema, identifier, owner, field, trend, review event, provenance link, limitation, or evidence binding required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-A1F8C6E6",
+      "revision": 1,
+      "semantic_sha256": "a1f8c6e652fa8dd74278a960ab0875eb8f3decbc41f35767d75c8a97028542d2",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The control “Define local limits based on component criticality and change cost rather than enforcing arbitrary organization-wide numbers.” defines a bounded telemetry, dependency, schema, flag, review, metric, debt, provenance, or release-evidence record whose explicit fields can be checked exactly.",
+      "deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit schema, identifier, owner, field, trend, review event, provenance link, limitation, or evidence binding required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F01FABCC",
+      "revision": 1,
+      "semantic_sha256": "f01fabcc75dbcdce82000a3c7b7afcd38e7b7295e5a76bddfc8965a2f488855d",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Numeric local limits and their component mappings are exact, but deciding that limits are truly based on criticality and change cost rather than arbitrary judgment requires contextual review.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every local quality limit links to a component criticality record and documented change-cost rationale.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-A4C2204F",
+      "revision": 1,
+      "semantic_sha256": "a4c2204f6d27b185eba976b1b202f1d7a9b3e179f6428c8afb4c38454a0da906",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The control “Use automated source-code quality measures aligned with reliability, security, performance efficiency, and maintainability where useful.” depends on lifecycle value, clarity, reviewability, practical scope, human judgment, or engineering-quality tradeoffs with no universal pass rule.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-060292B5",
+      "revision": 1,
+      "semantic_sha256": "060292b5545039818940b68cec273264f3a3806170a6dd546462605de9b74be9",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "The control “Require evidence that tests fail before the fix and pass after it for material defects.” names a closed fixture, configuration, or defect-regression protocol whose authenticated before-and-after outcomes can be verified exactly.",
+      "deterministic_clauses": [
+        {
+          "statement": "Authenticated bounded execution evidence covers every approved fixture, configuration combination, or pre-fix and post-fix case for the exact revision.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-920D4B56",
+      "revision": 1,
+      "semantic_sha256": "920d4b569d0953332f37fb9fb20a530ee42d148b39ea5c239ee8d8f882e8937e",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The control “Protect review and quality-gate configuration from unauthorized bypass.” can be decided by exact joins across complete dependency, configuration, change, reviewer, generated-code, gate, migration, and release inventories with bound evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope dependency, configuration, change, generated artifact, reviewer, migration, finding, or release subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, CI, event, and execution evidence satisfies every approved exact identity, timing, authorization, gate, isolation, monitoring, or disposition condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-FBD94500",
+      "revision": 1,
+      "semantic_sha256": "fbd945009c87588f79b7038d52c101385e1217a92d21b427ae5b491add2ae7f2",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The control “Audit emergency bypasses and complete retrospective review promptly.” defines a bounded telemetry, dependency, schema, flag, review, metric, debt, provenance, or release-evidence record whose explicit fields can be checked exactly.",
+      "deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit schema, identifier, owner, field, trend, review event, provenance link, limitation, or evidence binding required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-40CDE58A",
+      "revision": 1,
+      "semantic_sha256": "40cde58a8737fce98ceeab6e848d1669f3c762596435ef0984aa194042345739",
+      "classification": "deterministic",
+      "route": "artifact_verification",
+      "reason": "The control “Ensure the final artifact—not merely source—passes applicable checks.” is objectively decidable from immutable generator, schema, template, toolchain, provenance, source, and artifact digests.",
+      "deterministic_clauses": [
+        {
+          "statement": "The generated or final artifact digest, source digest, generator identity, schema, template, toolchain, provenance, and reviewed artifact binding satisfy the approved immutable manifest.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-6DF9FEA2",
+      "revision": 1,
+      "semantic_sha256": "6df9fea2cfdfda08a0bd3a12e1004c26a79db678bbd1759d39c600555d2788a0",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The control “Refactor to reduce demonstrated change risk, defects, cognitive load, coupling, or operating cost—not merely to follow fashion.” depends on lifecycle value, clarity, reviewability, practical scope, human judgment, or engineering-quality tradeoffs with no universal pass rule.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-4DFE7944",
+      "revision": 1,
+      "semantic_sha256": "4dfe794458f5a0485721d8903a6257d869fce0981dbd2177e891b67e45593d00",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Preserve behavior through characterization tests, contracts, monitoring, or formal equivalence appropriate to risk.” has a separable analyzer, configuration, record, or bounded-test portion, but full pass status also depends on semantic completeness, safety, appropriateness, sufficiency, or unbounded behavior.",
+      "deterministic_clauses": [
+        {
+          "statement": "Pinned analysis or authenticated bounded evidence records the named source pattern, dependency, configuration, review, test, or migration outcome without treating complete semantic coverage or universal correctness as proven.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-5034A635",
+      "revision": 1,
+      "semantic_sha256": "5034a635bc9e145d18cdd055e989b0c53156c9c129e5491f56ef7a38d48ebe17",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The control “Separate behavior-preserving refactoring from feature change when that improves reviewability.” depends on lifecycle value, clarity, reviewability, practical scope, human judgment, or engineering-quality tradeoffs with no universal pass rule.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-72261A80",
+      "revision": 1,
+      "semantic_sha256": "72261a806cbc0e69142aa877faa0a2a3eaff1d1e27e7efc9662f8d01803fba61",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The control “Use incremental migration and compatibility seams for high-risk legacy replacement.” depends on lifecycle value, clarity, reviewability, practical scope, human judgment, or engineering-quality tradeoffs with no universal pass rule.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-7D1AAF08",
+      "revision": 1,
+      "semantic_sha256": "7d1aaf0840f0dc15ddbf758e0e4e9f332a890cbd30620d29f048a37b431e9215",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The control “Document technical debt with principal, ongoing interest, affected outcomes, owner, trigger, and proposed treatment.” defines a bounded telemetry, dependency, schema, flag, review, metric, debt, provenance, or release-evidence record whose explicit fields can be checked exactly.",
+      "deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit schema, identifier, owner, field, trend, review event, provenance link, limitation, or evidence binding required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-D5248200",
+      "revision": 1,
+      "semantic_sha256": "d5248200efeb295c72c1f3ce0ea2c931a74b5793fed356e4bfcce5b416e0d555",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The control “Prioritize debt using risk and cost of delay rather than age or developer preference alone.” depends on lifecycle value, clarity, reviewability, practical scope, human judgment, or engineering-quality tradeoffs with no universal pass rule.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-0730A9EE",
+      "revision": 1,
+      "semantic_sha256": "0730a9ee4375d76d82d99aeccd1eef4ca32ebc86426bfe04918ab9778c221e4f",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The control “Do not label deliberate, understood trade-offs as debt unless they create a future obligation or cost.” depends on lifecycle value, clarity, reviewability, practical scope, human judgment, or engineering-quality tradeoffs with no universal pass rule.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-64A92D0D",
+      "revision": 1,
+      "semantic_sha256": "64a92d0d81a5891e7d46c79e56764ee153cae4a6efee33296c241ef65a89471b",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Remove dead code, stale flags, unused APIs, obsolete compatibility paths, abandoned migrations, and unsupported versions.” has a separable analyzer, configuration, record, or bounded-test portion, but full pass status also depends on semantic completeness, safety, appropriateness, sufficiency, or unbounded behavior.",
+      "deterministic_clauses": [
+        {
+          "statement": "Pinned analysis or authenticated bounded evidence records the named source pattern, dependency, configuration, review, test, or migration outcome without treating complete semantic coverage or universal correctness as proven.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-745499A4",
+      "revision": 1,
+      "semantic_sha256": "745499a418525868dc4bb480467124c0f6124044f10ed1c554e4dbea0ff320e7",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Prove absence of consumers before deleting externally or asynchronously consumed behavior.” has a separable analyzer, configuration, record, or bounded-test portion, but full pass status also depends on semantic completeness, safety, appropriateness, sufficiency, or unbounded behavior.",
+      "deterministic_clauses": [
+        {
+          "statement": "Pinned analysis or authenticated bounded evidence records the named source pattern, dependency, configuration, review, test, or migration outcome without treating complete semantic coverage or universal correctness as proven.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-2CB162C9",
+      "revision": 1,
+      "semantic_sha256": "2cb162c9f33e0dde058d515c8ceeb8e21071b505776ee956204674c593c414ca",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The control “Use telemetry, repository search, contracts, and consumer confirmation to support deprecation decisions.” defines a bounded telemetry, dependency, schema, flag, review, metric, debt, provenance, or release-evidence record whose explicit fields can be checked exactly.",
+      "deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit schema, identifier, owner, field, trend, review event, provenance link, limitation, or evidence binding required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-C46562AC",
+      "revision": 1,
+      "semantic_sha256": "c46562ace7a38430a1ebae8ed6df328f923fe699cde17a13335cea8c6ecd3988",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The control “Provide migration guidance and sufficient notice for supported consumers.” depends on lifecycle value, clarity, reviewability, practical scope, human judgment, or engineering-quality tradeoffs with no universal pass rule.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-68AF1C3C",
+      "revision": 1,
+      "semantic_sha256": "68af1c3cc1ee3452c2351c569dbfbbcf0586ce3bbe582ab7119c98877e4d0386",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The control “Keep rollback or restore paths until deletion risk is acceptably low.” depends on lifecycle value, clarity, reviewability, practical scope, human judgment, or engineering-quality tradeoffs with no universal pass rule.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-A4F02E4C",
+      "revision": 1,
+      "semantic_sha256": "a4f02e4cde7972723ca88cbaddbcd09a59c26cb7c46205df93937e7c41efeb1d",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The control “Decommission secrets, jobs, queues, storage, dashboards, alerts, and documentation associated with deleted code.” can be decided by exact joins across complete dependency, configuration, change, reviewer, generated-code, gate, migration, and release inventories with bound evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope dependency, configuration, change, generated artifact, reviewer, migration, finding, or release subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, CI, event, and execution evidence satisfies every approved exact identity, timing, authorization, gate, isolation, monitoring, or disposition condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-98563D35",
+      "revision": 1,
+      "semantic_sha256": "98563d35cc2102dc38416dc79af512f4f66965a92ab36d2d10053ac9a3194f23",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The control “Ensure replacement code does not reproduce the same hidden assumptions or defects.” depends on lifecycle value, clarity, reviewability, practical scope, human judgment, or engineering-quality tradeoffs with no universal pass rule.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-9D06A061",
+      "revision": 1,
+      "semantic_sha256": "9d06a061968460ffd644c9628b61112e7269e63028424bf8da8096927512a6b5",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The control “Measure whether refactoring improved the intended quality outcome.” can be decided by exact joins across complete dependency, configuration, change, reviewer, generated-code, gate, migration, and release inventories with bound evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope dependency, configuration, change, generated artifact, reviewer, migration, finding, or release subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, CI, event, and execution evidence satisfies every approved exact identity, timing, authorization, gate, isolation, monitoring, or disposition condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-FB8113ED",
+      "revision": 1,
+      "semantic_sha256": "fb8113ed384886cc78dadb711aea802deae31d7c3b312e8210b3c1e86551b911",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The control “Capture recurring causes in standards, tooling, architecture, and training.” defines a bounded telemetry, dependency, schema, flag, review, metric, debt, provenance, or release-evidence record whose explicit fields can be checked exactly.",
+      "deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit schema, identifier, owner, field, trend, review event, provenance link, limitation, or evidence binding required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F0F5ACE7",
+      "revision": 1,
+      "semantic_sha256": "f0f5ace710d0bd25fe20b2ba00338cf3213cc5ff48e5f8ed8f3750085983c136",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The control “Treat generated or suggested code as untrusted input requiring the same ownership, review, testing, security, licensing, and provenance as handwritten code.” can be decided by exact joins across complete dependency, configuration, change, reviewer, generated-code, gate, migration, and release inventories with bound evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope dependency, configuration, change, generated artifact, reviewer, migration, finding, or release subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, CI, event, and execution evidence satisfies every approved exact identity, timing, authorization, gate, isolation, monitoring, or disposition condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-4DB2AD50",
+      "revision": 1,
+      "semantic_sha256": "4db2ad50d9d8382c146f158947d8cdf0034e5d4aa18afc5e9245bf16fe082c96",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The control “Never merge code solely because a tool reports confidence or compilation success.” concerns organizational motive, human accountability, pressure, investigation, or understanding that cannot be proven from tool and review records alone.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-30E40C42",
+      "revision": 1,
+      "semantic_sha256": "30e40c42afcbc0437e502c249d8b1db6ecd1128959f6df5804cd72690f8428a9",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Verify every referenced API, package, version, algorithm, security control, and configuration against authoritative documentation.” has a separable analyzer, configuration, record, or bounded-test portion, but full pass status also depends on semantic completeness, safety, appropriateness, sufficiency, or unbounded behavior.",
+      "deterministic_clauses": [
+        {
+          "statement": "Pinned analysis or authenticated bounded evidence records the named source pattern, dependency, configuration, review, test, or migration outcome without treating complete semantic coverage or universal correctness as proven.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-A8DCB48D",
+      "revision": 1,
+      "semantic_sha256": "a8dcb48dcdf5fb14fc88bdebc4f9e32835119fd97f0f5a6d16a99fa16d338863",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Check for hallucinated, abandoned, malicious, typosquatted, or inappropriate dependencies.” has a separable analyzer, configuration, record, or bounded-test portion, but full pass status also depends on semantic completeness, safety, appropriateness, sufficiency, or unbounded behavior.",
+      "deterministic_clauses": [
+        {
+          "statement": "Pinned analysis or authenticated bounded evidence records the named source pattern, dependency, configuration, review, test, or migration outcome without treating complete semantic coverage or universal correctness as proven.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-29B0FA93",
+      "revision": 1,
+      "semantic_sha256": "29b0fa93f19b5e377ebd345659f42a9e4ff55cac3d07fc2f0e99a4591c75d9ce",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Copied protected material, incompatible licensing, attribution, and confidential-source leakage require legal and provenance-specialist judgment beyond generic similarity or license scanners.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-361CFE54",
+      "revision": 1,
+      "semantic_sha256": "361cfe54a1c7421ade1c0cd1df8b630e9837aac9b30dda5d69384fd64249809a",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Do not provide secrets, personal data, proprietary code, customer data, or restricted artifacts to an unapproved model or service.” has a separable analyzer, configuration, record, or bounded-test portion, but full pass status also depends on semantic completeness, safety, appropriateness, sufficiency, or unbounded behavior.",
+      "deterministic_clauses": [
+        {
+          "statement": "Pinned analysis or authenticated bounded evidence records the named source pattern, dependency, configuration, review, test, or migration outcome without treating complete semantic coverage or universal correctness as proven.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-0174E68B",
+      "revision": 1,
+      "semantic_sha256": "0174e68bad3978a073cc799c4b90a9f643e33052201e469b79e1db7f4bf3874e",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The control “Ensure generated tests assert required behavior rather than simply mirroring generated implementation.” depends on lifecycle value, clarity, reviewability, practical scope, human judgment, or engineering-quality tradeoffs with no universal pass rule.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-A036EF8F",
+      "revision": 1,
+      "semantic_sha256": "a036ef8f571fbe09d0de11a44e1eb273bce2ed31652f2a69b51b3684f6375a16",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The control “Use independent reviewers or tools for high-risk generated code rather than relying on the same model to validate itself.” can be decided by exact joins across complete dependency, configuration, change, reviewer, generated-code, gate, migration, and release inventories with bound evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope dependency, configuration, change, generated artifact, reviewer, migration, finding, or release subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, CI, event, and execution evidence satisfies every approved exact identity, timing, authorization, gate, isolation, monitoring, or disposition condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-D973EED1",
+      "revision": 1,
+      "semantic_sha256": "d973eed1d7c4bffc716aaac07f7c1d4310e40bd92df40ff9adc43e8daa872358",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Check generated code for insecure defaults, missing error paths, unbounded resource use, concurrency defects, and fabricated edge-case handling.” has a separable analyzer, configuration, record, or bounded-test portion, but full pass status also depends on semantic completeness, safety, appropriateness, sufficiency, or unbounded behavior.",
+      "deterministic_clauses": [
+        {
+          "statement": "Pinned analysis or authenticated bounded evidence records the named source pattern, dependency, configuration, review, test, or migration outcome without treating complete semantic coverage or universal correctness as proven.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F1392D49",
+      "revision": 1,
+      "semantic_sha256": "f1392d49b124fda00e16dd87358d2e76951903654c210e776904abd7a0d0b5f3",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The control “Retain sufficient provenance to identify tool, model, version, context, author, reviewer, and affected code where policy requires it.” defines a bounded telemetry, dependency, schema, flag, review, metric, debt, provenance, or release-evidence record whose explicit fields can be checked exactly.",
+      "deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit schema, identifier, owner, field, trend, review event, provenance link, limitation, or evidence binding required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-183D2712",
+      "revision": 1,
+      "semantic_sha256": "183d271209a6d3b517ede37c302913ea362b8dcaff44c585c04121704b4a7206",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The control “Prevent autonomous agents from merging, deploying, changing permissions, rotating secrets, or modifying production without enforced authorization and gates.” can be decided by exact joins across complete dependency, configuration, change, reviewer, generated-code, gate, migration, and release inventories with bound evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope dependency, configuration, change, generated artifact, reviewer, migration, finding, or release subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, CI, event, and execution evidence satisfies every approved exact identity, timing, authorization, gate, isolation, monitoring, or disposition condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-EA441182",
+      "revision": 1,
+      "semantic_sha256": "ea441182183c2da87a903b07c75ce90324af295339fbf7ab4db7d9d105309def",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The control “Sandbox code execution and restrict network, filesystem, credentials, and tool permissions.” can be decided by exact joins across complete dependency, configuration, change, reviewer, generated-code, gate, migration, and release inventories with bound evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope dependency, configuration, change, generated artifact, reviewer, migration, finding, or release subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, CI, event, and execution evidence satisfies every approved exact identity, timing, authorization, gate, isolation, monitoring, or disposition condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-090DA6D3",
+      "revision": 1,
+      "semantic_sha256": "090da6d3890a9a128fec3e0ff98f138d6fab233241dec4f94ed6fff2eaa34091",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The control “Monitor whether AI assistance increases change size, rework, vulnerabilities, incidents, review burden, or dependency growth.” defines a bounded telemetry, dependency, schema, flag, review, metric, debt, provenance, or release-evidence record whose explicit fields can be checked exactly.",
+      "deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit schema, identifier, owner, field, trend, review event, provenance link, limitation, or evidence binding required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F3FCECA7",
+      "revision": 1,
+      "semantic_sha256": "f3fceca7c6832e025bc471a0bdb55c416f21a25d2474e910188d328698e7063b",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The control “Do not use productivity metrics to pressure engineers into accepting unreviewed generated code.” concerns organizational motive, human accountability, pressure, investigation, or understanding that cannot be proven from tool and review records alone.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-FFBABB8B",
+      "revision": 1,
+      "semantic_sha256": "ffbabb8b9e6737ab52c7b40f424d85882e1c81929d12eacc15c552f86a79b4a0",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The control “Keep human accountability with the person and organization approving the change.” defines a bounded telemetry, dependency, schema, flag, review, metric, debt, provenance, or release-evidence record whose explicit fields can be checked exactly.",
+      "deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit schema, identifier, owner, field, trend, review event, provenance link, limitation, or evidence binding required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-97DE9743",
+      "revision": 1,
+      "semantic_sha256": "97de9743645494eab4fd2973575e8961597213ae76b5e7d400ab9ad925f1a710",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The control “Reevaluate generated code after model, prompt, plugin, or policy changes that can alter output risk.” can be decided by exact joins across complete dependency, configuration, change, reviewer, generated-code, gate, migration, and release inventories with bound evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope dependency, configuration, change, generated artifact, reviewer, migration, finding, or release subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, CI, event, and execution evidence satisfies every approved exact identity, timing, authorization, gate, isolation, monitoring, or disposition condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-B1D30269",
+      "revision": 1,
+      "semantic_sha256": "b1d30269c773968052f6e6883f4003736b7a79450a116fadcebbfc6e069cf2ac",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The control “Block release when critical behavior lacks a testable contract or acceptance criterion.” can be decided by exact joins across complete dependency, configuration, change, reviewer, generated-code, gate, migration, and release inventories with bound evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope dependency, configuration, change, generated artifact, reviewer, migration, finding, or release subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, CI, event, and execution evidence satisfies every approved exact identity, timing, authorization, gate, isolation, monitoring, or disposition condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F85696BF",
+      "revision": 1,
+      "semantic_sha256": "f85696bfd29e4eac0208ef0ee13ae8271d61195faba8614f8936f9f5226c4a4b",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Block release when a known invariant violation, data corruption path, authorization bypass, unsafe duplicate effect, or unreconciled financial discrepancy remains possible.” has a separable analyzer, configuration, record, or bounded-test portion, but full pass status also depends on semantic completeness, safety, appropriateness, sufficiency, or unbounded behavior.",
+      "deterministic_clauses": [
+        {
+          "statement": "Pinned analysis or authenticated bounded evidence records the named source pattern, dependency, configuration, review, test, or migration outcome without treating complete semantic coverage or universal correctness as proven.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-59868E58",
+      "revision": 1,
+      "semantic_sha256": "59868e58a6a9547d6396a8c101d69c30647789f18c2289fba89e8bd1d01c0ce0",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The control “Block release when the implementation relies on unsupported runtime behavior or an unreviewed high-risk dependency.” can be decided by exact joins across complete dependency, configuration, change, reviewer, generated-code, gate, migration, and release inventories with bound evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope dependency, configuration, change, generated artifact, reviewer, migration, finding, or release subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, CI, event, and execution evidence satisfies every approved exact identity, timing, authorization, gate, isolation, monitoring, or disposition condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-447C9B3C",
+      "revision": 1,
+      "semantic_sha256": "447c9b3ccdede80a96f1b63cfc7350171c75fc40e2c4e97ac175426420ca45cb",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The control “Block release when critical warnings, analyzer findings, failed tests, or suppressions lack evidence-based disposition.” can be decided by exact joins across complete dependency, configuration, change, reviewer, generated-code, gate, migration, and release inventories with bound evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope dependency, configuration, change, generated artifact, reviewer, migration, finding, or release subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, CI, event, and execution evidence satisfies every approved exact identity, timing, authorization, gate, isolation, monitoring, or disposition condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-27CDEDEA",
+      "revision": 1,
+      "semantic_sha256": "27cdedeaaf3e106d3c541c441783f417acf2f402e5f7c24b9de3829d20abe35a",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The control “Block release when resource bounds, timeout, retry, cancellation, or failure behavior is unknown for a critical path.” can be decided by exact joins across complete dependency, configuration, change, reviewer, generated-code, gate, migration, and release inventories with bound evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope dependency, configuration, change, generated artifact, reviewer, migration, finding, or release subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, CI, event, and execution evidence satisfies every approved exact identity, timing, authorization, gate, isolation, monitoring, or disposition condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-243EC747",
+      "revision": 1,
+      "semantic_sha256": "243ec747ab5f02ddd9fb62f46544dd641b269928c8aa218b65c2edba9f7fa4c0",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The control “Block release when a migration or state transition can leave irreversible ambiguous state without a tested recovery.” can be decided by exact joins across complete dependency, configuration, change, reviewer, generated-code, gate, migration, and release inventories with bound evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope dependency, configuration, change, generated artifact, reviewer, migration, finding, or release subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, CI, event, and execution evidence satisfies every approved exact identity, timing, authorization, gate, isolation, monitoring, or disposition condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-8EF0D6E8",
+      "revision": 1,
+      "semantic_sha256": "8ef0d6e860bdffb1039f233b586d8e035dcedcfbf0342bfc19c3ea73b228f4c6",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Ownership, provenance, and review records are exact, but whether review of generated or copied code is sufficient depends on change risk, semantics, and specialist judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every generated or copied code item has an owner, license-provenance record, and completed review binding.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-8D4964EC",
+      "revision": 1,
+      "semantic_sha256": "8d4964ec6e7f59d5e78c866582f7353b5f697fa7bdb9ce117d8e290217320d6b",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The control “Block release when production diagnostics cannot distinguish success, expected failure, dependency failure, and invariant violation.” can be decided by exact joins across complete dependency, configuration, change, reviewer, generated-code, gate, migration, and release inventories with bound evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Complete authoritative inventories enumerate every in-scope dependency, configuration, change, generated artifact, reviewer, migration, finding, or release subject required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Bound source, CI, event, and execution evidence satisfies every approved exact identity, timing, authorization, gate, isolation, monitoring, or disposition condition.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-B642E26A",
+      "revision": 1,
+      "semantic_sha256": "b642e26a290ea395c518ff97d78ec0bf44784d0f225858be59cd9bad48e20183",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The control “Attach source revision, build provenance, dependency lock, configuration schema, analysis reports, review approvals, test results, benchmark results, and known-risk register to the release evidence.” defines a bounded telemetry, dependency, schema, flag, review, metric, debt, provenance, or release-evidence record whose explicit fields can be checked exactly.",
+      "deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit schema, identifier, owner, field, trend, review event, provenance link, limitation, or evidence binding required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-C70D0E0F",
+      "revision": 1,
+      "semantic_sha256": "c70d0e0f92760b1a44a5ff47c747e7973ba1ea7a502549e59969b43cae69910f",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The control “Record which code-quality controls were automated, manually reviewed, formally verified, sampled, or not applicable.” defines a bounded telemetry, dependency, schema, flag, review, metric, debt, provenance, or release-evidence record whose explicit fields can be checked exactly.",
+      "deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit schema, identifier, owner, field, trend, review event, provenance link, limitation, or evidence binding required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-64378ECF",
+      "revision": 1,
+      "semantic_sha256": "64378ecfc55ee0a0087b611af139e64ee4793f359d2637065b3839873aea0227",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The control “Record residual limitations and the conditions under which evidence becomes stale.” defines a bounded telemetry, dependency, schema, flag, review, metric, debt, provenance, or release-evidence record whose explicit fields can be checked exactly.",
+      "deterministic_clauses": [
+        {
+          "statement": "The authoritative record contains every explicit schema, identifier, owner, field, trend, review event, provenance link, limitation, or evidence binding required by this control.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-4C2E2D56",
+      "revision": 1,
+      "semantic_sha256": "4c2e2d56a5ed78c45533a56b615c34907daa3b1767617c2edb35e9ae10708035",
+      "classification": "deterministic",
+      "route": "artifact_verification",
+      "reason": "The control “Confirm that the deployed artifact matches the reviewed and tested artifact.” is objectively decidable from immutable generator, schema, template, toolchain, provenance, source, and artifact digests.",
+      "deterministic_clauses": [
+        {
+          "statement": "The generated or final artifact digest, source digest, generator identity, schema, template, toolchain, provenance, and reviewed artifact binding satisfy the approved immutable manifest.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-D84E91AD",
+      "revision": 1,
+      "semantic_sha256": "d84e91ad0ab63049cb8a3223cb2ed3148d5715f3915f965d92b0ac423e373f24",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The control “Confirm that rollback or roll-forward preserves data and compatibility assumptions.” has a separable analyzer, configuration, record, or bounded-test portion, but full pass status also depends on semantic completeness, safety, appropriateness, sufficiency, or unbounded behavior.",
+      "deterministic_clauses": [
+        {
+          "statement": "Pinned analysis or authenticated bounded evidence records the named source pattern, dependency, configuration, review, test, or migration outcome without treating complete semantic coverage or universal correctness as proven.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "unbounded_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-A4761631",
+      "revision": 1,
+      "semantic_sha256": "a4761631640aec433e15011004a54a78ff59c84bbbe5fc31c7cf52c506971a3f",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "The control “Confirm that owners and operational responders understand the critical invariants and diagnostic signals.” concerns organizational motive, human accountability, pressure, investigation, or understanding that cannot be proven from tool and review records alone.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    }
+  ]
+}

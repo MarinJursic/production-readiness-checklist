@@ -1,0 +1,3986 @@
+{
+  "schema_version": "prc.control-classification-packet/v0.1",
+  "packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "source_path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+  "control_count": 250,
+  "controls": [
+    {
+      "control_id": "USEQ-2C5A990D",
+      "revision": 1,
+      "semantic_sha256": "2c5a990dc5291ab6daa0d24620ba077b1e61392b3e74a2ee8fefb587effe54b8",
+      "statement": "Inventory every model, model version, provider, prompt, instruction template, tool, data source, retrieval system, embedding store, safety component, and evaluation set.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 15
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, Autonomous, and LLM Systems",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-08ACDAA3",
+      "revision": 1,
+      "semantic_sha256": "08acdaa33ac4e1c74ad62dfa92dd92f7af3c54a09e3bcbc53e7810795e84a8cf",
+      "statement": "Classify the consequences of incorrect, biased, unsafe, manipulated, unavailable, or overly confident output.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 16
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, Autonomous, and LLM Systems",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-32B13D60",
+      "revision": 1,
+      "semantic_sha256": "32b13d601f268fa33e9a1fcec9a3e27bcc97fb4f8ca03fa1771cc03a085d0ea1",
+      "statement": "Model instructions cannot override authorization, privacy, safety, compliance, or business rules.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 17
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, Autonomous, and LLM Systems",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-197BC632",
+      "revision": 1,
+      "semantic_sha256": "197bc632cad966cd5ebb0b97c834d68cd9b1818848ab83c2b0f1b831758c5acf",
+      "statement": "The model cannot choose credentials, tenants, resources, recipients, permissions, or financial destinations beyond the user's authorization.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 18
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, Autonomous, and LLM Systems",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-BC3602E0",
+      "revision": 1,
+      "semantic_sha256": "bc3602e0386b60a3898bad6a36d74d233ca0eefb7c27c48e1ca9f24db84c2234",
+      "statement": "Model output is validated before use in code, queries, commands, templates, transactions, identity decisions, or security controls.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 19
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, Autonomous, and LLM Systems",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-96538752",
+      "revision": 1,
+      "semantic_sha256": "965387526ad19e3687182c70398edb3e5c03a252f953652140148592c60fa61f",
+      "statement": "Sensitive data is excluded from prompts, retrieval, fine-tuning, evaluation, and training unless specifically approved.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 20
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, Autonomous, and LLM Systems",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-0D090FAC",
+      "revision": 1,
+      "semantic_sha256": "0d090fac0ecea527223ec1fdf506bfa3b4288ed5e116aba305e1bdfcfa314d8f",
+      "statement": "Provider retention, logging, human-review, model-training, and data-location terms are understood.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 21
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, Autonomous, and LLM Systems",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-A518D322",
+      "revision": 1,
+      "semantic_sha256": "a518d3227eb63058dbf5bfb3a82df3088204394334cd2f5bbf9136f99303b441",
+      "statement": "Vector stores and embeddings preserve tenant boundaries, retention, deletion, and access changes.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 22
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, Autonomous, and LLM Systems",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-DC5087FC",
+      "revision": 1,
+      "semantic_sha256": "dc5087fc3d7a36e1f4dbd916befee8c855aef2b455b05461857b824b10133f09",
+      "statement": "Retrieval poisoning, malicious documents, data contamination, model poisoning, and supply-chain compromise are addressed.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 23
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, Autonomous, and LLM Systems",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-A85B7AA6",
+      "revision": 1,
+      "semantic_sha256": "a85b7aa6c105fcea961fa5aa9b1d9888aa2975501ed62377866f5f7643945e31",
+      "statement": "Training, fine-tuning, evaluation, prompt, and model data have provenance and governance.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 24
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, Autonomous, and LLM Systems",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-2E49E2AA",
+      "revision": 1,
+      "semantic_sha256": "2e49e2aaffa356309b877c25bcd0268c48d7a8a6a6cbee7ecb4384cee8b29891",
+      "statement": "Model, prompt, tool, retrieval, and safety changes are versioned, reviewed, tested, and approved.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 25
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, Autonomous, and LLM Systems",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-296AC402",
+      "revision": 1,
+      "semantic_sha256": "296ac40248b6a2184c301ad087ebb1acbf4a4c80bceb85b20f53dc0f35b1913d",
+      "statement": "Evaluation sets cover accuracy, reliability, security, safety, privacy, bias, fairness, refusal, adversarial behavior, and misuse as applicable.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 26
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, Autonomous, and LLM Systems",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-C203537F",
+      "revision": 1,
+      "semantic_sha256": "c203537fd7648259f09e41b69869177428a958a5b22ca56cfa0c494d43236ea0",
+      "statement": "Evaluations represent production languages, user groups, data distributions, and edge cases.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 27
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, Autonomous, and LLM Systems",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-0B71A9C7",
+      "revision": 1,
+      "semantic_sha256": "0b71a9c726e972973b68576e462e58d209bbccc0a777c3b58ebdd55113880e04",
+      "statement": "Hallucination, uncertainty, sources, and limitations are communicated appropriately.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 28
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, Autonomous, and LLM Systems",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-26AC7838",
+      "revision": 1,
+      "semantic_sha256": "26ac783876bfb7ca1b7a76ae59761784c20347ff25ab2c8f3b451f696d40ac60",
+      "statement": "High-impact decisions have suitable human review, explanation, appeal, and correction paths.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 29
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, Autonomous, and LLM Systems",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-E48B3005",
+      "revision": 1,
+      "semantic_sha256": "e48b3005792e098230d6a3a9c22d493b7ef3a57251fbb7a1e6dba62754931ee3",
+      "statement": "Output moderation and abuse detection match product risk.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 30
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, Autonomous, and LLM Systems",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-009D08C1",
+      "revision": 1,
+      "semantic_sha256": "009d08c1a06b7286bddff28d984ad957aec4c691a286c9f5d5311f8029cdcefc",
+      "statement": "Model denial of service, context exhaustion, tool loops, recursive calls, and cost amplification are bounded.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 31
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, Autonomous, and LLM Systems",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-D7B17CB8",
+      "revision": 1,
+      "semantic_sha256": "d7b17cb846c7941b5ff71db6d7040848ef3f5741b1b303e94b55f84a44b56359",
+      "statement": "Rate, token, context, tool, concurrency, and spending limits are configured.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 32
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, Autonomous, and LLM Systems",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-C9282DB5",
+      "revision": 1,
+      "semantic_sha256": "c9282db57437181141b724f867435fb49fc3bfc1cb43dcee214f0c77cc8c232b",
+      "statement": "Model and provider outages have tested fallback behavior.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 33
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, Autonomous, and LLM Systems",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-EF076436",
+      "revision": 1,
+      "semantic_sha256": "ef07643693313bce8435ef4416b54d20ed0f73072af8aa22a28292da2d103292",
+      "statement": "Model drift, quality regression, safety regression, and provider behavior changes are monitored.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 34
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, Autonomous, and LLM Systems",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-6D4A4F4E",
+      "revision": 1,
+      "semantic_sha256": "6d4a4f4e0c415eedc2e9539eb8c76b1d8806be2353d54bad208a4c9969f4a0bd",
+      "statement": "AI telemetry protects user privacy and does not unnecessarily record sensitive prompts or outputs.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 35
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, Autonomous, and LLM Systems",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-701EF00D",
+      "revision": 1,
+      "semantic_sha256": "701ef00d358576aa0eb78ef2cb1723e0d24a53765bdc7393b885ac281583c731",
+      "statement": "Logs record model, prompt, tool, retrieval, and policy versions sufficiently for investigation.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 36
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, Autonomous, and LLM Systems",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-1F35FBC7",
+      "revision": 1,
+      "semantic_sha256": "1f35fbc7661caeb2d98bd2d4b1695c6feee9018b13d241be204447153a788ca6",
+      "statement": "Users know when they are interacting with or materially affected by AI where required.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 37
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, Autonomous, and LLM Systems",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-0C2884C7",
+      "revision": 1,
+      "semantic_sha256": "0c2884c7db0ab7741f665e9c6a49efe25d3a8ded6a8bb774af2adce5e2ec05d6",
+      "statement": "Applicable transparency, documentation, risk-assessment, copyright, data, human-oversight, and automated-decision rules are mapped.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 38
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, Autonomous, and LLM Systems",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-E5718654",
+      "revision": 1,
+      "semantic_sha256": "e5718654c461b4a18035feb9ae8a3a006a22c66bb87d3380f6edaaf9219d359a",
+      "statement": "Retirement removes obsolete models, credentials, prompts, indexes, retained data, and tools safely.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 39
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, Autonomous, and LLM Systems",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-C529B9D3",
+      "revision": 1,
+      "semantic_sha256": "c529b9d304f47d822259478709256392c385b1f8f40b4f5fbb0d98ac893709ac",
+      "statement": "Apply this checklist whenever a learned, probabilistic, generative, ranking, recommendation, classification, optimization, forecasting, biometric, or autonomous component materially influences product behavior or engineering work.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 49
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI governance, inventory, and accountability"
+      ]
+    },
+    {
+      "control_id": "USEQ-814E1CE9",
+      "revision": 1,
+      "semantic_sha256": "814e1ce958456b4c013b678968394a24e54b76637319c61ef635f4cf1293c932",
+      "statement": "Maintain a current inventory of models, model versions, prompts, system instructions, agents, tools, retrieval sources, embeddings, feature stores, training pipelines, evaluation sets, safety systems, providers, deployment endpoints, and downstream consumers.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 50
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI governance, inventory, and accountability"
+      ]
+    },
+    {
+      "control_id": "USEQ-FD2B24B1",
+      "revision": 1,
+      "semantic_sha256": "fd2b24b15282da04de45b1ec3e2408d25ef8dc57301d6a329efde91d8a17f3cb",
+      "statement": "Assign accountable business, product, model, data, security, privacy, safety, legal, compliance, accessibility, operations, and human-oversight owners according to impact.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 51
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI governance, inventory, and accountability"
+      ]
+    },
+    {
+      "control_id": "USEQ-74CF2922",
+      "revision": 1,
+      "semantic_sha256": "74cf2922724169253b6143afbcd7d8bd71b232fffcb20f78e43312ac27514ce0",
+      "statement": "Classify each system by affected users, decision consequence, reversibility, autonomy, scale, sensitivity, legal status, abuse potential, and dependence on probabilistic output.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 52
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI governance, inventory, and accountability"
+      ]
+    },
+    {
+      "control_id": "USEQ-FAD9068A",
+      "revision": 1,
+      "semantic_sha256": "fad9068aaf4f7224faaf28a2bc02f766a98e7739bee8c0294282e3a6e2efebc6",
+      "statement": "Document the intended purpose, excluded purposes, users, affected parties, operating conditions, expected benefit, assumptions, limitations, prohibited actions, and retirement criteria.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 53
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI governance, inventory, and accountability"
+      ]
+    },
+    {
+      "control_id": "USEQ-7E87BDD7",
+      "revision": 1,
+      "semantic_sha256": "7e87bdd717c412fa08da5c07389acd52ba774eeaa4f400447b40f4b5720d2778",
+      "statement": "Define an AI risk-management lifecycle covering design, acquisition, data, development, evaluation, deployment, monitoring, incident response, change, and retirement.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 54
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI governance, inventory, and accountability"
+      ]
+    },
+    {
+      "control_id": "USEQ-F7AD4215",
+      "revision": 1,
+      "semantic_sha256": "f7ad42151f30a97766710894b1f3764ae30b9b551f0404c64fd4ce984d828422",
+      "statement": "Require proportionately independent review for high-impact, safety-related, rights-affecting, financial, employment, education, healthcare, identity, law-enforcement, or public-sector uses.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 55
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI governance, inventory, and accountability"
+      ]
+    },
+    {
+      "control_id": "USEQ-823F07DE",
+      "revision": 1,
+      "semantic_sha256": "823f07decfe3dffb8fcd15c0cc4ca09344cdc394569168e9b3b77a5f5305a325",
+      "statement": "Map applicable laws, sector rules, contracts, organizational policies, standards, licenses, intellectual-property rights, data-use commitments, and provider terms before development or procurement.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 56
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI governance, inventory, and accountability"
+      ]
+    },
+    {
+      "control_id": "USEQ-D63FB3F4",
+      "revision": 1,
+      "semantic_sha256": "d63fb3f487900beadb7eba651d2f46a6f79c7ad69d5287701de4bf1a20767769",
+      "statement": "Maintain an AI system impact assessment that considers direct, indirect, cumulative, group, societal, environmental, accessibility, labor, and downstream effects.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 57
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI governance, inventory, and accountability"
+      ]
+    },
+    {
+      "control_id": "USEQ-6A97D822",
+      "revision": 1,
+      "semantic_sha256": "6a97d8224cfdfde537fa0bd83d0a2fe93e1fb27dc20fefedfcce512b3d3366bd",
+      "statement": "Identify people who may be affected without being direct users and provide appropriate protection, notice, recourse, and monitoring.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 58
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI governance, inventory, and accountability"
+      ]
+    },
+    {
+      "control_id": "USEQ-D8BEBA66",
+      "revision": 1,
+      "semantic_sha256": "d8beba661bf66f686f906c01b604545582441affba6c35d1ded7f3a6de34dc40",
+      "statement": "Define risk appetite, unacceptable outcomes, stop conditions, escalation thresholds, approval authorities, and residual-risk owners before production use.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 59
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI governance, inventory, and accountability"
+      ]
+    },
+    {
+      "control_id": "USEQ-96B9FB18",
+      "revision": 1,
+      "semantic_sha256": "96b9fb1856b2dc46b6f56c75485d86b0d510d0d356f5be6fa395e01aa2457b14",
+      "statement": "Separate responsibility for building, evaluating, approving, operating, auditing, and accepting material AI risk where independence is required.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 60
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI governance, inventory, and accountability"
+      ]
+    },
+    {
+      "control_id": "USEQ-B8096925",
+      "revision": 1,
+      "semantic_sha256": "b80969259e526889d5cdbaa93fea53bb7369446831c171486e40b88a85f75033",
+      "statement": "Keep a traceable decision record for model selection, data selection, evaluation thresholds, safety controls, launch, exceptions, and material changes.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 61
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI governance, inventory, and accountability"
+      ]
+    },
+    {
+      "control_id": "USEQ-DABACCB2",
+      "revision": 1,
+      "semantic_sha256": "dabaccb2d1be59cffd0ff496de48f83cad1c8ebc01a090fe20d4e2eea773e472",
+      "statement": "Review the AI risk assessment whenever the purpose, population, geography, data, provider, model, prompt, tool, autonomy, or downstream use changes.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 62
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI governance, inventory, and accountability"
+      ]
+    },
+    {
+      "control_id": "USEQ-8867EC56",
+      "revision": 1,
+      "semantic_sha256": "8867ec566d9c20f0b960f83eaac33474446778f521135c423d0a4909380ba6a4",
+      "statement": "Prevent an experimental label from being used to bypass security, privacy, accessibility, safety, legal, documentation, or reliability requirements when real users or production data are involved.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 63
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI governance, inventory, and accountability"
+      ]
+    },
+    {
+      "control_id": "USEQ-B399DE71",
+      "revision": 1,
+      "semantic_sha256": "b399de71bc427d1c45b32e91eaf3943cdb9fc48654c3983c9f98989669c3bb38",
+      "statement": "Provide governance for shadow AI use, unregistered models, personal accounts, browser extensions, local models, and unsanctioned data uploads.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 64
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI governance, inventory, and accountability"
+      ]
+    },
+    {
+      "control_id": "USEQ-AC261112",
+      "revision": 1,
+      "semantic_sha256": "ac261112f0ad2b81c16b95593d8d6ac926ded58ded8a3e4ee55eba6a91dbdd83",
+      "statement": "Define who can pause, disable, roll back, isolate, or permanently retire an AI capability during an incident.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 65
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI governance, inventory, and accountability"
+      ]
+    },
+    {
+      "control_id": "USEQ-041598F3",
+      "revision": 1,
+      "semantic_sha256": "041598f38ba81dfe370830059b77ee2ef49cad333ad760c2287fc74d29dc6824",
+      "statement": "Use AI only where its demonstrated benefit exceeds the risks and a simpler deterministic method is not clearly more suitable.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 69
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Use-case boundaries and consequential decisions"
+      ]
+    },
+    {
+      "control_id": "USEQ-0D09CDA5",
+      "revision": 1,
+      "semantic_sha256": "0d09cda5fc8d167520f58038b139dccb0e2e2e8c9cdb29f0acb24a40fa1c61c3",
+      "statement": "Do not delegate a decision merely because data and a model are available; establish a legitimate purpose and decision owner.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 70
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Use-case boundaries and consequential decisions"
+      ]
+    },
+    {
+      "control_id": "USEQ-FB01B22D",
+      "revision": 1,
+      "semantic_sha256": "fb01b22d1ce7e64ad64e776750f0cd9970480c89e870b36e4aff0a3c70f922eb",
+      "statement": "Define which outputs are advisory, draft, ranked, automated, determinative, or capable of triggering tools and side effects.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 71
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Use-case boundaries and consequential decisions"
+      ]
+    },
+    {
+      "control_id": "USEQ-7D39EBC4",
+      "revision": 1,
+      "semantic_sha256": "7d39ebc4a7ff94c3c17e4d0defae444165c527c04948f77bcb412a573366b10e",
+      "statement": "Enforce purpose and authority outside the model so prompts or outputs cannot expand the system's permitted role.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 72
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Use-case boundaries and consequential decisions"
+      ]
+    },
+    {
+      "control_id": "USEQ-20555083",
+      "revision": 1,
+      "semantic_sha256": "20555083fc0a5ea130ede71534bfb562a4a63a1b9b1e90957e1699a4b8015a0f",
+      "statement": "Identify decisions that require a human, dual control, professional judgment, due process, or a deterministic rule.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 73
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Use-case boundaries and consequential decisions"
+      ]
+    },
+    {
+      "control_id": "USEQ-2FC26B87",
+      "revision": 1,
+      "semantic_sha256": "2fc26b873e1400ebbd9f767faa877f45aa251bc22fb9bf662710cdbb6b5f7d8c",
+      "statement": "Keep irreversible, destructive, safety-critical, rights-affecting, financial, legal, and externally binding actions behind independently validated controls and appropriate confirmation.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 74
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Use-case boundaries and consequential decisions"
+      ]
+    },
+    {
+      "control_id": "USEQ-8521E67B",
+      "revision": 1,
+      "semantic_sha256": "8521e67b662c519501f333915f248126c863d4287aaaf3ba65eb48063f1b93a0",
+      "statement": "Define confidence, uncertainty, abstention, escalation, and fallback behavior for each material task.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 75
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Use-case boundaries and consequential decisions"
+      ]
+    },
+    {
+      "control_id": "USEQ-48E1F506",
+      "revision": 1,
+      "semantic_sha256": "48e1f5063001a5203301216a9c481886a87b0f9a267f69516a5dcc86c48a2e7c",
+      "statement": "Prefer refusal, safe degradation, or handoff when inputs are outside the validated operating domain.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 76
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Use-case boundaries and consequential decisions"
+      ]
+    },
+    {
+      "control_id": "USEQ-99E4E2DD",
+      "revision": 1,
+      "semantic_sha256": "99e4e2dd8ef53491d932ade8a410c9d39e4e3e7f337c40c1506f3082cc9b4448",
+      "statement": "Ensure the system does not present generated content, predictions, classifications, or recommendations as established facts beyond available evidence.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 77
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Use-case boundaries and consequential decisions"
+      ]
+    },
+    {
+      "control_id": "USEQ-4549C1EB",
+      "revision": 1,
+      "semantic_sha256": "4549c1ebe38016c157be1fe85d6f9fec9d6f1fee90d61fa60d34991a64ca4cbb",
+      "statement": "Prevent conversational fluency, personalization, anthropomorphism, emotional language, or interface design from overstating capability, authority, consciousness, confidentiality, or professional qualification.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 78
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Use-case boundaries and consequential decisions"
+      ]
+    },
+    {
+      "control_id": "USEQ-4820BFF1",
+      "revision": 1,
+      "semantic_sha256": "4820bff1be330bd339f9e170791da69dcd2463c2b4561abdf03fb444eeb37d1e",
+      "statement": "Disclose material AI involvement when users need it to make an informed choice or when law, policy, contract, or safety requires it.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 79
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Use-case boundaries and consequential decisions"
+      ]
+    },
+    {
+      "control_id": "USEQ-A79E9D12",
+      "revision": 1,
+      "semantic_sha256": "a79e9d12381b3332c625724d08b5d2b402abc971358caeea2cee2bc05b035ddd",
+      "statement": "Provide a non-AI or assisted path where exclusion, accessibility, due process, or essential-service access requires one.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 80
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Use-case boundaries and consequential decisions"
+      ]
+    },
+    {
+      "control_id": "USEQ-34C36FCB",
+      "revision": 1,
+      "semantic_sha256": "34c36fcbd8cc877be78f8bc6ba3aca1f81d5934754fb2ac0fad124895871445e",
+      "statement": "Make material decisions contestable and correctable, with an understandable route to human review where appropriate.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 81
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Use-case boundaries and consequential decisions"
+      ]
+    },
+    {
+      "control_id": "USEQ-22AA7070",
+      "revision": 1,
+      "semantic_sha256": "22aa70706df6060f03bd5b7d1541ad113257e19a1b924902cb1db5a0629bae4a",
+      "statement": "Do not infer or use highly sensitive traits unless necessity, legality, validity, proportionality, and protection have been established.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 82
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Use-case boundaries and consequential decisions"
+      ]
+    },
+    {
+      "control_id": "USEQ-26F1B463",
+      "revision": 1,
+      "semantic_sha256": "26f1b463abdb0d079d6797af195325693bd79a508ea67bf2bbf238cec2a42753",
+      "statement": "Do not repurpose outputs for a materially different decision without a new impact assessment and validation.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 83
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Use-case boundaries and consequential decisions"
+      ]
+    },
+    {
+      "control_id": "USEQ-3FA42F8C",
+      "revision": 1,
+      "semantic_sha256": "3fa42f8ccf1237d3789097bee934d263f9c0f64173600e061db8e6f2dbf237b5",
+      "statement": "Prevent secondary users from treating an output as valid for populations, contexts, languages, or decisions outside the documented scope.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 84
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Use-case boundaries and consequential decisions"
+      ]
+    },
+    {
+      "control_id": "USEQ-9C03D06C",
+      "revision": 1,
+      "semantic_sha256": "9c03d06c717afbc367c6d0d4023e777be0bce7008eb503b3b8e1ab02b8b4feef",
+      "statement": "Define the acceptable frequency and impact of false positives, false negatives, ranking errors, hallucinations, refusals, and harmful recommendations by use case.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 85
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Use-case boundaries and consequential decisions"
+      ]
+    },
+    {
+      "control_id": "USEQ-89A25C8A",
+      "revision": 1,
+      "semantic_sha256": "89a25c8abf4029b649d76965ec7e4aadc4e93c95427fdd9a854f2a96518b0983",
+      "statement": "Require safer defaults for children, vulnerable people, coercive contexts, and users who may mistake the system for a human or authority.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 86
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Use-case boundaries and consequential decisions"
+      ]
+    },
+    {
+      "control_id": "USEQ-C65B1084",
+      "revision": 1,
+      "semantic_sha256": "c65b1084845d2ecb7b2f1edcb4956ebc3b1b70e911f05203910c1499b6daabb2",
+      "statement": "Document the origin, ownership, license, consent, collection context, allowed purposes, geographic constraints, sensitivity, quality, representation, and retention of every material data source.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 90
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Data rights, provenance, preparation, and governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-4F1A4158",
+      "revision": 1,
+      "semantic_sha256": "4f1a4158414d93376f50acf2157c8e1879afa7e17ee36dd83c7e7edc2fba7e02",
+      "statement": "Verify that training, fine-tuning, retrieval, evaluation, logging, feedback, and monitoring uses are authorized independently rather than assuming one permission covers all uses.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 91
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Data rights, provenance, preparation, and governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-480594DD",
+      "revision": 1,
+      "semantic_sha256": "480594ddd3f10755d1f9bde1b66fbdef75a3e704367b1a87c2ff0bb6564b549e",
+      "statement": "Exclude data that was unlawfully obtained, contractually prohibited, inappropriately sensitive, materially inaccurate, or incapable of required deletion and governance.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 92
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Data rights, provenance, preparation, and governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-C72C1169",
+      "revision": 1,
+      "semantic_sha256": "c72c1169345c93a6a822fa03487507d65a92c46d9db71fbb0c34da34464d498f",
+      "statement": "Minimize personal, confidential, copyrighted, regulated, and security-sensitive data throughout the AI lifecycle.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 93
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Data rights, provenance, preparation, and governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-9E30F902",
+      "revision": 1,
+      "semantic_sha256": "9e30f90230a4fcd1cc314c2df7228398258f15280ef83f5173311b9e0ae50c7d",
+      "statement": "Use privacy-preserving, synthetic, aggregated, pseudonymized, or deidentified data where it can meet the validated objective with less risk.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 94
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Data rights, provenance, preparation, and governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-23095819",
+      "revision": 1,
+      "semantic_sha256": "230958193ca228400bb37f913e38e9dd6770568e282f4fc9cfb0d98b7571a7bb",
+      "statement": "Assess whether deidentification remains effective after linkage, embedding, memorization, model access, retrieval, and output generation.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 95
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Data rights, provenance, preparation, and governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-7C20FBBF",
+      "revision": 1,
+      "semantic_sha256": "7c20fbbf4bcb7c25eebd679432c8f8a914b6bb0e2e297aee2fbc619cd0edf603",
+      "statement": "Preserve data lineage from raw source through filtering, labeling, transformation, splitting, augmentation, training, evaluation, and deployment.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 96
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Data rights, provenance, preparation, and governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-210D4834",
+      "revision": 1,
+      "semantic_sha256": "210d483407b1c6fe7afbc6720c11745ea4651ed5ff58f9d398214dc3aee6c0fc",
+      "statement": "Record dataset, label, feature, prompt, retrieval-corpus, and preprocessing versions in every reproducible experiment and release.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 97
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Data rights, provenance, preparation, and governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-A53F8A85",
+      "revision": 1,
+      "semantic_sha256": "a53f8a85e64f57b0cab7a4cace1612dc9fb430030c87c8583521bb2678b156e8",
+      "statement": "Define data-quality requirements for relevance, representativeness, completeness, accuracy, timeliness, consistency, duplication, contamination, and labeling reliability.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 98
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Data rights, provenance, preparation, and governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-839FD21F",
+      "revision": 1,
+      "semantic_sha256": "839fd21f58097cbcf3181d3d35b66ba324e5e37e074de20255e39b097437c6e5",
+      "statement": "Measure coverage across intended languages, regions, demographics, disabilities, devices, domains, edge conditions, and rare but consequential cases.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 99
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Data rights, provenance, preparation, and governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-3A16FE4E",
+      "revision": 1,
+      "semantic_sha256": "3a16fe4e60c7ae21f52df73cbd694d3fa86722740894e068d4c14b45f2fa0f83",
+      "statement": "Investigate sampling, measurement, historical, survivorship, selection, label, annotation, and feedback-loop bias.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 100
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Data rights, provenance, preparation, and governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-F5094424",
+      "revision": 1,
+      "semantic_sha256": "f5094424c9136065a01200c07719362d5c692107e93ab4d07ea2ae2f71b2bd95",
+      "statement": "Use qualified annotators, documented instructions, disagreement handling, quality sampling, worker protection, and fair labor practices for human labeling.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 101
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Data rights, provenance, preparation, and governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-4CEB862D",
+      "revision": 1,
+      "semantic_sha256": "4ceb862d2a95d5304394ef5780534f713f9e76ce26fa450d504edc0932d884b0",
+      "statement": "Separate training, validation, test, red-team, and audit sets sufficiently to prevent leakage and optimistic evaluation.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 102
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Data rights, provenance, preparation, and governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-49A7E146",
+      "revision": 1,
+      "semantic_sha256": "49a7e14642df3164936f044d11c3e82e1ebdbf9e24155aed2f9b923ab21c2256",
+      "statement": "Detect benchmark contamination, near duplicates, memorized test examples, and evaluation-set tuning.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 103
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Data rights, provenance, preparation, and governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-7F84BAAD",
+      "revision": 1,
+      "semantic_sha256": "7f84baadfcc440d8bebc06accc9160122324e7b7f8a5205366f2a047698d14e9",
+      "statement": "Protect data pipelines, labeling systems, feature stores, retrieval stores, and feedback channels against poisoning, unauthorized change, and provenance loss.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 104
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Data rights, provenance, preparation, and governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-F61A6BFD",
+      "revision": 1,
+      "semantic_sha256": "f61a6bfd164d34167e2713d69c74d90de0f66439fc7bc27a9c04fc298af4af0c",
+      "statement": "Record deletions, corrections, consent withdrawals, legal holds, and source restrictions, and propagate them to derived datasets and retrieval systems as required.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 105
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Data rights, provenance, preparation, and governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-41415588",
+      "revision": 1,
+      "semantic_sha256": "414155883cd3b08fb4e84352c176539a2e49bb72341e28eeb079533637396cfc",
+      "statement": "Define whether and how a trained artifact can honor deletion, unlearning, suppression, retraining, or future exclusion obligations.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 106
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Data rights, provenance, preparation, and governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-5B1BC6E2",
+      "revision": 1,
+      "semantic_sha256": "5b1bc6e2e4e1c85f00d204929c74708870361c3b92b039e59374ee2831182208",
+      "statement": "Prevent prompts, conversations, feedback, traces, and outputs from becoming training data by default unless the purpose, notice, permission, retention, and safeguards permit it.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 107
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Data rights, provenance, preparation, and governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-A764BBDF",
+      "revision": 1,
+      "semantic_sha256": "a764bbdf8ec740d3c6b037664effac3413381719af4b93f80196aef886bc681b",
+      "statement": "Review public or scraped data for access conditions, privacy expectations, robots or contractual restrictions, intellectual-property risk, harmful content, and vulnerable-population impact.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 108
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Data rights, provenance, preparation, and governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-E13A6AE0",
+      "revision": 1,
+      "semantic_sha256": "e13a6ae0593c21b946aae10cc23031b790cd65b6887246f467e6f9d4f81762fe",
+      "statement": "Document unavoidable data gaps and restrict deployment or confidence claims accordingly.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 109
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Data rights, provenance, preparation, and governance"
+      ]
+    },
+    {
+      "control_id": "USEQ-9AE49D07",
+      "revision": 1,
+      "semantic_sha256": "9ae49d074b5d7f0ff2d1b0bd23d1da22da280f67e2c37740fed2f730bad07562",
+      "statement": "Inventory every foundation model, adapter, checkpoint, tokenizer, embedding model, reranker, safety model, library, runtime, dataset, evaluation tool, and hosted service in the deployed system.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 113
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Model, component, and provider supply chain"
+      ]
+    },
+    {
+      "control_id": "USEQ-18F634F5",
+      "revision": 1,
+      "semantic_sha256": "18f634f5ee2f8278a43af89541582b9115f1e2c16969c89dd448f9c3c556ad16",
+      "statement": "Record publisher, source, version, immutable digest, license, provenance, release date, support status, known limitations, and approved use for each component.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 114
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Model, component, and provider supply chain"
+      ]
+    },
+    {
+      "control_id": "USEQ-CB45E043",
+      "revision": 1,
+      "semantic_sha256": "cb45e0436cbafd01996a1b1ad2dc351817d55b6dcd5e480f6746f6b5b6c128e5",
+      "statement": "Obtain models and artifacts through authenticated, integrity-checked, approved channels.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 115
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Model, component, and provider supply chain"
+      ]
+    },
+    {
+      "control_id": "USEQ-ED7BBF05",
+      "revision": 1,
+      "semantic_sha256": "ed7bbf0510440e223589831dbb4c36646954d8f89a8a14b815c1387c9a9d31a1",
+      "statement": "Scan model files and supporting artifacts for unsafe serialization, executable payloads, secrets, malware, unexpected code, and incompatible licenses.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 116
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Model, component, and provider supply chain"
+      ]
+    },
+    {
+      "control_id": "USEQ-71ADB251",
+      "revision": 1,
+      "semantic_sha256": "71adb251dfa834d16dba31a8d3b7d5f9c188346efb4587202fdeca0bea462a42",
+      "statement": "Treat model cards, benchmark claims, certifications, safety reports, and provider assurances as evidence inputs rather than proof of local fitness.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 117
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Model, component, and provider supply chain"
+      ]
+    },
+    {
+      "control_id": "USEQ-3F6CA513",
+      "revision": 1,
+      "semantic_sha256": "3f6ca51300062f910c8be5be03015f89b450671e720ef3f76748a598b51d8fd4",
+      "statement": "Evaluate a provider's security, privacy, data use, retention, training, isolation, availability, change-control, incident, audit, deletion, geographic, support, and exit terms.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 118
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Model, component, and provider supply chain"
+      ]
+    },
+    {
+      "control_id": "USEQ-27B05EE5",
+      "revision": 1,
+      "semantic_sha256": "27b05ee547542cf3e9e067e2c7bd65cf56bb21a5a9cbaf08b6e316861de2ad27",
+      "statement": "Ensure provider contracts address input and output rights, confidential data, model improvement, subprocessors, breach notification, service changes, deletion, portability, and continuity.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 119
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Model, component, and provider supply chain"
+      ]
+    },
+    {
+      "control_id": "USEQ-122CF489",
+      "revision": 1,
+      "semantic_sha256": "122cf489dfec8d482fcda21260694bbf6dfbb62a52633723066962ffc6264564",
+      "statement": "Prevent a provider from changing a model, safety policy, retention behavior, endpoint, price, or material capability without detection and impact review.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 120
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Model, component, and provider supply chain"
+      ]
+    },
+    {
+      "control_id": "USEQ-8B70FE23",
+      "revision": 1,
+      "semantic_sha256": "8b70fe23b249e6bc3efb0728eb34c56bd7e12c17bac8caefb809b11d075873bd",
+      "statement": "Pin model and API versions when stability is required and monitor announced and silent behavior changes.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 121
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Model, component, and provider supply chain"
+      ]
+    },
+    {
+      "control_id": "USEQ-FD546F9D",
+      "revision": 1,
+      "semantic_sha256": "fd546f9da51b0e9adfd8b99b4d69a7f8d0b41ec5417a25efee1f5ae9faaa240a",
+      "statement": "Maintain an alternative, fallback, degraded mode, or orderly shutdown path for critical provider dependence.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 122
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Model, component, and provider supply chain"
+      ]
+    },
+    {
+      "control_id": "USEQ-6B13F795",
+      "revision": 1,
+      "semantic_sha256": "6b13f79539398b01208adf79ea53022993aec53180f0369d1ff588acccb339b7",
+      "statement": "Evaluate concentration, geopolitical, export-control, sanctions, availability, lock-in, and proprietary-format risks.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 123
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Model, component, and provider supply chain"
+      ]
+    },
+    {
+      "control_id": "USEQ-6518E104",
+      "revision": 1,
+      "semantic_sha256": "6518e104d5aecf65ba29c67384054a289d17c0be105d6f1ad0181820c100e611",
+      "statement": "Track vulnerabilities and security advisories for models, runtimes, orchestration libraries, data tools, vector stores, accelerators, and inference infrastructure.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 124
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Model, component, and provider supply chain"
+      ]
+    },
+    {
+      "control_id": "USEQ-CA69E6B9",
+      "revision": 1,
+      "semantic_sha256": "ca69e6b9e7292a216533e24e63359692c964dc5329341329718ddfb4ccc731aa",
+      "statement": "Require signed or otherwise verifiable release artifacts and maintain a software and model bill of materials proportionate to risk.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 125
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Model, component, and provider supply chain"
+      ]
+    },
+    {
+      "control_id": "USEQ-DFDEDE7C",
+      "revision": 1,
+      "semantic_sha256": "dfdede7c572405bd5580b0731400d5425389771d4c4e78df90e775f803831bbc",
+      "statement": "Control access to model registries and prevent unauthorized replacement, rollback, deletion, promotion, or public publication.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 126
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Model, component, and provider supply chain"
+      ]
+    },
+    {
+      "control_id": "USEQ-C493B4D5",
+      "revision": 1,
+      "semantic_sha256": "c493b4d58f82d9c0e927158a44e24bdb164b3cca48ebe0e1a22cd154eeac98b1",
+      "statement": "Separate experimental, internal, customer-specific, and production models and credentials.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 127
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Model, component, and provider supply chain"
+      ]
+    },
+    {
+      "control_id": "USEQ-6A22F149",
+      "revision": 1,
+      "semantic_sha256": "6a22f1499989b7aa5708a4e290fb8d788fa8409c1ea01f4ba1a0f7072ee04a87",
+      "statement": "Review community models, plugins, tools, skills, prompts, and agent packages as untrusted supply-chain components.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 128
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Model, component, and provider supply chain"
+      ]
+    },
+    {
+      "control_id": "USEQ-7F60FE82",
+      "revision": 1,
+      "semantic_sha256": "7f60fe826236c479a94fc012946f4fead558b873694a949d0db2ffff8bca6999",
+      "statement": "State a falsifiable hypothesis, baseline, target metric, guardrails, population, and decision rule before a material experiment.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 132
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Experimentation and reproducibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-73B85E38",
+      "revision": 1,
+      "semantic_sha256": "73b85e387e90c93bdbe42872f48996ec8eeab1f842761d3dfb08544caef6bc7a",
+      "statement": "Record code, data, model, prompt, hyperparameter, seed, environment, hardware, dependency, compiler, runtime, and configuration versions.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 133
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Experimentation and reproducibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-F2B8DD90",
+      "revision": 1,
+      "semantic_sha256": "f2b8dd908d0a48ff2102ebcaffdf541b8e5595c1f8cf5634a4b9032861410c82",
+      "statement": "Make material experiments reproducible within defined tolerances or document why nondeterminism prevents exact reproduction.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 134
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Experimentation and reproducibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-37A37302",
+      "revision": 1,
+      "semantic_sha256": "37a3730241758a884d191101987f603f52c273f292605b609b6d52a344d811d6",
+      "statement": "Capture random seeds and sources of nondeterminism without falsely implying that one seed establishes robustness.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 135
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Experimentation and reproducibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-9D121A7B",
+      "revision": 1,
+      "semantic_sha256": "9d121a7b459d37bcc0b593b5c8c2fe6bea515e4eb381e9c0579fc57e2dfc78c5",
+      "statement": "Use representative baselines, including a no-model or simpler-model baseline where relevant.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 136
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Experimentation and reproducibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-965D57C2",
+      "revision": 1,
+      "semantic_sha256": "965d57c28ae2c91a85b0f74d716df3dda3b508795e6da4d549df8064e715ebf0",
+      "statement": "Prevent test-set and production-outcome leakage into model selection.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 137
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Experimentation and reproducibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-675A6565",
+      "revision": 1,
+      "semantic_sha256": "675a656529d1945e2acc3f80e901248be175e0c45ff54af43f7cf8854094c61b",
+      "statement": "Predefine primary, secondary, safety, fairness, privacy, cost, and operational metrics.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 138
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Experimentation and reproducibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-EEEFE531",
+      "revision": 1,
+      "semantic_sha256": "eeefe531ee468b8affc98f28a60e9cc3d5fc8a3c8cb1ebd76566a9768b84009f",
+      "statement": "Use sample sizes, uncertainty intervals, repeated runs, statistical tests, and multiple-comparison controls appropriate to the decision.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 139
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Experimentation and reproducibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-7E7D22B7",
+      "revision": 1,
+      "semantic_sha256": "7e7d22b7a5c1317d0ed74ec083153b8aa6b76c245407c876134770305ca72fd6",
+      "statement": "Report negative, inconclusive, and failed experiments rather than retaining only favorable results.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 140
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Experimentation and reproducibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-FFA16547",
+      "revision": 1,
+      "semantic_sha256": "ffa16547f9b5f673ddeb00cdb881f6855561da56b04a434dd4a4d663812e3511",
+      "statement": "Record experiment lineage and approval so a production artifact can be traced to its evidence.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 141
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Experimentation and reproducibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-8EA244EE",
+      "revision": 1,
+      "semantic_sha256": "8ea244eeba7da99d01ce8ff1305eb977de67b23d3b00af77506592b2481d3f9c",
+      "statement": "Review whether offline metrics predict real user outcomes before relying on them.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 142
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Experimentation and reproducibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-49F0F65F",
+      "revision": 1,
+      "semantic_sha256": "49f0f65f7d9b0ce293f8983ead081098c38e76d0f1cf77d80401457dac94e401",
+      "statement": "Use controlled online experiments only when exposure, consent, monitoring, stopping, rollback, and harm controls are adequate.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 143
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Experimentation and reproducibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-8EF29710",
+      "revision": 1,
+      "semantic_sha256": "8ef297106169da927f1fe986f9b73cf2a3295f855614a4788a1202139913dd1f",
+      "statement": "Prevent an experiment from changing a consequential decision rule without the required approval and notice.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 144
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Experimentation and reproducibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-8D4A14CC",
+      "revision": 1,
+      "semantic_sha256": "8d4a14cc40f42662f8daf6fbc38e2e37e3581f70780e3595ceea16d68cb113c7",
+      "statement": "Test interactions among model, prompt, retrieval, tool, policy, UI, latency, and fallback rather than evaluating each in isolation only.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 145
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Experimentation and reproducibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-2E44B61A",
+      "revision": 1,
+      "semantic_sha256": "2e44b61a06ac0e1c6119fc6a5691e845fd52fbf45624645fa7e52105d45ea65a",
+      "statement": "Re-run affected evaluations after any material data, model, prompt, tool, provider, infrastructure, or policy change.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 146
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Experimentation and reproducibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-7EB60DD2",
+      "revision": 1,
+      "semantic_sha256": "7eb60dd29f7db463e5c4335a497baa234edb9be8dd1d10311b1f992f2dffb85a",
+      "statement": "Retain enough artifacts and metadata to investigate a later incident without retaining unnecessary sensitive data.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 147
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Experimentation and reproducibility"
+      ]
+    },
+    {
+      "control_id": "USEQ-CB5CDE0E",
+      "revision": 1,
+      "semantic_sha256": "cb5cde0e1a58f1c601503806c1f36b2ecae971e43fa0b07b6c40e6d7c516a4cd",
+      "statement": "Define the training objective and verify that optimizing it does not create unacceptable proxy behavior or incentives.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 151
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Training, fine-tuning, and model construction"
+      ]
+    },
+    {
+      "control_id": "USEQ-9257FF1A",
+      "revision": 1,
+      "semantic_sha256": "9257ff1ad6b33ab5a88eace32660ba298a861df79abcea984928eeb0d32d30ba",
+      "statement": "Validate preprocessing, tokenization, normalization, augmentation, feature generation, and label transformations independently.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 152
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Training, fine-tuning, and model construction"
+      ]
+    },
+    {
+      "control_id": "USEQ-ED1D1451",
+      "revision": 1,
+      "semantic_sha256": "ed1d145182f626f28cb37d040eb3c3aa7659cd04ed1ed8eff84d7a4c5fd2043d",
+      "statement": "Prevent train-serving skew by sharing validated transformation definitions or verifying exact equivalence.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 153
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Training, fine-tuning, and model construction"
+      ]
+    },
+    {
+      "control_id": "USEQ-B7458F12",
+      "revision": 1,
+      "semantic_sha256": "b7458f12283e3a15763cfff24b9c92c8680414f54f4fdc3c5fe06e226f4c2e2d",
+      "statement": "Use bounded, reviewed, and observable training jobs with resource, cost, security, and privacy limits.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 154
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Training, fine-tuning, and model construction"
+      ]
+    },
+    {
+      "control_id": "USEQ-75F53D23",
+      "revision": 1,
+      "semantic_sha256": "75f53d23f3ed20ceef8302fac6cb956d81a178b2b0883b7b722e31a7eeef2271",
+      "statement": "Protect training credentials, checkpoints, intermediate artifacts, logs, and distributed communication.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 155
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Training, fine-tuning, and model construction"
+      ]
+    },
+    {
+      "control_id": "USEQ-2C07474B",
+      "revision": 1,
+      "semantic_sha256": "2c07474b76e029dd9a424c051f168b6c9fec48d1c54fa98bd45ae9ea05ee2b38",
+      "statement": "Validate checkpoint integrity before resume, fine-tuning, merge, quantization, conversion, or deployment.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 156
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Training, fine-tuning, and model construction"
+      ]
+    },
+    {
+      "control_id": "USEQ-AF891A4E",
+      "revision": 1,
+      "semantic_sha256": "af891a4ecf20043038ca1e7727fc7a02df22ada7c3ec28c8cdba215831766e41",
+      "statement": "Review fine-tuning and preference data for poisoning, hidden triggers, sensitive content, policy conflict, and representation gaps.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 157
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Training, fine-tuning, and model construction"
+      ]
+    },
+    {
+      "control_id": "USEQ-D244FD2A",
+      "revision": 1,
+      "semantic_sha256": "d244fd2aa6069cb4179da308a4ba2a607ae4e47274472ddba7d1a2b0e60cb5cd",
+      "statement": "Measure catastrophic forgetting, capability regression, safety regression, and unexpected transfer after fine-tuning or adaptation.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 158
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Training, fine-tuning, and model construction"
+      ]
+    },
+    {
+      "control_id": "USEQ-B93196E6",
+      "revision": 1,
+      "semantic_sha256": "b93196e621c09c137d26c66cff3855b9974e7af27b357520540b62e2db541119",
+      "statement": "Control model merging, distillation, compression, pruning, quantization, and conversion as material changes requiring renewed evaluation.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 159
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Training, fine-tuning, and model construction"
+      ]
+    },
+    {
+      "control_id": "USEQ-30D5B880",
+      "revision": 1,
+      "semantic_sha256": "30d5b880a23c06e4ed49f183a21c4a21c2746da0947b69d5fe2089871c7428c2",
+      "statement": "Document hyperparameter search space, stopping criteria, selection rule, compute budget, and discarded candidates.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 160
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Training, fine-tuning, and model construction"
+      ]
+    },
+    {
+      "control_id": "USEQ-9CA4ABA8",
+      "revision": 1,
+      "semantic_sha256": "9ca4aba839ade809f9afc7a2b47d41fdf5b083f2babd4aeee14808a9323ec2cb",
+      "statement": "Prevent production selection based on one favorable run or an unrepresentative benchmark.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 161
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Training, fine-tuning, and model construction"
+      ]
+    },
+    {
+      "control_id": "USEQ-CD2A10DD",
+      "revision": 1,
+      "semantic_sha256": "cd2a10dd431a0cfe0e98055ee49470b4b1b1d9d8afdfdc3166a3023792931f21",
+      "statement": "Assess memorization and extraction risk, especially for rare, identifying, confidential, or copyrighted examples.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 162
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Training, fine-tuning, and model construction"
+      ]
+    },
+    {
+      "control_id": "USEQ-04E2B43F",
+      "revision": 1,
+      "semantic_sha256": "04e2b43f07bcdd4ab4bdd72e43fe02111656cff507e7bbcbac909c6169ce1b11",
+      "statement": "Apply privacy-enhancing training methods when required and validate their actual utility and privacy tradeoffs.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 163
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Training, fine-tuning, and model construction"
+      ]
+    },
+    {
+      "control_id": "USEQ-2454E46F",
+      "revision": 1,
+      "semantic_sha256": "2454e46fe519a29ec2c544d150a7334135a8e361bc6c453de78b3b3bd05fc015",
+      "statement": "Track environmental and resource impact where training or inference is material and consider smaller or more efficient alternatives.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 164
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Training, fine-tuning, and model construction"
+      ]
+    },
+    {
+      "control_id": "USEQ-188AEBC2",
+      "revision": 1,
+      "semantic_sha256": "188aebc21257fef907c38bd885c0f7542e0676343e66b87b8a91d5933fec4200",
+      "statement": "Prevent training infrastructure from writing unrestricted artifacts to public or weakly controlled storage.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 165
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Training, fine-tuning, and model construction"
+      ]
+    },
+    {
+      "control_id": "USEQ-1584DD7E",
+      "revision": 1,
+      "semantic_sha256": "1584dd7ea4d9051df1463f1e21adbead786f61b6d0f60043b9949f71ecf64798",
+      "statement": "Review generated training data for model collapse, inherited errors, homogenization, attribution loss, and circular evaluation.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 166
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Training, fine-tuning, and model construction"
+      ]
+    },
+    {
+      "control_id": "USEQ-32D1AB90",
+      "revision": 1,
+      "semantic_sha256": "32d1ab908ec8173894f5eb496d8e687f18d154c3049a0c4ce58ee13aa8d047fa",
+      "statement": "Validate safety tuning in the actual supported languages and contexts rather than assuming transfer from a dominant language.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 167
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Training, fine-tuning, and model construction"
+      ]
+    },
+    {
+      "control_id": "USEQ-B5FE544A",
+      "revision": 1,
+      "semantic_sha256": "b5fe544accbd7ed5de99ffb79fd5c5f7216f81346f5439f2bf7f64f8b54df5d9",
+      "statement": "Create an evaluation plan derived from intended use, affected parties, threat model, hazards, quality attributes, and failure consequences.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 171
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Evaluation design and quality assurance"
+      ]
+    },
+    {
+      "control_id": "USEQ-0A64DD0D",
+      "revision": 1,
+      "semantic_sha256": "0a64dd0d048cb6f889251ed53f7106693a55f7f9b0f69e26fe22a93b5b1adc93",
+      "statement": "Evaluate correctness, usefulness, robustness, reliability, calibration, uncertainty, safety, security, privacy, fairness, accessibility, latency, throughput, cost, and environmental impact as applicable.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 172
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Evaluation design and quality assurance"
+      ]
+    },
+    {
+      "control_id": "USEQ-F16359EE",
+      "revision": 1,
+      "semantic_sha256": "f16359ee6277d6619f8cfeb8a25e2be950da085d0936f6acb40684f9bf8d98dd",
+      "statement": "Use task-representative, current, sufficiently difficult, independently reviewed evaluation sets.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 173
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Evaluation design and quality assurance"
+      ]
+    },
+    {
+      "control_id": "USEQ-07D4E2DB",
+      "revision": 1,
+      "semantic_sha256": "07d4e2dbfe5fe88fa856bda1a1c4a74cd462ebff697e506a46cee3020719579a",
+      "statement": "Include normal, boundary, malformed, ambiguous, adversarial, multilingual, accessibility-related, rare, and high-consequence cases.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 174
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Evaluation design and quality assurance"
+      ]
+    },
+    {
+      "control_id": "USEQ-69C50645",
+      "revision": 1,
+      "semantic_sha256": "69c506456a2bee4664cb1726f59e2e3ff60934720fb5ad3315fc9ea2c6dc381e",
+      "statement": "Measure per-group and per-context performance rather than relying only on aggregate averages.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 175
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Evaluation design and quality assurance"
+      ]
+    },
+    {
+      "control_id": "USEQ-771A15A8",
+      "revision": 1,
+      "semantic_sha256": "771a15a850bcebe7ba7c007ec1b08c55cf02131a66324e2610eca64455dfa19d",
+      "statement": "Report distribution, confidence intervals, worst-case behavior, and failure examples in addition to a headline score.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 176
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Evaluation design and quality assurance"
+      ]
+    },
+    {
+      "control_id": "USEQ-5FDC029A",
+      "revision": 1,
+      "semantic_sha256": "5fdc029ad6ad70a4869a49fc849e376054498e4906787702a2ae3d9d976b4710",
+      "statement": "Evaluate both false-positive and false-negative harm and the distribution of burden created by errors.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 177
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Evaluation design and quality assurance"
+      ]
+    },
+    {
+      "control_id": "USEQ-356476AA",
+      "revision": 1,
+      "semantic_sha256": "356476aa3f6a245aa9a9011500ab50c11d504673864541337b67a7b5932ee362",
+      "statement": "Calibrate scores and confidence claims against observed outcome frequencies where probabilities are presented or used.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 178
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Evaluation design and quality assurance"
+      ]
+    },
+    {
+      "control_id": "USEQ-03C47BD1",
+      "revision": 1,
+      "semantic_sha256": "03c47bd1daebddd9d1eb3684eb210b5afaffd212a02f4eb2b2da9bbc8863ef66",
+      "statement": "Test abstention and escalation quality, including whether the model abstains disproportionately or at the wrong times.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 179
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Evaluation design and quality assurance"
+      ]
+    },
+    {
+      "control_id": "USEQ-F1649342",
+      "revision": 1,
+      "semantic_sha256": "f1649342db2c67bae9bfec94c97160a352590ec21b0bd2b457a80056306a7627",
+      "statement": "Use blinded or independent human evaluation where subjective judgment is material.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 180
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Evaluation design and quality assurance"
+      ]
+    },
+    {
+      "control_id": "USEQ-4F510C10",
+      "revision": 1,
+      "semantic_sha256": "4f510c1042a33485e797e8e9555faab40b7b2fc7add80159d6af07edf7e2750a",
+      "statement": "Define evaluator qualifications, rubrics, disagreement resolution, inter-rater reliability, and conflict controls.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 181
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Evaluation design and quality assurance"
+      ]
+    },
+    {
+      "control_id": "USEQ-13A7712A",
+      "revision": 1,
+      "semantic_sha256": "13a7712a7dbd2f5a30a92480cb2e2e6d314526247ec8574d9b141983c7955de5",
+      "statement": "Protect evaluation workers from harmful content and provide suitable training, support, and exposure limits.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 182
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Evaluation design and quality assurance"
+      ]
+    },
+    {
+      "control_id": "USEQ-C8AE2073",
+      "revision": 1,
+      "semantic_sha256": "c8ae2073a0fafdd12392eb49af51c25658477e1b5fe85d473053a88ddd708ccd",
+      "statement": "Assess accessibility of AI-generated interfaces, summaries, captions, descriptions, code, documents, and interaction patterns.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 183
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Evaluation design and quality assurance"
+      ]
+    },
+    {
+      "control_id": "USEQ-C6205AB5",
+      "revision": 1,
+      "semantic_sha256": "c6205ab56411f26e36947cabbbe42e393761889d77e2ac33558d2dcf5c281c09",
+      "statement": "Validate factuality using authoritative references and source-grounding checks suitable to the domain.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 184
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Evaluation design and quality assurance"
+      ]
+    },
+    {
+      "control_id": "USEQ-230C12A5",
+      "revision": 1,
+      "semantic_sha256": "230c12a540a18fea27d42742fe564d031a6bac3af7e06eceebc3cb07be723a83",
+      "statement": "Evaluate citation correctness, source relevance, quote accuracy, and whether generated references actually support claims.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 185
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Evaluation design and quality assurance"
+      ]
+    },
+    {
+      "control_id": "USEQ-BCC4C62F",
+      "revision": 1,
+      "semantic_sha256": "bcc4c62f8aaa9a866f92751596aebf1541b1f2d8ae3de291f7bbfafeccd3a3b2",
+      "statement": "Test long-context behavior, context ordering, truncation, conflicting sources, stale retrieval, and distractors when relevant.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 186
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Evaluation design and quality assurance"
+      ]
+    },
+    {
+      "control_id": "USEQ-6E978130",
+      "revision": 1,
+      "semantic_sha256": "6e9781307f5d560e95bc3718fca6a1f2939c963826b160623739d1b524465820",
+      "statement": "Evaluate multi-turn consistency, memory boundaries, identity continuity, refusal persistence, and recovery from earlier mistakes.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 187
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Evaluation design and quality assurance"
+      ]
+    },
+    {
+      "control_id": "USEQ-DF342A34",
+      "revision": 1,
+      "semantic_sha256": "df342a34270d3fb8b0ebafd5d52554ce86cd1aad49ae5f45936599e75f6b1b12",
+      "statement": "Test the integrated product under production-like latency, concurrency, quotas, failures, moderation, and UI conditions.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 188
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Evaluation design and quality assurance"
+      ]
+    },
+    {
+      "control_id": "USEQ-999B68D7",
+      "revision": 1,
+      "semantic_sha256": "999b68d77bab30a9a46bcf97bf30b4c9e7dcfb31153119e7bba64a4de32a2ec3",
+      "statement": "Use adversarial testing and red teams independent from the builders for systems with material impact.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 189
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Evaluation design and quality assurance"
+      ]
+    },
+    {
+      "control_id": "USEQ-E5EDCDBA",
+      "revision": 1,
+      "semantic_sha256": "e5edcdbac837baf19635eaf5a4430aa4524b0d2a5a325d93716cc45a3bd56df8",
+      "statement": "Track evaluation-set version, model version, configuration, prompt, tool permissions, and result provenance.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 190
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Evaluation design and quality assurance"
+      ]
+    },
+    {
+      "control_id": "USEQ-0EF2BECE",
+      "revision": 1,
+      "semantic_sha256": "0ef2bece3cdea6c826e64d87115b9d03ef073e377f31ea51d00dee0152d11787",
+      "statement": "Set release thresholds and no-go failures before observing the final results where practical.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 191
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Evaluation design and quality assurance"
+      ]
+    },
+    {
+      "control_id": "USEQ-0AC929A5",
+      "revision": 1,
+      "semantic_sha256": "0ac929a59f6edbb273ddaf8feb17e9607e4b2f87b52ca6b6719b2eb5698d4be7",
+      "statement": "Retain representative failure cases as regression tests without exposing sensitive or harmful data unnecessarily.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 192
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Evaluation design and quality assurance"
+      ]
+    },
+    {
+      "control_id": "USEQ-B4BBA5B4",
+      "revision": 1,
+      "semantic_sha256": "b4bba5b498baa6c041d8ae6c58f9c9647a20f9cc915fbbc355365d0002f2e093",
+      "statement": "Identify protected, vulnerable, underrepresented, and contextually disadvantaged groups relevant to the actual use.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 196
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Fairness, inclusion, accessibility, and human factors"
+      ]
+    },
+    {
+      "control_id": "USEQ-25746967",
+      "revision": 1,
+      "semantic_sha256": "257469678698e088a0c7980e7adbb8fa11bbe79e9f81c2f55180e366b0c0a80e",
+      "statement": "Assess whether the problem definition, target, label, proxy, data, interface, deployment, or feedback loop can create inequitable outcomes.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 197
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Fairness, inclusion, accessibility, and human factors"
+      ]
+    },
+    {
+      "control_id": "USEQ-F6FE00F8",
+      "revision": 1,
+      "semantic_sha256": "f6fe00f89d2da70d0ab9063071757c5cd0689c821e87976004d665fb7837631d",
+      "statement": "Select fairness concepts and metrics that correspond to the concrete harm rather than applying a generic parity metric blindly.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 198
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Fairness, inclusion, accessibility, and human factors"
+      ]
+    },
+    {
+      "control_id": "USEQ-313223A4",
+      "revision": 1,
+      "semantic_sha256": "313223a44c1a84f1bf6a3b2ee1aeb76ade8eda5c3ca424e0302479d11e4e0c16",
+      "statement": "Document incompatible fairness objectives and who authorized the chosen tradeoff.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 199
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Fairness, inclusion, accessibility, and human factors"
+      ]
+    },
+    {
+      "control_id": "USEQ-A2551695",
+      "revision": 1,
+      "semantic_sha256": "a25516950058e458f97bfa602f4681ad282b55c4c293082d9cdb729b2f7cc7f9",
+      "statement": "Evaluate intersectional and small-group outcomes where aggregate categories can hide harm.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 200
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Fairness, inclusion, accessibility, and human factors"
+      ]
+    },
+    {
+      "control_id": "USEQ-9F00F826",
+      "revision": 1,
+      "semantic_sha256": "9f00f826ae14ed79dba7c40a46e8d9d1a3536b774e92fc249210cd68c9d70b9b",
+      "statement": "Investigate missingness, lower-quality data, language coverage, assistive-technology use, and differing access conditions as sources of unequal error.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 201
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Fairness, inclusion, accessibility, and human factors"
+      ]
+    },
+    {
+      "control_id": "USEQ-CF63258B",
+      "revision": 1,
+      "semantic_sha256": "cf63258b7510a1d574734d887ffa15e6b40a388003a65847b58986f5c64922fb",
+      "statement": "Test whether thresholds, abstention, escalation, identity checks, fraud controls, and moderation burden groups differently.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 202
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Fairness, inclusion, accessibility, and human factors"
+      ]
+    },
+    {
+      "control_id": "USEQ-0A97658F",
+      "revision": 1,
+      "semantic_sha256": "0a97658f0c6a5505f8b47fb23818065dbb1964264dbf9e552ccdeb5bd5b62237",
+      "statement": "Ensure human reviewers receive enough context and training to correct rather than amplify model bias.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 203
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Fairness, inclusion, accessibility, and human factors"
+      ]
+    },
+    {
+      "control_id": "USEQ-9D4D9C88",
+      "revision": 1,
+      "semantic_sha256": "9d4d9c882e04f2bd3adca3d0b0795565bf0fd0bdf855190a6b7160a0bc8a8b98",
+      "statement": "Avoid presenting protected-trait inference, emotion inference, personality inference, or risk scoring as objective fact when scientific validity is weak or context dependent.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 204
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Fairness, inclusion, accessibility, and human factors"
+      ]
+    },
+    {
+      "control_id": "USEQ-D8207FA6",
+      "revision": 1,
+      "semantic_sha256": "d8207fa644bd369eb6e8c9a3752239148784cb7a1199344e6272a5ecb89c5000",
+      "statement": "Do not use accessibility needs, disability signals, language, device quality, or behavioral differences as harmful proxies.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 205
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Fairness, inclusion, accessibility, and human factors"
+      ]
+    },
+    {
+      "control_id": "USEQ-10FA0F4D",
+      "revision": 1,
+      "semantic_sha256": "10fa0f4d92fc279b52e901a26edb5288f6799b08da39cf39ffb9c03ba2c1eaa9",
+      "statement": "Make explanations and recourse understandable to the affected audience and accessible through supported modalities.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 206
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Fairness, inclusion, accessibility, and human factors"
+      ]
+    },
+    {
+      "control_id": "USEQ-8298717B",
+      "revision": 1,
+      "semantic_sha256": "8298717b2b4f38e3466061f9e716359653c4e0adea6955a436285caf0fc3f060",
+      "statement": "Provide reasonable alternatives when voice, vision, motion, cognition, literacy, language, or device assumptions exclude users.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 207
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Fairness, inclusion, accessibility, and human factors"
+      ]
+    },
+    {
+      "control_id": "USEQ-F3A9EE15",
+      "revision": 1,
+      "semantic_sha256": "f3a9ee1506a806a0773c60b90ccc189466df6aa91dc8493437fb46794e8d82ab",
+      "statement": "Test whether generated descriptions, captions, summaries, translations, and recommendations preserve essential meaning for disabled users.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 208
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Fairness, inclusion, accessibility, and human factors"
+      ]
+    },
+    {
+      "control_id": "USEQ-F38A1B69",
+      "revision": 1,
+      "semantic_sha256": "f38a1b697f2359342a79cacdf7fa02507d41360500dc51afe8db6a054508e238",
+      "statement": "Include affected communities and domain experts in design and evaluation proportionate to risk.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 209
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Fairness, inclusion, accessibility, and human factors"
+      ]
+    },
+    {
+      "control_id": "USEQ-4EA0B410",
+      "revision": 1,
+      "semantic_sha256": "4ea0b410fb2b24dd5f9350d1bd62a38cefeefd7af4686e6cafeb68005316efd6",
+      "statement": "Monitor disparate impact and complaint patterns after deployment, not only before launch.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 210
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Fairness, inclusion, accessibility, and human factors"
+      ]
+    },
+    {
+      "control_id": "USEQ-84239BB3",
+      "revision": 1,
+      "semantic_sha256": "84239bb3241115fa154efd4ba6e90989d4fd71a3855b60073dc5c0ea68691929",
+      "statement": "Prevent personalization from creating discriminatory prices, eligibility, reach, service quality, or information access without lawful and justified grounds.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 211
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Fairness, inclusion, accessibility, and human factors"
+      ]
+    },
+    {
+      "control_id": "USEQ-EAECD5B4",
+      "revision": 1,
+      "semantic_sha256": "eaecd5b4e960694acf3176eed423fabbbdf7f29b3a8638ff6db01ccc7c84104a",
+      "statement": "Define the validated operating domain, input ranges, languages, modalities, task types, and environmental conditions.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 215
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Robustness, reliability, and uncertainty"
+      ]
+    },
+    {
+      "control_id": "USEQ-07AA5338",
+      "revision": 1,
+      "semantic_sha256": "07aa5338f13ec59c0ae33d580580efae6fca9c42e6f77d6050615ec106a4e231",
+      "statement": "Detect or safely handle out-of-distribution, corrupted, adversarial, incomplete, stale, and conflicting input.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 216
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Robustness, reliability, and uncertainty"
+      ]
+    },
+    {
+      "control_id": "USEQ-6EF822C9",
+      "revision": 1,
+      "semantic_sha256": "6ef822c99d2d660c636ee51e7ac435a8137d459f33bba614c4dcbe6b0378b13c",
+      "statement": "Measure sensitivity to paraphrase, ordering, formatting, spelling, noise, prompt framing, irrelevant context, and minor data changes.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 217
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Robustness, reliability, and uncertainty"
+      ]
+    },
+    {
+      "control_id": "USEQ-8607FB55",
+      "revision": 1,
+      "semantic_sha256": "8607fb55f6ba867b41f202770cae361e2f85304b4ddd8816026285eb29a5e23b",
+      "statement": "Evaluate stability across repeated runs and quantify nondeterminism where it affects user expectations or decisions.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 218
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Robustness, reliability, and uncertainty"
+      ]
+    },
+    {
+      "control_id": "USEQ-25B208C7",
+      "revision": 1,
+      "semantic_sha256": "25b208c7a89b1d034bbf212f4e7c969c7fb6d75cd10d8eee7e953b3f0f1e96eb",
+      "statement": "Use deterministic validation for formats, ranges, permissions, calculations, business rules, and side effects that must be exact.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 219
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Robustness, reliability, and uncertainty"
+      ]
+    },
+    {
+      "control_id": "USEQ-1C0FC607",
+      "revision": 1,
+      "semantic_sha256": "1c0fc6071082dec53af399ee04d1ee051dbfe7c1848fefddcc7f7b8a6541b147",
+      "statement": "Do not use model confidence as a substitute for calibrated uncertainty or external validation.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 220
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Robustness, reliability, and uncertainty"
+      ]
+    },
+    {
+      "control_id": "USEQ-26D2EEF9",
+      "revision": 1,
+      "semantic_sha256": "26d2eef9b6dce7c099bf075f70e69e64a2c9ebb180164aabda41670f0a2d52b7",
+      "statement": "Define fallback behavior for model timeout, quota exhaustion, provider outage, safety-system outage, retrieval failure, tool failure, malformed output, and policy conflict.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 221
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Robustness, reliability, and uncertainty"
+      ]
+    },
+    {
+      "control_id": "USEQ-5AEB2EF3",
+      "revision": 1,
+      "semantic_sha256": "5aeb2ef3936903d298e89c08b942785df8494a422269ab8e45d5c29115c919a1",
+      "statement": "Ensure degraded modes fail visibly and safely rather than silently substituting lower-quality or differently governed behavior.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 222
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Robustness, reliability, and uncertainty"
+      ]
+    },
+    {
+      "control_id": "USEQ-4C760B55",
+      "revision": 1,
+      "semantic_sha256": "4c760b5566fc17ed65b1fd891b69cedda5f93851f9b756a5b59ad32e39257a06",
+      "statement": "Prevent retries from creating duplicate external actions or unbounded cost.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 223
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Robustness, reliability, and uncertainty"
+      ]
+    },
+    {
+      "control_id": "USEQ-553B4185",
+      "revision": 1,
+      "semantic_sha256": "553b4185367097b7af33a0f4ef68e25a438ec5a1c0f5fda5f419b35bad699c3f",
+      "statement": "Use idempotency, transaction boundaries, compensation, and confirmation for model-initiated side effects.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 224
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Robustness, reliability, and uncertainty"
+      ]
+    },
+    {
+      "control_id": "USEQ-11D17067",
+      "revision": 1,
+      "semantic_sha256": "11d170671a12de65b5583bd87ca2626526cddf46fc21f66043591eb46af642ad",
+      "statement": "Bound context, output, recursion, tool calls, steps, time, memory, compute, network, and monetary cost.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 225
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Robustness, reliability, and uncertainty"
+      ]
+    },
+    {
+      "control_id": "USEQ-50EEA27A",
+      "revision": 1,
+      "semantic_sha256": "50eea27aae936a0a0f4f99e4b74c826f00de3a004dda61e6c1eb9d5c4c87d2a2",
+      "statement": "Test long-running and agentic workflows for drift from the original goal, accumulating error, and unsafe continuation.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 226
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Robustness, reliability, and uncertainty"
+      ]
+    },
+    {
+      "control_id": "USEQ-5E9067FC",
+      "revision": 1,
+      "semantic_sha256": "5e9067fc79e28486b3dafc16419205e550fd780930d1513a7f807e4a2f6ba9c8",
+      "statement": "Verify that a human can pause, inspect, correct, resume, and terminate consequential workflows.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 227
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Robustness, reliability, and uncertainty"
+      ]
+    },
+    {
+      "control_id": "USEQ-5EDE5164",
+      "revision": 1,
+      "semantic_sha256": "5ede51645be4f2780fb8228d1cb2e1b804cf9590ae04ee3a12e53ad936513175",
+      "statement": "Monitor upstream data freshness and distinguish missing evidence from evidence of absence.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 228
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Robustness, reliability, and uncertainty"
+      ]
+    },
+    {
+      "control_id": "USEQ-9131BDD3",
+      "revision": 1,
+      "semantic_sha256": "9131bdd31f97580c7ad1434b600fb0b64c4af8a8b9162310a87004bf687cfada",
+      "statement": "Prevent stale models, embeddings, policies, prompts, or retrieval indexes from being treated as current without detection.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 229
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Robustness, reliability, and uncertainty"
+      ]
+    },
+    {
+      "control_id": "USEQ-270F3C01",
+      "revision": 1,
+      "semantic_sha256": "270f3c019c89380940080e50ea815bf49ed69aa1fe44cadab471eeb5a5cd9c32",
+      "statement": "Validate behavior after dependency, hardware, quantization, compiler, runtime, locale, and infrastructure changes.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 230
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Robustness, reliability, and uncertainty"
+      ]
+    },
+    {
+      "control_id": "USEQ-98682F5F",
+      "revision": 1,
+      "semantic_sha256": "98682f5fbc16202c0fc13db23bdb90658963d4f28a55bb72fd8a5d7c052c8c1a",
+      "statement": "Define recovery and reconciliation for incomplete AI-driven workflows.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 231
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Robustness, reliability, and uncertainty"
+      ]
+    },
+    {
+      "control_id": "USEQ-9DF37D00",
+      "revision": 1,
+      "semantic_sha256": "9df37d0015465520cb0687922e884454da18edf34ff698f12adba0db88af652c",
+      "statement": "Threat-model model theft, extraction, inversion, membership inference, training-data leakage, poisoning, evasion, adversarial examples, hidden triggers, unsafe serialization, and supply-chain compromise.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 235
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI and model security"
+      ]
+    },
+    {
+      "control_id": "USEQ-15EDD801",
+      "revision": 1,
+      "semantic_sha256": "15edd8011747bd8e5beceaeaa84ad16ef37e38dbb374b6a45bca7399a5a9e7a9",
+      "statement": "Restrict access to training data, model weights, checkpoints, system prompts, evaluation sets, embeddings, safety policies, and privileged endpoints according to sensitivity.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 236
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI and model security"
+      ]
+    },
+    {
+      "control_id": "USEQ-B15DC6F6",
+      "revision": 1,
+      "semantic_sha256": "b15dc6f61ca8d0f36151a9fb2c80b5092bf729060c66604bee3999d021b7895a",
+      "statement": "Use separate identities and least privilege for training, evaluation, deployment, retrieval, monitoring, and administration.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 237
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI and model security"
+      ]
+    },
+    {
+      "control_id": "USEQ-B7EDE7E8",
+      "revision": 1,
+      "semantic_sha256": "b7ede7e8939bcfded66e797f713d38f3d024f8af2fe65da840f353ae803630ef",
+      "statement": "Prevent public or tenant-scoped inputs from crossing user, tenant, region, or confidentiality boundaries through caches, memory, retrieval, logs, fine-tuning, or provider behavior.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 238
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI and model security"
+      ]
+    },
+    {
+      "control_id": "USEQ-6BAFF5D7",
+      "revision": 1,
+      "semantic_sha256": "6baff5d74bb09cee01c22f9bf295cf2e74e4f9fb13814c04f253485611a06a26",
+      "statement": "Apply authentication, authorization, rate limits, quotas, anomaly detection, and abuse controls to inference and model-management endpoints.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 239
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI and model security"
+      ]
+    },
+    {
+      "control_id": "USEQ-EBFC942E",
+      "revision": 1,
+      "semantic_sha256": "ebfc942ea38b0d3ad53fbbd6645639c89846d83697105188ab067a89103c8d12",
+      "statement": "Protect model and prompt intellectual property without relying on secrecy as the only safety control.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 240
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI and model security"
+      ]
+    },
+    {
+      "control_id": "USEQ-73282252",
+      "revision": 1,
+      "semantic_sha256": "7328225279bc03cdbf8428662a7fb2710a4b48186dbe6a3627fd60af98574ce9",
+      "statement": "Test for extraction through repeated querying, probability outputs, embeddings, error messages, and side channels.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 241
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI and model security"
+      ]
+    },
+    {
+      "control_id": "USEQ-7E587625",
+      "revision": 1,
+      "semantic_sha256": "7e58762570618aebf477906215b489d406c7fbeb68eb3c7384dda460faf139af",
+      "statement": "Minimize output detail, logits, confidence data, or debug information when it materially increases extraction or inference risk.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 242
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI and model security"
+      ]
+    },
+    {
+      "control_id": "USEQ-987DF294",
+      "revision": 1,
+      "semantic_sha256": "987df2941e549fbeec83a143f739024ef4012886889cc25acd8573e26f46c37c",
+      "statement": "Protect feedback and reinforcement channels from coordinated manipulation and sybil attacks.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 243
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI and model security"
+      ]
+    },
+    {
+      "control_id": "USEQ-37715BDE",
+      "revision": 1,
+      "semantic_sha256": "37715bde0efaa90128c30e6d561e5138016a6c755174e684915660a9eb520626",
+      "statement": "Validate uploaded models, adapters, datasets, notebooks, prompts, tools, and serialized artifacts in isolated environments.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 244
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI and model security"
+      ]
+    },
+    {
+      "control_id": "USEQ-DE3A04CA",
+      "revision": 1,
+      "semantic_sha256": "de3a04ca4c703545fa5b01c1e8810e1178e020fdad411718ef3723a1dc83e484",
+      "statement": "Prevent training or inference code from executing untrusted content with host, cloud, network, or secret access.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 245
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI and model security"
+      ]
+    },
+    {
+      "control_id": "USEQ-FC4C23B5",
+      "revision": 1,
+      "semantic_sha256": "fc4c23b5c9a11ca4fab9206d1fd6a6adb8763de44d9a01c96c2bfee5debec4db",
+      "statement": "Monitor unexpected model size, digest, registry, permission, network, cost, latency, refusal, and output-distribution changes.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 246
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI and model security"
+      ]
+    },
+    {
+      "control_id": "USEQ-8A02B572",
+      "revision": 1,
+      "semantic_sha256": "8a02b57296c4b61a87c42a06452750177592fdaed55c1d142eab7e6d430ecf9f",
+      "statement": "Use tamper-evident provenance and promotion records for high-impact models.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 247
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI and model security"
+      ]
+    },
+    {
+      "control_id": "USEQ-E82328B8",
+      "revision": 1,
+      "semantic_sha256": "e82328b8cc4c8103563625f7157c5d400e670c83ca8f9bde9fe9da4f3e1bbf6c",
+      "statement": "Red-team cross-tenant leakage, secret elicitation, policy bypass, encoded attacks, multilingual attacks, indirect instruction, and persistence.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 248
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI and model security"
+      ]
+    },
+    {
+      "control_id": "USEQ-1FA84F69",
+      "revision": 1,
+      "semantic_sha256": "1fa84f698ad5bda0ef6ce26970b20e4de5df758d7e9f3c59713c1584be01b0a8",
+      "statement": "Include AI systems in vulnerability management, incident response, forensic readiness, backup, recovery, and supplier-risk processes.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 249
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI and model security"
+      ]
+    },
+    {
+      "control_id": "USEQ-C9DEAD72",
+      "revision": 1,
+      "semantic_sha256": "c9dead72757141994dd50c80fc0d7994a9b87baef03bee3be3a2bcc2dfb680ce",
+      "statement": "Define a coordinated disclosure path for model, prompt, evaluation, data, and agent vulnerabilities.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 250
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI and model security"
+      ]
+    },
+    {
+      "control_id": "USEQ-13602AAE",
+      "revision": 1,
+      "semantic_sha256": "13602aae6505549637154d729ca461dab0556282cff2d24462121874638eb706",
+      "statement": "Prevent security filters from becoming the sole authorization or data-loss-prevention boundary.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 251
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "AI and model security"
+      ]
+    },
+    {
+      "control_id": "USEQ-AF20A1A9",
+      "revision": 1,
+      "semantic_sha256": "af20a1a9c7f58b15e1e4195d38e51d6ec0a9922e1fbd2f43959e313f0f1a55de",
+      "statement": "Treat system instructions, developer instructions, user prompts, retrieved documents, web pages, files, tool results, memory, metadata, and model outputs as inputs with distinct trust levels.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 255
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Generative AI, retrieval, prompts, tools, and agents"
+      ]
+    },
+    {
+      "control_id": "USEQ-82711812",
+      "revision": 1,
+      "semantic_sha256": "827118121f62706e151660ac23f2080687b5fd55d104a7c06878dc7c8b269c9c",
+      "statement": "Enforce instruction priority, authorization, data boundaries, and tool policy in trusted code rather than relying only on natural-language instructions.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 256
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Generative AI, retrieval, prompts, tools, and agents"
+      ]
+    },
+    {
+      "control_id": "USEQ-3CC8B60E",
+      "revision": 1,
+      "semantic_sha256": "3cc8b60ec7372b4437cafe83533a96bf31c7cbd64ff61b45f5097efab4a80386",
+      "statement": "Assume direct and indirect prompt injection can occur and design so successful injection cannot exceed independently enforced authority.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 257
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Generative AI, retrieval, prompts, tools, and agents"
+      ]
+    },
+    {
+      "control_id": "USEQ-0D2EF3BB",
+      "revision": 1,
+      "semantic_sha256": "0d2ef3bb3c7a227145fed94d7b8ef4bd892b29865887194d2de7e76b07bd0cb9",
+      "statement": "Keep secrets, credentials, hidden policies, unrelated user data, internal reasoning artifacts, and privileged context out of model context unless strictly necessary and protected.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 258
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Generative AI, retrieval, prompts, tools, and agents"
+      ]
+    },
+    {
+      "control_id": "USEQ-9066469A",
+      "revision": 1,
+      "semantic_sha256": "9066469aa94d6ab8472220ac4a619e82841011b8834216ce78a995e30d3d49c5",
+      "statement": "Sanitize and label retrieved content without treating sanitization as a complete prompt-injection defense.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 259
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Generative AI, retrieval, prompts, tools, and agents"
+      ]
+    },
+    {
+      "control_id": "USEQ-2B691284",
+      "revision": 1,
+      "semantic_sha256": "2b691284e4580b514ad773583b96da93173c42d266a810a8b39c99617250ddc8",
+      "statement": "Authorize retrieval before content enters the model and recheck authorization before output or side effects.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 260
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Generative AI, retrieval, prompts, tools, and agents"
+      ]
+    },
+    {
+      "control_id": "USEQ-341FBC64",
+      "revision": 1,
+      "semantic_sha256": "341fbc64858bd4065bb235318b4014c29e50a5e3bffde853bf145b09a77db5c7",
+      "statement": "Preserve tenant, user, purpose, region, retention, and sensitivity metadata through chunking, embedding, indexing, retrieval, caching, and citation.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 261
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Generative AI, retrieval, prompts, tools, and agents"
+      ]
+    },
+    {
+      "control_id": "USEQ-8B6857A6",
+      "revision": 1,
+      "semantic_sha256": "8b6857a6786ae001b4236a74ceb325de86266ff94aba790608c8af562da72e41",
+      "statement": "Validate retrieval freshness, source identity, relevance, authority, coverage, contradiction, and permission.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 262
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Generative AI, retrieval, prompts, tools, and agents"
+      ]
+    },
+    {
+      "control_id": "USEQ-25F2FD1D",
+      "revision": 1,
+      "semantic_sha256": "25f2fd1d30a59cfec3c75314f60565853df339f49a5aed4099f4963d9907b3e7",
+      "statement": "Provide citations or source traces when needed, and verify that every cited source exists and supports the associated claim.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 263
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Generative AI, retrieval, prompts, tools, and agents"
+      ]
+    },
+    {
+      "control_id": "USEQ-B5516B69",
+      "revision": 1,
+      "semantic_sha256": "b5516b69a65f11b27374e4a895c2eddd5457abb5f00d89a95fa647d030150a76",
+      "statement": "Distinguish model-generated statements from retrieved or deterministic facts in the product architecture and user interface where material.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 264
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Generative AI, retrieval, prompts, tools, and agents"
+      ]
+    },
+    {
+      "control_id": "USEQ-EA11C0C3",
+      "revision": 1,
+      "semantic_sha256": "ea11c0c326a92b20190d321c105b578283fb5e00772a5fe563a477c3f24939da",
+      "statement": "Constrain structured output with schema validation and reject, repair, or escalate malformed output safely.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 265
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Generative AI, retrieval, prompts, tools, and agents"
+      ]
+    },
+    {
+      "control_id": "USEQ-309DD707",
+      "revision": 1,
+      "semantic_sha256": "309dd707108632310b22a1a55f17732547995a1a2b87ad206be66422bcc82fd1",
+      "statement": "Encode or sanitize generated output for its destination context before rendering, executing, storing, sending, querying, or compiling it.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 266
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Generative AI, retrieval, prompts, tools, and agents"
+      ]
+    },
+    {
+      "control_id": "USEQ-17CCC437",
+      "revision": 1,
+      "semantic_sha256": "17ccc437a9d2493ca7ba860b2761542e0d607a331119f7c0a099aedfc41ff140",
+      "statement": "Never execute generated code, commands, queries, templates, URLs, configurations, or workflow definitions without independent policy, validation, isolation, and approval appropriate to impact.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 267
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Generative AI, retrieval, prompts, tools, and agents"
+      ]
+    },
+    {
+      "control_id": "USEQ-DE757839",
+      "revision": 1,
+      "semantic_sha256": "de757839382a2099fcb1bcad7d43f2580d55209f10197102a0e4a7a8ccc654d9",
+      "statement": "Give each tool a narrow identity, explicit operation set, parameter schema, resource scope, budget, timeout, and audit trail.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 268
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Generative AI, retrieval, prompts, tools, and agents"
+      ]
+    },
+    {
+      "control_id": "USEQ-8BFD9B81",
+      "revision": 1,
+      "semantic_sha256": "8bfd9b8118726081818e45e51279bfa0f42a637ef61463b9fd149d4428e404af",
+      "statement": "Require renewed authorization for high-impact tool calls and prevent the model from self-granting permissions.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 269
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Generative AI, retrieval, prompts, tools, and agents"
+      ]
+    },
+    {
+      "control_id": "USEQ-191B4C8D",
+      "revision": 1,
+      "semantic_sha256": "191b4c8d1c76d476d48497ae1a86f69d35d0cb872f7e5b10342b0ac22c1565a4",
+      "statement": "Use previews and human confirmation for destructive, financial, public, legal, security, privacy, account, infrastructure, or irreversible actions.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 270
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Generative AI, retrieval, prompts, tools, and agents"
+      ]
+    },
+    {
+      "control_id": "USEQ-7F7AA7C2",
+      "revision": 1,
+      "semantic_sha256": "7f7aa7c2bbff396fd193aeffd087d87d7f1cbec52b52c49f43a0873d41478027",
+      "statement": "Limit agent recursion, delegation, parallelism, child agents, self-modification, memory, context expansion, and external communication.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 271
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Generative AI, retrieval, prompts, tools, and agents"
+      ]
+    },
+    {
+      "control_id": "USEQ-D296B587",
+      "revision": 1,
+      "semantic_sha256": "d296b587babbe28f7d9dd6e15bd8a12e58d99ecfefabda9ef6dae88d859256df",
+      "statement": "Prevent agents from creating hidden persistence, accounts, credentials, scheduled work, infrastructure, or subscriptions without explicit authority.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 272
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Generative AI, retrieval, prompts, tools, and agents"
+      ]
+    },
+    {
+      "control_id": "USEQ-3425618B",
+      "revision": 1,
+      "semantic_sha256": "3425618b5ad7e2e436bdc029e6a9cdcba78e4dc2a756da8dc409324890434aed",
+      "statement": "Isolate browser, interpreter, file, network, code-execution, and computer-control environments and reset them between users or tasks as required.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 273
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Generative AI, retrieval, prompts, tools, and agents"
+      ]
+    },
+    {
+      "control_id": "USEQ-5212224D",
+      "revision": 1,
+      "semantic_sha256": "5212224d7300b11a8a85704886dac37221bace3337f952b347fa4a50e8fd3627",
+      "statement": "Restrict outbound network destinations and defend against server-side request forgery, data exfiltration, malicious downloads, and unsafe redirects.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 274
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Generative AI, retrieval, prompts, tools, and agents"
+      ]
+    },
+    {
+      "control_id": "USEQ-6AC50F7F",
+      "revision": 1,
+      "semantic_sha256": "6ac50f7ff6b343c3030bdc71b0ccd0ec1f6de05a49f737a430e276022be6e2e7",
+      "statement": "Treat external tool output as untrusted even when the tool itself is approved.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 275
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Generative AI, retrieval, prompts, tools, and agents"
+      ]
+    },
+    {
+      "control_id": "USEQ-773557D7",
+      "revision": 1,
+      "semantic_sha256": "773557d73359c1c2f11fa7f7b8ec923c8fe32e8c3496e90ce16cc2f85a5d6a89",
+      "statement": "Verify that memory creation, retrieval, correction, expiry, deletion, and cross-session use are transparent and authorized.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 276
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Generative AI, retrieval, prompts, tools, and agents"
+      ]
+    },
+    {
+      "control_id": "USEQ-11C0DFF6",
+      "revision": 1,
+      "semantic_sha256": "11c0dff63b9f45200268fe1c097246822394483a4738ee69974854299169f471",
+      "statement": "Do not store sensitive conversation memory merely because personalization is convenient.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 277
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Generative AI, retrieval, prompts, tools, and agents"
+      ]
+    },
+    {
+      "control_id": "USEQ-C3984280",
+      "revision": 1,
+      "semantic_sha256": "c3984280dc1b2f0eb02867ab96cda479b04c382646a51b4519f0ac572ce85879",
+      "statement": "Test jailbreaks, prompt leakage, policy conflict, role confusion, multi-turn escalation, context poisoning, tool misuse, hidden instructions, and malicious files.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 278
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Generative AI, retrieval, prompts, tools, and agents"
+      ]
+    },
+    {
+      "control_id": "USEQ-F2FE87FF",
+      "revision": 1,
+      "semantic_sha256": "f2fe87ffb961fb89cdaed0a97ff6d634cf03e7e06169d3bf0f0c9e2af23af8f2",
+      "statement": "Ensure refusals do not reveal prohibited material and do not prevent legitimate safety, accessibility, or recovery use without recourse.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 279
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Generative AI, retrieval, prompts, tools, and agents"
+      ]
+    },
+    {
+      "control_id": "USEQ-FE69F909",
+      "revision": 1,
+      "semantic_sha256": "fe69f909644a3a99c11218392699f6c6ecfff57f7935a96814f2f6816db04768",
+      "statement": "Moderate both inputs and outputs according to the actual harm model while retaining the minimum necessary data.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 280
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Generative AI, retrieval, prompts, tools, and agents"
+      ]
+    },
+    {
+      "control_id": "USEQ-952B24B4",
+      "revision": 1,
+      "semantic_sha256": "952b24b420edfb52b1426dde3d1f6ff2a37df559ba6084d7ea30f79560fc1302",
+      "statement": "Provide a kill switch for tool use and a separate capability to disable the model while preserving essential deterministic product functions.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 281
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Generative AI, retrieval, prompts, tools, and agents"
+      ]
+    },
+    {
+      "control_id": "USEQ-F3DA7D88",
+      "revision": 1,
+      "semantic_sha256": "f3da7d883dea837686d204fc6abfe4f242a5ba73ee8b8311227d43404c5bd4cf",
+      "statement": "Use version control and review for training code, inference code, prompts, policies, feature definitions, data transformations, evaluation logic, deployment manifests, and infrastructure.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 285
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "MLOps, deployment, and release engineering"
+      ]
+    },
+    {
+      "control_id": "USEQ-13FDD0E8",
+      "revision": 1,
+      "semantic_sha256": "13fdd0e82fa1d48490604ef0fedfadad5bff9906ca01608d74a23eff94501429",
+      "statement": "Use immutable identifiers for models, datasets, prompts, retrieval indexes, feature definitions, policies, and evaluation suites.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 286
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "MLOps, deployment, and release engineering"
+      ]
+    },
+    {
+      "control_id": "USEQ-CFD67264",
+      "revision": 1,
+      "semantic_sha256": "cfd672643b776d8a66aee5027514224dfe492eb6a6908df28f98f705c884e02f",
+      "statement": "Trace every production response or decision to the relevant deployed versions where impact and privacy permit.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 287
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "MLOps, deployment, and release engineering"
+      ]
+    },
+    {
+      "control_id": "USEQ-EDEEF0CC",
+      "revision": 1,
+      "semantic_sha256": "edeef0cc6d7ebbee887895fd14b73e2d112ea9d290a83af16e2a5c3836862b3b",
+      "statement": "Separate development, experimentation, validation, shadow, canary, and production environments and data access.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 288
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "MLOps, deployment, and release engineering"
+      ]
+    },
+    {
+      "control_id": "USEQ-60454DA3",
+      "revision": 1,
+      "semantic_sha256": "60454da3e44716029b681a3bfcd4dcced725e42ad501ceaa2ac920068e7c4212",
+      "statement": "Require reproducible, authenticated, integrity-checked build and promotion paths for models and associated artifacts.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 289
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "MLOps, deployment, and release engineering"
+      ]
+    },
+    {
+      "control_id": "USEQ-7C1585D4",
+      "revision": 1,
+      "semantic_sha256": "7c1585d4be8424a4873b54ab2810599f6306bf91b0153e3d0c0fef3a894c763f",
+      "statement": "Prevent direct manual replacement of a production model or prompt without an auditable emergency process.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 290
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "MLOps, deployment, and release engineering"
+      ]
+    },
+    {
+      "control_id": "USEQ-3BC056D6",
+      "revision": 1,
+      "semantic_sha256": "3bc056d67ef1c5daa880265fbd53fa7bbee9a322c39bcc4ad68445c115edb60c",
+      "statement": "Validate feature and preprocessing equivalence between training and serving.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 291
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "MLOps, deployment, and release engineering"
+      ]
+    },
+    {
+      "control_id": "USEQ-1EEA8D0C",
+      "revision": 1,
+      "semantic_sha256": "1eea8d0c2b36196605d544c477eb5d2bea4fb14e5dd7eafcc2caf7369ad5c66a",
+      "statement": "Use a model registry or equivalent controlled inventory with stages, owners, evidence, approvals, and retirement state.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 292
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "MLOps, deployment, and release engineering"
+      ]
+    },
+    {
+      "control_id": "USEQ-9CCF6F87",
+      "revision": 1,
+      "semantic_sha256": "9ccf6f876df1a56b78ad498a441cb2f00c71d5a8920a09a3226ff3e46951893c",
+      "statement": "Package required tokenizer, preprocessing, schema, policy, calibration, and compatibility metadata with the model release.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 293
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "MLOps, deployment, and release engineering"
+      ]
+    },
+    {
+      "control_id": "USEQ-767F858F",
+      "revision": 1,
+      "semantic_sha256": "767f858f321fedf7f29ff07dd66d595ac094ca9196aa1626a123a3050494a65b",
+      "statement": "Test backward and forward compatibility among model, client, feature, schema, retrieval, prompt, tool, and output consumers.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 294
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "MLOps, deployment, and release engineering"
+      ]
+    },
+    {
+      "control_id": "USEQ-004EB3A6",
+      "revision": 1,
+      "semantic_sha256": "004eb3a688defddac8229b3af4d1c4b33e38bbfef78e02fcd59c0c4eed62af8a",
+      "statement": "Use shadow evaluation, canary cohorts, champion-challenger comparison, or staged rollout where impact warrants it.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 295
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "MLOps, deployment, and release engineering"
+      ]
+    },
+    {
+      "control_id": "USEQ-8002BB09",
+      "revision": 1,
+      "semantic_sha256": "8002bb095aa10d23bdbbb243b0cdba5c36a88ed1fbf13b4bb23dae9918d76155",
+      "statement": "Define automated and human rollout gates for quality, safety, security, fairness, latency, throughput, availability, cost, and business integrity.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 296
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "MLOps, deployment, and release engineering"
+      ]
+    },
+    {
+      "control_id": "USEQ-E63926B7",
+      "revision": 1,
+      "semantic_sha256": "e63926b780cd40a805b1955a402993e37eb0cc08ce973dadf87fdf27e14127a7",
+      "statement": "Maintain a previous known-good model, prompt, policy, and retrieval index when rollback is feasible.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 297
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "MLOps, deployment, and release engineering"
+      ]
+    },
+    {
+      "control_id": "USEQ-67F31DA5",
+      "revision": 1,
+      "semantic_sha256": "67f31da5d29af539a155719d533389696b32364c723c2506fa7ca27b927cf72f",
+      "statement": "Test rollback and roll-forward, including state, memory, embeddings, cache, and schema compatibility.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 298
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "MLOps, deployment, and release engineering"
+      ]
+    },
+    {
+      "control_id": "USEQ-39098812",
+      "revision": 1,
+      "semantic_sha256": "39098812a41798a5a44261970962bf8a0c39956f9915316e94b7aff5212aba60",
+      "statement": "Handle provider or model nondeterminism when comparing canary and control populations.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 299
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "MLOps, deployment, and release engineering"
+      ]
+    },
+    {
+      "control_id": "USEQ-2EEA3BC7",
+      "revision": 1,
+      "semantic_sha256": "2eea3bc75ddbb9b76a88cd2da16d44a9ce00cbc37f23cea6c506caa4737c0e1e",
+      "statement": "Prevent online learning, feedback updates, and self-modification from entering production without bounded, reviewed promotion.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 300
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "MLOps, deployment, and release engineering"
+      ]
+    },
+    {
+      "control_id": "USEQ-683E2947",
+      "revision": 1,
+      "semantic_sha256": "683e29479d6b7dc662aaa258562b7662b9c674e6505dbc44cd4343a0ff9f5a89",
+      "statement": "Validate accelerator, runtime, compiler, quantization, serving engine, batching, and hardware changes as model changes when output can differ.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 301
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "MLOps, deployment, and release engineering"
+      ]
+    },
+    {
+      "control_id": "USEQ-37EF3EDD",
+      "revision": 1,
+      "semantic_sha256": "37ef3eddedc0c8caba488458504dbbfc7462dc0e01bf3359a6c5a92831419c27",
+      "statement": "Capacity-test inference, retrieval, safety filters, tool services, queues, and provider quotas under peak and abuse load.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 302
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "MLOps, deployment, and release engineering"
+      ]
+    },
+    {
+      "control_id": "USEQ-58DDDF7C",
+      "revision": 1,
+      "semantic_sha256": "58dddf7c6d5bb25b994244bc5e25fe94e992e007835050a16dddec377ec4f320",
+      "statement": "Use admission control, prioritization, backpressure, caching, batching, and load shedding without violating isolation, freshness, or user safety.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 303
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "MLOps, deployment, and release engineering"
+      ]
+    },
+    {
+      "control_id": "USEQ-014BF5FE",
+      "revision": 1,
+      "semantic_sha256": "014bf5fe2c5cbc36130648fa6ac107f4e4507195ab9b223c7bc910f68630138d",
+      "statement": "Monitor cost per task, token or compute amplification, runaway agents, retry storms, and unexpectedly expensive inputs.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 304
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "MLOps, deployment, and release engineering"
+      ]
+    },
+    {
+      "control_id": "USEQ-45CF19C0",
+      "revision": 1,
+      "semantic_sha256": "45cf19c0aca4ac3d221e09bb4d91e2d43d58b963bdf535d3604b9fd63c416700",
+      "statement": "Include AI components in deployment records, configuration drift detection, disaster recovery, and production-readiness evidence.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 305
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "MLOps, deployment, and release engineering"
+      ]
+    },
+    {
+      "control_id": "USEQ-FFCBD920",
+      "revision": 1,
+      "semantic_sha256": "ffcbd920d75ea67e5200285b61b5796112dbbc5d10c551f125c8c4d84d5244ad",
+      "statement": "Define production indicators for input quality, output quality, safety, security, fairness, refusal, calibration, latency, availability, saturation, cost, and user outcomes.",
+      "source": {
+        "path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+        "line": 309
+      },
+      "heading_trail": [
+        "AI, ML, and AI-assisted development",
+        "AI, Machine Learning, MLOps, and AI-Assisted Development Master Checklist",
+        "Expanded gap-closure controls",
+        "Production monitoring, drift, and feedback loops"
+      ]
+    }
+  ]
+}

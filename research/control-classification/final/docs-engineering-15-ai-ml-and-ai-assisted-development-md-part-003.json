@@ -1,0 +1,2455 @@
+{
+  "schema_version": "prc.control-classification-final/v0.1",
+  "packet_id": "docs-engineering-15-ai-ml-and-ai-assisted-development-md-part-003",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "source_path": "docs/engineering/15-ai-ml-and-ai-assisted-development.md",
+  "control_count": 132,
+  "controls": [
+    {
+      "control_id": "USEQ-15C830F0",
+      "revision": 1,
+      "semantic_sha256": "15c830f0ef6d34cb70b53808087d1190dfc17ca81a42c148c84a31d162dfff95",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Ten configured limits do not prove every agent, tool, child process and retry path is bounded or that the bounds are safe.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "The primary executor can enforce all fields while a spawned helper or external tool runs beyond the token or command limit."
+    },
+    {
+      "control_id": "USEQ-71EE868E",
+      "revision": 1,
+      "semantic_sha256": "71ee868e7f5aebaf6bf42f1dbc3127cceb816c82baf7049b37d948d3954aae5f",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Outbound restriction and safe download validation require complete network-path coverage and security judgment over arbitrary content and tools.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "mixed_with_nondeterministic_child",
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Allowlisted destinations can pass while a trusted host serves a malicious installer or a tool opens an unmonitored channel."
+    },
+    {
+      "control_id": "USEQ-A348D57E",
+      "revision": 1,
+      "semantic_sha256": "a348d57ee588bbc95590cd152299b00dbe76d2ac7637675e7a1dffdc821505f5",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Rule “Prevent agents from exfiltrating source, secrets, personal data, or private context through prompts, URLs, logs, errors, or generated artifacts.” is nondeterministic because it makes an absolute no-exfiltration or no-fabrication claim that bounded evidence cannot prove for every input, output, channel, and future execution.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-E07F70B6",
+      "revision": 1,
+      "semantic_sha256": "e07f70b66acb6d0dbcb3c08723229f00adb49eb99147396a12836ad00f233e26",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Use allowlisted commands or isolated execution for high-risk environments.” has checkable evidence clauses, but its full result also requires a fixed rule for which models, content, risks, changes, audiences, claims, or workflows are applicable or material.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Use allowlisted commands or isolated execution for high-risk environments.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "undefined_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-EA332D5C",
+      "revision": 1,
+      "semantic_sha256": "ea332d5c864ec4e5006677360a48805d8c32d00fb58f23e545818675ebd7561e",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Record tool calls, inputs, outputs, file changes, decisions, approvals, and errors in an auditable form that protects sensitive data.” has checkable evidence clauses, but its full result also requires human judgment about safety, clarity, necessity, adequacy, completeness, or residual uncertainty.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Record tool calls, inputs, outputs, file changes, decisions, approvals, and errors in an auditable form that protects sensitive data.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-172D4874",
+      "revision": 1,
+      "semantic_sha256": "172d4874cf633db31c3f48dc4e12bfc590781ee95aa0157c8e7a9dbb0254b76e",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "Immediate has no response-time threshold, and capability presence does not prove pause, cancellation, revocation and kill switch work in all execution states.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope",
+        "undefined_threshold"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Buttons and APIs can exist while a blocked tool call ignores cancellation or credential caches remain active."
+    },
+    {
+      "control_id": "USEQ-26B3A07B",
+      "revision": 1,
+      "semantic_sha256": "26b3a07b5191c6e5283c88e3cea5baa57f3bde4e779cd0cd0ae709927272c4dd",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Recover safely from partial execution and identify every side effect already performed.” has checkable evidence clauses, but its full result also requires human judgment about safety, clarity, necessity, adequacy, completeness, or residual uncertainty.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Recover safely from partial execution and identify every side effect already performed.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-D31234E4",
+      "revision": 1,
+      "semantic_sha256": "d31234e465021bb9239b62de2e55150607e4f6db57f22de6e135476fd9c7eb5e",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Six adversarial test categories do not provide exhaustive prompts, tools, privilege paths, loop states or correct safety oracles.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Named fixtures can pass while an indirect instruction in a downloaded file causes a privileged action."
+    },
+    {
+      "control_id": "USEQ-B55613A3",
+      "revision": 1,
+      "semantic_sha256": "b55613a338000fb7eed1aee8e119ac838bf52dfb7aaa81127146bc1b99b0e606",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Do not permit unsupervised production changes until the agent has demonstrated reliable behavior under realistic adversarial evaluation and the residual risk is authorized.” has checkable evidence clauses, but its full result also requires a representative adversarial, semantic, behavioral, or causal protocol and acceptance oracle.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Do not permit unsupervised production changes until the agent has demonstrated reliable behavior under realistic adversarial evaluation and the residual risk is authorized.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "undefined_protocol"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-EDAB9D12",
+      "revision": 1,
+      "semantic_sha256": "edab9d1219da5cf2d0c6971dcf7bb0058dc9504965f8ebab5a81c971b5a23ad6",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "An AI-component inventory cannot prove inclusion of every model, prompt, policy, index, data set, evaluator and dynamically selected external tool.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "All eleven sections can be populated while provider routing silently introduces an unrecorded model or tool."
+    },
+    {
+      "control_id": "USEQ-9832AA48",
+      "revision": 1,
+      "semantic_sha256": "9832aa48ef47313bc1e32b97976d438ba7a2020bfe35432dc7dc785186586453",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Record source, provider, version, hash or immutable identifier, license, permitted use, training or fine-tuning data claims, and support status where available.” has checkable evidence clauses, but its full result also requires a fixed rule for which models, content, risks, changes, audiences, claims, or workflows are applicable or material.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Record source, provider, version, hash or immutable identifier, license, permitted use, training or fine-tuning data claims, and support status where available.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "undefined_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-68821BC1",
+      "revision": 1,
+      "semantic_sha256": "68821bc11eeb00d509e29afd2c68e130465f46bf4c6120dd81e73b41be5cc03b",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "The deployed digest must come from environment authority; the expected binding must come independently from the release record. Equality across both proves traceability.",
+      "deterministic_clauses": [
+        {
+          "statement": "For every deployed AI service in the complete sealed service inventory, effective environment evidence reports the content digest of the deployed model, prompt, retrieval, routing, tool, and policy configuration.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "For every deployed AI service in that inventory, the exact effective configuration digest equals the configuration digest bound to the authenticated release record.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "A release record can contain a configuration digest while a different prompt, model, or tool configuration is deployed. The environment-to-record digest comparison fails."
+    },
+    {
+      "control_id": "USEQ-21EAD928",
+      "revision": 1,
+      "semantic_sha256": "21ead9287bdade25d7bce271c8762ce7e4f74c91e10175823b0f179975ff5dff",
+      "classification": "deterministic",
+      "route": "artifact_verification",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. Model and adapter artifacts can be verified against approved digests or signatures and retrieved only through authenticated policy-allowed channels.",
+      "deterministic_clauses": [
+        {
+          "statement": "Verify downloaded model and adapter integrity and retrieve them through authenticated trusted channels.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "A hash mismatch, missing signature or unapproved unauthenticated source fails the bounded artifact and channel checks."
+    },
+    {
+      "control_id": "USEQ-9509D8FC",
+      "revision": 1,
+      "semantic_sha256": "9509d8fcd85d1479cb2f5d8c84fe57469d340269677f01af5e01816cc898a9a5",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Rule “Assess model, prompt, adapter, and data poisoning risks before adoption.” is nondeterministic because competent reviewers can differ about poisoning risk, understandability, minimization, necessity, tracking, harm, or fitness on identical evidence.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-C41FAB76",
+      "revision": 1,
+      "semantic_sha256": "c41fab7634256eac0cdb752abb34601c2ec1187b90d2cb0ac2f8d91c8a8bb9dc",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Review records for six hazards do not prove repositories and models are safe or that hidden executable behavior and permissions were fully found.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "All checklist fields can pass while a custom deserializer executes code through an unrecognized format."
+    },
+    {
+      "control_id": "USEQ-9F95E96A",
+      "revision": 1,
+      "semantic_sha256": "9f95e96a55fbcb1aaa5ca8942ae20cbfa5bec4d7bcd1f34e330fab439c8634a6",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "The negative claim spans every repository, notebook, script, custom-code path and credential inheritance mechanism.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Approved runners can isolate known inputs while an extension executes untrusted setup code with cached production credentials."
+    },
+    {
+      "control_id": "USEQ-90F32C34",
+      "revision": 1,
+      "semantic_sha256": "90f32c34d77ce6b8e1bd2ea3e374209331fa16b3bc7cb4293baa270f258ca13e",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Scan model and data packages for secrets, personal data, malicious files, license obligations, and unexpected components.” has checkable evidence clauses, but its full result also requires specialist interpretation of applicable legal, privacy, licensing, safety, or notification duties.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Scan model and data packages for secrets, personal data, malicious files, license obligations, and unexpected components.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-23C5B858",
+      "revision": 1,
+      "semantic_sha256": "23c5b858375ff3425d23207127ec844bf2fe1ee07f7a3919ffa3e38274778a18",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Credential and data separation must hold across every store, role, log, cache, tool and execution path; role labels alone are insufficient.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Three environments can have separate accounts while a shared retrieval index or inherited token exposes production data to evaluation."
+    },
+    {
+      "control_id": "USEQ-C9B74797",
+      "revision": 1,
+      "semantic_sha256": "c9b7479788932fa622ea301aeeb027ab1e0766a9c1e32dea0dbc3ca0ad547db8",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Access control over six AI configuration surfaces requires complete mutation-path and identity inventory, including provider and emergency paths.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Declared ACLs can pass while an indirect deployment variable or provider console changes routing without the authorized role."
+    },
+    {
+      "control_id": "USEQ-886D57EB",
+      "revision": 1,
+      "semantic_sha256": "886d57eb100589249bac69bb6fe5d6ae6863002751a95862806c927b03feb875",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Complete provider-change detection and adequate review and testing cannot be proven from change records or provider labels.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Known minor changes can be reviewed while a silent model update alters behavior without any event to trigger testing."
+    },
+    {
+      "control_id": "USEQ-6B2D33C4",
+      "revision": 1,
+      "semantic_sha256": "6b2d33c42e844af50db49d174822473a14a2ad52ba5b9a743fd303bac565b11f",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "A rollback record and successful drill do not prove a known evaluated model remains available or works for every production state and dependency.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "The pinned version can roll back in staging while the provider withdraws it or a new data schema makes it unusable."
+    },
+    {
+      "control_id": "USEQ-57129030",
+      "revision": 1,
+      "semantic_sha256": "57129030f9790f3cd8ff5321751a541764e9d4bcd65d88941039560010dab03a",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Monitoring five provider risks depends on incomplete external status, policy, distribution and model-update channels.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Configured feeds can be current while a silent weight update or compromised mirror is never reported."
+    },
+    {
+      "control_id": "USEQ-F05A29D5",
+      "revision": 1,
+      "semantic_sha256": "f05a29d59b0bc812219d22253f5834cc2d38374c0013961e5ce93531a5147957",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Include AI components in SBOM-like, model-card, system-card, or provenance records appropriate to the system.” has checkable evidence clauses, but its full result also requires a fixed rule for which models, content, risks, changes, audiences, claims, or workflows are applicable or material.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Include AI components in SBOM-like, model-card, system-card, or provenance records appropriate to the system.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "undefined_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-B016EE0A",
+      "revision": 1,
+      "semantic_sha256": "b016ee0a39d5c4e90da9812bb1c2d473a746046b0a320ed6912e05879b433b12",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. A retirement policy can define procedures for the six exact models, embeddings, prompts, credentials, retained-data and derivative categories.",
+      "deterministic_clauses": [
+        {
+          "statement": "Define retirement procedures for models, embeddings, prompts, credentials, retained data, and downstream derivatives.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "Omitting downstream derivatives or credential retirement fails the finite policy schema."
+    },
+    {
+      "control_id": "USEQ-F1783FEA",
+      "revision": 1,
+      "semantic_sha256": "f1783fea2fe7cd605296a19dcd19fc4c4d507e893990e07cafade15663b640ef",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Actual tasks, repositories, languages, domains, users, tools and risk conditions require complete scope discovery and representative evaluation judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child",
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A custom benchmark can include one example per category while omitting the hardest production repository and user risk."
+    },
+    {
+      "control_id": "USEQ-EB79B3ED",
+      "revision": 1,
+      "semantic_sha256": "eb79b3ed320641a6fe36ba561c95e3640e193f6e5032e7e2637538bad0485f19",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Measure functional correctness, security, privacy, licensing, maintainability, performance, accessibility, documentation quality, and operational safety as applicable.” has checkable evidence clauses, but its full result also requires a representative adversarial, semantic, behavioral, or causal protocol and acceptance oracle.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Measure functional correctness, security, privacy, licensing, maintainability, performance, accessibility, documentation quality, and operational safety as applicable.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "undefined_protocol"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-0C102A58",
+      "revision": 1,
+      "semantic_sha256": "0c102a58fdee84203bec0ae1266287f717b302a40e327881af2a2663569dd11a",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Seven scenario labels do not establish realistic coverage, interaction combinations or authoritative expected outcomes.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Each scenario can have a fixture while conflicting requirements combined with hidden instructions still cause unsafe behavior."
+    },
+    {
+      "control_id": "USEQ-8235AA68",
+      "revision": 1,
+      "semantic_sha256": "8235aa68e991f0263f346920817e745dcbae71f4e58b506bead6716b9c8af679",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Four refusal and escalation conditions do not define complete requests, permissions, capabilities, confidence states or correct escalation outcomes.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Known low-confidence prompts can escalate while an unfamiliar tool action proceeds without evidence on an untested path."
+    },
+    {
+      "control_id": "USEQ-0F3DD770",
+      "revision": 1,
+      "semantic_sha256": "0f3dd770f02adac660e1f82eb12f062bacc9714141acc738e72c2b079d338333",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Seven fabrication categories and finite prompts cannot prove the tool avoids fabricated outputs over arbitrary engineering contexts.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "All fixtures can pass while the model invents a package version or completed action for an unseen repository."
+    },
+    {
+      "control_id": "USEQ-D21E0A71",
+      "revision": 1,
+      "semantic_sha256": "d21e0a71ebe27656910463460a59247b6b16a3cb5862e954dba0c17ace541ef1",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Seven security attack labels do not define exhaustive prompt, content, tool, identity and sandbox paths or a complete adversarial oracle.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Direct injection tests can pass while retrieved poisoned context exfiltrates a secret through an allowed tool."
+    },
+    {
+      "control_id": "USEQ-9994DB54",
+      "revision": 1,
+      "semantic_sha256": "9994db543c75a6dbe49c3cda6b462e5e8dc11eae4154f8e78d7f662dfb7468e0",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Six change and degradation categories do not provide complete versions, combinations, tasks, dependencies or correctness and safety oracles.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Single-change regressions can pass while a prompt and routing change together cause an untested unsafe action."
+    },
+    {
+      "control_id": "USEQ-F4C1D548",
+      "revision": 1,
+      "semantic_sha256": "f4c1d54869be2db34de69769debc45d090dfff1cf659f2b031a8c15ce854409c",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "True curation independence and absence of evaluation-set contamination require provenance and open-world training-data knowledge unavailable from records alone.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A separate team can curate cases already present in provider training data, producing inflated decision scores."
+    },
+    {
+      "control_id": "USEQ-B854BC2B",
+      "revision": 1,
+      "semantic_sha256": "b854bc2ba9126fabdf393229d7acde3cb959e7bead95bbcfbdb6083ceaa38cb3",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Retain representative historical failures and incidents as regression cases.” has checkable evidence clauses, but its full result also requires a representative adversarial, semantic, behavioral, or causal protocol and acceptance oracle.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Retain representative historical failures and incidents as regression cases.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "undefined_protocol"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-7633CD04",
+      "revision": 1,
+      "semantic_sha256": "7633cd049ef531372b793a37522dcd20d6133ea30e4b2ac96c88a4742815dd69",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Use human expert review for semantic, architectural, security, legal, and safety qualities that automated scoring cannot establish.” has checkable evidence clauses, but its full result also requires human judgment about safety, clarity, necessity, adequacy, completeness, or residual uncertainty.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Use human expert review for semantic, architectural, security, legal, and safety qualities that automated scoring cannot establish.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-08934850",
+      "revision": 1,
+      "semantic_sha256": "08934850bc78c2faa81d3ebe4eb2e217f3555fac766fa6f0e4a2f4a4705007e9",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Calibration validity requires representative outcome labels, statistical assumptions and task-specific thresholds, not just a confidence metric.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A reliability curve can look calibrated on biased data while autonomous high-risk actions remain badly miscalibrated."
+    },
+    {
+      "control_id": "USEQ-53A8E42B",
+      "revision": 1,
+      "semantic_sha256": "53a8e42b93dd0f3e0ad271810bcccf16a1a1d16171aac612e49c1cfb24f7c933",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. An evaluation policy can define separate numeric acceptance thresholds for every registered task-and-harm pair and prohibit aggregate-only approval.",
+      "deterministic_clauses": [
+        {
+          "statement": "Define acceptable performance by task and harm, not one aggregate score.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "A task or harm with no threshold, or a gate using only one aggregate score, fails the exact policy matrix."
+    },
+    {
+      "control_id": "USEQ-48A484CF",
+      "revision": 1,
+      "semantic_sha256": "48a484cfdf202a7f1816c3b1918a8233414905e563214bf0ac2f492b602a9522",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Relevant subgroups, languages, accessibility needs, repositories and domains plus meaningful difference interpretation require contextual judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "All five reports can exist while a small but seriously harmed subgroup is averaged within a broad category."
+    },
+    {
+      "control_id": "USEQ-B0B7E4B2",
+      "revision": 1,
+      "semantic_sha256": "b0b7e4b2eb1da38645be2b19dc0690796488ac2fb90a5eab6d14e1c3ac58ea2e",
+      "classification": "deterministic",
+      "route": "bounded_execution",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. A capability state machine can block expansion of permissions, autonomy, data, users or production scope unless new evaluation evidence predates the transition.",
+      "deterministic_clauses": [
+        {
+          "statement": "Require evaluation before expanding permissions, autonomy, data access, user population, or production scope.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "Any of the five expansions without a version-matched evaluation record fails the temporal gate."
+    },
+    {
+      "control_id": "USEQ-EEB12085",
+      "revision": 1,
+      "semantic_sha256": "eeb120853885c1bb518bd2b52eddcb5e35a137277704030a481e75bba2b41429",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Alongside content is an artifact relation; publish is effective audience availability. The full promise requires both artifact and environment evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every evaluation-result artifact in the complete sealed result inventory contains the result plus the approved internal limitations and approved-use boundaries bound to the same evaluated model and version.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        },
+        {
+          "statement": "Every declared internal publication surface exposes that exact bound evaluation-result artifact, limitation set, and approved-use boundary set to the sealed internal audience.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "A package registry can claim the fields exist while the result artifact omits limitations or the internal audience cannot access it. The composite fails."
+    },
+    {
+      "control_id": "USEQ-3C2B0FE1",
+      "revision": 1,
+      "semantic_sha256": "3c2b0fe1bec31ee8110f456d29fd96747e9d2badc351deada69df5164de8e6ff",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Reevaluate periodically and after incidents, model changes, new attacks, and meaningful shifts in production tasks.” has checkable evidence clauses, but its full result also requires a fixed rule for which models, content, risks, changes, audiences, claims, or workflows are applicable or material.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Reevaluate periodically and after incidents, model changes, new attacks, and meaningful shifts in production tasks.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "undefined_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-48B9998C",
+      "revision": 1,
+      "semantic_sha256": "48b9998c989838f9a01583ffc5e0dbed15e6ccd84ca4023678e46c3bfd902834",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Verify technical facts, commands, configuration, API behavior, version requirements, standards status, dates, and external links against authoritative sources.” has checkable evidence clauses, but its full result also requires a representative adversarial, semantic, behavioral, or causal protocol and acceptance oracle.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Verify technical facts, commands, configuration, API behavior, version requirements, standards status, dates, and external links against authoritative sources.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "undefined_protocol"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-C1C0BF4C",
+      "revision": 1,
+      "semantic_sha256": "c1c0bf4c434c9fcb82dce33d19152f80ab0410f96d51f36fa84909d35daa6ccd",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Rule “Do not include fabricated citations, quotations, people, products, vulnerabilities, decisions, metrics, or incident details.” is nondeterministic because it makes an absolute no-exfiltration or no-fabrication claim that bounded evidence cannot prove for every input, output, channel, and future execution.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-C5181864",
+      "revision": 1,
+      "semantic_sha256": "c5181864ef90364cef12ea3bd813a025b483f2717f697237a622b70d8510a132",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Distinguish facts, inference, recommendation, example, placeholder, and uncertainty clearly.” has checkable evidence clauses, but its full result also requires human judgment about safety, clarity, necessity, adequacy, completeness, or residual uncertainty.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Distinguish facts, inference, recommendation, example, placeholder, and uncertainty clearly.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-A3559530",
+      "revision": 1,
+      "semantic_sha256": "a355953075e8705624ea8b08a8c0f3abdc79cba2fd2e7cf8aa8026dc3d844809",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Ensure generated documentation matches the exact released artifact and supported configuration.” has checkable evidence clauses, but its full result also requires a representative adversarial, semantic, behavioral, or causal protocol and acceptance oracle.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Ensure generated documentation matches the exact released artifact and supported configuration.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "undefined_protocol"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-7B8E61BE",
+      "revision": 1,
+      "semantic_sha256": "7b8e61bef16b6ff25e5f929b0150bee49060da8a8e0d334e8b7ab54e53871b13",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Executing seven documentation procedures does not prove instructions are correct, accessible, safe and complete across actual environments.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A setup and rollback walkthrough can pass while recovery instructions fail on a supported platform or accessibility flow."
+    },
+    {
+      "control_id": "USEQ-2D5D5C89",
+      "revision": 1,
+      "semantic_sha256": "2d5d5c89469f07adb7e59360255f214d1bad78b79d913e7943b2992083eec866",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Protect internal, personal, confidential, and security-sensitive information during generation and publication.” has checkable evidence clauses, but its full result also requires human judgment about safety, clarity, necessity, adequacy, completeness, or residual uncertainty.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Protect internal, personal, confidential, and security-sensitive information during generation and publication.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-75862A50",
+      "revision": 1,
+      "semantic_sha256": "75862a502778866c5e2df608ac7558257707479ee0c1fd0c4a34e99d685bac5c",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Rule “Ensure generated user content is understandable, accessible, localized appropriately, and free of deceptive claims.” is nondeterministic because competent reviewers can differ about poisoning risk, understandability, minimization, necessity, tracking, harm, or fitness on identical evidence.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-F06F2315",
+      "revision": 1,
+      "semantic_sha256": "f06f23158b211dc2104827460436ac830aa61f70a07b0d0fc11e11b9ed329ea5",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Review generated release notes so they do not omit breaking changes, security impact, required customer action, or known limitations.” has checkable evidence clauses, but its full result also requires a representative adversarial, semantic, behavioral, or causal protocol and acceptance oracle.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Review generated release notes so they do not omit breaking changes, security impact, required customer action, or known limitations.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "undefined_protocol"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-44ADFB43",
+      "revision": 1,
+      "semantic_sha256": "44adfb434c1563af8d4674210842951bd6b435a4eb9264120c780329d276b221",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Use source attribution and content provenance where readers need to assess authority and freshness.” has checkable evidence clauses, but its full result also requires a fixed rule for which models, content, risks, changes, audiences, claims, or workflows are applicable or material.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Use source attribution and content provenance where readers need to assess authority and freshness.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "undefined_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-FAC8F384",
+      "revision": 1,
+      "semantic_sha256": "fac8f384765272830e8284525ba98d65b241e7e23d88d65e20fbf3aa86006442",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Version generated documentation and invalidate it after material product or provider changes.” has checkable evidence clauses, but its full result also requires a fixed rule for which models, content, risks, changes, audiences, claims, or workflows are applicable or material.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Version generated documentation and invalidate it after material product or provider changes.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "undefined_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-327CFE20",
+      "revision": 1,
+      "semantic_sha256": "327cfe20298cf24cdacd2917cab5d1345feaf6fafe40bb5424d9f6c2910bf00d",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Prevent AI summaries from replacing authoritative records when detail or legal meaning matters.” has checkable evidence clauses, but its full result also requires a fixed rule for which models, content, risks, changes, audiences, claims, or workflows are applicable or material.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Prevent AI summaries from replacing authoritative records when detail or legal meaning matters.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "undefined_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-E547539A",
+      "revision": 1,
+      "semantic_sha256": "e547539a026f8447bdae893d08ed6b11e673f0a6fcab37f62b5daea56da4c433",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Guaranteeing authoritative current search results over all queries and generated duplicates requires complete content inventory, ranking semantics and changing authority.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Known queries can surface the source while another wording ranks a stale generated duplicate first."
+    },
+    {
+      "control_id": "USEQ-EE1E3012",
+      "revision": 1,
+      "semantic_sha256": "ee1e30126394f102fecba51a96106a25389a757b9ad847185e736362b90611b9",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Provide a correction route and update propagated copies after material errors are found.” has checkable evidence clauses, but its full result also requires a fixed rule for which models, content, risks, changes, audiences, claims, or workflows are applicable or material.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Provide a correction route and update propagated copies after material errors are found.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "undefined_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-E1EEAF8B",
+      "revision": 1,
+      "semantic_sha256": "e1eeaf8b53457122624af4872144222fdf462d172c825d98f5df353a5d559788",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Label synthetic or AI-generated content when required by law, contract, policy, audience expectation, or risk.” has checkable evidence clauses, but its full result also requires specialist interpretation of applicable legal, privacy, licensing, safety, or notification duties.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Label synthetic or AI-generated content when required by law, contract, policy, audience expectation, or risk.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-80D53A5E",
+      "revision": 1,
+      "semantic_sha256": "80d53a5e1e88dbea8ba51fb38ae5d8a14ff8ea7e4398cc2b9173a96231f607e5",
+      "classification": "deterministic",
+      "route": "artifact_verification",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. The reviewed final artifact can be content-addressed and retained as the authoritative output independently of transient conversation history.",
+      "deterministic_clauses": [
+        {
+          "statement": "Retain the reviewed final artifact rather than depending on transient conversation history.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "If only chat history remains or the retained digest differs from the reviewed artifact, the exact retention check fails."
+    },
+    {
+      "control_id": "USEQ-798E6E1D",
+      "revision": 1,
+      "semantic_sha256": "798e6e1d9777d6afb6f887b4562a80280907d883ab86717f605dc3db1b7fadf6",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "Rule “Determine which images, audio, video, documents, designs, reports, releases, and public communications require provenance or authenticity information.” is nondeterministic because it is a provenance-need, cryptographic-use, or vulnerable-user risk decision reserved for accountable humans.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-5D158B5E",
+      "revision": 1,
+      "semantic_sha256": "5d158b5ea764275c09125626353a4965759a8a63c1540cbdb766fea21d88835c",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The rule depends on what provenance claims communicate and whether their presentation implies truth, harmlessness, completeness, or lack of bias.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "The provenance record and its typed status can be correct while surrounding prose overstates what provenance proves, so record equality passes a broken presentation."
+    },
+    {
+      "control_id": "USEQ-EDD07EC1",
+      "revision": 1,
+      "semantic_sha256": "edd07ec1b710cb6bb0d2a2f7b905f5ef7a54e18c2c8ca1e945e54b23e75537ae",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Recognized, current, interoperable and required are contextual or external-standard judgments that change by format, ecosystem and use.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A valid C2PA version can be selected while another required profile or newer compatible specification applies."
+    },
+    {
+      "control_id": "USEQ-D9985041",
+      "revision": 1,
+      "semantic_sha256": "d9985041e27e986b213fd558cf567e55ff2b60f3e74518ae093d0d37802de1a8",
+      "classification": "deterministic",
+      "route": "artifact_verification",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. A provenance manifest signature and content digest can bind the exact asset or an explicitly typed, hashed derivative relationship.",
+      "deterministic_clauses": [
+        {
+          "statement": "Cryptographically bind provenance manifests to the exact asset or defined derivative relationship.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "Asset substitution or an undefined derivative changes the authenticated binding and fails cryptographic verification."
+    },
+    {
+      "control_id": "USEQ-22BC5813",
+      "revision": 1,
+      "semantic_sha256": "22bc58139ff88d3699014f02d94214ec9cd8e523f9ac6d625972adae4991d803",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Authorization policy is bounded, but key protection across copies, signers, backups and compromise paths is an open-world security claim.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Signer roles can be defined while an exported private key in an untracked backup allows unauthorized assertions."
+    },
+    {
+      "control_id": "USEQ-EE822CDB",
+      "revision": 1,
+      "semantic_sha256": "ee822cdb1fe4318c0d0f4fdb8147cfd4c42d37e6acf86b25096ef30d76d87bad",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Record creation, editing, transformation, generation, source, ingredient, tool, organization, and timestamp information only when accurate and permitted.” has checkable evidence clauses, but its full result also requires specialist interpretation of applicable legal, privacy, licensing, safety, or notification duties.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Record creation, editing, transformation, generation, source, ingredient, tool, organization, and timestamp information only when accurate and permitted.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-E59769F2",
+      "revision": 1,
+      "semantic_sha256": "e59769f2fcdf892f23df36e8cfe9c2a27b6d0f3fe90fc1b98375f10ac0e138bd",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Rule “Minimize personal, precise-location, device, and confidential metadata in provenance records.” is nondeterministic because competent reviewers can differ about poisoning risk, understandability, minimization, necessity, tracking, harm, or fitness on identical evidence.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-C4489851",
+      "revision": 1,
+      "semantic_sha256": "c4489851cc025a6f1a879c4c45cd5a1f0a3c12a4e663793283533185ea8d2ab9",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Provide user interfaces that explain provenance in understandable layers rather than only displaying a trust icon.” has checkable evidence clauses, but its full result also requires a representative adversarial, semantic, behavioral, or causal protocol and acceptance oracle.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Provide user interfaces that explain provenance in understandable layers rather than only displaying a trust icon.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "undefined_protocol"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-841334CB",
+      "revision": 1,
+      "semantic_sha256": "841334cb166726b521db2daad682d85b915fc7bbb8a06ba829be7b74bd08bfe6",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "The provenance state is objective, but deciding whether the full presentation claims the underlying content is necessarily false requires semantic UI review.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A revoked state token can be rendered correctly while explanatory text says the content is false; checking the finite state mapping alone therefore passes a violation."
+    },
+    {
+      "control_id": "USEQ-CF367760",
+      "revision": 1,
+      "semantic_sha256": "cf3677603f4b9f549c13381d60c3e66f3c247c72cdfae748d2c70c6ea397cba6",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Preserve provenance through supported transformations, exports, compression, transcoding, publication, and distribution where feasible.” has checkable evidence clauses, but its full result also requires a fixed rule for which models, content, risks, changes, audiences, claims, or workflows are applicable or material.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Preserve provenance through supported transformations, exports, compression, transcoding, publication, and distribution where feasible.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "undefined_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-2A380FCA",
+      "revision": 1,
+      "semantic_sha256": "2a380fca22dd3662c0ab96d801a89aae4ca9e5b2771cf37b1c8129d8f7e7c37b",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Detecting and disclosing every provenance-stripping or nonpreserving transformation requires complete workflow, application and format coverage.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Known export paths can disclose stripping while a crop, translation or third-party embed silently removes credentials."
+    },
+    {
+      "control_id": "USEQ-5A50E71F",
+      "revision": 1,
+      "semantic_sha256": "5a50e71f93539b4798f9dbf56be6a5069c858aac0ae873a9680741cfd749ef37",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Six validation categories do not define exhaustive chain-building, time, revocation, structure and content-binding cases across supported suites.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Known credential fixtures can pass while an alternate chain or canonicalization path accepts a substituted asset."
+    },
+    {
+      "control_id": "USEQ-941EA8C0",
+      "revision": 1,
+      "semantic_sha256": "941ea8c0e9b54c76bd7936b3867653dde8fe5a7c22bc0bf0c30e76851eca30d3",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Protecting against five provenance attacks requires an exhaustive adversarial protocol and complete history and application semantics.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Standard substitution and replay tests can pass while a partial history is presented misleadingly through an untested viewer."
+    },
+    {
+      "control_id": "USEQ-0C275FAF",
+      "revision": 1,
+      "semantic_sha256": "0c275faffd6430752057e227ed5f008042538967d9b1ea8bb5b24774bf2f8479",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. A provenance-transformation policy can define exact update behavior for edited, combined, redacted and derived content.",
+      "deterministic_clauses": [
+        {
+          "statement": "Define how edited, combined, redacted, and derived content updates provenance.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "A transformation category with no new assertion, relationship or preservation rule fails the four-way policy schema."
+    },
+    {
+      "control_id": "USEQ-D078F7CC",
+      "revision": 1,
+      "semantic_sha256": "d078f7ccd6bf4c13f55cd6410296614d2131373a7e88535b3f557aed383ebc10",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Supported applications, platforms, formats and accessibility technologies require complete inventories, and test occurrence is not an exhaustive interoperability oracle.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "All registered combinations can pass while a screen reader or mobile editor strips or misstates provenance."
+    },
+    {
+      "control_id": "USEQ-29786656",
+      "revision": 1,
+      "semantic_sha256": "297866566a25a539ea8363ce391104b2baf74802f7acd2d82948e308d3016c87",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Key rotation and recovery preserving all legitimate historical content is a future behavioral and complete-content-inventory claim.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A rotation drill can validate samples while an archived item loses its trust chain or explanation later."
+    },
+    {
+      "control_id": "USEQ-2325DA4F",
+      "revision": 1,
+      "semantic_sha256": "2325da4f0313f4b80f79011fa822c450a1ac2f111c368b46ec44e447ef0a06f1",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "Rule “Use verifiable credentials or signed evidence only when cryptographic verification, issuer accountability, portability, or selective disclosure provides a real requirement.” is nondeterministic because it is a provenance-need, cryptographic-use, or vulnerable-user risk decision reserved for accountable humans.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-EE4C0408",
+      "revision": 1,
+      "semantic_sha256": "ee4c04083a8ff8344f056c42fa85b276bd3c03e335a056cb847648a1436c785b",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. A credential policy can define the eleven exact issuer, holder, verifier, subject, claim, purpose, audience, validity, revocation, status and trust fields.",
+      "deterministic_clauses": [
+        {
+          "statement": "Define issuer, holder, verifier, subject, claims, purpose, audience, validity, revocation, status, and trust policy explicitly.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "Any missing role or trust-policy field fails the finite credential schema."
+    },
+    {
+      "control_id": "USEQ-F7C75D9C",
+      "revision": 1,
+      "semantic_sha256": "f7c75d9c8dd5b1940ca596f96fdfca904254b6a59e2d4cd9f17521d447243fcb",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Current, interoperable and applicable standards require ecosystem and legal or technical interpretation beyond a version string.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A VC 2.0 implementation can be syntactically current while an applicable profile or interoperable proof suite is absent."
+    },
+    {
+      "control_id": "USEQ-5FE49B3A",
+      "revision": 1,
+      "semantic_sha256": "5fe49b3aa58a50a1bde530aa8345c3f494e34c38b37a4f6aba141d51f7b7da00",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Nine verifier checks are finite labels, but correctness across arbitrary credentials, status sources, schemas, domains and proof suites lacks a closed input oracle.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "All standard fixtures can pass while a crafted audience or challenge binding is accepted on an untested path."
+    },
+    {
+      "control_id": "USEQ-6BF7123C",
+      "revision": 1,
+      "semantic_sha256": "6bf7123cca5580e1c7d539d775f510441257cc0c1d56b47066d1a420d9901088",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "A signature-policy notice cannot prove every system and human decision avoids treating validity as truth, currency, authorization or ethics.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "The verifier can display a warning while downstream automation still authorizes a present action solely from the signature."
+    },
+    {
+      "control_id": "USEQ-B791AEA6",
+      "revision": 1,
+      "semantic_sha256": "b791aea6f686f2b3aa329e3cc46217493244a6e244e8aaf7485919dbc75bcfdc",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Rule “Request and disclose only the claims necessary for the transaction.” is nondeterministic because competent reviewers can differ about poisoning risk, understandability, minimization, necessity, tracking, harm, or fitness on identical evidence.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-93F664BC",
+      "revision": 1,
+      "semantic_sha256": "93f664bc89e3fb2d61a0d343b22ccca1b775ae052e8e754fa60c7a5e390c4bdc",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Support selective disclosure and unlinkability where the use case and chosen standard permit it.” has checkable evidence clauses, but its full result also requires a fixed rule for which models, content, risks, changes, audiences, claims, or workflows are applicable or material.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Support selective disclosure and unlinkability where the use case and chosen standard permit it.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "undefined_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-A80DCC8B",
+      "revision": 1,
+      "semantic_sha256": "a80dcc8b94ebef22c54321c49093571a6ec08c7779fc595d27e9b3e614f7b601",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Rule “Prevent identifiers and status checks from enabling unnecessary correlation or tracking.” is nondeterministic because competent reviewers can differ about poisoning risk, understandability, minimization, necessity, tracking, harm, or fitness on identical evidence.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-403D0FC0",
+      "revision": 1,
+      "semantic_sha256": "403d0fc0cd99e68a93eaf7090fdd5731e6723fcdc43afc2212234e2d62c0354d",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Protect credential issuance, storage, presentation, recovery, revocation, and deletion.” has checkable evidence clauses, but its full result also requires human judgment about safety, clarity, necessity, adequacy, completeness, or residual uncertainty.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Protect credential issuance, storage, presentation, recovery, revocation, and deletion.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-AABF5B36",
+      "revision": 1,
+      "semantic_sha256": "aabf5b3692bc3e33a3e073978447a0cba5976895a03a4c75eb96c6bc26baaa80",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "Handle does not specify exact responses, authorities or success criteria for five credential states, so a state label alone is insufficient.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Every state can have a generic workflow while compromised credentials remain accepted or superseded ones are not migrated."
+    },
+    {
+      "control_id": "USEQ-CBD654F9",
+      "revision": 1,
+      "semantic_sha256": "cbd654f9193a93786149d8db680b2097aa2a678f01a23971e99dae239520539e",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Canonicalization, proof-suite and interoperability validation spans complex protocols, implementations and adversarial inputs without an exhaustive oracle.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Known test vectors can pass while two supported serializers produce different signed canonical bytes."
+    },
+    {
+      "control_id": "USEQ-F2B1299D",
+      "revision": 1,
+      "semantic_sha256": "f2b1299da73d41443d8732ded6c84f8fa8f0cbcf3767e584a0ced5c04889bd12",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Five credential attacks do not define the full presentation, verifier, metadata and issuer attack space or all execution paths.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Replay tests can pass while a malicious issuer-metadata redirect impersonates a verifier on an untested client."
+    },
+    {
+      "control_id": "USEQ-AE60A435",
+      "revision": 1,
+      "semantic_sha256": "ae60a435cd12f64561fea2544c826250a5aa233f4c933f0b004090caaeb3b762",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Provide understandable user consent and display the verifier, requested claims, purpose, and consequences before presentation.” has checkable evidence clauses, but its full result also requires human judgment about safety, clarity, necessity, adequacy, completeness, or residual uncertainty.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Provide understandable user consent and display the verifier, requested claims, purpose, and consequences before presentation.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-BF615392",
+      "revision": 1,
+      "semantic_sha256": "bf615392b944f00485d0822461cf493451ba4b07426b75ceed93ef62a6501474",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Maintain audit evidence without retaining unnecessary credential contents.” has checkable evidence clauses, but its full result also requires human judgment about safety, clarity, necessity, adequacy, completeness, or residual uncertainty.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Maintain audit evidence without retaining unnecessary credential contents.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-00A91D07",
+      "revision": 1,
+      "semantic_sha256": "00a91d072fd8d4641eb2bf9b3ac62a9da71e0f67ce24e4de4ba2e3ac9fb8e29b",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Five scenario executions do not establish complete credential types, platforms, status states, clocks and recovery behavior.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "An offline revoked test can pass while trust-store update during clock skew accepts an expired credential."
+    },
+    {
+      "control_id": "USEQ-6EBF4486",
+      "revision": 1,
+      "semantic_sha256": "6ebf4486d7afe02331631897d2734f73ac25dead919b91482970586c8eb49789",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Long-lived applicability, migration adequacy and future crypto-agility require complete credential inventory and specialist cryptographic planning.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "mixed_with_nondeterministic_child",
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A plan can exist while an archived evidence format cannot carry replacement proofs or an offline verifier cannot migrate."
+    },
+    {
+      "control_id": "USEQ-FB59A946",
+      "revision": 1,
+      "semantic_sha256": "fb59a9467ae0c6f7e893bfbc964d29064c590548124a3f53589eecbae56c5bc5",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. A generated-content policy can define exact conditions triggering labeling, watermarking, credentials, disclosure or restriction.",
+      "deterministic_clauses": [
+        {
+          "statement": "Define when generated or materially altered content must be labeled, watermarked, credentialed, disclosed, or restricted.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "A content class without a disposition rule or an unapproved trigger gap fails the finite decision table."
+    },
+    {
+      "control_id": "USEQ-24A27761",
+      "revision": 1,
+      "semantic_sha256": "24a277616394dc1934cef92ac0611e542da4cb8a7159653367f2dd5b25565e00",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Make disclosures visible, accessible, durable, and understandable in the context where content is consumed.” has checkable evidence clauses, but its full result also requires a representative adversarial, semantic, behavioral, or causal protocol and acceptance oracle.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Make disclosures visible, accessible, durable, and understandable in the context where content is consumed.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "undefined_protocol"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-6D2ED17A",
+      "revision": 1,
+      "semantic_sha256": "6d2ed17aa728e5cbbc6c977f2018c64690e704fce88e46a7f28c4da3f14c5643",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Disclosure persistence across seven transformations is a runtime property over applications, formats and user behavior.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Known downloads and crops can preserve labels while translation, printing or embedding removes them on another platform."
+    },
+    {
+      "control_id": "USEQ-87A2D323",
+      "revision": 1,
+      "semantic_sha256": "87a2d3239da40f598bd989860d3d94d4b42aa3247c974a0993bfda3a28bded12",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Prevent generated content from impersonating real people, organizations, authorities, or official communications without authorization and appropriate safeguards.” has checkable evidence clauses, but its full result also requires human judgment about safety, clarity, necessity, adequacy, completeness, or residual uncertainty.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Prevent generated content from impersonating real people, organizations, authorities, or official communications without authorization and appropriate safeguards.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-DFB7F6ED",
+      "revision": 1,
+      "semantic_sha256": "dfb7f6ed0b40189547e0a7ffa6d7ef8f792b06f4df158b28a2402249e3b5cb77",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Rule “Obtain necessary consent and rights for likeness, voice, biometric, personal, copyrighted, and confidential material.” is nondeterministic because it requires accountable legal, consent, copyright, biometric, confidentiality, or rights interpretation.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-9CD66A9B",
+      "revision": 1,
+      "semantic_sha256": "9cd66a9b0597e0d65330353f87329dca48db6bd55302a3f7f37d4936268d9833",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "Rule “Protect children, vulnerable users, and high-risk contexts with stricter generation and distribution controls.” is nondeterministic because it is a provenance-need, cryptographic-use, or vulnerable-user risk decision reserved for accountable humans.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-31086253",
+      "revision": 1,
+      "semantic_sha256": "31086253858d91b6e41d234cce38c987f0b1797fd07e137269a4258d084ecd86",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Review generated public claims for factual accuracy, defamation, discrimination, safety, financial, medical, legal, and civic risks.” has checkable evidence clauses, but its full result also requires specialist interpretation of applicable legal, privacy, licensing, safety, or notification duties.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Review generated public claims for factual accuracy, defamation, discrimination, safety, financial, medical, legal, and civic risks.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-9D635145",
+      "revision": 1,
+      "semantic_sha256": "9d6351452e6dfda7cbd0976619054e859126538a456886d879eec362b8241e31",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Use human review before publishing high-impact generated content under an organizational identity.” has checkable evidence clauses, but its full result also requires a fixed rule for which models, content, risks, changes, audiences, claims, or workflows are applicable or material.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Use human review before publishing high-impact generated content under an organizational identity.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "undefined_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-8C754D48",
+      "revision": 1,
+      "semantic_sha256": "8c754d48048520433da37b892fb7991e0fb4b9b34d102eda1766f338eb78f79f",
+      "classification": "nondeterministic",
+      "route": "contextual_judgment",
+      "reason": "Whether a detection score is presented as definitive proof is a meaning and user-experience judgment rather than a closed numeric or record predicate.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "The stored score and label can satisfy the schema while surrounding language presents the score as conclusive proof, so structured facts pass a broken presentation."
+    },
+    {
+      "control_id": "USEQ-5710654C",
+      "revision": 1,
+      "semantic_sha256": "5710654c82cc6d7d9248f7d431bc4d8fd188812d514d1c7ecc70319d55b14756",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. A synthetic-content decision record can require five distinct provenance, source, context, policy and investigation inputs and reject detector-only decisions.",
+      "deterministic_clauses": [
+        {
+          "statement": "Combine provenance, source verification, context, policy, and investigation rather than relying on one synthetic-content detector.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "A decision relying solely on a detector or missing investigation evidence fails the finite evidence matrix."
+    },
+    {
+      "control_id": "USEQ-C731071C",
+      "revision": 1,
+      "semantic_sha256": "c731071c054da8d76375ce2347654998ec136c8023cb23d102edf50b4d19bfbe",
+      "classification": "deterministic",
+      "route": "external_readonly_query",
+      "reason": "Provide routes is an effective endpoint-availability promise and cannot be proved by route identifiers in a catalog alone.",
+      "deterministic_clauses": [
+        {
+          "statement": "The correction, takedown, appeal, and incident-reporting routes in the complete sealed route inventory each resolve to their declared live endpoint and return the independently sealed expected non-mutating availability response.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "A catalog can list all four URLs while one is dead or points to the wrong service. The bounded environment query fails."
+    },
+    {
+      "control_id": "USEQ-02B7A344",
+      "revision": 1,
+      "semantic_sha256": "02b7a3440390d5aece47c16f2e08dfef44569fffd61637b588970f73136acae3",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. Each published final-content record can be checked for seven exact artifact, source, model, tool, transformation, reviewer and channel fields.",
+      "deterministic_clauses": [
+        {
+          "statement": "Record the approved final content, sources, model and tool versions, material transformations, reviewer, and publication channels.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "A publication missing source lineage or reviewer identity fails the finite provenance schema."
+    },
+    {
+      "control_id": "USEQ-10EDBDFD",
+      "revision": 1,
+      "semantic_sha256": "10edbdfd0ac8b7ed15764d0e7d09d094272fbc09770b6c67b650704cbd9deb35",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Monitoring all misuse of five organizational identity classes across open synthetic media is an unbounded discovery claim.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Configured brand searches can pass while a new voice clone or credential forgery on an unmonitored channel remains unseen."
+    },
+    {
+      "control_id": "USEQ-D3FD11E3",
+      "revision": 1,
+      "semantic_sha256": "d3fd11e3e2a696c72abf51fbf47a88652e30e2851463250aef02500ff23b89f6",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. A response catalog can define procedures for four finite forged, misleading, compromised and incorrectly credentialed content classes.",
+      "deterministic_clauses": [
+        {
+          "statement": "Prepare response procedures for forged, misleading, compromised, or incorrectly credentialed content.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "Omitting compromised-credential handling fails the exact procedure matrix."
+    },
+    {
+      "control_id": "USEQ-97B7BEBB",
+      "revision": 1,
+      "semantic_sha256": "97b7bebb079d98bb260e1455af297412f6f603b7f30c09abe2d8280c7c9342ba",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Preserve evidence needed to investigate provenance while respecting privacy and legal constraints.” has checkable evidence clauses, but its full result also requires specialist interpretation of applicable legal, privacy, licensing, safety, or notification duties.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Preserve evidence needed to investigate provenance while respecting privacy and legal constraints.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-0CD1F465",
+      "revision": 1,
+      "semantic_sha256": "0cd1f465cad3afb862fa728e4b0c4f4e42485c9a5c4712be7cb666a24bb98c7e",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Monitor AI-assisted workflows for unauthorized data access, secret exposure, insecure output, fabricated facts, malicious dependencies, excessive permissions, abnormal tool use, cost spikes, and repeated human overrides.” has checkable evidence clauses, but its full result also requires a representative adversarial, semantic, behavioral, or causal protocol and acceptance oracle.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Monitor AI-assisted workflows for unauthorized data access, secret exposure, insecure output, fabricated facts, malicious dependencies, excessive permissions, abnormal tool use, cost spikes, and repeated human overrides.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "undefined_protocol"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-E44BDA17",
+      "revision": 1,
+      "semantic_sha256": "e44bda17a352fb7e6f8d6e854c6e8d2381e15cfec6fea14f61480b550319fc53",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Monitoring seven behavior-altering change classes requires complete provider, prompt, retrieval, permission, policy and integration change sources.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Configured events can pass while a silent provider update or out-of-band prompt mutation remains undetected."
+    },
+    {
+      "control_id": "USEQ-91F85F40",
+      "revision": 1,
+      "semantic_sha256": "91f85f40e18f48342ad63eb3ac619504d56b2100bba77041df64ee0042f795f3",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Detecting every agent action outside six approved dimensions requires complete action telemetry plus semantic interpretation of task and scope.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child",
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Logged commands can comply while a tool side effect changes another repository or acts outside the user's intent."
+    },
+    {
+      "control_id": "USEQ-D20D2DD1",
+      "revision": 1,
+      "semantic_sha256": "d20d2dd19669e576cb4ae4ec2c7deb82c5a7bf6494f73e2eefee5d0dbd0ea189",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Provide rapid disablement for each model, provider, integration, tool, retrieval source, agent, and autonomous capability.” has checkable evidence clauses, but its full result also requires an explicit numeric disablement-time threshold.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Provide rapid disablement for each model, provider, integration, tool, retrieval source, agent, and autonomous capability.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "undefined_threshold"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-E0D7CFC5",
+      "revision": 1,
+      "semantic_sha256": "e0d7cfc5664b7f6b23648e69be88c3594f6bcd211b89f597d07df2787d1bee4c",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Revoking every associated credential, webhook, session, scheduled task and network path requires complete identity and dependency inventory.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Known tokens can revoke while a cached session or hidden scheduled job remains active."
+    },
+    {
+      "control_id": "USEQ-39F46163",
+      "revision": 1,
+      "semantic_sha256": "39f461635bb8963a38539b7d3e0fc4ecfe0495f5690fd5727ea85c2e1e9b3410",
+      "classification": "nondeterministic",
+      "route": "empirical_protocol_undefined",
+      "reason": "Fallback independence and essential-operation continuity require complete dependency analysis and empirical operation under unavailable or compromised AI.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A manual workflow can exist while relying on the same AI-generated index or identity path and failing during compromise."
+    },
+    {
+      "control_id": "USEQ-A737503A",
+      "revision": 1,
+      "semantic_sha256": "a737503a4de1fff85f74b474755ccf43cdd59dc7df6436787697768c38de41b1",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. An AI incident catalog can require eight exact leakage, action, code, context, provider, model, key and impersonation playbooks.",
+      "deterministic_clauses": [
+        {
+          "statement": "Define incident playbooks for confidential-data leakage, malicious action, unsafe code, poisoned context, provider compromise, model change, provenance-key compromise, and synthetic impersonation.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "A catalog missing poisoned-context or provenance-key compromise handling fails the finite procedure join."
+    },
+    {
+      "control_id": "USEQ-4EE501B5",
+      "revision": 1,
+      "semantic_sha256": "4ee501b5e2c026b9a3e9bf16a7eca7f67267b434fdbd93ab8bb63e6b5dda50ef",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Identifying every affected repository, artifact, deployment, document, decision and communication requires complete provenance and impact graphs.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "All registered items can be traced while an out-of-band document or decision derived from the defective workflow remains unknown."
+    },
+    {
+      "control_id": "USEQ-B7A152C3",
+      "revision": 1,
+      "semantic_sha256": "b7a152c36aa0da4dada129811769f6ca9990cf266f557b9e60246d41320fb3a2",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Preserve prompts, context, outputs, tool calls, approvals, model versions, and audit evidence proportionately and lawfully for investigation.” has checkable evidence clauses, but its full result also requires specialist interpretation of applicable legal, privacy, licensing, safety, or notification duties.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Preserve prompts, context, outputs, tool calls, approvals, model versions, and audit evidence proportionately and lawfully for investigation.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-FA7DAC9D",
+      "revision": 1,
+      "semantic_sha256": "fa7dac9dd285b0af4054a543f47b4f2153f1b913fcc8722aeeb1eee20076bccb",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Notify affected customers, users, employees, providers, and authorities according to impact and obligations.” has checkable evidence clauses, but its full result also requires specialist interpretation of applicable legal, privacy, licensing, safety, or notification duties.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Notify affected customers, users, employees, providers, and authorities according to impact and obligations.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-9CA9E828",
+      "revision": 1,
+      "semantic_sha256": "9ca9e8288d331bf5131046006b8e7307152e6cf6af7b73305c7276c53dc90b08",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Search for related generated defects and artifacts after an incident rather than fixing only the first instance.” has checkable evidence clauses, but its full result also requires a representative adversarial, semantic, behavioral, or causal protocol and acceptance oracle.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Search for related generated defects and artifacts after an incident rather than fixing only the first instance.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "undefined_protocol"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-0A7A2F6C",
+      "revision": 1,
+      "semantic_sha256": "0a7a2f6c5500148cf69d41df4efd035b567ee1ec1babaa5fea8374b4e398847d",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Revalidate accepted output after a material model or tool defect is discovered.” has checkable evidence clauses, but its full result also requires a fixed rule for which models, content, risks, changes, audiences, claims, or workflows are applicable or material.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Revalidate accepted output after a material model or tool defect is discovered.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "undefined_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-2C7F55DC",
+      "revision": 1,
+      "semantic_sha256": "2c7f55dc70f3f41160841127a1c58f226dd75e51d3ec4b65231d9b3f28be15e6",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Perform root-cause analysis covering governance, permissions, interface design, review, evaluation, training, incentives, and technical controls.” has checkable evidence clauses, but its full result also requires a representative adversarial, semantic, behavioral, or causal protocol and acceptance oracle.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Perform root-cause analysis covering governance, permissions, interface design, review, evaluation, training, incentives, and technical controls.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "undefined_protocol"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-3EEAD754",
+      "revision": 1,
+      "semantic_sha256": "3eead75482027dbacf9d335e25d4ced4de3ea00ce5be00e6650bcec3b611fa6a",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Complete retirement of eight AI artifact classes depends on open inventories plus legal and lifecycle retention interpretation.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "mixed_with_nondeterministic_child",
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Known objects can retire while a downstream derivative, provider-retained copy or generated artifact persists."
+    },
+    {
+      "control_id": "USEQ-86EF8E1F",
+      "revision": 1,
+      "semantic_sha256": "86ef8e1fb2628b49ae751425ce687ae46b5b2eb582419fbf7569940da071ecd7",
+      "classification": "nondeterministic",
+      "route": "contract_incomplete",
+      "reason": "Periodic has no cadence, and five test categories do not establish complete systems, providers, data, failure states or recovery oracles.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "undefined_scope",
+        "undefined_threshold"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "A shallow annual drill can pass while provider replacement cannot restore a critical index or delete retained data."
+    },
+    {
+      "control_id": "USEQ-4858F7E6",
+      "revision": 1,
+      "semantic_sha256": "4858f7e6cdd323ffbd15b9e52a92ffac491287e19acf26c098a25b5dceaea8c7",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Block release when material AI-generated code, configuration, migration, policy, or architecture has no accountable human reviewer who understands it.” has checkable evidence clauses, but its full result also requires a fixed rule for which models, content, risks, changes, audiences, claims, or workflows are applicable or material.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Block release when material AI-generated code, configuration, migration, policy, or architecture has no accountable human reviewer who understands it.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "undefined_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-3D7EFEF0",
+      "revision": 1,
+      "semantic_sha256": "3d7efef06f4169f1e95ab70dffc4e582203c0eba1602ebb3cff4cf3736085085",
+      "classification": "nondeterministic",
+      "route": "unbounded_claim",
+      "reason": "Detecting and verifying every generated claim, citation, API, package, standard and compatibility assumption requires complete generated-content provenance and semantic truth review.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Tracked claims can be verified while an unmarked AI-generated API assumption remains in code and escapes the gate."
+    },
+    {
+      "control_id": "USEQ-6465C673",
+      "revision": 1,
+      "semantic_sha256": "6465c673deef916f6fadf810ebab2c408675202ac8709a0959ed67e6270eab6d",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Block release when AI assistance exposed secrets, personal data, customer content, vulnerabilities, or proprietary material and containment is incomplete.” has checkable evidence clauses, but its full result also requires human judgment about safety, clarity, necessity, adequacy, completeness, or residual uncertainty.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Block release when AI assistance exposed secrets, personal data, customer content, vulnerabilities, or proprietary material and containment is incomplete.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-E5E6E4D2",
+      "revision": 1,
+      "semantic_sha256": "e5e6e4d22cade3de04f5998f564f13070fc6e3cbb997ac56fdf59339901c60e5",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "The release gate cannot prove every high-impact action was logged or that task, capability and confirmation boundaries were semantically correct.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child",
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Recorded actions can all comply while an indirect tool side effect outside the repository is absent from telemetry."
+    },
+    {
+      "control_id": "USEQ-FD59DB11",
+      "revision": 1,
+      "semantic_sha256": "fd59db1196c0845a21db502f2e3ed7ae19ab62339289045464f6ca1c4ecc076b",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Block release when critical generated tests use the same unverified logic as the implementation or have not demonstrated fault detection.” has checkable evidence clauses, but its full result also requires a representative adversarial, semantic, behavioral, or causal protocol and acceptance oracle.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Block release when critical generated tests use the same unverified logic as the implementation or have not demonstrated fault detection.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "undefined_protocol"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-C2B2D033",
+      "revision": 1,
+      "semantic_sha256": "c2b2d0339771d4d76888382cdd2bbb18028929480517e3fa83560808c21d0c3a",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Determining which model, prompt, retrieval, tool and provider changes invalidate evidence requires complete change discovery and semantic impact judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child",
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "Known changes can mark evidence stale while a subtle retrieval-corpus update invalidates behavior assurance without being recognized."
+    },
+    {
+      "control_id": "USEQ-BA8ED02F",
+      "revision": 1,
+      "semantic_sha256": "ba8ed02f3b14653a51007cb6e94e1b5696c039f6e244ae0645316985d8c27979",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Completeness of generated dependency and supplier inventories plus license and provenance resolution requires legal and supply-chain judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "mixed_with_nondeterministic_child",
+        "unbounded_scope"
+      ],
+      "decision_basis": "skeptically_rejected",
+      "skeptical_verdict": "rejected_nondeterministic",
+      "counterexample_analysis": "All registered items can be resolved while a transitive generated package or incompatible license remains undiscovered."
+    },
+    {
+      "control_id": "USEQ-14FDF5E4",
+      "revision": 1,
+      "semantic_sha256": "14fdf5e4dfd9bee5075dd39cae145ee01ac546b0bcc738a6eac4acd9b18c4b1e",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Block release when disabling or rolling back the AI capability is not possible for a high-risk workflow.” has checkable evidence clauses, but its full result also requires a fixed rule for which models, content, risks, changes, audiences, claims, or workflows are applicable or material.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Block release when disabling or rolling back the AI capability is not possible for a high-risk workflow.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "undefined_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-41AEF92F",
+      "revision": 1,
+      "semantic_sha256": "41aef92fe71913c953c239a3c128b8656469ef7ad15a6283cd930efa8539c9a8",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Retain the use case, approved tool and model versions, prompts or prompt templates where appropriate, retrieved sources, permissions, tool calls, generated artifacts, human changes, reviews, tests, and approvals.” has checkable evidence clauses, but its full result also requires a fixed rule for which models, content, risks, changes, audiences, claims, or workflows are applicable or material.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Retain the use case, approved tool and model versions, prompts or prompt templates where appropriate, retrieved sources, permissions, tool calls, generated artifacts, human changes, reviews, tests, and approvals.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "undefined_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-3CFE6905",
+      "revision": 1,
+      "semantic_sha256": "3cfe6905df753b39608292656649a9740f7f32d5b8b897f9410105400ef2c94b",
+      "classification": "deterministic",
+      "route": "artifact_verification",
+      "reason": "Retain is an artifact persistence and binding promise. Direct retrieval and digest verification are required for every named artifact class.",
+      "deterministic_clauses": [
+        {
+          "statement": "The complete sealed AI-evaluation retention inventory contains retrievable content-addressed artifacts for evaluation scope, data, adversarial cases, results, limitations, model changes, incidents, and accepted residual risk, all bound to the assessed model and version.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "A manifest can list all eight artifact classes after evaluation data or adversarial cases were deleted. Direct artifact verification fails."
+    },
+    {
+      "control_id": "USEQ-85D0CB75",
+      "revision": 1,
+      "semantic_sha256": "85d0cb75f92f1cf3a96cabf72695cf9d32732fff2d3a33aed76b804f3320820f",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Record data classifications, provider processing terms, retention settings, deletion evidence, and intellectual-property review where material.” has checkable evidence clauses, but its full result also requires specialist interpretation of applicable legal, privacy, licensing, safety, or notification duties.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Record data classifications, provider processing terms, retention settings, deletion evidence, and intellectual-property review where material.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "legal_or_specialist_authority"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-A3940500",
+      "revision": 1,
+      "semantic_sha256": "a3940500d6a6bdbc39a7abeafd1673651a2e5f1499827b0405b1b4f391cc4ae1",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The semantic-strength audit evaluates the original promise verbatim rather than a generic acceptance-contract proxy. Every registered public content item and signed claim can require linked provenance and authenticity evidence identities where those mechanisms are used.",
+      "deterministic_clauses": [
+        {
+          "statement": "Record provenance and authenticity evidence for public content and signed claims where used.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "decision_basis": "strength_audit_confirmed",
+      "skeptical_verdict": "confirmed_deterministic",
+      "counterexample_analysis": "A signed claim without its verification evidence or public asset with an unbound provenance record fails the registry join."
+    },
+    {
+      "control_id": "USEQ-DC177F9F",
+      "revision": 1,
+      "semantic_sha256": "dc177f9fbc8022a7d527dca9b04b2cf23cc1d86039384c51a8feb0d5a8df124d",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Require independent sign-off for autonomous production action, safety-related output, security controls, identity decisions, financial movement, or high-impact public communications.” has checkable evidence clauses, but its full result also requires a fixed rule for which models, content, risks, changes, audiences, claims, or workflows are applicable or material.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Require independent sign-off for autonomous production action, safety-related output, security controls, identity decisions, financial movement, or high-impact public communications.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "undefined_scope"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-54B598C4",
+      "revision": 1,
+      "semantic_sha256": "54b598c497e8bcf94641289b34f767e0365ad7c19ac55bed77f25196ee6f794b",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “Ensure ongoing monitoring detects behavior drift, unauthorized use, provider changes, data leakage, and control degradation after release.” has checkable evidence clauses, but its full result also requires a representative adversarial, semantic, behavioral, or causal protocol and acceptance oracle.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: Ensure ongoing monitoring detects behavior drift, unauthorized use, provider changes, data leakage, and control degradation after release.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "undefined_protocol"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    },
+    {
+      "control_id": "USEQ-AEE1EB03",
+      "revision": 1,
+      "semantic_sha256": "aee1eb0353ba06bdd1d12c313a73c27fec3677c5a30d0130963459b54491394b",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Rule “State the exact scope of AI assistance and residual uncertainty rather than claiming the work was fully verified merely because automated checks passed.” has checkable evidence clauses, but its full result also requires human judgment about safety, clarity, necessity, adequacy, completeness, or residual uncertainty.",
+      "deterministic_clauses": [
+        {
+          "statement": "For cases already selected by a versioned applicability record, verify the bounded record, artifact, configuration, or test predicates in: State the exact scope of AI assistance and residual uncertainty rather than claiming the work was fully verified merely because automated checks passed.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "mixed_with_nondeterministic_child",
+        "contextual_judgment"
+      ],
+      "decision_basis": "primary_nondeterministic",
+      "skeptical_verdict": null,
+      "counterexample_analysis": null
+    }
+  ]
+}

@@ -1,0 +1,1062 @@
+{
+  "schema_version": "prc.control-classification-review/v0.1",
+  "packet_id": "docs-checklists-10-evidence-and-decision-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "source_path": "docs/checklists/10-evidence-and-decision.md",
+  "controls": [
+    {
+      "control_id": "PRC-40-001",
+      "revision": 1,
+      "semantic_sha256": "c40d178c7a396ac89dc3efd241a6a94e307809110cd1e08a908c6159a0d00c8a",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "These release identity fields have exact values and immutable bindings, so a final package can be checked for completeness and consistency with source, artifact, configuration, migration, and flag authorities.",
+      "deterministic_clauses": [
+        {
+          "statement": "The final evidence package records the release identifier, every source commit, configuration version, migration version, and feature-flag state required by the release manifest.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Every packaged artifact digest matches the artifact authority and is bound to the recorded source and release identifier.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-40-002",
+      "revision": 1,
+      "semantic_sha256": "60c72fc8e385791d41446ea1afe61f58fc2e5dddcbdb948236275f97448cf71b",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "Final scope and architecture diagrams are versioned package records whose declared final status, release binding, and nonempty content can be validated exactly.",
+      "deterministic_clauses": [
+        {
+          "statement": "The package contains a nonempty final-scope record and versioned architecture diagrams bound to the exact release identifier.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-40-003",
+      "revision": 1,
+      "semantic_sha256": "0a0a9a5b87031e9de4878f36c619c7e6e0f19a952a5c065a821412dfbf6d1f2b",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "Data inventory and data-flow records are exact required package entries, so their presence, versions, stable identifiers, and release binding can be checked.",
+      "deterministic_clauses": [
+        {
+          "statement": "The package contains versioned data-inventory and data-flow records bound to the exact release identifier.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-40-004",
+      "revision": 1,
+      "semantic_sha256": "3675a090a69a21228ca7e166626b7432bf4a7e3c6b55f660719460767d4f5f17",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The package requirement is satisfied by versioned threat-model and abuse-case assessment records; their existence, review state, revision, and release binding are objective metadata.",
+      "deterministic_clauses": [
+        {
+          "statement": "The package contains a nonempty threat model and abuse-case assessment with revision, owner, completed review record, and exact release binding.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-40-005",
+      "revision": 1,
+      "semantic_sha256": "ade1f0a227cccee936b92ecc77a13405a94e0cfa6ae4178706134daaa6ca1d30",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Requirements already declared applicable can be packaged exactly, but deciding the complete set of applicable legal, privacy, accessibility, security, and contractual duties requires specialist interpretation.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every requirement in the approved applicability register appears in the final package with its stable identifier, authority, revision, and release binding.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-40-006",
+      "revision": 1,
+      "semantic_sha256": "aa723bd7b7dda9e695ff357c16820c65273e966d58fc227c5f6fb67781fae21d",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "With authoritative requirement and test inventories, each required trace link can be joined exactly to current test evidence for the same release.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every requirement in the approved release scope has one or more stable test identifiers in the traceability matrix.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Every referenced test identifier resolves to authenticated current results bound to the exact release artifact.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-40-007",
+      "revision": 1,
+      "semantic_sha256": "7ffe65bdee54528f35d3538c63c980f6073d07798504e06cc0fbd7af84c45cf6",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "Functional and user-acceptance result sets are exact package artifacts whose test identifiers, outcomes, timestamps, approvals, and release bindings can be validated.",
+      "deterministic_clauses": [
+        {
+          "statement": "The package contains authenticated functional and user-acceptance test results for the approved test inventories, bound to the exact release.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-40-008",
+      "revision": 1,
+      "semantic_sha256": "47051d17c7553a2493cde3ed2e6dea82808f3e1a541407a9e27be2fbc37e4bad",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The four named result categories form a closed package requirement, allowing presence, version, outcome, freshness, and release binding to be checked for each.",
+      "deterministic_clauses": [
+        {
+          "statement": "The package contains current browser, device, localization, and accessibility result records for the approved matrices, bound to the exact release.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-40-009",
+      "revision": 1,
+      "semantic_sha256": "5478a5a8ad38bdd289d1212f8754ab7625d23352eb67c824a921507c45ca9db3",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The five named performance result types are exact package entries, so current authenticated result records can be checked against approved scenario identifiers and the release.",
+      "deterministic_clauses": [
+        {
+          "statement": "The package contains current performance, load, stress, endurance, and capacity result records for the approved scenarios, bound to the exact release.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-40-010",
+      "revision": 1,
+      "semantic_sha256": "63f212badfbc3a0d68c65afb70ce3252da444343f39d448cc8b45e4e7689ef7c",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "Resilience, failover, rollback, and recovery are a closed result list whose evidence records and release bindings can be validated without rejudging their adequacy.",
+      "deterministic_clauses": [
+        {
+          "statement": "The package contains current authenticated resilience, failover, rollback, and recovery results for the approved scenario registry.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-40-011",
+      "revision": 1,
+      "semantic_sha256": "5cc64b3f65f30aea795143159f61fc5a1e64b9f6f20cfb6dcb1b5c36161ca3f4",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "Security scan and penetration-test result records have stable tool, scope, time, outcome, artifact, and report identifiers that can be validated exactly.",
+      "deterministic_clauses": [
+        {
+          "statement": "The package contains current authenticated security-scan and penetration-test result records scoped and bound to the exact release artifact.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-40-012",
+      "revision": 1,
+      "semantic_sha256": "5cc8fbc244c2b96bc28f1f71cfe9938e73940312f6a5439278fc24733c2d6b67",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "SBOM, license, provenance, and signature evidence are machine-verifiable artifacts whose subject digest and release binding can be compared exactly.",
+      "deterministic_clauses": [
+        {
+          "statement": "The package contains an SBOM, license report, and provenance statement whose subject digest equals the release artifact digest.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        },
+        {
+          "statement": "The artifact signature verifies under the approved trust policy and covers the exact release artifact digest.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-40-013",
+      "revision": 1,
+      "semantic_sha256": "5b447913127926b5d71aeb892a65b221220ed5378ad25434c634755e121be98b",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "For every vulnerability in the authoritative findings inventory, disposition fields and a dated known-exploitation review can be required and joined exactly.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every open or resolved vulnerability finding has a disposition record and a current known-exploitation review bound to its stable finding identifier.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-40-014",
+      "revision": 1,
+      "semantic_sha256": "f8ba3a25786a30695799353c3e3abe88a5a1a2f7967d22b9e91bd836e85b20d9",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "Infrastructure and production-configuration review records have exact subjects, revisions, reviewers, decisions, and release bindings that can be checked.",
+      "deterministic_clauses": [
+        {
+          "statement": "The package contains completed review records for the exact infrastructure revision and production-configuration version used by the release.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-40-015",
+      "revision": 1,
+      "semantic_sha256": "5cfc53a742b6b1288c879ff9f491ffc04c6af6b781975ff5a1326216556ea169",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "Backup and restoration evidence is an exact required package entry whose scenario, result, time, recovery point, and environment bindings can be validated.",
+      "deterministic_clauses": [
+        {
+          "statement": "The package contains current authenticated backup and restoration evidence for every scenario in the approved recovery test inventory.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-40-016",
+      "revision": 1,
+      "semantic_sha256": "4b97b066e7f6de5c4f53735bd9bef984649612c61567b35f17f1a6196a66bd22",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "Incident-response and continuity drill evidence has exact scenario, participant, timestamp, outcome, and action-record fields, making package presence and binding decidable.",
+      "deterministic_clauses": [
+        {
+          "statement": "The package contains current authenticated incident-response and continuity drill records for the approved drill scenarios.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-40-017",
+      "revision": 1,
+      "semantic_sha256": "04497783e6f8d1a3c50306e283bdeb6f316c5a623bdc1a30a5c2acecfdabf822",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The five named operational areas form a closed review list, so completed review records for each area, their subjects, reviewers, and dates can be checked.",
+      "deterministic_clauses": [
+        {
+          "statement": "The package contains completed current reviews for monitoring, alerts, dashboards, on-call arrangements, and runbooks.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-40-018",
+      "revision": 1,
+      "semantic_sha256": "9e65c3d1dbf6f5b0bcda06d5c7f0d430af544a3e5876b26f0465583d0d16db18",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "Third-party risk and contract review occurrence is objective when every approved provider record links to current authenticated review decisions.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every third party in the authoritative release inventory has current completed risk and contract review records in the package.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-40-019",
+      "revision": 1,
+      "semantic_sha256": "b5112041745eaba7bc6ba10893d4543142f7919d143b4f5743d5e3896d044589",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "An open-defect list is an exact snapshot that can be required even when empty, with stable defect identifiers, status, time, and release scope.",
+      "deterministic_clauses": [
+        {
+          "statement": "The package contains an authenticated open-defect snapshot for the exact release, explicitly listing every open defect or declaring none.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-40-020",
+      "revision": 1,
+      "semantic_sha256": "354daf8bcc478bf0ae231fe6217882bcf0f5b3726c0b54c8de089414dfff4bb1",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "An open risk and exception register is an exact release snapshot whose existence, entries, stable identifiers, and explicit empty state can be checked.",
+      "deterministic_clauses": [
+        {
+          "statement": "The package contains an authenticated open-risk and exception snapshot for the exact release, listing every entry or explicitly declaring none.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-40-021",
+      "revision": 1,
+      "semantic_sha256": "66410d9125cf955d3e0ad2b93cb5e4bf6e58e3a09fa234b4e2ff04f8549b0721",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The four named exception fields are exact required metadata, so every exception entry can be checked for a resolvable owner, control, expiry, and remediation plan.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every exception in the authoritative register has a resolvable owner, nonempty compensating control, valid expiry, and versioned remediation plan.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-40-022",
+      "revision": 1,
+      "semantic_sha256": "ae60651a8a185a179eb2df435047386c98c06d4fe0cb14c6fa4076a66260c3f1",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "Deployment, rollback, and post-deployment validation plans are a closed set of versioned release records whose presence and exact release binding can be validated.",
+      "deterministic_clauses": [
+        {
+          "statement": "The package contains nonempty deployment, rollback or roll-forward, and post-deployment validation plans bound to the exact release.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-40-023",
+      "revision": 1,
+      "semantic_sha256": "16c619cd71199d0702289f3082d6c6904a905e8f18abe659781dde0ba58af665",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "Approval record and rationale are exact package fields; authenticated decision, actor, authority, time, subject, and nonempty rationale can be checked.",
+      "deterministic_clauses": [
+        {
+          "statement": "The package contains an authenticated approval decision and nonempty rationale from an authorized decision-maker, bound to the exact release.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-41-001",
+      "revision": 1,
+      "semantic_sha256": "509d7b2547c6905c22dc9a7fa90c2d7c0ccafd17132015f83ffc8d95e9945f60",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "A product sign-off is objectively present when an authorized product owner signs the exact release and explicitly covers the five named product areas.",
+      "deterministic_clauses": [
+        {
+          "statement": "An authorized product owner has an authenticated sign-off for the exact release covering scope, behavior, acceptance criteria, launch objectives, and customer impact.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-41-002",
+      "revision": 1,
+      "semantic_sha256": "ca03e47f27f5ae3ae2b720953e6666ded691fddaf98ef45e5bfb0b87378d3330",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "An engineering sign-off can be validated by signer authority, release subject, revision, time, and explicit coverage of the six named engineering areas.",
+      "deterministic_clauses": [
+        {
+          "statement": "An authorized engineering owner has an authenticated sign-off for the exact release covering architecture, code, tests, migrations, maintainability, and technical risk.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-41-003",
+      "revision": 1,
+      "semantic_sha256": "a55bc46c830592544967cf81f10d1e3ba3ab5521b1e2e634cc17690767cd1281",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "A quality sign-off is an accountable human decision record whose authorized signer, exact release, and four required coverage fields can be checked.",
+      "deterministic_clauses": [
+        {
+          "statement": "An authorized quality owner has an authenticated sign-off for the exact release covering test completeness, evidence, defects, and regression status.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-41-004",
+      "revision": 1,
+      "semantic_sha256": "a3fe1200a312220009d4b51bc746bb16e482b89d613e377e7d1d293e0dc4e8d5",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The evaluator need not redo security judgment; it can exactly validate that the authorized security owner signed the release and covered all five named subjects.",
+      "deterministic_clauses": [
+        {
+          "statement": "An authorized security owner has an authenticated sign-off for the exact release covering threat model, ASVS coverage, findings, supply chain, and residual security risk.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-41-005",
+      "revision": 1,
+      "semantic_sha256": "9c656085c00c113a1673338d28b5c04f391338e22efd857a319f80237b762c13",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The required operations sign-off is an authenticated decision record with a closed seven-area coverage list and exact release binding.",
+      "deterministic_clauses": [
+        {
+          "statement": "An authorized reliability or operations owner has signed the exact release covering SLOs, capacity, monitoring, on-call, rollout, rollback, and recovery.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-41-006",
+      "revision": 1,
+      "semantic_sha256": "251fc62173e56418b428eb3d7bdd16a27b10739f974364ee7896677871d4cec9",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The data-owner sign-off can be checked for authorized identity, exact release subject, and explicit coverage of the five named data areas.",
+      "deterministic_clauses": [
+        {
+          "statement": "An authorized data owner has an authenticated sign-off for the exact release covering integrity, migration, retention, reconciliation, and recovery.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-41-007",
+      "revision": 1,
+      "semantic_sha256": "838ca4e16e747c4fcfef42e6fd61e278830d14377af1e7169a942484344b3e9e",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The privacy decision remains human-owned, while the scanner can deterministically validate that an authorized privacy owner signed and covered the six named areas.",
+      "deterministic_clauses": [
+        {
+          "statement": "An authorized privacy owner has an authenticated sign-off for the exact release covering inventory, purpose, rights, notices, transfers, and privacy risk.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-41-008",
+      "revision": 1,
+      "semantic_sha256": "2fe49ae9dce611f4716057f143887f9c32a9b01fe30f2797d3936091f1089d8f",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "An authoritative role or qualification registry plus the sign-off record makes signer eligibility, release binding, and the two required coverage fields exact.",
+      "deterministic_clauses": [
+        {
+          "statement": "An authorized accessibility owner or currently qualified reviewer has signed the exact release covering target conformance and unresolved barriers.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-41-009",
+      "revision": 1,
+      "semantic_sha256": "41cdafc4fa916273966d04865836ed6ea78cbbcef560c8466e262cf9ae54473a",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "Legal conclusions are not automated, but occurrence of the required authorized legal or compliance sign-off and its four coverage fields is objectively verifiable.",
+      "deterministic_clauses": [
+        {
+          "statement": "An authorized legal or compliance owner has signed the exact release covering applicable obligations, terms, contracts, and regulatory risks.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-41-010",
+      "revision": 1,
+      "semantic_sha256": "4ab81859ccc2259c4d73d43373e1f2941d0f9cb65f7eb1cc19c3cca3bcfd60d0",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The support sign-off record can be checked exactly for authorized identity, release subject, timestamp, and coverage of all four named readiness areas.",
+      "deterministic_clauses": [
+        {
+          "statement": "An authorized support owner has signed the exact release covering support readiness, escalation, documentation, and customer communications.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-41-011",
+      "revision": 1,
+      "semantic_sha256": "96b9b2cb9cba15c66bb2bd58e1da9f7aad90d5aa536139c458f70f46f56e57f1",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "Risk acceptance itself remains accountable human authority; the scanner only validates that the authorized business risk owner explicitly signed the exact remaining material-risk set.",
+      "deterministic_clauses": [
+        {
+          "statement": "An authorized business risk owner has an authenticated explicit acceptance record bound to every remaining material risk and the exact release.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-41-012",
+      "revision": 1,
+      "semantic_sha256": "0c94b1c56e3c0ddf539f880ec7eec62bc3d3bde4816cddf9adf7a8af5ebbe2e1",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "For releases classified high-impact by authoritative policy, an authenticated final go or no-go decision by the designated release authority is exact evidence.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every release marked high-impact has an authenticated final go or no-go decision from the executive or designated release authority.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-42-001",
+      "revision": 1,
+      "semantic_sha256": "695ea50d93f35be13b4e6e4972222ca874fc88ba643a9b472aa1c11e2476b81c",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Given authoritative applicability and blocker policies, every applicable release-blocking control can be enumerated and its current terminal result compared exactly with pass.",
+      "deterministic_clauses": [
+        {
+          "statement": "The approved decision policy identifies every applicable release-blocking item for the exact release.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Every identified blocking item has a current authenticated pass result bound to the exact release artifact.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-42-002",
+      "revision": 1,
+      "semantic_sha256": "240b8e2767fc19680a9c7fe4b3e2c004785093c6ad3b402dc179aa0405c956c7",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Critical requirements, evidence freshness, and production artifact digests are exact data, so every required evidence binding can be joined and verified.",
+      "deterministic_clauses": [
+        {
+          "statement": "The authoritative release scope identifies every critical requirement and the freshness policy that applies to its evidence.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Every critical requirement has current authenticated evidence whose subject digest equals the exact production artifact digest.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-42-003",
+      "revision": 1,
+      "semantic_sha256": "da75ceb4fa561ed70e7b4369a7285d36593e9897a0c7b5dfdddd9e3b640b3f39",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Approved numeric and mechanical objectives can be aggregated, but correctness, security, accessibility, and reliability often include contextual or specialist judgments that cannot become deterministic truth.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every critical journey has current authoritative result records for each approved objective, bound to the exact release.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "legal_or_specialist_authority",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-42-004",
+      "revision": 1,
+      "semantic_sha256": "515b668dbe77f8cff9208e56f31a122d852e5bc47e34430e79a051d2a28889d9",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "Whether a residual risk exceeds organizational appetite requires accountable interpretation of likelihood, impact, uncertainty, and the approved appetite, not a generic score comparison alone.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-42-005",
+      "revision": 1,
+      "semantic_sha256": "33af5027464eee2d67fffa572d0ec91f75ee996e3c40f8af1770dd82f59b2efc",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "Owner and expiration are exact required fields, so every accepted-risk record can be checked for a resolvable accountable owner and valid future expiry.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every accepted risk has an authenticated acceptance record, resolvable accountable owner, and valid expiration date.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-42-006",
+      "revision": 1,
+      "semantic_sha256": "ba65cfaca9aa334b64578fd32f541dcbbd750c49ff3bb3b55bc81e376bf17b73",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Named exercises and evidence can be validated, but demonstrably workable rollout, recovery, incident, and communication capabilities require scenario adequacy and operational judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "Current authenticated exercise records exist for the approved rollout, rollback or roll-forward, restoration, incident-response, and communication scenarios.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "undefined_protocol",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-42-007",
+      "revision": 1,
+      "semantic_sha256": "a51b6d10b65c605c6dfa1d13512885bfb9fe808e8f6d2127e95c39d75ef9b146",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "Personnel readiness includes availability, competence, fatigue, handoffs, access, and situational understanding and therefore requires accountable operational confirmation.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-42-008",
+      "revision": 1,
+      "semantic_sha256": "0cd8d1a58f5b5db12a27b080cc80ca367a90fbafcf0f680187b8e458a7a18b5f",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "The authoritative sign-off matrix supplies a closed required set, allowing every signature's identity, authority, release binding, timestamp, and completion state to be checked.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every sign-off required by the approved release matrix is authenticated, complete, authorized, current, and bound to the exact release.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-42-009",
+      "revision": 1,
+      "semantic_sha256": "a32d8896bae3dbdbb07181306bcf7e591fdc1aaab7a1ce9adf8d7560cd8c9d3c",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "Classifying a remaining issue as not release-blocking is an accountable risk decision based on impact, uncertainty, policy, and context rather than an objective repository fact.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-42-010",
+      "revision": 1,
+      "semantic_sha256": "e5a9ff76df352ffa8de8a0e74a7268dbf239230874845dd22b4403224b425c7c",
+      "classification": "nondeterministic",
+      "route": "specialist_or_legal_judgment",
+      "reason": "Whether seven forms of impact are bounded and understood requires product, security, privacy, integrity, financial, legal, and safety expertise plus context-specific risk judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority",
+        "contextual_judgment",
+        "human_accountability"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-42-011",
+      "revision": 1,
+      "semantic_sha256": "9a385dc188dcbf7c981348b08e0713b2a176717bc7890129cf56b1c31848af90",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Existence and execution of a declared compensating control are exact, but whether it truly compensates for the remaining issue requires threat, failure, and risk judgment.",
+      "deterministic_clauses": [
+        {
+          "statement": "The issue record links to an approved compensating-control identifier and a current authenticated test result for its declared behavior.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-42-012",
+      "revision": 1,
+      "semantic_sha256": "e7476711f3a3c97d5dcee8a33c9c62e46ee3df8da3760f98e1c66a54eaf4d448",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "A bounded injected-signal test can prove detection of declared deterioration, but selecting complete deterioration modes and sufficient detection semantics requires contextual review.",
+      "deterministic_clauses": [
+        {
+          "statement": "A bounded test injects every deterioration signal in the approved scenario set and records the expected monitor firing within its declared threshold.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-42-013",
+      "revision": 1,
+      "semantic_sha256": "d6b1d9abaa28f66e00c183cf570af8ff59976e301495a54a7656fd8fb67d2a97",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Disable and rollback exercises are objective partial evidence, but safely depends on data integrity, user harm, dependency state, and scenario completeness.",
+      "deterministic_clauses": [
+        {
+          "statement": "Current authenticated exercises show the feature can be disabled and the release can be rolled back for every approved bounded scenario.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_protocol",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-42-014",
+      "revision": 1,
+      "semantic_sha256": "c237419623a2de3aa3375c80d7886822f065f745f20918e40bf20494e0ffd698",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "A named owner's acceptance is an exact accountable decision record whose identity, authority, issue subject, timestamp, and acceptance can be validated.",
+      "deterministic_clauses": [
+        {
+          "statement": "The issue has an authenticated explicit acceptance from a resolvable authorized risk owner, bound to the exact issue revision and release.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-42-015",
+      "revision": 1,
+      "semantic_sha256": "b9acaec5968d7792977dfbe8ff80f9a81efa40a7ecadc7ef7a6f8f4e431f493c",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "A remediation date and automatic expiry are exact fields and behaviors, so both can be validated against policy and exercised with a bounded expired fixture.",
+      "deterministic_clauses": [
+        {
+          "statement": "The issue record contains a valid near-term remediation date and an exact automatic-expiry timestamp meeting the approved maximum duration.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "A bounded expired fixture proves the exception becomes invalid automatically after its expiry timestamp.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-42-016",
+      "revision": 1,
+      "semantic_sha256": "0c68fc97b267616545cda89fe38e3e083c2fd309a9a16d3f95a28e6b54e6446f",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "Whether launch scope has been reduced appropriately depends on the issue's impact, retained journeys, exposure, and business need and requires accountable product-risk judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-42-017",
+      "revision": 1,
+      "semantic_sha256": "e7292d0a2cbd609cf743c6a8a84b6490f259d5552c762c91a90b998d04439e59",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Required evidence and freshness windows are explicit in the approved evidence policy, making missing references and stale timestamps exact no-go conditions.",
+      "deterministic_clauses": [
+        {
+          "statement": "The approved release evidence policy enumerates every required evidence item and its exact freshness rule.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "The decision evaluator reports no-go when any required evidence item is absent, unresolved, or older than its freshness limit.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-42-018",
+      "revision": 1,
+      "semantic_sha256": "036d6c4e927bd76c80629a02f0066a48a7eb0d4ed9fa1af11246f75ab5a53073",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "Critical controls and acceptable tested-evidence types are explicit policy inputs, so an assertion without matching execution evidence is objectively identifiable.",
+      "deterministic_clauses": [
+        {
+          "statement": "The approved decision policy enumerates every critical control and its required execution-evidence type.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "The evaluator reports no-go when any critical control has only an assertion or review record and lacks current matching test evidence.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-42-019",
+      "revision": 1,
+      "semantic_sha256": "0d9e915a1f1840c7970c97ccc5c4c1e5e66e532279c72b21e97e46c044a9681e",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "Seriousness and whether an anomaly is adequately explained depend on domain impact, uncertainty, causal evidence, and accountable reviewer judgment.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-42-020",
+      "revision": 1,
+      "semantic_sha256": "d746048335fe3babdbe344306345ee354c26b7527ccebb1defb1b1bb21c8882c",
+      "classification": "deterministic",
+      "route": "deterministic_composite",
+      "reason": "An approved readiness policy can define availability evidence for rollback, restoration, and incident response, allowing current mechanism, access, and exercise records to be checked exactly.",
+      "deterministic_clauses": [
+        {
+          "statement": "The readiness policy defines the required current availability evidence for rollback, restoration, and incident-response mechanisms.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "The evaluator reports no-go when any required mechanism, access binding, or current exercise record is absent or failed.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-42-021",
+      "revision": 1,
+      "semantic_sha256": "dee1a7aaecfa97c35b228cf2209bbdf5a1af0c0ba73cc4b46498943935db0fcf",
+      "classification": "deterministic",
+      "route": "structured_record_validation",
+      "reason": "Legal or contractual authority determines the applicable approval set; once recorded, absence of any required authenticated approval is an exact condition.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every legal or contractual approval in the authoritative applicability register has a current authenticated approval record bound to the exact release.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ],
+      "nondeterministic_reason_codes": [],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-42-022",
+      "revision": 1,
+      "semantic_sha256": "cca637d08c65b10af77cbbaf4aaf131fdc3aba94a9a9c8c2e8abc626e66efeeb",
+      "classification": "nondeterministic",
+      "route": "mixed",
+      "reason": "Linked detection and mitigation tests can be checked for declared monitoring-based exceptions, but implicit team reliance and adequacy of the path require contextual risk review.",
+      "deterministic_clauses": [
+        {
+          "statement": "Every exception whose rationale cites monitoring links to concrete detection and mitigation identifiers plus current authenticated tests for both paths.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ],
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-42-023",
+      "revision": 1,
+      "semantic_sha256": "39d7695bc591d913f1e9a9def909051964d1a5a055d02f9cf2325cbdfc01f596",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "Determining that organizational pressure is the only reason for risk acceptance requires interpreting motives, governance dynamics, and decision testimony rather than technical evidence.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "contextual_judgment"
+      ],
+      "review_status": "primary_agent_reviewed"
+    },
+    {
+      "control_id": "PRC-42-024",
+      "revision": 1,
+      "semantic_sha256": "68d0810539cedefd6c775ef17aa2b1f9affe72aa91e09b0710d58ee0119b7fad",
+      "classification": "nondeterministic",
+      "route": "accountable_human_decision",
+      "reason": "A decision-maker's understanding of remaining risk is a human mental-state and accountability claim that cannot be proven by signatures, document access, or a quiz alone.",
+      "deterministic_clauses": [],
+      "nondeterministic_reason_codes": [
+        "human_accountability"
+      ],
+      "review_status": "primary_agent_reviewed"
+    }
+  ]
+}

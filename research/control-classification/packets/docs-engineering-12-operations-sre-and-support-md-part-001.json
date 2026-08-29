@@ -1,0 +1,3761 @@
+{
+  "schema_version": "prc.control-classification-packet/v0.1",
+  "packet_id": "docs-engineering-12-operations-sre-and-support-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "source_path": "docs/engineering/12-operations-sre-and-support.md",
+  "control_count": 250,
+  "controls": [
+    {
+      "control_id": "USEQ-B52808A9",
+      "revision": 1,
+      "semantic_sha256": "b52808a99d079705edd0c8042fb8a7194f2acacc6a7276ea42ef1b0e28efc839",
+      "statement": "Infrastructure changes receive review, testing, and security analysis.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 15
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Infrastructure and Platform Readiness",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-2963750A",
+      "revision": 1,
+      "semantic_sha256": "2963750a3bb1e8a0e2534411ffc3d69bf66ec2189df9105aa9d581ac344892e9",
+      "statement": "Production accounts, subscriptions, projects, environments, and control planes are separated appropriately.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 16
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Infrastructure and Platform Readiness",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-A41434C9",
+      "revision": 1,
+      "semantic_sha256": "a41434c99376544b0276b969c325df42029b5f7a8689b1394a061cb3287f6c6e",
+      "statement": "Unnecessary services, packages, ports, protocols, users, and capabilities are removed.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 17
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Infrastructure and Platform Readiness",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-64B98F44",
+      "revision": 1,
+      "semantic_sha256": "64b98f4418a3f0fcf9b043fe0c804c213e14eaaa7cf089092595155d2444a7e2",
+      "statement": "Workloads run with least operating-system and platform privilege.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 18
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Infrastructure and Platform Readiness",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-C18D735C",
+      "revision": 1,
+      "semantic_sha256": "c18d735c0539d7ede43addb1efda3b741d9b0e85e6e3a48c6c9810a717d3e136",
+      "statement": "Resource quotas, account limits, and provider limits are documented.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 19
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Infrastructure and Platform Readiness",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-FF663A86",
+      "revision": 1,
+      "semantic_sha256": "ff663a86852a13387d5c4f3ad6f14adec7bc961a741dd602d1d82c3b8461c91a",
+      "statement": "Monitoring covers platform control-plane, quota, capacity, and regional failures.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 20
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Infrastructure and Platform Readiness",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-92A27983",
+      "revision": 1,
+      "semantic_sha256": "92a27983a1be46502698b91d7bae32472322fb75681a7bf775cbd1ddea7fef73",
+      "statement": "Configuration drift, unauthorized resources, and shadow infrastructure are detected.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 21
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Infrastructure and Platform Readiness",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-7D17BE10",
+      "revision": 1,
+      "semantic_sha256": "7d17be103542b51f1569c6a7653b96b0a747dae80e84c6f13eb11fc5a7ca8475",
+      "statement": "Resource deletion and recreation have tested recovery procedures.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 22
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Infrastructure and Platform Readiness",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-3FBED686",
+      "revision": 1,
+      "semantic_sha256": "3fbed686b99dcc2c66e761b2728a405c8c11f7dff0f4b21ec8adcef62c06d0c0",
+      "statement": "Multi-zone and multi-region architecture match approved availability and recovery objectives.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 23
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Infrastructure and Platform Readiness",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-57F42939",
+      "revision": 1,
+      "semantic_sha256": "57f42939701c3367caf7e0a759f7e4ab4faf8dca02e13a31612d56630fafcb56",
+      "statement": "Infrastructure capacity is validated under failure.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 24
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Infrastructure and Platform Readiness",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-7F1F8F9C",
+      "revision": 1,
+      "semantic_sha256": "7f1f8f9c676d77f9bddc20fdd48e344a52cb22831b7b4a19e728b3f3e64f55c8",
+      "statement": "Provider status and escalation paths are integrated into operations.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 25
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Infrastructure and Platform Readiness",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-A0E78A59",
+      "revision": 1,
+      "semantic_sha256": "a0e78a59cd8dd50769abf7778c0b46c80f09f2e81de588316985b14625b4824f",
+      "statement": "Cost alerts and runaway-resource protections exist.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 26
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Infrastructure and Platform Readiness",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-C02FFCDE",
+      "revision": 1,
+      "semantic_sha256": "c02ffcde77593ab42ef229c82ee29d85cd956f7c969a540018e384fa505c9c02",
+      "statement": "Infrastructure credentials and machine identities are inventoried, scoped, and rotated.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 27
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Infrastructure and Platform Readiness",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-DA0AF8A9",
+      "revision": 1,
+      "semantic_sha256": "da0af8a9aa1eff767b61bf5d92d8949c7c13992656755e77f7c679e683466d9a",
+      "statement": "Base images are minimal, trusted, pinned, scanned, and supported.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 31
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Infrastructure and Platform Readiness",
+        "Containers and orchestration, when used"
+      ]
+    },
+    {
+      "control_id": "USEQ-2B34F31F",
+      "revision": 1,
+      "semantic_sha256": "2b34f31f1efd2aea7e17faa09be5d18876894f27007d3fa8618a022cd1715509",
+      "statement": "Unnecessary capabilities are removed.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 32
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Infrastructure and Platform Readiness",
+        "Containers and orchestration, when used"
+      ]
+    },
+    {
+      "control_id": "USEQ-AE7EA05E",
+      "revision": 1,
+      "semantic_sha256": "ae7ea05e2c0d7c4100223d3c36d7cebfa117cf29549515bcd82070eb90b62c56",
+      "statement": "Privileged execution and host access are prohibited unless explicitly approved.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 33
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Infrastructure and Platform Readiness",
+        "Containers and orchestration, when used"
+      ]
+    },
+    {
+      "control_id": "USEQ-D99BEFB1",
+      "revision": 1,
+      "semantic_sha256": "d99befb1080dcf5b029bf162aaf07a3c86c36ee263bf7930911721e544f31ed0",
+      "statement": "Platform access follows least privilege.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 34
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Infrastructure and Platform Readiness",
+        "Containers and orchestration, when used"
+      ]
+    },
+    {
+      "control_id": "USEQ-FF113370",
+      "revision": 1,
+      "semantic_sha256": "ff1133709815576c49be87489298acc4b9a00cd3a0bf64ae61cfd61a1947fc8e",
+      "statement": "Node, cluster, and control-plane upgrades are rehearsed.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 35
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Infrastructure and Platform Readiness",
+        "Containers and orchestration, when used"
+      ]
+    },
+    {
+      "control_id": "USEQ-4B41FF50",
+      "revision": 1,
+      "semantic_sha256": "4b41ff50fa99db0cc5197d7005067b1ee1a12b814cf147bfd0fc506536980cc5",
+      "statement": "Persistent-storage failure and restoration are tested.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 36
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Infrastructure and Platform Readiness",
+        "Containers and orchestration, when used"
+      ]
+    },
+    {
+      "control_id": "USEQ-6EB9C058",
+      "revision": 1,
+      "semantic_sha256": "6eb9c058a3132bca4ee443f108afe4050cc9114cb75721fe9a37cb32be8a3755",
+      "statement": "Service identities are scoped per workload where practical.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 40
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Infrastructure and Platform Readiness",
+        "Serverless or managed execution, when used"
+      ]
+    },
+    {
+      "control_id": "USEQ-3D0C3C21",
+      "revision": 1,
+      "semantic_sha256": "3d0c3c216e641d31a084d46539a5784cc8fe987c7b200b5c8bd9ff44d65a2db0",
+      "statement": "Regional availability and failover match approved objectives.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 41
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Infrastructure and Platform Readiness",
+        "Serverless or managed execution, when used"
+      ]
+    },
+    {
+      "control_id": "USEQ-364C0C23",
+      "revision": 1,
+      "semantic_sha256": "364c0c23cc2cfb4835b2f5f0f0eb72e8ecf1ad7ab985eecb732ece51addb4d13",
+      "statement": "Logs, metrics, traces, synthetic checks, and real-user signals cover critical journeys.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 49
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Observability, Logging, Metrics, Traces, and Audit",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-15DAEE33",
+      "revision": 1,
+      "semantic_sha256": "15daee3346a2461172e4ee48528c13a7b41ff4119cddf8a1115c2efbb37eddcf",
+      "statement": "Telemetry consistently identifies service, environment, release, instance, region, and tenant where appropriate.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 50
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Observability, Logging, Metrics, Traces, and Audit",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-ACC724DF",
+      "revision": 1,
+      "semantic_sha256": "acc724dfc79fd0616969cac5b2fdef0bf9a58da83346fca33342f1da2f2d20a7",
+      "statement": "Trace context propagates across trusted service boundaries.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 51
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Observability, Logging, Metrics, Traces, and Audit",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-9C8C69CA",
+      "revision": 1,
+      "semantic_sha256": "9c8c69ca5f00e1597aa8a17e07d14a2cf5875847547f0c6522cf29477145dd0f",
+      "statement": "Latency uses meaningful percentiles.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 52
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Observability, Logging, Metrics, Traces, and Audit",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-2CAC6BCD",
+      "revision": 1,
+      "semantic_sha256": "2cac6bcd7072b85cbbbb8aed409455b8af94fe8d409efc7c2091325acd9af026",
+      "statement": "Traffic, workload, saturation, correctness, freshness, durability, queue lag, and reconciliation are measured where relevant.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 53
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Observability, Logging, Metrics, Traces, and Audit",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-1172021F",
+      "revision": 1,
+      "semantic_sha256": "1172021fa357df95f9a77634733ee21790afd11f55a6e86a7ecf6f0586cdd044",
+      "statement": "Logs are structured, searchable, and use consistent levels.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 54
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Observability, Logging, Metrics, Traces, and Audit",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-ACC02B9C",
+      "revision": 1,
+      "semantic_sha256": "acc02b9c32f4b8287f6992e31dff38fe22f921f360a14b4b172609ceb177d6dd",
+      "statement": "Passwords, reusable tokens, session identifiers, secret keys, payment credentials, and private keys are never logged.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 55
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Observability, Logging, Metrics, Traces, and Audit",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-8605B669",
+      "revision": 1,
+      "semantic_sha256": "8605b6694a090dac1e7144a1e412f93e93dd9f5f4fcbd35b4e065f22ebf447cf",
+      "statement": "Log injection and unsafe control characters are handled.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 56
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Observability, Logging, Metrics, Traces, and Audit",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-E25ED114",
+      "revision": 1,
+      "semantic_sha256": "e25ed11444359bf3514e5c20ffde48c27dc35e4f6b7d3ce94cc4024904ce2a40",
+      "statement": "Authentication, authorization changes, administrative actions, sensitive reads, exports, deletions, and configuration changes are audited.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 57
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Observability, Logging, Metrics, Traces, and Audit",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-4CEDEF76",
+      "revision": 1,
+      "semantic_sha256": "4cedef764392faedf3923993de9dfc0a4c1c6f3b741d401cb61f192f772c243e",
+      "statement": "Log and audit retention match operational, security, privacy, legal, and contractual requirements.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 58
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Observability, Logging, Metrics, Traces, and Audit",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-B4212946",
+      "revision": 1,
+      "semantic_sha256": "b4212946779a9f0d5562bfe9a4cf072f8f16fd5e4514cdc73a89220744c7b081",
+      "statement": "Telemetry pipeline failure, backlog, cost, and quota exhaustion are monitored.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 59
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Observability, Logging, Metrics, Traces, and Audit",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-5FEB8562",
+      "revision": 1,
+      "semantic_sha256": "5feb85625525c2291915d47dbba35848c6f77b7916cd1048ecaff029b4966880",
+      "statement": "Investigators can locate relevant evidence within the incident-response objective.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 60
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Observability, Logging, Metrics, Traces, and Audit",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-CAC36B21",
+      "revision": 1,
+      "semantic_sha256": "cac36b214ea3e172d1c95b4276cca6d6baec405aaf70b1e88d538ee3ca2dff66",
+      "statement": "Dashboards, alerts, and diagnostic queries are tested during simulated incidents.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 61
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Observability, Logging, Metrics, Traces, and Audit",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-2D2D4869",
+      "revision": 1,
+      "semantic_sha256": "2d2d48693993106e4c8ad1e6590c2fe9c667a4f990e9692b00b98da492b7d7c1",
+      "statement": "Alerts are tied to user impact, SLO risk, data integrity, security, fraud, or impending capacity failure.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 69
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Alerting, On-Call, and Runbooks",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-768749B7",
+      "revision": 1,
+      "semantic_sha256": "768749b7f5a82d069bdc1265b358a721b1ef7bbf9abdbe8e307d9588f8679640",
+      "statement": "Non-actionable information uses non-paging channels.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 70
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Alerting, On-Call, and Runbooks",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-402BD03D",
+      "revision": 1,
+      "semantic_sha256": "402bd03da24da2ca3db02f0eb056b9d258d2c947fac7e1128da6192fc83913f6",
+      "statement": "Every alert has an owner and a corresponding diagnostic or mitigation runbook.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 71
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Alerting, On-Call, and Runbooks",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-846BA894",
+      "revision": 1,
+      "semantic_sha256": "846ba89418c97b569d424e4dd79df81040413d09eb827937cd471ab72e9bfa1b",
+      "statement": "Alert routing and escalation are tested.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 72
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Alerting, On-Call, and Runbooks",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-467D6189",
+      "revision": 1,
+      "semantic_sha256": "467d61897b8b50e95499f9a4a9afbbbfa903d9a5d35e79486b1c971fd6c6fc3e",
+      "statement": "Responders have required access and tools.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 73
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Alerting, On-Call, and Runbooks",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-57378001",
+      "revision": 1,
+      "semantic_sha256": "5737800113164b637a55b366560c47046f625b358f6ac2be21c53814d798ebb0",
+      "statement": "Fast and slow SLO consumption are detected.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 74
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Alerting, On-Call, and Runbooks",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-37471699",
+      "revision": 1,
+      "semantic_sha256": "374716996638ad3502ba91d19095471221ae17821a89951fd536a7884267e187",
+      "statement": "Thresholds avoid obvious noise and missed incidents.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 75
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Alerting, On-Call, and Runbooks",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-06E3518C",
+      "revision": 1,
+      "semantic_sha256": "06e3518cb04e8ed6474e869022f082a261cf05136f9ec79dbb23290982d769a3",
+      "statement": "Failure of monitoring or paging generates an independent signal.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 76
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Alerting, On-Call, and Runbooks",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-4A5C9EF3",
+      "revision": 1,
+      "semantic_sha256": "4a5c9ef39b71e68171bfb26f1b47c656701e59ef7025d7d1cc342dc7b9f73923",
+      "statement": "Runbooks include symptoms, impact, diagnosis, containment, rollback or roll-forward, recovery, verification, and escalation.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 77
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Alerting, On-Call, and Runbooks",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-9B7E1084",
+      "revision": 1,
+      "semantic_sha256": "9b7e108413d6d1cea01fa8b898a53e0ff3412d35da11b515cd95d0078960050c",
+      "statement": "Runbooks do not rely on undocumented tribal knowledge.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 78
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Alerting, On-Call, and Runbooks",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-12D77066",
+      "revision": 1,
+      "semantic_sha256": "12d7706693f61051bc749c3c31081ab9d7109ecf2c9827960bba68be838600c4",
+      "statement": "Runbook commands are reviewed and clearly identify destructive actions.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 79
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Alerting, On-Call, and Runbooks",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-11AF58B5",
+      "revision": 1,
+      "semantic_sha256": "11af58b5babf5d92dcb1cc427b671982bfe83eb5d38bc499c6bf1ae85b4526f6",
+      "statement": "Required dashboards, consoles, credentials, and documentation remain accessible during incidents.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 80
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Alerting, On-Call, and Runbooks",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-B43706EC",
+      "revision": 1,
+      "semantic_sha256": "b43706ec90344d7f5c008964dc9a3f07b1e234bd7dd75610259be2297b45f8b5",
+      "statement": "A customer-facing status mechanism exists where appropriate.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 81
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Alerting, On-Call, and Runbooks",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-1D858AD2",
+      "revision": 1,
+      "semantic_sha256": "1d858ad29b05cc51812f3c495e42817a13c468deec57aa88ff6b73c0b7c1d959",
+      "statement": "On-call load and alert volume are sustainable.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 82
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Alerting, On-Call, and Runbooks",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-9E774722",
+      "revision": 1,
+      "semantic_sha256": "9e774722e250d5056db9ecb7b452c86d8d35d5e40191d0e73c3c67305621f96a",
+      "statement": "On-call, alerting, and runbook drills have been completed.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 83
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Alerting, On-Call, and Runbooks",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-004EF7C7",
+      "revision": 1,
+      "semantic_sha256": "004ef7c7e54081585dc8f85c8468f8b81c417204d35865d2cd17ad06415806bd",
+      "statement": "Business-impact analysis identifies critical services, journeys, data, dependencies, and manual operations.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 91
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Backup, Disaster Recovery, and Business Continuity",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-F69270D3",
+      "revision": 1,
+      "semantic_sha256": "f69270d382a73fcc5480fd8930e26bc62f361379a92c4822c752dab9b8cf3342",
+      "statement": "Recovery Point Objectives are defined for every stateful system.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 92
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Backup, Disaster Recovery, and Business Continuity",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-72E6B0CB",
+      "revision": 1,
+      "semantic_sha256": "72e6b0cb92fa2e388c1bbcd8b120b07c7277c94ff358a3a53dec4b799d2a4853",
+      "statement": "Recovery Time Objectives are defined for every critical journey.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 93
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Backup, Disaster Recovery, and Business Continuity",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-0DF2FA43",
+      "revision": 1,
+      "semantic_sha256": "0df2fa432cac2cafb605f72b1dda68e7e89c1dbc34cbaf9e2688cfb6d12045a6",
+      "statement": "Backups run automatically at the required frequency and success is monitored.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 94
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Backup, Disaster Recovery, and Business Continuity",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-98D70D6C",
+      "revision": 1,
+      "semantic_sha256": "98d70d6ca1447437f59218792f3a9680e43396ee5eaa39ba8f0331acbbc07bde",
+      "statement": "Backups are encrypted and access follows least privilege.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 95
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Backup, Disaster Recovery, and Business Continuity",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-76293243",
+      "revision": 1,
+      "semantic_sha256": "76293243f1c70494ae0af7e85503a9d776df43d05b0395237011b4e3df5f24ef",
+      "statement": "Immutable or tamper-resistant copies exist where risk warrants them.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 96
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Backup, Disaster Recovery, and Business Continuity",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-F6E2640E",
+      "revision": 1,
+      "semantic_sha256": "f6e2640e14a3dd76eb33a2f05f9f6d38248edaf9b6f43e2de85b1754af8c9dcd",
+      "statement": "Full, partial, clean-environment, regional-loss, and provider-loss restoration are tested as applicable.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 97
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Backup, Disaster Recovery, and Business Continuity",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-8C6EF82F",
+      "revision": 1,
+      "semantic_sha256": "8c6ef82f36136b1fd474fe73a0242431acb68b2a4355564605e86623bd5fe4b1",
+      "statement": "DNS, certificates, secrets, identity, networking, external integrations, and communication systems are included in recovery planning.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 98
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Backup, Disaster Recovery, and Business Continuity",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-7C161E16",
+      "revision": 1,
+      "semantic_sha256": "7c161e16a4b7127bf7492db582596ce2f1be129bf7472504e118f1a2b85188bb",
+      "statement": "Restored data is checked for integrity and reconciled.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 99
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Backup, Disaster Recovery, and Business Continuity",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-D4E7515B",
+      "revision": 1,
+      "semantic_sha256": "d4e7515b4b730c73c3ac649ccffdb2c4cd937c38c2991210102eae04d2e74838",
+      "statement": "Actual tested recovery time and recovery point meet approved objectives.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 100
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Backup, Disaster Recovery, and Business Continuity",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-C41BABC1",
+      "revision": 1,
+      "semantic_sha256": "c41babc1160e796cd155511ec38f78795596d8815476ddfb264265351c29e209",
+      "statement": "Failover and failback are tested.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 101
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Backup, Disaster Recovery, and Business Continuity",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-0AAD5260",
+      "revision": 1,
+      "semantic_sha256": "0aad52604f0a68797a3198900560674e9c88274480d6fdce095181492175bd58",
+      "statement": "Disaster-recovery capacity can carry required load.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 102
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Backup, Disaster Recovery, and Business Continuity",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-F4AB063C",
+      "revision": 1,
+      "semantic_sha256": "f4ab063ce793b4f3012e2238e4765d9fc52aa701fb907614ebf64b92ff7ed95f",
+      "statement": "Recovery does not create duplicate notifications, charges, webhooks, messages, or jobs.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 103
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Backup, Disaster Recovery, and Business Continuity",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-FD45C5FC",
+      "revision": 1,
+      "semantic_sha256": "fd45c5fc646aad6502c8ef4c6c898699076f9d6bc589b483cf20c7c1626f912a",
+      "statement": "Restoration does not silently re-enable revoked users, revoked secrets, expired permissions, or deleted data.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 104
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Backup, Disaster Recovery, and Business Continuity",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-75188025",
+      "revision": 1,
+      "semantic_sha256": "75188025359db739e02ab171265b4062bb49e6ef2ad9a1ffaf4b90a7da791662",
+      "statement": "Ransomware and destructive-administrator scenarios are exercised where relevant.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 105
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Backup, Disaster Recovery, and Business Continuity",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-DFA9E714",
+      "revision": 1,
+      "semantic_sha256": "dfa9e71493fd8235fc371060222edc0c428668b9e2324c9a8722995fa11ad991",
+      "statement": "Recovery does not depend on a single person, device, credential, or unavailable provider.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 106
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Backup, Disaster Recovery, and Business Continuity",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-AB371F8F",
+      "revision": 1,
+      "semantic_sha256": "ab371f8fb1dff28f697dee6f9cd4d304bcea74d992058931cb1d6266f2d410b8",
+      "statement": "Continuity procedures cover customer support, communications, essential manual operations, and decision authority.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 107
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Backup, Disaster Recovery, and Business Continuity",
+        "Universal controls"
+      ]
+    },
+    {
+      "control_id": "USEQ-D1BD4768",
+      "revision": 1,
+      "semantic_sha256": "d1bd47687362abc2410d4b79c4718ae0978ec53ba8af1b2371c877528085155e",
+      "statement": "Identify the user journeys and service outcomes whose failure matters.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 115
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "SLIs, SLOs, Error Budgets, and Reliability Governance",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-B3E613B3",
+      "revision": 1,
+      "semantic_sha256": "b3e613b3f304a4c7d514a735c9fdbddaeb061e211c4f26b560e9efd43ba73335",
+      "statement": "Define service-level indicators from user-observable availability, latency, correctness, durability, freshness, and quality.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 116
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "SLIs, SLOs, Error Budgets, and Reliability Governance",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-0FC335A7",
+      "revision": 1,
+      "semantic_sha256": "0fc335a753d7d9f36ff3b73480a3b7b4797f2796a5e8140cbcc05e05bf2aef4b",
+      "statement": "Specify good and total events or equivalent valid measurement semantics.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 117
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "SLIs, SLOs, Error Budgets, and Reliability Governance",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-DD333F33",
+      "revision": 1,
+      "semantic_sha256": "dd333f33412591305c73f66e8fc7a9e7da21628cea8c490db3338e53be5c8dbb",
+      "statement": "Use windows and percentiles aligned to user and business consequences.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 118
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "SLIs, SLOs, Error Budgets, and Reliability Governance",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-14445940",
+      "revision": 1,
+      "semantic_sha256": "144459401244625fd9b214aa5c4299e5bb19456fec07b1de7cef41c273cc6f38",
+      "statement": "Set objectives from user need, dependency capability, cost, and risk rather than arbitrary perfection.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 119
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "SLIs, SLOs, Error Budgets, and Reliability Governance",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-B6C7F51A",
+      "revision": 1,
+      "semantic_sha256": "b6c7f51af4d6af93cd9a7de343240575198cb29438a226fd861e945e0917d244",
+      "statement": "Measure from multiple points when server health can differ from user experience.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 120
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "SLIs, SLOs, Error Budgets, and Reliability Governance",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-A332E7D6",
+      "revision": 1,
+      "semantic_sha256": "a332e7d64d08e033f5ae6c2c04802e5dcdbf44c804776032868affbbf39d8ac8",
+      "statement": "Exclude events only through documented semantics that cannot hide provider-caused failure.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 121
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "SLIs, SLOs, Error Budgets, and Reliability Governance",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-918009AE",
+      "revision": 1,
+      "semantic_sha256": "918009ae84fe0979a27d039b8720593085b655482f84a5a3557d08bd56c9715e",
+      "statement": "Define an error-budget policy before budget exhaustion occurs.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 122
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "SLIs, SLOs, Error Budgets, and Reliability Governance",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D85BEB1A",
+      "revision": 1,
+      "semantic_sha256": "d85beb1a33e6ba0b4ab5870050ac7345633a0c6f5fabbb5dab7578f73364686f",
+      "statement": "Link budget status to release pace, change risk, reliability work, and escalation.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 123
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "SLIs, SLOs, Error Budgets, and Reliability Governance",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-E1B20661",
+      "revision": 1,
+      "semantic_sha256": "e1b206612b126c85d0aef9fd459b83b36ed76d70118c7369ce523a3434c70d3b",
+      "statement": "Use fast and slow burn alerts to detect acute and chronic objective risk.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 124
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "SLIs, SLOs, Error Budgets, and Reliability Governance",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-0616ED60",
+      "revision": 1,
+      "semantic_sha256": "0616ed605022f3fb735916fed35420978a1e8a7f18ad27d2426a352855f1e1a4",
+      "statement": "Review whether objectives are too loose, too strict, or measuring the wrong outcome.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 125
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "SLIs, SLOs, Error Budgets, and Reliability Governance",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-77209F37",
+      "revision": 1,
+      "semantic_sha256": "77209f37d87a0d660a006967035028c4697a446fa8f94f72d663f3211c5e3b23",
+      "statement": "Define dependencies' contribution to the end-to-end objective.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 126
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "SLIs, SLOs, Error Budgets, and Reliability Governance",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-4E57FA91",
+      "revision": 1,
+      "semantic_sha256": "4e57fa913d518cfb683f091943ba2e44a1d60ee7eb4f265b2c39ab29a974ee7b",
+      "statement": "Avoid multiplying optimistic component availability claims without shared-failure analysis.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 127
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "SLIs, SLOs, Error Budgets, and Reliability Governance",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-3F631903",
+      "revision": 1,
+      "semantic_sha256": "3f631903add3edec95b359c846eeae3815228bb825c55f2400a1ff3f51bd532e",
+      "statement": "Publish objectives and current status to relevant product, engineering, support, and leadership stakeholders.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 128
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "SLIs, SLOs, Error Budgets, and Reliability Governance",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-C7355F4C",
+      "revision": 1,
+      "semantic_sha256": "c7355f4c46334a2947232a21faa064fd6bd4700656638da9dcdfeed6615df25c",
+      "statement": "Use SLO misses to prioritize systemic improvement, not punish individuals.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 129
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "SLIs, SLOs, Error Budgets, and Reliability Governance",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-A8A37E99",
+      "revision": 1,
+      "semantic_sha256": "a8a37e99c329b09e1dbd7e7796d9568fb96b35eaa942d1583e39723ab5acdd4a",
+      "statement": "Preserve separate integrity and safety gates that cannot be averaged into availability.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 130
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "SLIs, SLOs, Error Budgets, and Reliability Governance",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-5BB4035B",
+      "revision": 1,
+      "semantic_sha256": "5bb4035bf2ea6fd28ee469ea104b9a18e2555be63f84dfbd4ac93447ee676214",
+      "statement": "Review objectives after material product, traffic, architecture, dependency, or contractual change.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 131
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "SLIs, SLOs, Error Budgets, and Reliability Governance",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D72ACBC8",
+      "revision": 1,
+      "semantic_sha256": "d72acbc850148bfb08f6c76f9236c4ff6bac485526ab40ee528936e6b00c509c",
+      "statement": "Measure planned maintenance according to user and contractual semantics.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 132
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "SLIs, SLOs, Error Budgets, and Reliability Governance",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-F2601113",
+      "revision": 1,
+      "semantic_sha256": "f26011137fd0816f097384d6271b92c516eaa6aeb542a4cdfda7ae6922290c11",
+      "statement": "Keep raw measurement and calculation reproducible.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 133
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "SLIs, SLOs, Error Budgets, and Reliability Governance",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-38C611A2",
+      "revision": 1,
+      "semantic_sha256": "38c611a2d0770f102e5d51672c3752e7c732c4472b37f93f8ee7f9e26cf5944a",
+      "statement": "Do not promise external service levels that internal evidence and capacity cannot support.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 134
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "SLIs, SLOs, Error Budgets, and Reliability Governance",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-6D436E9F",
+      "revision": 1,
+      "semantic_sha256": "6d436e9ffd6c7de49f6e5fab809e0a644f15c84917c81a10b934c87e541d575d",
+      "statement": "Maintain a service catalog with owner, purpose, users, dependencies, support hours, objectives, data, and lifecycle state.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 142
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Service Management and Customer Support",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-9AD25B90",
+      "revision": 1,
+      "semantic_sha256": "9ad25b9029b8b3d2c6f31f7149dc2dd4c58da93f18ef4e777bcf796526651543",
+      "statement": "Define support channels, severity, response, escalation, entitlement, and communication expectations.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 143
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Service Management and Customer Support",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-48319180",
+      "revision": 1,
+      "semantic_sha256": "483191801ec8aaf59b4ac98cd458ff46c8b11934213e69368e1f9a38a65aed28",
+      "statement": "Provide support staff with current product behavior, known issues, diagnostics, privacy, security, and escalation guidance.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 144
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Service Management and Customer Support",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-7751FFCD",
+      "revision": 1,
+      "semantic_sha256": "7751ffcd43d5d3d77ed06ecc55e6978ffbbae3ab4b043b7304f7c0cbb018d101",
+      "statement": "Restrict and audit support access to customer data and administrative functions.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 145
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Service Management and Customer Support",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-EE8096B5",
+      "revision": 1,
+      "semantic_sha256": "ee8096b5b599fda36edee98641dddc0e151a5dbeef3dea570872780bfd68cb74",
+      "statement": "Verify requester identity before disclosing or changing sensitive information.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 146
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Service Management and Customer Support",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-303A0806",
+      "revision": 1,
+      "semantic_sha256": "303a0806c11b97b34ed70af4231b9d2b6520cf5ae211199aa17e880cd5909b2a",
+      "statement": "Separate service requests, defects, incidents, security events, privacy requests, and complaints while preserving linkage.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 147
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Service Management and Customer Support",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-8921C2A9",
+      "revision": 1,
+      "semantic_sha256": "8921c2a9886ebc01edcc5aafdc8148247c345f19b045d42b0c9f71f2e166a9c4",
+      "statement": "Use consistent priority based on impact and urgency.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 148
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Service Management and Customer Support",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-8BD3AE1B",
+      "revision": 1,
+      "semantic_sha256": "8bd3ae1b8d671e31aa895d19f25eed2c298fbf1da40338f5e40346ce2b995bb8",
+      "statement": "Keep customers informed with accurate status, workaround, risk, and resolution information.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 149
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Service Management and Customer Support",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-52C655EE",
+      "revision": 1,
+      "semantic_sha256": "52c655ee0c3d6419a2acbf1e24a6c944fdb59976714f7f3819b2208165bed58a",
+      "statement": "Avoid promising dates or causes before evidence supports them.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 150
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Service Management and Customer Support",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-7E1DF527",
+      "revision": 1,
+      "semantic_sha256": "7e1df527002cd9c152885d90223786f8d80e44b485fc6004d760b4da7d9cfe10",
+      "statement": "Capture recurring requests and friction as product and documentation improvement signals.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 151
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Service Management and Customer Support",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-5CA932E3",
+      "revision": 1,
+      "semantic_sha256": "5ca932e3c02cca1746cb4a3aa0c9b7618db2f12103ece565d07851ffe7db404f",
+      "statement": "Maintain searchable knowledge articles with owner, effective version, review date, and retirement.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 152
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Service Management and Customer Support",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-320B9CC3",
+      "revision": 1,
+      "semantic_sha256": "320b9cc39b919d256c1ab9b0b298d7ced234772da2520a2fb17f2cfd1e0bdafb",
+      "statement": "Coordinate changes, releases, maintenance, suppliers, and support readiness.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 153
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Service Management and Customer Support",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-3847EF4D",
+      "revision": 1,
+      "semantic_sha256": "3847ef4d5279e74c72165498536cf17fc877e205b0ad0703506817c74aa16d08",
+      "statement": "Measure resolution quality, reopen rate, escalation, user effort, satisfaction, and recurrence—not closure volume alone.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 154
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Service Management and Customer Support",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-17B8BFF4",
+      "revision": 1,
+      "semantic_sha256": "17b8bff42cc968f55bf956fca83b070205935cf9a7bedbba90e8c2aab3f7501b",
+      "statement": "Provide accessible support channels and alternatives.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 155
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Service Management and Customer Support",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-6EEB4C4C",
+      "revision": 1,
+      "semantic_sha256": "6eeb4c4c5df21f67df0a88244b55814182ba2e96e14d614f23812ebfa7ec073f",
+      "statement": "Define handoff across time zones, teams, suppliers, and incident command.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 156
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Service Management and Customer Support",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-6509842E",
+      "revision": 1,
+      "semantic_sha256": "6509842edd6077290878a0335a42d572b5a14d50dd36f8d132e0817d327ebd2a",
+      "statement": "Protect support notes, attachments, recordings, and exports according to data sensitivity.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 157
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Service Management and Customer Support",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-23D14CF4",
+      "revision": 1,
+      "semantic_sha256": "23d14cf4b189a0e4d50d1ec02dbbb17911bf4495d234da21ac8e5c573fcae897",
+      "statement": "Review complaints and vulnerable-user cases with appropriate expertise.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 158
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Service Management and Customer Support",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-BB51346B",
+      "revision": 1,
+      "semantic_sha256": "bb51346bb0976eda27cac0f934deaf58f9771ff4d22cd231b033a2ba3e5efb30",
+      "statement": "Define service acceptance before transfer from project to operation.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 159
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Service Management and Customer Support",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-DFA02FCC",
+      "revision": 1,
+      "semantic_sha256": "dfa02fcce7a41cd52e756b32702674030d6a2f614a6d6b45337de560d172d8d7",
+      "statement": "Retire support obligations only through communicated lifecycle policy.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 160
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Service Management and Customer Support",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-115E72C7",
+      "revision": 1,
+      "semantic_sha256": "115e72c7d886657a2b7175afbbb2d74e57bb360c4e54a0d352dd167547d308dd",
+      "statement": "Use continual improvement to reduce demand caused by product defects and confusing design.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 161
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Service Management and Customer Support",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-F8D01DA0",
+      "revision": 1,
+      "semantic_sha256": "f8d01da0df012d5d7da2a533f197f118c4be909a6702c33eaf168cdb07fbff98",
+      "statement": "Define incident criteria, severity, authority, roles, communication, and escalation before incidents occur.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 169
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Incident, Problem Management, and Postmortems",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-FD4D66CA",
+      "revision": 1,
+      "semantic_sha256": "fd4d66ca8203cd883e5e8362c9e83c9c6172c450acd1048a47dc13fb8ab65824",
+      "statement": "Prioritize protection of people, data integrity, security, and essential service over preserving change plans.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 170
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Incident, Problem Management, and Postmortems",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-A3F2248F",
+      "revision": 1,
+      "semantic_sha256": "a3f2248fe5c0481070884c498ffeb3ac94e1aebe69090df8a51e7e0abeeb5759",
+      "statement": "Establish incident command and one authoritative timeline.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 171
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Incident, Problem Management, and Postmortems",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-C36750C1",
+      "revision": 1,
+      "semantic_sha256": "c36750c1dbbc6a91fe946bed0c179a3d70be74958c94f167dc425b6f8465f678",
+      "statement": "Separate command, operations, investigation, communication, and documentation roles when scale requires it.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 172
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Incident, Problem Management, and Postmortems",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D18DD1C3",
+      "revision": 1,
+      "semantic_sha256": "d18dd1c310b40d937c4cba635f0929993ae2f28ac60bc9d213f8970d3711ecf1",
+      "statement": "Use clear hypotheses, evidence, decisions, owners, and timestamps during response.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 173
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Incident, Problem Management, and Postmortems",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-232D5A01",
+      "revision": 1,
+      "semantic_sha256": "232d5a0164b27264e7c22226d6ec6e3fb712b420e8f471bccf8c0621ff3347dd",
+      "statement": "Contain blast radius and stop harmful automation or change.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 174
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Incident, Problem Management, and Postmortems",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D3AB5A8E",
+      "revision": 1,
+      "semantic_sha256": "d3ab5a8e231acc78e0a7741e0262324108b0ce1128615fe97b46d2bcb77946aa",
+      "statement": "Preserve evidence while restoring service.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 175
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Incident, Problem Management, and Postmortems",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-C6CD577E",
+      "revision": 1,
+      "semantic_sha256": "c6cd577eb9a0fbf0f7eae7aecb94762d017aa867ea967aa49d2df37334ed6b16",
+      "statement": "Communicate known facts, uncertainty, impact, mitigation, and next update without speculation.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 176
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Incident, Problem Management, and Postmortems",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-84C1C16C",
+      "revision": 1,
+      "semantic_sha256": "84c1c16c1594140726d2e98f10cd01fbd2bf3c7c0d8ee10bc36726f1cdcac804",
+      "statement": "Declare recovery only after user journeys, integrity, backlog, dependencies, and monitoring are verified.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 177
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Incident, Problem Management, and Postmortems",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-B5D09F0D",
+      "revision": 1,
+      "semantic_sha256": "b5d09f0d244d8634700235069514dad44d73286cda5f27a63db1083e0a1d6116",
+      "statement": "Monitor for recurrence and delayed effects.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 178
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Incident, Problem Management, and Postmortems",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D2A2831E",
+      "revision": 1,
+      "semantic_sha256": "d2a2831ea8c04a0bd89f57fca988790a12f4241a2161bfbeddddb817b6ac5ee9",
+      "statement": "Link related incidents to a problem record when systemic cause or recurrence exists.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 179
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Incident, Problem Management, and Postmortems",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-864FDC25",
+      "revision": 1,
+      "semantic_sha256": "864fdc2532064c3588da432059a108db479f46dc5e60147af3bad4c817f1eecb",
+      "statement": "Analyze technical, process, interface, organizational, supplier, and incentive contributors.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 180
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Incident, Problem Management, and Postmortems",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-C87A0E16",
+      "revision": 1,
+      "semantic_sha256": "c87a0e1616409c383de9eb27750557e0da9ffdcd495beab023eebb8e3a7ead3e",
+      "statement": "Avoid blame, hindsight bias, and a single human-error root cause.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 181
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Incident, Problem Management, and Postmortems",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-887E41C0",
+      "revision": 1,
+      "semantic_sha256": "887e41c061d52e8f480e53c3d924f1917795914c6134b87a0639e4a4d6283c04",
+      "statement": "Identify why controls did not prevent, detect, contain, or recover sooner.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 182
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Incident, Problem Management, and Postmortems",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-B45BF06B",
+      "revision": 1,
+      "semantic_sha256": "b45bf06b2ba624163f107fb9db7d6174128a2a6d9a02fc768685dcfc851df600",
+      "statement": "Assign corrective actions that are specific, prioritized, owned, funded, and verifiable.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 183
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Incident, Problem Management, and Postmortems",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-A0EC83FE",
+      "revision": 1,
+      "semantic_sha256": "a0ec83feaf46938ea692d8a3ac5d47f81c2dfc275101b2e24e56c4947b2244e0",
+      "statement": "Prefer actions that change systems and incentives over reminders alone.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 184
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Incident, Problem Management, and Postmortems",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-4EE52A7C",
+      "revision": 1,
+      "semantic_sha256": "4ee52a7cbf3a7f357266dec122782a3e314bfc355998d6d20ba5243eb2e4134f",
+      "statement": "Track actions to effective completion and review recurrence.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 185
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Incident, Problem Management, and Postmortems",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-FEA91FF6",
+      "revision": 1,
+      "semantic_sha256": "fea91ff6cf58a8704a8d1baca46180fe7182d24f2e67e395991a5359a16b6c83",
+      "statement": "Share lessons with other systems that have the same failure class.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 186
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Incident, Problem Management, and Postmortems",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-7617216D",
+      "revision": 1,
+      "semantic_sha256": "7617216d4a1892bf146210248a632fed5fa3ce2163b347efd9c6d06f3628d6b3",
+      "statement": "Update tests, monitors, runbooks, architecture, requirements, training, and risk records.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 187
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Incident, Problem Management, and Postmortems",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-2805E81B",
+      "revision": 1,
+      "semantic_sha256": "2805e81be348985cc8ff3f52d857de30dc4a066dea7d239da5b9060a7530aaf4",
+      "statement": "Measure restoration, impact, detection, recurrence, action effectiveness, and learning—not incident count alone.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 188
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Incident, Problem Management, and Postmortems",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-88305F87",
+      "revision": 1,
+      "semantic_sha256": "88305f87e889146b047e2d4f7818f11cbe3ce602f18333bd5089f201058b55fe",
+      "statement": "Maintain forecasts for ordinary, peak, seasonal, launch, growth, recovery, and abuse demand.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 196
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Capacity, Performance, and Efficiency",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-1012D643",
+      "revision": 1,
+      "semantic_sha256": "1012d6434515c21fabd20aa3fabdbaa5ca215afe1e0a9ea741ce7a55965e1bda",
+      "statement": "Track capacity limits and quotas across compute, memory, storage, network, connections, queues, databases, third parties, and control planes.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 197
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Capacity, Performance, and Efficiency",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-874742D9",
+      "revision": 1,
+      "semantic_sha256": "874742d933459887fed16aec995e578b0af7e2876ea80170487ccc40e6dbc58a",
+      "statement": "Measure saturation and headroom at the actual bottleneck.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 198
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Capacity, Performance, and Efficiency",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-CD9DAD72",
+      "revision": 1,
+      "semantic_sha256": "cd9dad72be3aaeff8a99a9fa26f43b6e2bac191e2e6fb6954e13f930cea9d193",
+      "statement": "Define minimum safe headroom for failure, deployment, backup, recovery, and traffic shift.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 199
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Capacity, Performance, and Efficiency",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D9DC2BF5",
+      "revision": 1,
+      "semantic_sha256": "d9dc2bf5d28c7db2fa12d7691d2fc6450554a3d4d385904c8961eb5209c05766",
+      "statement": "Review forecasts against actual demand and update assumptions.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 200
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Capacity, Performance, and Efficiency",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-7E0F4822",
+      "revision": 1,
+      "semantic_sha256": "7e0f4822c02801408b6f9efc48a0d323f2e278cec64b549e3f9f97be07bfc309",
+      "statement": "Scale based on leading indicators where reactive scaling would be too late.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 201
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Capacity, Performance, and Efficiency",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-0C1180BC",
+      "revision": 1,
+      "semantic_sha256": "0c1180bce70b0e088699ea50d6df23ae04619d3d3304cfeee85d2a1f4a996f96",
+      "statement": "Test scale-up, scale-down, rebalancing, and capacity during a failure domain loss.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 202
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Capacity, Performance, and Efficiency",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D9D69015",
+      "revision": 1,
+      "semantic_sha256": "d9d690153f34fe1f2cdabb011dcce9d457bd7da723dff6baf23414ef6bf343b9",
+      "statement": "Prevent autoscaling from overwhelming a database or external dependency.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 203
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Capacity, Performance, and Efficiency",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-E699A7C6",
+      "revision": 1,
+      "semantic_sha256": "e699a7c63a22dd341ba7b9961143924f553cf4d9f7024a1e75d6f4706917bf43",
+      "statement": "Use per-tenant, per-user, and per-operation quotas to protect shared service.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 204
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Capacity, Performance, and Efficiency",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-46661625",
+      "revision": 1,
+      "semantic_sha256": "46661625a6183c5ee65e078e86a9d241ba65797e2e9fbbbfa93298809bc3c1ac",
+      "statement": "Define overload admission, queuing, backpressure, prioritization, degradation, and shedding.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 205
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Capacity, Performance, and Efficiency",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-49019E6A",
+      "revision": 1,
+      "semantic_sha256": "49019e6a1d744325d7e12ad7f3f8d06dc08fdc0a25bdf8e753d4f1c1148a2c6e",
+      "statement": "Protect critical operations before optional or expensive operations.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 206
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Capacity, Performance, and Efficiency",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-C8DBF731",
+      "revision": 1,
+      "semantic_sha256": "c8dbf73196b7b60f6bbcd196405982cbcb63b7e64e7b69ca5116818b1869b4c3",
+      "statement": "Monitor latency distributions, throughput, errors, queue age, resource use, and unit cost together.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 207
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Capacity, Performance, and Efficiency",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-5E82CAD5",
+      "revision": 1,
+      "semantic_sha256": "5e82cad54790bf171a047142e7c256b36bde44e4c32ffc8a651e4959436847fc",
+      "statement": "Detect leaks and gradual degradation through endurance signals.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 208
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Capacity, Performance, and Efficiency",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-9197F66F",
+      "revision": 1,
+      "semantic_sha256": "9197f66f13d2f06e14eb1445bd1f0f4aabcf5c402af87c1a0845b80a358c8bdf",
+      "statement": "Plan storage, index, log, backup, and retention growth.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 209
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Capacity, Performance, and Efficiency",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-5FE14FFF",
+      "revision": 1,
+      "semantic_sha256": "5fe14fff84d29985582a92875871a6a4c53e31e65781c08687e203aac54365d8",
+      "statement": "Coordinate capacity with supplier limits and contract lead times.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 210
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Capacity, Performance, and Efficiency",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-36E4D361",
+      "revision": 1,
+      "semantic_sha256": "36e4d3618a1a9dd5d33cb847b2ef949344af44ae8b3c77eeb2e5568cf6adbf42",
+      "statement": "Keep emergency capacity actions documented, authorized, and reversible.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 211
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Capacity, Performance, and Efficiency",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-A73F088E",
+      "revision": 1,
+      "semantic_sha256": "a73f088ebd08c099aefc035fc49308203a3a597a2805237c9371e09d33a5bc2a",
+      "statement": "Verify capacity after architecture, data-shape, feature, dependency, or workload change.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 212
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Capacity, Performance, and Efficiency",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-F46A2D61",
+      "revision": 1,
+      "semantic_sha256": "f46a2d61371722f7588ae347cf8527c198749674ab9b65a941ef002c8e023ad8",
+      "statement": "Use performance incidents to update models and tests.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 213
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Capacity, Performance, and Efficiency",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-C40A674E",
+      "revision": 1,
+      "semantic_sha256": "c40a674ee61d1604210856fc97eec0c1dfa9164163ed24e83ee5a45679bb66bf",
+      "statement": "Avoid maintaining wasteful idle capacity when resilience can be met more efficiently.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 214
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Capacity, Performance, and Efficiency",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-8006F4CA",
+      "revision": 1,
+      "semantic_sha256": "8006f4ca373ce1efdfac4ec9464b8ded194f3ed8226592cfde410c5b9d239fbe",
+      "statement": "Do not reduce headroom below recovery and SLO needs solely to meet short-term cost targets.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 215
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Capacity, Performance, and Efficiency",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-CD017015",
+      "revision": 1,
+      "semantic_sha256": "cd017015be591a98fd773aced52e55c2430034ea7593c25f67ee2fe9f344e4fb",
+      "statement": "Assign ownership for material technology cost and its business or user value.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 223
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Cost Efficiency and FinOps",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-2AA3663E",
+      "revision": 1,
+      "semantic_sha256": "2aa3663ea8920e758688135744600219c1fba36b26a45e0e37dd7a0bc6e65115",
+      "statement": "Tag or otherwise attribute resources, services, environments, teams, products, and tenants sufficiently for analysis.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 224
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Cost Efficiency and FinOps",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-E8247F73",
+      "revision": 1,
+      "semantic_sha256": "e8247f731e353bad1ad80800cbcb54927a634ef5b73e657f77c36b22f0a238f3",
+      "statement": "Separate fixed, variable, shared, support, data, network, license, supplier, and incident costs.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 225
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Cost Efficiency and FinOps",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D39687B3",
+      "revision": 1,
+      "semantic_sha256": "d39687b3937b5411e84cb357a6794615d796abfa730cb529ac6e8014ceb2d649",
+      "statement": "Define unit costs aligned to meaningful product outcomes and workloads.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 226
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Cost Efficiency and FinOps",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-C6D9971F",
+      "revision": 1,
+      "semantic_sha256": "c6d9971f2fc5587047462a0df299ba2c6dff9e2817cbac4ee93db7f7d4bf400a",
+      "statement": "Forecast base, growth, launch, seasonal, failure, backup, and recovery cost.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 227
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Cost Efficiency and FinOps",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-AB343848",
+      "revision": 1,
+      "semantic_sha256": "ab343848464bf4cadaf047c165762a304b23921d5a798a524446cb415e40ccb3",
+      "statement": "Set budgets and anomaly alerts without allowing cost controls to terminate critical service silently.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 228
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Cost Efficiency and FinOps",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-8517773D",
+      "revision": 1,
+      "semantic_sha256": "8517773dcebbbf29da910c5d1d694059081c8339316caac852aaaf3f95265c77",
+      "statement": "Detect idle, orphaned, overprovisioned, underutilized, duplicate, and forgotten resources.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 229
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Cost Efficiency and FinOps",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-5887E8D3",
+      "revision": 1,
+      "semantic_sha256": "5887e8d3f15b0acfffe5687c06de3405124231db4f5b04cc140233396af5fdff",
+      "statement": "Review data transfer, storage tiers, retention, logging, and high-cardinality telemetry cost.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 230
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Cost Efficiency and FinOps",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-72822800",
+      "revision": 1,
+      "semantic_sha256": "72822800bbdb4d975175b970a2a07aba270c6758a6ecbac8af551d871190ccdd",
+      "statement": "Optimize architecture only when total lifecycle cost and quality improve.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 231
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Cost Efficiency and FinOps",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-0B270727",
+      "revision": 1,
+      "semantic_sha256": "0b27072792d6862ae5448813ef2b40a82973eb8611f2732780e1e6fab9291ad3",
+      "statement": "Account for engineering labor, complexity, support, migration, and lock-in—not provider invoice alone.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 232
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Cost Efficiency and FinOps",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-3C56970B",
+      "revision": 1,
+      "semantic_sha256": "3c56970bdea3f72d2f22dc4fd96651756f9b7ed9df60b77dab33ebf146ddfa2e",
+      "statement": "Use commitment and reservation mechanisms only with credible demand and exit analysis.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 233
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Cost Efficiency and FinOps",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-5464C515",
+      "revision": 1,
+      "semantic_sha256": "5464c5151a440fc06bc574e0d9825d15d7e067980a3991a9b35334ba6ee99fbd",
+      "statement": "Protect security, privacy, accessibility, reliability, and recovery requirements from harmful cost cutting.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 234
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Cost Efficiency and FinOps",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-0A8057B2",
+      "revision": 1,
+      "semantic_sha256": "0a8057b283e86da2d69d34f7f5f7bfbe64a12e90927f7c1e6f5005b1369506c5",
+      "statement": "Make expensive user actions, queries, abuse, and retry amplification visible and bounded.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 235
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Cost Efficiency and FinOps",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D7F14772",
+      "revision": 1,
+      "semantic_sha256": "d7f147720461d2f0f19e7245b2d496daa31a4970e8aea8fd2db239c0c5e95c6c",
+      "statement": "Review supplier pricing changes and quota interactions.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 236
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Cost Efficiency and FinOps",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-5F69A20F",
+      "revision": 1,
+      "semantic_sha256": "5f69a20fb710ac5fd1d6089ba7c73f6d3a7e04d5c307ad0c58226f953374f887",
+      "statement": "Measure cost per successful outcome, active user, transaction, tenant, or workload where useful.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 237
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Cost Efficiency and FinOps",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-0EC26FF1",
+      "revision": 1,
+      "semantic_sha256": "0ec26ff11b26c14753a4da35707530a97c6441a8dd2cf1190e91776c35be8a30",
+      "statement": "Include environmental resource efficiency where data is available.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 238
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Cost Efficiency and FinOps",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-4CA042C8",
+      "revision": 1,
+      "semantic_sha256": "4ca042c8a533663b62c6091c7d99331fbbf6b7548db363d0720826b4199803b8",
+      "statement": "Verify savings after implementation and watch for shifted cost elsewhere.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 239
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Cost Efficiency and FinOps",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-1E9FC44C",
+      "revision": 1,
+      "semantic_sha256": "1e9fc44cdaae9f9a4e4cf653ea54594c04c1c6a8f68163ebe116362c3cf2084c",
+      "statement": "Remove temporary launch and migration capacity after exit criteria are met.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 240
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Cost Efficiency and FinOps",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-26C038B6",
+      "revision": 1,
+      "semantic_sha256": "26c038b6b5c244518219ed1f91eab27e85cb5d35a144593a20ff76d46fc9c8ab",
+      "statement": "Maintain cost evidence for major architecture and procurement decisions.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 241
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Cost Efficiency and FinOps",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-8E6BBEEE",
+      "revision": 1,
+      "semantic_sha256": "8e6bbeee78737aaac14ff0d42a6f59935578c54de77436e56f3317574c71df04",
+      "statement": "Treat unexpected cost growth as an operational incident when material.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 242
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Cost Efficiency and FinOps",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-64F3DC86",
+      "revision": 1,
+      "semantic_sha256": "64f3dc8687eac3516b8fbe6edce829b8b728dcf57c8fb4101e20f539ea05c8f1",
+      "statement": "Maintain an authoritative inventory of software, services, infrastructure, devices, domains, certificates, licenses, accounts, and dependencies.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 250
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Asset, Patch, and Technology Lifecycle Management",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-BD4C9D3B",
+      "revision": 1,
+      "semantic_sha256": "bd4c9d3b17a777d4bd4228d1b0f6d58727507b57c3b4cfb5c7c66e5ef614c985",
+      "statement": "Record owner, purpose, environment, criticality, data, exposure, version, support status, and retirement date.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 251
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Asset, Patch, and Technology Lifecycle Management",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-DB080B59",
+      "revision": 1,
+      "semantic_sha256": "db080b5953854462bbc5688fd79d8510e626ab815c185976fa9305afcd165bc2",
+      "statement": "Discover unmanaged or shadow assets continuously.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 252
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Asset, Patch, and Technology Lifecycle Management",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-E6C9769D",
+      "revision": 1,
+      "semantic_sha256": "e6c9769dbe4a499645176d255e0469b0afe9fa1ad4ad7457fc298df79fcf3ff2",
+      "statement": "Track vendor support, end-of-life, certificate, license, key, and contract dates.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 253
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Asset, Patch, and Technology Lifecycle Management",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D4A7A5BA",
+      "revision": 1,
+      "semantic_sha256": "d4a7a5ba54fee3010dcfcbe20b4278394dd90e4bbb06b43ddccc57fbdd70c260",
+      "statement": "Classify patches by exploit activity, exposure, reachability, impact, and operational risk.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 254
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Asset, Patch, and Technology Lifecycle Management",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-9099195E",
+      "revision": 1,
+      "semantic_sha256": "9099195e6bfa0db852dcb7118e807d443178feaed78fd83fe5a599ec9ea6e3c1",
+      "statement": "Test patches in representative environments and define emergency paths.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 255
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Asset, Patch, and Technology Lifecycle Management",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-E6FF7190",
+      "revision": 1,
+      "semantic_sha256": "e6ff7190fbcfbeab03c90fc46fcdf13df82528223c02dc4ddeeb8986a810f748",
+      "statement": "Apply patches within risk-based targets and verify deployed versions.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 256
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Asset, Patch, and Technology Lifecycle Management",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-542BC36E",
+      "revision": 1,
+      "semantic_sha256": "542bc36e1f2411ddb11af4e509db95cf6fd4cdeab6791598185a5e6136470e8a",
+      "statement": "Use compensating controls only with owner, monitoring, expiry, and replacement plan.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 257
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Asset, Patch, and Technology Lifecycle Management",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-10EB8EC0",
+      "revision": 1,
+      "semantic_sha256": "10eb8ec01905b48d4ee448506c71888ff99708d359faede38c64b064a4ba0b32",
+      "statement": "Prevent unsupported assets from silently remaining production dependencies.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 258
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Asset, Patch, and Technology Lifecycle Management",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-B10C60D7",
+      "revision": 1,
+      "semantic_sha256": "b10c60d7088744ab08baa372ca04298fc7e40bdf37c19d790cac9c35c3cd9d8b",
+      "statement": "Coordinate application, runtime, operating system, database, firmware, network, and supplier updates.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 259
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Asset, Patch, and Technology Lifecycle Management",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-95DCE399",
+      "revision": 1,
+      "semantic_sha256": "95dce3992e67028503dcf37a7d7c3a422f54a5c96932af67eaf2107df430a83b",
+      "statement": "Test mixed versions, rollback, recovery, and data compatibility.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 260
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Asset, Patch, and Technology Lifecycle Management",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-EBD5EE42",
+      "revision": 1,
+      "semantic_sha256": "ebd5ee42df7cfd565768988d9f2c0514893bf3439c1de6d1c0159a17cacc6ec0",
+      "statement": "Maintain clean trusted installation media, artifacts, and configuration.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 261
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Asset, Patch, and Technology Lifecycle Management",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-6A7A184A",
+      "revision": 1,
+      "semantic_sha256": "6a7a184aa8c38e372974802bd3350d6eedd2e40f5aad43a339d085cc6d487191",
+      "statement": "Monitor failed, partial, or reverted patch deployments.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 262
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Asset, Patch, and Technology Lifecycle Management",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-E4979EC7",
+      "revision": 1,
+      "semantic_sha256": "e4979ec77f213739bc4351877d39b1cfb9caeeaec22b8b91002d6e533f626d24",
+      "statement": "Remove obsolete packages, services, accounts, ports, and capabilities.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 263
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Asset, Patch, and Technology Lifecycle Management",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-677D277F",
+      "revision": 1,
+      "semantic_sha256": "677d277f81a28a6db1f8372401fda3f629f67fada0d127ce2aed80772228626a",
+      "statement": "Review license use and renewal before it can interrupt service.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 264
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Asset, Patch, and Technology Lifecycle Management",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-25987E4B",
+      "revision": 1,
+      "semantic_sha256": "25987e4b6e1462ab8cd320fd7e5edf63e12a2edf54764b83b755e94c651c18c8",
+      "statement": "Protect management interfaces and inventory data.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 265
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Asset, Patch, and Technology Lifecycle Management",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-BDBE6B90",
+      "revision": 1,
+      "semantic_sha256": "bdbe6b9073b689732e9538a5bea9d9afade968215771acb4cefc9e8ce0e8c0b0",
+      "statement": "Reassess capacity and performance after major updates.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 266
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Asset, Patch, and Technology Lifecycle Management",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-3021D362",
+      "revision": 1,
+      "semantic_sha256": "3021d362aa35e533d9586266f0c64a2eada19e4d94698a2fa0c8d6b42117478f",
+      "statement": "Include patch and asset state in incident investigation.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 267
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Asset, Patch, and Technology Lifecycle Management",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-82716355",
+      "revision": 1,
+      "semantic_sha256": "8271635546516b31ba4f0cfb046958169c0c886ff3bb8d0271d487add85cb9ab",
+      "statement": "Retire duplicate and orphaned assets.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 268
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Asset, Patch, and Technology Lifecycle Management",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-A4575CA1",
+      "revision": 1,
+      "semantic_sha256": "a4575ca144b460d4696e0e42d2e616d7313772b16350269fc97be98ca70e14b2",
+      "statement": "Report lifecycle risk to decision-makers before it becomes an emergency.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 269
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Asset, Patch, and Technology Lifecycle Management",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-04858636",
+      "revision": 1,
+      "semantic_sha256": "048586360e79cd4cae77fb6be5b03bd130dab494e5f5b239b62e6e81127dc180",
+      "statement": "Define owner, scope, dependencies, customers, users, data, contracts, and completion criteria.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 277
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Decommissioning and Secure Retirement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-A7C0D18F",
+      "revision": 1,
+      "semantic_sha256": "a7c0d18f946a78ad1f153f786952ec63bbc7453b1952741320455aa346aadb02",
+      "statement": "Confirm replacement or continuity plans before disabling essential capability.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 278
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Decommissioning and Secure Retirement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-A8406215",
+      "revision": 1,
+      "semantic_sha256": "a8406215341895da05d3a8f8a289f90872c86a7ae615d1d9920e844e789e19e0",
+      "statement": "Inventory inbound and outbound interfaces, jobs, queues, domains, certificates, secrets, accounts, suppliers, and data copies.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 279
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Decommissioning and Secure Retirement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-AA9D494C",
+      "revision": 1,
+      "semantic_sha256": "aa9d494ca17ec2bdf87909c56127277fc8f04a336af3b66c6841b2dd7880d73d",
+      "statement": "Notify affected users, customers, operators, support teams, and partners with sufficient notice.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 280
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Decommissioning and Secure Retirement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-0E6C800B",
+      "revision": 1,
+      "semantic_sha256": "0e6c800b8aed4cd0048da98e9d90e25b9bce781aaf0167909a8706ae8743fb7d",
+      "statement": "Provide migration, export, rollback, and support appropriate to impact.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 281
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Decommissioning and Secure Retirement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-5C76742D",
+      "revision": 1,
+      "semantic_sha256": "5c76742d5684c18d479ba30e577a38318df4e722a702f9d526f03882da60217b",
+      "statement": "Stop new use and dependency creation before final shutdown.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 282
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Decommissioning and Secure Retirement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-949BE861",
+      "revision": 1,
+      "semantic_sha256": "949be8614f8c27a9b08879168ad663352af4dcaec24f243505f39b8618a5d250",
+      "statement": "Drain or reconcile in-flight transactions, messages, files, and background work.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 283
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Decommissioning and Secure Retirement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-1276B959",
+      "revision": 1,
+      "semantic_sha256": "1276b959465705e66b43d88a0a4f32338f71da45b03c3de963f33c13d6682de5",
+      "statement": "Export, archive, retain, delete, or legally hold data according to approved rules.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 284
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Decommissioning and Secure Retirement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-87571159",
+      "revision": 1,
+      "semantic_sha256": "87571159f78d5d512e14ab3c0fb103ffcc6051721ecf97d27fb106fe81f1c101",
+      "statement": "Verify deletion across primary stores, caches, indexes, replicas, backups, analytics, suppliers, and test copies as applicable.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 285
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Decommissioning and Secure Retirement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-0CA1D171",
+      "revision": 1,
+      "semantic_sha256": "0ca1d171ad3ec0dd83e497bc1786308193845bbace8b57b40817857d344f6a26",
+      "statement": "Revoke credentials, keys, tokens, certificates, service identities, network paths, and administrative access.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 286
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Decommissioning and Secure Retirement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-C0FC8ACE",
+      "revision": 1,
+      "semantic_sha256": "c0fc8ace4c60e316fcd1d15cfd578f6e1ffe299d52006765b85b5f5001bda054",
+      "statement": "Remove DNS, routing, callbacks, webhooks, firewall rules, monitoring, alerts, and status entries.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 287
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Decommissioning and Secure Retirement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-58AA8637",
+      "revision": 1,
+      "semantic_sha256": "58aa8637d0d9c006345cc2a5b6f6520f5846bd39df907fa7896be2cc67f096f4",
+      "statement": "Terminate contracts, subscriptions, licenses, and provider resources only after data and continuity obligations are satisfied.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 288
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Decommissioning and Secure Retirement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-FFBF3B61",
+      "revision": 1,
+      "semantic_sha256": "ffbf3b616668b7bf92d4cb3a936168a321de716c82f52f6a30491ecaa1918f9b",
+      "statement": "Preserve required source, artifacts, provenance, documentation, audit, incident, and decision records.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 289
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Decommissioning and Secure Retirement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-1873E848",
+      "revision": 1,
+      "semantic_sha256": "1873e848632ea1fa0d191bb911feccb6c29bf7dd4168920666aa3a3261b1d3a7",
+      "statement": "Verify no traffic, processing, billing, data collection, or externally reachable surface remains.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 290
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Decommissioning and Secure Retirement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-0173A672",
+      "revision": 1,
+      "semantic_sha256": "0173a672d6ff806fa5cf7ff57f9ebc872871c38a060ffb2d5c4c952f1d238b6d",
+      "statement": "Monitor for unexpected calls and dependencies after shutdown.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 291
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Decommissioning and Secure Retirement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-35351CBA",
+      "revision": 1,
+      "semantic_sha256": "35351cbaff5a07e8f4fe87eaf4dd78fc9185464715eb8c476c5a0d5ffa143651",
+      "statement": "Destroy media and hardware according to sensitivity.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 292
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Decommissioning and Secure Retirement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-90749519",
+      "revision": 1,
+      "semantic_sha256": "90749519a0526408e216c53b45400166f444c8a66cc4dd137c1fcbdf70389526",
+      "statement": "Update asset, architecture, data-flow, service, and ownership inventories.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 293
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Decommissioning and Secure Retirement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D1519935",
+      "revision": 1,
+      "semantic_sha256": "d1519935abecea2ca2a15eea87beb7d97720987c5bc89bd536307864b41fe9d8",
+      "statement": "Conduct a final security and privacy review.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 294
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Decommissioning and Secure Retirement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-6E6CB31E",
+      "revision": 1,
+      "semantic_sha256": "6e6cb31e904b32c4548aab55b39a2299ab96301726223532d90d03bc93693d81",
+      "statement": "Record residual obligations and long-term record owners.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 295
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Decommissioning and Secure Retirement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-ADC1A37E",
+      "revision": 1,
+      "semantic_sha256": "adc1a37ea81e870c6338f5038e9911e524331e1ff4ea14f6f79e42aebcd75270",
+      "statement": "Review lessons and update lifecycle planning.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 296
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Decommissioning and Secure Retirement",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-BDDCDDAA",
+      "revision": 1,
+      "semantic_sha256": "bddcddaa80be16aa5332375adf013bdcb26f21188fea5154c57e3ea538e57125",
+      "statement": "Use individual identities and strong authentication for production access.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 304
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Access and Production Change",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-A9A76931",
+      "revision": 1,
+      "semantic_sha256": "a9a76931ff67bba1a603f297b6adae8e6e23c82ffcbf6b334af8585e7ca798c9",
+      "statement": "Grant the least privilege for the shortest practical period.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 305
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Access and Production Change",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-0F159E5F",
+      "revision": 1,
+      "semantic_sha256": "0f159e5fa776f38d11f8a9585f81d5abb2779379af2b0f0362d357a59b0a5b86",
+      "statement": "Separate ordinary development access from privileged production roles.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 306
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Access and Production Change",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-7812911D",
+      "revision": 1,
+      "semantic_sha256": "7812911d903a1fdc7b11382ad9bcee747dd96ad092b0fae6aaa4fc6c8a2217e1",
+      "statement": "Require purpose, ticket or incident, approval, scope, and expiry for elevated access.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 307
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Access and Production Change",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-731B3211",
+      "revision": 1,
+      "semantic_sha256": "731b321117fe9cd330343e04903417c5201058ab3c146c5612188b52933504ac",
+      "statement": "Use controlled administrative entry points and hardened workstations where risk warrants.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 308
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Access and Production Change",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-4C2D10C6",
+      "revision": 1,
+      "semantic_sha256": "4c2d10c606beba9746d75ab7804c73d7837723641fe76d721171a4791e2454c7",
+      "statement": "Record commands, queries, changes, targets, time, actor, reason, and outcome proportionately.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 309
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Access and Production Change",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-5259F535",
+      "revision": 1,
+      "semantic_sha256": "5259f535c6a5dbefffc415cff080a85671a00423d614def7a1ea7fa91107c67e",
+      "statement": "Protect recordings and audit data from tampering and excessive sensitive-content capture.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 310
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Access and Production Change",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D8F85AD0",
+      "revision": 1,
+      "semantic_sha256": "d8f85ad0527ef87cfc1fe8c362ffc73c4ab0bd5a5de1d1432d1de1376d2db5c8",
+      "statement": "Avoid direct manual changes when reviewed reproducible automation can perform the work.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 311
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Access and Production Change",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-13511541",
+      "revision": 1,
+      "semantic_sha256": "135115416072f11f5167227e988895ca3a60785cd6b1d23ed5297bd7a1d0717e",
+      "statement": "Use dry run, preview, row limits, transaction, backup, and peer verification for data or destructive operations.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 312
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Access and Production Change",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-FF5D690D",
+      "revision": 1,
+      "semantic_sha256": "ff5d690d8c957e5f873aac4ee94adfb61155990a70c9c91362bab1185d6f627e",
+      "statement": "Prevent broad queries and exports without explicit authorization.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 313
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Access and Production Change",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-C749F02A",
+      "revision": 1,
+      "semantic_sha256": "c749f02a82a405d7f39e36565fbfd3ac99c055b7ce115c045806735a21da0126",
+      "statement": "Make emergency access available during identity or control-plane failure and alert on use.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 314
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Access and Production Change",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-E22FBA9C",
+      "revision": 1,
+      "semantic_sha256": "e22fba9cd2b4f5b3d8f590c2e8097ce36f23cf172e484fa7ded79892dff54554",
+      "statement": "Review break-glass activity promptly.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 315
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Access and Production Change",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-EC73D6ED",
+      "revision": 1,
+      "semantic_sha256": "ec73d6edaf95bb1e373cc37f7b5d259d299f15188a4f93ce8b4bdd7a027695e6",
+      "statement": "Revoke access automatically on expiry, role change, departure, or incident containment.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 316
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Access and Production Change",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-0A33DF21",
+      "revision": 1,
+      "semantic_sha256": "0a33df21c274e0fc2b834650612c93dd44558fcbe3674b17ca695c0c39a2b034",
+      "statement": "Prevent support impersonation from hiding the true operator.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 317
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Access and Production Change",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-5C0FF165",
+      "revision": 1,
+      "semantic_sha256": "5c0ff1659f65f809ccc828c1658ee6d7c04b4ed738ac15601e879f3a6ba57da5",
+      "statement": "Verify user and tenant context before acting on customer data.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 318
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Access and Production Change",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-BAD2E536",
+      "revision": 1,
+      "semantic_sha256": "bad2e5369d99b9602967e64c8b9d0daf96c772040e83e9db1d8696bc6cd089d3",
+      "statement": "Use two-person control for irreversible high-impact operations where appropriate.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 319
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Access and Production Change",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-EB86FC6E",
+      "revision": 1,
+      "semantic_sha256": "eb86fc6e9a3f5719442f9f23fec03a58ea18290f6902ded836ea4b695457a0a8",
+      "statement": "Test access paths and required tools before an incident.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 320
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Access and Production Change",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-0126D4F9",
+      "revision": 1,
+      "semantic_sha256": "0126d4f9d3721501908a1235fd88d5b55c327a3640aeb3c0bfd41b4b6a0af798",
+      "statement": "Review dormant privileges and actual usage.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 321
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Access and Production Change",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-D8EB3355",
+      "revision": 1,
+      "semantic_sha256": "d8eb335516ffa5e5b58264bf23de792c11855923a3cc577d3c2240c4418a5bb0",
+      "statement": "Measure manual change, failed intervention, access exception, and resulting incident trends.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 322
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Access and Production Change",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-A5591561",
+      "revision": 1,
+      "semantic_sha256": "a5591561868365c3954b4989955727813828d278265152144ac96c7a4f3c235b",
+      "statement": "Convert repeated manual operations into safe automation and runbooks.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 323
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Operational Access and Production Change",
+        "Category-specific universal rules"
+      ]
+    },
+    {
+      "control_id": "USEQ-5CF3177D",
+      "revision": 1,
+      "semantic_sha256": "5cf3177d58d4f1526099fbbc71502199f30fbd15fffd2a9aaa9ef2e73f5f8b20",
+      "statement": "Define which products, services, organizations, suppliers, users, regions, infrastructure, lifecycle stages, and environmental impact categories are inside the sustainability assessment boundary.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 331
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Scope, governance, accountability, and ethical boundaries"
+      ]
+    },
+    {
+      "control_id": "USEQ-13992319",
+      "revision": 1,
+      "semantic_sha256": "139923194e5abac18ba9546dbe2aac72054a5e1c896c0145c5caf1d1b8970a53",
+      "statement": "Assign an accountable sustainability owner with authority to influence product, architecture, procurement, operations, and retirement decisions.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 332
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Scope, governance, accountability, and ethical boundaries"
+      ]
+    },
+    {
+      "control_id": "USEQ-58F7D983",
+      "revision": 1,
+      "semantic_sha256": "58f7d9836696abdd411c8086ba85851c8dc820ef90d1c288646b525f1794ee42",
+      "statement": "Define decision rights for resolving conflicts among sustainability, accessibility, security, privacy, safety, reliability, performance, affordability, and business requirements.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 333
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Scope, governance, accountability, and ethical boundaries"
+      ]
+    },
+    {
+      "control_id": "USEQ-88774BC5",
+      "revision": 1,
+      "semantic_sha256": "88774bc5d9e741dc323f57bf2607111fbc9a22558797ad3242d64f91a5da2064",
+      "statement": "Include affected users, workers, communities, suppliers, and environmental stakeholders in material sustainability decisions.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 334
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Scope, governance, accountability, and ethical boundaries"
+      ]
+    },
+    {
+      "control_id": "USEQ-888DCA36",
+      "revision": 1,
+      "semantic_sha256": "888dca3695128bfffa59c7cecf633d5eaf2958eebd343e67c864d3f6d1792cd2",
+      "statement": "Treat environmental, social, and economic sustainability as connected concerns rather than optimizing carbon in isolation.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 335
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Scope, governance, accountability, and ethical boundaries"
+      ]
+    },
+    {
+      "control_id": "USEQ-21CC1B21",
+      "revision": 1,
+      "semantic_sha256": "eb7a9dd48e4f0893dcf79e8fd84cff458988f294a640f33bd99a51d9ac61f48b",
+      "statement": "Document the organization’s theory of change, material impacts, dependencies, assumptions, and limits of influence.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 336
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Scope, governance, accountability, and ethical boundaries"
+      ]
+    },
+    {
+      "control_id": "USEQ-D3F0C27B",
+      "revision": 1,
+      "semantic_sha256": "d3f0c27bfade175b7274ec25237d238dad1474a7a2658cd9179c66099fb77448",
+      "statement": "Identify relevant environmental laws, reporting rules, customer commitments, procurement requirements, and sector-specific obligations.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 337
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Scope, governance, accountability, and ethical boundaries"
+      ]
+    },
+    {
+      "control_id": "USEQ-6C5D6E42",
+      "revision": 1,
+      "semantic_sha256": "6c5d6e42b9788449894f4347d8b3ceaee0212d884ab6a1c487ff4951975b6225",
+      "statement": "Prohibit sustainability claims that cannot be traced to a defined boundary, method, evidence set, time period, and responsible approver.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 338
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Scope, governance, accountability, and ethical boundaries"
+      ]
+    },
+    {
+      "control_id": "USEQ-7B0F07E8",
+      "revision": 1,
+      "semantic_sha256": "7b0f07e82915be16255a6e626ee85b0fb7b2d03e27425e1850a090a56df99f03",
+      "statement": "Distinguish mandatory requirements, voluntary goals, experiments, estimates, and aspirational targets in all plans and communications.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 339
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Scope, governance, accountability, and ethical boundaries"
+      ]
+    },
+    {
+      "control_id": "USEQ-7A460804",
+      "revision": 1,
+      "semantic_sha256": "7a460804742790f1b698b9ecc8ecdf5ecdead67a94560aec07ce6c5269ea3296",
+      "statement": "Include sustainability requirements in product requirements, architecture decisions, supplier contracts, Definition of Done, release gates, and retirement plans.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 340
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Scope, governance, accountability, and ethical boundaries"
+      ]
+    },
+    {
+      "control_id": "USEQ-A060C72B",
+      "revision": 1,
+      "semantic_sha256": "a060c72bd20a8cc8ddd2377a026ec701ecedb4bbf98880d3ae595568b05a3ebd",
+      "statement": "Use independent review for material public claims, regulated disclosures, major lifecycle assessments, and high-impact trade-offs.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 341
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Scope, governance, accountability, and ethical boundaries"
+      ]
+    },
+    {
+      "control_id": "USEQ-1885C630",
+      "revision": 1,
+      "semantic_sha256": "1885c630ab3e0afa1ba649ce30155ec3116d64343a5039990691ce3c2a221a1c",
+      "statement": "Keep sustainability governance active after launch through operational ownership, reassessment triggers, and funded improvement work.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 342
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Scope, governance, accountability, and ethical boundaries"
+      ]
+    },
+    {
+      "control_id": "USEQ-CBFAABA8",
+      "revision": 1,
+      "semantic_sha256": "cbfaaba8692e9a831c664f3d4b34637c72a5ebcfeca97119b92ad9779d455c50",
+      "statement": "Assess whether the product, feature, automation, data collection, model, or recurring process is necessary before optimizing its implementation.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 346
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Necessity, demand shaping, product strategy, and rebound effects"
+      ]
+    },
+    {
+      "control_id": "USEQ-22D56445",
+      "revision": 1,
+      "semantic_sha256": "22d56445e4fafb8e9c07e73e6d9d7cadc296e688bd3de6d25143ecca48fc7797",
+      "statement": "Define the user or societal outcome that justifies the resource demand and identify lower-impact non-digital or simpler digital alternatives.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 347
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Necessity, demand shaping, product strategy, and rebound effects"
+      ]
+    },
+    {
+      "control_id": "USEQ-97517034",
+      "revision": 1,
+      "semantic_sha256": "975170340d460aebc40b09a5b46db1e6ffb1a250298022f9dac98cd9a4464baa",
+      "statement": "Reject features whose expected harm, waste, manipulation, exclusion, or maintenance burden outweighs evidenced benefit.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 348
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Necessity, demand shaping, product strategy, and rebound effects"
+      ]
+    },
+    {
+      "control_id": "USEQ-1D0695BB",
+      "revision": 1,
+      "semantic_sha256": "1d0695bb9e17d953c470df7997dbd21b309922fd037ae43383be3838796ae163",
+      "statement": "Reduce unnecessary engagement loops, autoplay, infinite consumption, dark patterns, spam, and attention extraction that create avoidable resource use.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 349
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Necessity, demand shaping, product strategy, and rebound effects"
+      ]
+    },
+    {
+      "control_id": "USEQ-5DC602F1",
+      "revision": 1,
+      "semantic_sha256": "5dc602f1e688fefbad93493b9385c426c4d12ce6b8b8221431651d3c5d515543",
+      "statement": "Design pricing, quotas, defaults, incentives, and success metrics so they do not reward wasteful usage or artificial activity.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 350
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Necessity, demand shaping, product strategy, and rebound effects"
+      ]
+    },
+    {
+      "control_id": "USEQ-4705259A",
+      "revision": 1,
+      "semantic_sha256": "4705259a52a68957705231e6eacc5168b1eebdb701cfa9c80a74b6f0709a2861",
+      "statement": "Assess whether efficiency improvements could increase total demand and offset or reverse expected reductions.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 351
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Necessity, demand shaping, product strategy, and rebound effects"
+      ]
+    },
+    {
+      "control_id": "USEQ-4FBD8481",
+      "revision": 1,
+      "semantic_sha256": "4fbd84810535e86576214e5c07177bd2e53e0c28590317a42e0a88c314ecc58b",
+      "statement": "Measure absolute environmental impact as well as normalized efficiency so growth is not hidden by better per-unit metrics.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 352
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Necessity, demand shaping, product strategy, and rebound effects"
+      ]
+    },
+    {
+      "control_id": "USEQ-F1113914",
+      "revision": 1,
+      "semantic_sha256": "f111391416a26430bdb5e89b2cdd29892aac4c2c9bcb19d3f460d80891548740",
+      "statement": "Establish environmental and human budgets for features, campaigns, experiments, models, data products, and infrastructure.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 353
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Necessity, demand shaping, product strategy, and rebound effects"
+      ]
+    },
+    {
+      "control_id": "USEQ-99D85387",
+      "revision": 1,
+      "semantic_sha256": "99d85387d6971b3e024ada2077192f6bff2152d3e3d1a652e560591d31753093",
+      "statement": "Prioritize reuse, repair, extension, consolidation, and retirement before creating additional systems or duplicate capabilities.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 354
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Necessity, demand shaping, product strategy, and rebound effects"
+      ]
+    },
+    {
+      "control_id": "USEQ-6701A91D",
+      "revision": 1,
+      "semantic_sha256": "6701a91d37ba1625303a3e3bf967e384ca3ea069be35e8a327a4be3a16122c6f",
+      "statement": "Define explicit sunset criteria for low-value features, experiments, data sets, models, environments, domains, and services.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 355
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Necessity, demand shaping, product strategy, and rebound effects"
+      ]
+    },
+    {
+      "control_id": "USEQ-0EF58E65",
+      "revision": 1,
+      "semantic_sha256": "0ef58e65762f9ddfbd58c5a5c7080df6c20f9a69fe3813c2447b5361204210be",
+      "statement": "Include long-term maintenance, migration, support, and end-of-life costs in business cases.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 356
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Necessity, demand shaping, product strategy, and rebound effects"
+      ]
+    },
+    {
+      "control_id": "USEQ-75B2BF2E",
+      "revision": 1,
+      "semantic_sha256": "75b2bf2e521b7c4885e36fb2ec460d59f0ed9643d22012d3f3601977e17a4278",
+      "statement": "Avoid shifting environmental cost to users through excessive device requirements, bandwidth, battery consumption, printing, travel, or repeated manual effort.",
+      "source": {
+        "path": "docs/engineering/12-operations-sre-and-support.md",
+        "line": 357
+      },
+      "heading_trail": [
+        "Operations, SRE, and support",
+        "Digital Sustainability, Environmental Impact, and Responsible Computing",
+        "Necessity, demand shaping, product strategy, and rebound effects"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,228 @@
+{
+  "schema_version": "prc.control-classification-skeptic-review/v0.1",
+  "packet_id": "skeptic-docs-engineering-03-user-experience-web-and-content-md-part-005-part-001",
+  "primary_packet_id": "docs-engineering-03-user-experience-web-and-content-md-part-005",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "controls": [
+    {
+      "control_id": "USEQ-B6DF1544",
+      "revision": 1,
+      "semantic_sha256": "b6df15441887e1708632bb15a4c380b9b56f0c7e168d97155f5aa41f00375616",
+      "verdict": "confirmed_deterministic",
+      "reason": "The statement requires an explicit mandatory-or-optional classification for procedure steps, which a closed versioned step schema decides exactly.",
+      "counterexample_analysis": "I tried an untyped step, a third ambiguous type, and prose guidance linked to no step; exact inventory and two-value enum checks fail each. Whether the steps are wise is outside the claim.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-10C48526",
+      "revision": 1,
+      "semantic_sha256": "10c48526307b967a7c9dab6903a1187aa52a0e4ba719ef8097388ae3f88946b9",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A nonempty purpose and hazard field does not establish that the text truthfully explains the step's purpose or the hazard it controls.",
+      "counterexample_analysis": "A critical shutdown step says purpose `required` and hazard `bad outcome`. All record fields pass, but personnel receive no actual explanation of purpose or controlled hazard.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-5E37EAFF",
+      "revision": 1,
+      "semantic_sha256": "5e37eaff24f8af664679cffc23c18fd90b59f68382ff9a6dca143762f602e99e",
+      "verdict": "confirmed_deterministic",
+      "reason": "The claim is training occurrence across four explicitly named non-routine condition classes; bound curricula, participants, and authenticated completions decide it.",
+      "counterexample_analysis": "I tried routine-only attendance relabelled emergency, omitted recovery training, and completion for another role revision; scenario taxonomy and joins fail each. Competence is not asserted.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-F11266F2",
+      "revision": 1,
+      "semantic_sha256": "f11266f2c9261c131238bde4ed005843563d72c55353ac1682ab6c1efa281d0d",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Which system, threat, procedure, or role changes are material requires judgment, and change and training inventories can omit a triggering change.",
+      "counterexample_analysis": "A new attack technique makes the response procedure obsolete but is labelled nonmaterial and excluded from refresh. Every declared material change has later training, so the proposal passes.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-C691A030",
+      "revision": 1,
+      "semantic_sha256": "c691a0309a4b2344f5fd7a49c45ca310f126a83659752ab29c96710e28232a13",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Proving simulations cannot affect any production user or data requires complete inventories of credentials, endpoints, integrations, copies, queues, and indirect side effects.",
+      "counterexample_analysis": "A drill sends test notifications through an unlisted production provider credential. All declared practice environments are isolated, so evidence joins pass while production users are affected.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-9754BE06",
+      "revision": 1,
+      "semantic_sha256": "9754be0673689188fa2a87fea06b22e582d4bc87e7bd38b9d7ba133429ddb524",
+      "verdict": "confirmed_deterministic",
+      "reason": "The statement asks whether four named subjects are included in exercise evidence, which a bound plan and authenticated execution record can prove.",
+      "counterexample_analysis": "I tried a communications-only plan, an exercise with no evidence-preservation event, and customer impact from another drill; exact four-topic and exercise-ID joins fail each. Quality is not claimed.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-BD879838",
+      "revision": 1,
+      "semantic_sha256": "bd8798389c89228c7380540370508277413c6cd6d176cf00282cbc63f89704ad",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A record of observed assistance cannot prove that a human participant received no undocumented help through an unobserved channel.",
+      "counterexample_analysis": "The protocol record can say no assistance while an observer gives off-record help, so complete record fields pass without proving the negative human-behavior claim.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "human_accountability",
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-7E095AAC",
+      "revision": 1,
+      "semantic_sha256": "7e095aacf60c929a814b1410da42633a5fcca5dfadcd28f0b9f94b10148085be",
+      "verdict": "confirmed_deterministic",
+      "reason": "Inclusion in evaluation is a bounded participation fact, not an accessibility-outcome claim; privacy-preserving authenticated study evidence can prove it.",
+      "counterexample_analysis": "I tried a consultation outside the tool evaluation, a participant record with no valid inclusion evidence, and an evaluation of a noncritical revision; subject and participant bindings reject each.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-BB1DA3B6",
+      "revision": 1,
+      "semantic_sha256": "bb1da3b6ee05b5fdf273d759ef58c7cdcae7093e3524bf5217ece0ee86225c02",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Record fields cannot establish that selected tasks, roles, environments, data, devices, and stress conditions are representative of real operation.",
+      "counterexample_analysis": "A high-end desktop, expert operator, clean data, and calm office are labelled representative for emergency field work. Every field exists while the evaluation remains unrealistic.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-FA348CF7",
+      "revision": 1,
+      "semantic_sha256": "fa348cf787c3a48533ee8c0824718a6c708a64bc6a3121ad404cd68c78aa7557",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Six attachments or method labels do not prove the evidence was meaningfully combined into one coherent human-factors evaluation.",
+      "counterexample_analysis": "A case links unrelated interviews, metrics, and logs under the six required labels but never analyzes them together. The schema passes although the methods are not combined.",
+      "nondeterministic_route": "contextual_judgment",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-8E0AE768",
+      "revision": 1,
+      "semantic_sha256": "8e0ae768bb79537f05f5d9bbc28e0bb3f5478e0b3f0abdf559ec77fc1aa2c347",
+      "verdict": "confirmed_deterministic",
+      "reason": "Exact deployed interface and configuration identifiers can be joined to authenticated critical-task evaluation evidence, making this environment-binding fact bounded.",
+      "counterexample_analysis": "I tried a screenshot lookalike, the right interface with staging flags, and a production digest from after the study; artifact, configuration, and time bindings fail each. Human performance quality is separate.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-5B8BCABC",
+      "revision": 1,
+      "semantic_sha256": "5b8bcabc3fab66f9d15b9b610e0bb753e5ae68696a0dc676c89b3cc038f803cc",
+      "verdict": "rejected_nondeterministic",
+      "reason": "A deviation register cannot independently prove it contains every difference between test conditions and real operation across people, workload, data, environment, and timing.",
+      "counterexample_analysis": "The test uses expert daytime staff while real work uses novices overnight, but that difference is omitted. Every recorded deviation has complete fields, so the proposal passes.",
+      "nondeterministic_route": "unbounded_claim",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-CA8D6F84",
+      "revision": 1,
+      "semantic_sha256": "ca8d6f84b7d7938b0510ff0e971c73ab2d0f7bc20d3c8c1a52699d97773dce52",
+      "verdict": "rejected_nondeterministic",
+      "reason": "`Major` change applicability and meaningful human-performance re-evaluation require contextual judgment, while change inventories can omit staffing and process changes.",
+      "counterexample_analysis": "Automation removes a verification step but is labelled minor, so no re-evaluation occurs. Every declared major change has an evaluation record, and the proposal passes.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "contextual_judgment",
+        "undefined_scope",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-15D04E70",
+      "revision": 1,
+      "semantic_sha256": "15d04e70df560811193f0465e4067f77fbfb9c1df1874d8e91e993eb9fef505b",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Configured metrics do not prove complete or meaningful monitoring of near misses, recovery, abandonment, and support demand across all channels.",
+      "counterexample_analysis": "Near misses reported verbally and recoveries performed offline never enter telemetry, while the six configured dashboards remain active. The record check passes despite missing real signals.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "undefined_scope",
+        "contextual_judgment",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-1364D5A3",
+      "revision": 1,
+      "semantic_sha256": "1364d5a3f4276c746d47ddaa097ec6b9f8ae062a22ea971a9c60b4c8168630c2",
+      "verdict": "rejected_nondeterministic",
+      "reason": "The register cannot prove every human-factors risk was recognized, and classifying unresolved risks and adequate monitoring requires specialist judgment.",
+      "counterexample_analysis": "A confusing emergency control creates a serious risk but is absent from the register. Every listed unresolved risk has owner, monitor, and expiry, so the proposal passes.",
+      "nondeterministic_route": "mixed",
+      "nondeterministic_reason_codes": [
+        "unbounded_scope",
+        "legal_or_specialist_authority",
+        "mixed_with_nondeterministic_child"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-C01D9ECD",
+      "revision": 1,
+      "semantic_sha256": "c01d9ecdbce47e7a28f40e22e38f46d98fbde999da67efacda1513dd3ff814dd",
+      "verdict": "rejected_nondeterministic",
+      "reason": "Whether human error could cause catastrophic or systemic harm is a safety judgment over an incomplete hazard inventory, not a deterministic review trigger.",
+      "counterexample_analysis": "A dosing-interface error can harm many patients but is classified noncatastrophic and omitted from independent review. Every declared high-impact subject has a reviewer, so the proposal passes.",
+      "nondeterministic_route": "specialist_or_legal_judgment",
+      "nondeterministic_reason_codes": [
+        "legal_or_specialist_authority"
+      ],
+      "review_status": "skeptical_agent_reviewed"
+    },
+    {
+      "control_id": "USEQ-33BC0B54",
+      "revision": 1,
+      "semantic_sha256": "33bc0b54b607d709f85fb32f362e4a1fb4afe709da3096e57e5ba1d176aa9dfe",
+      "verdict": "confirmed_deterministic",
+      "reason": "The rule is an inclusion requirement: exact assurance-case identifiers can be joined to authenticated human-factors evidence artifacts and their revisions.",
+      "counterexample_analysis": "I tried a broken link, evidence from another release, and a readiness case with no human-factors artifact; integrity and scope joins fail each. Whether the evidence supports release is not asserted.",
+      "nondeterministic_route": null,
+      "nondeterministic_reason_codes": [],
+      "review_status": "skeptical_agent_reviewed"
+    }
+  ]
+}

@@ -1,0 +1,2321 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-engineering-08-security-and-cryptography-md-part-001-part-001",
+  "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 90,
+  "controls": [
+    {
+      "control_id": "USEQ-CD388C32",
+      "revision": 1,
+      "semantic_sha256": "cd388c32bcdfbe2f8403d8f36a24cd68f881ccfad93624f255609de7f177e6a2",
+      "statement": "Generate an SBOM for every released artifact.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 15
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Dependencies, SBOM, and Licenses",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "artifact_verification",
+      "primary_reason": "Released artifact digests form a finite release set and can be matched exactly to generated SBOM artifacts.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every released artifact digest has one generated SBOM bound to that digest.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-26843351",
+      "revision": 1,
+      "semantic_sha256": "26843351f2ac14b96b028f704fa2be8e41e0b23a02c34922fa098f0a2fc2dc86",
+      "statement": "Record exact versions, package identifiers, sources, hashes, relationships, licenses, and required notices.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 17
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Dependencies, SBOM, and Licenses",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The eight SBOM data elements are exact fields with referential and digest validation.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every SBOM component records exact version, package identifier, source, hash, relationships, licenses, and required notices.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-91621C41",
+      "revision": 1,
+      "semantic_sha256": "91621c416d2284813dad3843d005b2a6827505f78da3cab2eb48e006f27eb63e",
+      "statement": "Link the SBOM to the released artifact digest and verify it against the final package.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 18
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Dependencies, SBOM, and Licenses",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "artifact_verification",
+      "primary_reason": "Artifact and SBOM digests permit exact binding and comparison against the final package inventory.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The SBOM is bound to the released digest and its component inventory matches the verified final package.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-93206DB8",
+      "revision": 1,
+      "semantic_sha256": "93206db8a89649c9fe23a55e8ddb1a0244c16ffccd6104bdece188677c8dd3c0",
+      "statement": "Confirm dependencies come from intended publishers and registries.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 21
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Dependencies, SBOM, and Licenses",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "artifact_verification",
+      "primary_reason": "Package provenance, publisher signatures, and configured registry allowlists can verify intended source identities exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every resolved dependency matches its approved publisher identity and registry source.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9CB28275",
+      "revision": 1,
+      "semantic_sha256": "9cb282755bf4b259150db955341929f265b698c3c13f46c12bb4a8198ce8b22f",
+      "statement": "Monitor upstream advisories and continuously scan released components.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 22
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Dependencies, SBOM, and Licenses",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Advisory subscriptions and continuous scanner coverage can be queried for every released component identifier.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every released component has active upstream-advisory monitoring and a current vulnerability scan result.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "external_registry"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D2C8D527",
+      "revision": 1,
+      "semantic_sha256": "d2c8d527a4fa34b26a29ec072075f7a83ed0801cc956b802dba698573d760a06",
+      "statement": "Maintain an emergency replacement process for compromised dependencies.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 25
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Dependencies, SBOM, and Licenses",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The emergency replacement process is a versioned procedure with exact required ownership and execution fields.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "A current emergency dependency-replacement procedure exists with trigger, owner, source, build, verification, and deployment steps.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3D9B945D",
+      "revision": 1,
+      "semantic_sha256": "3d9b945df81833482e73877c3974e2ce5f8f093824f76095b71f8ad5a967e3d0",
+      "statement": "Document ownership of vendored, forked, and internally patched components.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 26
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Dependencies, SBOM, and Licenses",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Vendored, forked, and patched component inventories are finite and support exact owner coverage checks.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every vendored, forked, or internally patched component has one accountable owner.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E5774CFB",
+      "revision": 1,
+      "semantic_sha256": "e5774cfb9d0383394f5b1aca53c1b85ce3767335ea8a4d16deaa57c6bd6c9983",
+      "statement": "Retain SBOMs for historical releases and investigations.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 29
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Dependencies, SBOM, and Licenses",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "artifact_verification",
+      "primary_reason": "Immutable historical release and SBOM digests can establish retention and exact linkage.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every historical release digest references a retrievable immutable SBOM version.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7437D577",
+      "revision": 1,
+      "semantic_sha256": "7437d57757cf9516aca01d46cd9d7a3d6915451db1ea9e501866234a26bf1510",
+      "statement": "Certificates cover correct names and trust chains.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 37
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Transport, Browser, DNS, and Network Security",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "TLS handshakes expose certificate names and chain validation outcomes that can be compared with the endpoint inventory.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every TLS endpoint presents a trusted chain and a certificate covering its declared names.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6A0D1D7E",
+      "revision": 1,
+      "semantic_sha256": "6a0d1d7e670bd56da0f94395036a5704c48c305bd5668a5c73cefcd3d8ab50f5",
+      "statement": "Certificate issuance, renewal, expiration, and revocation are monitored and tested.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 38
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Transport, Browser, DNS, and Network Security",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Certificate lifecycle monitors and injected issuance, renewal, expiration, and revocation tests are finite environment evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every certificate has active issuance, renewal, expiry, and revocation monitoring.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "Each lifecycle path has a current successful test result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-433F17DA",
+      "revision": 1,
+      "semantic_sha256": "433f17da1efdd8d74827f70de9d5a30216e131a5ac3d38a9dae32e128fae74f9",
+      "statement": "Proxy, load-balancer, host, and forwarded-header trust is configured explicitly.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 45
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Transport, Browser, DNS, and Network Security",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Trusted proxy, load balancer, host, and forwarded-header sources are explicit finite configuration fields.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Ingress configuration explicitly enumerates trusted proxies, hosts, load balancers, and forwarded-header handling.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CCB23489",
+      "revision": 1,
+      "semantic_sha256": "ccb23489db63e6f219e68b53123218d9731d02fc3088897ddb4ac435599c0e0f",
+      "statement": "The origin cannot be bypassed when a CDN, reverse proxy, gateway, or application firewall is relied upon.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 46
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Transport, Browser, DNS, and Network Security",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Public-network probes can test direct-origin routes and require denial when perimeter controls are relied upon.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every protected origin rejects direct bypass requests outside the approved CDN, proxy, gateway, or firewall path.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FA0BCE37",
+      "revision": 1,
+      "semantic_sha256": "fa0bce374a0185f7444d63cff4482c6ed25ef0bd1664547a0e99e009a7cf9434",
+      "statement": "Production networks do not implicitly trust development, testing, office, or personal networks.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 47
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Transport, Browser, DNS, and Network Security",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Network policy and connectivity tests can prove development, test, office, and personal sources are denied absent explicit grants.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Production network tests deny every nonproduction source class unless an explicit least-privilege rule authorizes it.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-69F5FCA9",
+      "revision": 1,
+      "semantic_sha256": "69f5fca93fcc45ef82cb606e87dccbdd86628b695e40cdad7849e732457c20b7",
+      "statement": "External attack-surface monitoring detects newly exposed hosts, domains, ports, and services.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 51
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Transport, Browser, DNS, and Network Security",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "The external asset inventory and monitor results permit exact detection coverage for new hosts, domains, ports, and services.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Active attack-surface monitoring reports newly observed hosts, domains, ports, and services for every production property.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "external_registry"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EEE7D855",
+      "revision": 1,
+      "semantic_sha256": "eee7d855a6dc1ba087d895c49d96144bd3b28be7006e3fd953caa4cec18e4307",
+      "statement": "Only approved, maintained algorithms, libraries, and protocol implementations are used.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 60
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Cryptography and Key Management",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "An approved cryptographic registry and authoritative maintenance status can be compared with every resolved implementation call and dependency.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every cryptographic algorithm, library, and protocol implementation resolves to the approved registry.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        },
+        {
+          "statement": "Each approved implementation has current maintained status from its authoritative source.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "external_registry"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CF133A7A",
+      "revision": 1,
+      "semantic_sha256": "cf133a7a4382f31be086a3f24b7272bc6c7f2117bb8181f823ad224265702ea1",
+      "statement": "Rotation does not make required existing data unrecoverable.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 65
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Cryptography and Key Management",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Key rotation and historical-data recovery scenarios have exact decryptability and integrity outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "After rotation, every required historical-data fixture remains recoverable and integrity-valid through its declared path.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1C8FFFBF",
+      "revision": 1,
+      "semantic_sha256": "1c8fffbf8f80ec7d2bf909b95aecbd36f36312f2b212ddd48e3421dc3fcd2ac5",
+      "statement": "Key deletion and cryptographic-erasure behavior are defined.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 67
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Cryptography and Key Management",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Key deletion and cryptographic-erasure behavior are exact lifecycle policy fields.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every applicable key class defines deletion triggers, execution, verification, retained metadata, and cryptographic-erasure effects.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-66A51D5D",
+      "revision": 1,
+      "semantic_sha256": "66a51d5d6a60f735c68d94f6fd98a96f44e071f5e18c707af4bf65bc62646a65",
+      "statement": "Certificates, signing keys, token keys, encryption keys, and webhook keys have lifecycle owners.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 68
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Cryptography and Key Management",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The five key classes are finite inventories supporting exact lifecycle-owner checks.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every certificate, signing, token, encryption, and webhook key has one lifecycle owner.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7FAB83B4",
+      "revision": 1,
+      "semantic_sha256": "7fab83b4ecf47865a135d8559a8573bb0c28079cd96f3b908b689ad5079706a0",
+      "statement": "Signature verification rejects inappropriate algorithms, keys, malformed input, and algorithm confusion.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 69
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Cryptography and Key Management",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A signature-validation negative matrix can provide fixed inappropriate algorithm, key, malformed input, and confusion cases.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Signature verification rejects every case in the approved algorithm, key, malformed-input, and confusion test matrix.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A9032C59",
+      "revision": 1,
+      "semantic_sha256": "a9032c598e2628ebbb52e764a4c46f71d27dfe52b1a0aa35c9983668476e66b3",
+      "statement": "Dependency, SBOM, and license analysis has run.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 80
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Security Validation and Vulnerability Management",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The three analysis jobs and release binding are exact execution-record facts.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Current dependency, SBOM, and license analysis results are bound to the release artifact.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6EB61A35",
+      "revision": 1,
+      "semantic_sha256": "6eb61a352f744b03d77816ff15280f5eeffca7d90724c8fee8bf2afe35213047",
+      "statement": "Secret scanning has run against current changes and relevant history.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 81
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Security Validation and Vulnerability Management",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Secret-scan scope and execution metadata can prove coverage of current changes and the declared relevant history.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The release record contains a successful secret scan covering current changes and its approved history range.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-212AE882",
+      "revision": 1,
+      "semantic_sha256": "212ae882e0ad4df9e051942088c24ff479d0519dc2cbe96c0c708bb9baf7a513",
+      "statement": "Infrastructure, configuration, and policy analysis has run.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 82
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Security Validation and Vulnerability Management",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Infrastructure, configuration, and policy analysis are explicit release-gate execution records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The release has current infrastructure, configuration, and policy analysis results.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E111813C",
+      "revision": 1,
+      "semantic_sha256": "e111813c676944f68fa77e8e2224b834374ed85d304adf0fe40b6d5819d270ef",
+      "statement": "Deployed application and API security testing has run.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 83
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Security Validation and Vulnerability Management",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Deployed application and API test executions can be bound exactly to production artifact and configuration identifiers.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Current deployed application and API security test results are bound to the release artifact and configuration.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A54FFC98",
+      "revision": 1,
+      "semantic_sha256": "a54ffc98bd39631f6058e9b3a635ffdf2db176f1bccbee502c2f1ce2f0906c1d",
+      "statement": "Authentication, account recovery, session, authorization, and tenant-isolation testing has run.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 84
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Security Validation and Vulnerability Management",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The five identity-security test areas are explicit release evidence categories.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Current authentication, recovery, session, authorization, and tenant-isolation test results are bound to the release.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-65F8195D",
+      "revision": 1,
+      "semantic_sha256": "65f8195d071a1155ad9030b36d901f24cf349b7f715fecef3fd7b2533e9a7149",
+      "statement": "Findings have owners, risk ratings, remediation targets, and retest evidence.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 87
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Security Validation and Vulnerability Management",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The finding lifecycle fields are exact and retest evidence is a resolvable reference.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every security finding has owner, risk rating, remediation target, and retest evidence when remediated.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D6455092",
+      "revision": 1,
+      "semantic_sha256": "d64550925ed7080664a74c462c2e2b20bbda16f4549cab77f76d9ce7a374dfe1",
+      "statement": "Unsupported and unpatchable components have explicit treatment plans.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 89
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Security Validation and Vulnerability Management",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Unsupported and unpatchable component statuses can be joined to an exact treatment-plan requirement.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every unsupported or unpatchable component links to an explicit treatment plan.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-376AA3EF",
+      "revision": 1,
+      "semantic_sha256": "376aa3ef8b319446d38bdc41a420f604b33a94924bda9a646cc1db63707f93c7",
+      "statement": "A vulnerability-disclosure policy and security-reporting channel exist.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 90
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Security Validation and Vulnerability Management",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Policy artifact presence and public reporting-channel reachability are exact checks.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "A versioned vulnerability-disclosure policy is published and the security-reporting channel accepts a test report.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8C2B79FA",
+      "revision": 1,
+      "semantic_sha256": "8c2b79fa4389ed51e72df9f985aa0b000b275ac0f2c58e54e8f29227983b92f0",
+      "statement": "Security monitoring covers account takeover, privilege changes, secret use, suspicious exports, abuse, fraud, and control tampering.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 92
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Security Validation and Vulnerability Management",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "The seven security event classes form a finite monitor coverage matrix whose enabled state can be queried.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Active monitors cover account takeover, privilege change, secret use, suspicious export, abuse, fraud, and control tampering.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B5A25CFD",
+      "revision": 1,
+      "semantic_sha256": "b5a25cfdc697a91a5ab0aeb1abec70b8d64f49401450dde86d7805c3d2dbacff",
+      "statement": "Incident severity levels and declaration authority are defined.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 100
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Security Incident Response and Crisis Readiness",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Severity levels and declaration authority are exact incident-policy fields.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The incident policy defines severity levels and authorized declarers for each level.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2EDD7F91",
+      "revision": 1,
+      "semantic_sha256": "2edd7f913b270d16faa680e694259cf99a2f85af8b53317b9669916e348e7579",
+      "statement": "Procedures cover detection, triage, containment, eradication, recovery, verification, and closure.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 103
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Security Incident Response and Crisis Readiness",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The seven incident lifecycle stages are exact required procedure sections.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Incident procedures cover detection, triage, containment, eradication, recovery, verification, and closure.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-EFB31A9B",
+      "revision": 1,
+      "semantic_sha256": "efb31a9b521a3e055411236c88274a6c6c1f1d23c55655a065b8ee759db4cc09",
+      "statement": "Procedures distinguish outages, security incidents, privacy incidents, fraud events, safety events, and data-integrity events.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 104
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Security Incident Response and Crisis Readiness",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The six incident categories form a closed procedure classification.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Incident procedures distinguish outage, security, privacy, fraud, safety, and data-integrity events.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E4837A19",
+      "revision": 1,
+      "semantic_sha256": "e4837a19c0f5e9b746055e0ada063a797c0de23298b591e073ea6f303670e5ba",
+      "statement": "Compromised builds and dependencies can be identified, contained, rebuilt, and replaced.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 107
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Security Incident Response and Crisis Readiness",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Compromised build and dependency scenarios have exact identify, contain, rebuild, and replace outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Each approved compromise scenario successfully identifies and contains the item and produces a verified rebuilt replacement.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E968A368",
+      "revision": 1,
+      "semantic_sha256": "e968a368f5e95e4cb513192fc852ea320e1723a9b5e5640673c3bd38e874779c",
+      "statement": "Incident metrics include detection, acknowledgment, containment, recovery, impact, customer harm, and recurrence.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 112
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Security Incident Response and Crisis Readiness",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The seven incident metric dimensions are exact required measurement fields.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Incident metrics include detection, acknowledgment, containment, recovery, impact, customer harm, and recurrence.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-191DAB9C",
+      "revision": 1,
+      "semantic_sha256": "191dab9cc800b8f0a696ecde424b0d139c8afdb968dbc048644c7cc488f2e422",
+      "statement": "The response plan can operate when normal identity, cloud, chat, email, ticketing, or documentation systems are unavailable.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 113
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Security Incident Response and Crisis Readiness",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The six normal-system outages form a finite continuity exercise matrix with exact plan-access and operation assertions.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The response plan completes its declared workflow when identity, cloud, chat, email, ticketing, or documentation systems are unavailable.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D4E90196",
+      "revision": 1,
+      "semantic_sha256": "d4e90196659d00fc87ce859c33913cd1b0200aab229b6cb9b9e84739f6cc0754",
+      "statement": "Submission size, rate, cost, frequency, and resource use are bounded.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 122
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Public Forms, Anonymous Access, and Abuse Resistance",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Submission size, rate, cost, frequency, and resource use are numeric runtime limits whose enforcement can be queried and tested.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every anonymous endpoint enforces declared bounds for size, rate, cost, frequency, and resource use.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B8EC811C",
+      "revision": 1,
+      "semantic_sha256": "b8ec811c8dc980837a061c2206c98c61ccaa357a1609f2025a2b47219fcc7ded",
+      "statement": "Challenges do not become the sole security control for authorization or fraud prevention.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 125
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Public Forms, Anonymous Access, and Abuse Resistance",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Authorization and fraud-control paths can be tested with challenge mechanisms disabled to prove an independent control remains.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every protected operation retains its declared authorization or fraud decision when the anti-automation challenge is absent or bypassed.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-97A2A4F4",
+      "revision": 1,
+      "semantic_sha256": "97a2a4f44701487c2f22d579d21e389f750bd96e24e7ac9f7364959ce51edaab",
+      "statement": "Abuse signals, false positives, appeals, and manual-review paths are monitored.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 129
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Public Forms, Anonymous Access, and Abuse Resistance",
+        "Universal controls"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "The four abuse-operations signals are explicit monitor and workflow entities whose active state can be queried.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Active monitoring covers abuse signals, false positives, appeals, and manual-review paths.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6DE0A64D",
+      "revision": 1,
+      "semantic_sha256": "6de0a64d01e7a3d212b0ef9258287363297a741df9f9ffe6eae34139df835ab8",
+      "statement": "Assign accountable owners for information, services, identities, systems, controls, vulnerabilities, and incidents.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 139
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Security Governance and Risk Management",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The seven security accountability domains form a finite exact owner matrix.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Information, services, identities, systems, controls, vulnerabilities, and incidents each have one accountable owner.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-543BE90B",
+      "revision": 1,
+      "semantic_sha256": "543be90b8fe894f994089c9f0883e074e1b4925661ddbc868332b8b3c628c9a6",
+      "statement": "Use a consistent risk method that records threat, vulnerability, likelihood, impact, existing controls, residual risk, and owner.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 141
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Security Governance and Risk Management",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The eight risk-method fields form an exact structured record schema and can be required consistently.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every security risk records threat, vulnerability, likelihood, impact, existing controls, residual risk, and owner.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D1B6C513",
+      "revision": 1,
+      "semantic_sha256": "d1b6c513f5dbec1cbab818b14a8459b2e082d38402422f0bf93d6a5abd1ee321",
+      "statement": "Separate policy requirements from implementation guidance and document justified tailoring.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 144
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Security Governance and Risk Management",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Policy, implementation guidance, and tailoring decisions are distinct versioned record types with exact linkage requirements.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Security documentation separates policy requirements from guidance and every tailoring decision records justification and approval.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-1B6BE375",
+      "revision": 1,
+      "semantic_sha256": "1b6be3751a62a1af8e6f266ee00a7943449ee112ec0da34aed9afcb63bf219af",
+      "statement": "Define minimum baselines for products, environments, suppliers, identities, endpoints, and data classes.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 145
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Security Governance and Risk Management",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The six baseline scopes are explicit policy sections whose version and applicability can be validated.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Minimum security baselines define products, environments, suppliers, identities, endpoints, and data classes.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-514A892D",
+      "revision": 1,
+      "semantic_sha256": "514a892dc4eae69a18b9fdf0bf17e7dd36cdc5f4f9f80210ac269c6fd667f081",
+      "statement": "Make security exceptions time-bounded with compensating controls, monitoring, and automatic expiry.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 147
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Security Governance and Risk Management",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Exception records and expiry enforcement make time bounds, compensating controls, monitoring, and automatic expiration directly decidable.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every security exception has start, expiry, compensating-control, and monitor references.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Expired exceptions automatically become inactive.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5EE950A3",
+      "revision": 1,
+      "semantic_sha256": "5ee950a3d8b0f21df513e8a5b84221aacee5cbf7211daa32f2d026c04291a68d",
+      "statement": "Maintain vulnerability disclosure, researcher communication, and coordinated remediation processes.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 152
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Security Governance and Risk Management",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Disclosure, researcher communication, and coordinated remediation are explicit process artifacts with required workflow states.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The security program has current vulnerability-disclosure, researcher-communication, and coordinated-remediation processes.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A4C4F453",
+      "revision": 1,
+      "semantic_sha256": "a4c4f4532fd4eb208b89a57599646c8bae8c6d2de5426f8f5dfe341f44fb5ebc",
+      "statement": "Translate threat models and security objectives into traceable requirements and verification.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 167
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure Software Development Lifecycle",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Threat and security-objective identifiers can be traced exactly to requirements and verification records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every threat-model scenario and security objective links to security requirements and current verification evidence.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9BE73656",
+      "revision": 1,
+      "semantic_sha256": "9be736565ee5d353c1567ba69eb35bb22fe7dcc0a4a406caa2c14307ee47be80",
+      "statement": "Scan source, dependencies, secrets, infrastructure, configuration, and artifacts using maintained rules.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 170
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure Software Development Lifecycle",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Required scan jobs and authoritative rule-package status make execution and maintained-version checks decidable.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Current scans cover source, dependencies, secrets, infrastructure, configuration, and artifacts.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Each scanner uses a maintained approved rule version.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "external_registry"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-8C8E061F",
+      "revision": 1,
+      "semantic_sha256": "8c8e061f8485bc49f5dc785a6ec8fe18fd63054c9ef3ee13baf8457f185c9472",
+      "statement": "Verify the exact release artifact and configuration rather than only source branches.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 173
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure Software Development Lifecycle",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "artifact_verification",
+      "primary_reason": "Artifact digests and configuration versions let verification evidence bind to the exact release rather than a branch.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Security verification results are bound to the exact release artifact digest and configuration version.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7C42AB74",
+      "revision": 1,
+      "semantic_sha256": "7c42ab743d372ecd6cf2d9f3fa4999c82e4a1db78cd7a479e3ca34ef4bb3c71f",
+      "statement": "Generate and retain provenance, dependency inventory, SBOM, signatures, test evidence, and approvals.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 174
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure Software Development Lifecycle",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "artifact_verification",
+      "primary_reason": "The seven release-assurance artifacts are finite, versioned, and integrity-verifiable.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The release retains provenance, dependency inventory, SBOM, signatures, test evidence, and approvals bound to the artifact digest.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7BE3DC3E",
+      "revision": 1,
+      "semantic_sha256": "7be3dc3e85d7a61ad26685d302a12a76d98534bd2c01fad2f72c5110e7e80167",
+      "statement": "Keep a secure emergency patch and release path that preserves traceability and review.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 176
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure Software Development Lifecycle",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Emergency path configuration plus provenance and approval records can prove traceability and review preservation.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "A versioned emergency patch and release path is available.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        },
+        {
+          "statement": "Every emergency release retains source, build, artifact, test, and authenticated review traceability.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A8038EF0",
+      "revision": 1,
+      "semantic_sha256": "a8038ef08168dc59b8d443c4c94c7e64d959fe133f47e41d7800ed09bc841ea7",
+      "statement": "Monitor released components for newly disclosed vulnerabilities and compromised suppliers.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 177
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure Software Development Lifecycle",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Released component identities can be joined to current vulnerability and supplier-compromise monitors.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every released component has active monitoring for new vulnerabilities and supplier compromise indicators.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "external_registry"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A4E69FA6",
+      "revision": 1,
+      "semantic_sha256": "a4e69fa69775d07e1944a1bf692a77bded22d08bb4ecc3acb3a5c9bdcf714ed2",
+      "statement": "Maintain response procedures for leaked secrets, malicious packages, build compromise, and signing-key compromise.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 178
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure Software Development Lifecycle",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The four compromise scenarios are explicit required incident-procedure sections.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Current response procedures cover leaked secrets, malicious packages, build compromise, and signing-key compromise.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C62DB062",
+      "revision": 1,
+      "semantic_sha256": "c62db0624440db2ceb2ed2827c8f5317e1adba86f248483374dfde6d09d342cc",
+      "statement": "Track security requirements through deprecation and retirement, including data and credential cleanup.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 183
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secure Software Development Lifecycle",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Security requirement identifiers can be traced through lifecycle states to explicit data and credential cleanup records.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every security requirement remains linked through deprecation and retirement, including data and credential cleanup evidence.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-242A5671",
+      "revision": 1,
+      "semantic_sha256": "242a5671d503c5d131e1b3caddf0b527c304aebe5268e03b9a77b9d540ad1cf6",
+      "statement": "Track unresolved threats with owners and deadlines.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 209
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Threat Modeling and Abuse-Case Analysis",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Unresolved-threat records have exact owner and deadline fields.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every unresolved threat has one owner and a target deadline.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C3393B74",
+      "revision": 1,
+      "semantic_sha256": "c3393b744e6070a933b50fece7171f3df9fbbb9e3bc0d75dd9976b8b3030a1ec",
+      "statement": "Assign each identity a unique accountable owner and purpose.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 247
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Identity, Access, and Privileged Security",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Identity records have exact unique owner and purpose fields.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every identity has one unique accountable owner and a nonempty purpose.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-32615AD6",
+      "revision": 1,
+      "semantic_sha256": "32615ad6ecc0767c37f3a49a6adea29ddb6d9ce85c65f9560cf4ce447d3f78cb",
+      "statement": "Use short-lived, scoped workload credentials rather than embedded long-lived secrets.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 253
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Identity, Access, and Privileged Security",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A workload identity inventory, credential lifetime policy, scope policy, and secret scan can decide use of short-lived scoped credentials.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every workload credential lifetime and scope satisfies the approved policy.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "No workload embeds a long-lived secret in the assessed artifact or configuration inventory.",
+          "checker_family": "analysis_adapter",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C3D28E99",
+      "revision": 1,
+      "semantic_sha256": "c3d28e991cb2e04938a94e49b18383aa632558d12befee5def303d623e460531",
+      "statement": "Verify issuer, audience, subject, signature, algorithm, time, nonce, state, and token type.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 254
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Identity, Access, and Privileged Security",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A token-validation negative matrix can assert issuer, audience, subject, signature, algorithm, time, nonce, state, and token-type checks.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every invalid token case for issuer, audience, subject, signature, algorithm, time, nonce, state, and type is rejected.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-182E040C",
+      "revision": 1,
+      "semantic_sha256": "182e040c817d4ef9ca5b162a68dcc53890fb265a9a7107f638b6f0306e69f679",
+      "statement": "Protect break-glass access, test it, alert on use, and require retrospective review.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 259
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Identity, Access, and Privileged Security",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Break-glass policy, exercise, alert, and retrospective-review records form a finite exact control set.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Break-glass access has restricted protection settings and a current successful test.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "Every use emits an alert and links to a completed retrospective review.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-6BFA62B6",
+      "revision": 1,
+      "semantic_sha256": "6bfa62b64a67005d8eaf26793a031cfeac04fa4b2e7d2e7313d63a1493fa1378",
+      "statement": "Log authentication, recovery, privilege, access-policy, impersonation, and sensitive-action events.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 260
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Identity, Access, and Privileged Security",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "The six identity event classes are finite audit coverage categories whose emission can be tested.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authentication, recovery, privilege, access-policy, impersonation, and sensitive-action events produce authenticated audit records.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4CCBD31C",
+      "revision": 1,
+      "semantic_sha256": "4ccbd31c53f1ef393a6e2cb992e7db44e5b9e51c5bb0c350f1eca4e51569364c",
+      "statement": "Detect credential stuffing, brute force, token replay, impossible use, dormant accounts, and anomalous privilege.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 261
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Identity, Access, and Privileged Security",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Active detector inventories and simulation results can verify coverage of the six named identity threats.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Active detections cover stuffing, brute force, replay, impossible use, dormancy, and anomalous privilege.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "Each detector has a current successful trigger test.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9D9A377E",
+      "revision": 1,
+      "semantic_sha256": "9d9a377ef4b2ac25f2681d9c5cfaed6eb53df16841d329b2342d889354455c9b",
+      "statement": "Use independent approval for high-impact access grants and destination changes.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 263
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Identity, Access, and Privileged Security",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "High-impact access and destination changes can require an authenticated approver distinct from the requester and implementer.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every high-impact access grant or destination change has prior independent authenticated approval.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-ABB424A2",
+      "revision": 1,
+      "semantic_sha256": "abb424a205a9c33b4cabab3936c582edbe01acf35cd715eb8d96c14a04811153",
+      "statement": "Assign every secret an owner, purpose, scope, environment, consumer, creation date, rotation policy, and revocation path.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 274
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secrets Management",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The nine secret lifecycle fields are exact required metadata.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every secret records owner, purpose, scope, environment, consumer, creation date, rotation policy, and revocation path.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4FECA33F",
+      "revision": 1,
+      "semantic_sha256": "4feca33f6daa12c3c20b6181d58247cfe41f231969944bc8da44811ca5a946a9",
+      "statement": "Store secrets in an approved system designed for access control, audit, and lifecycle management.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 275
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secrets Management",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Approved secret-system identities and required access, audit, and lifecycle capabilities can be checked from current configuration.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every secret is stored in an approved secret system with active access control, audit, and lifecycle management.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-088D659E",
+      "revision": 1,
+      "semantic_sha256": "088d659e18fd548aef39b7f2ae5fe71e12ff5d65494e8f8bf7908b63a35d006b",
+      "statement": "Authenticate secret consumers and protect delivery in transit and at rest.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 280
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secrets Management",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Consumer authentication and encrypted delivery or storage settings have exact current configuration and transport assertions.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every secret consumer authenticates with an approved identity.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "Secret delivery and storage meet the configured transit and at-rest protection policy.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B886B94F",
+      "revision": 1,
+      "semantic_sha256": "b886b94fef5280e12e30d804f08dcbe5564b312a28b875a0b5fb9688295a6738",
+      "statement": "Monitor retrieval, failure, unusual use, stale versions, expiry, and rotation drift.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 284
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secrets Management",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "The six secret lifecycle signals are finite monitor coverage categories whose enabled state can be queried.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Active secret monitoring covers retrieval, failure, unusual use, stale versions, expiry, and rotation drift.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0726DF71",
+      "revision": 1,
+      "semantic_sha256": "0726df717505e41c062e581ae8e5ebc138f6c2b0e7c73ec984b35565b3b46e57",
+      "statement": "Scan current content and history for accidental disclosure.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 286
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secrets Management",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The requirement is to run scans, so current-content and declared-history scope are exact execution metadata.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Current content and the approved history range have a completed accidental-secret-disclosure scan.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5819670C",
+      "revision": 1,
+      "semantic_sha256": "5819670c84874eb29734546a6dbd83467de5a2b6603290ec0974751f431cbf2c",
+      "statement": "Treat deletion from source as insufficient after exposure; rotate or revoke the secret.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 287
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secrets Management",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Exposure records and lifecycle actions can require rotation or revocation independently of source deletion.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every exposed secret record contains completed rotation or revocation; source deletion alone is not an accepted terminal action.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-797135EE",
+      "revision": 1,
+      "semantic_sha256": "797135eed2188664e3983cfe036b1e926817346033d13d6d116af765308eb0d7",
+      "statement": "Control and review break-glass secrets separately.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 289
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secrets Management",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Break-glass secret classification supports exact separate policy, access, and review requirements.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every break-glass secret uses a separate access policy and has current authenticated review evidence.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B740DAFC",
+      "revision": 1,
+      "semantic_sha256": "b740dafc72cdbe7e25245871ce3cfc94395cedb940e1fd3f15bdf06027e28696",
+      "statement": "Avoid sharing secrets between human and machine use.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 290
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secrets Management",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Secret consumer-type metadata permits exact rejection of a credential shared between human and machine identities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "No secret identifier is assigned to both a human consumer and a machine consumer.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-27196AF2",
+      "revision": 1,
+      "semantic_sha256": "27196af267b87bfa7a82db9f934511e2ab673035603f6f5828e5cec5cf6f47da",
+      "statement": "Exercise compromise scenarios for production credentials and signing keys.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 292
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Secrets Management",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The two credential compromise classes are explicit exercise scenarios with exact response outcomes.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Production credential and signing-key compromise exercises complete their declared detection, containment, revocation, replacement, and recovery steps.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D0B3EF17",
+      "revision": 1,
+      "semantic_sha256": "d0b3ef17351e374038dcf3ee9674fb45baa2162169cbaf60a3c87fa48f2d33cf",
+      "statement": "Require reviewed source and protected pipeline definitions for trusted releases.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 302
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Software Supply-Chain Security",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Trusted release provenance can require reviewed source and integrity-protected pipeline definitions exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every trusted release source revision has authenticated review.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Its pipeline definition is versioned and protected by the approved change policy.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-92BFE01F",
+      "revision": 1,
+      "semantic_sha256": "92bfe01f81ea4119446e5495a329a5a8b0af4ea6f45fc9076c9eefd4f4c9553b",
+      "statement": "Separate untrusted contribution workflows from release secrets and trusted builders.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 303
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Software Supply-Chain Security",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Trust-boundary policies and injected untrusted contribution workflows can prove denial of release secrets and trusted builders.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every untrusted contribution job is denied release secrets and cannot schedule or modify trusted builder execution.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-647E3B49",
+      "revision": 1,
+      "semantic_sha256": "647e3b49d72a63b33748a7793ccf30ea123a3ff25d50e3f45f8954f50ef2df93",
+      "statement": "Pin and verify build inputs sufficiently to prevent unexpected substitution.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 304
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Software Supply-Chain Security",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "artifact_verification",
+      "primary_reason": "Lockfiles, immutable references, signatures, and digests can verify exact build inputs and reject substitution.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every resolved build input matches its pinned immutable identity and integrity digest.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C7DF41EB",
+      "revision": 1,
+      "semantic_sha256": "c7df41eb71eeb34bc39237122370966dad66187bfe8e12a695c2c34f9cabc722",
+      "statement": "Generate immutable artifact digests and provenance tied to exact source and build inputs.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 306
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Software Supply-Chain Security",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "artifact_verification",
+      "primary_reason": "Immutable digests and provenance can bind outputs exactly to source and build inputs.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every artifact has an immutable digest and signed provenance referencing exact source and build-input identities.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-2F8BE0DD",
+      "revision": 1,
+      "semantic_sha256": "2f8be0dd51fb9d4e07fc529bbb6a9c2995a91ffcf6dfcbd6d193eed40f950269",
+      "statement": "Sign or attest release artifacts and verify before promotion and deployment.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 307
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Software Supply-Chain Security",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "artifact_verification",
+      "primary_reason": "Signature or attestation presence and verification events before promotion and deployment have exact times and identities.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every release artifact is signed or attested and successfully verified before promotion and deployment.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C55F21C3",
+      "revision": 1,
+      "semantic_sha256": "c55f21c3c34d683da979738aacbc689c185b40149e9159646468e9ec778225f3",
+      "statement": "Build once and promote the same artifact through environments.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 308
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Software Supply-Chain Security",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "artifact_verification",
+      "primary_reason": "Artifact digests can be compared across build and all promotion environments.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The artifact digest built once is identical in every promoted environment.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CE0ED010",
+      "revision": 1,
+      "semantic_sha256": "ce0ed01077f967e0a6da051cdf31ad620f41d350ca63de4a4cede7aaf836da9a",
+      "statement": "Verify artifact content against declared inputs and detect unexpected files or dependencies.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 310
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Software Supply-Chain Security",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "artifact_verification",
+      "primary_reason": "A reproducible declared-input manifest and final content inventory permit exact unexpected file and dependency comparisons.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Final artifact content matches the declared input manifest and contains no unmatched file or dependency.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-E19478CB",
+      "revision": 1,
+      "semantic_sha256": "e19478cb4547bcdb8462fbc6788c74d66cd678a8adff2748e43462a04caadd27",
+      "statement": "Protect caches from cross-trust poisoning and stale unverified substitution.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 311
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Software Supply-Chain Security",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Cross-trust cache writes, verification state, and stale substitutions have finite policy and poisoning test scenarios.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Cache tests reject cross-trust poisoning and stale unverified substitutions.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-B3EBD693",
+      "revision": 1,
+      "semantic_sha256": "b3ebd693076de2b265c47d97d67d6d953939e23b607e5c5df2a774ee8977ca25",
+      "statement": "Prevent pull-request or untrusted jobs from modifying trusted release state.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 313
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Software Supply-Chain Security",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Untrusted job permissions and trusted release-state mutations can be directly denied in a bounded workflow test.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Pull-request and untrusted jobs cannot modify any object in the trusted release-state inventory.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-7F151E96",
+      "revision": 1,
+      "semantic_sha256": "7f151e964e3f3e578247bde6138eb70dfe0f1d50775cbac16ae40f374d5a2553",
+      "statement": "Monitor dependencies and build components for compromise, vulnerability, and ownership change.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 314
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Software Supply-Chain Security",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Dependency and builder identities can be joined to active compromise, vulnerability, and ownership-change monitors.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every dependency and build component has active monitoring for compromise, vulnerability, and ownership change.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "external_registry"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CB1C22C1",
+      "revision": 1,
+      "semantic_sha256": "cb1c22c11c23d62ab647188dda52b6a31c41e778dddcbb2ad008af6cfe420f2c",
+      "statement": "Retain previous trusted artifacts, provenance, and reproducible rebuild capability.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 315
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Software Supply-Chain Security",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Previous trusted artifacts and provenance are integrity-verifiable, and reproducible rebuild can be executed against retained inputs.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Previous trusted artifacts and provenance remain retrievable and integrity-valid.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        },
+        {
+          "statement": "A rebuild from retained inputs reproduces the recorded digest.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-C42CB7AE",
+      "revision": 1,
+      "semantic_sha256": "c42cb7ae4300bd6074db36c6e607fd9d3670d1f67d7caed667e5ae691d59e078",
+      "statement": "Define revocation, rebuild, resigning, redistributing, and customer-notification procedures.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 316
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Software Supply-Chain Security",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The five supply-chain response actions are exact required procedure sections.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Procedures define revocation, rebuild, resigning, redistribution, and customer notification.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-52B43AE6",
+      "revision": 1,
+      "semantic_sha256": "52b43ae6a6807d61b2c2bd073772a170b83088348fed6e0feebe9fba0aee651c",
+      "statement": "Test supply-chain incident response, including compromised package, runner, registry, and signing key.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 317
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Software Supply-Chain Security",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The four supply-chain compromise types form a finite incident-response exercise matrix.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Compromised package, runner, registry, and signing-key scenarios have current successful response exercises.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-609A80DF",
+      "revision": 1,
+      "semantic_sha256": "609a80df7ec0415913e0168aade08658aa729a442926c011e5d7d21875d3f623",
+      "statement": "Preserve chain-of-custody evidence from source to deployed artifact.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 319
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Software Supply-Chain Security",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "artifact_verification",
+      "primary_reason": "Signed provenance and custody events can form an unbroken integrity-verifiable chain from source to deployment.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every deployed artifact has a complete tamper-evident chain of custody to its reviewed source.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-5F926D02",
+      "revision": 1,
+      "semantic_sha256": "5f926d0284ac8a553d3d2868c2262d9b2ce4de121a01410c24e0f12dccbe3973",
+      "statement": "Map applicable security requirements to test procedures and evidence.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 328
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Security Testing and Assurance",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Applicable requirement identifiers can be joined exactly to test procedures and evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every applicable security requirement links to a test procedure and current evidence.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-CF82BB56",
+      "revision": 1,
+      "semantic_sha256": "cf82bb562383d6c20a5d7c67d400323af590654e64635d4520405a6726d207c0",
+      "statement": "Use complementary source, composition, secret, infrastructure, configuration, artifact, and deployed-behavior analysis.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 329
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Security Testing and Assurance",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The seven complementary analysis classes form an exact required release evidence set.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Security evidence includes source, composition, secret, infrastructure, configuration, artifact, and deployed-behavior analysis.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-FD9D76B6",
+      "revision": 1,
+      "semantic_sha256": "fd9d76b6bc238f610e2a3ccdf78c4dc95da6071c4073d81ab804ecc463e04705",
+      "statement": "Record exact environment, artifact, configuration, accounts, data, methods, limitations, and evidence.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 337
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Security Testing and Assurance",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The nine test-record context elements are exact required fields.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every security test records environment, artifact, configuration, accounts, data, methods, limitations, and evidence.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-0424B2D7",
+      "revision": 1,
+      "semantic_sha256": "0424b2d7ed0ede79521ededa8921c85d25b2a5434495fb0dd384a80f19168310",
+      "statement": "Measure escape and recurrence rather than only scan volume.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 345
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Security Testing and Assurance",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Escaped and recurring finding counts are exact outcome metrics that can be required independently of scan volume.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Security reporting includes escape rate and recurrence rate and does not use scan volume as the sole outcome.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-907F3DE0",
+      "revision": 1,
+      "semantic_sha256": "907f3de0cd39b2219f7d7a1f016905d252500af3fe5763381d135151544205f7",
+      "statement": "Preserve actor, target, tenant, source, time, outcome, reason, correlation, and release context.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 356
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Security Monitoring, Detection, and Response",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The nine security-event context fields are exact schema requirements.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every security event preserves actor, target, tenant, source, time, outcome, reason, correlation, and release context.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-A0B84E24",
+      "revision": 1,
+      "semantic_sha256": "a0b84e247cc173d2c4637cbd76c2b9bc13887a93aa9e51c1ae24cedb7f5cae82",
+      "statement": "Protect telemetry integrity, availability, access, retention, and time synchronization.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 357
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Security Monitoring, Detection, and Response",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Telemetry integrity, availability, access, retention, and time-sync controls have exact current configuration and probe results.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Telemetry storage has active integrity, access, retention, and time-synchronization controls.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "Telemetry pipeline availability checks meet the declared threshold.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-69FBE0AB",
+      "revision": 1,
+      "semantic_sha256": "69fbe0ab2b4b6fb4d45dd9031cab746b0ed4e87738ff47cdf4aca276ea8dde89",
+      "statement": "Define expected false-positive, false-negative, latency, and coverage characteristics.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 360
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Security Monitoring, Detection, and Response",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "False-positive, false-negative, latency, and coverage expectations are exact detection-contract fields.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every detection defines expected false-positive, false-negative, latency, and coverage characteristics.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-9CB52172",
+      "revision": 1,
+      "semantic_sha256": "9cb5217212d26d525906cecc5577e84d9abcbc99af900aaba42f83c47133b583",
+      "statement": "Route alerts to accountable responders with severity, context, and actionable runbooks.",
+      "source": {
+        "path": "docs/engineering/08-security-and-cryptography.md",
+        "line": 362
+      },
+      "heading_trail": [
+        "Security and cryptography",
+        "Security Monitoring, Detection, and Response",
+        "Category-specific universal rules"
+      ],
+      "primary_packet_id": "docs-engineering-08-security-and-cryptography-md-part-001",
+      "primary_route": "external_readonly_query",
+      "primary_reason": "Alert route, responder ownership, severity, context fields, and runbook links are exact current configuration properties.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every alert routes to an accountable responder and includes severity, context, and an actionable runbook reference.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1271 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-checklists-06-data-privacy-performance-md-part-001-part-001",
+  "primary_packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 46,
+  "controls": [
+    {
+      "control_id": "PRC-23-001",
+      "revision": 1,
+      "semantic_sha256": "85e4d065b6efec29a722c5ba981e104322165c45235f6d13ae96602540868d66",
+      "statement": "Every data set has an owner and classification.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 9
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity"
+      ],
+      "primary_packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Given an authoritative inventory, ownership and classification are exact required fields whose presence and allowed values can be checked for every listed data set.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative data-set inventory enumerates every in-scope data set by stable identifier.",
+          "checker_family": "inventory_fact",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Every inventoried data set has a nonempty owner identifier and a classification value allowed by the versioned classification policy.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-23-005",
+      "revision": 1,
+      "semantic_sha256": "a90f6cc9498b6604cfbc95e6f74aab63d28e772bbfb6ceb3f0f914a9f1b14018",
+      "statement": "Referential integrity is enforced or continuously checked.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 13
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity"
+      ],
+      "primary_packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "With a complete relationship inventory and an approved check cadence, each relationship can be matched exactly to a database constraint or authenticated continuous-check evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative relationship inventory enumerates every in-scope referential relationship and its allowed integrity mechanism.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Each inventoried relationship has either a matching enforced constraint or a current integrity-check job meeting the approved cadence.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-23-013",
+      "revision": 1,
+      "semantic_sha256": "e0c8e9b4d2b5a34faf50c8503f40eb357a67a088dfdd73c826f03c3122336a17",
+      "statement": "Poison messages cannot block an entire queue indefinitely.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 21
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity"
+      ],
+      "primary_packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Complete queue configuration plus a bounded poison-message exercise can establish finite retry or isolation behavior without interpreting business quality.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every queue has an authoritative finite retry, quarantine, dead-letter, or discard policy that prevents one message from remaining the active head indefinitely.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "A bounded poison-message exercise shows later eligible messages continue or the poison message is isolated within the approved limit.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-23-025",
+      "revision": 1,
+      "semantic_sha256": "11648ae9b4ff7ca8d08448b6628955ac900452a80676faa20566ec9925405ade",
+      "statement": "Search-index freshness and reconciliation are monitored.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 33
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity"
+      ],
+      "primary_packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "For a complete search-index inventory, freshness and reconciliation monitor bindings, enabled state, and current signal health can be checked exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative search-index inventory lists every in-scope index and its approved freshness and reconciliation signals.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Each inventoried index has active authoritative monitors for both approved signal types with current data.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-23-027",
+      "revision": 1,
+      "semantic_sha256": "fc92575ee07384fc2faa016b028c7e27083c191f22f62bfcdfd0fcf199426410",
+      "statement": "Date and time values use an unambiguous storage representation.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 35
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity"
+      ],
+      "primary_packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "An approved time-storage contract can define unambiguous representations, after which every inventoried date and time field can be compared exactly with that allowlist.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "A versioned time-storage contract defines allowed representations including timezone, precision, and normalization requirements.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Every date or time field in the authoritative schema inventory uses an allowed representation from that contract.",
+          "checker_family": "source_ast",
+          "evidence_authority": "repository"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-23-028",
+      "revision": 1,
+      "semantic_sha256": "c52ffd1e8e854a7ec77204bc1dab5cb8074d9709a196dea92688f1968ec3809d",
+      "statement": "Data quality indicators cover completeness, validity, consistency, timeliness, and duplication.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 36
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity"
+      ],
+      "primary_packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The five named data-quality dimensions are a closed set, so an authoritative indicator registry can be checked for at least one owned indicator mapped to each dimension.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The data-quality indicator registry contains owned indicators mapped to completeness, validity, consistency, timeliness, and duplication.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-23-029",
+      "revision": 1,
+      "semantic_sha256": "b971c3732f88b7e8b63001d233a566a468afbebf2fd92ce1ce6731db859f2855",
+      "statement": "Orphaned data and references are detected.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 37
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity"
+      ],
+      "primary_packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Given a complete relationship inventory, an authenticated orphan-detection query or job and its current result can be verified for every relationship.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every relationship in the authoritative inventory links to an exact orphan-detection query or job definition.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Each linked detector has current authenticated execution evidence and reports its orphan count explicitly.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-23-031",
+      "revision": 1,
+      "semantic_sha256": "06da45aa5e8a37eb3072f0218a09fbb9b46b96ded5ffeec620274126bd54beb4",
+      "statement": "Manual production data changes require authorization and an audit trail.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 39
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity"
+      ],
+      "primary_packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "With a complete production change-event source, each manual data change can be matched exactly to prior authorization and an immutable audit event.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authoritative production audit evidence identifies every manual data-change event by actor, target, and time.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "Every identified event references a valid prior authorization and an immutable audit record of the resulting change.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-23-032",
+      "revision": 1,
+      "semantic_sha256": "77c1797dba0877a5bad0804388f2ae16b68970351c49959aecbbb4b85188bfaa",
+      "statement": "Every migration has a reviewed plan.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 43
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity",
+        "23.1 Schema changes and migrations"
+      ],
+      "primary_packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "A complete migration inventory can be joined exactly to versioned plans and authenticated review decisions for each migration.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every migration in the authoritative migration inventory links to a nonempty plan and a completed review record identifying reviewer and revision.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-23-034",
+      "revision": 1,
+      "semantic_sha256": "10ac628adbaabff08749e78d873244fae6eaabb721e6814f034d9f5380ca82d6",
+      "statement": "Migration duration and resource consumption are measured.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 45
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity",
+        "23.1 Schema changes and migrations"
+      ],
+      "primary_packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Authenticated migration test evidence can report elapsed time and resource metrics as exact measurements without deciding whether the values are acceptable.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The latest representative migration test transcript records elapsed duration and the approved CPU, memory, storage, lock, and I/O resource metrics.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-23-038",
+      "revision": 1,
+      "semantic_sha256": "a471a819385d1011dded1cc88a60bc039bef0687ea4498b5834d8e5c0a1a139f",
+      "statement": "A backup or recovery point exists before destructive changes.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 49
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity",
+        "23.1 Schema changes and migrations"
+      ],
+      "primary_packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Destructive migrations and recovery points have authoritative timestamps, so every destructive change can be checked for a usable preceding backup or recovery-point record.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The migration inventory marks every destructive change and records its execution time.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Each destructive change has authenticated evidence of an approved recovery point created and verified before execution.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-23-040",
+      "revision": 1,
+      "semantic_sha256": "7896748dd5d51c0b9a466f5396b7853ff11c05709c2ac8059efb58b1b6d6b258",
+      "statement": "Migration progress and failures are observable.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 51
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity",
+        "23.1 Schema changes and migrations"
+      ],
+      "primary_packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "For each inventoried migration, required progress and failure signals can be matched to telemetry definitions and verified by a bounded success-and-failure exercise.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every migration defines progress and failure telemetry with stable signal identifiers.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "A bounded exercise produces both the declared progress signal and the declared failure signal in authoritative monitoring evidence.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-23-045",
+      "revision": 1,
+      "semantic_sha256": "73800dbfda2882fc8b9ce9c08092edef3624acdbd0947bf7e3a061018c8ff7de",
+      "statement": "Deprecated columns, data, and indexes are removed only after all consumers have migrated.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 56
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity",
+        "23.1 Schema changes and migrations"
+      ],
+      "primary_packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "With a complete consumer registry and immutable migration events, removal time can be compared exactly with every consumer's recorded migration completion time.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative registry enumerates every consumer of each deprecated column, datum, and index.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "No removal event precedes the authenticated migration-complete event for any registered consumer.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-23-046",
+      "revision": 1,
+      "semantic_sha256": "c3d014421490e144b6f6415e8e3c91901e5239128d497c05bcf2de681c57a193",
+      "statement": "Data migrations are rehearsed using the same automation used for production.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 57
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "23. Data model, databases, queues, caches, and integrity",
+        "23.1 Schema changes and migrations"
+      ],
+      "primary_packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Authenticated rehearsal and production provenance can be compared by immutable automation artifact digest, making use of the same automation objectively decidable.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The rehearsal record identifies the executed migration automation by immutable artifact digest.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        },
+        {
+          "statement": "The production execution record identifies the same immutable artifact digest as the rehearsal record.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-24-002",
+      "revision": 1,
+      "semantic_sha256": "ce90596a5d63a735e6ed6d0313c8454d8fcc20398cbc255f4d68951dd3ce967d",
+      "statement": "Record the source, purpose, lawful basis or authorization, recipients, location, retention, and deletion method for each category.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 66
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "24. Privacy and data protection"
+      ],
+      "primary_packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "For every category in the authoritative privacy inventory, the nine named metadata fields or governed alternatives can be checked for required values and resolvable references.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Each inventoried personal-data category records source, purpose, lawful-basis or authorization reference, recipients, location, retention, and deletion method.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-24-006",
+      "revision": 1,
+      "semantic_sha256": "b6b1da6c96529730d4346e24a0d0f8f2ab2ca7a4b0c5e19694f3f4c60078d3ab",
+      "statement": "New data uses have undergone privacy review.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 70
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "24. Privacy and data protection"
+      ],
+      "primary_packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Once new data uses are authoritatively registered, each can be matched exactly to a completed privacy-review decision for the same revision before activation.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The change registry identifies every newly introduced data use and its activation time.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Each registered use references a completed privacy-review decision for the same revision dated before activation.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-24-017",
+      "revision": 1,
+      "semantic_sha256": "f83cb7d8d8b20e74f2e8d10ad0f87e23bf07ab9aa0edb077afffa35712d104e4",
+      "statement": "Rights-response deadlines are tracked.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 81
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "24. Privacy and data protection"
+      ],
+      "primary_packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Given approved deadline rules and complete request records, due dates, current status, and overdue tracking can be computed exactly for every request.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The approved policy maps each applicable request type and jurisdiction to an exact deadline calculation rule.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Every rights request has authenticated received, due, completed, and status timestamps sufficient to identify overdue work.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-24-018",
+      "revision": 1,
+      "semantic_sha256": "70808493441c48a277324f60fdfc455fe0bbb1a79a2435877f3702f770dd8923",
+      "statement": "Retention periods are explicit.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 82
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "24. Privacy and data protection"
+      ],
+      "primary_packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Retention periods are explicit when each authoritative data category has a machine-readable duration or event-based rule rather than an empty or indefinite placeholder.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every category in the authoritative data inventory has a nonempty, machine-readable retention duration or event-based retention rule.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-24-029",
+      "revision": 1,
+      "semantic_sha256": "0186789c6350137c7f1ff430484d58611f16b63c3381577a0579d6d0f405a659",
+      "statement": "Privacy contacts and escalation paths exist.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 93
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "24. Privacy and data protection"
+      ],
+      "primary_packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The existence of privacy contacts and escalation paths is exactly checkable through resolvable owner identifiers, current contact routes, and a defined escalation sequence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative privacy-contact record names a primary contact, backup or escalation owner, reachable route, and ordered escalation path.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-24-033",
+      "revision": 1,
+      "semantic_sha256": "0bcc908be0a7a7253e9c93a6c18589a5af55f95cd2e17977377ba7ed82cfa6bb",
+      "statement": "Test accounts and deleted users do not remain indefinitely in downstream tools.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 97
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "24. Privacy and data protection"
+      ],
+      "primary_packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "With complete downstream account mappings and an approved finite lifetime, account age and deletion status can be evaluated exactly against the policy.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative downstream inventory maps test accounts and deleted-user identities to every receiving tool.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "No mapped test account or deleted-user record exceeds the approved maximum retention age without an authorized hold.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-25-003",
+      "revision": 1,
+      "semantic_sha256": "b93b7363c883edb5024a82919ee27ffc2def27f614b6321e192bc1451f82be3d",
+      "statement": "Frontend and backend budgets are documented.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 108
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "25. Performance and user experience efficiency"
+      ],
+      "primary_packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Frontend and backend budgets are documented when the authoritative performance policy contains explicit owned threshold records for both applicable layers.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The performance policy contains nonempty frontend and backend budget records with metric, threshold, unit, scope, and owner.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-25-004",
+      "revision": 1,
+      "semantic_sha256": "3d52538edf434086ff89a3b728cc308fd46d872d3f9cf18df72d991ccc159c48",
+      "statement": "Baseline performance is recorded before launch.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 109
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "25. Performance and user experience efficiency"
+      ],
+      "primary_packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "A launch baseline is an exact timestamped record, so its existence and pre-launch ordering can be verified without judging whether the measured value is good.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every launch record references authenticated baseline measurements captured before the launch timestamp for the approved performance metrics.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-25-006",
+      "revision": 1,
+      "semantic_sha256": "ba328e34a3a741ed80986a95c442a9d01fe8780c2162fe17e7d651dc967a3a4f",
+      "statement": "Public pages meet approved loading, interaction, and visual-stability targets.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 111
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "25. Performance and user experience efficiency"
+      ],
+      "primary_packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "A complete public-page inventory, approved numeric targets, and authenticated measurements allow loading, interaction, and visual-stability results to be compared exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every public page in the authoritative inventory has approved numeric loading, interaction, and visual-stability targets.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Current authenticated measurements for every inventoried page satisfy each target using the approved measurement protocol.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-25-007",
+      "revision": 1,
+      "semantic_sha256": "4141620a22ed5d9b3b3d26ff3b0e7266a100551b4666fcbf158dfe3d1648f8ce",
+      "statement": "API latency targets are defined per endpoint or journey.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 112
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "25. Performance and user experience efficiency"
+      ],
+      "primary_packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "For a complete endpoint and journey inventory, the presence of a scoped numeric latency target and percentile can be checked exactly for every entry.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every endpoint or journey in the authoritative performance inventory has a machine-readable latency target with percentile, threshold, unit, and scope.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-25-008",
+      "revision": 1,
+      "semantic_sha256": "99b884076ef6ec3000e9f6f55bfe87665394678dfac76000836760455e703e27",
+      "statement": "Database-query latency and volume are measured.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 113
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "25. Performance and user experience efficiency"
+      ],
+      "primary_packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "For an authoritative database inventory, active query-latency and query-volume measurements can be verified by stable metric identifiers and current telemetry samples.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every production database has declared query-latency and query-volume metric identifiers.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Authoritative monitoring contains current samples for both declared metrics for every database.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-25-010",
+      "revision": 1,
+      "semantic_sha256": "f1a6a9f50bcfe2a6cee2fca916a346134dd5c345422ef4a938f993a49b7efc30",
+      "statement": "Payload sizes are bounded.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 115
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "25. Performance and user experience efficiency"
+      ],
+      "primary_packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Approved payload-size limits can be joined to every inventoried interface and compared with schema limits or bounded maximum-size execution evidence.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every payload-producing interface in the authoritative inventory has an approved numeric size limit.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Schema enforcement or bounded execution evidence proves each inventoried interface rejects or constrains payloads at its approved limit.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-25-016",
+      "revision": 1,
+      "semantic_sha256": "1b0e4b4ea56b084ab6a2fb198d637b8651810927c09d927a63da299cceda31ce",
+      "statement": "Cold-start performance is acceptable.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 121
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "25. Performance and user experience efficiency"
+      ],
+      "primary_packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "With an approved cold-start scenario, numeric acceptance threshold, and authenticated test evidence, cold-start performance is an exact threshold comparison.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The performance policy defines the cold-start state, workload, metric, percentile, and numeric acceptance threshold.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Authenticated execution evidence from that exact protocol meets the approved cold-start threshold.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-25-022",
+      "revision": 1,
+      "semantic_sha256": "9dbf9629df8933a557cb794853664bee673e96029a6ba6dc4e399eba09c040b4",
+      "statement": "Third-party script and service impact is measured.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 127
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "25. Performance and user experience efficiency"
+      ],
+      "primary_packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "For a complete third-party inventory and an approved measurement protocol, enabled-versus-disabled impact measurements can be checked for every service exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every third-party script or service in the authoritative inventory has an approved impact-measurement protocol and metric set.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Authenticated measurement evidence records the impact result for every inventoried third party.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-25-024",
+      "revision": 1,
+      "semantic_sha256": "37e95f6c6f01dc2828423501c76979da42e2bc05fc67e4717eaf53b8ac73fe15",
+      "statement": "Performance regressions have automated release thresholds.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 129
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "25. Performance and user experience efficiency"
+      ],
+      "primary_packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Release-gate definitions can be inspected for exact numeric performance thresholds and authenticated CI evidence can show the gate blocks a deliberately failing fixture.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authoritative release pipeline defines automated numeric thresholds for every approved regression metric.",
+          "checker_family": "ci_policy",
+          "evidence_authority": "repository"
+        },
+        {
+          "statement": "A bounded gate test proves an over-threshold fixture causes the release gate to fail.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-26-001",
+      "revision": 1,
+      "semantic_sha256": "642505b6148729138d3fee43a7dfbe18c85cea8d3137efb3ec8303ea2b0cdfde",
+      "statement": "Forecast normal, peak, burst, launch, seasonal, and abuse traffic.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 137
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "26. Capacity, scalability, and overload control"
+      ],
+      "primary_packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The six named traffic conditions form a closed documentation requirement, so forecast records can be checked for numeric values, units, horizons, and owners for each condition.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The capacity forecast records normal, peak, burst, launch, seasonal, and abuse traffic with value, unit, time horizon, source, and owner.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-26-002",
+      "revision": 1,
+      "semantic_sha256": "5f42c9ac839c44127975fa0dcf7d9a6c61ff157981bac26a34fefe870d54e2f0",
+      "statement": "Forecast data, file, index, queue, log, and backup growth.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 138
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "26. Capacity, scalability, and overload control"
+      ],
+      "primary_packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The seven named growth dimensions can be checked exactly for nonempty numeric forecasts, units, horizons, assumptions, and owners.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The capacity forecast records data, file, index, queue, log, and backup growth with value, unit, time horizon, assumption, and owner.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-26-005",
+      "revision": 1,
+      "semantic_sha256": "748865a0e7fa8ad6f8fb506ecdcca41f56633311835988d18e5254bf2beb331e",
+      "statement": "Load tests include authentication and authorization overhead.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 141
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "26. Capacity, scalability, and overload control"
+      ],
+      "primary_packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "Authentication and authorization overhead is included when the versioned load-test scenario executes real approved identity and permission paths and records their enabled state.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The authenticated load-test transcript shows the approved authentication and authorization paths enabled for every scenario that requires them.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-26-006",
+      "revision": 1,
+      "semantic_sha256": "4fe1b2dacf83c6d5dfcd250f0aa046308ea7fad1c3bc0873df5b2b8e72eb9f18",
+      "statement": "Load tests include external dependency behavior.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 142
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "26. Capacity, scalability, and overload control"
+      ],
+      "primary_packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "External dependency behavior is included when every dependency in the scenario contract has a versioned real or simulated behavior profile referenced by the executed load test.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The load-test transcript references an exact behavior profile for every external dependency listed in the approved scenario contract.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-26-007",
+      "revision": 1,
+      "semantic_sha256": "bbfb533cdc6c7450ab6ae953258d2b5376ae5abed7bc60ceb0fa0904d966e070",
+      "statement": "Stress testing identifies how the system fails beyond capacity.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 143
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "26. Capacity, scalability, and overload control"
+      ],
+      "primary_packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+      "primary_route": "bounded_execution",
+      "primary_reason": "A versioned stress test can objectively show operation beyond the approved capacity boundary and record the resulting failure mode and first breached invariant.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Authenticated stress-test evidence exceeds the approved capacity boundary and records throughput, saturation point, failure mode, and first breached safety or service threshold.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-26-010",
+      "revision": 1,
+      "semantic_sha256": "278c09f4393c2c1be7bd01272a4c5b70195153c62b9b5da283424485be436350",
+      "statement": "Capacity testing includes the largest expected tenant or customer.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 146
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "26. Capacity, scalability, and overload control"
+      ],
+      "primary_packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "An authoritative largest-tenant forecast and the executed test fixture can be compared by exact size and shape fields to prove the scenario was included.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The approved capacity forecast identifies the largest expected tenant or customer profile with machine-readable size dimensions.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Authenticated capacity-test evidence uses a fixture meeting or exceeding every declared profile dimension.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-26-011",
+      "revision": 1,
+      "semantic_sha256": "3bd2a4e74544dfccc3b863b550b592f197a3bfed9b5a1a1edff5ac083ddff248",
+      "statement": "Provider quotas and account limits have been reviewed.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 147
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "26. Capacity, scalability, and overload control"
+      ],
+      "primary_packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "For a complete provider-resource inventory, current quota values and account limits can be joined exactly to dated review records and resolvable owners.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every provider resource in the authoritative inventory records its quota and account-limit identifiers.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Current authoritative quota values exist and each resource links to a completed, dated review record.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "external_registry"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-26-012",
+      "revision": 1,
+      "semantic_sha256": "fad3657b35d359cb663b6401427670ee697b11b2d9a9ed3873330c55b67d2762",
+      "statement": "Database connections, locks, storage, replicas, and I/O have sufficient headroom.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 148
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "26. Capacity, scalability, and overload control"
+      ],
+      "primary_packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Approved numeric headroom policies and current authoritative utilization metrics make headroom for each named database resource an exact calculation.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The database capacity policy defines numeric required headroom for connections, locks, storage, replicas, and I/O.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Current authenticated capacity evidence shows each required database resource meets its approved headroom threshold.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-26-013",
+      "revision": 1,
+      "semantic_sha256": "252794821d9f8b455524c3c6350c19e5daf68d11b5c817ff84e3a126fbcac57a",
+      "statement": "Queue, cache, load-balancer, network, and worker capacity have sufficient headroom.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 149
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "26. Capacity, scalability, and overload control"
+      ],
+      "primary_packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Approved numeric headroom policies and current metrics make sufficiency for queue, cache, load-balancer, network, and worker capacity exactly decidable.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The platform capacity policy defines numeric required headroom for queues, caches, load balancers, networks, and workers.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Current authenticated capacity evidence shows each required platform resource meets its approved headroom threshold.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-26-014",
+      "revision": 1,
+      "semantic_sha256": "319a3983f5a71e06d3c198dade77cbcf8b5a331a28a7000e6a30593d61d2ebe7",
+      "statement": "Autoscaling minimums, maximums, triggers, cooldowns, and scale-down behavior are validated.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 150
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "26. Capacity, scalability, and overload control"
+      ],
+      "primary_packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Autoscaling configuration fields can be extracted and a bounded scale-up and scale-down protocol can validate the declared triggers, cooldowns, limits, and behavior.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every autoscaler has explicit minimum, maximum, trigger, cooldown, and scale-down settings in authoritative configuration.",
+          "checker_family": "container_iac",
+          "evidence_authority": "repository"
+        },
+        {
+          "statement": "Authenticated bounded tests confirm scale-up and scale-down occur at the declared triggers without exceeding configured limits or cooldown rules.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-26-015",
+      "revision": 1,
+      "semantic_sha256": "8ed9379f1005be550dae5e596272b598491306bad557b9738b6acb0c4d285669",
+      "statement": "Scaling does not overload a database or dependency.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 151
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "26. Capacity, scalability, and overload control"
+      ],
+      "primary_packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "Within an approved scaling envelope, complete dependency limits plus an authenticated scale test allow peak observed load to be compared exactly against every limit.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The scaling contract records the approved scaling envelope and numeric overload limits for every database and dependency it can pressure.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Authenticated scale-test evidence covers the envelope and remains within every declared database and dependency limit.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-26-016",
+      "revision": 1,
+      "semantic_sha256": "d6deaa269d5621b0e8502e45fea4802a6dfb43a4767725c93e7ae21096ed1861",
+      "statement": "Capacity remains sufficient during a zone, node, or region failure according to the design.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 152
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "26. Capacity, scalability, and overload control"
+      ],
+      "primary_packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The design supplies the failure scenario and required capacity thresholds, so authenticated zone, node, or region failure evidence can be compared to them exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The approved resilience design defines applicable zone, node, or region loss scenarios and numeric capacity requirements for each.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Authenticated failure-test or environment evidence shows remaining capacity satisfies every declared scenario requirement.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-26-020",
+      "revision": 1,
+      "semantic_sha256": "96fa6e752a40a337509fce591eee6aebd5bd45866858fa894bfe48004def3039",
+      "statement": "Queues are bounded or have explicit overload behavior.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 156
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "26. Capacity, scalability, and overload control"
+      ],
+      "primary_packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "For a complete queue inventory, each queue can be checked for a numeric bound or an explicit machine-readable overload action and exercised at that boundary.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every queue in the authoritative inventory has either a numeric capacity bound or an explicit overload behavior.",
+          "checker_family": "environment_evidence",
+          "evidence_authority": "environment"
+        },
+        {
+          "statement": "A bounded execution test confirms the declared overload behavior activates at the configured boundary.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-26-024",
+      "revision": 1,
+      "semantic_sha256": "619784c2b92ebe9a97a41d2044b6ff4044058bc7f517b34c9cae4ecf679681f9",
+      "statement": "DDoS scenarios and provider protections have been reviewed.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 160
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "26. Capacity, scalability, and overload control"
+      ],
+      "primary_packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "For an authoritative edge and provider inventory, DDoS scenario records and completed protection-review decisions can be matched exactly to each exposed surface.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every exposed service in the authoritative edge inventory links to at least one versioned DDoS scenario and its provider-protection configuration.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Each linked scenario and protection configuration has a completed, dated review record with a resolvable owner.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-26-026",
+      "revision": 1,
+      "semantic_sha256": "d2a4d8ff8a78322d1195f727475cd0c942acbec6f8c3875d27c921a98722c694",
+      "statement": "The cost of expected and peak operation has been modeled.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 162
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "26. Capacity, scalability, and overload control"
+      ],
+      "primary_packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Expected and peak operating cost models are exact required records whose inputs, horizon, currency, outputs, owner, and revision can be validated.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The capacity cost model records expected and peak scenarios with input assumptions, time horizon, currency, computed cost, owner, and review date.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-26-027",
+      "revision": 1,
+      "semantic_sha256": "3a2ddaa97cf96eed81e51dd27f623e6a9e3698f0c45067602dfb79957dc3c73c",
+      "statement": "Cost limits do not silently terminate essential operation.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 163
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "26. Capacity, scalability, and overload control"
+      ],
+      "primary_packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "For every essential operation declared by policy, cost-enforcement configuration and a bounded over-limit test can prove the operation is not silently terminated.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "The approved service policy identifies every essential operation and its permitted behavior when cost limits are reached.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "A bounded over-limit test confirms each essential operation follows its declared behavior and emits a visible signal rather than silently terminating.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "PRC-26-028",
+      "revision": 1,
+      "semantic_sha256": "0f2f6e70b44b24af85f3369507d8cb84a37626646c4e2b87e6cbc49f02393998",
+      "statement": "Capacity assumptions have owners and review dates.",
+      "source": {
+        "path": "docs/checklists/06-data-privacy-performance.md",
+        "line": 164
+      },
+      "heading_trail": [
+        "Data, privacy, and performance",
+        "26. Capacity, scalability, and overload control"
+      ],
+      "primary_packet_id": "docs-checklists-06-data-privacy-performance-md-part-001",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "Owner identifiers and review dates are exact fields, so every capacity assumption in an authoritative registry can be checked for both values and date validity.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Every capacity assumption has a resolvable owner and a valid next-review date in the authoritative capacity registry.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    }
+  ]
+}

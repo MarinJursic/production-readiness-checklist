@@ -1,0 +1,621 @@
+{
+  "schema_version": "prc.control-classification-packet/v0.1",
+  "packet_id": "docs-checklists-01-release-foundations-md-part-001",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "source_path": "docs/checklists/01-release-foundations.md",
+  "control_count": 42,
+  "controls": [
+    {
+      "control_id": "PRC-02-001",
+      "revision": 1,
+      "semantic_sha256": "d3b0f7fb8a1d48627fdff3f0df5e5ed2384bf19243356c4768e6c67be2b018f1",
+      "statement": "A critical user journey has not been tested successfully end to end.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 36
+      },
+      "heading_trail": [
+        "Release foundations",
+        "2. Immediate no-go conditions"
+      ]
+    },
+    {
+      "control_id": "PRC-02-002",
+      "revision": 1,
+      "semantic_sha256": "22bb6868fefd1f2e573485cf86a49e27b906464b1a792d33f120fdb1008de8f7",
+      "statement": "Authentication, authorization, administrative access, or tenant isolation has not been independently verified.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 37
+      },
+      "heading_trail": [
+        "Release foundations",
+        "2. Immediate no-go conditions"
+      ]
+    },
+    {
+      "control_id": "PRC-02-003",
+      "revision": 1,
+      "semantic_sha256": "ccde215edd97a4dd2546df672c2bf0f7b0e6a94dc699a5db4563aa7942e48c01",
+      "statement": "A known critical vulnerability or relevant known-exploited vulnerability remains unmitigated.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 38
+      },
+      "heading_trail": [
+        "Release foundations",
+        "2. Immediate no-go conditions"
+      ]
+    },
+    {
+      "control_id": "PRC-02-004",
+      "revision": 1,
+      "semantic_sha256": "9e10216018dfa4dd7f1639c5279b18aa8d2e115f858f81515a3c347fe33e8ef4",
+      "statement": "Production secrets, signing keys, credentials, tokens, or personal data have been exposed.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 39
+      },
+      "heading_trail": [
+        "Release foundations",
+        "2. Immediate no-go conditions"
+      ]
+    },
+    {
+      "control_id": "PRC-02-005",
+      "revision": 1,
+      "semantic_sha256": "35b442877a347a32215a3ef60d83f757686d59990db731b6cf3205bbb46d4c3a",
+      "statement": "A destructive or irreversible data migration has not been rehearsed against representative data.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 40
+      },
+      "heading_trail": [
+        "Release foundations",
+        "2. Immediate no-go conditions"
+      ]
+    },
+    {
+      "control_id": "PRC-02-006",
+      "revision": 1,
+      "semantic_sha256": "5bf58c4057cf1009c9079f7038690c19ed472bc5cb8daf75a2c5279e9d6a745c",
+      "statement": "Backup restoration has not been demonstrated within the required recovery objectives.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 41
+      },
+      "heading_trail": [
+        "Release foundations",
+        "2. Immediate no-go conditions"
+      ]
+    },
+    {
+      "control_id": "PRC-02-007",
+      "revision": 1,
+      "semantic_sha256": "abe4c9d235f232bb1b9c3a29a904067228c65770f9afe073301992ccd6daa58f",
+      "statement": "Rollback or safe roll-forward has not been demonstrated.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 42
+      },
+      "heading_trail": [
+        "Release foundations",
+        "2. Immediate no-go conditions"
+      ]
+    },
+    {
+      "control_id": "PRC-02-008",
+      "revision": 1,
+      "semantic_sha256": "ef17209444fe1a9d8d6a0a7b0b58c2de9d62910979d17c0ef16a35dcf8fad19a",
+      "statement": "Expected peak load, burst load, or dependency-failure behavior is unknown.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 43
+      },
+      "heading_trail": [
+        "Release foundations",
+        "2. Immediate no-go conditions"
+      ]
+    },
+    {
+      "control_id": "PRC-02-009",
+      "revision": 1,
+      "semantic_sha256": "89a6a2527c4c8a8244d67549493a89f43f50409b6aec19a7dd715581b093b14b",
+      "statement": "The release cannot meet its approved reliability objectives under expected operating conditions.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 44
+      },
+      "heading_trail": [
+        "Release foundations",
+        "2. Immediate no-go conditions"
+      ]
+    },
+    {
+      "control_id": "PRC-02-010",
+      "revision": 1,
+      "semantic_sha256": "c9a3ecf5577f37210203caf4030319ae9d521850cee56dd88682c7a206e0d7cc",
+      "statement": "Monitoring cannot detect failure of critical user journeys.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 45
+      },
+      "heading_trail": [
+        "Release foundations",
+        "2. Immediate no-go conditions"
+      ]
+    },
+    {
+      "control_id": "PRC-02-011",
+      "revision": 1,
+      "semantic_sha256": "2dd3e36f5a0acb204769ba3ccea571c9e62649f1f1d12b97aa9a5f31c757eb30",
+      "statement": "No qualified person is available and authorized to respond during and immediately after launch.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 46
+      },
+      "heading_trail": [
+        "Release foundations",
+        "2. Immediate no-go conditions"
+      ]
+    },
+    {
+      "control_id": "PRC-02-012",
+      "revision": 1,
+      "semantic_sha256": "93e06571b78b9a7b7034dfeb2a17e5fb42fdc674f305accef875bfc3e224e094",
+      "statement": "Required incident-response, escalation, customer-communication, or breach-notification procedures do not exist.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 47
+      },
+      "heading_trail": [
+        "Release foundations",
+        "2. Immediate no-go conditions"
+      ]
+    },
+    {
+      "control_id": "PRC-02-013",
+      "revision": 1,
+      "semantic_sha256": "6866b14d2500169b35227b29e8c57c8a875fc2ac43a7f088c1a2fc30b4b6ceae",
+      "statement": "A mandatory legal, privacy, payment, accessibility, safety, or contractual requirement is unmet.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 48
+      },
+      "heading_trail": [
+        "Release foundations",
+        "2. Immediate no-go conditions"
+      ]
+    },
+    {
+      "control_id": "PRC-02-014",
+      "revision": 1,
+      "semantic_sha256": "79bcc6c2cda6b9d2a6a1b96915a72d5dddddc0c736f3ed532cb5683979261b9e",
+      "statement": "The production artifact cannot be traced to reviewed source, dependencies, build process, tests, and approval.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 49
+      },
+      "heading_trail": [
+        "Release foundations",
+        "2. Immediate no-go conditions"
+      ]
+    },
+    {
+      "control_id": "PRC-02-015",
+      "revision": 1,
+      "semantic_sha256": "b8449461c9dd7ba99c5945d2e8076b79a85f475d8ead592cc46cb7d78f63019f",
+      "statement": "An unsupported or end-of-life runtime, operating system, database, library, service, or protocol is required for operation.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 50
+      },
+      "heading_trail": [
+        "Release foundations",
+        "2. Immediate no-go conditions"
+      ]
+    },
+    {
+      "control_id": "PRC-02-016",
+      "revision": 1,
+      "semantic_sha256": "52abf98a61a2874f165cbbb090bf2d3cb8337eede95f672ce9f8dd3da41aee18",
+      "statement": "Known data corruption, cross-user disclosure, cross-tenant access, duplicate charging, or irreversible financial risk remains possible without a tested control.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 51
+      },
+      "heading_trail": [
+        "Release foundations",
+        "2. Immediate no-go conditions"
+      ]
+    },
+    {
+      "control_id": "PRC-02-017",
+      "revision": 1,
+      "semantic_sha256": "94c7138ed3d3628e6172f1f1d8c8de09d848cedaab47080035a9af48c0a8cb69",
+      "statement": "A single person, credential, machine, region, provider, or undocumented manual procedure is the only recovery path.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 52
+      },
+      "heading_trail": [
+        "Release foundations",
+        "2. Immediate no-go conditions"
+      ]
+    },
+    {
+      "control_id": "PRC-02-018",
+      "revision": 1,
+      "semantic_sha256": "e618f5c6675e4e6da639c29a8bf4ef4d95ce04de4d71f95fe92313db6a7b0c7a",
+      "statement": "Evidence was collected before material changes that have not been retested.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 53
+      },
+      "heading_trail": [
+        "Release foundations",
+        "2. Immediate no-go conditions"
+      ]
+    },
+    {
+      "control_id": "PRC-02-019",
+      "revision": 1,
+      "semantic_sha256": "460216a47302889d6976c45abb94114c47e5010bd53af34e6c7cf2c719d8fa30",
+      "statement": "A release blocker has been relabeled, suppressed, or accepted without an accountable risk owner.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 54
+      },
+      "heading_trail": [
+        "Release foundations",
+        "2. Immediate no-go conditions"
+      ]
+    },
+    {
+      "control_id": "PRC-02-020",
+      "revision": 1,
+      "semantic_sha256": "8e4a9ce36f65686e95008ead10a3c56c2e620a923c0a88b389192d43496b1c01",
+      "statement": "The team cannot describe concrete stop, rollback, and incident-declaration criteria before deployment begins.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 55
+      },
+      "heading_trail": [
+        "Release foundations",
+        "2. Immediate no-go conditions"
+      ]
+    },
+    {
+      "control_id": "PRC-03-001",
+      "revision": 1,
+      "semantic_sha256": "9848e03085419a63bc9c152d6f7c383b0e55eda3c80ac75e7ff3ee938bdac9e2",
+      "statement": "Assign a unique release identifier.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 65
+      },
+      "heading_trail": [
+        "Release foundations",
+        "3. Release control record",
+        "3.1 Release identity"
+      ]
+    },
+    {
+      "control_id": "PRC-03-002",
+      "revision": 1,
+      "semantic_sha256": "022dcf91273cf66582c1076073161c432db0bfaac1d5228b987c9f7e7c58540b",
+      "statement": "Record the exact source commit or commits.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 66
+      },
+      "heading_trail": [
+        "Release foundations",
+        "3. Release control record",
+        "3.1 Release identity"
+      ]
+    },
+    {
+      "control_id": "PRC-03-003",
+      "revision": 1,
+      "semantic_sha256": "98f645cde26dcabb895d1b912db2653f6134b90e7e9bbf17f82b93f30077e3bf",
+      "statement": "Record the immutable application artifact digest.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 67
+      },
+      "heading_trail": [
+        "Release foundations",
+        "3. Release control record",
+        "3.1 Release identity"
+      ]
+    },
+    {
+      "control_id": "PRC-03-004",
+      "revision": 1,
+      "semantic_sha256": "1f28969256faa65795e14da2dd09e11f320be86050e2262241b3d83ed8014312",
+      "statement": "Record every deployable service, worker, scheduled job, frontend bundle, and infrastructure component included.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 68
+      },
+      "heading_trail": [
+        "Release foundations",
+        "3. Release control record",
+        "3.1 Release identity"
+      ]
+    },
+    {
+      "control_id": "PRC-03-005",
+      "revision": 1,
+      "semantic_sha256": "3f511ed524007d5bfaf5c5a406e638f737486c6573639e80ec80c05b62928918",
+      "statement": "Record database schema and migration versions.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 69
+      },
+      "heading_trail": [
+        "Release foundations",
+        "3. Release control record",
+        "3.1 Release identity"
+      ]
+    },
+    {
+      "control_id": "PRC-03-006",
+      "revision": 1,
+      "semantic_sha256": "b70a35534242fb71066002ae8e651ab06d2e4be1d3c31af52c6fe502e2addc6d",
+      "statement": "Record production configuration versions.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 70
+      },
+      "heading_trail": [
+        "Release foundations",
+        "3. Release control record",
+        "3.1 Release identity"
+      ]
+    },
+    {
+      "control_id": "PRC-03-007",
+      "revision": 1,
+      "semantic_sha256": "9167eda2d48c52edec2b086f49f86023e27feeb7a45260c6bb11f29f865a8fec",
+      "statement": "Record feature flags and their intended launch states.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 71
+      },
+      "heading_trail": [
+        "Release foundations",
+        "3. Release control record",
+        "3.1 Release identity"
+      ]
+    },
+    {
+      "control_id": "PRC-03-008",
+      "revision": 1,
+      "semantic_sha256": "4929e4cf79af045db0f1ee58a0860835987976aefce997ce32f6e0ed6ad85e66",
+      "statement": "Record third-party service and API versions relied upon.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 72
+      },
+      "heading_trail": [
+        "Release foundations",
+        "3. Release control record",
+        "3.1 Release identity"
+      ]
+    },
+    {
+      "control_id": "PRC-03-009",
+      "revision": 1,
+      "semantic_sha256": "c03a7063bb480fac3be3c8397e880247343b0a8e3de2e6be9d41b56b317eaa76",
+      "statement": "Record the intended production regions, accounts, projects, clusters, and domains.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 73
+      },
+      "heading_trail": [
+        "Release foundations",
+        "3. Release control record",
+        "3.1 Release identity"
+      ]
+    },
+    {
+      "control_id": "PRC-03-010",
+      "revision": 1,
+      "semantic_sha256": "e28cf718150de651b7bf516bd0fede4aa729469ab32a5aaf66f844cb5f3664d4",
+      "statement": "Record the target deployment date and change window.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 74
+      },
+      "heading_trail": [
+        "Release foundations",
+        "3. Release control record",
+        "3.1 Release identity"
+      ]
+    },
+    {
+      "control_id": "PRC-03-011",
+      "revision": 1,
+      "semantic_sha256": "6dce0dde8784cde46f79f109d806e421c939767d167b07853d6e702eb4b59c00",
+      "statement": "Record the previous known-good release and rollback artifact.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 75
+      },
+      "heading_trail": [
+        "Release foundations",
+        "3. Release control record",
+        "3.1 Release identity"
+      ]
+    },
+    {
+      "control_id": "PRC-03-012",
+      "revision": 1,
+      "semantic_sha256": "c1fd5005fd86b2ca5761732c1c799862176a760681dff4c80415e36f90c1fb66",
+      "statement": "Freeze or formally track changes after the readiness evidence snapshot.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 76
+      },
+      "heading_trail": [
+        "Release foundations",
+        "3. Release control record",
+        "3.1 Release identity"
+      ]
+    },
+    {
+      "control_id": "PRC-03-013",
+      "revision": 1,
+      "semantic_sha256": "938a740aa45041fbd0fc82ab0fed719361c2514869ae222645341226df429ac4",
+      "statement": "List every user-facing domain and subdomain.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 80
+      },
+      "heading_trail": [
+        "Release foundations",
+        "3. Release control record",
+        "3.2 Scope"
+      ]
+    },
+    {
+      "control_id": "PRC-03-014",
+      "revision": 1,
+      "semantic_sha256": "cd12f369e8d482d4107f38a3875357b82e90e4e678511e692967f8c100f2fc78",
+      "statement": "List every API, webhook, callback, streaming connection, and machine interface.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 81
+      },
+      "heading_trail": [
+        "Release foundations",
+        "3. Release control record",
+        "3.2 Scope"
+      ]
+    },
+    {
+      "control_id": "PRC-03-015",
+      "revision": 1,
+      "semantic_sha256": "d91947b1a357bc137584d110def967569c1624bc8bc2109ea3faec009b6faf92",
+      "statement": "List background workers, queues, scheduled tasks, batch processes, and administrative tools.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 82
+      },
+      "heading_trail": [
+        "Release foundations",
+        "3. Release control record",
+        "3.2 Scope"
+      ]
+    },
+    {
+      "control_id": "PRC-03-016",
+      "revision": 1,
+      "semantic_sha256": "812daed2999cae7952c54a1dbb96267d1e569ccefd7499f8fc6d04274a5a9e9a",
+      "statement": "List databases, object stores, search indexes, caches, message brokers, analytics stores, and backup locations.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 83
+      },
+      "heading_trail": [
+        "Release foundations",
+        "3. Release control record",
+        "3.2 Scope"
+      ]
+    },
+    {
+      "control_id": "PRC-03-017",
+      "revision": 1,
+      "semantic_sha256": "f56048ec6a38038df0231a9b22be6c7f933a14d5038e714da766b4759df75a65",
+      "statement": "List external identity, payment, email, SMS, analytics, advertising, support, logging, CDN, and infrastructure providers.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 84
+      },
+      "heading_trail": [
+        "Release foundations",
+        "3. Release control record",
+        "3.2 Scope"
+      ]
+    },
+    {
+      "control_id": "PRC-03-018",
+      "revision": 1,
+      "semantic_sha256": "866ac7873046c4535223137b88a69bfd2eee0d1f2e524486083fd48ef6f9f60e",
+      "statement": "List all user types, administrative roles, service accounts, and external actors.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 85
+      },
+      "heading_trail": [
+        "Release foundations",
+        "3. Release control record",
+        "3.2 Scope"
+      ]
+    },
+    {
+      "control_id": "PRC-03-019",
+      "revision": 1,
+      "semantic_sha256": "92b1d066541c6b24ba4910cb98afe564c8d5d06abdbf5444301895eea8889191",
+      "statement": "List supported countries, languages, currencies, time zones, browsers, devices, and accessibility targets.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 86
+      },
+      "heading_trail": [
+        "Release foundations",
+        "3. Release control record",
+        "3.2 Scope"
+      ]
+    },
+    {
+      "control_id": "PRC-03-020",
+      "revision": 1,
+      "semantic_sha256": "ee262e47b1b075f358fb5ba38e2b37752ec7621159ee241691549d202081e37e",
+      "statement": "List all data classifications and regulated data handled.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 87
+      },
+      "heading_trail": [
+        "Release foundations",
+        "3. Release control record",
+        "3.2 Scope"
+      ]
+    },
+    {
+      "control_id": "PRC-03-021",
+      "revision": 1,
+      "semantic_sha256": "b638e05b481799cab738e745e9ca1bdfa0f2b523d4253a1fa69e75d9cf4639d2",
+      "statement": "List all excluded components and explain why they are outside the release assessment.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 88
+      },
+      "heading_trail": [
+        "Release foundations",
+        "3. Release control record",
+        "3.2 Scope"
+      ]
+    },
+    {
+      "control_id": "PRC-03-022",
+      "revision": 1,
+      "semantic_sha256": "e2cfff75aa9b67166d4b496758278315ee03c0aee376e5b78c45e6b52f742d08",
+      "statement": "Identify every shared platform or dependency that can affect the app even though another team operates it.",
+      "source": {
+        "path": "docs/checklists/01-release-foundations.md",
+        "line": 89
+      },
+      "heading_trail": [
+        "Release foundations",
+        "3. Release control record",
+        "3.2 Scope"
+      ]
+    }
+  ]
+}

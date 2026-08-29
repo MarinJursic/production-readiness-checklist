@@ -1,0 +1,166 @@
+{
+  "schema_version": "prc.control-classification-skeptic-packet/v0.1",
+  "packet_id": "skeptic-docs-engineering-16-specialized-domains-and-release-assurance-md-part-002-part-002",
+  "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+  "methodology_sha256": "a98007a2924a71405acd5d084577c9675a293d8eec43b9e06a37b743e3bec433",
+  "registry_version": "0.1.0",
+  "registry_sha256": "7448c14fd9e3c3ce7a1fa9ea28a2ce98f8d0a1a3fe55239ba1d4715c4870bc9b",
+  "control_count": 6,
+  "controls": [
+    {
+      "control_id": "USEQ-EB08BD56",
+      "revision": 1,
+      "semantic_sha256": "eb08bd565ece70d017b8271f1fec56a04c8bb29479bf75427c0cd2b843a231b2",
+      "statement": "Apply independent authorization and business rules after credential verification.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 693
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Presentation, verification, and relying-party decisions"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "deterministic_composite",
+      "primary_reason": "The control “Apply independent authorization and business rules after credential verification.” joins bounded release, approval, configuration, research, issuance, credential, or authorization records with immutable artifact evidence that can be reconciled exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, approval, research, issuance, or credential record contains every explicitly required state, signer, scope, owner, and evidence reference.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        },
+        {
+          "statement": "Compare immutable source, artifact, configuration, evidence-package, key-domain, or credential identities and fail closed on missing or mismatched bindings.",
+          "checker_family": "artifact_integrity",
+          "evidence_authority": "artifact"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-930768B8",
+      "revision": 1,
+      "semantic_sha256": "930768b8924efa4fefb2f321761bb0c650ee2f3b60bb733ec1c7a5a2aa9e0760",
+      "statement": "Test expired, revoked, suspended, unknown, conflicting, offline, and compromised-issuer scenarios.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 698
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Presentation, verification, and relying-party decisions"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Test expired, revoked, suspended, unknown, conflicting, offline, and compromised-issuer scenarios.” requires a finite interface, install, game-state, rollout, recovery, reconstruction, credential, replay, signing, or cryptographic test whose declared result can be observed exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Run the registered bounded protocol and verify authenticated evidence records the exact inputs, versions, identities, expected transitions, negative cases, outputs, and successful result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-D2D9767A",
+      "revision": 1,
+      "semantic_sha256": "d2d9767a664f79132aea8b7f1b289893c66e64bf2d4666eea56f12dbb81327f8",
+      "statement": "Prevent substitution of content between review and signing.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 705
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Electronic signatures, seals, timestamps, and trust services"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Prevent substitution of content between review and signing.” requires a finite interface, install, game-state, rollout, recovery, reconstruction, credential, replay, signing, or cryptographic test whose declared result can be observed exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Run the registered bounded protocol and verify authenticated evidence records the exact inputs, versions, identities, expected transitions, negative cases, outputs, and successful result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3F86DFBF",
+      "revision": 1,
+      "semantic_sha256": "3f86dfbf646e046c7f9c93e9fd8f7ebd3575358cf93407375cc1e94919959d7d",
+      "statement": "Bind the signature to the complete intended content and relevant context.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 706
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Electronic signatures, seals, timestamps, and trust services"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "bounded_execution",
+      "primary_reason": "The control “Bind the signature to the complete intended content and relevant context.” requires a finite interface, install, game-state, rollout, recovery, reconstruction, credential, replay, signing, or cryptographic test whose declared result can be observed exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Run the registered bounded protocol and verify authenticated evidence records the exact inputs, versions, identities, expected transitions, negative cases, outputs, and successful result.",
+          "checker_family": "execution_evidence",
+          "evidence_authority": "executed"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-3EB6D593",
+      "revision": 1,
+      "semantic_sha256": "3eb6d593c461d00ddd01fde8b753463756d55ddd603bf588cb2d9d8c281549af",
+      "statement": "Distinguish human signatures from organizational seals and automated service signatures.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 708
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Electronic signatures, seals, timestamps, and trust services"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Distinguish human signatures from organizational seals and automated service signatures.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    },
+    {
+      "control_id": "USEQ-4CD7BD25",
+      "revision": 1,
+      "semantic_sha256": "4cd7bd257dc9a747a9580fa75c0c454671c233e52f056cd2da6b3e8bba6c9d49",
+      "statement": "Define procedures for disputed signatures, compromised keys, corrected documents, and superseded agreements.",
+      "source": {
+        "path": "docs/engineering/16-specialized-domains-and-release-assurance.md",
+        "line": 714
+      },
+      "heading_trail": [
+        "Specialized domains and release assurance",
+        "Final Gap Closure — Scientific Reproducibility, Digital Credentials, Signatures, and Trust Services",
+        "Electronic signatures, seals, timestamps, and trust services"
+      ],
+      "primary_packet_id": "docs-engineering-16-specialized-domains-and-release-assurance-md-part-002",
+      "primary_route": "structured_record_validation",
+      "primary_reason": "The control “Define procedures for disputed signatures, compromised keys, corrected documents, and superseded agreements.” defines explicit support, release, sign-off, research, provenance, credential, participant, procedure, lifecycle, or evidence fields that an authorized structured record can decide exactly.",
+      "primary_deterministic_clauses": [
+        {
+          "statement": "Validate the authorized release, research, credential, sign-off, lifecycle, or support record contains every named field, role, state, version, decision, procedure, responsibility, or evidence link.",
+          "checker_family": "structured_record",
+          "evidence_authority": "structured_record"
+        }
+      ]
+    }
+  ]
+}
