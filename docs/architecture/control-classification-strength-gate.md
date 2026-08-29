@@ -33,7 +33,7 @@ contract, the strength overlay reclassifies the control as nondeterministic.
 ## Rebuild and validation
 
 Run the complete sequence documented in
-[`research/control-classification/README.md`](../../research/control-classification/README.md).
+[`research/control-classification/README.md`](https://github.com/MarinJursic/production-readiness-checklist/blob/main/research/control-classification/README.md).
 `generate-final` validates the strength overlay before writing the final corpus;
 all downstream bindings, contracts, human-readable docs, and program catalogs must
 then be regenerated and checked for staleness.
