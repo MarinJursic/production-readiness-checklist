@@ -56,8 +56,11 @@ class SmokeReleaseTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary:
             root = pathlib.Path(temporary)
             (root / "bin").mkdir()
+            launcher = root / "lib" / "node_modules" / "@marinjursic" / "prc" / "bin" / "prc.js"
+            launcher.parent.mkdir(parents=True)
+            launcher.write_text("#!/usr/bin/env node\n", encoding="utf-8")
             posix = root / "bin" / "prc"
-            posix.write_text("#!/bin/sh\n", encoding="utf-8")
+            posix.symlink_to(pathlib.Path("../lib/node_modules/@marinjursic/prc/bin/prc.js"))
             self.assertEqual(
                 smoke_release.global_prc_command(root, ["version"], windows=False),
                 [str(posix), "version"],
@@ -72,8 +75,29 @@ class SmokeReleaseTests(unittest.TestCase):
 
     def test_global_command_fails_when_npm_did_not_expose_it(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
+            root = pathlib.Path(temporary)
             with self.assertRaisesRegex(RuntimeError, "did not expose"):
-                smoke_release.global_prc_command(pathlib.Path(temporary), [], windows=False)
+                smoke_release.global_prc_command(root, [], windows=False)
+            (root / "bin").mkdir()
+            (root / "bin" / "prc").write_text("#!/bin/sh\n", encoding="utf-8")
+            with self.assertRaisesRegex(RuntimeError, "did not expose"):
+                smoke_release.global_prc_command(root, [], windows=False)
+
+    def test_global_command_rejects_a_symlink_outside_the_install_prefix(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = pathlib.Path(temporary)
+            (root / "bin").mkdir()
+            expected = root / "lib" / "node_modules" / "@marinjursic" / "prc" / "bin" / "prc.js"
+            expected.parent.mkdir(parents=True)
+            expected.write_text("#!/usr/bin/env node\n", encoding="utf-8")
+            outside = root.parent / (root.name + "-outside.js")
+            outside.write_text("#!/usr/bin/env node\n", encoding="utf-8")
+            try:
+                (root / "bin" / "prc").symlink_to(outside)
+                with self.assertRaisesRegex(RuntimeError, "unexpected"):
+                    smoke_release.global_prc_command(root, [], windows=False)
+            finally:
+                outside.unlink(missing_ok=True)
 
     def test_manifest_cannot_authorize_an_oversized_artifact(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:

@@ -138,10 +138,27 @@ def global_prc_command(
 ) -> list[str]:
     """Return the real command npm exposes for one isolated global prefix."""
     shim = prefix / ("prc.cmd" if windows else "bin/prc")
+    if not windows:
+        expected = prefix / "lib" / "node_modules" / "@marinjursic" / "prc" / "bin" / "prc.js"
+        try:
+            link_target = pathlib.Path(os.readlink(shim))
+            resolved_shim = shim.resolve(strict=True)
+            resolved_expected = expected.resolve(strict=True)
+            resolved_prefix = prefix.resolve(strict=True)
+        except (OSError, RuntimeError):
+            raise RuntimeError("global npm install did not expose the prc command") from None
+        if (
+            link_target.is_absolute()
+            or not shim.is_symlink()
+            or expected.is_symlink()
+            or not expected.is_file()
+            or not resolved_expected.is_relative_to(resolved_prefix)
+            or resolved_shim != resolved_expected
+        ):
+            raise RuntimeError("global npm install exposed an unsafe or unexpected prc command")
+        return [str(shim), *arguments]
     if shim.is_symlink() or not shim.is_file():
         raise RuntimeError("global npm install did not expose the prc command")
-    if not windows:
-        return [str(shim), *arguments]
     if not command_processor or not pathlib.Path(command_processor).is_absolute():
         raise RuntimeError("Windows command processor is unavailable for the global prc smoke test")
     command_line = subprocess.list2cmdline([str(shim), *arguments])

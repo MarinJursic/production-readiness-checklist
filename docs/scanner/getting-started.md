@@ -229,6 +229,17 @@ scan. It contains typed facts, not executable code or a provider verdict. See
 [signed authoritative evidence bundles](authoritative-evidence-bundles.md) for
 the producer contract and every fail-closed check.
 
+When evidence comes from several authorities, place the trust store, bundles,
+and signatures in one private directory and use the one-file form:
+
+```bash
+prc scan /path/to/project --evidence-set /private/evidence/evidence-set.json
+```
+
+Use `prc coverage` to see the exact difference between rules that have reviewed
+predicates, clauses the scanner can collect by itself, and clauses supported by
+the signed external import route.
+
 ## Optional Codex or Claude review
 
 A normal scan does not contact an AI provider. Use the provider's official CLI

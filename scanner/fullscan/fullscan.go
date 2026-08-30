@@ -51,6 +51,43 @@ var (
 // registry, and a present but invalid registry still fails closed.
 var ErrRegistryUnavailable = errors.New("complete control registry is unavailable")
 
+// RegistryCoverage is the reviewed routing split authenticated by the same
+// registry and control-contract loaders used for a complete scan.
+type RegistryCoverage struct {
+	ControlCount          int
+	DeterministicCount    int
+	NondeterministicCount int
+}
+
+// LoadRegistryCoverage returns the complete reviewed classification counts
+// without creating a scan. It rejects a stale or mismatched registry exactly
+// as Attach does.
+func LoadRegistryCoverage(root string) (RegistryCoverage, error) {
+	registry, registryDigest, err := loadRegistry(root)
+	if err != nil {
+		return RegistryCoverage{}, err
+	}
+	contracts, _, err := loadContracts(root, registry, registryDigest)
+	if err != nil {
+		return RegistryCoverage{}, err
+	}
+	coverage := RegistryCoverage{ControlCount: len(registry.Entries)}
+	for _, contract := range contracts.Contracts {
+		switch contract.Classification {
+		case "deterministic":
+			coverage.DeterministicCount++
+		case "nondeterministic":
+			coverage.NondeterministicCount++
+		default:
+			return RegistryCoverage{}, fmt.Errorf("control %s has an unsupported classification", contract.ControlID)
+		}
+	}
+	if coverage.DeterministicCount+coverage.NondeterministicCount != coverage.ControlCount {
+		return RegistryCoverage{}, fmt.Errorf("reviewed classifications do not cover the complete control registry")
+	}
+	return coverage, nil
+}
+
 type registryDocument struct {
 	SchemaVersion   string          `json:"schema_version"`
 	RegistryVersion string          `json:"registry_version"`

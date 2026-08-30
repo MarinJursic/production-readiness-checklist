@@ -18,6 +18,59 @@ SPEC.loader.exec_module(validate_instance)
 
 
 class ScannerOutputSchemaTests(unittest.TestCase):
+    def test_automatic_coverage_and_multi_authority_set_conform(self) -> None:
+        coverage = {
+            "schema_version": "prc.automatic-coverage/v0.1",
+            "control_count": 10042,
+            "reviewed_routing_control_count": 10042,
+            "deterministic_control_count": 686,
+            "nondeterministic_control_count": 9356,
+            "advisory_ai_review_control_count": 9356,
+            "exact_clause_count": 765,
+            "exact_predicate_clause_count": 765,
+            "built_in_collector_clause_count": 1,
+            "signed_import_supported_clause_count": 765,
+            "authorities": [
+                {
+                    "name": "repository",
+                    "exact_clause_count": 26,
+                    "built_in_collector_clause_count": 1,
+                    "signed_import_supported_clause_count": 26,
+                }
+            ],
+        }
+        evidence_set = {
+            "schema_version": "prc.authoritative-evidence-set/v0.1",
+            "trust_store_file": "trust-store.json",
+            "bundles": [
+                {
+                    "authority": "repository",
+                    "bundle_file": "repository.json",
+                    "policy_signature_file": "repository-policy.json",
+                    "evidence_signature_file": "repository-evidence.json",
+                }
+            ],
+        }
+        self.assertEqual(
+            validate_instance.validation_errors(
+                coverage, "automatic-coverage.schema.json"
+            ),
+            [],
+        )
+        self.assertEqual(
+            validate_instance.validation_errors(
+                evidence_set, "authoritative-evidence-set.schema.json"
+            ),
+            [],
+        )
+        bad_set = dict(evidence_set)
+        bad_set["trust_store_file"] = "../trust-store.json"
+        self.assertTrue(
+            validate_instance.validation_errors(
+                bad_set, "authoritative-evidence-set.schema.json"
+            )
+        )
+
     def test_catalog_manifest_and_bundle_conform(self) -> None:
         digest = "a" * 64
         manifest = {

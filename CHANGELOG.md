@@ -8,6 +8,12 @@ The project follows [Semantic Versioning](https://semver.org/) for published rel
 
 ### Added
 
+- All-or-nothing signed evidence sets for up to one bundle from each of the six
+  deterministic evidence authorities, allowing one scan to evaluate all 765
+  exact clauses when trusted producers supply complete observations.
+- `prc coverage` and a machine-readable coverage schema that keep reviewed
+  routing, exact predicates, advisory AI review, built-in collection, and
+  signed-import support as separate, non-inflated measures.
 - Live, bounded AI-review progress with resumable-batch counts, elapsed time,
   Codex token usage, and Claude's provider-reported cost estimate, plus accurate
   doctor checks for ordinary symlinked global CLI installations.
@@ -166,6 +172,9 @@ The project follows [Semantic Versioning](https://semver.org/) for published rel
 
 ### Fixed
 
+- Corrected the release smoke test to verify npm's expected Unix global-bin
+  symlink against the exact installed launcher, while still rejecting regular
+  substitutions, absolute links, escapes, and unexpected targets.
 - Made checked provider task and proposal fixtures independent of the source
   repository commit by sealing and exercising them from detached workspaces.
 - Isolated Codex and Claude provider processes from saved logins, user and

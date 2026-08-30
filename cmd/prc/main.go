@@ -19,15 +19,18 @@ import (
 
 	"github.com/MarinJursic/production-readiness-checklist/scanner/adapter"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/adapterfixture"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/automaticcoverage"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/benchmark"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/catalog"
 	projectconfig "github.com/MarinJursic/production-readiness-checklist/scanner/config"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/controlprogramcatalog"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/controlreview"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/controlruntime"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/doctor"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/engine"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/evidence"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/evidencebundle"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/evidenceset"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/exception"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/fullscan"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/invalidation"
@@ -142,6 +145,9 @@ func runWithInput(args []string, stdin io.Reader, stdout, stderr io.Writer) int 
 	case "catalog":
 		errorFallback = exitConfiguration
 		err = runCatalog(args[1:], stdout, stderr)
+	case "coverage":
+		errorFallback = exitConfiguration
+		err = runCoverage(args[1:], stdout, stderr)
 	case "benchmark":
 		outcome, err = runBenchmark(args[1:], stdout, stderr)
 	case "pack":
@@ -224,7 +230,7 @@ func friendlyTopLevelArgs(args []string) []string {
 
 func isTopLevelCommand(value string) bool {
 	switch value {
-	case "version", "inventory", "config", "catalog", "benchmark", "pack", "plan", "scan", "quick", "full",
+	case "version", "inventory", "config", "catalog", "coverage", "benchmark", "pack", "plan", "scan", "quick", "full",
 		"fix", "doctor", "login", "logout", "auth", "history", "diff", "remediate", "remediate-proposal",
 		"explain", "adapter", "exception", "provider", "mcp", "help":
 		return true
@@ -275,10 +281,68 @@ func usage(output io.Writer) {
 	fmt.Fprintln(output, "  prc login codex          Sign in for an optional Codex review")
 	fmt.Fprintln(output, "  prc full codex           Deep AI advice for all nondeterministic controls")
 	fmt.Fprintln(output, "  prc doctor               Check whether scanning tools are ready")
+	fmt.Fprintln(output, "  prc coverage             Show honest rule, predicate, and evidence coverage")
 	fmt.Fprintln(output, "  prc scan --help          Show advanced scan options")
 	fmt.Fprintln(output)
 	fmt.Fprintln(output, "Main commands: quick, scan, full, login, logout, auth, doctor, inventory, plan, diff, history, fix, version")
-	fmt.Fprintln(output, "Advanced commands: catalog, pack, benchmark, config, remediate, remediate-proposal, explain, adapter, exception, provider, mcp")
+	fmt.Fprintln(output, "Advanced commands: catalog, coverage, pack, benchmark, config, remediate, remediate-proposal, explain, adapter, exception, provider, mcp")
+}
+
+func runCoverage(args []string, stdout, stderr io.Writer) error {
+	set := flag.NewFlagSet("coverage", flag.ContinueOnError)
+	set.SetOutput(stderr)
+	root := set.String("catalog-root", ".", "repository containing the PRC catalog")
+	format := set.String("format", "human", "human or json")
+	if err := set.Parse(args); err != nil {
+		return err
+	}
+	if set.NArg() != 0 {
+		return fmt.Errorf("unexpected coverage arguments: %s", strings.Join(set.Args(), " "))
+	}
+	if *format != "human" && *format != "json" {
+		return fmt.Errorf("unsupported format %q", *format)
+	}
+	reportValue, err := automaticcoverage.Build(*root)
+	if err != nil {
+		return err
+	}
+	if *format == "json" {
+		return encodeJSON(stdout, reportValue)
+	}
+	fmt.Fprintln(stdout, "Automatic coverage")
+	fmt.Fprintf(stdout, "  Reviewed routing     %d/%d controls (%.1f%%)\n",
+		reportValue.ReviewedRoutingControlCount, reportValue.ControlCount,
+		percentage(reportValue.ReviewedRoutingControlCount, reportValue.ControlCount))
+	fmt.Fprintf(stdout, "  Exact predicates     %d/%d clauses (%.1f%%)\n",
+		reportValue.ExactPredicateClauseCount, reportValue.ExactClauseCount,
+		percentage(reportValue.ExactPredicateClauseCount, reportValue.ExactClauseCount))
+	fmt.Fprintf(stdout, "  Advisory AI route    %d/%d controls (%.1f%%)\n",
+		reportValue.AdvisoryAIReviewControlCount, reportValue.NondeterministicControlCount,
+		percentage(reportValue.AdvisoryAIReviewControlCount, reportValue.NondeterministicControlCount))
+	fmt.Fprintf(stdout, "  Built-in collectors  %d/%d clauses (%.1f%%)\n",
+		reportValue.BuiltInCollectorClauseCount, reportValue.ExactClauseCount,
+		percentage(reportValue.BuiltInCollectorClauseCount, reportValue.ExactClauseCount))
+	fmt.Fprintf(stdout, "  Signed import route  %d/%d clauses (%.1f%%)\n",
+		reportValue.SignedImportSupportedClauseCount, reportValue.ExactClauseCount,
+		percentage(reportValue.SignedImportSupportedClauseCount, reportValue.ExactClauseCount))
+	fmt.Fprintln(stdout)
+	fmt.Fprintln(stdout, "Evidence authority        Exact  Built in  Signed import")
+	for _, authority := range reportValue.Authorities {
+		fmt.Fprintf(stdout, "  %-23s %5d  %8d  %13d\n", authority.Name, authority.ExactClauseCount,
+			authority.BuiltInCollectorClauseCount, authority.SignedImportSupportedClauseCount)
+	}
+	fmt.Fprintln(stdout)
+	fmt.Fprintln(stdout, "Built-in means the scanner can collect the evidence itself.")
+	fmt.Fprintln(stdout, "Signed import means a trusted external producer can supply facts; it is not a built-in observation.")
+	fmt.Fprintln(stdout, "The AI route gives advice for subjective rules; it never creates a verified Pass or Fail.")
+	return nil
+}
+
+func percentage(numerator, denominator int) float64 {
+	if denominator <= 0 {
+		return 0
+	}
+	return float64(numerator) * 100 / float64(denominator)
 }
 
 func runScanAlias(name string, args []string, stdout, stderr io.Writer) (int, error) {
@@ -1987,6 +2051,7 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 	evidenceTrustStorePath := set.String("evidence-trust-store", "", "trust store for the evidence bundle signatures")
 	evidencePolicySignaturePath := set.String("evidence-policy-signature", "", "policy signature for the exact evidence bundle bytes")
 	evidenceSignaturePath := set.String("evidence-signature", "", "authority-scoped evidence signature for the exact bundle bytes")
+	evidenceSetPath := set.String("evidence-set", "", "one manifest for signed evidence from multiple authorities")
 	if err := set.Parse(reorderInterspersedFlags(set, args)); err != nil {
 		return exitInternal, exitError(exitConfiguration, err)
 	}
@@ -2080,6 +2145,9 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 		}
 		sort.Strings(missing)
 		return exitInternal, exitError(exitConfiguration, fmt.Errorf("signed evidence import requires all four evidence flags; missing %s", strings.Join(missing, ", ")))
+	}
+	if strings.TrimSpace(*evidenceSetPath) != "" && evidenceFlagCount != 0 {
+		return exitInternal, exitError(exitConfiguration, fmt.Errorf("--evidence-set cannot be combined with the four single-bundle evidence flags"))
 	}
 	if err := validateUniqueFlagValues(adapterManifests, "--adapter-manifest"); err != nil {
 		return exitInternal, exitError(exitConfiguration, err)
@@ -2177,11 +2245,24 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 		if executionErr != nil {
 			return exitInternal, exitError(exitExecution, fmt.Errorf("collect exact repository evidence: %w", executionErr))
 		}
-		if evidenceFlagCount == len(evidenceFlags) {
-			imported, verification, importErr := evidencebundle.VerifyAndEvaluate(
-				programCatalog, item, *evidenceBundlePath, *evidenceTrustStorePath,
-				*evidencePolicySignaturePath, *evidenceSignaturePath, profileRun.CompletedAt,
-			)
+		if evidenceFlagCount == len(evidenceFlags) || strings.TrimSpace(*evidenceSetPath) != "" {
+			var imported []controlruntime.Execution
+			var verifications []evidencebundle.Verification
+			var importErr error
+			if strings.TrimSpace(*evidenceSetPath) != "" {
+				imported, verifications, importErr = evidenceset.VerifyAndEvaluate(
+					programCatalog, item, *evidenceSetPath, profileRun.CompletedAt,
+				)
+			} else {
+				var verification evidencebundle.Verification
+				imported, verification, importErr = evidencebundle.VerifyAndEvaluate(
+					programCatalog, item, *evidenceBundlePath, *evidenceTrustStorePath,
+					*evidencePolicySignaturePath, *evidenceSignaturePath, profileRun.CompletedAt,
+				)
+				if importErr == nil {
+					verifications = []evidencebundle.Verification{verification}
+				}
+			}
 			if importErr != nil {
 				return exitInternal, exitError(exitPolicyDenied, fmt.Errorf("import signed authoritative evidence: %w", importErr))
 			}
@@ -2196,20 +2277,22 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 				seenTemplates[execution.TemplateID] = true
 			}
 			exactExecutions = append(exactExecutions, imported...)
-			profileRun.AuthoritativeEvidence = append(profileRun.AuthoritativeEvidence, model.AuthoritativeEvidenceVerification{
-				SchemaVersion: verification.SchemaVersion, BundleID: verification.BundleID,
-				BundleSHA256: verification.BundleSHA256, PolicySHA256: verification.PolicySHA256,
-				CatalogSHA256:   verification.CatalogSHA256,
-				InventorySHA256: verification.InventorySHA256, Authority: verification.Authority,
-				EntryCount:        verification.EntryCount,
-				Entries:           append([]model.AuthoritativeEvidenceEntry(nil), verification.Entries...),
-				PolicySignature:   verification.PolicySignature,
-				EvidenceSignature: verification.EvidenceSignature,
-			})
+			for _, verification := range verifications {
+				profileRun.AuthoritativeEvidence = append(profileRun.AuthoritativeEvidence, model.AuthoritativeEvidenceVerification{
+					SchemaVersion: verification.SchemaVersion, BundleID: verification.BundleID,
+					BundleSHA256: verification.BundleSHA256, PolicySHA256: verification.PolicySHA256,
+					CatalogSHA256:   verification.CatalogSHA256,
+					InventorySHA256: verification.InventorySHA256, Authority: verification.Authority,
+					EntryCount:        verification.EntryCount,
+					Entries:           append([]model.AuthoritativeEvidenceEntry(nil), verification.Entries...),
+					PolicySignature:   verification.PolicySignature,
+					EvidenceSignature: verification.EvidenceSignature,
+				})
+			}
 		}
 		completeRun, attachErr = fullscan.AttachProgramExecutions(*catalogRoot, scanner.Catalog, profileRun, exactExecutions)
 	} else {
-		if evidenceFlagCount != 0 {
+		if evidenceFlagCount != 0 || strings.TrimSpace(*evidenceSetPath) != "" {
 			return exitInternal, exitError(exitConfiguration, fmt.Errorf("signed evidence import requires the complete released control catalog: %w", programErr))
 		}
 		// Deliberately minimal custom catalogs used for focused local scans do

@@ -146,6 +146,59 @@ func TestScanRequiresCompleteSignedEvidenceFlagSet(t *testing.T) {
 		!strings.Contains(stderr.String(), "--evidence-signature") {
 		t.Fatalf("partial evidence flags exit=%d stdout=%q stderr=%q", code, stdout.String(), stderr.String())
 	}
+	stdout.Reset()
+	stderr.Reset()
+	code = run([]string{
+		"scan", "--evidence-set", "set.json", "--evidence-bundle", "bundle.json",
+		"--evidence-trust-store", "trust.json", "--evidence-policy-signature", "policy.json",
+		"--evidence-signature", "evidence.json", "--no-report",
+	}, &stdout, &stderr)
+	if code != exitConfiguration || !strings.Contains(stderr.String(), "--evidence-set cannot be combined") {
+		t.Fatalf("mixed evidence modes exit=%d stdout=%q stderr=%q", code, stdout.String(), stderr.String())
+	}
+}
+
+func TestScanEvidenceSetFailsClosedBeforeAttachment(t *testing.T) {
+	directory := t.TempDir()
+	manifestPath := filepath.Join(directory, "evidence-set.json")
+	if err := os.WriteFile(manifestPath, []byte(`{"schema_version":"wrong","trust_store_file":"trust.json","bundles":[]}`), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	var stdout, stderr bytes.Buffer
+	code := run([]string{
+		"scan", t.TempDir(), "--catalog-root", filepath.Join("..", ".."),
+		"--evidence-set", manifestPath, "--format", "json", "--no-report", "--exit-policy", "never",
+	}, &stdout, &stderr)
+	if code != exitPolicyDenied || !strings.Contains(stderr.String(), "import signed authoritative evidence") ||
+		!strings.Contains(stderr.String(), "invalid envelope") || stdout.Len() != 0 {
+		t.Fatalf("invalid evidence set exit=%d stdout=%q stderr=%q", code, stdout.String(), stderr.String())
+	}
+}
+
+func TestCoverageCommandSeparatesBuiltInCollectionFromSignedImport(t *testing.T) {
+	root := filepath.Join("..", "..")
+	var stdout, stderr bytes.Buffer
+	if code := run([]string{"coverage", "--catalog-root", root}, &stdout, &stderr); code != exitSuccess ||
+		!strings.Contains(stdout.String(), "Reviewed routing     10042/10042 controls (100.0%)") ||
+		!strings.Contains(stdout.String(), "Exact predicates     765/765 clauses (100.0%)") ||
+		!strings.Contains(stdout.String(), "Advisory AI route    9356/9356 controls (100.0%)") ||
+		!strings.Contains(stdout.String(), "Built-in collectors  1/765 clauses (0.1%)") ||
+		!strings.Contains(stdout.String(), "Signed import route  765/765 clauses (100.0%)") || stderr.Len() != 0 {
+		t.Fatalf("coverage exit/output stdout=%q stderr=%q", stdout.String(), stderr.String())
+	}
+	stdout.Reset()
+	if code := run([]string{"coverage", "--catalog-root", root, "--format", "json"}, &stdout, &stderr); code != exitSuccess {
+		t.Fatalf("coverage JSON exit=%d stderr=%q", code, stderr.String())
+	}
+	var document map[string]any
+	if err := json.Unmarshal(stdout.Bytes(), &document); err != nil {
+		t.Fatal(err)
+	}
+	if document["schema_version"] != "prc.automatic-coverage/v0.1" || document["exact_clause_count"] != float64(765) ||
+		document["advisory_ai_review_control_count"] != float64(9356) || document["built_in_collector_clause_count"] != float64(1) ||
+		document["signed_import_supported_clause_count"] != float64(765) {
+		t.Fatalf("coverage JSON = %+v", document)
+	}
 }
 
 func TestFriendlyTopLevelArgsDefaultsToCoreScanAndAcceptsADirectory(t *testing.T) {

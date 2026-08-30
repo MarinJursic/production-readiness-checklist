@@ -19,7 +19,7 @@ prc scan /path/to/project \
   --evidence-signature authority-evidence-signature.json
 ```
 
-All four options are required together. A scan accepts at most one bundle. The
+All four options are required together. The single-bundle form accepts at most one bundle. The
 bundle may contain 1–765 entries from exactly one authority and may be no larger
 than 32 MiB. It is strict JSON; duplicate keys, unknown fields, trailing data,
 unsafe links, and files changed during reading are rejected. Signature identity
@@ -28,6 +28,48 @@ does not create a different signed subject and a saved run can reconstruct it.
 
 The accepted authorities are `repository`, `artifact`, `executed`,
 `environment`, `external_registry`, and `structured_record`.
+
+## Run one scan with every authority
+
+A production assessment normally needs more than one authority. Put one trust
+store, up to six authority bundles, and their signatures in one private
+directory. Then add a small `evidence-set.json` beside them:
+
+```json
+{
+  "schema_version": "prc.authoritative-evidence-set/v0.1",
+  "trust_store_file": "trust-store.json",
+  "bundles": [
+    {
+      "authority": "artifact",
+      "bundle_file": "artifact.json",
+      "policy_signature_file": "artifact-policy.json",
+      "evidence_signature_file": "artifact-evidence.json"
+    },
+    {
+      "authority": "repository",
+      "bundle_file": "repository.json",
+      "policy_signature_file": "repository-policy.json",
+      "evidence_signature_file": "repository-evidence.json"
+    }
+  ]
+}
+```
+
+Entries must use unique authorities in alphabetical order. Every referenced
+value is a sibling file name; paths, links, reused files, duplicate authorities,
+and more than six bundles are rejected. Run the complete set with one option:
+
+```bash
+prc scan /path/to/project --evidence-set /private/evidence/evidence-set.json
+```
+
+`--evidence-set` cannot be combined with the four single-bundle options. The
+scanner verifies the entire set before attaching any imported result. A bad
+signature or malformed later bundle therefore stops the import instead of
+leaving a partly trusted assessment. The set can carry evidence for all 765
+exact clauses, but it does not create that evidence: the named authorities must
+still observe and sign complete facts.
 
 ## Why two signatures are required
 
@@ -94,6 +136,8 @@ official [OSCAL assessment-results model](https://pages.nist.gov/OSCAL/learn/con
 A producer must generate documents conforming to:
 
 - `schemas/authoritative-evidence-bundle.schema.json`;
+- `schemas/authoritative-evidence-set.schema.json` when several authorities are
+  supplied together;
 - `schemas/trust-store.schema.json`; and
 - two `schemas/signature.schema.json` envelopes.
 

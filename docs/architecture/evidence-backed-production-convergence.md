@@ -32,6 +32,14 @@ separate policy signer and authority-limited evidence signer must approve the
 ordered catalog- and inventory-bound policy and completed-evidence digests.
 This is a trusted import path, not an automatic collector. All other
 missing, unsupported, incomplete, changed, or unclear evidence remains Blocked.
+The scanner can now verify an all-or-nothing evidence set containing one signed
+bundle for each of the six authorities, so a single scan can evaluate all 765
+exact clauses when their trusted producers supply complete observations. The
+`prc coverage` command reports reviewed routing, exact predicates, advisory AI
+review support, built-in collection, and signed-import support as separate
+counts. Current built-in collection remains 1 of 765; signed-import
+compatibility is 765 of 765. The latter is an integration capability, not proof
+that evidence exists for a run.
 The report separates exact programs attempted, passed, failed, Not Applicable,
 and deterministic controls still blocked. Valid exact evidence documents are
 retained in the content-addressed run so an authoritative result can be replayed

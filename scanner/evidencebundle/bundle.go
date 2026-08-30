@@ -46,6 +46,12 @@ var (
 	}
 )
 
+// SupportsAuthority reports whether the signed import protocol has a distinct
+// least-privilege signature scope for the requested evidence authority.
+func SupportsAuthority(authority controlprogram.Authority) bool {
+	return evidenceKindByAuthority[authority] != ""
+}
+
 // Entry binds one materialized reviewed program to the evidence observed for
 // it. ProviderID identifies the actual collector, not a compliance verdict.
 type Entry struct {
