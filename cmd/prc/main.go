@@ -23,6 +23,7 @@ import (
 	"github.com/MarinJursic/production-readiness-checklist/scanner/benchmark"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/catalog"
 	projectconfig "github.com/MarinJursic/production-readiness-checklist/scanner/config"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/controlprogram"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/controlprogramcatalog"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/controlreview"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/controlruntime"
@@ -30,6 +31,7 @@ import (
 	"github.com/MarinJursic/production-readiness-checklist/scanner/engine"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/evidence"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/evidencebundle"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/evidencerequirements"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/evidenceset"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/exception"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/fullscan"
@@ -148,6 +150,9 @@ func runWithInput(args []string, stdin io.Reader, stdout, stderr io.Writer) int 
 	case "coverage":
 		errorFallback = exitConfiguration
 		err = runCoverage(args[1:], stdout, stderr)
+	case "evidence":
+		errorFallback = exitConfiguration
+		err = runEvidence(args[1:], stdout, stderr)
 	case "benchmark":
 		outcome, err = runBenchmark(args[1:], stdout, stderr)
 	case "pack":
@@ -230,7 +235,7 @@ func friendlyTopLevelArgs(args []string) []string {
 
 func isTopLevelCommand(value string) bool {
 	switch value {
-	case "version", "inventory", "config", "catalog", "coverage", "benchmark", "pack", "plan", "scan", "quick", "full",
+	case "version", "inventory", "config", "catalog", "coverage", "evidence", "benchmark", "pack", "plan", "scan", "quick", "full",
 		"fix", "doctor", "login", "logout", "auth", "history", "diff", "remediate", "remediate-proposal",
 		"explain", "adapter", "exception", "provider", "mcp", "help":
 		return true
@@ -282,16 +287,171 @@ func usage(output io.Writer) {
 	fmt.Fprintln(output, "  prc full codex           Deep AI advice for all nondeterministic controls")
 	fmt.Fprintln(output, "  prc doctor               Check whether scanning tools are ready")
 	fmt.Fprintln(output, "  prc coverage             Show honest rule, predicate, and evidence coverage")
+	fmt.Fprintln(output, "  prc evidence requirements  Show exact contracts for trusted evidence producers")
+	fmt.Fprintln(output, "  prc evidence verify-set    Verify a signed evidence set before a full scan")
 	fmt.Fprintln(output, "  prc scan --help          Show advanced scan options")
 	fmt.Fprintln(output)
 	fmt.Fprintln(output, "Main commands: quick, scan, full, login, logout, auth, doctor, inventory, plan, diff, history, fix, version")
-	fmt.Fprintln(output, "Advanced commands: catalog, coverage, pack, benchmark, config, remediate, remediate-proposal, explain, adapter, exception, provider, mcp")
+	fmt.Fprintln(output, "Advanced commands: catalog, coverage, evidence, pack, benchmark, config, remediate, remediate-proposal, explain, adapter, exception, provider, mcp")
+}
+
+func runEvidence(args []string, stdout, stderr io.Writer) error {
+	if len(args) == 0 || args[0] == "help" || args[0] == "--help" || args[0] == "-h" {
+		fmt.Fprintln(stdout, "Usage:")
+		fmt.Fprintln(stdout, "  prc evidence requirements [--authority NAME] [--control ID] [--collector-status all|built_in|missing] [--format human|json]")
+		fmt.Fprintln(stdout, "  prc evidence verify-set --set FILE [PROJECT] [--config FILE] [--format human|json]")
+		return nil
+	}
+	switch args[0] {
+	case "requirements":
+		return runEvidenceRequirements(args[1:], stdout, stderr)
+	case "verify-set":
+		return runEvidenceVerifySet(args[1:], stdout, stderr)
+	default:
+		return fmt.Errorf("unknown evidence command %q", args[0])
+	}
+}
+
+func runEvidenceRequirements(args []string, stdout, stderr io.Writer) error {
+	set := flag.NewFlagSet("evidence requirements", flag.ContinueOnError)
+	set.SetOutput(stderr)
+	root := set.String("catalog-root", defaultCatalogRoot(), "repository containing the PRC catalog")
+	authority := set.String("authority", "", "artifact, environment, executed, external_registry, repository, or structured_record")
+	controlID := set.String("control", "", "one exact control ID")
+	collectorStatus := set.String("collector-status", "all", "all, built_in, or missing")
+	format := set.String("format", "human", "human or json")
+	if err := set.Parse(args); err != nil {
+		return err
+	}
+	if set.NArg() != 0 {
+		return fmt.Errorf("unexpected evidence requirements arguments: %s", strings.Join(set.Args(), " "))
+	}
+	if *format != "human" && *format != "json" {
+		return fmt.Errorf("unsupported format %q", *format)
+	}
+	reportValue, err := evidencerequirements.Build(*root, evidencerequirements.Filter{
+		Authority: controlprogram.Authority(*authority), ControlID: *controlID, CollectorStatus: *collectorStatus,
+	})
+	if err != nil {
+		return err
+	}
+	if *format == "json" {
+		return encodeJSON(stdout, reportValue)
+	}
+	fmt.Fprintln(stdout, "Evidence producer requirements")
+	fmt.Fprintf(stdout, "  Selected clauses    %d/%d across %d controls\n", reportValue.SelectedClauseCount, reportValue.ExactClauseCount, reportValue.SelectedControlCount)
+	fmt.Fprintf(stdout, "  Built-in collectors %d\n", reportValue.BuiltInCollectorCount)
+	fmt.Fprintf(stdout, "  Missing collectors  %d\n", reportValue.MissingCollectorCount)
+	fmt.Fprintf(stdout, "  Signed import route %d\n", reportValue.SignedImportRouteCount)
+	fmt.Fprintln(stdout)
+	fmt.Fprintln(stdout, "Evidence authority        Selected  Built in  Missing  Signed import")
+	for _, item := range reportValue.Authorities {
+		fmt.Fprintf(stdout, "  %-23s %8d  %8d  %7d  %13d\n", item.Name, item.SelectedClauseCount,
+			item.BuiltInCollectorCount, item.MissingCollectorCount, item.SignedImportRouteCount)
+	}
+	if *controlID == "" {
+		if *authority != "" {
+			fmt.Fprintln(stdout)
+			fmt.Fprintln(stdout, "Selected clauses")
+			for _, requirement := range reportValue.Requirements {
+				fmt.Fprintf(stdout, "  %s clause %d · %s · %s\n", requirement.ControlID,
+					requirement.ClauseOrdinal, requirement.CollectorStatus, requirement.CollectorID)
+			}
+		}
+		fmt.Fprintln(stdout)
+		fmt.Fprintln(stdout, "Add --control ID to print one control's full clause contracts.")
+		fmt.Fprintln(stdout, "Use --format json for every selected machine-readable contract.")
+		return nil
+	}
+	for _, requirement := range reportValue.Requirements {
+		fmt.Fprintln(stdout)
+		fmt.Fprintf(stdout, "%s clause %d · %s · %s\n", requirement.ControlID, requirement.ClauseOrdinal, requirement.Authority, requirement.CollectorStatus)
+		fmt.Fprintf(stdout, "  %s\n", requirement.ClauseStatement)
+		fmt.Fprintf(stdout, "  Collector: %s\n", requirement.CollectorID)
+		fmt.Fprintln(stdout, "  Required facts:")
+		for _, fact := range requirement.Facts {
+			fmt.Fprintf(stdout, "    - %s (%s; complete=%t)\n", fact.ID, fact.Type, fact.CompleteRequired)
+			fmt.Fprintf(stdout, "      %s\n", fact.SourceRequirement)
+		}
+		if len(requirement.Parameters) > 0 {
+			fmt.Fprintln(stdout, "  Inputs sealed before collection:")
+			for _, parameter := range requirement.Parameters {
+				fmt.Fprintf(stdout, "    - %s (%s; %s)\n", parameter.ID, parameter.Type, parameter.Origin)
+				fmt.Fprintf(stdout, "      %s\n", parameter.SourceRequirement)
+			}
+		}
+		fmt.Fprintf(stdout, "  Completeness: %s\n", requirement.CompletenessContract)
+		fmt.Fprintf(stdout, "  Freshness: %s\n", requirement.FreshnessContract)
+	}
+	return nil
+}
+
+func runEvidenceVerifySet(args []string, stdout, stderr io.Writer) error {
+	set := flag.NewFlagSet("evidence verify-set", flag.ContinueOnError)
+	set.SetOutput(stderr)
+	root := set.String("catalog-root", defaultCatalogRoot(), "repository containing the PRC catalog")
+	target := set.String("target", ".", "project directory to inventory")
+	configPath := set.String("config", "", "optional project configuration")
+	manifestPath := set.String("set", "", "signed multi-authority evidence-set manifest")
+	format := set.String("format", "human", "human or json")
+	if err := set.Parse(reorderInterspersedFlags(set, args)); err != nil {
+		return err
+	}
+	if set.NArg() > 1 {
+		return fmt.Errorf("evidence verify-set accepts at most one project path")
+	}
+	if set.NArg() == 1 {
+		if flagWasSet(set, "target") {
+			return fmt.Errorf("use either a project path or --target, not both")
+		}
+		*target = set.Arg(0)
+	}
+	if strings.TrimSpace(*manifestPath) == "" {
+		return fmt.Errorf("evidence verify-set requires --set")
+	}
+	if *format != "human" && *format != "json" {
+		return fmt.Errorf("unsupported format %q", *format)
+	}
+	item, _, err := configuredInventory(*target, *configPath)
+	if err != nil {
+		return err
+	}
+	programCatalog, err := controlprogramcatalog.Load(*root)
+	if err != nil {
+		return err
+	}
+	verifiedAt := time.Now().UTC()
+	executions, verifications, err := evidenceset.VerifyAndEvaluate(programCatalog, item, *manifestPath, verifiedAt)
+	if err != nil {
+		return exitError(exitPolicyDenied, fmt.Errorf("verify signed evidence set: %w", err))
+	}
+	reportValue, err := evidenceset.SummarizeVerification(programCatalog, item, executions, verifications, verifiedAt)
+	if err != nil {
+		return exitError(exitInternal, err)
+	}
+	if *format == "json" {
+		return encodeJSON(stdout, reportValue)
+	}
+	fmt.Fprintln(stdout, "Evidence set verified")
+	fmt.Fprintf(stdout, "  Signatures  verified for %d bundle(s)\n", reportValue.BundleCount)
+	fmt.Fprintf(stdout, "  Entries     %d\n", reportValue.EntryCount)
+	fmt.Fprintf(stdout, "  Outcomes    %d passed · %d failed · %d not applicable · %d blocked\n",
+		reportValue.Outcomes.Passed, reportValue.Outcomes.Failed,
+		reportValue.Outcomes.NotApplicable, reportValue.Outcomes.Blocked)
+	for _, item := range reportValue.Authorities {
+		fmt.Fprintf(stdout, "  %-17s %d entries · policy %s · evidence %s\n",
+			item.Authority, item.EntryCount, item.PolicyKeyID, item.EvidenceKeyID)
+	}
+	fmt.Fprintln(stdout)
+	fmt.Fprintln(stdout, "This confirms the signatures and internal catalog, inventory, scope, and predicate bindings.")
+	fmt.Fprintln(stdout, "It does not prove producer claims or readiness; failed and blocked entries remain unchanged.")
+	return nil
 }
 
 func runCoverage(args []string, stdout, stderr io.Writer) error {
 	set := flag.NewFlagSet("coverage", flag.ContinueOnError)
 	set.SetOutput(stderr)
-	root := set.String("catalog-root", ".", "repository containing the PRC catalog")
+	root := set.String("catalog-root", defaultCatalogRoot(), "repository containing the PRC catalog")
 	format := set.String("format", "human", "human or json")
 	if err := set.Parse(args); err != nil {
 		return err
@@ -335,6 +495,7 @@ func runCoverage(args []string, stdout, stderr io.Writer) error {
 	fmt.Fprintln(stdout, "Built-in means the scanner can collect the evidence itself.")
 	fmt.Fprintln(stdout, "Signed import means a trusted external producer can supply facts; it is not a built-in observation.")
 	fmt.Fprintln(stdout, "The AI route gives advice for subjective rules; it never creates a verified Pass or Fail.")
+	fmt.Fprintln(stdout, "Inspect producer gaps with `prc evidence requirements --collector-status missing`.")
 	return nil
 }
 

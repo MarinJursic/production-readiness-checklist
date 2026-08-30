@@ -312,7 +312,8 @@ func TestEvidenceSetVerifiesMultipleSignedAuthoritiesTogether(t *testing.T) {
 	manifestPath := filepath.Join(directory, "evidence-set.json")
 	writeTestFile(t, manifestPath, manifestData)
 
-	executions, verifications, err := VerifyAndEvaluate(programs, item, manifestPath, observedAt.Add(2*time.Minute))
+	verifiedAt := observedAt.Add(2 * time.Minute)
+	executions, verifications, err := VerifyAndEvaluate(programs, item, manifestPath, verifiedAt)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -322,6 +323,22 @@ func TestEvidenceSetVerifiesMultipleSignedAuthoritiesTogether(t *testing.T) {
 		verifications[1].Authority != "repository" || verifications[1].EntryCount != 1 {
 		t.Fatalf("executions=%+v verifications=%+v", executions, verifications)
 	}
+	report, err := SummarizeVerification(programs, item, executions, verifications, verifiedAt)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if report.SchemaVersion != VerificationReportSchema || !report.CryptographicallyVerified ||
+		report.BundleCount != 2 || report.EntryCount != 2 || report.Outcomes.Passed != 2 ||
+		report.Outcomes.Failed != 0 || report.Outcomes.Blocked != 0 || len(report.Authorities) != 2 ||
+		report.Authorities[0].PolicyKeyID != "policy-key" || report.Authorities[0].EvidenceKeyID != "artifact-evidence-key" ||
+		report.Authorities[1].PolicyKeyID != "policy-key" || report.Authorities[1].EvidenceKeyID != "evidence-key" {
+		t.Fatalf("unexpected verification report: %+v", report)
+	}
+	inconsistent := append([]evidencebundle.Verification(nil), verifications...)
+	inconsistent[1].Authority = inconsistent[0].Authority
+	if _, err := SummarizeVerification(programs, item, executions, inconsistent, verifiedAt); err == nil {
+		t.Fatal("duplicate verification authority was accepted")
+	}
 
 	repositorySignaturePath := filepath.Join(directory, "repository-evidence.json")
 	repositorySignature, err := os.ReadFile(repositorySignaturePath)
@@ -330,7 +347,7 @@ func TestEvidenceSetVerifiesMultipleSignedAuthoritiesTogether(t *testing.T) {
 	}
 	repositorySignature[len(repositorySignature)-2] ^= 1
 	writeTestFile(t, repositorySignaturePath, repositorySignature)
-	executions, verifications, err = VerifyAndEvaluate(programs, item, manifestPath, observedAt.Add(2*time.Minute))
+	executions, verifications, err = VerifyAndEvaluate(programs, item, manifestPath, verifiedAt)
 	if err == nil || executions != nil || verifications != nil {
 		t.Fatalf("tampered second authority returned partial results: executions=%+v verifications=%+v err=%v", executions, verifications, err)
 	}

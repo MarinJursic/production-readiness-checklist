@@ -1,0 +1,144 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/evidence-requirements.schema.json",
+  "title": "Production Readiness Evidence Requirements v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "catalog_sha256", "registry_sha256", "binding_catalog_sha256",
+    "exact_control_count", "exact_clause_count", "selected_control_count", "selected_clause_count",
+    "built_in_collector_count", "missing_collector_count", "signed_import_route_count",
+    "selection", "authorities", "requirements"
+  ],
+  "properties": {
+    "schema_version": {"const": "prc.evidence-requirements/v0.1"},
+    "catalog_sha256": {"$ref": "#/$defs/digest"},
+    "registry_sha256": {"$ref": "#/$defs/digest"},
+    "binding_catalog_sha256": {"$ref": "#/$defs/digest"},
+    "exact_control_count": {"type": "integer", "minimum": 1},
+    "exact_clause_count": {"type": "integer", "minimum": 1},
+    "selected_control_count": {"type": "integer", "minimum": 1},
+    "selected_clause_count": {"type": "integer", "minimum": 1},
+    "built_in_collector_count": {"type": "integer", "minimum": 0},
+    "missing_collector_count": {"type": "integer", "minimum": 0},
+    "signed_import_route_count": {"type": "integer", "minimum": 0},
+    "selection": {"$ref": "#/$defs/selection"},
+    "authorities": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 6,
+      "items": {"$ref": "#/$defs/authority_summary"}
+    },
+    "requirements": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 765,
+      "items": {"$ref": "#/$defs/requirement"}
+    }
+  },
+  "$defs": {
+    "digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "control_id": {"type": "string", "pattern": "^(?:PRC-[0-9]{2}-[0-9]{3}|USEQ-[A-F0-9]{8})$"},
+    "authority": {
+      "enum": ["artifact", "environment", "executed", "external_registry", "repository", "structured_record"]
+    },
+    "fact_type": {
+      "enum": [
+        "identity", "schema", "digest", "state", "string", "boolean", "number", "time", "string_set",
+        "identity_map", "schema_map", "digest_map", "state_map", "string_map", "boolean_map", "number_map",
+        "time_map", "directed_graph"
+      ]
+    },
+    "selection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["authority", "control_id", "collector_status"],
+      "properties": {
+        "authority": {"type": "string", "pattern": "^(?:|artifact|environment|executed|external_registry|repository|structured_record)$"},
+        "control_id": {"type": "string", "pattern": "^(?:|PRC-[0-9]{2}-[0-9]{3}|USEQ-[A-F0-9]{8})$"},
+        "collector_status": {"enum": ["all", "built_in", "missing"]}
+      }
+    },
+    "authority_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name", "selected_clause_count", "built_in_collector_count",
+        "missing_collector_count", "signed_import_route_count"
+      ],
+      "properties": {
+        "name": {"$ref": "#/$defs/authority"},
+        "selected_clause_count": {"type": "integer", "minimum": 1},
+        "built_in_collector_count": {"type": "integer", "minimum": 0},
+        "missing_collector_count": {"type": "integer", "minimum": 0},
+        "signed_import_route_count": {"type": "integer", "minimum": 0}
+      }
+    },
+    "fact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type", "raw_value_semantics", "source_requirement", "complete_required"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[A-Za-z0-9_.-]{3,128}$"},
+        "type": {"$ref": "#/$defs/fact_type"},
+        "raw_value_semantics": {"type": "string", "minLength": 1, "maxLength": 4096},
+        "source_requirement": {"type": "string", "minLength": 1, "maxLength": 12000},
+        "complete_required": {"type": "boolean"}
+      }
+    },
+    "parameter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type", "origin", "source_requirement"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[A-Za-z0-9_.-]{3,128}$"},
+        "type": {"$ref": "#/$defs/fact_type"},
+        "origin": {
+          "enum": ["scanner_inventory", "independently_authenticated_policy", "independently_authenticated_context"]
+        },
+        "source_requirement": {"type": "string", "minLength": 1, "maxLength": 12000}
+      }
+    },
+    "requirement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "template_id", "control_id", "control_revision", "clause_id", "clause_ordinal", "clause_statement",
+        "checker_family", "authority", "implementation_id", "implementation_contract_sha256", "collector_id",
+        "collector_status", "signed_import_supported", "required_sources", "inventory_contract",
+        "normalization_contract", "completeness_contract", "freshness_contract", "facts", "parameters",
+        "requires_inventory_input", "requires_authenticated_policy_input", "requires_authenticated_context_input",
+        "missing_evidence_result"
+      ],
+      "properties": {
+        "template_id": {"$ref": "#/$defs/digest"},
+        "control_id": {"$ref": "#/$defs/control_id"},
+        "control_revision": {"type": "integer", "minimum": 1},
+        "clause_id": {"$ref": "#/$defs/digest"},
+        "clause_ordinal": {"type": "integer", "minimum": 1, "maximum": 50},
+        "clause_statement": {"type": "string", "minLength": 1, "maxLength": 12000},
+        "checker_family": {"type": "string", "pattern": "^[a-z][a-z0-9_]{2,63}$"},
+        "authority": {"$ref": "#/$defs/authority"},
+        "implementation_id": {"type": "string", "pattern": "^prc\\.check\\.[a-z0-9-]+@[0-9]+\\.[0-9]+$"},
+        "implementation_contract_sha256": {"$ref": "#/$defs/digest"},
+        "collector_id": {"type": "string", "pattern": "^prc\\.collect\\.[a-z0-9.-]+@[0-9]+\\.[0-9]+$"},
+        "collector_status": {"enum": ["built_in", "missing"]},
+        "signed_import_supported": {"type": "boolean"},
+        "required_sources": {
+          "type": "array", "minItems": 1, "maxItems": 64,
+          "items": {"type": "string", "minLength": 1, "maxLength": 12000}
+        },
+        "inventory_contract": {"type": "string", "minLength": 1, "maxLength": 12000},
+        "normalization_contract": {"type": "string", "minLength": 1, "maxLength": 12000},
+        "completeness_contract": {"type": "string", "minLength": 1, "maxLength": 12000},
+        "freshness_contract": {"type": "string", "minLength": 1, "maxLength": 12000},
+        "facts": {"type": "array", "minItems": 1, "maxItems": 512, "items": {"$ref": "#/$defs/fact"}},
+        "parameters": {"type": "array", "maxItems": 512, "items": {"$ref": "#/$defs/parameter"}},
+        "requires_inventory_input": {"type": "boolean"},
+        "requires_authenticated_policy_input": {"type": "boolean"},
+        "requires_authenticated_context_input": {"type": "boolean"},
+        "missing_evidence_result": {"const": "blocked"}
+      }
+    }
+  }
+}

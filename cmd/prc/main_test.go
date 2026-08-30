@@ -121,6 +121,7 @@ func TestFriendlyRootHelpVersionAliasAndScanHelp(t *testing.T) {
 	if code := run([]string{"--help"}, &stdout, &stderr); code != exitSuccess || !strings.Contains(stdout.String(), "prc quick") ||
 		!strings.Contains(stdout.String(), "prc /path/to/project") ||
 		!strings.Contains(stdout.String(), "prc full codex") || !strings.Contains(stdout.String(), "PRODUCTION READINESS CHECKLIST") ||
+		!strings.Contains(stdout.String(), "prc evidence requirements") ||
 		!strings.Contains(stdout.String(), "Know what's ready and what still needs work.") || stderr.Len() != 0 {
 		t.Fatalf("root help exit=%d stdout=%q stderr=%q", code, stdout.String(), stderr.String())
 	}
@@ -175,6 +176,61 @@ func TestScanEvidenceSetFailsClosedBeforeAttachment(t *testing.T) {
 	}
 }
 
+func TestEvidenceRequirementsCommandExportsHumanAndMachineContracts(t *testing.T) {
+	root := filepath.Join("..", "..")
+	var stdout, stderr bytes.Buffer
+	code := run([]string{"evidence", "requirements", "--catalog-root", root}, &stdout, &stderr)
+	if code != exitSuccess || stderr.Len() != 0 ||
+		!strings.Contains(stdout.String(), "Selected clauses    765/765 across 686 controls") ||
+		!strings.Contains(stdout.String(), "Built-in collectors 1") ||
+		!strings.Contains(stdout.String(), "Missing collectors  764") ||
+		!strings.Contains(stdout.String(), "Signed import route 765") {
+		t.Fatalf("requirements exit=%d stdout=%q stderr=%q", code, stdout.String(), stderr.String())
+	}
+	stdout.Reset()
+	code = run([]string{
+		"evidence", "requirements", "--catalog-root", root, "--control", "PRC-36-004",
+		"--collector-status", "built_in", "--format", "json",
+	}, &stdout, &stderr)
+	if code != exitSuccess || stderr.Len() != 0 {
+		t.Fatalf("requirements JSON exit=%d stderr=%q", code, stderr.String())
+	}
+	var document struct {
+		SchemaVersion       string `json:"schema_version"`
+		SelectedClauseCount int    `json:"selected_clause_count"`
+		Requirements        []struct {
+			ControlID       string `json:"control_id"`
+			CollectorStatus string `json:"collector_status"`
+		} `json:"requirements"`
+	}
+	if err := json.Unmarshal(stdout.Bytes(), &document); err != nil {
+		t.Fatal(err)
+	}
+	if document.SchemaVersion != "prc.evidence-requirements/v0.1" || document.SelectedClauseCount != 1 ||
+		len(document.Requirements) != 1 || document.Requirements[0].ControlID != "PRC-36-004" ||
+		document.Requirements[0].CollectorStatus != "built_in" {
+		t.Fatalf("requirements JSON = %+v", document)
+	}
+}
+
+func TestEvidenceVerifySetFailsClosedBeforeReporting(t *testing.T) {
+	directory := t.TempDir()
+	manifestPath := filepath.Join(directory, "evidence-set.json")
+	if err := os.WriteFile(manifestPath, []byte(`{"schema_version":"wrong","trust_store_file":"trust.json","bundles":[]}`), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	var stdout, stderr bytes.Buffer
+	code := run([]string{
+		"evidence", "verify-set", "--set", manifestPath, t.TempDir(),
+		"--catalog-root", filepath.Join("..", ".."), "--format", "json",
+	}, &stdout, &stderr)
+	if code != exitPolicyDenied || stdout.Len() != 0 ||
+		!strings.Contains(stderr.String(), "verify signed evidence set") ||
+		!strings.Contains(stderr.String(), "invalid envelope") {
+		t.Fatalf("invalid set exit=%d stdout=%q stderr=%q", code, stdout.String(), stderr.String())
+	}
+}
+
 func TestCoverageCommandSeparatesBuiltInCollectionFromSignedImport(t *testing.T) {
 	root := filepath.Join("..", "..")
 	var stdout, stderr bytes.Buffer
@@ -217,7 +273,7 @@ func TestFriendlyTopLevelArgsDefaultsToCoreScanAndAcceptsADirectory(t *testing.T
 	if result := friendlyTopLevelArgs([]string{"not-yet-created-project"}); !slices.Equal(result, []string{"scan", "not-yet-created-project"}) {
 		t.Fatalf("target args = %v", result)
 	}
-	for _, command := range []string{"scan", "full", "login", "remediate-proposal", "mcp", "help"} {
+	for _, command := range []string{"scan", "full", "login", "evidence", "remediate-proposal", "mcp", "help"} {
 		if !isTopLevelCommand(command) {
 			t.Fatalf("%s was not recognized as an explicit command", command)
 		}

@@ -29,6 +29,24 @@ does not create a different signed subject and a saved run can reconstruct it.
 The accepted authorities are `repository`, `artifact`, `executed`,
 `environment`, `external_registry`, and `structured_record`.
 
+## Discover the exact producer requirements
+
+Do not infer field names, accepted folders, policy thresholds, or completeness
+from the prose control. Ask the authenticated catalog for the exact contract:
+
+```bash
+prc evidence requirements
+prc evidence requirements --authority artifact --collector-status missing
+prc evidence requirements --control PRC-36-004 --format json
+```
+
+The report identifies the reviewed program and implementation digests, required
+authority, collector identity, typed raw facts, inputs sealed before collection,
+and exact source, inventory, normalization, completeness, and freshness rules.
+`missing_evidence_result` is always `blocked`. JSON output conforms to
+`schemas/evidence-requirements.schema.json` and is deterministic for one
+catalog. It is a contract for a producer, not a claim that collection happened.
+
 ## Run one scan with every authority
 
 A production assessment normally needs more than one authority. Put one trust
@@ -63,6 +81,21 @@ and more than six bundles are rejected. Run the complete set with one option:
 ```bash
 prc scan /path/to/project --evidence-set /private/evidence/evidence-set.json
 ```
+
+Before the full scan, the same set can be checked without attaching its results:
+
+```bash
+prc evidence verify-set \
+  --set /private/evidence/evidence-set.json \
+  /path/to/project
+```
+
+The human result names bundle and signer identities and retains each predicate
+outcome. `--format json` emits
+`schemas/evidence-set-verification.schema.json`. A valid signature proves that
+the named key signed the bound bytes under the current trust policy; it does
+not independently prove that the producer's real-world observation was true or
+that the project is ready.
 
 `--evidence-set` cannot be combined with the four single-bundle options. The
 scanner verifies the entire set before attaching any imported result. A bad
@@ -135,11 +168,16 @@ official [OSCAL assessment-results model](https://pages.nist.gov/OSCAL/learn/con
 
 A producer must generate documents conforming to:
 
+- `schemas/evidence-requirements.schema.json` for the scanner-exported input
+  contract;
 - `schemas/authoritative-evidence-bundle.schema.json`;
 - `schemas/authoritative-evidence-set.schema.json` when several authorities are
   supplied together;
 - `schemas/trust-store.schema.json`; and
 - two `schemas/signature.schema.json` envelopes.
+
+The optional preflight result conforms to
+`schemas/evidence-set-verification.schema.json`.
 
 The policy signature uses artifact kind `control-policy-bundle`, the bundle ID
 as `artifact_id`, and `scanner/evidencebundle.PolicySHA256` as `sha256`. That

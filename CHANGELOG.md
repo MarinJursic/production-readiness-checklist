@@ -8,6 +8,13 @@ The project follows [Semantic Versioning](https://semver.org/) for published rel
 
 ### Added
 
+- `prc evidence requirements`, with human and schema-checked JSON output for
+  filtering every exact clause by control, authority, or built-in collector
+  status. It exposes the authenticated raw-fact, sealed-input, completeness,
+  freshness, and source contract a trusted producer must satisfy.
+- `prc evidence verify-set`, which checks a complete multi-authority evidence
+  set before a full scan and reports signature identities separately from the
+  unchanged Pass, Fail, Not Applicable, and Blocked predicate outcomes.
 - All-or-nothing signed evidence sets for up to one bundle from each of the six
   deterministic evidence authorities, allowing one scan to evaluate all 765
   exact clauses when trusted producers supply complete observations.

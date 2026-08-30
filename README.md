@@ -295,6 +295,28 @@ All four files are required. For evidence from several authorities, put the trus
 
 Run `prc coverage` to see five honest totals separately: reviewed routing, exact predicates, advisory AI review, built-in evidence collectors, and signed evidence import support. AI advice is not a verified result, and a supported import route is never counted as evidence actually observed.
 
+Collector authors no longer need to reverse-engineer the large catalog. These
+commands expose the exact authenticated requirements and verify a completed set
+before running the full report:
+
+```bash
+# Summary, then a compact list of missing repository collectors.
+prc evidence requirements
+prc evidence requirements --authority repository --collector-status missing
+
+# One full human contract, or complete JSON for a build system.
+prc evidence requirements --control PRC-36-004
+prc evidence requirements --control PRC-36-004 --format json
+
+# Check signatures and bindings without attaching results to a scan.
+prc evidence verify-set --set /private/evidence/evidence-set.json /path/to/project
+```
+
+The requirements output is a specification, not evidence. The verification
+command confirms signatures and internal bindings, but does not turn a
+producer claim into proof of the real world or turn a failing result into a
+passing one.
+
 ### Optional deep review with Codex or Claude Code
 
 The ordinary scan is local and deterministic. AI review is a separate option for broad or subjective rules such as project-appropriate folder structure. First sign in through an installed provider CLI, then scan:
@@ -352,7 +374,7 @@ Continue with the [complete scanner quick start](docs/scanner/getting-started.md
 ### What is still being built
 
 - More narrow, tested local checks. The catalog currently has 43 executable assertions linked to 26 broad controls; the normal profile runs 40 and the quick profile runs 18. Most broad controls still need evidence or review.
-- More built-in authority-specific read-only collectors for the reviewed deterministic catalog. Classification, bindings, exact predicates, the runtime, report aggregation, the first repository collector, the dual-signed external evidence protocol, and all-or-nothing multi-authority evidence sets now run end to end. One set can safely evaluate all 765 reviewed exact clauses when trusted producers supply complete evidence, but 764 clauses still lack an automatic built-in collector. Missing collectors, external providers, complete scope, or authoritative evidence must stay Blocked.
+- More built-in authority-specific read-only collectors for the reviewed deterministic catalog. Classification, bindings, exact predicates, the runtime, report aggregation, the first repository collector, producer-requirement export, signed-set preflight verification, the dual-signed external evidence protocol, and all-or-nothing multi-authority evidence sets now run end to end. One set can safely evaluate all 765 reviewed exact clauses when trusted producers supply complete evidence, but 764 clauses still lack an automatic built-in collector. Missing collectors, external providers, complete scope, or authoritative evidence must stay Blocked.
 - Deeper meaning checks beyond the new readable, non-whitespace text baseline for repository documents—for example, whether a security policy gives useful reporting steps—without forcing one language, file name, heading, or folder layout.
 - Cross-domain dependency synthesis and a final falsification pass above the new exact root-cause grouping. The current scanner safely groups only identical domain, cause-key, and normalized-cause triples; it deliberately does not guess that differently worded causes are the same.
 - Larger real-project accuracy tests for Codex and Claude review, including cost, partial resume, false-positive, missed-finding, prompt-injection, disagreement, and unusual-project-layout measurements.

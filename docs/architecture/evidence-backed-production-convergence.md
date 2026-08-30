@@ -39,7 +39,12 @@ exact clauses when their trusted producers supply complete observations. The
 review support, built-in collection, and signed-import support as separate
 counts. Current built-in collection remains 1 of 765; signed-import
 compatibility is 765 of 765. The latter is an integration capability, not proof
-that evidence exists for a run.
+that evidence exists for a run. `prc evidence requirements` now turns every
+exact clause into a filtered, schema-checked producer contract, so collector
+teams can see raw facts, sealed inputs, authority, scope, completeness, and
+freshness duties without reverse-engineering the catalog. `prc evidence
+verify-set` checks a completed multi-authority set before a scan and keeps
+signature validity separate from the unchanged predicate outcomes.
 The report separates exact programs attempted, passed, failed, Not Applicable,
 and deterministic controls still blocked. Valid exact evidence documents are
 retained in the content-addressed run so an authoritative result can be replayed
