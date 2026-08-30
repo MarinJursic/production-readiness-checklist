@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/automatic-coverage.schema.json",
+  "title": "Production Readiness Automatic Coverage v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "control_count", "reviewed_routing_control_count",
+    "deterministic_control_count", "nondeterministic_control_count", "advisory_ai_review_control_count", "exact_clause_count",
+    "exact_predicate_clause_count", "built_in_collector_clause_count",
+    "signed_import_supported_clause_count", "authorities"
+  ],
+  "properties": {
+    "schema_version": {"const": "prc.automatic-coverage/v0.1"},
+    "control_count": {"type": "integer", "minimum": 1},
+    "reviewed_routing_control_count": {"type": "integer", "minimum": 0},
+    "deterministic_control_count": {"type": "integer", "minimum": 0},
+    "nondeterministic_control_count": {"type": "integer", "minimum": 0},
+    "advisory_ai_review_control_count": {"type": "integer", "minimum": 0},
+    "exact_clause_count": {"type": "integer", "minimum": 0},
+    "exact_predicate_clause_count": {"type": "integer", "minimum": 0},
+    "built_in_collector_clause_count": {"type": "integer", "minimum": 0},
+    "signed_import_supported_clause_count": {"type": "integer", "minimum": 0},
+    "authorities": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 6,
+      "items": {"$ref": "#/$defs/authority"}
+    }
+  },
+  "$defs": {
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name", "exact_clause_count", "built_in_collector_clause_count",
+        "signed_import_supported_clause_count"
+      ],
+      "properties": {
+        "name": {
+          "enum": ["artifact", "environment", "executed", "external_registry", "repository", "structured_record"]
+        },
+        "exact_clause_count": {"type": "integer", "minimum": 0},
+        "built_in_collector_clause_count": {"type": "integer", "minimum": 0},
+        "signed_import_supported_clause_count": {"type": "integer", "minimum": 0}
+      }
+    }
+  }
+}

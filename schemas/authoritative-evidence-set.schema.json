@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/authoritative-evidence-set.schema.json",
+  "title": "Production Readiness Authoritative Evidence Set v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "trust_store_file", "bundles"],
+  "properties": {
+    "schema_version": {"const": "prc.authoritative-evidence-set/v0.1"},
+    "trust_store_file": {"$ref": "#/$defs/file_name"},
+    "bundles": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 6,
+      "items": {"$ref": "#/$defs/bundle"}
+    }
+  },
+  "$defs": {
+    "file_name": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+    },
+    "authority": {
+      "enum": ["artifact", "environment", "executed", "external_registry", "repository", "structured_record"]
+    },
+    "bundle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["authority", "bundle_file", "policy_signature_file", "evidence_signature_file"],
+      "properties": {
+        "authority": {"$ref": "#/$defs/authority"},
+        "bundle_file": {"$ref": "#/$defs/file_name"},
+        "policy_signature_file": {"$ref": "#/$defs/file_name"},
+        "evidence_signature_file": {"$ref": "#/$defs/file_name"}
+      }
+    }
+  }
+}

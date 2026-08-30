@@ -99,6 +99,19 @@ is policy denial `5`. The scanner never executes bundle code and rejects a
 template already evaluated by a built-in collector. See
 [signed authoritative evidence bundles](authoritative-evidence-bundles.md).
 
+For several authorities, `--evidence-set FILE` replaces those four options.
+The set contains at most one alphabetically ordered bundle per authority and
+references only non-symlink sibling files. The scanner verifies every bundle
+before attaching any result. The two forms are mutually exclusive.
+
+`prc coverage` prints five separate measures: reviewed rule routing, exact
+predicate coverage, advisory AI review support, built-in collector coverage,
+and signed-import support.
+`prc coverage --format json` emits the same data as
+`prc.automatic-coverage/v0.1`. AI support must never be reported as a verified
+result. Signed-import support must never be reported as built-in collection or
+as evidence actually observed for a particular scan.
+
 If a later provider batch fails, every earlier schema-checked batch remains in
 the private resume cache and is included in a report marked `partial`. The
 report is written before code `4` is returned. Repeating the same command

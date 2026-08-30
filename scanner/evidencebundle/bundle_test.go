@@ -261,8 +261,8 @@ func newSignedBundleFixture(t *testing.T) signedBundleFixture {
 	store := trust.Store{
 		SchemaVersion: trust.StoreSchema, ID: "fixture-evidence-keys", Revision: 1,
 		Keys: []trust.Key{
-			{ID: "evidence-2026", Algorithm: trust.AlgorithmEd25519, PublicKey: base64.StdEncoding.EncodeToString(evidencePublic), Scopes: []string{"control-evidence-repository"}, Status: "active", NotBefore: observedAt.Add(-time.Hour), NotAfter: observedAt.Add(time.Hour)},
-			{ID: "policy-2026", Algorithm: trust.AlgorithmEd25519, PublicKey: base64.StdEncoding.EncodeToString(policyPublic), Scopes: []string{"control-policy-bundle"}, Status: "active", NotBefore: observedAt.Add(-time.Hour), NotAfter: observedAt.Add(time.Hour)},
+			{ID: "evidence-2026", Algorithm: trust.AlgorithmEd25519, PublicKey: base64.StdEncoding.EncodeToString(evidencePublic), Scopes: []string{"control-evidence-repository"}, Status: "active", NotBefore: observedAt.Add(-time.Hour), NotAfter: observedAt.Add(24 * time.Hour)},
+			{ID: "policy-2026", Algorithm: trust.AlgorithmEd25519, PublicKey: base64.StdEncoding.EncodeToString(policyPublic), Scopes: []string{"control-policy-bundle"}, Status: "active", NotBefore: observedAt.Add(-time.Hour), NotAfter: observedAt.Add(24 * time.Hour)},
 		},
 	}
 	storeData, err := json.Marshal(store)
