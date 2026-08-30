@@ -1,0 +1,25 @@
+# OpenSSF Scorecard cannot fully infer these repository-specific safeguards.
+# These annotations add context; they do not suppress findings or change scores.
+annotations:
+  - checks:
+      - pinned-dependencies
+    reasons:
+      - reason: remediated
+        # Python workflow installs require committed SHA-256 hashes. The npm
+        # release client is exact-version and SRI checked before installation,
+        # and local npm smoke tests consume release artifacts whose SHA-256
+        # values are checked by the same workflow.
+  - checks:
+      - branch-protection
+    reasons:
+      - reason: remediated
+        # Main requires pull requests, linear history, resolved conversations,
+        # and nine current status checks. The sole maintainer has only a
+        # pull-request bypass so routine work cannot push directly to main.
+  - checks:
+      - code-review
+    reasons:
+      - reason: not-applicable
+        # Independent human approval cannot be required until the project has
+        # a second trusted maintainer. Automated security and validation gates
+        # remain mandatory for every pull request.

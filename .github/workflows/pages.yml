@@ -30,7 +30,11 @@ jobs:
           cache-dependency-path: requirements-docs.lock.txt
 
       - name: Install documentation dependencies
-        run: pip install -r requirements-docs.lock.txt
+        run: >-
+          python -m pip install
+          --require-hashes
+          --only-binary=:all:
+          -r requirements-docs.lock.txt
 
       - name: Build documentation
         run: mkdocs build --strict

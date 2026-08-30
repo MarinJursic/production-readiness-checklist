@@ -51,7 +51,8 @@ Existing lifecycle and production control IDs are permanent and recorded in `cat
 4. Install the catalog tooling and verify structured sources and generated files:
 
    ```bash
-   python3 -m pip install -r requirements-dev.lock.txt
+   python3 -m pip install --require-hashes --only-binary=:all: \
+     -r requirements-dev.lock.txt
    python3 scripts/catalog.py check
    python3 scripts/control_contracts.py check
    python3 -m unittest discover -s tests -p "test_*.py"
@@ -75,16 +76,19 @@ Existing lifecycle and production control IDs are permanent and recorded in `cat
    ```bash
    python3 -m venv .venv
    . .venv/bin/activate
-   pip install -r requirements-docs.lock.txt
+   python3 -m pip install --require-hashes --only-binary=:all: \
+     -r requirements-docs.lock.txt
    mkdocs build --strict
    ```
 
    Audit both pinned Python environments before changing dependency locks:
 
    ```bash
-   python3 -m pip install pip-audit==2.10.1
+   python3 -m pip install --require-hashes --only-binary=:all: \
+     -r requirements-audit.lock.txt
    python3 -m pip_audit -r requirements-dev.lock.txt
    python3 -m pip_audit -r requirements-docs.lock.txt
+   python3 -m pip_audit -r requirements-audit.lock.txt
    ```
 
 7. Open a pull request using the repository template.
