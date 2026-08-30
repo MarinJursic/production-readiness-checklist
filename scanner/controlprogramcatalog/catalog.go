@@ -13,6 +13,7 @@ import (
 	"io"
 	"os"
 	"path/filepath"
+	"reflect"
 	"regexp"
 	"sort"
 	"strings"
@@ -359,6 +360,36 @@ func (template Template) Program(runtime RuntimeBinding) (controlprogram.Program
 		return controlprogram.Program{}, fmt.Errorf("bind program template %s: %w", template.TemplateID, err)
 	}
 	return program, nil
+}
+
+// ValidateMaterializedProgram verifies that a program supplied through an
+// authenticated policy channel is still exactly the reviewed template. The
+// policy channel may choose scope, freshness, applicability, and parameter
+// values, but it cannot replace the predicate, change a parameter type, move
+// the clause to another authority, or alter any reviewed identity.
+func (template Template) ValidateMaterializedProgram(program controlprogram.Program) error {
+	if err := controlprogram.ValidateProgram(program); err != nil {
+		return fmt.Errorf("validate materialized program %s: %w", template.TemplateID, err)
+	}
+	if program.SchemaVersion != template.ProgramSchemaVersion ||
+		program.ControlID != template.ControlID || program.ControlRevision != template.ControlRevision ||
+		program.ControlSemanticSHA256 != template.ControlSemanticSHA256 ||
+		program.ClauseID != template.ClauseID || program.ClauseSHA256 != template.ClauseStatementSHA256 ||
+		program.ImplementationContractSHA256 != template.ImplementationContractSHA256 ||
+		program.RequiredAuthority != template.RequiredAuthority ||
+		!reflect.DeepEqual(program.Predicate, template.Predicate) {
+		return fmt.Errorf("materialized program does not match reviewed template %s", template.TemplateID)
+	}
+	if len(program.Parameters) != len(template.SealedParameterContracts) {
+		return fmt.Errorf("materialized program parameters do not match reviewed template %s", template.TemplateID)
+	}
+	for _, contract := range template.SealedParameterContracts {
+		parameter, ok := program.Parameters[contract.ParameterKey]
+		if !ok || parameter.Type != contract.ParameterType {
+			return fmt.Errorf("materialized program parameter %s does not match reviewed template %s", contract.ParameterKey, template.TemplateID)
+		}
+	}
+	return nil
 }
 
 func decodeAndValidate(data []byte, schemaDigest string, bindings *controlbinding.Catalog) (*Catalog, error) {

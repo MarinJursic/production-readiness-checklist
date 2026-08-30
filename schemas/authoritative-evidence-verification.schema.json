@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/authoritative-evidence-verification.schema.json",
+  "title": "Production Readiness Authoritative Evidence Verification v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "bundle_id", "bundle_sha256", "policy_sha256", "catalog_sha256", "inventory_sha256",
+    "authority", "entry_count", "entries", "policy_signature", "evidence_signature"
+  ],
+  "properties": {
+    "schema_version": {"const": "prc.authoritative-evidence-verification/v0.1"},
+    "bundle_id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9./@_-]{0,255}$"},
+    "bundle_sha256": {"$ref": "#/$defs/digest"},
+    "policy_sha256": {"$ref": "#/$defs/digest"},
+    "catalog_sha256": {"$ref": "#/$defs/digest"},
+    "inventory_sha256": {"$ref": "#/$defs/digest"},
+    "authority": {
+      "enum": ["repository", "artifact", "executed", "environment", "external_registry", "structured_record"]
+    },
+    "entry_count": {"type": "integer", "minimum": 1, "maximum": 765},
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 765,
+      "items": {"$ref": "#/$defs/entry"}
+    },
+    "policy_signature": {"$ref": "signature-verification.schema.json"},
+    "evidence_signature": {"$ref": "signature-verification.schema.json"}
+  },
+  "$defs": {
+    "digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["template_id", "provider_id", "program", "evidence_sha256", "outcome", "reason_code"],
+      "properties": {
+        "template_id": {"$ref": "#/$defs/digest"},
+        "provider_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._/@:-]{0,255}$"},
+        "program": {"$ref": "control-check-program.schema.json"},
+        "evidence_sha256": {"$ref": "#/$defs/digest"},
+        "outcome": {"enum": ["pass", "fail", "blocked", "not_applicable"]},
+        "reason_code": {
+          "enum": [
+            "passed", "predicate_false", "not_applicable", "invalid_program", "invalid_evidence",
+            "evidence_binding_mismatch", "wrong_authority", "evidence_stale", "evidence_from_future",
+            "evidence_incomplete", "evidence_conflicting", "applicability_unknown",
+            "not_applicable_disallowed", "applicability_proof_missing", "fact_missing", "fact_type_mismatch"
+          ]
+        }
+      }
+    }
+  }
+}

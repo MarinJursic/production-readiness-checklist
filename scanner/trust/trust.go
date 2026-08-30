@@ -86,6 +86,23 @@ type Verification struct {
 	Verified         bool      `json:"verified"`
 }
 
+// ValidateVerification checks the self-contained record produced after a
+// successful signature verification. It does not repeat the cryptographic
+// verification because the signature envelope and public key are intentionally
+// not embedded in a run result.
+func ValidateVerification(verification Verification) error {
+	if verification.SchemaVersion != VerificationSchema || !artifactKind(verification.ArtifactKind) ||
+		!artifactIDPattern.MatchString(verification.ArtifactID) || !digestPattern.MatchString(verification.SHA256) ||
+		!identifierPattern.MatchString(verification.KeyID) || verification.Algorithm != AlgorithmEd25519 ||
+		!utcTime(verification.IssuedAt) || !utcTime(verification.VerifiedAt) ||
+		verification.IssuedAt.After(verification.VerifiedAt) || !identifierPattern.MatchString(verification.TrustStoreID) ||
+		!digestPattern.MatchString(verification.TrustStoreDigest) || !digestPattern.MatchString(verification.SignatureDigest) ||
+		!verification.Verified {
+		return fmt.Errorf("signature verification record has an invalid identity or time")
+	}
+	return nil
+}
+
 type signingPayload struct {
 	Domain        string    `json:"domain"`
 	SchemaVersion string    `json:"schema_version"`
@@ -289,7 +306,14 @@ func normalizeAndVerifyLoadedStore(store LoadedStore) error {
 }
 
 func artifactKind(value string) bool {
-	return value == "pack" || value == "adapter-registry" || value == "catalog-bundle" || value == "risk-exception"
+	switch value {
+	case "pack", "adapter-registry", "catalog-bundle", "risk-exception", "control-policy-bundle",
+		"control-evidence-repository", "control-evidence-artifact", "control-evidence-executed",
+		"control-evidence-environment", "control-evidence-external-registry", "control-evidence-structured-record":
+		return true
+	default:
+		return false
+	}
 }
 
 func utcTime(value time.Time) bool {

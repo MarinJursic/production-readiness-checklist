@@ -27,6 +27,7 @@ import (
 	"github.com/MarinJursic/production-readiness-checklist/scanner/doctor"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/engine"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/evidence"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/evidencebundle"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/exception"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/fullscan"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/invalidation"
@@ -1982,6 +1983,10 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 	adapterRuntime := set.String("adapter-runtime", "docker", "docker or podman executable for the authorized adapter")
 	adapterData := repeatedStringFlag{}
 	set.Var(&adapterData, "adapter-data", "read-only adapter data as ADAPTER_ID/NAME=PATH; repeatable")
+	evidenceBundlePath := set.String("evidence-bundle", "", "signed authoritative deterministic evidence bundle")
+	evidenceTrustStorePath := set.String("evidence-trust-store", "", "trust store for the evidence bundle signatures")
+	evidencePolicySignaturePath := set.String("evidence-policy-signature", "", "policy signature for the exact evidence bundle bytes")
+	evidenceSignaturePath := set.String("evidence-signature", "", "authority-scoped evidence signature for the exact bundle bytes")
 	if err := set.Parse(reorderInterspersedFlags(set, args)); err != nil {
 		return exitInternal, exitError(exitConfiguration, err)
 	}
@@ -2055,6 +2060,26 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 	}
 	if requestedAdapters == 0 && len(adapterData) > 0 {
 		return exitInternal, exitError(exitConfiguration, fmt.Errorf("--adapter-data requires a requested adapter"))
+	}
+	evidenceFlags := map[string]string{
+		"--evidence-bundle": *evidenceBundlePath, "--evidence-trust-store": *evidenceTrustStorePath,
+		"--evidence-policy-signature": *evidencePolicySignaturePath, "--evidence-signature": *evidenceSignaturePath,
+	}
+	evidenceFlagCount := 0
+	for _, value := range evidenceFlags {
+		if strings.TrimSpace(value) != "" {
+			evidenceFlagCount++
+		}
+	}
+	if evidenceFlagCount != 0 && evidenceFlagCount != len(evidenceFlags) {
+		missing := make([]string, 0, len(evidenceFlags)-evidenceFlagCount)
+		for name, value := range evidenceFlags {
+			if strings.TrimSpace(value) == "" {
+				missing = append(missing, name)
+			}
+		}
+		sort.Strings(missing)
+		return exitInternal, exitError(exitConfiguration, fmt.Errorf("signed evidence import requires all four evidence flags; missing %s", strings.Join(missing, ", ")))
 	}
 	if err := validateUniqueFlagValues(adapterManifests, "--adapter-manifest"); err != nil {
 		return exitInternal, exitError(exitConfiguration, err)
@@ -2152,8 +2177,41 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 		if executionErr != nil {
 			return exitInternal, exitError(exitExecution, fmt.Errorf("collect exact repository evidence: %w", executionErr))
 		}
+		if evidenceFlagCount == len(evidenceFlags) {
+			imported, verification, importErr := evidencebundle.VerifyAndEvaluate(
+				programCatalog, item, *evidenceBundlePath, *evidenceTrustStorePath,
+				*evidencePolicySignaturePath, *evidenceSignaturePath, profileRun.CompletedAt,
+			)
+			if importErr != nil {
+				return exitInternal, exitError(exitPolicyDenied, fmt.Errorf("import signed authoritative evidence: %w", importErr))
+			}
+			seenTemplates := make(map[string]bool, len(exactExecutions)+len(imported))
+			for _, execution := range exactExecutions {
+				seenTemplates[execution.TemplateID] = true
+			}
+			for _, execution := range imported {
+				if seenTemplates[execution.TemplateID] {
+					return exitInternal, exitError(exitConfiguration, fmt.Errorf("signed evidence duplicates an already evaluated template %s", execution.TemplateID))
+				}
+				seenTemplates[execution.TemplateID] = true
+			}
+			exactExecutions = append(exactExecutions, imported...)
+			profileRun.AuthoritativeEvidence = append(profileRun.AuthoritativeEvidence, model.AuthoritativeEvidenceVerification{
+				SchemaVersion: verification.SchemaVersion, BundleID: verification.BundleID,
+				BundleSHA256: verification.BundleSHA256, PolicySHA256: verification.PolicySHA256,
+				CatalogSHA256:   verification.CatalogSHA256,
+				InventorySHA256: verification.InventorySHA256, Authority: verification.Authority,
+				EntryCount:        verification.EntryCount,
+				Entries:           append([]model.AuthoritativeEvidenceEntry(nil), verification.Entries...),
+				PolicySignature:   verification.PolicySignature,
+				EvidenceSignature: verification.EvidenceSignature,
+			})
+		}
 		completeRun, attachErr = fullscan.AttachProgramExecutions(*catalogRoot, scanner.Catalog, profileRun, exactExecutions)
 	} else {
+		if evidenceFlagCount != 0 {
+			return exitInternal, exitError(exitConfiguration, fmt.Errorf("signed evidence import requires the complete released control catalog: %w", programErr))
+		}
 		// Deliberately minimal custom catalogs used for focused local scans do
 		// not contain the complete registry or exact-program corpus. Attach
 		// decides whether that absence is the supported minimal case or a
@@ -2410,6 +2468,16 @@ func printScanSummary(output io.Writer, run model.RunResult, style terminalStyle
 			len(run.ControlResults), run.ControlCatalog.ControlCount, controlCounts["needs_review"]+controlCounts["blocked"])
 		if run.ControlCatalog.AIReviewedCount > 0 {
 			fmt.Fprintf(output, "  AI review        %d advisory reviews; no AI result creates a verified pass\n", run.ControlCatalog.AIReviewedCount)
+		}
+		if run.AIImprovementPlan != nil {
+			fmt.Fprintf(output, "  AI action plan   %d exact cause groups; estimates remain advisory\n", run.AIImprovementPlan.ItemCount)
+		}
+		if len(run.AuthoritativeEvidence) > 0 {
+			entries := 0
+			for _, verification := range run.AuthoritativeEvidence {
+				entries += verification.EntryCount
+			}
+			fmt.Fprintf(output, "  Signed evidence  %d exact entries from %d dual-signed bundle(s)\n", entries, len(run.AuthoritativeEvidence))
 		}
 	}
 

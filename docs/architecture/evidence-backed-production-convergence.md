@@ -26,7 +26,11 @@ predicate engine, and aggregates clause results without accepting serialized
 or provider-chosen verdicts. One repository collector is connected end to end:
 it can prove `PRC-36-004` for a supported Node documentation layout. One
 embedded capability manifest is the source of truth for both the generated
-catalog and runtime registration. All other
+catalog and runtime registration. A new dual-signed offline evidence protocol
+can now feed any reviewed exact template without executing bundle code: a
+separate policy signer and authority-limited evidence signer must approve the
+ordered catalog- and inventory-bound policy and completed-evidence digests.
+This is a trusted import path, not an automatic collector. All other
 missing, unsupported, incomplete, changed, or unclear evidence remains Blocked.
 The report separates exact programs attempted, passed, failed, Not Applicable,
 and deterministic controls still blocked. Valid exact evidence documents are
@@ -49,13 +53,15 @@ README. Catalog coverage is not execution coverage.
 4. One independent skeptical subagent per batch searches for unsupported
    claims, false Not Applicable decisions, missed risk, contradictions, and
    generic advice.
-5. The coordinator must return priority, risk, ordered remediation,
-   independent verification, evidence still needed, and the strongest
-   challenge for every rule.
+5. The coordinator must return a narrow cause and cause key, priority, effort,
+   reach, risk, ordered remediation, independent verification, evidence still
+   needed, and the strongest challenge for every rule.
 6. Strict schemas and snapshot line checks reject incomplete or malformed
    output. The semantic claim is still marked advisory and unverified.
 7. Four provider batches run in parallel; Codex uses `xhigh` reasoning.
-8. Every completed batch is sealed in a private resume cache. A later failure
+8. The scanner groups only exact domain, cause-key, and normalized-cause
+   matches into an advisory improvement plan; it does not use fuzzy merging.
+9. Every completed batch is sealed in a private resume cache. A later failure
    produces a partial report and exit code 4. The next identical run reuses
    valid completed batches and sends only unfinished work.
 
@@ -122,7 +128,10 @@ Acceptance criteria:
 ### 3. Domain-aware nondeterministic review
 
 Per-rule agents find local issues, but 9,356 isolated answers can repeat the
-same root cause and conflict. Add a second durable layer of domain agents for
+same root cause and conflict. The scanner now produces a first conservative
+layer: exact category, cause-key, and normalized-cause matches become stable
+advisory groups that retain all control and task IDs. Differently worded causes
+remain separate. Add a second durable layer of domain agents for
 security, reliability, delivery, data, privacy, observability, operations,
 performance, accessibility, and product risk. They should consume sealed
 per-rule outputs, cluster shared causes, preserve disagreement, and build a

@@ -55,6 +55,7 @@ nav:
       - Scanner quick start: scanner/getting-started.md
       - Safe start-to-finish walkthrough: scanner/security-walkthrough.md
       - Safe AI control review: scanner/ai-control-review.md
+      - Signed authoritative evidence bundles: scanner/authoritative-evidence-bundles.md
       - Control contracts: scanner/control-contracts.md
       - Releases and verification: scanner/releases.md
       - CLI and exit codes: scanner/cli-contract.md

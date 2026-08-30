@@ -196,7 +196,7 @@ def checked_artifact(release: pathlib.Path, item: dict[str, Any]) -> pathlib.Pat
 
 def verify_result(value: dict[str, Any], label: str) -> None:
     if (
-        value.get("schema_version") != "prc.run/v0.12"
+        value.get("schema_version") != "prc.run/v0.13"
         or not isinstance(value.get("results"), list)
         or not isinstance(value.get("control_results"), list)
         or len(value["control_results"]) != 10_042

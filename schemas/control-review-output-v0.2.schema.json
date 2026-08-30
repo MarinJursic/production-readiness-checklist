@@ -1,12 +1,12 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/control-review-output.schema.json",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/control-review-output-v0.2.schema.json",
   "title": "Advisory complete-control AI review output",
   "type": "object",
   "additionalProperties": false,
   "required": ["schema_version", "task_id", "reviews"],
   "properties": {
-    "schema_version": {"const": "prc.control-review-output/v0.3"},
+    "schema_version": {"const": "prc.control-review-output/v0.2"},
     "task_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
     "reviews": {
       "type": "array",
@@ -15,17 +15,13 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["control_id", "assessment_candidate", "applicability_candidate", "confidence", "priority", "root_cause", "root_cause_key", "effort", "blast_radius", "reason", "challenge", "risk_if_ignored", "advice", "remediation_steps", "verification_steps", "evidence_needed", "evidence", "limitations"],
+        "required": ["control_id", "assessment_candidate", "applicability_candidate", "confidence", "priority", "reason", "challenge", "risk_if_ignored", "advice", "remediation_steps", "verification_steps", "evidence_needed", "evidence", "limitations"],
         "properties": {
           "control_id": {"type": "string", "pattern": "^(PRC-[0-9]{2}-[0-9]{3}|USEQ-[A-F0-9]{8})$"},
           "assessment_candidate": {"enum": ["advisory_pass_candidate", "advisory_fail_candidate", "needs_evidence", "not_applicable_candidate"]},
           "applicability_candidate": {"enum": ["applicable", "not_applicable", "undetermined"]},
           "confidence": {"enum": ["low", "medium", "high"]},
           "priority": {"enum": ["critical", "high", "medium", "low", "none"]},
-          "root_cause": {"type": "string", "minLength": 1, "maxLength": 4096},
-          "root_cause_key": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]{2,79}$"},
-          "effort": {"enum": ["small", "medium", "large", "unknown"]},
-          "blast_radius": {"enum": ["local", "component", "system", "organization", "unknown"]},
           "reason": {"type": "string", "minLength": 1, "maxLength": 16384},
           "challenge": {"type": "string", "minLength": 1, "maxLength": 16384},
           "risk_if_ignored": {"type": "string", "minLength": 1, "maxLength": 16384},

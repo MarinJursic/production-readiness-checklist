@@ -1,0 +1,145 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/adapter-execution-v0.3.schema.json",
+  "title": "Bound Production Readiness Adapter Execution v0.3",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "execution_id", "adapter_run_id", "adapter_id", "manifest_sha256", "image", "resolution", "data_inputs", "subject", "started_at", "completed_at", "duration_ms", "diagnostics_sha256", "diagnostics_bytes", "transcript"],
+  "properties": {
+    "schema_version": {"const": "prc.adapter-execution/v0.3"},
+    "execution_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "adapter_run_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "adapter_id": {"type": "string", "pattern": "^prc\\.adapter\\.[a-z0-9.-]+@[0-9]+\\.[0-9]+$"},
+    "manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "image": {"type": "string", "pattern": "^.+@sha256:[0-9a-f]{64}$"},
+    "resolution": {"$ref": "#/$defs/resolution"},
+    "data_inputs": {
+      "type": "array",
+      "maxItems": 16,
+      "items": {"$ref": "#/$defs/data_input"}
+    },
+    "subject": {"$ref": "#/$defs/subject"},
+    "started_at": {"type": "string", "format": "date-time"},
+    "completed_at": {"type": "string", "format": "date-time"},
+    "duration_ms": {"type": "integer", "minimum": 0},
+    "diagnostics_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "diagnostics_bytes": {"type": "integer", "minimum": 0},
+    "transcript": {"$ref": "#/$defs/transcript"}
+  },
+  "$defs": {
+    "data_input": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "destination", "sha256", "files", "bytes"],
+      "properties": {
+        "name": {"type": "string", "pattern": "^[a-z0-9][a-z0-9.-]{0,127}$"},
+        "destination": {"type": "string", "pattern": "^/prc-inputs/[a-z0-9][a-z0-9.-]{0,127}$"},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "files": {"type": "integer", "minimum": 1},
+        "bytes": {"type": "integer", "minimum": 1}
+      }
+    },
+    "resolution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source", "publisher_id", "trust"],
+      "properties": {
+        "source": {"enum": ["explicit-local", "registry"]},
+        "publisher_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9.-]{0,127}$"},
+        "trust": {"enum": ["local-explicit", "first-party-sandboxed", "verified-community", "unverified-community", "local"]},
+        "registry_id": {"type": "string", "pattern": "^prc\\.adapter-registry\\.[a-z0-9.-]+@[0-9]+\\.[0-9]+$"},
+        "registry_revision": {"type": "integer", "minimum": 1},
+        "registry_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"source": {"const": "registry"}}},
+          "then": {
+            "required": ["registry_id", "registry_revision", "registry_digest"],
+            "properties": {"trust": {"enum": ["first-party-sandboxed", "verified-community", "unverified-community", "local"]}}
+          },
+          "else": {
+            "properties": {"trust": {"const": "local-explicit"}},
+            "not": {"anyOf": [{"required": ["registry_id"]}, {"required": ["registry_revision"]}, {"required": ["registry_digest"]}]}
+          }
+        }
+      ]
+    },
+    "subject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["target_name", "inventory_digest"],
+      "properties": {
+        "target_name": {"type": "string", "minLength": 1},
+        "target_commit": {"type": "string", "pattern": "^[0-9a-f]{40,64}$"},
+        "inventory_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "location": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "line": {"type": "integer", "minimum": 0},
+        "column": {"type": "integer", "minimum": 0}
+      }
+    },
+    "observation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "outcome", "summary", "locations"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "kind": {"type": "string", "minLength": 1},
+        "outcome": {"enum": ["found", "not_found", "value", "unsupported"]},
+        "summary": {"type": "string", "minLength": 1},
+        "locations": {"type": "array", "items": {"$ref": "#/$defs/location"}},
+        "data": {"type": "object"}
+      }
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "media_type", "digest", "size"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "media_type": {"type": "string", "minLength": 1},
+        "digest": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+        "size": {"type": "integer", "minimum": 0},
+        "path": {"type": "string", "minLength": 1}
+      }
+    },
+    "log": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["level", "message"],
+      "properties": {
+        "level": {"enum": ["debug", "info", "warning", "error"]},
+        "message": {"type": "string", "minLength": 1}
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "counts"],
+      "properties": {
+        "status": {"enum": ["completed", "partial", "unsupported", "configuration_error", "execution_error", "timeout", "parse_error"]},
+        "counts": {"type": "object", "additionalProperties": {"type": "integer", "minimum": 0}},
+        "reason": {"type": "string", "minLength": 1}
+      },
+      "allOf": [{"if": {"properties": {"status": {"not": {"const": "completed"}}}}, "then": {"required": ["reason"]}}]
+    },
+    "transcript": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["logs", "observations", "artifacts", "summary"],
+      "properties": {
+        "logs": {"type": "array", "items": {"$ref": "#/$defs/log"}},
+        "observations": {"type": "array", "items": {"$ref": "#/$defs/observation"}},
+        "artifacts": {"type": "array", "items": {"$ref": "#/$defs/artifact"}},
+        "summary": {"$ref": "#/$defs/summary"}
+      }
+    }
+  }
+}

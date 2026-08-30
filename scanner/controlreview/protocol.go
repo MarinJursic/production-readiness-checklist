@@ -6,12 +6,15 @@ import (
 	"encoding/json"
 	"fmt"
 	"path/filepath"
+	"regexp"
 	"sort"
 	"strings"
 	"unicode/utf8"
 
 	"github.com/MarinJursic/production-readiness-checklist/scanner/provider"
 )
+
+var rootCauseKeyPattern = regexp.MustCompile(`^[a-z0-9][a-z0-9-]{2,79}$`)
 
 func sealTask(task Task) (Task, error) {
 	task.TaskID = ""
@@ -198,8 +201,13 @@ func validateReview(review Review, contextFiles []ContextFile) error {
 	validApplicability := map[string]bool{"applicable": true, "not_applicable": true, "undetermined": true}
 	validConfidence := map[string]bool{"low": true, "medium": true, "high": true}
 	validPriority := map[string]bool{"critical": true, "high": true, "medium": true, "low": true, "none": true}
+	validEffort := map[string]bool{"small": true, "medium": true, "large": true, "unknown": true}
+	validBlastRadius := map[string]bool{"local": true, "component": true, "system": true, "organization": true, "unknown": true}
 	if !validAssessment[review.AssessmentCandidate] || !validApplicability[review.ApplicabilityCandidate] ||
 		!validConfidence[review.Confidence] || !validPriority[review.Priority] ||
+		strings.TrimSpace(review.RootCause) == "" || len(review.RootCause) > 4096 ||
+		!rootCauseKeyPattern.MatchString(review.RootCauseKey) || !validEffort[review.Effort] ||
+		!validBlastRadius[review.BlastRadius] ||
 		strings.TrimSpace(review.Reason) == "" || strings.TrimSpace(review.Challenge) == "" ||
 		strings.TrimSpace(review.RiskIfIgnored) == "" || strings.TrimSpace(review.Advice) == "" ||
 		len(review.Reason) > 16*1024 || len(review.Challenge) > 16*1024 ||

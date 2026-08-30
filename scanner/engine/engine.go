@@ -182,6 +182,7 @@ func (e *Engine) ScanMode(
 	run := model.RunResult{
 		SchemaVersion: model.RunSchema, StartedAt: started, Plan: plan, Inventory: inventory,
 		AdapterExecutions: validatedExecutions, Findings: make([]model.Finding, 0),
+		AuthoritativeEvidence: make([]model.AuthoritativeEvidenceVerification, 0),
 	}
 	plannedByID := make(map[string]model.PlannedAssertion, len(plan.Assertions))
 	for _, planned := range plan.Assertions {

@@ -637,6 +637,7 @@ func TestReviewedExactControlExecutionValidationFailsClosed(t *testing.T) {
 
 func TestLegacyV012ControlStateRemainsReadable(t *testing.T) {
 	run := reviewedControlRun()
+	run.SchemaVersion = "prc.run/v0.12"
 	run.ControlCatalog = &model.ControlCatalogSummary{
 		SchemaVersion: "prc.control-catalog-summary/v0.1", RegistryVersion: "0.1.0",
 		RegistrySHA256: strings.Repeat("a", 64), SourceSHA256: strings.Repeat("a", 64),
