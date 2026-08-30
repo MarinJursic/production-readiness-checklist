@@ -123,6 +123,7 @@ nav:
       - Evidence record: records/evidence-record.md
       - Risk exception: records/risk-exception.md
       - Go/no-go decision: records/go-no-go-decision.md
+      - Security scanner integration: guides/security-scanner-integration.md
       - Source consolidation manifest: engineering/source-manifest.md
       - References and scope: references.md
 
