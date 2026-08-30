@@ -16,17 +16,20 @@ from scripts import build_release
 
 class ReleaseBuilderTests(unittest.TestCase):
     def test_release_python_lock_matches_dev_versions_and_hashes_every_wheel(self) -> None:
-        development: dict[str, str] = {}
-        for line in (build_release.ROOT / "requirements-dev.lock.txt").read_text(encoding="utf-8").splitlines():
-            if line and not line.startswith("#"):
-                name, version = line.split("==", 1)
-                development[name.lower()] = version
+        def canonical_name(value: str) -> str:
+            return re.sub(r"[-_.]+", "-", value).lower()
+
+        development_text = (build_release.ROOT / "requirements-dev.lock.txt").read_text(encoding="utf-8")
+        development = {
+            canonical_name(name): version
+            for name, version in re.findall(r"(?m)^([A-Za-z0-9_.-]+)==([^ ;\\]+)", development_text)
+        }
         release_text = (build_release.ROOT / "requirements-release.lock.txt").read_text(encoding="utf-8")
         records = re.findall(
             r"(?m)^([A-Za-z0-9_.-]+)==([^ \\]+) \\\n+\s+--hash=sha256:([0-9a-f]{64})$",
             release_text,
         )
-        self.assertEqual({name.lower(): version for name, version, _digest in records}, development)
+        self.assertEqual({canonical_name(name): version for name, version, _digest in records}, development)
         self.assertEqual(len({digest for _name, _version, digest in records}), len(development))
 
     def test_release_version_uses_strict_semver_without_build_metadata(self) -> None:

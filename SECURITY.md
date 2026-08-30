@@ -4,7 +4,7 @@ This repository contains guidance and automation, not a deployed service. Securi
 
 ## Reporting a vulnerability
 
-Please use GitHub’s private vulnerability reporting feature under **Security → Advisories → Report a vulnerability**. Do not open a public issue for an undisclosed vulnerability.
+Please use [GitHub’s private vulnerability reporting form](https://github.com/MarinJursic/production-readiness-checklist/security/advisories/new). Do not open a public issue for an undisclosed vulnerability.
 
 Include:
 

@@ -28,13 +28,21 @@ jobs:
           package-manager-cache: false
 
       - name: Install catalog dependencies
-        run: pip install -r requirements-dev.lock.txt
+        run: >-
+          python -m pip install
+          --require-hashes
+          --only-binary=:all:
+          -r requirements-dev.lock.txt
 
       - name: Audit pinned Python dependencies
         run: |
-          pip install pip-audit==2.10.1
+          python -m pip install \
+            --require-hashes \
+            --only-binary=:all: \
+            -r requirements-audit.lock.txt
           python -m pip_audit -r requirements-dev.lock.txt
           python -m pip_audit -r requirements-docs.lock.txt
+          python -m pip_audit -r requirements-audit.lock.txt
 
       - name: Validate control IDs and links
         run: python scripts/validate.py
@@ -78,7 +86,11 @@ jobs:
           python-version: "3.12"
 
       - name: Install schema validation dependencies
-        run: pip install -r requirements-dev.lock.txt
+        run: >-
+          python -m pip install
+          --require-hashes
+          --only-binary=:all:
+          -r requirements-dev.lock.txt
 
       - name: Verify Go modules
         run: go mod verify
@@ -396,7 +408,11 @@ jobs:
           cache-dependency-path: requirements-docs.lock.txt
 
       - name: Install documentation dependencies
-        run: pip install -r requirements-docs.lock.txt
+        run: >-
+          python -m pip install
+          --require-hashes
+          --only-binary=:all:
+          -r requirements-docs.lock.txt
 
       - name: Build documentation
         run: mkdocs build --strict
@@ -428,7 +444,11 @@ jobs:
           package-manager-cache: false
 
       - name: Install schema validation dependencies
-        run: pip install -r requirements-dev.lock.txt
+        run: >-
+          python -m pip install
+          --require-hashes
+          --only-binary=:all:
+          -r requirements-dev.lock.txt
 
       - name: Generate deterministic CycloneDX SBOM input
         run: |
