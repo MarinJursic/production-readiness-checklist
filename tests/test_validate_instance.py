@@ -18,6 +18,119 @@ SPEC.loader.exec_module(validate_instance)
 
 
 class ScannerOutputSchemaTests(unittest.TestCase):
+    def test_evidence_requirements_and_verification_reports_conform(self) -> None:
+        digest = "a" * 64
+        outcomes = {
+            "passed": 1,
+            "failed": 0,
+            "not_applicable": 0,
+            "blocked": 0,
+        }
+        requirements = {
+            "schema_version": "prc.evidence-requirements/v0.1",
+            "catalog_sha256": digest,
+            "registry_sha256": digest,
+            "binding_catalog_sha256": digest,
+            "exact_control_count": 686,
+            "exact_clause_count": 765,
+            "selected_control_count": 1,
+            "selected_clause_count": 1,
+            "built_in_collector_count": 1,
+            "missing_collector_count": 0,
+            "signed_import_route_count": 1,
+            "selection": {
+                "authority": "repository",
+                "control_id": "PRC-36-004",
+                "collector_status": "built_in",
+            },
+            "authorities": [{
+                "name": "repository",
+                "selected_clause_count": 1,
+                "built_in_collector_count": 1,
+                "missing_collector_count": 0,
+                "signed_import_route_count": 1,
+            }],
+            "requirements": [{
+                "template_id": digest,
+                "control_id": "PRC-36-004",
+                "control_revision": 1,
+                "clause_id": digest,
+                "clause_ordinal": 1,
+                "clause_statement": "The documented commands match the manifest.",
+                "checker_family": "repository_evidence",
+                "authority": "repository",
+                "implementation_id": "prc.check.repository-evidence@0.1",
+                "implementation_contract_sha256": digest,
+                "collector_id": "prc.collect.repository.documented-commands@1.0",
+                "collector_status": "built_in",
+                "signed_import_supported": True,
+                "required_sources": ["Authenticated repository inventory."],
+                "inventory_contract": "Seal every source before collection.",
+                "normalization_contract": "Emit typed raw values only.",
+                "completeness_contract": "Missing data is incomplete.",
+                "freshness_contract": "Bind evidence to the assessed revision.",
+                "facts": [{
+                    "id": "repository.commands",
+                    "type": "string_set",
+                    "raw_value_semantics": "The documented commands.",
+                    "source_requirement": "Read the documented command blocks.",
+                    "complete_required": True,
+                }],
+                "parameters": [{
+                    "id": "repository.manifest_commands",
+                    "type": "string_set",
+                    "origin": "scanner_inventory",
+                    "source_requirement": "Seal commands from the repository inventory.",
+                }],
+                "requires_inventory_input": True,
+                "requires_authenticated_policy_input": False,
+                "requires_authenticated_context_input": False,
+                "missing_evidence_result": "blocked",
+            }],
+        }
+        verification = {
+            "schema_version": "prc.evidence-set-verification/v0.1",
+            "verified_at": "2026-08-30T12:00:00Z",
+            "catalog_sha256": digest,
+            "inventory_sha256": digest,
+            "cryptographically_verified": True,
+            "bundle_count": 1,
+            "entry_count": 1,
+            "outcomes": outcomes,
+            "authorities": [{
+                "authority": "repository",
+                "bundle_id": "repository-evidence@1",
+                "bundle_sha256": digest,
+                "policy_sha256": digest,
+                "entry_count": 1,
+                "outcomes": outcomes,
+                "policy_key_id": "policy-key",
+                "evidence_key_id": "repository-key",
+                "trust_store_id": "production-keys",
+                "trust_store_sha256": digest,
+                "signatures_verified": True,
+            }],
+        }
+        self.assertEqual(
+            validate_instance.validation_errors(
+                requirements, "evidence-requirements.schema.json"
+            ),
+            [],
+        )
+        self.assertEqual(
+            validate_instance.validation_errors(
+                verification, "evidence-set-verification.schema.json"
+            ),
+            [],
+        )
+        bad_verification = dict(verification)
+        bad_verification["cryptographically_verified"] = False
+        self.assertTrue(
+            validate_instance.validation_errors(
+                bad_verification, "evidence-set-verification.schema.json"
+            )
+        )
+
     def test_automatic_coverage_and_multi_authority_set_conform(self) -> None:
         coverage = {
             "schema_version": "prc.automatic-coverage/v0.1",

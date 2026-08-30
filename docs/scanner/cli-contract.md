@@ -112,6 +112,20 @@ and signed-import support.
 result. Signed-import support must never be reported as built-in collection or
 as evidence actually observed for a particular scan.
 
+`prc evidence requirements` authenticates the exact-program catalog and the
+embedded collector-capability manifest, then exports the producer contract for
+all selected clauses. `--authority`, `--control`, and `--collector-status`
+filter it without weakening a clause. JSON output uses
+`prc.evidence-requirements/v0.1`. The command only describes required evidence;
+it does not collect or evaluate it.
+
+`prc evidence verify-set --set FILE [PROJECT]` inventories the project and
+verifies every referenced bundle and signature as one atomic set. An invalid
+set returns policy denial `5` and emits no success document. JSON success output
+uses `prc.evidence-set-verification/v0.1` and keeps cryptographic verification
+separate from Pass, Fail, Not Applicable, and Blocked counts. It is a preflight,
+not a readiness verdict.
+
 If a later provider batch fails, every earlier schema-checked batch remains in
 the private resume cache and is included in a report marked `partial`. The
 report is written before code `4` is returned. Repeating the same command

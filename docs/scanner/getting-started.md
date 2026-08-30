@@ -240,6 +240,35 @@ Use `prc coverage` to see the exact difference between rules that have reviewed
 predicates, clauses the scanner can collect by itself, and clauses supported by
 the signed external import route.
 
+To inspect what a missing collector must produce, filter the authenticated
+producer contract instead of reading the generated catalog by hand:
+
+```bash
+prc evidence requirements
+prc evidence requirements --authority repository --collector-status missing
+prc evidence requirements --control PRC-36-004 --format json
+```
+
+Human output is intended for review. JSON output conforms to
+`schemas/evidence-requirements.schema.json` and includes typed raw facts,
+pre-sealed inputs, source, inventory, normalization, completeness, and
+freshness requirements. It never counts the contract itself as observed
+evidence.
+
+Before attaching a multi-authority set to a full scan, verify it against the
+same project inventory and catalog:
+
+```bash
+prc evidence verify-set \
+  --set /private/evidence/evidence-set.json \
+  /path/to/project
+```
+
+Use `--format json` for a schema-checked verification record. A successful
+preflight confirms the signatures and internal bindings. It does not certify
+the truth of producer observations or production readiness, and any failing or
+blocked predicate stays failing or blocked.
+
 ## Optional Codex or Claude review
 
 A normal scan does not contact an AI provider. Use the provider's official CLI

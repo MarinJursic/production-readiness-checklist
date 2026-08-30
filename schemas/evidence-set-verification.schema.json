@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://marinjursic.github.io/production-readiness-checklist/schemas/evidence-set-verification.schema.json",
+  "title": "Production Readiness Evidence Set Verification v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "verified_at", "catalog_sha256", "inventory_sha256",
+    "cryptographically_verified", "bundle_count", "entry_count", "outcomes", "authorities"
+  ],
+  "properties": {
+    "schema_version": {"const": "prc.evidence-set-verification/v0.1"},
+    "verified_at": {"type": "string", "format": "date-time"},
+    "catalog_sha256": {"$ref": "#/$defs/digest"},
+    "inventory_sha256": {"$ref": "#/$defs/digest"},
+    "cryptographically_verified": {"const": true},
+    "bundle_count": {"type": "integer", "minimum": 1, "maximum": 6},
+    "entry_count": {"type": "integer", "minimum": 1, "maximum": 765},
+    "outcomes": {"$ref": "#/$defs/outcomes"},
+    "authorities": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 6,
+      "items": {"$ref": "#/$defs/authority"}
+    }
+  },
+  "$defs": {
+    "digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "identifier": {"type": "string", "minLength": 1, "maxLength": 256},
+    "outcomes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["passed", "failed", "not_applicable", "blocked"],
+      "properties": {
+        "passed": {"type": "integer", "minimum": 0},
+        "failed": {"type": "integer", "minimum": 0},
+        "not_applicable": {"type": "integer", "minimum": 0},
+        "blocked": {"type": "integer", "minimum": 0}
+      }
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority", "bundle_id", "bundle_sha256", "policy_sha256", "entry_count", "outcomes",
+        "policy_key_id", "evidence_key_id", "trust_store_id", "trust_store_sha256", "signatures_verified"
+      ],
+      "properties": {
+        "authority": {
+          "enum": ["artifact", "environment", "executed", "external_registry", "repository", "structured_record"]
+        },
+        "bundle_id": {"$ref": "#/$defs/identifier"},
+        "bundle_sha256": {"$ref": "#/$defs/digest"},
+        "policy_sha256": {"$ref": "#/$defs/digest"},
+        "entry_count": {"type": "integer", "minimum": 1, "maximum": 765},
+        "outcomes": {"$ref": "#/$defs/outcomes"},
+        "policy_key_id": {"$ref": "#/$defs/identifier"},
+        "evidence_key_id": {"$ref": "#/$defs/identifier"},
+        "trust_store_id": {"$ref": "#/$defs/identifier"},
+        "trust_store_sha256": {"$ref": "#/$defs/digest"},
+        "signatures_verified": {"const": true}
+      }
+    }
+  }
+}
