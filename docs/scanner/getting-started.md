@@ -195,6 +195,10 @@ It contains:
 - every assertion result with applicability, execution state, required
   evidence, observed evidence, and locations.
 
+When optional features are used, the same report also retains dual-signature
+verification for imported authoritative evidence and a compact, scanner-owned
+AI improvement plan grouped only by exact cause matches.
+
 The scanner creates report files with exclusive creation and will not overwrite
 an existing path. Use `--report /safe/path/readiness.html` to choose a new path,
 or `--no-report` to explicitly suppress the default HTML report.
@@ -202,6 +206,28 @@ or `--no-report` to explicitly suppress the default HTML report.
 `prc scan` has no code path to the remediation commands. A missing final newline
 or broad file mode may appear as a finding, but the target bytes and modes remain
 unchanged. `prc fix` is a separate, explicitly invoked candidate workflow.
+
+## Optional signed deterministic evidence
+
+Trusted collector teams can attach one previously created evidence bundle
+without loading collector code into `prc`:
+
+```bash
+prc scan /path/to/project \
+  --evidence-bundle evidence.json \
+  --evidence-trust-store trust-store.json \
+  --evidence-policy-signature policy-signature.json \
+  --evidence-signature authority-evidence-signature.json
+```
+
+All four files are required. Two different trusted Ed25519 keys sign ordered
+subjects: one policy key signs the program and runtime-input digest before
+collection, and one key limited to the evidence authority signs the completed
+bundle's canonical digest after observation.
+The bundle must match the current catalog and the exact inventory built by this
+scan. It contains typed facts, not executable code or a provider verdict. See
+[signed authoritative evidence bundles](authoritative-evidence-bundles.md) for
+the producer contract and every fail-closed check.
 
 ## Optional Codex or Claude review
 

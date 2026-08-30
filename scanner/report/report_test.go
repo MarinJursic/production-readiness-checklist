@@ -11,6 +11,7 @@ import (
 
 	"github.com/MarinJursic/production-readiness-checklist/scanner/controlprogram"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/trust"
 )
 
 func reportRun() model.RunResult {
@@ -77,6 +78,8 @@ func reportRun() model.RunResult {
 				AIReview: &model.AIControlReview{
 					Provider: "codex", AssessmentCandidate: "advisory_fail_candidate", ApplicabilityCandidate: "applicable",
 					ReviewDepth: "deep", Confidence: "medium", Priority: "high",
+					RootCause: "The ownership boundary is not established.", RootCauseKey: "ownership-boundary-undefined",
+					Effort: "medium", BlastRadius: "component",
 					Reason: "The cited line looks risky.", Challenge: "The line might not describe live behavior.",
 					RiskIfIgnored: "The behavior could fail in production.", Advice: "Review the real behavior.",
 					RemediationSteps:  []string{"Correct the behavior in an isolated change."},
@@ -87,6 +90,32 @@ func reportRun() model.RunResult {
 				}},
 		},
 		DeterministicEvidence: []controlprogram.Evidence{exactEvidence},
+		AuthoritativeEvidence: []model.AuthoritativeEvidenceVerification{{
+			SchemaVersion: "prc.authoritative-evidence-verification/v0.1", BundleID: "fixture-bundle",
+			BundleSHA256: digest, PolicySHA256: strings.Repeat("b", 64),
+			CatalogSHA256: digest, InventorySHA256: digest,
+			Authority: "repository", EntryCount: 1,
+			PolicySignature: trust.Verification{
+				KeyID: "policy-key", VerifiedAt: started.Add(time.Second), TrustStoreID: "fixture-store",
+				TrustStoreDigest: digest,
+			},
+			EvidenceSignature: trust.Verification{
+				KeyID: "evidence-key", VerifiedAt: started.Add(time.Second), TrustStoreID: "fixture-store",
+				TrustStoreDigest: digest,
+			},
+		}},
+		AIImprovementPlan: &model.AIImprovementPlan{
+			SchemaVersion: "prc.ai-improvement-plan/v0.1", Authority: "advisory_only", SourceRunID: digest,
+			ReviewProvider: "codex", ReviewDepth: "deep", ReviewState: "focused",
+			ReviewedControlCount: 1, ItemCount: 1,
+			Items: []model.AIImprovementPlanItem{{
+				ItemID: digest, Domain: "engineering/governance-and-foundations",
+				RootCauseKey: "ownership-boundary-undefined", RootCause: "The ownership boundary is not established.",
+				Priority: "high", Effort: "medium", BlastRadius: "component",
+				AssessmentCandidates: []string{"advisory_fail_candidate"}, ControlCount: 1,
+				ControlIDs: []string{"USEQ-22222222"}, TaskIDs: []string{digest},
+			}},
+		},
 	}
 }
 
@@ -98,7 +127,7 @@ func TestMarkdownReportIsScopedAndEscapesTableCells(t *testing.T) {
 		t.Fatal(err)
 	}
 	text := output.String()
-	for _, expected := range []string{"# Production readiness assessment", "Missing README \\| required.", "## What the result means", "Verified problems", "Narrow checks passed", "Reviewed deterministic controls", "Exact programs attempted", "Retained replayable exact evidence documents", "Classification corpus digest", "USEQ-11111111@1", "strength_audit_confirmed", "citation=snapshot_location_validated; claim=advisory_unverified", "## Adapter executions", "local-explicit", "## Findings", "example-product", "staging", "not an unqualified production-readiness"} {
+	for _, expected := range []string{"# Production readiness assessment", "Missing README \\| required.", "## What the result means", "Verified problems", "Narrow checks passed", "Reviewed deterministic controls", "Exact programs attempted", "Retained replayable exact evidence documents", "AI review improvement plan", "The ownership boundary is not established.", "Signed authoritative evidence", "policy-key", "evidence-key", "Classification corpus digest", "USEQ-11111111@1", "strength_audit_confirmed", "citation=snapshot_location_validated; claim=advisory_unverified", "## Adapter executions", "local-explicit", "## Findings", "example-product", "staging", "not an unqualified production-readiness"} {
 		if !strings.Contains(text, expected) {
 			t.Errorf("missing %q in report", expected)
 		}
@@ -174,7 +203,7 @@ func TestHTMLReportEscapesUntrustedText(t *testing.T) {
 	if !strings.Contains(text, "example-product") || !strings.Contains(text, "staging") {
 		t.Fatal("configured scope missing from HTML")
 	}
-	for _, expected := range []string{"report-brand", "Scan report", "Local score", "hero-metrics", "About this score", "score-gauge", "pathLength=\"100\"", "NOT READY", "simple local-check pass rate", "controls needing evidence or review", "Scores by category", "Not scored in this scan", "control-category", "Verified pass", "Reviewed classification", "Strength audit confirmed", "Deterministic binding", "USEQ-11111111@1", "Exact deterministic programs", "repository.fixture.v1", "Exact deterministic execution", "replayable evidence documents retained", "Replayable exact evidence", "report-fixture", "fixture.flag", "Classification corpus digest", "AI verification state", "citation=snapshot_location_validated; claim=advisory_unverified", "does not prove that the line supports the AI claim", "What to fix first", "Local check details", "README.md:1:2", "USEQ-FDCA6C71", "A root README must exist.", "README was not present.", "authority:", "observed: not recorded", "Evidence time:", "evidence-001", "Remediation class", ">R2<", "isolated agent-authored candidate", "Report-only scan", "Show more controls", "Technical evidence and IDs"} {
+	for _, expected := range []string{"report-brand", "Scan report", "Local score", "hero-metrics", "About this score", "score-gauge", "pathLength=\"100\"", "NOT READY", "simple local-check pass rate", "controls needing evidence or review", "Scores by category", "Not scored in this scan", "AI review improvement plan", "The ownership boundary is not established.", "advisory", "control-category", "Verified pass", "Reviewed classification", "Strength audit confirmed", "Deterministic binding", "USEQ-11111111@1", "Exact deterministic programs", "repository.fixture.v1", "Exact deterministic execution", "replayable evidence documents retained", "Signed authoritative evidence", "fixture-bundle", "policy-key", "evidence-key", "Replayable exact evidence", "report-fixture", "fixture.flag", "Classification corpus digest", "AI verification state", "citation=snapshot_location_validated; claim=advisory_unverified", "does not prove that the line supports the AI claim", "What to fix first", "Local check details", "README.md:1:2", "USEQ-FDCA6C71", "A root README must exist.", "README was not present.", "authority:", "observed: not recorded", "Evidence time:", "evidence-001", "Remediation class", ">R2<", "isolated agent-authored candidate", "Report-only scan", "Show more controls", "Technical evidence and IDs"} {
 		if !strings.Contains(text, expected) {
 			t.Errorf("detailed HTML report missing %q", expected)
 		}

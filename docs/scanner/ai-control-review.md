@@ -77,12 +77,21 @@ normal scanner state is still present. The AI section separately shows:
 - its suggested result;
 - whether it thinks the rule applies;
 - confidence;
-- priority, reason, risk, and advice;
+- priority, narrow root cause, stable cause key, estimated effort and reach,
+  reason, risk, and advice;
 - ordered remediation and independent verification steps;
 - evidence still needed and the strongest skeptical challenge;
 - exact excerpt lines it used;
 - separate citation-location and claim verification states; and
 - what it could not prove.
+
+The scanner also builds a compact `prc.ai-improvement-plan/v0.1` index after
+every completed, focused, or partial review. Grouping is deterministic and
+conservative: domain, `root_cause_key`, and normalized `root_cause` must all
+match exactly. It does not use embeddings or fuzzy text similarity. Every item
+retains all linked control and sealed task IDs, while the full per-control
+review remains the source for remediation, verification, evidence, challenge,
+and limitation details. The plan authority is always `advisory_only`.
 
 `snapshot_location_validated` means the path and line existed in the exact
 screened snapshot bound to the task. It does not mean the line supports the AI

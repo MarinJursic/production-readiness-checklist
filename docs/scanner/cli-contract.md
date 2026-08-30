@@ -90,6 +90,15 @@ AI claims remain explicitly `advisory_unverified`. Provider launch,
 timeout, secret-screening, or protocol failures return `4`. See
 [safe AI control review](ai-control-review.md).
 
+An advanced scan may import one offline deterministic evidence bundle with
+`--evidence-bundle`, `--evidence-trust-store`,
+`--evidence-policy-signature`, and `--evidence-signature`. The four options are
+atomic: supplying only some is configuration error `3`. A cryptographic trust,
+scope, digest, time, catalog, inventory, program, authority, or evidence failure
+is policy denial `5`. The scanner never executes bundle code and rejects a
+template already evaluated by a built-in collector. See
+[signed authoritative evidence bundles](authoritative-evidence-bundles.md).
+
 If a later provider batch fails, every earlier schema-checked batch remains in
 the private resume cache and is included in a report marked `partial`. The
 report is written before code `4` is returned. Repeating the same command

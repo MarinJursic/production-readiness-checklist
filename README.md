@@ -39,7 +39,7 @@ The source material contained 25,359 checkbox lines across 215 documents. It was
 
 Every control has now received a rule-by-rule primary classification, an independent skeptical review of every proposed deterministic rule, and a third semantic-strength audit. The validated result is **10,042 reviewed classifications: 686 deterministic and 9,356 nondeterministic**. The deterministic set has **686 one-to-one control bindings containing 765 exact clauses**, with a versioned checker family, required evidence authority, executable predicate, and pass/fail/blocked/adversarial fixtures for every clause. Read the [full classification reference](docs/control-classification/README.md) to see each decision and its reason.
 
-Those programs are fail-closed contracts, not a claim that 686 broad controls all run end to end today. The normal `prc` command runs the existing 40 local assertions plus the exact catalog programs whose evidence collectors are available. The shipped collector can prove `PRC-36-004` when a root Node package declares usable build and test scripts and both public commands appear in bounded, inventoried Markdown code. It verifies the exact file hashes and returns Blocked for missing, changed, malformed, oversized, unsupported, or unclear evidence. One embedded capability manifest now keeps the generated catalog and runtime registration in exact agreement. The remaining authority-specific collectors are not shipped yet. A rule that needs an unavailable collector, external registry, environment access, complete scope, or other authoritative evidence remains **Blocked**; it is never counted as passed just because a predicate exists.
+Those programs are fail-closed contracts, not a claim that 686 broad controls all run end to end today. The normal `prc` command runs the existing 40 local assertions plus the exact catalog programs whose evidence collectors are available. The shipped collector can prove `PRC-36-004` when a root Node package declares usable build and test scripts and both public commands appear in bounded, inventoried Markdown code. It verifies the exact file hashes and returns Blocked for missing, changed, malformed, oversized, unsupported, or unclear evidence. One embedded capability manifest now keeps the generated catalog and runtime registration in exact agreement. The remaining built-in authority-specific collectors are not shipped yet. Advanced evidence producers can now supply a bounded bundle for any reviewed exact program, but the scanner accepts it only with two independent trusted Ed25519 signatures: a policy key signs the stable pre-collection program and runtime-input digest, then a key limited to the named evidence authority signs the canonical completed-bundle digest. The bundle must match the current catalog and inventory, and it never supplies executable code or a verdict. A rule that still lacks complete authoritative evidence remains **Blocked**; it is never counted as passed just because a predicate exists.
 
 > [!IMPORTANT]
 > No checklist or AI review can prove that a nontrivial application has zero defects. A credible decision requires current evidence, explicit risk ownership, and tested recovery paths. One material failure can block approval regardless of how many unrelated controls pass.
@@ -116,7 +116,7 @@ The scan is read-only: it does **not** fix files, run project code, install proj
 
 1. It reads the selected project without following symlinks or running project commands.
 2. It runs 40 narrow checks for facts it can prove from the files, such as a license, dependency lock files, test setup, CI safety, exposed private keys, API files, containers, Terraform, and Kubernetes settings.
-3. It runs supported exact catalog programs over sealed evidence, retains validated evidence documents for replay, then connects every result to the full 10,042-control catalog. A small check never pretends it proved a much larger rule.
+3. It runs supported exact catalog programs over sealed evidence, verifies any explicitly supplied dual-signed evidence bundle, retains validated evidence documents for replay, then connects every result to the full 10,042-control catalog. A small check never pretends it proved a much larger rule.
 4. It shows the overall result, score, passed count, failed count, and items that still need a person or more evidence.
 5. It prints the exact HTML report path. In supported terminals, that path is clickable. The report starts simple and keeps long evidence, IDs, and the full catalog inside expandable details.
 
@@ -281,6 +281,18 @@ Useful report options:
 
 The native `prc scan` command remains available for Go, Python, Java, Rust, infrastructure, air-gapped, and mixed repositories that do not use npm.
 
+Trusted collector teams can import one previously created, authority-scoped evidence bundle without installing a plug-in or running bundle code:
+
+```bash
+prc scan /path/to/project \
+  --evidence-bundle evidence.json \
+  --evidence-trust-store trust-store.json \
+  --evidence-policy-signature policy-signature.json \
+  --evidence-signature repository-evidence-signature.json
+```
+
+All four files are required. The signatures must use different trusted keys. The policy key signs the scanner-defined digest of the programs and runtime inputs before collection; the evidence key signs the scanner-defined canonical digest of the completed bundle after observation. Any content mismatch, wrong catalog, wrong inventory, wrong authority, unsafe timestamp, duplicate exact program, or untrusted key stops the import before a result is attached. This is an advanced verification interface; `prc` does not create evidence, keep private keys, or guess that a collector is trustworthy. See [signed authoritative evidence bundles](docs/scanner/authoritative-evidence-bundles.md).
+
 ### Optional deep review with Codex or Claude Code
 
 The ordinary scan is local and deterministic. AI review is a separate option for broad or subjective rules such as project-appropriate folder structure. First sign in through an installed provider CLI, then scan:
@@ -306,10 +318,12 @@ sent in sealed batches of at most eight. The coordinator must create one
 separate primary subagent per rule. Deep mode also creates one independent
 skeptical subagent per batch and reconciles its counterexamples with the
 primary reviews. The short `prc full` command uses four parallel provider
-workers; Codex also uses `xhigh` reasoning. Each result contains a priority,
-risk, ordered fix steps, independent verification steps, evidence still needed,
-and the strongest skeptical challenge. These remain advice, never verified
-findings.
+workers; Codex also uses `xhigh` reasoning. Each result contains a narrow root
+cause and cause key, priority, estimated effort and reach, risk, ordered fix
+steps, independent verification steps, evidence still needed, and the strongest
+skeptical challenge. The scanner groups only exact category, cause-key, and
+normalized-cause matches into a smaller improvement plan. It does not use fuzzy
+merging, and every group remains advice rather than a verified finding.
 
 Completed batches are saved outside the target and reused when the same scan
 resumes. If a later batch fails, the scanner writes a clearly marked partial
@@ -331,14 +345,14 @@ The scanner includes every production concern in its report, but it does not pre
 
 Fixing is a separate workflow. `prc scan` never calls it. The bounded `prc fix` command works only in isolated candidate directories and supports a deliberately small set of independently verifiable changes; it never merges, deploys, or releases anything automatically.
 
-Continue with the [complete scanner quick start](docs/scanner/getting-started.md), [safe start-to-finish walkthrough](docs/scanner/security-walkthrough.md), [CLI and exit codes](docs/scanner/cli-contract.md), [diagnostics](docs/scanner/doctor.md), [read-only agent integration](docs/scanner/mcp-agent-integration.md), [project configuration](docs/scanner/configuration.md), [state and history](docs/scanner/state-and-history.md), [supply-chain scanning](docs/scanner/supply-chain.md), and [isolated remediation](docs/scanner/remediation.md). The [evidence-backed production convergence roadmap](docs/architecture/evidence-backed-production-convergence.md) records the quality target, measured current state, implementation order, and acceptance gates. The [research findings and improvement plan](research/PROJECT_RESEARCH_AND_IMPROVEMENT_PLAN.md) records the Reddit audit, standards review, coverage gaps, and prioritized next work. Architecture details live in the [product contract](docs/architecture/product-contract.md), [trust model](docs/architecture/trust-model.md), [adapter protocol](docs/architecture/adapters.md), [evidence model](docs/architecture/evidence-and-results.md), and [remediation contract](docs/architecture/remediation-contract.md).
+Continue with the [complete scanner quick start](docs/scanner/getting-started.md), [safe start-to-finish walkthrough](docs/scanner/security-walkthrough.md), [signed authoritative evidence bundles](docs/scanner/authoritative-evidence-bundles.md), [CLI and exit codes](docs/scanner/cli-contract.md), [diagnostics](docs/scanner/doctor.md), [read-only agent integration](docs/scanner/mcp-agent-integration.md), [project configuration](docs/scanner/configuration.md), [state and history](docs/scanner/state-and-history.md), [supply-chain scanning](docs/scanner/supply-chain.md), and [isolated remediation](docs/scanner/remediation.md). The [evidence-backed production convergence roadmap](docs/architecture/evidence-backed-production-convergence.md) records the quality target, measured current state, implementation order, and acceptance gates. The [research findings and improvement plan](research/PROJECT_RESEARCH_AND_IMPROVEMENT_PLAN.md) records the Reddit audit, standards review, coverage gaps, and prioritized next work. Architecture details live in the [product contract](docs/architecture/product-contract.md), [trust model](docs/architecture/trust-model.md), [adapter protocol](docs/architecture/adapters.md), [evidence model](docs/architecture/evidence-and-results.md), and [remediation contract](docs/architecture/remediation-contract.md).
 
 ### What is still being built
 
 - More narrow, tested local checks. The catalog currently has 43 executable assertions linked to 26 broad controls; the normal profile runs 40 and the quick profile runs 18. Most broad controls still need evidence or review.
-- More authority-specific read-only collectors for the reviewed deterministic catalog. Classification, bindings, exact predicates, the runtime, report aggregation, and the first repository collector now run end to end, but 764 of the 765 clauses still need a trusted source adapter. Missing collectors, external providers, complete scope, or authoritative evidence must stay Blocked.
+- More built-in authority-specific read-only collectors for the reviewed deterministic catalog. Classification, bindings, exact predicates, the runtime, report aggregation, the first repository collector, and the dual-signed external evidence protocol now run end to end. The protocol can safely evaluate any reviewed exact program when a trusted producer supplies complete evidence, but 764 of the 765 clauses still lack an automatic built-in collector. Missing collectors, external providers, complete scope, or authoritative evidence must stay Blocked.
 - Deeper meaning checks beyond the new readable, non-whitespace text baseline for repository documents—for example, whether a security policy gives useful reporting steps—without forcing one language, file name, heading, or folder layout.
-- Domain-level synthesis and root-cause deduplication above the rule-by-rule AI reviews, so related advice becomes one dependency-ordered improvement plan instead of repeated symptoms.
+- Cross-domain dependency synthesis and a final falsification pass above the new exact root-cause grouping. The current scanner safely groups only identical domain, cause-key, and normalized-cause triples; it deliberately does not guess that differently worded causes are the same.
 - Larger real-project accuracy tests for Codex and Claude review, including cost, partial resume, false-positive, missed-finding, prompt-injection, disagreement, and unusual-project-layout measurements.
 - Independent checks of the meaning of AI advice. The scanner can prove that an AI-cited file and line existed in the screened snapshot, but it cannot yet prove that the sentence the AI wrote about that line is correct.
 - Safer native installation choices for people without Node, such as signed standalone installers or package-manager formulas. These should download a fixed, verified scanner release—not hide the npm command inside a mutable shell script.

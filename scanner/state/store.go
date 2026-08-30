@@ -13,17 +13,21 @@ import (
 	"net/url"
 	"os"
 	"path/filepath"
+	"reflect"
 	"runtime"
 	"sort"
 	"strings"
 	"time"
 
 	"github.com/MarinJursic/production-readiness-checklist/scanner/adapter"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/aiplan"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/controlprogram"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/engine"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/evidencebundle"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/finding"
 	workspaceinventory "github.com/MarinJursic/production-readiness-checklist/scanner/inventory"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/trust"
 	_ "modernc.org/sqlite"
 )
 
@@ -509,6 +513,7 @@ func validateRun(run model.RunResult) error {
 		return fmt.Errorf("run ID does not match record content")
 	}
 	if !((run.SchemaVersion == model.RunSchema && run.Plan.SchemaVersion == model.PlanSchema) ||
+		(run.SchemaVersion == "prc.run/v0.12" && run.Plan.SchemaVersion == model.PlanSchema) ||
 		(run.SchemaVersion == "prc.run/v0.11" && run.Plan.SchemaVersion == model.PlanSchema) ||
 		(run.SchemaVersion == "prc.run/v0.10" && run.Plan.SchemaVersion == model.PlanSchema) ||
 		(run.SchemaVersion == "prc.run/v0.9" && run.Plan.SchemaVersion == model.PlanSchema) ||
@@ -555,7 +560,7 @@ func validateRun(run model.RunResult) error {
 		}
 	}
 	expectedExecutionSchema := "prc.adapter-execution/v0.1"
-	if run.SchemaVersion == model.RunSchema || run.SchemaVersion == "prc.run/v0.11" || run.SchemaVersion == "prc.run/v0.10" || run.SchemaVersion == "prc.run/v0.9" || run.SchemaVersion == "prc.run/v0.8" {
+	if run.SchemaVersion == model.RunSchema || run.SchemaVersion == "prc.run/v0.12" || run.SchemaVersion == "prc.run/v0.11" || run.SchemaVersion == "prc.run/v0.10" || run.SchemaVersion == "prc.run/v0.9" || run.SchemaVersion == "prc.run/v0.8" {
 		expectedExecutionSchema = model.AdapterExecutionSchema
 	}
 	seenExecutions := map[string]bool{}
@@ -612,7 +617,7 @@ func validateRun(run model.RunResult) error {
 	if len(results) != len(planned) {
 		return fmt.Errorf("run does not contain exactly one result for every planned assertion")
 	}
-	if run.SchemaVersion == model.RunSchema || run.SchemaVersion == "prc.run/v0.11" || run.SchemaVersion == "prc.run/v0.10" || run.SchemaVersion == "prc.run/v0.9" || run.SchemaVersion == "prc.run/v0.8" || run.SchemaVersion == "prc.run/v0.7" || run.SchemaVersion == "prc.run/v0.6" {
+	if run.SchemaVersion == model.RunSchema || run.SchemaVersion == "prc.run/v0.12" || run.SchemaVersion == "prc.run/v0.11" || run.SchemaVersion == "prc.run/v0.10" || run.SchemaVersion == "prc.run/v0.9" || run.SchemaVersion == "prc.run/v0.8" || run.SchemaVersion == "prc.run/v0.7" || run.SchemaVersion == "prc.run/v0.6" {
 		if run.Findings == nil {
 			return fmt.Errorf("current run findings must encode as an array")
 		}
@@ -670,8 +675,11 @@ func validateRun(run model.RunResult) error {
 }
 
 func validateControlResults(run model.RunResult, assertionResults map[string]bool) error {
+	if (run.SchemaVersion == model.RunSchema && run.AuthoritativeEvidence == nil) || len(run.AuthoritativeEvidence) > 16 {
+		return fmt.Errorf("current run authoritative evidence bundles must encode as a bounded array")
+	}
 	if run.ControlCatalog == nil {
-		if len(run.ControlResults) != 0 || len(run.DeterministicEvidence) != 0 {
+		if len(run.ControlResults) != 0 || len(run.DeterministicEvidence) != 0 || len(run.AuthoritativeEvidence) != 0 {
 			return fmt.Errorf("run has complete-control results without a control catalog binding")
 		}
 		return nil
@@ -764,6 +772,94 @@ func validateControlResults(run model.RunResult, assertionResults map[string]boo
 		exactEvidence[identity] = evidence
 	}
 	usedExactEvidence := map[string]bool{}
+	type authoritativeBinding struct {
+		entry       model.AuthoritativeEvidenceEntry
+		evidenceKey string
+	}
+	authoritativeTemplates := map[string]authoritativeBinding{}
+	usedAuthoritativeTemplates := map[string]bool{}
+	seenAuthoritativeBundles := map[string]bool{}
+	authoritativeEntryCount := 0
+	validEvidenceKind := map[string]string{
+		"repository": "control-evidence-repository", "artifact": "control-evidence-artifact",
+		"executed": "control-evidence-executed", "environment": "control-evidence-environment",
+		"external_registry": "control-evidence-external-registry", "structured_record": "control-evidence-structured-record",
+	}
+	for _, verification := range run.AuthoritativeEvidence {
+		evidenceKind, authorityOK := validEvidenceKind[verification.Authority]
+		if verification.SchemaVersion != "prc.authoritative-evidence-verification/v0.1" ||
+			verification.BundleID == "" || seenAuthoritativeBundles[verification.BundleID] ||
+			!digest(verification.BundleSHA256) || !digest(verification.PolicySHA256) ||
+			verification.CatalogSHA256 != summary.ControlCheckProgramsSHA256 ||
+			verification.InventorySHA256 != run.Inventory.Digest || !authorityOK ||
+			verification.EntryCount < 1 || verification.EntryCount > 765 ||
+			len(verification.Entries) != verification.EntryCount ||
+			verification.PolicySignature.ArtifactKind != "control-policy-bundle" ||
+			verification.EvidenceSignature.ArtifactKind != evidenceKind ||
+			verification.PolicySignature.ArtifactID != verification.BundleID ||
+			verification.EvidenceSignature.ArtifactID != verification.BundleID ||
+			verification.PolicySignature.SHA256 != verification.PolicySHA256 ||
+			verification.EvidenceSignature.SHA256 != verification.BundleSHA256 ||
+			verification.PolicySignature.KeyID == verification.EvidenceSignature.KeyID ||
+			verification.PolicySignature.TrustStoreID != verification.EvidenceSignature.TrustStoreID ||
+			verification.PolicySignature.TrustStoreDigest != verification.EvidenceSignature.TrustStoreDigest ||
+			!verification.PolicySignature.VerifiedAt.Equal(run.CompletedAt) ||
+			!verification.EvidenceSignature.VerifiedAt.Equal(run.CompletedAt) {
+			return fmt.Errorf("run contains an invalid authoritative evidence verification for %s", verification.BundleID)
+		}
+		if err := trust.ValidateVerification(verification.PolicySignature); err != nil {
+			return fmt.Errorf("run contains an invalid authoritative policy verification: %w", err)
+		}
+		if err := trust.ValidateVerification(verification.EvidenceSignature); err != nil {
+			return fmt.Errorf("run contains an invalid authoritative evidence verification: %w", err)
+		}
+		bundle := evidencebundle.Bundle{
+			SchemaVersion: evidencebundle.SchemaVersion, ID: verification.BundleID,
+			CatalogSHA256: verification.CatalogSHA256, InventorySHA256: verification.InventorySHA256,
+			Authority: controlprogram.Authority(verification.Authority),
+			Entries:   make([]evidencebundle.Entry, 0, len(verification.Entries)),
+		}
+		previousTemplate := ""
+		for _, entry := range verification.Entries {
+			evidenceDocument, evidenceOK := exactEvidence[entry.EvidenceSHA256]
+			if !digest(entry.TemplateID) || !validEvidenceProviderID(entry.ProviderID) ||
+				(previousTemplate != "" && previousTemplate >= entry.TemplateID) ||
+				authoritativeTemplates[entry.TemplateID].entry.TemplateID != "" || !evidenceOK ||
+				controlprogram.ValidateProgram(entry.Program) != nil ||
+				entry.Program.InventorySHA256 != run.Inventory.Digest ||
+				string(entry.Program.RequiredAuthority) != verification.Authority ||
+				controlprogram.ProgramSHA256(entry.Program) != evidenceDocument.ProgramSHA256 ||
+				controlprogram.EvidenceSHA256(evidenceDocument) != entry.EvidenceSHA256 ||
+				verification.PolicySignature.IssuedAt.After(evidenceDocument.ObservedAt) ||
+				verification.EvidenceSignature.IssuedAt.Before(evidenceDocument.ObservedAt) {
+				return fmt.Errorf("run contains an invalid authoritative evidence entry %s", entry.TemplateID)
+			}
+			replayed := controlprogram.Evaluate(entry.Program, evidenceDocument, run.CompletedAt)
+			if string(replayed.Outcome) != entry.Outcome || string(replayed.ReasonCode) != entry.ReasonCode ||
+				replayed.EvidenceSHA256 != entry.EvidenceSHA256 {
+				return fmt.Errorf("run contains a non-replayable authoritative evidence entry %s", entry.TemplateID)
+			}
+			bundle.Entries = append(bundle.Entries, evidencebundle.Entry{
+				TemplateID: entry.TemplateID, ProviderID: entry.ProviderID,
+				Program: entry.Program, Evidence: evidenceDocument,
+			})
+			authoritativeTemplates[entry.TemplateID] = authoritativeBinding{
+				entry: entry, evidenceKey: verification.EvidenceSignature.KeyID,
+			}
+			previousTemplate = entry.TemplateID
+		}
+		policyDigest, policyErr := evidencebundle.PolicySHA256(bundle)
+		bundleDigest, bundleErr := evidencebundle.BundleSHA256(bundle)
+		if policyErr != nil || bundleErr != nil || policyDigest != verification.PolicySHA256 ||
+			bundleDigest != verification.BundleSHA256 {
+			return fmt.Errorf("run authoritative evidence bundle %s cannot be reconstructed", verification.BundleID)
+		}
+		seenAuthoritativeBundles[verification.BundleID] = true
+		authoritativeEntryCount += verification.EntryCount
+	}
+	if authoritativeEntryCount > len(run.DeterministicEvidence) {
+		return fmt.Errorf("run authenticates more authoritative entries than retained deterministic evidence")
+	}
 	seen := map[string]bool{}
 	for index, control := range run.ControlResults {
 		if control.ControlID == "" || seen[control.ControlID] || control.Revision < 1 ||
@@ -823,6 +919,16 @@ func validateControlResults(run model.RunResult, assertionResults map[string]boo
 							return fmt.Errorf("deterministic control %s has missing or mismatched replay evidence", control.ControlID)
 						}
 						usedExactEvidence[clause.EvidenceSHA256] = true
+					}
+					if binding, imported := authoritativeTemplates[clause.TemplateID]; imported {
+						entry := binding.entry
+						if clause.ProviderID != entry.ProviderID+"@"+binding.evidenceKey ||
+							clause.ProgramSHA256 != controlprogram.ProgramSHA256(entry.Program) ||
+							clause.EvidenceSHA256 != entry.EvidenceSHA256 || clause.Outcome != entry.Outcome ||
+							clause.ReasonCode != entry.ReasonCode || usedAuthoritativeTemplates[clause.TemplateID] {
+							return fmt.Errorf("deterministic control %s has a mismatched authoritative evidence result", control.ControlID)
+						}
+						usedAuthoritativeTemplates[clause.TemplateID] = true
 					}
 					switch clause.Status {
 					case "passed":
@@ -891,9 +997,16 @@ func validateControlResults(run model.RunResult, assertionResults map[string]boo
 			executed[assertionID] = true
 		}
 		if review := control.AIReview; review != nil {
+			planningFieldsPresent := review.RootCause != "" || review.RootCauseKey != "" || review.Effort != "" || review.BlastRadius != ""
+			planningFieldsValid := strings.TrimSpace(review.RootCause) != "" && len(review.RootCause) <= 4096 &&
+				validRootCauseKey(review.RootCauseKey) &&
+				(review.Effort == "small" || review.Effort == "medium" || review.Effort == "large" || review.Effort == "unknown") &&
+				(review.BlastRadius == "local" || review.BlastRadius == "component" || review.BlastRadius == "system" || review.BlastRadius == "organization" || review.BlastRadius == "unknown")
 			if (review.Provider != "codex" && review.Provider != "claude") || !digest(review.TaskID) ||
 				(review.ReviewDepth != "standard" && review.ReviewDepth != "deep") ||
 				control.Disposition == "retired" || strings.TrimSpace(review.Reason) == "" ||
+				(run.SchemaVersion == model.RunSchema && !planningFieldsValid) ||
+				(run.SchemaVersion != model.RunSchema && planningFieldsPresent && !planningFieldsValid) ||
 				strings.TrimSpace(review.Challenge) == "" || strings.TrimSpace(review.RiskIfIgnored) == "" ||
 				strings.TrimSpace(review.Advice) == "" || len(review.Reason) > 16*1024 ||
 				len(review.Challenge) > 16*1024 || len(review.RiskIfIgnored) > 16*1024 || len(review.Advice) > 16*1024 ||
@@ -908,9 +1021,9 @@ func validateControlResults(run model.RunResult, assertionResults map[string]boo
 				review.Confidence == "high" && len(review.Evidence) == 0 {
 				return fmt.Errorf("control %s contains an invalid advisory AI review", control.ControlID)
 			}
-			// These fields were added to the existing v0.12 record contract, so
-			// empty values remain readable for older archived v0.12 runs. Every
-			// newly produced review sets both fields explicitly.
+			// Archived v0.12 runs are decoded by their frozen JSON contract and do
+			// not enter current-run validation. Every v0.13 review sets both
+			// verification states explicitly.
 			if review.CitationVerification != "" &&
 				(review.CitationVerification != "not_cited" && review.CitationVerification != "snapshot_location_validated") ||
 				review.ClaimVerification != "" && review.ClaimVerification != "advisory_unverified" ||
@@ -965,6 +1078,9 @@ func validateControlResults(run model.RunResult, assertionResults map[string]boo
 	if len(usedExactEvidence) != len(exactEvidence) {
 		return fmt.Errorf("run contains unreferenced deterministic evidence")
 	}
+	if len(usedAuthoritativeTemplates) != len(authoritativeTemplates) {
+		return fmt.Errorf("run contains unreferenced authoritative evidence entries")
+	}
 	for _, control := range run.ControlResults {
 		canonical, ok := controlByID(run.ControlResults, control.CanonicalControlID)
 		if !ok || normalizeControlStatement(canonical.Statement) != normalizeControlStatement(control.Statement) {
@@ -976,7 +1092,7 @@ func validateControlResults(run model.RunResult, assertionResults map[string]boo
 	}
 	if summary.AIReviewProvider == "" {
 		if summary.AIReviewModel != "" || summary.AIReviewDepth != "" || summary.AIReviewState != "" || summary.AIReviewedCount != 0 ||
-			summary.AIAdvisoryFailCount != 0 || aiReviews != 0 {
+			summary.AIAdvisoryFailCount != 0 || aiReviews != 0 || run.AIImprovementPlan != nil {
 			return fmt.Errorf("complete-control run has advisory review data without a provider binding")
 		}
 	} else if (summary.AIReviewProvider != "codex" && summary.AIReviewProvider != "claude") ||
@@ -988,7 +1104,44 @@ func validateControlResults(run model.RunResult, assertionResults map[string]boo
 		(summary.AIReviewState == "partial" && aiReviews >= summary.ReviewedNondeterministicCount) {
 		return fmt.Errorf("complete-control run has an invalid advisory AI review summary")
 	}
+	if summary.AIReviewProvider != "" && run.SchemaVersion == model.RunSchema {
+		if run.AIImprovementPlan == nil {
+			return fmt.Errorf("complete-control run omits its scanner-owned AI improvement plan")
+		}
+		expectedPlan, err := aiplan.Build(run, run.AIImprovementPlan.SourceRunID)
+		if err != nil || !reflect.DeepEqual(expectedPlan, run.AIImprovementPlan) {
+			return fmt.Errorf("complete-control run contains a stale or altered AI improvement plan")
+		}
+	} else if run.SchemaVersion != model.RunSchema && run.AIImprovementPlan != nil {
+		return fmt.Errorf("archived run contains a future AI improvement plan")
+	}
 	return nil
+}
+
+func validRootCauseKey(value string) bool {
+	if len(value) < 3 || len(value) > 80 ||
+		((value[0] < 'a' || value[0] > 'z') && (value[0] < '0' || value[0] > '9')) {
+		return false
+	}
+	for _, character := range value {
+		if (character < 'a' || character > 'z') && (character < '0' || character > '9') && character != '-' {
+			return false
+		}
+	}
+	return true
+}
+
+func validEvidenceProviderID(value string) bool {
+	if len(value) < 1 || len(value) > 256 || value[0] < 'a' || value[0] > 'z' {
+		return false
+	}
+	for _, character := range value {
+		if (character < 'a' || character > 'z') && (character < '0' || character > '9') &&
+			character != '.' && character != '_' && character != '/' && character != '@' && character != ':' && character != '-' {
+			return false
+		}
+	}
+	return true
 }
 
 func validDeterministicControlExecution(control model.ControlResult) bool {

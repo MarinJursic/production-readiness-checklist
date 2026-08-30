@@ -8,8 +8,8 @@ import (
 )
 
 const (
-	TaskSchema   = "prc.control-review-task/v0.4"
-	OutputSchema = "prc.control-review-output/v0.2"
+	TaskSchema   = "prc.control-review-task/v0.5"
+	OutputSchema = "prc.control-review-output/v0.3"
 )
 
 type AssertionContext struct {
@@ -73,6 +73,10 @@ type Review struct {
 	ApplicabilityCandidate string                  `json:"applicability_candidate"`
 	Confidence             string                  `json:"confidence"`
 	Priority               string                  `json:"priority"`
+	RootCause              string                  `json:"root_cause"`
+	RootCauseKey           string                  `json:"root_cause_key"`
+	Effort                 string                  `json:"effort"`
+	BlastRadius            string                  `json:"blast_radius"`
 	Reason                 string                  `json:"reason"`
 	Challenge              string                  `json:"challenge"`
 	RiskIfIgnored          string                  `json:"risk_if_ignored"`

@@ -17,8 +17,12 @@ The current validated corpus contains 686 deterministic controls and 765
 clauses. All 765 clauses have executable predicates and all four definition
 fixtures pass through the Go evaluator. This does not mean all 765 clauses have
 collectors. The runtime ships the first reviewed repository collector for
-`PRC-36-004`; every other unavailable authority-specific collector remains
-Blocked.
+`PRC-36-004`. It also accepts an offline, authority-scoped bundle for any exact
+template when two different trusted keys approve the two ordered subjects: one
+policy key signs programs and runtime inputs before collection, and one
+evidence-authority key signs the complete bundle after collection. This does
+not create evidence or replace built-in collectors; every unavailable or
+unauthenticated source still remains Blocked.
 
 The runtime uses an immutable exact collector-ID registry. It rejects missing,
 duplicate, nil, and wrong-authority providers. The scanner seals scope, policy,
@@ -127,6 +131,18 @@ explicit read-only provider with an allowlisted host, named credential handle,
 bounded pagination and timeout, stable subject and tenant scope, and captured
 query identity. The default local scan has no network or secret authority, so an
 external clause is Blocked until such a provider is configured.
+
+An offline producer can instead supply one strict
+`prc.authoritative-evidence-bundle/v0.1`. The bundle is limited to one authority,
+32 MiB, and 765 ordered unique entries. Its raw catalog and inventory digests
+must match the current scan. The policy signature must predate observation; the
+separate authority signature must postdate it. The runtime revalidates the full
+reviewed program identity, exact predicate, parameter names and types, evidence
+authority, subject, completeness, freshness, and applicability before calling
+the pure evaluator. The run retains both verification records and every exact
+program and evidence document. History validation reconstructs the canonical
+bundle and replays each retained evaluation. See
+[signed authoritative evidence bundles](../scanner/authoritative-evidence-bundles.md).
 
 AI review is advisory. It may explain a blocked or nondeterministic rule and
 point to possible evidence, but it is never an accepted evidence authority for a

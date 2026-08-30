@@ -137,6 +137,17 @@ func TestFriendlyRootHelpVersionAliasAndScanHelp(t *testing.T) {
 	}
 }
 
+func TestScanRequiresCompleteSignedEvidenceFlagSet(t *testing.T) {
+	var stdout, stderr bytes.Buffer
+	code := run([]string{"scan", "--evidence-bundle", "bundle.json", "--no-report"}, &stdout, &stderr)
+	if code != exitConfiguration || !strings.Contains(stderr.String(), "requires all four evidence flags") ||
+		!strings.Contains(stderr.String(), "--evidence-trust-store") ||
+		!strings.Contains(stderr.String(), "--evidence-policy-signature") ||
+		!strings.Contains(stderr.String(), "--evidence-signature") {
+		t.Fatalf("partial evidence flags exit=%d stdout=%q stderr=%q", code, stdout.String(), stderr.String())
+	}
+}
+
 func TestFriendlyTopLevelArgsDefaultsToCoreScanAndAcceptsADirectory(t *testing.T) {
 	if result := friendlyTopLevelArgs(nil); !slices.Equal(result, []string{"scan"}) {
 		t.Fatalf("empty args = %v", result)
@@ -1047,7 +1058,7 @@ start = prompt.index("<scanner-control-review-task>\n") + len("<scanner-control-
 end = prompt.rindex("\n</scanner-control-review-task>")
 task = json.loads(prompt[start:end])
 output = {
-    "schema_version": "prc.control-review-output/v0.2",
+    "schema_version": "prc.control-review-output/v0.3",
     "task_id": task["task_id"],
     "reviews": [{
         "control_id": task["controls"][0]["control_id"],
@@ -1055,6 +1066,10 @@ output = {
         "applicability_candidate": "undetermined",
         "confidence": "low",
         "priority": "medium",
+        "root_cause": "The required target-environment evidence is not available in the repository snapshot.",
+        "root_cause_key": "target-environment-evidence-missing",
+        "effort": "unknown",
+        "blast_radius": "unknown",
         "reason": "Repository text alone cannot prove the production result.",
         "challenge": "The repository text may be incomplete or stale.",
         "risk_if_ignored": "A production-only failure could remain undiscovered.",
@@ -1092,6 +1107,10 @@ print('{"type":"turn.completed"}')
 		scanned.ControlCatalog.AIReviewDepth != "deep" ||
 		scanned.ControlCatalog.AIReviewedCount != 1 || len(scanned.ControlResults) != 10_042 {
 		t.Fatalf("AI-reviewed complete scan summary=%+v results=%d", scanned.ControlCatalog, len(scanned.ControlResults))
+	}
+	if scanned.AIImprovementPlan == nil || scanned.AIImprovementPlan.ItemCount != 1 ||
+		scanned.AIImprovementPlan.ReviewedControlCount != 1 {
+		t.Fatalf("focused AI scan omitted its improvement plan: %+v", scanned.AIImprovementPlan)
 	}
 	found := false
 	for _, control := range scanned.ControlResults {

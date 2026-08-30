@@ -17,6 +17,7 @@ import (
 	"unicode"
 	"unicode/utf8"
 
+	"github.com/MarinJursic/production-readiness-checklist/scanner/aiplan"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/fullscan"
 	"github.com/MarinJursic/production-readiness-checklist/scanner/model"
 )
@@ -142,6 +143,8 @@ func Apply(ctx context.Context, run model.RunResult, options Options) (model.Run
 			AssessmentCandidate:    review.AssessmentCandidate,
 			ApplicabilityCandidate: review.ApplicabilityCandidate,
 			Confidence:             review.Confidence, Priority: review.Priority,
+			RootCause: review.RootCause, RootCauseKey: review.RootCauseKey,
+			Effort: review.Effort, BlastRadius: review.BlastRadius,
 			Reason: review.Reason, Challenge: review.Challenge,
 			RiskIfIgnored: review.RiskIfIgnored, Advice: review.Advice,
 			RemediationSteps:     append([]string{}, review.RemediationSteps...),
@@ -165,6 +168,10 @@ func Apply(ctx context.Context, run model.RunResult, options Options) (model.Run
 		run.ControlCatalog.AIReviewState = "focused"
 	} else {
 		run.ControlCatalog.AIReviewState = "complete"
+	}
+	run.AIImprovementPlan, err = aiplan.Build(run, run.RunID)
+	if err != nil {
+		return model.RunResult{}, Summary{}, err
 	}
 	run, err = fullscan.Reidentify(run)
 	if err != nil {

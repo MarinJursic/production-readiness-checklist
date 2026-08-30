@@ -512,6 +512,31 @@ func sortedAIRecommendations(results []model.ControlResult) ([]model.ControlResu
 	return priorities, total
 }
 
+type aiPlanView struct {
+	Item model.AIImprovementPlanItem
+	Lead model.ControlResult
+}
+
+func visibleAIPlan(run model.RunResult) ([]aiPlanView, int) {
+	if run.AIImprovementPlan == nil {
+		return nil, 0
+	}
+	byControl := make(map[string]model.ControlResult, len(run.ControlResults))
+	for _, control := range run.ControlResults {
+		byControl[control.ControlID] = control
+	}
+	visible := min(len(run.AIImprovementPlan.Items), 24)
+	items := make([]aiPlanView, 0, visible)
+	for _, item := range run.AIImprovementPlan.Items[:visible] {
+		lead := model.ControlResult{}
+		if len(item.ControlIDs) > 0 {
+			lead = byControl[item.ControlIDs[0]]
+		}
+		items = append(items, aiPlanView{Item: item, Lead: lead})
+	}
+	return items, len(run.AIImprovementPlan.Items)
+}
+
 func assessmentAttentionRank(result model.AssertionResult) int {
 	if result.Assessment == "fail" {
 		return 0
@@ -663,6 +688,45 @@ func writeMarkdown(output io.Writer, run model.RunResult) error {
 				run.ControlCatalog.AIReviewProvider, run.ControlCatalog.AIReviewModel,
 				run.ControlCatalog.AIReviewState, run.ControlCatalog.AIReviewedCount,
 				run.ControlCatalog.AIAdvisoryFailCount); err != nil {
+				return err
+			}
+		}
+		if run.AIImprovementPlan != nil {
+			if _, err := fmt.Fprintf(output,
+				"### AI review improvement plan\n\nThe scanner grouped %d reviewed controls into %d exact cause groups. These remain advisory.\n\n| Priority | Cause | Domain | Effort | Reach | Controls |\n| --- | --- | --- | --- | --- | --- |\n",
+				run.AIImprovementPlan.ReviewedControlCount, run.AIImprovementPlan.ItemCount); err != nil {
+				return err
+			}
+			for _, item := range run.AIImprovementPlan.Items[:min(len(run.AIImprovementPlan.Items), 50)] {
+				visibleControls := item.ControlIDs[:min(len(item.ControlIDs), 8)]
+				controls := strings.Join(visibleControls, ", ")
+				if len(item.ControlIDs) > len(visibleControls) {
+					controls += fmt.Sprintf(" (+%d more)", len(item.ControlIDs)-len(visibleControls))
+				}
+				if _, err := fmt.Fprintf(output, "| %s | %s | %s | %s | %s | %s |\n",
+					markdownCell(item.Priority), markdownCell(item.RootCause), markdownCell(item.Domain),
+					markdownCell(item.Effort), markdownCell(item.BlastRadius), markdownCell(controls)); err != nil {
+					return err
+				}
+			}
+			if _, err := fmt.Fprintln(output); err != nil {
+				return err
+			}
+		}
+		if len(run.AuthoritativeEvidence) > 0 {
+			if _, err := fmt.Fprintln(output, "### Signed authoritative evidence"); err != nil {
+				return err
+			}
+			for _, verification := range run.AuthoritativeEvidence {
+				if _, err := fmt.Fprintf(output,
+					"\n- Bundle `%s`: **%d** %s entries; policy key `%s`; evidence key `%s`; policy digest `%s`; bundle digest `%s`.\n",
+					verification.BundleID, verification.EntryCount, verification.Authority,
+					verification.PolicySignature.KeyID, verification.EvidenceSignature.KeyID,
+					verification.PolicySHA256, verification.BundleSHA256); err != nil {
+					return err
+				}
+			}
+			if _, err := fmt.Fprintln(output); err != nil {
 				return err
 			}
 		}
@@ -1162,7 +1226,23 @@ const htmlReport = `<!doctype html>
       {{if .UnscoredCategories}}<details class="unscored-group"><summary>Not scored in this scan <span>{{len .UnscoredCategories}} categories without an applicable linked local check</span></summary><div class="unscored-grid">{{range .UnscoredCategories}}<a class="unscored-link" href="#control-explorer" data-category-link="{{.Key}}"><span class="unscored-mark" aria-hidden="true">—</span><span><span class="unscored-name">{{.Name}}</span><span class="unscored-meta">{{.Total}} controls · {{.NeedsReview}} need evidence{{if .LocalNotApplicable}} · {{.LocalNotApplicable}} did not apply{{end}}</span></span></a>{{end}}</div></details>{{end}}
     </section>{{end}}
 
-    {{if .AIRecommendationCount}}<section class="section" id="ai-priorities">
+    {{if .Run.AIImprovementPlan}}<section class="section" id="ai-plan">
+      <h2>AI review improvement plan</h2>
+      <p class="section-intro">The scanner grouped reviews only when their category, cause key, and normalized cause matched exactly. This removes repeated work without turning AI advice into a verified finding.</p>
+      <p class="notice"><strong>{{.Run.AIImprovementPlan.ReviewedControlCount}} controls became {{.AIPlanItemCount}} cause groups.</strong> The first {{len .AIPlanItems}} groups are shown. Effort and reach are AI estimates; use the listed checks before accepting a change.</p>
+      {{range .AIPlanItems}}<details class="finding-card severity-{{severityClass .Item.Priority}}">
+        <summary><span class="pill severity-pill severity-{{severityClass .Item.Priority}}">{{prettyStatus .Item.Priority}}</span><span class="finding-summary-copy"><span class="finding-title">{{.Item.RootCause}}</span><span class="finding-preview">{{.Item.ControlCount}} linked control{{if gt .Item.ControlCount 1}}s{{end}} · {{.Item.Domain}}</span></span></summary>
+        <div class="finding-body">
+          <p class="primary-detail"><strong>Estimated work:</strong> {{prettyStatus .Item.Effort}} effort · {{prettyStatus .Item.BlastRadius}} reach.</p>
+          <p class="primary-detail"><strong>Linked controls:</strong> {{if gt (len .Item.ControlIDs) 8}}<code>{{join (slice .Item.ControlIDs 0 8)}}</code> and {{sub (len .Item.ControlIDs) 8}} more{{else}}<code>{{join .Item.ControlIDs}}</code>{{end}}</p>
+          {{if .Lead.AIReview}}<p class="primary-detail"><strong>Start with the advice for {{.Lead.ControlID}}:</strong> {{.Lead.AIReview.Advice}}</p>
+          <p class="primary-detail"><strong>Suggested work:</strong></p><ol>{{range .Lead.AIReview.RemediationSteps}}<li>{{.}}</li>{{end}}</ol>
+          <p class="primary-detail"><strong>How to verify:</strong></p><ol>{{range .Lead.AIReview.VerificationSteps}}<li>{{.}}</li>{{end}}</ol>{{end}}
+          <details class="finding-details"><summary>Why this group is advisory</summary><div class="detail-body"><p>The cause key came from AI. The scanner used exact matching only and did not decide that differently worded causes are the same. Open the linked controls for their full evidence, objections, and limits.</p><p><code>{{.Item.ItemID}}</code></p></div></details>
+        </div>
+      </details>{{end}}
+    </section>
+    {{else if .AIRecommendationCount}}<section class="section" id="ai-priorities">
       <h2>AI review priorities</h2>
       <p class="section-intro">These are the highest-priority suggestions from the optional AI review, sorted by its risk estimate. They are a work plan, not verified findings. Confirm the evidence and run the listed checks before accepting a change.</p>
       <p class="notice"><strong>{{.AIRecommendationCount}} controls received a non-empty AI priority.</strong> The first {{len .AIRecommendations}} are shown here; every review remains searchable in the complete control catalog.</p>
@@ -1279,6 +1359,16 @@ const htmlReport = `<!doctype html>
         <caption>Adapter executions</caption><thead><tr><th scope="col">Adapter</th><th scope="col">Manifest</th><th scope="col">Authorization</th><th scope="col">Trust</th><th scope="col">Registry</th><th scope="col">Status</th><th scope="col">Execution</th></tr></thead>
         <tbody>{{range .Run.AdapterExecutions}}<tr><td><code>{{.AdapterID}}</code></td><td><code>{{.ManifestSHA256}}</code></td><td>{{.Resolution.Source}}</td><td>{{.Resolution.Trust}}</td><td><code>{{.Resolution.RegistryID}}</code></td><td>{{.Transcript.Summary.Status}}</td><td><code>{{.ExecutionID}}</code></td></tr>{{end}}</tbody>
       </table></div></details>{{end}}
+      {{if .Run.AuthoritativeEvidence}}<details class="technical"><summary>Signed authoritative evidence</summary><div class="detail-body">
+        {{range .Run.AuthoritativeEvidence}}<details class="raw-list"><summary><code>{{.BundleID}}</code> · {{.EntryCount}} {{.Authority}} entries</summary><div><dl>
+		  <dt>Bundle digest</dt><dd><code>{{.BundleSHA256}}</code></dd>
+		  <dt>Pre-collection policy digest</dt><dd><code>{{.PolicySHA256}}</code></dd>
+          <dt>Catalog / inventory</dt><dd><code>{{.CatalogSHA256}}</code> / <code>{{.InventorySHA256}}</code></dd>
+          <dt>Independent policy signature</dt><dd>key <code>{{.PolicySignature.KeyID}}</code> · verified {{.PolicySignature.VerifiedAt}}</dd>
+          <dt>Authority evidence signature</dt><dd>key <code>{{.EvidenceSignature.KeyID}}</code> · verified {{.EvidenceSignature.VerifiedAt}}</dd>
+          <dt>Trust store</dt><dd><code>{{.PolicySignature.TrustStoreID}}</code> / <code>{{.PolicySignature.TrustStoreDigest}}</code></dd>
+        </dl></div></details>{{end}}
+      </div></details>{{end}}
       {{if .Run.DeterministicEvidence}}<details class="technical"><summary>Replayable exact evidence</summary><div class="detail-body">
         {{range .Run.DeterministicEvidence}}<details class="raw-list"><summary><code>{{.ControlID}}</code> · clause <code>{{.ClauseID}}</code> · {{.Applicability}}</summary><div><dl>
           <dt>Evidence digest</dt><dd><code>{{exactEvidenceSHA .}}</code></dd>
@@ -1372,6 +1462,7 @@ const htmlReport = `<!doctype html>
 func writeHTML(output io.Writer, run model.RunResult) error {
 	categories := summarizeControlCategories(run)
 	aiRecommendations, aiRecommendationCount := sortedAIRecommendations(run.ControlResults)
+	aiPlanItems, aiPlanItemCount := visibleAIPlan(run)
 	scoredCategories := make([]controlCategorySummary, 0, len(categories))
 	unscoredCategories := make([]controlCategorySummary, 0, len(categories))
 	for _, category := range categories {
@@ -1387,6 +1478,8 @@ func writeHTML(output io.Writer, run model.RunResult) error {
 		AttentionResults      []model.AssertionResult
 		AIRecommendations     []model.ControlResult
 		AIRecommendationCount int
+		AIPlanItems           []aiPlanView
+		AIPlanItemCount       int
 		Meaning               resultMeaning
 		Local                 LocalCheckSummary
 		Categories            []controlCategorySummary
@@ -1399,6 +1492,7 @@ func writeHTML(output io.Writer, run model.RunResult) error {
 	}{
 		Run: run, Findings: sortedFindings(run.Findings), AttentionResults: sortedAttentionResults(run.Results),
 		AIRecommendations: aiRecommendations, AIRecommendationCount: aiRecommendationCount,
+		AIPlanItems: aiPlanItems, AIPlanItemCount: aiPlanItemCount,
 		Meaning: summarizeMeaning(run), Local: SummarizeLocalChecks(run),
 		Categories: categories, ScoredCategories: scoredCategories, UnscoredCategories: unscoredCategories,
 		ProfileState:   profileTerminalState(run),
@@ -1408,6 +1502,7 @@ func writeHTML(output io.Writer, run model.RunResult) error {
 	}
 	return template.Must(template.New("report").Funcs(template.FuncMap{
 		"join":         func(values []string) string { return strings.Join(values, ", ") },
+		"sub":          func(left, right int) int { return left - right },
 		"brief":        func(value string) string { return briefText(value, 150) },
 		"verification": advisoryVerificationText,
 		"prettyStatus": prettyStatus,

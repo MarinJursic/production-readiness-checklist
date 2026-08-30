@@ -184,7 +184,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
 
     def test_versioned_run_contracts_pin_their_dependency_graph(self) -> None:
         roots = [
-            *(f"run-result-v0.{version}.schema.json" for version in range(1, 10)),
+            *(f"run-result-v0.{version}.schema.json" for version in range(1, 13)),
             *(f"remediation-run-v0.{version}.schema.json" for version in range(1, 8)),
         ]
         pending = list(roots)
@@ -754,7 +754,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             "assertions": [],
         }
         final_run = {
-            "schema_version": "prc.run/v0.12",
+            "schema_version": "prc.run/v0.13",
             "run_id": digest,
             "started_at": "2026-08-23T12:00:00Z",
             "completed_at": "2026-08-23T12:00:01Z",
@@ -763,6 +763,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             "adapter_executions": [],
             "results": [],
             "findings": [],
+            "authoritative_evidence_bundles": [],
             "terminal_state": "profile_satisfied",
         }
         located_run = {
@@ -824,7 +825,14 @@ class ScannerOutputSchemaTests(unittest.TestCase):
         v08_remediation_run = {
             **remediation_run,
             "schema_version": "prc.remediation-run/v0.8",
-            "final_run": {**final_run, "schema_version": "prc.run/v0.9"},
+            "final_run": {
+                **{
+                    key: value
+                    for key, value in final_run.items()
+                    if key != "authoritative_evidence_bundles"
+                },
+                "schema_version": "prc.run/v0.9",
+            },
         }
         self.assertEqual(
             validate_instance.validation_errors(
@@ -994,7 +1002,16 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             [],
         )
 
-        v09_run = {**final_run, "schema_version": "prc.run/v0.9"}
+        v012_run = {**final_run, "schema_version": "prc.run/v0.12"}
+        del v012_run["authoritative_evidence_bundles"]
+        self.assertEqual(
+            validate_instance.validation_errors(
+                v012_run, "run-result-v0.12.schema.json"
+            ),
+            [],
+        )
+
+        v09_run = {**v012_run, "schema_version": "prc.run/v0.9"}
         self.assertEqual(
             validate_instance.validation_errors(
                 v09_run, "run-result-v0.9.schema.json"
@@ -1002,7 +1019,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             [],
         )
 
-        v08_run = {**final_run, "schema_version": "prc.run/v0.8"}
+        v08_run = {**v09_run, "schema_version": "prc.run/v0.8"}
         self.assertEqual(
             validate_instance.validation_errors(
                 v08_run, "run-result-v0.8.schema.json"
@@ -1016,7 +1033,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
             )
         )
 
-        v07_run = {**final_run, "schema_version": "prc.run/v0.7"}
+        v07_run = {**v09_run, "schema_version": "prc.run/v0.7"}
         self.assertEqual(
             validate_instance.validation_errors(
                 v07_run, "run-result-v0.7.schema.json"
@@ -1130,7 +1147,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
         ):
             del v05_plan[field]
         v06_run = {
-            **final_run,
+            **v09_run,
             "schema_version": "prc.run/v0.6",
             "plan": v05_plan,
         }
@@ -1144,7 +1161,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
         legacy_plan = {**v05_plan, "schema_version": "prc.plan/v0.4"}
         del legacy_plan["catalog_digest"]
         legacy_final_run = {
-            **final_run,
+            **v09_run,
             "schema_version": "prc.run/v0.4",
             "plan": legacy_plan,
         }
@@ -1166,7 +1183,7 @@ class ScannerOutputSchemaTests(unittest.TestCase):
         )
 
         v05_run = {
-            **final_run,
+            **v09_run,
             "schema_version": "prc.run/v0.5",
             "plan": v05_plan,
         }

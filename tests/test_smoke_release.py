@@ -34,7 +34,7 @@ class SmokeReleaseTests(unittest.TestCase):
 
     def test_complete_report_contract_is_required(self) -> None:
         valid = {
-            "schema_version": "prc.run/v0.12",
+            "schema_version": "prc.run/v0.13",
             "results": [{}],
             "control_results": [{}] * 10_042,
             "control_catalog": {"control_count": 10_042},

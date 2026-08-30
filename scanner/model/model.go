@@ -5,13 +5,14 @@ import (
 	"time"
 
 	"github.com/MarinJursic/production-readiness-checklist/scanner/controlprogram"
+	"github.com/MarinJursic/production-readiness-checklist/scanner/trust"
 )
 
 const (
 	EngineVersion          = "prc.engine/v0.1"
 	InventorySchema        = "prc.inventory/v0.3"
 	PlanSchema             = "prc.plan/v0.6"
-	RunSchema              = "prc.run/v0.12"
+	RunSchema              = "prc.run/v0.13"
 	EvidenceSchema         = "prc.evidence/v0.1"
 	FindingSchema          = "prc.finding/v0.1"
 	AdapterExecutionSchema = "prc.adapter-execution/v0.3"
@@ -96,6 +97,35 @@ type DeterministicClauseResult struct {
 	EvaluatedAt                  time.Time `json:"evaluated_at"`
 }
 
+// AuthoritativeEvidenceVerification records the independent policy and
+// evidence signatures that allowed an external deterministic bundle to enter
+// the exact evaluator. The raw evidence is retained separately in the run.
+type AuthoritativeEvidenceVerification struct {
+	SchemaVersion     string                       `json:"schema_version"`
+	BundleID          string                       `json:"bundle_id"`
+	BundleSHA256      string                       `json:"bundle_sha256"`
+	PolicySHA256      string                       `json:"policy_sha256"`
+	CatalogSHA256     string                       `json:"catalog_sha256"`
+	InventorySHA256   string                       `json:"inventory_sha256"`
+	Authority         string                       `json:"authority"`
+	EntryCount        int                          `json:"entry_count"`
+	Entries           []AuthoritativeEvidenceEntry `json:"entries"`
+	PolicySignature   trust.Verification           `json:"policy_signature"`
+	EvidenceSignature trust.Verification           `json:"evidence_signature"`
+}
+
+// AuthoritativeEvidenceEntry retains the exact signed program input and its
+// scanner-owned result. Raw evidence stays in deterministic_evidence and is
+// joined by EvidenceSHA256 so the evaluation can be replayed from one run.
+type AuthoritativeEvidenceEntry struct {
+	TemplateID     string                 `json:"template_id"`
+	ProviderID     string                 `json:"provider_id"`
+	Program        controlprogram.Program `json:"program"`
+	EvidenceSHA256 string                 `json:"evidence_sha256"`
+	Outcome        string                 `json:"outcome"`
+	ReasonCode     string                 `json:"reason_code"`
+}
+
 // AIControlReview is advisory evidence produced by an explicitly selected AI
 // reviewer. It never has the authority to create a verified pass or a final
 // Not Applicable decision.
@@ -107,6 +137,10 @@ type AIControlReview struct {
 	ApplicabilityCandidate string            `json:"applicability_candidate"`
 	Confidence             string            `json:"confidence"`
 	Priority               string            `json:"priority"`
+	RootCause              string            `json:"root_cause,omitempty"`
+	RootCauseKey           string            `json:"root_cause_key,omitempty"`
+	Effort                 string            `json:"effort,omitempty"`
+	BlastRadius            string            `json:"blast_radius,omitempty"`
 	Reason                 string            `json:"reason"`
 	Challenge              string            `json:"challenge"`
 	RiskIfIgnored          string            `json:"risk_if_ignored"`
@@ -119,6 +153,36 @@ type AIControlReview struct {
 	CitationVerification   string            `json:"citation_verification,omitempty"`
 	ClaimVerification      string            `json:"claim_verification,omitempty"`
 	TaskID                 string            `json:"task_id"`
+}
+
+// AIImprovementPlan is a scanner-owned, deterministic grouping of advisory AI
+// reviews. It reduces repeated work without upgrading any AI statement to an
+// authoritative finding, pass, or Not Applicable decision.
+type AIImprovementPlan struct {
+	SchemaVersion        string                  `json:"schema_version"`
+	Authority            string                  `json:"authority"`
+	SourceRunID          string                  `json:"source_run_id"`
+	ReviewProvider       string                  `json:"review_provider"`
+	ReviewModel          string                  `json:"review_model,omitempty"`
+	ReviewDepth          string                  `json:"review_depth"`
+	ReviewState          string                  `json:"review_state"`
+	ReviewedControlCount int                     `json:"reviewed_control_count"`
+	ItemCount            int                     `json:"item_count"`
+	Items                []AIImprovementPlanItem `json:"items"`
+}
+
+type AIImprovementPlanItem struct {
+	ItemID               string   `json:"item_id"`
+	Domain               string   `json:"domain"`
+	RootCauseKey         string   `json:"root_cause_key"`
+	RootCause            string   `json:"root_cause"`
+	Priority             string   `json:"priority"`
+	Effort               string   `json:"effort"`
+	BlastRadius          string   `json:"blast_radius"`
+	AssessmentCandidates []string `json:"assessment_candidates"`
+	ControlCount         int      `json:"control_count"`
+	ControlIDs           []string `json:"control_ids"`
+	TaskIDs              []string `json:"task_ids"`
 }
 
 // ControlResult makes complete-corpus coverage visible without overstating the
@@ -467,19 +531,21 @@ type Finding struct {
 }
 
 type RunResult struct {
-	SchemaVersion         string                    `json:"schema_version"`
-	RunID                 string                    `json:"run_id"`
-	StartedAt             time.Time                 `json:"started_at"`
-	CompletedAt           time.Time                 `json:"completed_at"`
-	Plan                  Plan                      `json:"plan"`
-	Inventory             Inventory                 `json:"inventory"`
-	AdapterExecutions     []AdapterExecution        `json:"adapter_executions"`
-	Results               []AssertionResult         `json:"results"`
-	Findings              []Finding                 `json:"findings"`
-	ControlCatalog        *ControlCatalogSummary    `json:"control_catalog,omitempty"`
-	ControlResults        []ControlResult           `json:"control_results,omitempty"`
-	DeterministicEvidence []controlprogram.Evidence `json:"deterministic_evidence,omitempty"`
-	TerminalState         string                    `json:"terminal_state"`
+	SchemaVersion         string                              `json:"schema_version"`
+	RunID                 string                              `json:"run_id"`
+	StartedAt             time.Time                           `json:"started_at"`
+	CompletedAt           time.Time                           `json:"completed_at"`
+	Plan                  Plan                                `json:"plan"`
+	Inventory             Inventory                           `json:"inventory"`
+	AdapterExecutions     []AdapterExecution                  `json:"adapter_executions"`
+	Results               []AssertionResult                   `json:"results"`
+	Findings              []Finding                           `json:"findings"`
+	ControlCatalog        *ControlCatalogSummary              `json:"control_catalog,omitempty"`
+	ControlResults        []ControlResult                     `json:"control_results,omitempty"`
+	DeterministicEvidence []controlprogram.Evidence           `json:"deterministic_evidence,omitempty"`
+	AuthoritativeEvidence []AuthoritativeEvidenceVerification `json:"authoritative_evidence_bundles"`
+	AIImprovementPlan     *AIImprovementPlan                  `json:"ai_improvement_plan,omitempty"`
+	TerminalState         string                              `json:"terminal_state"`
 }
 
 // MarshalJSON preserves the byte contract of archived run records. v0.6 and
@@ -488,6 +554,30 @@ func (run RunResult) MarshalJSON() ([]byte, error) {
 	type current RunResult
 	if run.SchemaVersion == RunSchema {
 		return json.Marshal(current(run))
+	}
+	if run.SchemaVersion == "prc.run/v0.12" {
+		type runV012 struct {
+			SchemaVersion         string                    `json:"schema_version"`
+			RunID                 string                    `json:"run_id"`
+			StartedAt             time.Time                 `json:"started_at"`
+			CompletedAt           time.Time                 `json:"completed_at"`
+			Plan                  Plan                      `json:"plan"`
+			Inventory             Inventory                 `json:"inventory"`
+			AdapterExecutions     []AdapterExecution        `json:"adapter_executions"`
+			Results               []AssertionResult         `json:"results"`
+			Findings              []Finding                 `json:"findings"`
+			ControlCatalog        *ControlCatalogSummary    `json:"control_catalog,omitempty"`
+			ControlResults        []ControlResult           `json:"control_results,omitempty"`
+			DeterministicEvidence []controlprogram.Evidence `json:"deterministic_evidence,omitempty"`
+			TerminalState         string                    `json:"terminal_state"`
+		}
+		return json.Marshal(runV012{
+			SchemaVersion: run.SchemaVersion, RunID: run.RunID, StartedAt: run.StartedAt,
+			CompletedAt: run.CompletedAt, Plan: run.Plan, Inventory: run.Inventory,
+			AdapterExecutions: run.AdapterExecutions, Results: run.Results, Findings: run.Findings,
+			ControlCatalog: run.ControlCatalog, ControlResults: run.ControlResults,
+			DeterministicEvidence: run.DeterministicEvidence, TerminalState: run.TerminalState,
+		})
 	}
 	if run.SchemaVersion == "prc.run/v0.11" {
 		type catalogV011 struct {

@@ -25,7 +25,7 @@ promises, define measurable applicability and evidence, approve technology-
 neutral acceptance criteria, and add positive, negative, Not Applicable,
 unusual-layout, and adversarial fixtures.
 
-Every `prc.run/v0.12` complete scan binds the SHA-256 of this whole contract
+Every `prc.run/v0.13` complete scan binds the SHA-256 of this whole contract
 document and the individual contract SHA-256 on each of its 10,042 control
 results. A missing, stale, reordered, or edited contract file stops the scan.
 The ordinary local profile still executes only its explicitly registered narrow

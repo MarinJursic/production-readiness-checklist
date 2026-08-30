@@ -7,7 +7,14 @@
   "required": ["schema_version", "artifact_kind", "artifact_id", "sha256", "key_id", "algorithm", "issued_at", "verified_at", "trust_store_id", "trust_store_digest", "signature_digest", "verified"],
   "properties": {
     "schema_version": {"const": "prc.signature-verification/v0.1"},
-    "artifact_kind": {"enum": ["pack", "adapter-registry", "catalog-bundle", "risk-exception"]},
+    "artifact_kind": {
+      "enum": [
+        "pack", "adapter-registry", "catalog-bundle", "risk-exception",
+        "control-policy-bundle", "control-evidence-repository", "control-evidence-artifact",
+        "control-evidence-executed", "control-evidence-environment",
+        "control-evidence-external-registry", "control-evidence-structured-record"
+      ]
+    },
     "artifact_id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9./@_-]{0,255}$"},
     "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
     "key_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9.-]{0,127}$"},

@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"reflect"
 	"sort"
+	"strings"
 	"time"
 
 	"github.com/MarinJursic/production-readiness-checklist/scanner/controlprogram"
@@ -241,6 +242,49 @@ func Evaluate(ctx context.Context, template controlprogramcatalog.Template, bind
 		execution.Status = StatusBlockedEvidence
 	}
 	return execution
+}
+
+// EvaluateAuthenticated evaluates a materialized program and evidence pair
+// that an outer trust boundary has already authenticated. It is intentionally
+// separate from provider collection: callers must first verify the policy and
+// evidence signatures, while this function independently rechecks the exact
+// reviewed template and produces the only attachable execution value.
+func EvaluateAuthenticated(
+	template controlprogramcatalog.Template,
+	program controlprogram.Program,
+	evidence controlprogram.Evidence,
+	providerID string,
+	now time.Time,
+) (Execution, error) {
+	if strings.TrimSpace(providerID) == "" || now.IsZero() {
+		return Execution{}, fmt.Errorf("authenticated evidence requires a provider identity and evaluation time")
+	}
+	if err := template.ValidateMaterializedProgram(program); err != nil {
+		return Execution{}, err
+	}
+	if err := controlprogram.ValidateEvidence(evidence); err != nil {
+		return Execution{}, fmt.Errorf("authenticated evidence for %s is invalid: %w", template.TemplateID, err)
+	}
+	execution := baseExecution(template, now)
+	execution.ProviderID = providerID
+	execution.ProgramSHA256 = controlprogram.ProgramSHA256(program)
+	copy := evidence
+	execution.evidence = &copy
+	result := controlprogram.Evaluate(program, evidence, now)
+	execution.EvidenceSHA256 = result.EvidenceSHA256
+	execution.Outcome = result.Outcome
+	execution.ReasonCode = result.ReasonCode
+	switch result.Outcome {
+	case controlprogram.OutcomePass:
+		execution.Status = StatusPassed
+	case controlprogram.OutcomeFail:
+		execution.Status = StatusFailed
+	case controlprogram.OutcomeNotApplicable:
+		execution.Status = StatusNotApplicable
+	default:
+		execution.Status = StatusBlockedEvidence
+	}
+	return execution, nil
 }
 
 // NewApplicableEvidence creates the scanner-owned envelope around provider
