@@ -192,6 +192,14 @@ func TestDocumentedTopicsParserIgnoresHeadingLikeTextInsideCodeFences(t *testing
 	}
 }
 
+func TestDocumentedTopicsParserRequiresAValidMatchingFenceClosure(t *testing.T) {
+	data := []byte("````markdown\n```\n# Architecture\nFake content after a shorter fence.\n``` language\n# Recovery\nFake content after a closing fence with an info string.\n~~~~\n# Dependencies\nFake content after a different fence marker.\n````\n# Deployment\nReal deployment documentation appears outside the code block.\n")
+	sections := exactMarkdownTopicSections(data, architectureTopics)
+	if sections["architecture"] != "" || sections["recovery"] != "" || sections["dependencies"] != "" || sections["deployment"] == "" {
+		t.Fatalf("strict fenced heading handling = %+v", sections)
+	}
+}
+
 func TestDocumentedTopicsCanProveEvidenceAfterAnOversizedUnrelatedDocument(t *testing.T) {
 	root := t.TempDir()
 	writeFixture(t, root, "A-archive.md", strings.Repeat("x", maximumDocumentationFileBytes+1))

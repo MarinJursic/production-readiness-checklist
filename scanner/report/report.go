@@ -1032,6 +1032,7 @@ type catalogControlView struct {
 	ExecutedAssertions  []string                          `json:"executed_assertions,omitempty"`
 	DeterministicChecks []model.DeterministicClauseResult `json:"deterministic_checks,omitempty"`
 	AIReview            *model.AIControlReview            `json:"ai_review,omitempty"`
+	AICitations         []string                          `json:"ai_citations,omitempty"`
 }
 
 type compactCatalogData struct {
@@ -1048,6 +1049,12 @@ func compactCatalogJSON(results []model.ControlResult) (template.JS, error) {
 		source := result.Source.Path
 		if result.Source.Line > 0 {
 			source += ":" + strconv.Itoa(result.Source.Line)
+		}
+		aiCitations := []string(nil)
+		if result.AIReview != nil {
+			for _, location := range result.AIReview.Evidence {
+				aiCitations = append(aiCitations, advisoryLocationText([]model.FindingLocation{location}))
+			}
 		}
 		summaryIndex, ok := summaryIndexes[result.Summary]
 		if !ok {
@@ -1066,6 +1073,7 @@ func compactCatalogJSON(results []model.ControlResult) (template.JS, error) {
 			ExecutedAssertions:  append([]string(nil), result.ExecutedAssertionIDs...),
 			DeterministicChecks: append([]model.DeterministicClauseResult(nil), result.DeterministicClauseResults...),
 			AIReview:            result.AIReview,
+			AICitations:         aiCitations,
 		})
 	}
 	data, err := json.Marshal(compactCatalogData{Summaries: summaries, Controls: controls})
@@ -1532,7 +1540,8 @@ const htmlReport = `<!doctype html>
 		item.id, item.statement, summaryText(item), item.disposition, item.classification, item.route,
 		item.decision_basis, categoryNames[item.category_key], item.coverage, item.authority, item.source,
 		...(item.assertion_ids || []), ...(item.executed_assertions || []), ai.root_cause, ai.reason,
-		ai.advice, ai.risk_if_ignored, ...(ai.evidence_needed || [])
+		ai.advice, ai.risk_if_ignored, ai.provider, ai.model, ai.assessment_candidate,
+		ai.applicability_candidate, ...(ai.evidence_needed || []), ...(item.ai_citations || [])
 	  ].filter(Boolean).join(' ').toLocaleLowerCase();
 	  return item._search_text;
 	};
@@ -1586,6 +1595,13 @@ const htmlReport = `<!doctype html>
 		).join('\n'));
 	  }
 	  if (item.ai_review) {
+		addDefinition(definitions, 'AI assessment candidate', [item.ai_review.assessment_candidate, item.ai_review.applicability_candidate, item.ai_review.confidence && item.ai_review.confidence + ' confidence'].filter(Boolean).join(' · '));
+		addDefinition(definitions, 'AI reviewer', [item.ai_review.provider, item.ai_review.model, item.ai_review.review_depth && item.ai_review.review_depth + ' review'].filter(Boolean).join(' · '));
+		addDefinition(definitions, 'AI root cause', [item.ai_review.root_cause, item.ai_review.root_cause_key && 'key ' + item.ai_review.root_cause_key].filter(Boolean).join(' · '));
+		addDefinition(definitions, 'AI effort / blast radius', [item.ai_review.effort, item.ai_review.blast_radius].filter(Boolean).join(' / '));
+		addDefinition(definitions, 'Risk if ignored', item.ai_review.risk_if_ignored);
+		addDefinition(definitions, 'AI cited locations', (item.ai_citations || []).join(', ') || 'No source location was cited.');
+		addDefinition(definitions, 'AI task ID', item.ai_review.task_id);
 		addDefinition(definitions, 'AI verification state', 'citation=' + (item.ai_review.citation_verification || 'not recorded') + '; claim=' + (item.ai_review.claim_verification || 'advisory_unverified'));
 		addDefinition(definitions, 'AI review limits', (item.ai_review.limitations || []).join('; ') || 'No limitation text was returned.');
 	  }

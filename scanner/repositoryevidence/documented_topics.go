@@ -39,11 +39,11 @@ var (
 // in the sealed repository inventory. Unsupported prose, aliases, malformed
 // Markdown, and placeholders remain incomplete evidence rather than failures.
 type DocumentedTopicsProvider struct {
-	inventory   model.Inventory
-	id          string
-	controlID   string
-	factKey     string
-	topics      []string
+	inventory model.Inventory
+	id        string
+	controlID string
+	factKey   string
+	topics    []string
 }
 
 func NewDocumentedTopicsProviders(item model.Inventory) ([]*DocumentedTopicsProvider, error) {
@@ -186,6 +186,35 @@ type markdownHeading struct {
 	topic string
 }
 
+type markdownFence struct {
+	marker byte
+	length int
+}
+
+func markdownFenceLine(line []byte) (markdownFence, []byte, bool) {
+	trimmed := bytes.TrimLeft(line, " \t")
+	if len(line)-len(trimmed) > 3 || len(trimmed) < 3 || trimmed[0] != '`' && trimmed[0] != '~' {
+		return markdownFence{}, nil, false
+	}
+	length := 1
+	for length < len(trimmed) && trimmed[length] == trimmed[0] {
+		length++
+	}
+	if length < 3 {
+		return markdownFence{}, nil, false
+	}
+	return markdownFence{marker: trimmed[0], length: length}, trimmed[length:], true
+}
+
+func opensMarkdownFence(candidate markdownFence, suffix []byte) bool {
+	// CommonMark does not allow a backtick in the info string of a backtick fence.
+	return candidate.marker != '`' || !bytes.ContainsRune(suffix, '`')
+}
+
+func closesMarkdownFence(open, candidate markdownFence, suffix []byte) bool {
+	return candidate.marker == open.marker && candidate.length >= open.length && len(bytes.TrimSpace(suffix)) == 0
+}
+
 func exactMarkdownTopicSections(data []byte, topics []string) map[string]string {
 	allowed := make(map[string]string, len(topics))
 	for _, topic := range topics {
@@ -193,19 +222,17 @@ func exactMarkdownTopicSections(data []byte, topics []string) map[string]string 
 	}
 	lines := bytes.Split(data, []byte{'\n'})
 	headings := make([]markdownHeading, 0)
-	fence := byte(0)
+	fence := markdownFence{}
 	for index, line := range lines {
-		trimmed := bytes.TrimLeft(line, " \t")
-		if len(line)-len(trimmed) <= 3 && (bytes.HasPrefix(trimmed, []byte("```")) || bytes.HasPrefix(trimmed, []byte("~~~"))) {
-			marker := trimmed[0]
-			if fence == 0 {
-				fence = marker
-			} else if fence == marker {
-				fence = 0
+		candidate, suffix, isFenceLine := markdownFenceLine(line)
+		if fence.length > 0 {
+			if isFenceLine && closesMarkdownFence(fence, candidate, suffix) {
+				fence = markdownFence{}
 			}
 			continue
 		}
-		if fence != 0 {
+		if isFenceLine && opensMarkdownFence(candidate, suffix) {
+			fence = candidate
 			continue
 		}
 		level, title, ok := atxHeading(line)
@@ -311,19 +338,17 @@ func visibleMarkdownContent(data []byte) []byte {
 	}
 	lines := bytes.Split(withoutComments, []byte{'\n'})
 	visible := make([][]byte, 0, len(lines))
-	fence := byte(0)
+	fence := markdownFence{}
 	for _, line := range lines {
-		trimmed := bytes.TrimLeft(line, " \t")
-		if len(line)-len(trimmed) <= 3 && (bytes.HasPrefix(trimmed, []byte("```")) || bytes.HasPrefix(trimmed, []byte("~~~"))) {
-			marker := trimmed[0]
-			if fence == 0 {
-				fence = marker
-			} else if fence == marker {
-				fence = 0
+		candidate, suffix, isFenceLine := markdownFenceLine(line)
+		if fence.length > 0 {
+			if isFenceLine && closesMarkdownFence(fence, candidate, suffix) {
+				fence = markdownFence{}
 			}
 			continue
 		}
-		if fence != 0 {
+		if isFenceLine && opensMarkdownFence(candidate, suffix) {
+			fence = candidate
 			continue
 		}
 		if _, _, heading := atxHeading(line); heading {
