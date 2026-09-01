@@ -43,7 +43,6 @@ type DocumentedTopicsProvider struct {
 	id          string
 	controlID   string
 	factKey     string
-	parameterID string
 	topics      []string
 }
 
@@ -52,8 +51,8 @@ func NewDocumentedTopicsProviders(item model.Inventory) ([]*DocumentedTopicsProv
 		return nil, fmt.Errorf("documented-topic collectors require a sealed inventory")
 	}
 	return []*DocumentedTopicsProvider{
-		{item, ArchitectureTopicsCollectorID, architectureTopicsControlID, architectureTopicsFactKey, architectureTopicsParameter, append([]string(nil), architectureTopics...)},
-		{item, ConventionsTopicsCollectorID, conventionsTopicsControlID, conventionsTopicsFactKey, conventionsTopicsParameter, append([]string(nil), conventionTopics...)},
+		{item, ArchitectureTopicsCollectorID, architectureTopicsControlID, architectureTopicsFactKey, append([]string(nil), architectureTopics...)},
+		{item, ConventionsTopicsCollectorID, conventionsTopicsControlID, conventionsTopicsFactKey, append([]string(nil), conventionTopics...)},
 	}, nil
 }
 
