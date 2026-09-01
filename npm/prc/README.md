@@ -21,11 +21,14 @@ Install it once, open a project, and run it:
 ```sh
 npm install -g @marinjursic/prc
 cd /path/to/project
+prc setup
 prc
 ```
 
-There is no `npx` prefix after this one-time install. Run `prc version` to see
-the installed version, `npm install -g @marinjursic/prc@latest` to update, or
+There is no `npx` prefix after this one-time install. `prc setup` is an optional
+local preflight that does not run project code or AI. Run `prc version` to see
+the installed version, `prc update` to check explicitly for a newer release,
+`npm install -g @marinjursic/prc@latest` to update, or
 `npm uninstall -g @marinjursic/prc` to remove the global command. npm installs
 this one user-facing package and only the native package for the current
 operating system and CPU.
@@ -39,15 +42,27 @@ Bare `prc` runs the 40-check core scan in the current directory and writes a
 private report outside the project. Use `prc /path/to/project` to scan another
 folder or `prc quick` for an 18-check screen. After `prc login codex` or
 `prc login claude`, use `prc full codex` or `prc full claude` for advisory AI
-review of all 9,356 reviewed nondeterministic controls. Deep review gives every
-rule a primary subagent and adds an independent skeptical subagent per batch.
+review of all 9,356 reviewed nondeterministic controls. Run
+`prc full codex --plan` or `prc full claude --plan` first to screen the same
+source and see the exact work and limits without starting a provider. Deep
+review requests a primary subagent for every rule and an independent skeptical
+subagent per batch; current provider output cannot prove every internal call.
 The 686 reviewed deterministic controls remain blocked until their exact
 programs receive authoritative evidence. Every mode keeps all 10,042 controls
 visible in the report; AI advice cannot create a verified pass.
 
+`prc verify [project]` is the short explicit local command for the core scan
+plus the bundled, digest-pinned Gitleaks check. Its reviewed container image
+must already exist: the scanner uses `--pull=never`, disables networking, and
+mounts a sealed read-only snapshot. It does not install or download anything.
+
 For CI or a team that deliberately wants a project lock-file entry, use
 `npm install -D -E --ignore-scripts --no-audit --no-fund @marinjursic/prc@VERSION`,
 then `npm exec --offline --no -- prc scan`.
+
+With the global install, `prc ci > prc-results.sarif` is the short local-only
+CI form. `prc report` reopens the newest private HTML report and
+`prc cache status` shows scanner-owned disk use without deleting anything.
 
 Add `"scan": "prc"` to the project's `scripts` object when you want to
 run `npm run scan`. Use `npm run --ignore-scripts scan` to skip any local

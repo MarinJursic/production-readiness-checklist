@@ -121,9 +121,16 @@ func TestFriendlyRootHelpVersionAliasAndScanHelp(t *testing.T) {
 	if code := run([]string{"--help"}, &stdout, &stderr); code != exitSuccess || !strings.Contains(stdout.String(), "prc quick") ||
 		!strings.Contains(stdout.String(), "prc /path/to/project") ||
 		!strings.Contains(stdout.String(), "prc full codex") || !strings.Contains(stdout.String(), "PRODUCTION READINESS CHECKLIST") ||
-		!strings.Contains(stdout.String(), "prc evidence requirements") ||
+		!strings.Contains(stdout.String(), "prc setup") || !strings.Contains(stdout.String(), "prc report") ||
+		!strings.Contains(stdout.String(), "prc help advanced") ||
 		!strings.Contains(stdout.String(), "Know what's ready and what still needs work.") || stderr.Len() != 0 {
 		t.Fatalf("root help exit=%d stdout=%q stderr=%q", code, stdout.String(), stderr.String())
+	}
+	stdout.Reset()
+	if code := run([]string{"help", "advanced"}, &stdout, &stderr); code != exitSuccess ||
+		!strings.Contains(stdout.String(), "prc evidence") || !strings.Contains(stdout.String(), "prc mcp serve") ||
+		!strings.Contains(stdout.String(), "Scanning never invokes the change workflow") {
+		t.Fatalf("advanced help exit=%d stdout=%q stderr=%q", code, stdout.String(), stderr.String())
 	}
 	stdout.Reset()
 	if code := run([]string{"--version"}, &stdout, &stderr); code != exitSuccess || !strings.HasPrefix(stdout.String(), "prc ") {
@@ -182,8 +189,8 @@ func TestEvidenceRequirementsCommandExportsHumanAndMachineContracts(t *testing.T
 	code := run([]string{"evidence", "requirements", "--catalog-root", root}, &stdout, &stderr)
 	if code != exitSuccess || stderr.Len() != 0 ||
 		!strings.Contains(stdout.String(), "Selected clauses    765/765 across 686 controls") ||
-		!strings.Contains(stdout.String(), "Built-in collectors 1") ||
-		!strings.Contains(stdout.String(), "Missing collectors  764") ||
+		!strings.Contains(stdout.String(), "Built-in collectors 3") ||
+		!strings.Contains(stdout.String(), "Missing collectors  762") ||
 		!strings.Contains(stdout.String(), "Signed import route 765") {
 		t.Fatalf("requirements exit=%d stdout=%q stderr=%q", code, stdout.String(), stderr.String())
 	}
@@ -238,7 +245,7 @@ func TestCoverageCommandSeparatesBuiltInCollectionFromSignedImport(t *testing.T)
 		!strings.Contains(stdout.String(), "Reviewed routing     10042/10042 controls (100.0%)") ||
 		!strings.Contains(stdout.String(), "Exact predicates     765/765 clauses (100.0%)") ||
 		!strings.Contains(stdout.String(), "Advisory AI route    9356/9356 controls (100.0%)") ||
-		!strings.Contains(stdout.String(), "Built-in collectors  1/765 clauses (0.1%)") ||
+		!strings.Contains(stdout.String(), "Built-in collectors  3/765 clauses (0.4%)") ||
 		!strings.Contains(stdout.String(), "Signed import route  765/765 clauses (100.0%)") || stderr.Len() != 0 {
 		t.Fatalf("coverage exit/output stdout=%q stderr=%q", stdout.String(), stderr.String())
 	}
@@ -251,7 +258,7 @@ func TestCoverageCommandSeparatesBuiltInCollectionFromSignedImport(t *testing.T)
 		t.Fatal(err)
 	}
 	if document["schema_version"] != "prc.automatic-coverage/v0.1" || document["exact_clause_count"] != float64(765) ||
-		document["advisory_ai_review_control_count"] != float64(9356) || document["built_in_collector_clause_count"] != float64(1) ||
+		document["advisory_ai_review_control_count"] != float64(9356) || document["built_in_collector_clause_count"] != float64(3) ||
 		document["signed_import_supported_clause_count"] != float64(765) {
 		t.Fatalf("coverage JSON = %+v", document)
 	}
@@ -265,7 +272,7 @@ func TestFriendlyTopLevelArgsDefaultsToCoreScanAndAcceptsADirectory(t *testing.T
 	if result := friendlyTopLevelArgs([]string{target, "--no-report"}); !slices.Equal(result, []string{"scan", target, "--no-report"}) {
 		t.Fatalf("directory args = %v", result)
 	}
-	for _, args := range [][]string{{"quick"}, {"--help"}, {"--version"}} {
+	for _, args := range [][]string{{"quick"}, {"verify"}, {"--help"}, {"--version"}} {
 		if result := friendlyTopLevelArgs(args); !slices.Equal(result, args) {
 			t.Fatalf("explicit args %v became %v", args, result)
 		}
@@ -273,7 +280,7 @@ func TestFriendlyTopLevelArgsDefaultsToCoreScanAndAcceptsADirectory(t *testing.T
 	if result := friendlyTopLevelArgs([]string{"not-yet-created-project"}); !slices.Equal(result, []string{"scan", "not-yet-created-project"}) {
 		t.Fatalf("target args = %v", result)
 	}
-	for _, command := range []string{"scan", "full", "login", "evidence", "remediate-proposal", "mcp", "help"} {
+	for _, command := range []string{"scan", "verify", "ci", "full", "login", "evidence", "remediate-proposal", "mcp", "help"} {
 		if !isTopLevelCommand(command) {
 			t.Fatalf("%s was not recognized as an explicit command", command)
 		}
@@ -356,7 +363,7 @@ func TestScanRunsSupportedExactRepositoryProgram(t *testing.T) {
 	if err := json.Unmarshal(stdout.Bytes(), &result); err != nil {
 		t.Fatal(err)
 	}
-	if result.ControlCatalog == nil || result.ControlCatalog.DeterministicProgramExecutedCount != 1 ||
+	if result.ControlCatalog == nil || result.ControlCatalog.DeterministicProgramExecutedCount != 3 ||
 		result.ControlCatalog.DeterministicProgramPassCount != 1 || result.ControlCatalog.DeterministicProgramFailCount != 0 {
 		t.Fatalf("exact execution summary = %+v", result.ControlCatalog)
 	}
@@ -387,6 +394,13 @@ func TestScanAliasesRejectAmbiguousProviderAndProfileOverrides(t *testing.T) {
 		{[]string{"full", "codex", "--ai", "claude"}, "already selects"},
 		{[]string{"quick", "--ai", "codex"}, "local only"},
 		{[]string{"quick", "--profile", "prc/core-repository"}, "selects its own profile"},
+		{[]string{"verify", "--profile", "prc/core-repository"}, "selects its own profile"},
+		{[]string{"verify", "--mode", "inspect"}, "owns --mode"},
+		{[]string{"verify", "--catalog-root", "other"}, "owns --catalog-root"},
+		{[]string{"verify", "--adapter-manifest", "other.yaml"}, "owns --adapter-manifest"},
+		{[]string{"verify", "--ai", "codex"}, "local only"},
+		{[]string{"ci", "--ai", "codex"}, "local only"},
+		{[]string{"ci", "--format", "json"}, "owns SARIF output"},
 	} {
 		var stdout, stderr bytes.Buffer
 		if code := run(test.args, &stdout, &stderr); code != exitConfiguration ||
@@ -397,13 +411,26 @@ func TestScanAliasesRejectAmbiguousProviderAndProfileOverrides(t *testing.T) {
 }
 
 func TestScanAliasHelpExplainsScope(t *testing.T) {
-	for _, name := range []string{"quick", "full"} {
+	for _, name := range []string{"quick", "verify", "ci", "full"} {
 		var stdout, stderr bytes.Buffer
 		if code := run([]string{name, "--help"}, &stdout, &stderr); code != exitSuccess || stderr.Len() != 0 ||
 			!strings.Contains(stdout.String(), "10,042") && name == "quick" ||
+			!strings.Contains(stdout.String(), "--pull=never") && name == "verify" ||
 			!strings.Contains(stdout.String(), "screened remote source processing") && name == "full" {
 			t.Fatalf("%s help exit=%d stdout=%q stderr=%q", name, code, stdout.String(), stderr.String())
 		}
+	}
+}
+
+func TestVerifyAliasSelectsOnlyTheBundledPinnedSecretAdapter(t *testing.T) {
+	arguments := verifyScanArguments([]string{"/project", "--adapter-runtime", "podman"})
+	wantPrefix := []string{
+		"--profile", "prc/core-repository", "--mode", engine.ExecutionModeVerifyLocal, "--adapter-manifest",
+	}
+	if len(arguments) != len(wantPrefix)+4 || !slices.Equal(arguments[:len(wantPrefix)], wantPrefix) ||
+		filepath.Base(arguments[len(wantPrefix)]) != "gitleaks-v8.30.0.yaml" ||
+		!slices.Equal(arguments[len(wantPrefix)+1:], []string{"/project", "--adapter-runtime", "podman"}) {
+		t.Fatalf("verify scan arguments = %v", arguments)
 	}
 }
 
@@ -434,7 +461,8 @@ exit 0
 		t.Run(name, func(t *testing.T) {
 			var stdout, stderr bytes.Buffer
 			if code := run([]string{"login", name}, &stdout, &stderr); code != 0 ||
-				!strings.Contains(stdout.String(), "prc scan --ai "+name) {
+				!strings.Contains(stdout.String(), "prc full "+name+" --plan") ||
+				!strings.Contains(stdout.String(), "prc full "+name) {
 				t.Fatalf("login exit=%d stdout=%q stderr=%q", code, stdout.String(), stderr.String())
 			}
 			names, environment, err := provider.IsolatedEnvironment(name, t.TempDir())
@@ -1140,6 +1168,34 @@ func TestSimpleScanDiscoversCatalogCreatesPrivateReportAndNeverFixesTarget(t *te
 	afterInfo, err := os.Stat(sourcePath)
 	if err != nil || afterInfo.Mode().Perm() != beforeInfo.Mode().Perm() {
 		t.Fatalf("scan changed target mode: before=%v after=%v err=%v", beforeInfo.Mode().Perm(), afterInfo.Mode().Perm(), err)
+	}
+}
+
+func TestCIPresetWritesOnlySARIFAndDoesNotCreateAReport(t *testing.T) {
+	repository, err := filepath.Abs(filepath.Join("..", ".."))
+	if err != nil {
+		t.Fatal(err)
+	}
+	target := t.TempDir()
+	if err := os.WriteFile(filepath.Join(target, "app.go"), []byte("package app\n"), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	cacheRoot := t.TempDir()
+	previousCacheDirectory := userCacheDirectory
+	userCacheDirectory = func() (string, error) { return cacheRoot, nil }
+	t.Cleanup(func() { userCacheDirectory = previousCacheDirectory })
+
+	var stdout, stderr bytes.Buffer
+	code := run([]string{"ci", target, "--catalog-root", repository, "--exit-policy", "never"}, &stdout, &stderr)
+	if code != 0 || stderr.Len() != 0 {
+		t.Fatalf("exit=%d stdout=%s stderr=%s", code, stdout.String(), stderr.String())
+	}
+	var sarif map[string]any
+	if err := json.Unmarshal(stdout.Bytes(), &sarif); err != nil || sarif["version"] != "2.1.0" {
+		t.Fatalf("CI output is not SARIF 2.1.0: err=%v output=%s", err, stdout.String())
+	}
+	if _, err := os.Stat(filepath.Join(cacheRoot, "prc", "reports")); !os.IsNotExist(err) {
+		t.Fatalf("CI preset created a report cache: %v", err)
 	}
 }
 

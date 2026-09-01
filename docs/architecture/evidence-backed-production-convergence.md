@@ -23,8 +23,11 @@ The normal repository scan currently runs a much smaller trusted core: 40 local
 checks. The exact runtime now authenticates collector registrations, seals
 scope parameters before collection, evaluates provider facts through the pure
 predicate engine, and aggregates clause results without accepting serialized
-or provider-chosen verdicts. One repository collector is connected end to end:
-it can prove `PRC-36-004` for a supported Node documentation layout. One
+or provider-chosen verdicts. Three repository collectors are connected end to
+end: one can prove `PRC-36-004` for a supported Node documentation layout, and
+two positive-only Markdown collectors can prove the exact architecture-topic
+and engineering-convention documentation clauses without prescribing file
+paths or treating aliases and placeholders as evidence. One
 embedded capability manifest is the source of truth for both the generated
 catalog and runtime registration. A new dual-signed offline evidence protocol
 can now feed any reviewed exact template without executing bundle code: a
@@ -37,7 +40,7 @@ bundle for each of the six authorities, so a single scan can evaluate all 765
 exact clauses when their trusted producers supply complete observations. The
 `prc coverage` command reports reviewed routing, exact predicates, advisory AI
 review support, built-in collection, and signed-import support as separate
-counts. Current built-in collection remains 1 of 765; signed-import
+counts. Current built-in collection is 3 of 765; signed-import
 compatibility is 765 of 765. The latter is an integration capability, not proof
 that evidence exists for a run. `prc evidence requirements` now turns every
 exact clause into a filtered, schema-checked producer contract, so collector

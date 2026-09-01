@@ -39,7 +39,7 @@ The source material contained 25,359 checkbox lines across 215 documents. It was
 
 Every control has now received a rule-by-rule primary classification, an independent skeptical review of every proposed deterministic rule, and a third semantic-strength audit. The validated result is **10,042 reviewed classifications: 686 deterministic and 9,356 nondeterministic**. The deterministic set has **686 one-to-one control bindings containing 765 exact clauses**, with a versioned checker family, required evidence authority, executable predicate, and pass/fail/blocked/adversarial fixtures for every clause. Read the [full classification reference](docs/control-classification/README.md) to see each decision and its reason.
 
-Those programs are fail-closed contracts, not a claim that 686 broad controls all run end to end today. The normal `prc` command runs the existing 40 local assertions plus the exact catalog programs whose evidence collectors are available. The shipped collector can prove `PRC-36-004` when a root Node package declares usable build and test scripts and both public commands appear in bounded, inventoried Markdown code. It verifies the exact file hashes and returns Blocked for missing, changed, malformed, oversized, unsupported, or unclear evidence. One embedded capability manifest now keeps the generated catalog and runtime registration in exact agreement. The remaining built-in authority-specific collectors are not shipped yet. Advanced evidence producers can now supply a bounded bundle for any reviewed exact program, but the scanner accepts it only with two independent trusted Ed25519 signatures: a policy key signs the stable pre-collection program and runtime-input digest, then a key limited to the named evidence authority signs the canonical completed-bundle digest. The bundle must match the current catalog and inventory, and it never supplies executable code or a verdict. A rule that still lacks complete authoritative evidence remains **Blocked**; it is never counted as passed just because a predicate exists.
+Those programs are fail-closed contracts, not a claim that 686 broad controls all run end to end today. The normal `prc` command runs the existing 40 local assertions plus the exact catalog programs whose evidence collectors are available. Three repository collectors are shipped. One can prove `PRC-36-004` when a root Node package declares usable build and test scripts and both public commands appear in bounded, inventoried Markdown code. Two positive-only Markdown collectors can prove `PRC-36-002` or `PRC-36-005` only when every exact required architecture or engineering-convention topic has its own heading and meaningful content; aliases, placeholders, code examples, missing topics, evidence found only beyond the bounded read window or inside an oversized file, and files that change during inspection remain Blocked. None of these collectors runs project code or prescribes a folder layout. One embedded capability manifest keeps the generated catalog and runtime registration in exact agreement. The remaining built-in authority-specific collectors are not shipped yet. Advanced evidence producers can supply a bounded bundle for any reviewed exact program, but the scanner accepts it only with two independent trusted Ed25519 signatures: a policy key signs the stable pre-collection program and runtime-input digest, then a key limited to the named evidence authority signs the canonical completed-bundle digest. The bundle must match the current catalog and inventory, and it never supplies executable code or a verdict. A rule that still lacks complete authoritative evidence remains **Blocked**; it is never counted as passed just because a predicate exists.
 
 > [!IMPORTANT]
 > No checklist or AI review can prove that a nontrivial application has zero defects. A credible decision requires current evidence, explicit risk ownership, and tested recovery paths. One material failure can block approval regardless of how many unrelated controls pass.
@@ -96,10 +96,15 @@ Install the latest [`@marinjursic/prc`](https://www.npmjs.com/package/@marinjurs
 ```bash
 npm install -g @marinjursic/prc@latest
 cd /path/to/project
+prc setup
 prc
 ```
 
-That is the normal 40-check local scan. To scan a different folder without changing directories, run `prc /path/to/project`. Use `prc --help` only when you need the other commands or options. There is no `npx` prefix.
+`setup` is an optional one-time check: it confirms that this project and the
+bundled rules are readable without running project code, AI, or containers.
+Then bare `prc` is the normal 40-check local scan. To scan a different folder
+without changing directories, run `prc /path/to/project`. Use `prc --help`
+only when you need another command. There is no `npx` prefix.
 
 The npm command installs one user-facing package. Like other native CLIs, it keeps the small `prc` launcher separate from the OS-specific binary so npm downloads only the binary for this computer. Update or remove the global tool with:
 
@@ -108,7 +113,10 @@ npm install -g @marinjursic/prc@latest
 npm uninstall -g @marinjursic/prc
 ```
 
-Run `prc version` at any time to see the installed version. Installing, updating, removing, or running the global command does not add files to the project being scanned.
+Run `prc version` at any time to see the installed version. `prc update` makes
+one explicit npm-registry check and prints the exact update command; the scanner
+never updates itself in the background. Installing, updating, removing, or
+running the global command does not add files to the project being scanned.
 
 The scan is read-only: it does **not** fix files, run project code, install project dependencies, or write the report into the project. It checks exact local facts, prints a clear score and Pass/Fail/Review summary, and creates a private HTML report in your user cache. Every report includes all **10,042 controls**; broad rules that cannot be proved from source stay visibly in review instead of being counted as passed.
 
@@ -128,12 +136,12 @@ The package keeps the complete control data but excludes the website, video, con
 
 If npm reports a global-install permission error, install Node with a version manager instead of using `sudo`. For an extra-strict installation that disables package lifecycle scripts, the longer equivalent is `npm install -g --ignore-scripts @marinjursic/prc`.
 
-The scanner prints the exact project path before inventory begins. If an inventory limit stops the scan, first check that path: run the command inside the project root or pass it directly, for example `prc /path/to/project`. Clear generated caches when appropriate, but do not raise the 8 GiB safety guard or delete real project data just to force a scan through.
+The scanner prints the exact project path before inventory begins. If an inventory limit stops the scan, first check that path: run the command inside the project root or pass it directly, for example `prc /path/to/project`. Clear generated caches when appropriate, but do not raise the 8 GiB safety guard or delete real project data just to force a scan through. For a large directory that is genuinely not source, configuration, documentation, security policy, or deployment input, add one reviewed root `.prcignore` line such as `recordings | Local generated demo recordings are not project source.` The scanner accepts exact relative directories only, refuses risky contents and paths, and shows every accepted omission in the report and inventory digest.
 
 Only use a project-local install when a team or CI job specifically needs the scanner recorded in that project's lock file:
 
 ```bash
-npm install -D -E --ignore-scripts --no-audit --no-fund @marinjursic/prc@0.1.9
+npm install -D -E --ignore-scripts --no-audit --no-fund @marinjursic/prc@X.Y.Z
 npm exec --offline --no -- prc scan
 ```
 
@@ -171,7 +179,7 @@ To use `prc` without the `./` prefix, add this entire directory to `PATH`; do no
 
 ### Choose a scan level
 
-Choose one of three clear levels:
+Choose one of four clear levels:
 
 ```bash
 # Normal local scan: 40 checks, no AI.
@@ -180,6 +188,9 @@ prc
 # Fast local screen: 18 high-signal checks, no AI.
 prc quick
 
+# Core scan plus the pinned offline secret check. The image must already exist.
+prc verify
+
 # Full catalog AI advice, after provider login.
 prc full codex
 # or: prc full claude
@@ -187,7 +198,11 @@ prc full codex
 
 Every level still lists all 10,042 controls in the report. `quick` means fewer
 local checks and less terminal noise; it does not mean the other controls
-passed. `full` runs the core local scan and asks the selected AI provider for
+passed. `verify` explicitly authorizes the bundled Gitleaks adapter against a
+sealed read-only copy. It passes `--pull=never`, disables container networking,
+and does not install anything; use the exact reviewed image command in the
+[adapter guide](docs/architecture/adapters.md#inspect-and-validate) once before
+the first run. `full` runs the core local scan and asks the selected AI provider for
 advice on all 9,356 reviewed nondeterministic controls. The 686 deterministic
 controls never go to AI for a verdict. Supported exact programs can now produce
 a verified result; the rest remain Blocked until complete authoritative evidence
@@ -201,6 +216,7 @@ AI is **off by default**. You do not need Codex or Claude Code to install the sc
 | --- | --- | --- |
 | `prc quick` | No | Runs 18 small local checks and writes the report. |
 | `prc` | No | Runs the normal 40 local checks and writes the report. |
+| `prc verify` | No | Runs the core scan plus the bundled, pinned secret adapter in a locked-down local container. It never pulls the image. |
 | `prc full codex` | Yes, Codex | Runs the same 40 local checks, then reviews all 9,356 nondeterministic controls in quality-first deep mode. |
 | `prc full claude` | Yes, Claude Code | Runs the same deep advisory review with Claude Code instead. |
 | `prc fix ...` | Optional | A separate, advanced path can ask a chosen AI for a small patch idea inside an isolated copy. A scan never starts this path. |
@@ -221,7 +237,7 @@ The command accepts options before or after the project path. The terminal shows
   │     Know what's ready and what still needs work.   │
   ╰────────────────────────────────────────────────────╯
 
-Production Readiness Checklist 0.1.9
+Production Readiness Checklist X.Y.Z
 
 Run: 91c2…
 Profile: prc/core-repository@1.0
@@ -256,7 +272,7 @@ Report
   Scan mode: report only; no fixes were applied. No project scripts were run.
 ```
 
-Click the reported path in a supported terminal to open the HTML file in your browser; in other terminals, copy or open the same plain path normally. The first screen shows the project, one large score, the readiness result, and four counts: passed, failed, review, and not needed. Smaller category scores come next, followed by verified problems sorted from critical to informational. Each problem begins as a compact, severity-colored row; open it to see the full reason and suggested next action. Scoring notes, passed checks, raw evidence, long file lists, IDs, scan metadata, and the complete 10,042-control catalog stay behind clearly labeled detail controls until you need them. `needs_review` means the scanner has not proved the broad rule. `partially_verified` means linked narrow checks passed; it is still not a complete Pass. Reports are private and stored outside the scanned project by default, so creating one does not change the project being scanned. The cache keeps the five newest default reports and removes older scanner-generated reports; a path supplied with `--report` is never pruned.
+Click the reported path in a supported terminal to open the HTML file in your browser; in other terminals, run `prc report`. The first screen shows the project, one large **local-check pass rate**, the local gate result, and four counts: passed, failed, review, and not needed. It does not label that narrow percentage as proof that the whole project is ready. Smaller category circles come next, followed by verified problems sorted from critical to informational. A category with only one or two applicable checks is labeled **Limited evidence**, even when those checks pass. Each problem begins as a compact, severity-colored row; open it to see the full reason and suggested next action. Scoring notes, passed checks, raw evidence, long file lists, IDs, scan metadata, and the complete 10,042-control catalog stay behind clearly labeled details. The full catalog stays as compact data until its search section is opened, and only 25 matching rows are drawn at a time, so the browser does not start with thousands of openable elements. `needs_review` means the scanner has not proved the broad rule. `partially_verified` means linked narrow checks passed; it is still not a complete Pass. Reports are private and stored outside the scanned project by default, so creating one does not change the project being scanned. The cache keeps the five newest default reports and removes older scanner-generated reports; a path supplied with `--report` is never pruned.
 
 The report separates verified problems, narrow checks that passed, unresolved
 local checks, manual decisions, broad controls still needing evidence, and AI
@@ -277,7 +293,26 @@ Useful report options:
 
 # Explicitly suppress the default HTML report.
 ./prc scan /path/to/project --no-report
+
+# Open, locate, or list private reports from any directory.
+prc report
+prc report path
+prc report list
+
+# See scanner-owned disk use. Deletion always needs an explicit data class.
+prc cache status
+prc cache clean --reports --older-than 720h
 ```
+
+For a CI job, `prc ci` is the short local-only preset. It creates no HTML
+report and writes SARIF 2.1.0 to standard output:
+
+```bash
+prc ci > prc-results.sarif
+```
+
+The process still returns the normal readiness exit code. Do not add
+`--exit-policy never` to a release gate.
 
 The native `prc scan` command remains available for Go, Python, Java, Rust, infrastructure, air-gapped, and mixed repositories that do not use npm.
 
@@ -323,6 +358,7 @@ The ordinary scan is local and deterministic. AI review is a separate option for
 
 ```bash
 prc login codex
+prc full codex --plan
 prc full codex
 ```
 
@@ -330,18 +366,35 @@ For Claude Code, use:
 
 ```bash
 prc login claude
+prc full claude --plan
 prc full claude
 ```
 
 `prc auth` shows login status and `prc logout codex` or `prc logout claude` clears the scanner's saved login. These commands use each provider's official sign-in flow. The scanner stores that login in a private scanner-only directory, separate from the provider's normal configuration, plugins, instructions, and sessions. Existing supported API-key environment variables remain an alternative.
 
+`--plan` performs the same source screening and control batching but does not
+resolve or start the provider and does not create resume data. It shows the
+exact file count, source bytes, controls, batches, workers, per-batch timeout,
+selected-context volume across all batches, the per-batch context cap,
+1,500-batch default ceiling, and 24-hour default whole-review deadline. The
+scanner indexes context once and streams task construction instead of keeping a
+separate source copy for every batch.
+
+If a test fixture intentionally contains fake secret-shaped text, a root
+`.prcreviewignore` can omit that exact file from remote AI context with a
+reviewed reason. It does not remove the file from the local inventory, local
+checks, or secret adapters, and every remote omission is shown in the preview
+and sealed AI-task limitations. See the [AI review guide](docs/scanner/ai-control-review.md#try-one-control-first).
+
 `prc full` uses the same guarded path as `prc scan --ai`. Selecting the provider is also your explicit permission to send bounded, secret-screened source excerpts to that remote provider. The provider receives no target workspace path and gets no shell, file-reading, write, web, MCP, or install tools. Do not enable AI review for source that its provider is not allowed to process.
 
 The full run is intentionally large: all 9,356 nondeterministic controls are
-sent in sealed batches of at most eight. The coordinator must create one
-separate primary subagent per rule. Deep mode also creates one independent
-skeptical subagent per batch and reconciles its counterexamples with the
-primary reviews. The short `prc full` command uses four parallel provider
+sent in sealed batches of at most eight. The sealed task requests one separate
+primary subagent per rule. Deep mode also requests one independent skeptical
+subagent per batch and asks the coordinator to reconcile its counterexamples
+with the primary reviews. Current provider output cannot independently prove
+that every requested internal subagent actually ran, so the scanner treats the
+returned text as unverified advice either way. The short `prc full` command uses four parallel provider
 workers; Codex also uses `xhigh` reasoning. Each result contains a narrow root
 cause and cause key, priority, estimated effort and reach, risk, ordered fix
 steps, independent verification steps, evidence still needed, and the strongest
@@ -374,7 +427,7 @@ Continue with the [complete scanner quick start](docs/scanner/getting-started.md
 ### What is still being built
 
 - More narrow, tested local checks. The catalog currently has 43 executable assertions linked to 26 broad controls; the normal profile runs 40 and the quick profile runs 18. Most broad controls still need evidence or review.
-- More built-in authority-specific read-only collectors for the reviewed deterministic catalog. Classification, bindings, exact predicates, the runtime, report aggregation, the first repository collector, producer-requirement export, signed-set preflight verification, the dual-signed external evidence protocol, and all-or-nothing multi-authority evidence sets now run end to end. One set can safely evaluate all 765 reviewed exact clauses when trusted producers supply complete evidence, but 764 clauses still lack an automatic built-in collector. Missing collectors, external providers, complete scope, or authoritative evidence must stay Blocked.
+- More built-in authority-specific read-only collectors for the reviewed deterministic catalog. Classification, bindings, exact predicates, the runtime, report aggregation, three repository collectors, producer-requirement export, signed-set preflight verification, the dual-signed external evidence protocol, and all-or-nothing multi-authority evidence sets now run end to end. One set can safely evaluate all 765 reviewed exact clauses when trusted producers supply complete evidence, but 762 clauses still lack an automatic built-in collector. Missing collectors, external providers, complete scope, or authoritative evidence must stay Blocked.
 - Deeper meaning checks beyond the new readable, non-whitespace text baseline for repository documents—for example, whether a security policy gives useful reporting steps—without forcing one language, file name, heading, or folder layout.
 - Cross-domain dependency synthesis and a final falsification pass above the new exact root-cause grouping. The current scanner safely groups only identical domain, cause-key, and normalized-cause triples; it deliberately does not guess that differently worded causes are the same.
 - Larger real-project accuracy tests for Codex and Claude review, including cost, partial resume, false-positive, missed-finding, prompt-injection, disagreement, and unusual-project-layout measurements.

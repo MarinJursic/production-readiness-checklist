@@ -143,8 +143,8 @@ func SummarizeLocalChecks(run model.RunResult) LocalCheckSummary {
 		summary.Label, summary.Tone = "NEEDS WORK", "review"
 		summary.Explanation = "Some required checks failed or still need trustworthy evidence."
 	case "environment_blocked":
-		summary.Label, summary.Tone = "SCAN BLOCKED", "bad"
-		summary.Explanation = "The scanner could not finish one or more required checks."
+		summary.Label, summary.Tone = "READINESS BLOCKED", "bad"
+		summary.Explanation = "The local scan completed, but one or more required checks still need a permitted evidence source."
 	case "no_go":
 		summary.Label, summary.Tone = "NOT READY", "bad"
 		summary.Explanation = "One or more release-blocking checks failed."
@@ -246,7 +246,7 @@ func summarizeControlCategories(run model.RunResult) []controlCategorySummary {
 			case category.LocalPassed == category.LocalApplicable && category.LocalApplicable >= 3:
 				category.LocalLabel, category.LocalTone = "GREAT", "great"
 			case category.LocalPassed == category.LocalApplicable:
-				category.LocalLabel, category.LocalTone = "GOOD", "good"
+				category.LocalLabel, category.LocalTone = "LIMITED EVIDENCE", "review"
 			default:
 				category.LocalLabel, category.LocalTone = "REVIEW", "review"
 			}
@@ -1009,15 +1009,92 @@ func writeJUnit(output io.Writer, run model.RunResult) error {
 	return err
 }
 
+// catalogControlView is the compact, inert data source for the on-demand
+// control explorer. Keeping controls as data instead of thousands of prebuilt
+// disclosure nodes makes the first render small while preserving the complete
+// offline catalog.
+type catalogControlView struct {
+	ID                  string                            `json:"id"`
+	Statement           string                            `json:"statement"`
+	SummaryIndex        int                               `json:"summary"`
+	Disposition         string                            `json:"disposition"`
+	CategoryKey         string                            `json:"category_key"`
+	Classification      string                            `json:"classification,omitempty"`
+	Route               string                            `json:"route,omitempty"`
+	DecisionBasis       string                            `json:"decision_basis,omitempty"`
+	ClassificationSHA   string                            `json:"classification_sha256,omitempty"`
+	BindingID           string                            `json:"binding_id,omitempty"`
+	BindingSHA          string                            `json:"binding_sha256,omitempty"`
+	Coverage            string                            `json:"coverage,omitempty"`
+	Authority           string                            `json:"authority,omitempty"`
+	Source              string                            `json:"source,omitempty"`
+	AssertionIDs        []string                          `json:"assertion_ids,omitempty"`
+	ExecutedAssertions  []string                          `json:"executed_assertions,omitempty"`
+	DeterministicChecks []model.DeterministicClauseResult `json:"deterministic_checks,omitempty"`
+	AIReview            *model.AIControlReview            `json:"ai_review,omitempty"`
+	AICitations         []string                          `json:"ai_citations,omitempty"`
+}
+
+type compactCatalogData struct {
+	Summaries []string             `json:"summaries"`
+	Controls  []catalogControlView `json:"controls"`
+}
+
+func compactCatalogJSON(results []model.ControlResult) (template.JS, error) {
+	controls := make([]catalogControlView, 0, len(results))
+	summaries := []string{}
+	summaryIndexes := map[string]int{}
+	for _, result := range results {
+		categoryKey, _ := controlCategory(result.Source.Path)
+		source := result.Source.Path
+		if result.Source.Line > 0 {
+			source += ":" + strconv.Itoa(result.Source.Line)
+		}
+		aiCitations := []string(nil)
+		if result.AIReview != nil {
+			for _, location := range result.AIReview.Evidence {
+				aiCitations = append(aiCitations, advisoryLocationText([]model.FindingLocation{location}))
+			}
+		}
+		summaryIndex, ok := summaryIndexes[result.Summary]
+		if !ok {
+			summaryIndex = len(summaries)
+			summaryIndexes[result.Summary] = summaryIndex
+			summaries = append(summaries, result.Summary)
+		}
+		controls = append(controls, catalogControlView{
+			ID: result.ControlID, Statement: result.Statement, SummaryIndex: summaryIndex,
+			Disposition: result.Disposition, CategoryKey: categoryKey,
+			Classification: result.Classification, Route: result.ClassificationRoute,
+			DecisionBasis: result.ClassificationDecisionBasis, ClassificationSHA: result.ClassificationRowSHA256,
+			BindingID: result.DeterministicBindingID, BindingSHA: result.DeterministicBindingSHA256,
+			Coverage: result.Coverage, Authority: result.Authority, Source: source,
+			AssertionIDs:        append([]string(nil), result.AssertionIDs...),
+			ExecutedAssertions:  append([]string(nil), result.ExecutedAssertionIDs...),
+			DeterministicChecks: append([]model.DeterministicClauseResult(nil), result.DeterministicClauseResults...),
+			AIReview:            result.AIReview,
+			AICitations:         aiCitations,
+		})
+	}
+	data, err := json.Marshal(compactCatalogData{Summaries: summaries, Controls: controls})
+	if err != nil {
+		return "", fmt.Errorf("encode compact control catalog: %w", err)
+	}
+	// encoding/json escapes '<', '>', and '&' by default, so no result can end
+	// the inert application/json element or introduce executable markup.
+	return template.JS(data), nil
+}
+
 const htmlReport = `<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src data:; style-src 'unsafe-inline'; script-src 'unsafe-inline'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
   <title>{{.Run.Inventory.TargetName}} — production readiness report</title>
   <style>
     :root {
-      color-scheme: light;
+      color-scheme: light dark;
       --canvas: #fff; --surface: #fff; --surface-soft: #f6f8fa;
       --ink: #1f2328; --muted: #59636e; --line: #d1d9e0;
       --blue: #0969da; --blue-bg: #ddf4ff; --green: #1a7f37; --green-bg: #dafbe1;
@@ -1072,6 +1149,10 @@ const htmlReport = `<!doctype html>
     main { padding: 2.25rem 1rem 5rem; }
     .section { scroll-margin-top: 4rem; margin: 0 0 3.5rem; }
     .section-intro { color: var(--muted); margin: 0 0 1.25rem; max-width: 54rem; }
+	.coverage-grid { display: grid; gap: 1px; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 1rem 0; background: var(--line); border: 1px solid var(--line); }
+	.coverage-card { background: var(--surface); min-width: 0; padding: 1rem; }
+	.coverage-card strong { display: block; font-size: 1.35rem; font-weight: 600; }
+	.coverage-card span { color: var(--muted); display: block; font-size: .76rem; margin-top: .2rem; }
     .notice { background: #f8faff; border: 1px solid #d2e3fc; border-left: 3px solid var(--blue); border-radius: 3px; padding: .75rem .9rem; }
     .finding-card { --severity-color: #59636e; --severity-bg: var(--gray-bg); background: var(--surface); border: 0; border-bottom: 1px solid var(--line); border-top: 1px solid var(--line); border-radius: 0; content-visibility: visible; contain-intrinsic-size: none; margin: 0 0 -.0625rem; overflow: hidden; }
     .finding-card[open] { background: #fff; }
@@ -1174,8 +1255,15 @@ const htmlReport = `<!doctype html>
     .footer-note { border-top: 1px solid var(--line); color: var(--muted); margin-top: 2rem; padding-top: 1.2rem; }
     .back-top { display: none; }
     [hidden] { display: none !important; }
+	@media (prefers-color-scheme: dark) {
+	  :root { --canvas: #0d1117; --surface: #161b22; --surface-soft: #21262d; --ink: #e6edf3; --muted: #9da7b3; --line: #30363d; --blue: #58a6ff; --blue-bg: #0d2742; --green: #3fb950; --green-bg: #14351f; --yellow: #d29922; --yellow-bg: #392d12; --red: #f85149; --red-bg: #451b1e; --gray: #9da7b3; --gray-bg: #21262d; }
+	  body, .hero, .report-nav, details[open], .finding-card[open], .category-card, input, select, button { background: var(--surface); }
+	  code, .technical, .filter-panel, th, .result-group > summary, .unscored-group summary { background: var(--surface-soft); color: #a5d6ff; }
+	  .notice { background: #111d2e; border-color: #27476d; }
+	  .category-card:hover, button:hover, .unscored-link:hover { background: #21262d; }
+	}
     @media (max-width: 900px) { .category-grid { grid-template-columns: repeat(3, 1fr); } .unscored-grid { grid-template-columns: repeat(2, 1fr); } .filter-panel { grid-template-columns: 1fr 1fr; position: static; } }
-    @media (max-width: 600px) { body { font-size: 13px; } .hero { padding: 0 1rem; } .report-brand { margin-bottom: 1.1rem; } .hero-score-gauge { width: 8.5rem; } .score-gauge-center { top: 2.85rem; } .score-gauge-number { font-size: 2rem; } .hero-metric { padding-left: .2rem; padding-right: .2rem; } .hero-metric strong { font-size: 1.05rem; } .hero-metric span { font-size: .62rem; } .filter-panel { grid-template-columns: 1fr; } .category-grid { grid-template-columns: repeat(2, 1fr); } .category-card { padding-left: .45rem; padding-right: .45rem; } .category-gauge { width: 5.75rem; } .category-score { top: 2rem; } .finding-card > summary { align-items: start; grid-template-columns: minmax(0, 1fr) auto; } .finding-card .severity-pill { grid-column: 1 / -1; grid-row: 1; width: max-content; } .finding-card .finding-summary-copy { grid-column: 1; grid-row: 2; } .finding-card > summary::after { grid-column: 2; grid-row: 2; } .unscored-grid { grid-template-columns: 1fr; } .section-disclosure > summary { align-items: flex-start; } .assertion-row > summary, .control-row > summary { flex-wrap: wrap; } dl { grid-template-columns: 1fr; } dt { margin-top: .45rem; } }
+	@media (max-width: 600px) { body { font-size: 13px; } .hero { padding: 0 1rem; } .report-brand { margin-bottom: 1.1rem; } .hero-score-gauge { width: 8.5rem; } .score-gauge-center { top: 2.85rem; } .score-gauge-number { font-size: 2rem; } .hero-metric { padding-left: .2rem; padding-right: .2rem; } .hero-metric strong { font-size: 1.05rem; } .hero-metric span { font-size: .62rem; } .coverage-grid { grid-template-columns: 1fr; } .filter-panel { grid-template-columns: 1fr; } .category-grid { grid-template-columns: repeat(2, 1fr); } .category-card { padding-left: .45rem; padding-right: .45rem; } .category-gauge { width: 5.75rem; } .category-score { top: 2rem; } .finding-card > summary { align-items: start; grid-template-columns: minmax(0, 1fr) auto; } .finding-card .severity-pill { grid-column: 1 / -1; grid-row: 1; width: max-content; } .finding-card .finding-summary-copy { grid-column: 1; grid-row: 2; } .finding-card > summary::after { grid-column: 2; grid-row: 2; } .unscored-grid { grid-template-columns: 1fr; } .section-disclosure > summary { align-items: flex-start; } .assertion-row > summary, .control-row > summary { flex-wrap: wrap; } dl { grid-template-columns: 1fr; } dt { margin-top: .45rem; } }
     @media print { .report-nav, .filter-panel, .back-top, button { display: none !important; } .hero { border-top: 0; padding: 1rem 0; } main { padding: 1rem 0; } details { break-inside: avoid; } }
   </style>
 </head>
@@ -1189,27 +1277,37 @@ const htmlReport = `<!doctype html>
       </div>
       <div class="hero-grid">
         <section class="score-panel" aria-labelledby="local-score-title">
-          <div class="score-gauge hero-score-gauge" role="img" aria-label="Overall local score: {{.Local.Percentage}} out of 100">
+		  <div class="score-gauge hero-score-gauge" role="img" aria-label="Local check pass rate: {{.Local.Percentage}} out of 100">
             <svg viewBox="0 0 120 120" aria-hidden="true"><circle class="score-gauge-track" cx="60" cy="60" r="50"></circle><circle class="score-gauge-value" cx="60" cy="60" r="50" pathLength="100" stroke-dasharray="{{.Local.Percentage}} 100"></circle></svg>
             <span class="score-gauge-center"><strong class="score-gauge-number">{{.Local.Percentage}}</strong><span class="score-gauge-scale">/100</span></span>
           </div>
-          <div><span class="score-kicker">Local score</span><span class="rating overall-rating rating-{{.Local.Tone}}" id="local-score-title"><span aria-hidden="true">{{statusSymbol .Local.Tone}}</span> {{.Local.Label}}</span><p class="score-status">{{if .Local.Blocking}}{{.Local.Blocking}} release-blocking {{if eq .Local.Blocking 1}}check{{else}}checks{{end}} failed.{{else}}{{.Local.Explanation}}{{end}}</p></div>
+		  <div><span class="score-kicker">Local checks only</span><span class="rating overall-rating rating-{{.Local.Tone}}" id="local-score-title"><span aria-hidden="true">{{statusSymbol .Local.Tone}}</span> {{.Local.Label}}</span><p class="score-status">{{if .Local.Blocking}}{{.Local.Blocking}} release-blocking {{if eq .Local.Blocking 1}}check{{else}}checks{{end}} failed.{{else}}{{.Local.Explanation}}{{end}}</p></div>
         </section>
       </div>
       <div class="hero-metrics" aria-label="Local check counts"><div class="hero-metric metric-pass"><strong>{{.Local.Passed}}</strong><span>Passed</span></div><div class="hero-metric metric-fail"><strong>{{.Local.Failed}}</strong><span>Failed</span></div><div class="hero-metric metric-review"><strong>{{.Local.ToReview}}</strong><span>Review</span></div><div class="hero-metric"><strong>{{.Local.NotApplicable}}</strong><span>Not needed</span></div></div>
       <details class="summary-help hero-help"><summary>About this score</summary><div class="detail-body">
         <p><strong>{{.Local.Passed}} of {{.Local.Applicable}}</strong> applicable checks passed using <code>{{.Run.Plan.ProfileID}}@{{.Run.Plan.ProfileVersion}}</code>. {{.Local.NotApplicable}} checks did not apply.</p>
-        <p>The score is a simple local-check pass rate, not a readiness grade. One serious failure can outweigh many passing checks.</p>
-        <p><strong>Report-only scan:</strong> no files were fixed and no project scripts were run.{{if .Run.ControlCatalog}} The wider catalog still has {{.Meaning.ControlsNeedingReview}} controls needing evidence or review.{{end}}</p>
+		<p>The circle is a simple pass rate for {{.Local.Applicable}} applicable local checks. It is not an overall readiness grade. One serious failure can outweigh many passing checks.</p>
+		<p><strong>Report-only scan:</strong> no files were fixed and no project scripts were run.{{if .Run.ControlCatalog}} The scanner attempted exact evidence for {{.Run.ControlCatalog.DeterministicProgramExecutedCount}} of {{.Run.ControlCatalog.DeterministicProgramTemplateCount}} deterministic clauses; {{.Meaning.ControlsNeedingReview}} wider controls still need evidence or review.{{end}}</p>
         <p>AI suggestions, when present, are advice rather than verified passes.</p>
       </div></details>
     </div>
   </header>
-  <nav class="report-nav" aria-label="Report sections"><div class="nav-inner">
-    <a href="#top">Overview</a>{{if .Run.ControlCatalog}}<a href="#categories">Categories</a>{{end}}{{if .AIRecommendationCount}}<a href="#ai-priorities">AI priorities</a>{{end}}<a href="#findings">Fix first</a><a href="#local-checks">Details</a>
-  </div></nav>
-  <main id="main-content">
-    {{if .Run.ControlCatalog}}<section class="section" id="categories">
+	<nav class="report-nav" aria-label="Report sections"><div class="nav-inner">
+	  <a href="#top">Overview</a>{{if .Run.ControlCatalog}}<a href="#coverage">Coverage</a><a href="#categories">Categories</a>{{end}}{{if .AIRecommendationCount}}<a href="#ai-priorities">AI priorities</a>{{end}}<a href="#findings">Fix first</a><a href="#local-checks">Details</a>
+	</div></nav>
+	<main id="main-content">
+	  {{if .Run.ControlCatalog}}<section class="section" id="coverage">
+		<h2>What this scan actually checked</h2>
+		<p class="section-intro">These totals separate local observations, exact deterministic evidence, and advice. A rule appearing in the catalog does not mean it was proven.</p>
+		<div class="coverage-grid">
+		  <div class="coverage-card"><strong>{{len .Run.Results}}</strong><span>local checks run in this profile</span></div>
+		  <div class="coverage-card"><strong>{{.Run.ControlCatalog.DeterministicProgramExecutedCount}} / {{.Run.ControlCatalog.DeterministicProgramTemplateCount}}</strong><span>exact deterministic clauses attempted with available evidence</span></div>
+		  <div class="coverage-card"><strong>{{.Meaning.ControlsNeedingReview}}</strong><span>catalog controls still needing evidence or review</span></div>
+		</div>
+		<p class="notice"><strong>Conclusion:</strong> {{.Local.Explanation}} This report does not certify the whole project as production-ready.{{if .UserExclusionCount}} {{.UserExclusionCount}} reviewed .prcignore {{if eq .UserExclusionCount 1}}directory was{{else}}directories were{{end}} omitted; no result proves anything about those omitted artifacts.{{end}}</p>
+	  </section>{{end}}
+	  {{if .Run.ControlCatalog}}<section class="section" id="categories">
       <h2>Scores by category</h2>
       <p class="section-intro">Each score uses only the local checks that ran for that category. Select a category to inspect its linked controls.</p>
       <div class="category-key"><strong>Score colors</strong><span class="key-item"><span class="key-dot great"></span>Great</span><span class="key-item"><span class="key-dot good"></span>Good</span><span class="key-item"><span class="key-dot review"></span>Review</span><span class="key-item"><span class="key-dot bad"></span>Needs work</span><span class="key-item"><span class="key-dot"></span>Not scored</span></div>
@@ -1304,42 +1402,19 @@ const htmlReport = `<!doctype html>
       <summary><span><span class="disclosure-title">Search the complete control catalog</span><span class="disclosure-note">Use this when you need one specific rule, category, or evidence state.</span></span><span class="result-count">{{.Run.ControlCatalog.ControlCount}} controls</span></summary>
       <div class="section-disclosure-body">
       <h2>Search all controls</h2>
-      <p class="section-intro">Search by plain words or ID, then narrow the list by category or evidence state. Only the first 100 matches are shown at once.</p>
+      <p class="section-intro">Search by plain words or ID, then narrow the list by category or evidence state. Only 25 matches are drawn at once so large reports stay fast.</p>
       <div class="filter-panel" aria-label="Control filters">
-        <label>Search<input id="control-search" type="search" placeholder="Try: backups, authentication, PRC-02-003" autocomplete="off"></label>
+        <label>Search<input id="control-search" type="search" maxlength="200" placeholder="Try: backups, authentication, PRC-02-003" autocomplete="off"></label>
         <label>Category<select id="control-category"><option value="">All categories</option>{{range .Categories}}<option value="{{.Key}}">{{.Name}}</option>{{end}}</select></label>
         <label>Evidence state<select id="control-disposition"><option value="">All states</option><option value="confirmed_failure">Confirmed failure</option><option value="verified_pass">Verified pass</option><option value="not_applicable">Not applicable</option><option value="blocked">Blocked</option><option value="needs_review">Needs evidence</option><option value="partially_verified">Partial evidence</option><option value="retired">Retired</option></select></label>
         <button id="clear-control-filters" type="button">Clear</button>
       </div>
-      <p class="filter-count" id="control-filter-count" role="status" aria-live="polite"></p>
-      <section id="control-results">{{range .Run.ControlResults}}<details class="control-row result-{{statusClass .Disposition}}" data-disposition="{{.Disposition}}" data-classification="{{.Classification}}" data-category="{{categoryKey .Source.Path}}">
-        <summary><span class="pill pill-{{statusClass .Disposition}}"><span aria-hidden="true">{{controlSymbol .Disposition}}</span> {{prettyStatus .Disposition}}</span><span class="row-summary"><code>{{.ControlID}}</code> — {{brief .Statement}}</span></summary>
-        <div class="detail-body">
-          <p class="primary-detail"><strong>What this control asks:</strong> {{.Statement}}</p>
-          <p class="primary-detail"><strong>Current result:</strong> {{.Summary}}</p>
-          {{if .AIReview}}<div class="advice"><strong>Advisory AI suggestion · {{prettyStatus .AIReview.Priority}} priority</strong><p>{{.AIReview.Reason}}</p><p><strong>Suggested work:</strong> {{.AIReview.Advice}}</p><ol>{{range .AIReview.RemediationSteps}}<li>{{.}}</li>{{end}}</ol><details class="raw-list"><summary>How to verify and what evidence is missing</summary><div><p><strong>Verification:</strong></p><ol>{{range .AIReview.VerificationSteps}}<li>{{.}}</li>{{end}}</ol><p><strong>Evidence needed:</strong></p><ul>{{range .AIReview.EvidenceNeeded}}<li>{{.}}</li>{{end}}</ul><p><strong>Skeptical challenge:</strong> {{.AIReview.Challenge}}</p></div></details><span class="meta">This is advice only and cannot create a verified pass.</span></div>{{end}}
-          <details class="raw-details"><summary>Technical evidence and IDs</summary><div class="detail-body"><dl>
-          <dt>Category</dt><dd>{{categoryName .Source.Path}}</dd>
-          <dt>Evidence state</dt><dd>{{prettyStatus .Disposition}} — {{.Summary}}</dd>
-          <dt>Reviewed classification</dt><dd>{{prettyStatus .Classification}} — {{prettyStatus .ClassificationRoute}} / {{prettyStatus .ClassificationDecisionBasis}}</dd>
-          <dt>Classification row digest</dt><dd>{{if .ClassificationRowSHA256}}<code>{{.ClassificationRowSHA256}}</code>{{else}}Legacy record.{{end}}</dd>
-          <dt>Deterministic binding</dt><dd>{{if .DeterministicBindingID}}<code>{{.DeterministicBindingID}}</code> / <code>{{.DeterministicBindingSHA256}}</code>{{else}}No deterministic binding; review remains contextual or accountable.{{end}}</dd>
-          <dt>Coverage / authority</dt><dd>{{prettyStatus .Coverage}} / {{prettyStatus .Authority}}</dd>
-          <dt>Source</dt><dd><code>{{.Source.Path}}:{{.Source.Line}}</code></dd>
-          <dt>All known assertions</dt><dd>{{if .AssertionIDs}}<code>{{join .AssertionIDs}}</code>{{else}}None yet.{{end}}</dd>
-          <dt>Assertions run in this profile</dt><dd>{{if .ExecutedAssertionIDs}}<code>{{join .ExecutedAssertionIDs}}</code>{{else}}None.{{end}}</dd>
-          {{if .DeterministicClauseResults}}<dt>Exact deterministic programs</dt><dd><details class="raw-list"><summary>Show {{len .DeterministicClauseResults}} clause result(s)</summary><ul>{{range .DeterministicClauseResults}}<li><code>{{.ImplementationID}}</code> · {{prettyStatus .Status}} · authority <code>{{.RequiredAuthority}}</code>{{if .ReasonCode}} · reason <code>{{.ReasonCode}}</code>{{end}}{{if .EvidenceSHA256}} · evidence <code>{{.EvidenceSHA256}}</code>{{end}}</li>{{end}}</ul></details></dd>{{end}}
-          {{if .AIReview}}<dt>Advisory AI review</dt><dd><strong>{{.AIReview.Provider}}{{if .AIReview.Model}} / {{.AIReview.Model}}{{end}}</strong>: {{.AIReview.ReviewDepth}} depth / {{.AIReview.AssessmentCandidate}} / {{.AIReview.ApplicabilityCandidate}} / confidence {{.AIReview.Confidence}} / priority {{.AIReview.Priority}}.</dd>
-          <dt>AI risk if ignored</dt><dd>{{.AIReview.RiskIfIgnored}}</dd>
-          <dt>AI citation locations</dt><dd>{{if .AIReview.Evidence}}<ul>{{range .AIReview.Evidence}}<li><code>{{location .}}</code></li>{{end}}</ul>{{else}}No repository line was cited.{{end}}</dd>
-          <dt>AI verification state</dt><dd><code>{{verification .AIReview}}</code>. A valid snapshot location proves only that the cited line existed in the screened input. It does not prove that the line supports the AI claim; claim text remains advisory and unverified.</dd>
-          <dt>AI review limits</dt><dd><ul>{{range .AIReview.Limitations}}<li>{{.}}</li>{{end}}</ul></dd>{{end}}
-          </dl></div></details>
-        </div>
-      </details>{{end}}</section>
-      <button class="more-controls" id="show-more-controls" type="button" hidden>Show more controls</button>
-      </div>
-    </details>{{end}}
+	  <p class="filter-count" id="control-filter-count" role="status" aria-live="polite">Open this section to load the first matching controls.</p>
+	  <section id="control-results" aria-label="Matching controls"></section>
+	  <noscript><p class="notice">The searchable catalog needs JavaScript. The overview, findings, local checks, and technical metadata remain available without it.</p></noscript>
+	  <button class="more-controls" id="show-more-controls" type="button" hidden>Show more controls</button>
+	  </div>
+	</details>{{end}}
 
     <details class="section-disclosure" id="technical">
       <summary><span><span class="disclosure-title">Scan metadata</span><span class="disclosure-note">Run IDs, hashes, catalog identity, and adapter records.</span></span><span class="result-count">Technical</span></summary>
@@ -1352,7 +1427,7 @@ const htmlReport = `<!doctype html>
         {{if .Run.Plan.ConfigurationDigest}}<dt>Configuration</dt><dd><code>{{.Run.Plan.ConfigurationDigest}}</code></dd><dt>Project</dt><dd><code>{{.Run.Plan.ProjectID}}</code></dd><dt>Target environments</dt><dd>{{join .Run.Plan.TargetEnvironments}}</dd><dt>Artifact digests</dt><dd>{{join .Run.Plan.ArtifactDigests}}</dd>{{end}}
         <dt>Local profile result</dt><dd>{{.ProfileState}}</dd><dt>Full catalog coverage result</dt><dd>{{.Run.TerminalState}}</dd>
         {{if .Run.Inventory.GitCommit}}<dt>Git HEAD</dt><dd><code>{{.Run.Inventory.GitCommit}}</code> ({{.GitState}} worktree)</dd>{{end}}
-        <dt>Hashed inventory bytes</dt><dd>{{.InventoryBytes}}</dd><dt>Reported automatic exclusions</dt><dd>{{.ExclusionCount}}</dd>
+		<dt>Hashed inventory bytes</dt><dd>{{.InventoryBytes}}</dd><dt>Reported automatic exclusions</dt><dd>{{.ExclusionCount}}</dd><dt>Reviewed .prcignore exclusions</dt><dd>{{.UserExclusionCount}}</dd>
         {{if .Run.ControlCatalog}}<dt>Registry version / digest</dt><dd><code>{{.Run.ControlCatalog.RegistryVersion}}</code> / <code>{{.Run.ControlCatalog.RegistrySHA256}}</code></dd><dt>Catalog source digest</dt><dd><code>{{.Run.ControlCatalog.SourceSHA256}}</code></dd><dt>Controls</dt><dd>{{.Run.ControlCatalog.ControlCount}} registered / {{.Run.ControlCatalog.ActiveControlCount}} active</dd>{{if .Run.ControlCatalog.ClassificationCorpusSHA256}}<dt>Reviewed classifications</dt><dd>{{.Run.ControlCatalog.ReviewedDeterministicCount}} deterministic / {{.Run.ControlCatalog.ReviewedNondeterministicCount}} nondeterministic</dd><dt>Classification corpus digest</dt><dd><code>{{.Run.ControlCatalog.ClassificationCorpusSHA256}}</code></dd><dt>Deterministic bindings</dt><dd>{{.Run.ControlCatalog.DeterministicBindingCount}} / <code>{{.Run.ControlCatalog.ControlCheckBindingsSHA256}}</code></dd><dt>Exact deterministic execution</dt><dd>{{.Run.ControlCatalog.DeterministicProgramExecutedCount}} of {{.Run.ControlCatalog.DeterministicProgramTemplateCount}} programs attempted · {{.Run.ControlCatalog.DeterministicProgramPassCount}} passed · {{.Run.ControlCatalog.DeterministicProgramFailCount}} failed · {{.Run.ControlCatalog.DeterministicProgramNACount}} proven Not Applicable · {{.Run.ControlCatalog.DeterministicProgramBlockedCount}} controls still blocked · {{len .Run.DeterministicEvidence}} replayable evidence documents retained</dd>{{end}}{{end}}
       </dl></div></details>
       {{if .Run.AdapterExecutions}}<details class="technical"><summary>Adapter executions</summary><div class="detail-body"><table>
@@ -1382,7 +1457,8 @@ const htmlReport = `<!doctype html>
       </div>
     </details>
   </main>
-  <script>
+	{{if .Run.ControlCatalog}}<script type="application/json" id="control-catalog-data">{{.CatalogJSON}}</script>{{end}}
+	<script>
   (() => {
     for (const link of document.querySelectorAll('a[href^="#"]')) {
       link.addEventListener('click', event => {
@@ -1396,31 +1472,153 @@ const htmlReport = `<!doctype html>
         requestAnimationFrame(() => { settle(); setTimeout(settle, 80); });
       });
     }
-    const root = document.getElementById('control-results');
-    if (!root) return;
-    const items = Array.from(root.querySelectorAll(':scope > details'));
-    const search = document.getElementById('control-search');
+	const root = document.getElementById('control-results');
+	if (!root) return;
+	const dataNode = document.getElementById('control-catalog-data');
+	let controls = null;
+	let summaries = [];
+	const search = document.getElementById('control-search');
     const category = document.getElementById('control-category');
     const disposition = document.getElementById('control-disposition');
     const clear = document.getElementById('clear-control-filters');
     const count = document.getElementById('control-filter-count');
     const more = document.getElementById('show-more-controls');
     const explorer = document.getElementById('control-explorer');
-    const pageSize = 100;
-    let limit = pageSize;
-    let timer;
-    const apply = () => {
-      const query = search.value.trim().toLocaleLowerCase();
-      const matches = [];
-      for (const item of items) {
-        const matchesFilter = (!query || item.textContent.toLocaleLowerCase().includes(query)) &&
-          (!category.value || item.dataset.category === category.value) &&
-          (!disposition.value || item.dataset.disposition === disposition.value);
-        if (matchesFilter) matches.push(item);
-      }
-      for (const item of items) item.hidden = true;
-      const visible = matches.slice(0, limit);
-      for (const item of visible) item.hidden = false;
+	const categoryNames = Object.fromEntries(Array.from(category.options).filter(option => option.value).map(option => [option.value, option.textContent]));
+	const dispositionLabels = {
+	  confirmed_failure: 'Confirmed failure', verified_pass: 'Verified pass', not_applicable: 'Not applicable',
+	  blocked: 'Blocked', needs_review: 'Needs review', partially_verified: 'Partially verified', retired: 'Retired'
+	};
+	const statusClasses = { confirmed_failure: 'fail', verified_pass: 'pass', not_applicable: 'na', blocked: 'blocked', needs_review: 'review', partially_verified: 'partial', retired: 'retired' };
+	const statusSymbols = { confirmed_failure: '✗', verified_pass: '✓', not_applicable: '—', blocked: '!', needs_review: '?', partially_verified: '◐', retired: '—' };
+	const pageSize = 25;
+	let limit = pageSize;
+	let timer;
+	const make = (tag, className, text) => {
+	  const value = document.createElement(tag);
+	  if (className) value.className = className;
+	  if (text !== undefined) value.textContent = text;
+	  return value;
+	};
+	const addLabelledText = (parent, label, text) => {
+	  const line = make('p', 'primary-detail');
+	  line.append(make('strong', '', label + ': '), document.createTextNode(text || '—'));
+	  parent.append(line);
+	};
+	const addDefinition = (list, label, value) => {
+	  list.append(make('dt', '', label), make('dd', '', value || '—'));
+	};
+	const appendItems = (parent, values, ordered) => {
+	  const list = make(ordered ? 'ol' : 'ul');
+	  for (const value of values || []) list.append(make('li', '', value));
+	  parent.append(list);
+	};
+	const shortText = value => {
+	  const compact = String(value || '').replace(/\s+/g, ' ').trim();
+	  const points = Array.from(compact);
+	  return points.length <= 150 ? compact : points.slice(0, 150).join('') + '…';
+	};
+	const loadControls = () => {
+	  if (controls !== null) return true;
+	  try {
+		const catalog = JSON.parse(dataNode ? dataNode.textContent : '{}');
+		if (!Array.isArray(catalog.controls) || !Array.isArray(catalog.summaries)) throw new Error('invalid catalog');
+		controls = catalog.controls;
+		summaries = catalog.summaries;
+		return true;
+	  } catch (_) {
+		controls = [];
+		count.textContent = 'The embedded catalog could not be read. The rest of the report is still available.';
+		return false;
+	  }
+	};
+	const summaryText = item => summaries[item.summary] || 'No summary was recorded.';
+	const searchableText = item => {
+	  if (item._search_text) return item._search_text;
+	  const ai = item.ai_review || {};
+	  item._search_text = [
+		item.id, item.statement, summaryText(item), item.disposition, item.classification, item.route,
+		item.decision_basis, categoryNames[item.category_key], item.coverage, item.authority, item.source,
+		...(item.assertion_ids || []), ...(item.executed_assertions || []), ai.root_cause, ai.reason,
+		ai.advice, ai.risk_if_ignored, ai.provider, ai.model, ai.assessment_candidate,
+		ai.applicability_candidate, ...(ai.evidence_needed || []), ...(item.ai_citations || [])
+	  ].filter(Boolean).join(' ').toLocaleLowerCase();
+	  return item._search_text;
+	};
+	const renderControl = item => {
+	  const statusClass = statusClasses[item.disposition] || 'review';
+	  const dispositionLabel = dispositionLabels[item.disposition] || item.disposition || 'Needs review';
+	  const details = make('details', 'control-row result-' + statusClass);
+	  const summary = make('summary');
+	  const pill = make('span', 'pill pill-' + statusClass, (statusSymbols[item.disposition] || '?') + ' ' + dispositionLabel);
+	  const row = make('span', 'row-summary');
+	  row.append(make('code', '', item.id), document.createTextNode(' — ' + shortText(item.statement)));
+	  summary.append(pill, row);
+	  details.append(summary);
+	  const body = make('div', 'detail-body');
+	  addLabelledText(body, 'What this control asks', item.statement);
+	  addLabelledText(body, 'Current evidence state', summaryText(item));
+	  if (item.ai_review) {
+		const ai = make('div', 'advice');
+		ai.append(make('strong', '', 'AI advice — not verified · ' + (item.ai_review.priority || 'unrated') + ' priority'));
+		addLabelledText(ai, 'Why it was suggested', item.ai_review.reason);
+		addLabelledText(ai, 'Suggested work', item.ai_review.advice);
+		appendItems(ai, item.ai_review.remediation_steps, true);
+		const verify = make('details', 'raw-list');
+		verify.append(make('summary', '', 'How to verify and what evidence is missing'));
+		const verifyBody = make('div');
+		verifyBody.append(make('strong', '', 'Verification steps'));
+		appendItems(verifyBody, item.ai_review.verification_steps, true);
+		verifyBody.append(make('strong', '', 'Evidence still needed'));
+		appendItems(verifyBody, item.ai_review.evidence_needed, false);
+		addLabelledText(verifyBody, 'Skeptical challenge', item.ai_review.challenge);
+		verify.append(verifyBody);
+		ai.append(verify, make('span', 'meta', 'AI advice cannot create a verified pass or final Not Applicable result.'));
+		body.append(ai);
+	  }
+	  const technical = make('details', 'raw-details');
+	  technical.append(make('summary', '', 'Technical evidence and IDs'));
+	  const technicalBody = make('div', 'detail-body');
+	  const definitions = make('dl');
+	  addDefinition(definitions, 'Category', categoryNames[item.category_key] || item.category_key);
+	  addDefinition(definitions, 'Evidence state', dispositionLabel + ' — ' + summaryText(item));
+	  addDefinition(definitions, 'Reviewed classification', [item.classification, item.route, item.decision_basis].filter(Boolean).join(' — '));
+	  addDefinition(definitions, 'Classification row digest', item.classification_sha256 || 'Legacy record');
+	  addDefinition(definitions, 'Deterministic binding', item.binding_id ? item.binding_id + ' / ' + item.binding_sha256 : 'No deterministic binding; review remains contextual or accountable.');
+	  addDefinition(definitions, 'Coverage / authority', item.coverage + ' / ' + item.authority);
+	  addDefinition(definitions, 'Source', item.source);
+	  addDefinition(definitions, 'All known assertions', (item.assertion_ids || []).join(', ') || 'None yet');
+	  addDefinition(definitions, 'Assertions run in this profile', (item.executed_assertions || []).join(', ') || 'None');
+	  if ((item.deterministic_checks || []).length) {
+		addDefinition(definitions, 'Exact deterministic programs', item.deterministic_checks.map(check =>
+		  check.implementation_id + ' · ' + check.status + ' · authority ' + check.required_authority + (check.reason_code ? ' · reason ' + check.reason_code : '')
+		).join('\n'));
+	  }
+	  if (item.ai_review) {
+		addDefinition(definitions, 'AI assessment candidate', [item.ai_review.assessment_candidate, item.ai_review.applicability_candidate, item.ai_review.confidence && item.ai_review.confidence + ' confidence'].filter(Boolean).join(' · '));
+		addDefinition(definitions, 'AI reviewer', [item.ai_review.provider, item.ai_review.model, item.ai_review.review_depth && item.ai_review.review_depth + ' review'].filter(Boolean).join(' · '));
+		addDefinition(definitions, 'AI root cause', [item.ai_review.root_cause, item.ai_review.root_cause_key && 'key ' + item.ai_review.root_cause_key].filter(Boolean).join(' · '));
+		addDefinition(definitions, 'AI effort / blast radius', [item.ai_review.effort, item.ai_review.blast_radius].filter(Boolean).join(' / '));
+		addDefinition(definitions, 'Risk if ignored', item.ai_review.risk_if_ignored);
+		addDefinition(definitions, 'AI cited locations', (item.ai_citations || []).join(', ') || 'No source location was cited.');
+		addDefinition(definitions, 'AI task ID', item.ai_review.task_id);
+		addDefinition(definitions, 'AI verification state', 'citation=' + (item.ai_review.citation_verification || 'not recorded') + '; claim=' + (item.ai_review.claim_verification || 'advisory_unverified'));
+		addDefinition(definitions, 'AI review limits', (item.ai_review.limitations || []).join('; ') || 'No limitation text was returned.');
+	  }
+	  technicalBody.append(definitions);
+	  technical.append(technicalBody);
+	  body.append(technical);
+	  details.append(body);
+	  return details;
+	};
+	const apply = () => {
+	  if (!loadControls()) return;
+	  const query = search.value.trim().toLocaleLowerCase();
+	  const matches = controls.filter(item => (!query || searchableText(item).includes(query)) &&
+		(!category.value || item.category_key === category.value) &&
+		(!disposition.value || item.disposition === disposition.value));
+	  const visible = matches.slice(0, limit);
+	  root.replaceChildren(...visible.map(renderControl));
       count.textContent = 'Showing ' + visible.length.toLocaleString() + ' of ' + matches.length.toLocaleString() + ' matching controls';
       const remaining = matches.length - visible.length;
       more.hidden = remaining <= 0;
@@ -1433,10 +1631,11 @@ const htmlReport = `<!doctype html>
     disposition.addEventListener('change', resetAndApply);
     clear.addEventListener('click', () => { search.value = ''; category.value = ''; disposition.value = ''; resetAndApply(); search.focus(); });
     more.addEventListener('click', () => { limit += pageSize; apply(); });
+	explorer.addEventListener('toggle', () => { if (explorer.open) apply(); });
     for (const link of document.querySelectorAll('[data-category-link]')) {
-      link.addEventListener('click', () => { explorer.open = true; category.value = link.dataset.categoryLink; search.value = ''; disposition.value = ''; resetAndApply(); });
+	  link.addEventListener('click', () => { explorer.open = true; category.value = link.dataset.categoryLink; search.value = ''; disposition.value = ''; resetAndApply(); });
     }
-    apply();
+	if (location.hash === '#control-explorer') { explorer.open = true; apply(); }
   })();
   </script>
 </body>
@@ -1463,6 +1662,10 @@ func writeHTML(output io.Writer, run model.RunResult) error {
 	categories := summarizeControlCategories(run)
 	aiRecommendations, aiRecommendationCount := sortedAIRecommendations(run.ControlResults)
 	aiPlanItems, aiPlanItemCount := visibleAIPlan(run)
+	catalogJSON, err := compactCatalogJSON(run.ControlResults)
+	if err != nil {
+		return err
+	}
 	scoredCategories := make([]controlCategorySummary, 0, len(categories))
 	unscoredCategories := make([]controlCategorySummary, 0, len(categories))
 	for _, category := range categories {
@@ -1489,16 +1692,20 @@ func writeHTML(output io.Writer, run model.RunResult) error {
 		GitState              string
 		InventoryBytes        string
 		ExclusionCount        int
+		UserExclusionCount    int
+		CatalogJSON           template.JS
 	}{
 		Run: run, Findings: sortedFindings(run.Findings), AttentionResults: sortedAttentionResults(run.Results),
 		AIRecommendations: aiRecommendations, AIRecommendationCount: aiRecommendationCount,
 		AIPlanItems: aiPlanItems, AIPlanItemCount: aiPlanItemCount,
 		Meaning: summarizeMeaning(run), Local: SummarizeLocalChecks(run),
 		Categories: categories, ScoredCategories: scoredCategories, UnscoredCategories: unscoredCategories,
-		ProfileState:   profileTerminalState(run),
-		GitState:       inventoryFact(run.Inventory, "repository.git_worktree_state"),
-		InventoryBytes: inventoryFact(run.Inventory, "repository.inventory_bytes"),
-		ExclusionCount: inventoryFactCount(run.Inventory, "repository.exclusion"),
+		ProfileState:       profileTerminalState(run),
+		GitState:           inventoryFact(run.Inventory, "repository.git_worktree_state"),
+		InventoryBytes:     inventoryFact(run.Inventory, "repository.inventory_bytes"),
+		ExclusionCount:     inventoryFactCount(run.Inventory, "repository.exclusion"),
+		UserExclusionCount: inventoryFactCount(run.Inventory, "repository.user_exclusion"),
+		CatalogJSON:        catalogJSON,
 	}
 	return template.Must(template.New("report").Funcs(template.FuncMap{
 		"join":         func(values []string) string { return strings.Join(values, ", ") },

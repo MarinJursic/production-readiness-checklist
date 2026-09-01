@@ -171,3 +171,19 @@ func TestFinalScanSummaryMakesInteractiveReportPathClickable(t *testing.T) {
 		t.Fatalf("interactive summary did not include a clickable report path: %q", text)
 	}
 }
+
+func TestFinalScanSummaryPointsBlockedCoreSecretCheckToSafeShortcut(t *testing.T) {
+	run := model.RunResult{
+		Plan:      model.Plan{ProfileID: "prc/core-repository", ProfileVersion: "1.0"},
+		Inventory: model.Inventory{TargetName: "sample-app", Digest: "digest"},
+		Results: []model.AssertionResult{{
+			AssertionID: "PRC-A-CORE-013", Assessment: "unknown", Execution: "blocked",
+			Severity: "high", Summary: "The local adapter was not authorized.",
+		}},
+	}
+	var output bytes.Buffer
+	printScanSummary(&output, run, terminalStyle{}, "")
+	if !strings.Contains(output.String(), "run `prc verify`") || !strings.Contains(output.String(), "must already exist locally") {
+		t.Fatalf("blocked secret check omitted the safe next step: %s", output.String())
+	}
+}

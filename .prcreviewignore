@@ -1,0 +1,4 @@
+# Exact files omitted only from optional remote AI review. Local inventory,
+# deterministic checks, and secret adapters still inspect these files.
+scanner/provider/provider_test.go | Contains synthetic credential-shaped strings used to test remote-review secret screening.
+scanner/controlreview/controlreview_test.go | Contains synthetic credential-shaped strings used to test remote-review omission and screening behavior.

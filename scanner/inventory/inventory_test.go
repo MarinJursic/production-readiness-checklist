@@ -156,6 +156,63 @@ func TestBuildInventoriesAmbiguousSiteAndVendorDirectoriesAndReportsExclusions(t
 	}
 }
 
+func TestBuildSkipsOnlyTheDefaultMkDocsSiteOutput(t *testing.T) {
+	root := t.TempDir()
+	writeFile(t, root, "mkdocs.yml", "site_name: Example\n")
+	writeFile(t, root, "docs/index.md", "# Example\n")
+	writeFile(t, root, "site/index.html", "<html>generated</html>")
+	item, err := Build(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	paths := []string{}
+	found := false
+	for _, record := range item.Files {
+		paths = append(paths, record.Path)
+	}
+	for _, fact := range item.Facts {
+		if fact.Key == "repository.exclusion" && fact.Source == "site" && strings.Contains(fact.Value, "MkDocs") {
+			found = true
+		}
+	}
+	if slices.Contains(paths, "site/index.html") || !found {
+		t.Fatalf("default MkDocs output was not excluded transparently: paths=%v facts=%+v", paths, item.Facts)
+	}
+
+	explicit := t.TempDir()
+	writeFile(t, explicit, "mkdocs.yml", "site_name: Example\nsite_dir: public-docs\n")
+	writeFile(t, explicit, "site/source.html", "<html>authored</html>\n")
+	second, err := Build(explicit)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(second.Files) != 2 || second.Files[1].Path != "site/source.html" {
+		t.Fatalf("site was excluded despite an explicit non-default MkDocs output: %+v", second.Files)
+	}
+
+	for name, declaration := range map[string]string{
+		"quoted":   "'site_dir': public-docs\n",
+		"indented": "  site_dir: public-docs\n",
+	} {
+		t.Run(name, func(t *testing.T) {
+			root := t.TempDir()
+			writeFile(t, root, "mkdocs.yml", "site_name: Example\n"+declaration)
+			writeFile(t, root, "site/source.html", "generated but conservatively retained\n")
+			item, buildErr := Build(root)
+			if buildErr != nil {
+				t.Fatal(buildErr)
+			}
+			found := false
+			for _, file := range item.Files {
+				found = found || file.Path == "site/source.html"
+			}
+			if !found {
+				t.Fatalf("site was excluded despite an explicit %s site_dir key", name)
+			}
+		})
+	}
+}
+
 func TestBuildSkipsOnlyClearOrMarkedGeneratedDirectories(t *testing.T) {
 	root := t.TempDir()
 	writeFile(t, root, "main.go", "package main\n")
@@ -206,12 +263,121 @@ func TestInventoryTotalLimitErrorNamesTheTargetAndNextFile(t *testing.T) {
 		7*1024*1024*1024, 2*1024*1024*1024,
 	)
 	for _, expected := range []string{
-		"assets/archive.bin", "7.0 GiB", "2.0 GiB", "8.0 GiB", "/workspace/project", "prc scan /path/to/project",
+		"assets/archive.bin", "7.0 GiB", "2.0 GiB", "8.0 GiB", "/workspace/project", ".prcignore",
 	} {
 		if !strings.Contains(filepath.ToSlash(err.Error()), expected) {
 			t.Fatalf("actionable limit error missing %q: %v", expected, err)
 		}
 	}
+}
+
+func TestBuildAllowsOnlyReviewedNonSourceDirectoryExclusions(t *testing.T) {
+	root := t.TempDir()
+	writeFile(t, root, "app.go", "package app\n")
+	writeFile(t, root, "recordings/demo.mp4", "large generated recording\n")
+	writeFile(t, root, "recordings/measurements.csv", "value\n1\n")
+	writeFile(t, root, ".prcignore", "recordings | Local generated demo recordings are not project source.\n")
+
+	item, err := Build(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	paths := make([]string, 0, len(item.Files))
+	for _, record := range item.Files {
+		paths = append(paths, record.Path)
+	}
+	if !slices.Equal(paths, []string{".prcignore", "app.go"}) {
+		t.Fatalf("excluded non-source files were inventoried: %v", paths)
+	}
+	found := false
+	for _, fact := range item.Facts {
+		if fact.Key == "repository.user_exclusion" && fact.Source == "recordings" &&
+			fact.Value == "Local generated demo recordings are not project source." && len(fact.Limitations) == 2 {
+			found = true
+		}
+	}
+	if !found {
+		t.Fatalf("reviewed exclusion is not visible in inventory facts: %+v", item.Facts)
+	}
+
+	before := item.Digest
+	writeFile(t, root, ".prcignore", "recordings | Local generated media files are not project source.\n")
+	item, err = Build(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if item.Digest == before {
+		t.Fatal("inventory identity did not include the exclusion declaration")
+	}
+}
+
+func TestBuildRefusesUserExclusionContainingReviewableFiles(t *testing.T) {
+	root := t.TempDir()
+	writeFile(t, root, "archive/app.go", "package archive\n")
+	writeFile(t, root, ".prcignore", "archive | This directory is believed to contain generated output.\n")
+	if _, err := Build(root); err == nil || !strings.Contains(err.Error(), "archive/app.go") || !strings.Contains(err.Error(), "refuse") {
+		t.Fatalf("source-bearing exclusion was accepted: %v", err)
+	}
+}
+
+func TestBuildRefusesUserExclusionContainingLessCommonSourceOrConfiguration(t *testing.T) {
+	for _, relative := range []string{"archive/component.vue", "archive/settings.json", "archive/service.proto"} {
+		t.Run(filepath.Base(relative), func(t *testing.T) {
+			root := t.TempDir()
+			writeFile(t, root, relative, "reviewable project input\n")
+			writeFile(t, root, ".prcignore", "archive | This directory is believed to contain generated output.\n")
+			if _, err := Build(root); err == nil || !strings.Contains(err.Error(), relative) {
+				t.Fatalf("reviewable exclusion %s was accepted: %v", relative, err)
+			}
+		})
+	}
+}
+
+func TestBuildRejectsUnsafeOrHiddenUserExclusions(t *testing.T) {
+	t.Run("path traversal", func(t *testing.T) {
+		root := t.TempDir()
+		writeFile(t, root, ".prcignore", "../outside | This path must never escape the selected project.\n")
+		if _, err := Build(root); err == nil || !strings.Contains(err.Error(), "unsafe path") {
+			t.Fatalf("unsafe path was accepted: %v", err)
+		}
+	})
+
+	t.Run("symlinked ignore file", func(t *testing.T) {
+		root := t.TempDir()
+		outside := filepath.Join(t.TempDir(), "rules")
+		if err := os.WriteFile(outside, []byte("media | Generated media is not project source.\n"), 0o644); err != nil {
+			t.Fatal(err)
+		}
+		if err := os.Symlink(outside, filepath.Join(root, ".prcignore")); err != nil {
+			t.Fatal(err)
+		}
+		if _, err := Build(root); err == nil || !strings.Contains(err.Error(), "regular file") {
+			t.Fatalf("symlinked ignore file was accepted: %v", err)
+		}
+	})
+
+	t.Run("hidden by automatic exclusion", func(t *testing.T) {
+		root := t.TempDir()
+		writeFile(t, root, "node_modules/cache/blob.bin", "generated\n")
+		writeFile(t, root, ".prcignore", "node_modules/cache | Redundant generated dependency cache directory.\n")
+		if _, err := Build(root); err == nil || !strings.Contains(err.Error(), "automatically excluded") {
+			t.Fatalf("hidden exclusion was accepted: %v", err)
+		}
+	})
+
+	t.Run("symlink inside excluded directory", func(t *testing.T) {
+		root := t.TempDir()
+		if err := os.Mkdir(filepath.Join(root, "recordings"), 0o700); err != nil {
+			t.Fatal(err)
+		}
+		if err := os.Symlink(filepath.Join(t.TempDir(), "outside"), filepath.Join(root, "recordings", "latest")); err != nil {
+			t.Fatal(err)
+		}
+		writeFile(t, root, ".prcignore", "recordings | Local generated recordings are not project source.\n")
+		if _, err := Build(root); err == nil || !strings.Contains(err.Error(), "symbolic link") {
+			t.Fatalf("an exclusion containing a symlink was accepted: %v", err)
+		}
+	})
 }
 
 func TestBuildRecordsCleanDirtyAndExternalGitWorktreeState(t *testing.T) {

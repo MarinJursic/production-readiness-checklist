@@ -8,6 +8,39 @@ The project follows [Semantic Versioning](https://semver.org/) for published rel
 
 ### Added
 
+- Short first-run and everyday commands: `prc setup`, `prc report`,
+  `prc update`, `prc cache`, shell completions, and a local-only `prc ci`
+  SARIF preset. Update checks are explicit and cache deletion always requires a
+  named scanner-owned data class.
+- A short `prc verify [project]` command for the core profile plus its exact
+  bundled Gitleaks adapter. It rejects AI and custom-adapter overrides, never
+  pulls an image, disables container networking, and scans a sealed read-only
+  snapshot.
+- A no-provider `prc full codex|claude --plan` preflight, a 1,500-batch default
+  ceiling, and a 24-hour whole-review deadline. The preview performs the same
+  source screening and batching without creating provider resume state.
+- A narrow `.prcignore` contract for reviewed non-source directories. It uses
+  exact reasoned paths, refuses recognized project-bearing contents and unsafe
+  paths, and binds every accepted omission into the inventory and report.
+- A separate `.prcreviewignore` contract for exact fake-secret or adversarial
+  fixture files that must stay in local scanning but must not block or enter an
+  optional remote AI snapshot. Every omission is rehashed and disclosed in the
+  sealed review limitations.
+- Automatic, transparent exclusion of the default generated MkDocs `site/`
+  output when a root configuration does not override `site_dir`, avoiding
+  duplicate generated HTML in inventory and source-format results.
+- Clear separation between a completed local scan and blocked readiness proof:
+  the report now says `READINESS BLOCKED` when required evidence was not
+  permitted or available.
+- Two positive-only repository collectors for exact architecture-topic and
+  engineering-convention Markdown sections. They accept explicit headings with
+  meaningful content, ignore fenced examples, reject placeholders, verify
+  inventoried bytes, and block unsupported layouts instead of guessing.
+- One-pass AI context indexing and streamed task construction for full-catalog
+  review planning, plus preview totals for selected excerpt files and bytes.
+  This removes the previous batch-by-source rescanning and duplicate-context
+  retention while preserving the same source screening and sealed tasks.
+
 - `prc evidence requirements`, with human and schema-checked JSON output for
   filtering every exact clause by control, authority, or built-in collector
   status. It exposes the authenticated raw-fact, sealed-input, completeness,
@@ -176,6 +209,17 @@ The project follows [Semantic Versioning](https://semver.org/) for published rel
   compatible clients, with fixed plan, scan, and assertion-explanation tools,
   strict lifecycle and message limits, structured output schemas, and no
   scanner-owned mutation, process, network, adapter, or provider capability.
+
+### Changed
+
+- HTML reports keep the complete catalog as compact inert data and render only
+  25 matching controls at a time. The top score is explicitly a local-check
+  pass rate, small category samples say `Limited evidence`, advanced evidence
+  stays collapsed, and a restrictive offline Content Security Policy prevents
+  network connections.
+- Long-running scans now honor interrupt and termination signals through a
+  shared cancellation context. Provider orchestration is described as a sealed
+  request rather than independently proven subagent execution.
 
 ### Fixed
 

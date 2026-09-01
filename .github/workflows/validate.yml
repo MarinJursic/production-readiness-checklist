@@ -223,7 +223,7 @@ jobs:
           "$RUNNER_TEMP/prc" plan --target . --catalog-root . --format json > "$RUNNER_TEMP/plan.json"
           "$RUNNER_TEMP/prc" scan --target . --catalog-root . --state-dir "$RUNNER_TEMP/state" --format json --exit-policy never > "$RUNNER_TEMP/run.json"
           "$RUNNER_TEMP/prc" scan --target fixtures/repository-evidence/documented-commands/pass --catalog-root . --format json --no-report --exit-policy never > "$RUNNER_TEMP/exact-repository-run.json"
-          python -c 'import json,sys; d=json.load(open(sys.argv[1], encoding="utf-8")); c=next(x for x in d["control_results"] if x["control_id"]=="PRC-36-004"); assert c["disposition"]=="verified_pass" and c["deterministic_program_status"]=="executed_pass" and len(d["deterministic_evidence"])==1' "$RUNNER_TEMP/exact-repository-run.json"
+          python -c 'import json,sys; d=json.load(open(sys.argv[1], encoding="utf-8")); c=next(x for x in d["control_results"] if x["control_id"]=="PRC-36-004"); e={x["control_id"]:x for x in d["deterministic_evidence"]}; assert c["disposition"]=="verified_pass" and c["deterministic_program_status"]=="executed_pass" and set(e)=={"PRC-36-002","PRC-36-004","PRC-36-005"} and e["PRC-36-004"]["complete"] and not e["PRC-36-002"]["complete"] and not e["PRC-36-005"]["complete"]' "$RUNNER_TEMP/exact-repository-run.json"
           "$RUNNER_TEMP/prc" plan --target . --catalog-root . --profile prc/api --format json > "$RUNNER_TEMP/api-plan.json"
           "$RUNNER_TEMP/prc" scan --target . --catalog-root . --profile prc/api --format json --exit-policy never > "$RUNNER_TEMP/api-run.json"
           "$RUNNER_TEMP/prc" plan --target . --catalog-root . --profile prc/kubernetes --format json > "$RUNNER_TEMP/kubernetes-plan.json"

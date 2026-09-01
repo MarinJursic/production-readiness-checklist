@@ -85,7 +85,7 @@ func reportRun() model.RunResult {
 					RemediationSteps:  []string{"Correct the behavior in an isolated change."},
 					VerificationSteps: []string{"Run the independent behavior check."},
 					EvidenceNeeded:    []string{"Current runtime evidence."},
-					Evidence:          []model.FindingLocation{{Path: "README.md", Line: 1}}, Limitations: []string{"Only repository text was visible."},
+					Evidence:          []model.FindingLocation{{Path: "docs/ownership.md", Line: 7, Column: 3}}, Limitations: []string{"Only repository text was visible."},
 					CitationVerification: "snapshot_location_validated", ClaimVerification: "advisory_unverified", TaskID: digest,
 				}},
 		},
@@ -203,12 +203,12 @@ func TestHTMLReportEscapesUntrustedText(t *testing.T) {
 	if !strings.Contains(text, "example-product") || !strings.Contains(text, "staging") {
 		t.Fatal("configured scope missing from HTML")
 	}
-	for _, expected := range []string{"report-brand", "Scan report", "Local score", "hero-metrics", "About this score", "score-gauge", "pathLength=\"100\"", "NOT READY", "simple local-check pass rate", "controls needing evidence or review", "Scores by category", "Not scored in this scan", "AI review improvement plan", "The ownership boundary is not established.", "advisory", "control-category", "Verified pass", "Reviewed classification", "Strength audit confirmed", "Deterministic binding", "USEQ-11111111@1", "Exact deterministic programs", "repository.fixture.v1", "Exact deterministic execution", "replayable evidence documents retained", "Signed authoritative evidence", "fixture-bundle", "policy-key", "evidence-key", "Replayable exact evidence", "report-fixture", "fixture.flag", "Classification corpus digest", "AI verification state", "citation=snapshot_location_validated; claim=advisory_unverified", "does not prove that the line supports the AI claim", "What to fix first", "Local check details", "README.md:1:2", "USEQ-FDCA6C71", "A root README must exist.", "README was not present.", "authority:", "observed: not recorded", "Evidence time:", "evidence-001", "Remediation class", ">R2<", "isolated agent-authored candidate", "Report-only scan", "Show more controls", "Technical evidence and IDs"} {
+	for _, expected := range []string{"report-brand", "Scan report", "Local checks only", "hero-metrics", "About this score", "score-gauge", "pathLength=\"100\"", "NOT READY", "simple pass rate", "wider controls still need evidence or review", "What this scan actually checked", "does not certify the whole project", "Scores by category", "Not scored in this scan", "AI review improvement plan", "The ownership boundary is not established.", "advisory", "control-category", "Verified pass", "Reviewed classification", "strength_audit_confirmed", "Deterministic binding", "USEQ-11111111@1", "Exact deterministic programs", "repository.fixture.v1", "Exact deterministic execution", "replayable evidence documents retained", "Signed authoritative evidence", "fixture-bundle", "policy-key", "evidence-key", "Replayable exact evidence", "report-fixture", "fixture.flag", "Classification corpus digest", "AI assessment candidate", "AI reviewer", "AI root cause", "AI effort / blast radius", "Risk if ignored", "AI cited locations", "AI task ID", "AI verification state", "citation_verification", "advisory_unverified", "docs/ownership.md:7:3", "What to fix first", "Local check details", "README.md:1:2", "USEQ-FDCA6C71", "A root README must exist.", "README was not present.", "authority:", "observed: not recorded", "Evidence time:", "evidence-001", "Remediation class", ">R2<", "isolated agent-authored candidate", "Report-only scan", "Show more controls", "Technical evidence and IDs", "control-catalog-data", "pageSize = 25"} {
 		if !strings.Contains(text, expected) {
 			t.Errorf("detailed HTML report missing %q", expected)
 		}
 	}
-	overallAt := strings.Index(text, "Overall local score")
+	overallAt := strings.Index(text, "Local check pass rate")
 	categoriesAt := strings.Index(text, "Scores by category")
 	findingsAt := strings.Index(text, "What to fix first")
 	detailsAt := strings.Index(text, "Local check details")
@@ -311,6 +311,45 @@ func TestHTMLReportKeepsLongDiagnosticsBehindNestedDetails(t *testing.T) {
 	}
 }
 
+func TestHTMLReportKeepsLargeCatalogAsDataInsteadOfThousandsOfDOMNodes(t *testing.T) {
+	run := reportRun()
+	run.Findings = nil
+	run.Results = nil
+	run.AIImprovementPlan = nil
+	run.DeterministicEvidence = nil
+	run.AuthoritativeEvidence = nil
+	run.ControlResults = make([]model.ControlResult, 0, 1000)
+	for index := 0; index < 1000; index++ {
+		run.ControlResults = append(run.ControlResults, model.ControlResult{
+			ControlID:   fmt.Sprintf("USEQ-%08d", index),
+			Statement:   fmt.Sprintf("Review production concern %d using evidence suitable for this project.", index),
+			Disposition: "needs_review", Classification: "nondeterministic",
+			ClassificationRoute: "contextual_judgment", Summary: "More evidence is needed.",
+			Source: model.Source{Path: "docs/engineering/04-architecture-and-design.md", Line: index + 1},
+		})
+	}
+	run.ControlCatalog.ControlCount = len(run.ControlResults)
+	run.ControlCatalog.ActiveControlCount = len(run.ControlResults)
+
+	var output bytes.Buffer
+	if err := Write("html", &output, run); err != nil {
+		t.Fatal(err)
+	}
+	text := output.String()
+	if count := strings.Count(text, "<details"); count >= 100 {
+		t.Fatalf("large catalog created %d disclosure nodes before the browser search was used", count)
+	}
+	if count := strings.Count(text, `class="control-row`); count != 0 {
+		t.Fatalf("catalog controls were pre-rendered into %d control rows", count)
+	}
+	if !strings.Contains(text, `"id":"USEQ-00000000"`) || !strings.Contains(text, `"id":"USEQ-00000999"`) {
+		t.Fatal("the complete catalog was not retained in the inert JSON data")
+	}
+	if output.Len() > 2*1024*1024 {
+		t.Fatalf("1000-control report is unexpectedly large: %d bytes", output.Len())
+	}
+}
+
 func TestLocalCheckSummaryKeepsPassRateSeparateFromGateResult(t *testing.T) {
 	run := reportRun()
 	run.Results = nil
@@ -352,6 +391,21 @@ func TestLocalCheckSummaryCallsACompletePassingProfileGreat(t *testing.T) {
 	}
 }
 
+func TestLocalCheckSummarySeparatesCompletedScanFromBlockedReadinessEvidence(t *testing.T) {
+	run := reportRun()
+	run.ControlCatalog = nil
+	run.TerminalState = "environment_blocked"
+	run.Results = []model.AssertionResult{{
+		Assessment: "unknown", Applicability: "applicable", Execution: "blocked", Gate: "required",
+	}}
+	summary := SummarizeLocalChecks(run)
+	if summary.Label != "READINESS BLOCKED" || summary.Tone != "bad" ||
+		!strings.Contains(summary.Explanation, "local scan completed") ||
+		!strings.Contains(summary.Explanation, "permitted evidence source") {
+		t.Fatalf("completed scan and blocked readiness were conflated: %+v", summary)
+	}
+}
+
 func TestCategoryScoresUseOnlyDistinctLinkedLocalChecks(t *testing.T) {
 	run := reportRun()
 	run.ControlResults = []model.ControlResult{
@@ -379,7 +433,7 @@ func TestCategoryScoresUseOnlyDistinctLinkedLocalChecks(t *testing.T) {
 	}
 	documentation := byKey["engineering-documentation-and-knowledge"]
 	if documentation.LocalApplicable != 1 || documentation.LocalPassed != 1 || documentation.LocalNotApplicable != 1 ||
-		documentation.LocalPercentage != 100 || documentation.LocalLabel != "GOOD" || documentation.LocalTone != "good" {
+		documentation.LocalPercentage != 100 || documentation.LocalLabel != "LIMITED EVIDENCE" || documentation.LocalTone != "review" {
 		t.Fatalf("unexpected documentation category: %+v", documentation)
 	}
 	architecture := byKey["engineering-architecture-and-design"]

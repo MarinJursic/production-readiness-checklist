@@ -9,10 +9,12 @@ After a global install, the normal start is just:
 
 ```bash
 cd /path/to/project
+prc setup
 prc
 ```
 
-Bare `prc` runs the 40 core local checks. Use `prc /path/to/project` to scan a
+`prc setup` is an optional one-time local preflight; it does not run project
+code, containers, or AI. Bare `prc` runs the 40 core local checks. Use `prc /path/to/project` to scan a
 different directory, `prc quick` for an 18-check screen, or `prc full codex`
 for the core scan plus advisory AI review of all 9,356 reviewed nondeterministic
 controls. `prc full claude` selects Claude Code instead. The commands do not fix
@@ -26,10 +28,12 @@ The profile evaluator can consume a live, sandboxed adapter execution only when
 the selected profile binds its exact ID, manifest digest, and observation kind.
 The generated-code review remains manual. The default analysis-evidence
 assertion pins the reviewed Gitleaks 8.30.0 current-tree adapter, but remains
-blocked in ordinary inspect mode; an operator must explicitly select
-`--mode verify-local`, supply the checked-in manifest, and pre-pull its immutable
-image. The [adapter contract](../architecture/adapters.md) documents the exact
-command and important coverage limitations.
+blocked in ordinary inspect mode. After the exact immutable image has been
+reviewed and pulled once, `prc verify [project]` is the short explicit command.
+It selects `verify-local` and the bundled manifest, passes `--pull=never`, turns
+off container networking, and scans a sealed read-only snapshot. The
+[adapter contract](../architecture/adapters.md#inspect-and-validate) documents
+the exact image command and important coverage limitations.
 One deterministic R1 remediation is available for recognized source files that
 lack a final line-feed byte, and another restricts broadly writable file modes.
 The bounded `fix` loop can compose those repairs in isolated sibling candidates
@@ -44,6 +48,7 @@ For a one-time global installation and a short command in every project:
 ```bash
 npm install -g @marinjursic/prc
 cd /path/to/project
+prc setup
 prc
 ```
 
@@ -59,6 +64,7 @@ is no `npx` prefix after installation. Check, update, or remove it with:
 
 ```bash
 prc version
+prc update
 npm install -g @marinjursic/prc@latest
 npm uninstall -g @marinjursic/prc
 ```
@@ -68,6 +74,19 @@ The startup screen prints the exact project path. If the inventory reaches its
 root, or use `prc /exact/project/path`. The error identifies the next file
 that would cross the limit. Clear generated cache data when appropriate; do not
 delete real project data or raise the guard just to force a result.
+
+For a large directory that is genuinely non-source data, a root `.prcignore`
+can name an exact relative directory and a reviewed reason:
+
+```text
+recordings | Local generated demo recordings are not project source.
+```
+
+The scanner refuses traversal, symlinks, missing paths, wildcards, and any
+excluded directory containing recognized source, configuration, deployment,
+CI, documentation, environment, or security-policy files. Every accepted
+omission is visible in the inventory identity and report. See
+[project configuration](configuration.md#large-local-non-source-directories).
 
 The npm launcher has no install hooks or third-party JavaScript dependencies.
 It uses one exact native platform package and never downloads a fallback or
@@ -203,6 +222,22 @@ The scanner creates report files with exclusive creation and will not overwrite
 an existing path. Use `--report /safe/path/readiness.html` to choose a new path,
 or `--no-report` to explicitly suppress the default HTML report.
 
+The large circle is the pass rate for applicable **local checks**, not a claim
+that the full project is production-ready. Categories with only one or two
+applicable checks say **Limited evidence** even when those checks pass. The full
+catalog is kept as compact inert data and the browser renders only 25 matching
+controls at a time. Open the newest report and inspect scanner-owned disk use
+from any directory with:
+
+```bash
+prc report
+prc report list
+prc cache status
+```
+
+Cache deletion always needs an explicit class, for example
+`prc cache clean --reports --older-than 720h`.
+
 `prc scan` has no code path to the remediation commands. A missing final newline
 or broad file mode may appear as a finding, but the target bytes and modes remain
 unchanged. `prc fix` is a separate, explicitly invoked candidate workflow.
@@ -276,12 +311,18 @@ sign-in flow once, then start the review with one short option:
 
 ```bash
 prc login codex
+prc full codex --plan
 prc full codex
 ```
 
 Replace `codex` with `claude` for Claude Code. `prc auth` shows whether each
 private scanner login is ready, and `prc logout codex` or `prc logout claude`
 removes it. A supported API-key environment variable remains an alternative.
+
+The `--plan` run performs source screening and exact batching without resolving
+or starting the provider and without creating resume data. It shows the source
+bytes, omissions, controls, batches, workers, timeout, 1,500-batch default
+ceiling, and 24-hour default total deadline.
 
 The short full command reviews all 9,356 reviewed nondeterministic controls.
 The 686 reviewed deterministic controls are never decided by AI. A supported
@@ -290,10 +331,12 @@ all remaining controls stay Blocked until their required collector and evidence
 are available. The first shipped exact collector recognizes a root Node
 `package.json` with usable `build` and `test` scripts and proves that both public
 commands appear in inventoried Markdown code. It does not run either command.
-The coordinator must assign every nondeterministic control to a separate primary
-subagent inside a sealed batch. Deep mode also runs one independent skeptical
-subagent for the batch, then keeps the strongest objection in the structured
-result instead of hiding disagreement. Four batches run in parallel, and Codex
+The sealed task asks the coordinator to assign every nondeterministic control to
+a separate primary subagent inside a sealed batch. Deep mode also asks for one
+independent skeptical subagent for the batch, then keeps the strongest objection
+in the structured result instead of hiding disagreement. Current provider
+output cannot independently prove that each internal subagent actually ran, so
+the scanner never counts that orchestration as evidence. Four batches run in parallel, and Codex
 uses `xhigh` reasoning. Completed batches resume from private state outside the
 target. This full run can take a long time and use many tokens. The provider
 receives bounded, secret-screened excerpts but no target
@@ -343,6 +386,15 @@ JSON is available for automation:
 
 Explicit machine formats write to stdout and do not also create the default HTML
 file. Add `--report /safe/path/readiness.html` when both forms are wanted.
+
+The short local-only CI preset writes SARIF 2.1.0 and creates no HTML report:
+
+```bash
+prc ci > prc-results.sarif
+```
+
+It keeps the normal readiness exit code so a failed or incomplete gate is not
+silently converted to success.
 
 To let Codex, Claude Code, or another local agent request the same read-only
 plans, scans, and assertion explanations, use the

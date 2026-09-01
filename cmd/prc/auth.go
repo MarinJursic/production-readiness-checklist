@@ -99,7 +99,8 @@ func runAuthentication(operation string, args []string, stdin io.Reader, stdout,
 		if err := provider.MarkStoredAuthentication(providerName); err != nil {
 			return exitError(exitInternal, err)
 		}
-		fmt.Fprintf(stdout, "Ready. Run: prc scan --ai %s\n", providerName)
+		fmt.Fprintf(stdout, "Ready. Preview the work with: prc full %s --plan\n", providerName)
+		fmt.Fprintf(stdout, "Start it with: prc full %s\n", providerName)
 	} else if operation == "logout" {
 		if err := provider.ClearStoredAuthentication(providerName); err != nil {
 			return exitError(exitInternal, err)
