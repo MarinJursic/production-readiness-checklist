@@ -57,6 +57,39 @@ When `--profile` is omitted, plan and scan use the configured profile. An
 explicitly selected profile must match it. Declared components are additive;
 they do not erase discovered components or facts.
 
+### Large local non-source directories
+
+`components.exclude` is assessment scope only; it never hides files from the
+content-hashed inventory. If the 8 GiB inventory guard is reached because the
+project root contains a genuinely non-source directory such as generated demo
+recordings, use the separate root `.prcignore` contract:
+
+```text
+# Exact relative directory, then a reviewed reason.
+recordings | Local generated demo recordings are not project source.
+```
+
+This is deliberately not a normal glob ignore file. It accepts at most 100
+exact canonical relative directories and no negation, wildcard, absolute path,
+backslash, traversal, symlink, directory containing a symlink, or missing path. Every reason must be 10–300
+characters. Before skipping anything, the scanner walks the directory names and
+refuses the exclusion if it contains recognized source, manifests, lock files,
+CI workflow YAML, Terraform, deployment YAML, documentation, security policy,
+environment files, or other project-defining files. Accepted omissions appear
+as `repository.user_exclusion` facts, are bound into the inventory digest, and
+are called out in the terminal and HTML report. This guard reduces accidental
+omissions; it is not proof that every skipped binary or data file is harmless.
+
+### Remote AI context exclusions
+
+`.prcreviewignore` is separate from `.prcignore`. It accepts exact
+`relative/file | reviewed reason` entries only for source files that should
+remain in every local check but must not be sent to an optional remote AI
+review. This is useful for secret-scanner fixtures containing fake
+credential-shaped strings. It cannot exclude directories or use globs, and
+every accepted omission is named in the AI preview and sealed task
+limitations. See [safe AI control review](ai-control-review.md#try-one-control-first).
+
 `source_ref` must be empty or a lowercase 40–64 character hexadecimal revision.
 When supplied, it must equal the Git revision inventoried from the target; an
 unresolved variable, branch name, missing Git identity, or mismatch fails closed.

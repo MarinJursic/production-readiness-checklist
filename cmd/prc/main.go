@@ -11,10 +11,12 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"os/signal"
 	"path/filepath"
 	"runtime"
 	"sort"
 	"strings"
+	"syscall"
 	"time"
 
 	"github.com/MarinJursic/production-readiness-checklist/scanner/adapter"
@@ -54,6 +56,7 @@ var (
 	revision           = "unknown"
 	builtAt            = "unknown"
 	userCacheDirectory = os.UserCacheDir
+	commandContext     = context.Background()
 )
 
 type versionInformation struct {
@@ -119,6 +122,9 @@ func remediationCommandError(err error) error {
 }
 
 func main() {
+	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
+	defer stop()
+	commandContext = ctx
 	os.Exit(run(os.Args[1:], os.Stdout, os.Stderr))
 }
 
@@ -138,6 +144,20 @@ func runWithInput(args []string, stdin io.Reader, stdout, stderr io.Writer) int 
 	case "version":
 		errorFallback = exitConfiguration
 		err = runVersion(args[1:], stdout, stderr)
+	case "setup":
+		outcome, err = runSetup(args[1:], stdout, stderr)
+	case "update":
+		errorFallback = exitExecution
+		err = runUpdate(args[1:], stdout, stderr)
+	case "report":
+		errorFallback = exitConfiguration
+		err = runReport(args[1:], stdout, stderr)
+	case "cache":
+		errorFallback = exitConfiguration
+		err = runCache(args[1:], stdout, stderr)
+	case "completion":
+		errorFallback = exitConfiguration
+		err = runCompletion(args[1:], stdout, stderr)
 	case "inventory":
 		errorFallback = exitConfiguration
 		err = runInventory(args[1:], stdout, stderr)
@@ -165,6 +185,10 @@ func runWithInput(args []string, stdin io.Reader, stdout, stderr io.Writer) int 
 		outcome, err = runScan(args[1:], stdout, stderr)
 	case "quick":
 		outcome, err = runScanAlias("quick", args[1:], stdout, stderr)
+	case "verify":
+		outcome, err = runScanAlias("verify", args[1:], stdout, stderr)
+	case "ci":
+		outcome, err = runScanAlias("ci", args[1:], stdout, stderr)
 	case "full":
 		outcome, err = runScanAlias("full", args[1:], stdout, stderr)
 	case "fix":
@@ -200,6 +224,14 @@ func runWithInput(args []string, stdin io.Reader, stdout, stderr io.Writer) int 
 		errorFallback = exitConfiguration
 		err = runMCP(args[1:], stdin, stdout, stderr)
 	case "help", "-h", "--help":
+		if len(args) > 1 && args[1] == "advanced" {
+			advancedUsage(stdout)
+			return 0
+		}
+		if len(args) > 1 {
+			fmt.Fprintf(stderr, "unknown help topic %q\n", args[1])
+			return exitConfiguration
+		}
 		usage(stdout)
 		return 0
 	default:
@@ -235,7 +267,7 @@ func friendlyTopLevelArgs(args []string) []string {
 
 func isTopLevelCommand(value string) bool {
 	switch value {
-	case "version", "inventory", "config", "catalog", "coverage", "evidence", "benchmark", "pack", "plan", "scan", "quick", "full",
+	case "version", "setup", "update", "report", "cache", "completion", "inventory", "config", "catalog", "coverage", "evidence", "benchmark", "pack", "plan", "scan", "quick", "verify", "ci", "full",
 		"fix", "doctor", "login", "logout", "auth", "history", "diff", "remediate", "remediate-proposal",
 		"explain", "adapter", "exception", "provider", "mcp", "help":
 		return true
@@ -283,16 +315,44 @@ func usage(output io.Writer) {
 	fmt.Fprintln(output, "  prc                      Scan the current project and write a detailed report")
 	fmt.Fprintln(output, "  prc /path/to/project     Scan another project")
 	fmt.Fprintln(output, "  prc quick                Run a small local risk screen")
+	fmt.Fprintln(output, "  prc verify               Add the pinned offline secret check")
+	fmt.Fprintln(output, "  prc setup                Check this project and show the safest next command")
+	fmt.Fprintln(output, "  prc report               Open the newest scan report")
 	fmt.Fprintln(output, "  prc login codex          Sign in for an optional Codex review")
 	fmt.Fprintln(output, "  prc full codex           Deep AI advice for all nondeterministic controls")
-	fmt.Fprintln(output, "  prc doctor               Check whether scanning tools are ready")
-	fmt.Fprintln(output, "  prc coverage             Show honest rule, predicate, and evidence coverage")
-	fmt.Fprintln(output, "  prc evidence requirements  Show exact contracts for trusted evidence producers")
-	fmt.Fprintln(output, "  prc evidence verify-set    Verify a signed evidence set before a full scan")
-	fmt.Fprintln(output, "  prc scan --help          Show advanced scan options")
+	fmt.Fprintln(output, "  prc update               Check for a newer scanner version")
+	fmt.Fprintln(output, "  prc help advanced        Show policy, evidence, CI, and integration commands")
 	fmt.Fprintln(output)
-	fmt.Fprintln(output, "Main commands: quick, scan, full, login, logout, auth, doctor, inventory, plan, diff, history, fix, version")
-	fmt.Fprintln(output, "Advanced commands: catalog, coverage, evidence, pack, benchmark, config, remediate, remediate-proposal, explain, adapter, exception, provider, mcp")
+	fmt.Fprintln(output, "Common commands: setup, quick, scan, full, report, login, logout, auth, update, version")
+}
+
+func advancedUsage(output io.Writer) {
+	fmt.Fprintln(output, "Advanced Production Readiness Checklist commands")
+	fmt.Fprintln(output)
+	fmt.Fprintln(output, "Inspection and automation:")
+	fmt.Fprintln(output, "  prc ci                   Write SARIF to stdout for a CI job")
+	fmt.Fprintln(output, "  prc doctor               Check local scanning capabilities")
+	fmt.Fprintln(output, "  prc coverage             Show rule, predicate, collector, and import coverage")
+	fmt.Fprintln(output, "  prc inventory            Inspect the safe content-hashed project inventory")
+	fmt.Fprintln(output, "  prc plan                 Show the selected local execution plan")
+	fmt.Fprintln(output, "  prc history              Inspect immutable prior runs")
+	fmt.Fprintln(output, "  prc diff                 Find prior results invalidated by current changes")
+	fmt.Fprintln(output, "  prc cache                Inspect or clean scanner-owned cache files")
+	fmt.Fprintln(output, "  prc completion           Generate shell completion")
+	fmt.Fprintln(output)
+	fmt.Fprintln(output, "Evidence and integrations:")
+	fmt.Fprintln(output, "  prc evidence             Inspect or verify exact evidence contracts")
+	fmt.Fprintln(output, "  prc catalog              Validate or bundle the rule catalog")
+	fmt.Fprintln(output, "  prc config               Validate a declared project configuration")
+	fmt.Fprintln(output, "  prc adapter              Inspect explicitly authorized local adapters")
+	fmt.Fprintln(output, "  prc exception            Verify signed risk exceptions")
+	fmt.Fprintln(output, "  prc mcp serve            Start the read-only agent integration server")
+	fmt.Fprintln(output)
+	fmt.Fprintln(output, "Separate change workflow:")
+	fmt.Fprintln(output, "  prc fix                  Build and verify an isolated change candidate")
+	fmt.Fprintln(output, "  prc remediate            Run the lower-level bounded remediation contract")
+	fmt.Fprintln(output)
+	fmt.Fprintln(output, "Run `prc <command> --help` for exact options. Scanning never invokes the change workflow.")
 }
 
 func runEvidence(args []string, stdout, stderr io.Writer) error {
@@ -516,9 +576,18 @@ func runScanAlias(name string, args []string, stdout, stderr io.Writer) (int, er
 		case "full":
 			fmt.Fprintln(stdout, "Usage: prc full <codex|claude> [project path] [scan options]")
 			fmt.Fprintln(stdout, "Runs the 40-check core scan and deep advisory AI review of all 9,356 nondeterministic controls.")
-			fmt.Fprintln(stdout, "Uses four parallel provider batches, one primary subagent per rule, and one skeptical subagent per batch.")
+			fmt.Fprintln(stdout, "Requests one primary subagent per rule and a skeptical review per batch; provider internals cannot be independently attested.")
 			fmt.Fprintln(stdout, "The provider name explicitly allows bounded, screened remote source processing.")
+			fmt.Fprintln(stdout, "Add --plan to inspect source and exact batch limits without starting the provider.")
 			fmt.Fprintln(stdout, "Use prc scan --help for advanced review, report, and output options.")
+		case "verify":
+			fmt.Fprintln(stdout, "Usage: prc verify [project path] [scan options]")
+			fmt.Fprintln(stdout, "Runs the core scan plus the bundled, digest-pinned Gitleaks adapter in a locked-down local container.")
+			fmt.Fprintln(stdout, "The image must already exist locally: PRC passes --pull=never, disables networking, and mounts a sealed read-only snapshot.")
+			fmt.Fprintln(stdout, "Use prc doctor first to inspect local capabilities. Use prc scan for custom adapters or AI review.")
+		case "ci":
+			fmt.Fprintln(stdout, "Usage: prc ci [project path] [scan options] > prc-results.sarif")
+			fmt.Fprintln(stdout, "Runs the normal local checks, writes SARIF only, and never starts AI or creates an HTML report.")
 		}
 		return exitSuccess, nil
 	}
@@ -536,6 +605,33 @@ func runScanAlias(name string, args []string, stdout, stderr io.Writer) (int, er
 			}
 		}
 		return runScan(append([]string{"--profile", "prc/quick"}, args...), stdout, stderr)
+	case "verify":
+		owned := []string{"catalog-root", "mode", "adapter-manifest", "adapter-registry", "adapter-id", "adapter-data"}
+		for _, name := range owned {
+			if containsFlag(args, name) {
+				return exitInternal, exitError(exitConfiguration, fmt.Errorf("prc verify owns --%s; use prc scan for custom adapter execution", name))
+			}
+		}
+		for _, argument := range args {
+			if argument == "--ai" || strings.HasPrefix(argument, "--ai=") ||
+				argument == "--review-provider" || strings.HasPrefix(argument, "--review-provider=") ||
+				argument == "--allow-remote-source-processing" || strings.HasPrefix(argument, "--allow-remote-source-processing=") {
+				return exitInternal, exitError(exitConfiguration, errors.New("prc verify is local only; use prc full codex, prc full claude, or prc scan for AI review"))
+			}
+		}
+		return runScan(verifyScanArguments(args), stdout, stderr)
+	case "ci":
+		for _, argument := range args {
+			if argument == "--ai" || strings.HasPrefix(argument, "--ai=") ||
+				argument == "--review-provider" || strings.HasPrefix(argument, "--review-provider=") {
+				return exitInternal, exitError(exitConfiguration, errors.New("prc ci is local only; use prc scan for an advisory AI review"))
+			}
+			if argument == "--format" || strings.HasPrefix(argument, "--format=") ||
+				argument == "--report" || strings.HasPrefix(argument, "--report=") {
+				return exitInternal, exitError(exitConfiguration, errors.New("prc ci owns SARIF output; use prc scan for another format or an HTML report"))
+			}
+		}
+		return runScan(append([]string{"--format", "sarif", "--no-report"}, args...), stdout, stderr)
 	case "full":
 		if len(args) == 0 || args[0] != "codex" && args[0] != "claude" {
 			return exitInternal, exitError(exitConfiguration, errors.New("usage: prc full codex [project path] or prc full claude [project path]"))
@@ -547,19 +643,34 @@ func runScanAlias(name string, args []string, stdout, stderr io.Writer) (int, er
 			}
 		}
 		forwarded := []string{"--ai", args[0]}
-		if !containsFlag(args[1:], "review-depth") {
+		remaining := append([]string(nil), args[1:]...)
+		for index, argument := range remaining {
+			if argument == "--plan" {
+				remaining[index] = "--review-plan"
+			}
+		}
+		if !containsFlag(remaining, "review-depth") {
 			forwarded = append(forwarded, "--review-depth", "deep")
 		}
-		if !containsFlag(args[1:], "review-workers") {
+		if !containsFlag(remaining, "review-workers") {
 			forwarded = append(forwarded, "--review-workers", "4")
 		}
-		if args[0] == "codex" && !containsFlag(args[1:], "review-effort") {
+		if args[0] == "codex" && !containsFlag(remaining, "review-effort") {
 			forwarded = append(forwarded, "--review-effort", "xhigh")
 		}
-		return runScan(append(forwarded, args[1:]...), stdout, stderr)
+		return runScan(append(forwarded, remaining...), stdout, stderr)
 	default:
 		panic("unknown scan alias")
 	}
+}
+
+func verifyScanArguments(args []string) []string {
+	manifest := filepath.Join(defaultCatalogRoot(), "adapters", "gitleaks-v8.30.0.yaml")
+	return append([]string{
+		"--profile", "prc/core-repository",
+		"--mode", engine.ExecutionModeVerifyLocal,
+		"--adapter-manifest", manifest,
+	}, args...)
 }
 
 func containsFlag(args []string, name string) bool {
@@ -630,12 +741,12 @@ func runException(args []string, stdout, stderr io.Writer) error {
 	if err != nil {
 		return exitError(exitConfiguration, err)
 	}
-	store, err := state.Open(context.Background(), *stateDirectory)
+	store, err := state.Open(commandContext, *stateDirectory)
 	if err != nil {
 		return exitError(exitConfiguration, err)
 	}
 	defer store.Close()
-	run, err := store.LoadRun(context.Background(), loaded.Record.Run.RunID)
+	run, err := store.LoadRun(commandContext, loaded.Record.Run.RunID)
 	if err != nil {
 		return exitError(exitConfiguration, err)
 	}
@@ -750,7 +861,7 @@ func runBenchmark(args []string, stdout, stderr io.Writer) (int, error) {
 	set := flag.NewFlagSet("benchmark run", flag.ContinueOnError)
 	set.SetOutput(stderr)
 	suitePath := set.String("suite", "", "benchmark suite YAML file")
-	catalogRoot := set.String("catalog-root", ".", "repository containing the PRC catalog")
+	catalogRoot := set.String("catalog-root", defaultCatalogRoot(), "directory containing the bundled PRC catalog")
 	format := set.String("format", "human", "human or json")
 	evaluatedAtText := set.String("evaluated-at", "", "optional RFC3339 evaluation time for reproducible output")
 	if err := set.Parse(args[1:]); err != nil {
@@ -982,7 +1093,7 @@ func runProvider(args []string, stdout, stderr io.Writer) error {
 	if args[0] == "plan" {
 		return encodeJSON(stdout, launchPlan)
 	}
-	execution, err := provider.Run(context.Background(), launchPlan, task)
+	execution, err := provider.Run(commandContext, launchPlan, task)
 	if err != nil {
 		if failure, ok := provider.FailureFromError(err); ok {
 			if encodeErr := encodeJSON(stdout, failure); encodeErr != nil {
@@ -1225,7 +1336,7 @@ func runDoctor(args []string, stdout, stderr io.Writer) (int, error) {
 	set := flag.NewFlagSet("doctor", flag.ContinueOnError)
 	set.SetOutput(stderr)
 	target := set.String("target", ".", "repository to inspect")
-	catalogRoot := set.String("catalog-root", ".", "repository containing the PRC catalog")
+	catalogRoot := set.String("catalog-root", defaultCatalogRoot(), "directory containing the bundled PRC catalog")
 	stateDirectory := set.String("state-dir", "", "existing private state directory to probe")
 	candidateParent := set.String("candidate-parent", "", "existing external directory to probe for isolated candidates")
 	ociRuntime := set.String("oci-runtime", "", "docker or podman executable to inspect without running")
@@ -1294,7 +1405,7 @@ func runHistory(args []string, stdout, stderr io.Writer) error {
 	if *format != "human" && *format != "json" {
 		return fmt.Errorf("unsupported format %q", *format)
 	}
-	store, err := state.Open(context.Background(), *stateDirectory)
+	store, err := state.Open(commandContext, *stateDirectory)
 	if err != nil {
 		return err
 	}
@@ -1303,10 +1414,10 @@ func runHistory(args []string, stdout, stderr io.Writer) error {
 		if set.NArg() != 0 {
 			return errors.New("history check accepts no positional arguments")
 		}
-		if err := store.IntegrityCheck(context.Background()); err != nil {
+		if err := store.IntegrityCheck(commandContext); err != nil {
 			return err
 		}
-		counts, err := store.Counts(context.Background())
+		counts, err := store.Counts(commandContext)
 		if err != nil {
 			return err
 		}
@@ -1328,7 +1439,7 @@ func runHistory(args []string, stdout, stderr io.Writer) error {
 		if set.NArg() != 1 {
 			return errors.New("history show requires one run ID")
 		}
-		run, err := store.LoadRun(context.Background(), set.Arg(0))
+		run, err := store.LoadRun(commandContext, set.Arg(0))
 		if err != nil {
 			return err
 		}
@@ -1341,7 +1452,7 @@ func runHistory(args []string, stdout, stderr io.Writer) error {
 	if set.NArg() != 0 {
 		return errors.New("history list accepts no positional arguments")
 	}
-	runs, err := store.ListRuns(context.Background(), state.Query{
+	runs, err := store.ListRuns(commandContext, state.Query{
 		Limit: *limit, TargetName: *targetName, ProfileID: *profileID, TerminalState: *terminalState,
 	})
 	if err != nil {
@@ -1386,12 +1497,12 @@ func runDiff(args []string, stdout, stderr io.Writer) error {
 	if *format != "human" && *format != "json" {
 		return fmt.Errorf("unsupported format %q", *format)
 	}
-	store, err := state.Open(context.Background(), *stateDirectory)
+	store, err := state.Open(commandContext, *stateDirectory)
 	if err != nil {
 		return err
 	}
 	defer store.Close()
-	base, err := store.LoadRun(context.Background(), *baseRunID)
+	base, err := store.LoadRun(commandContext, *baseRunID)
 	if err != nil {
 		return err
 	}
@@ -1796,7 +1907,7 @@ func runOCIAdapter(commandName string, args []string, stdout, stderr io.Writer) 
 	if err != nil {
 		return err
 	}
-	result, err := adapter.RunOCI(context.Background(), ociPlan, manifest, input)
+	result, err := adapter.RunOCI(commandContext, ociPlan, manifest, input)
 	if err != nil {
 		return err
 	}
@@ -1909,6 +2020,7 @@ func runInventory(args []string, stdout, stderr io.Writer) error {
 	fmt.Fprintf(stdout, "Files: %d (%d recognized source files)\n", item.FileCount, item.SourceFiles)
 	fmt.Fprintf(stdout, "Hashed bytes: %s\n", inventoryFact(item, "repository.inventory_bytes"))
 	fmt.Fprintf(stdout, "Automatic exclusions reported: %d\n", inventoryFactCount(item, "repository.exclusion"))
+	fmt.Fprintf(stdout, "Reviewed .prcignore exclusions: %d\n", inventoryFactCount(item, "repository.user_exclusion"))
 	fmt.Fprintf(stdout, "Package ecosystems: %s\n", displayList(item.PackageEcosystems))
 	fmt.Fprintf(stdout, "Manifests: %s\n", displayList(item.Manifests))
 	fmt.Fprintf(stdout, "Lock files: %s\n", displayList(item.LockFiles))
@@ -2198,6 +2310,9 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 	reviewWorkers := set.Int("review-workers", 1, "parallel provider calls, from 1 to 4")
 	reviewTimeout := set.Duration("review-timeout", 30*time.Minute, "timeout for each resumable provider batch")
 	reviewMaxCost := set.Float64("review-max-cost-usd", 0, "optional Claude cost limit in USD for each batch")
+	reviewMaxBatches := set.Int("review-max-batches", 1500, "hard limit on provider batches for the complete review")
+	reviewMaxDuration := set.Duration("review-max-duration", 24*time.Hour, "total resumable AI review time limit")
+	reviewPlanOnly := set.Bool("review-plan", false, "screen source and print the exact AI work plan without starting a provider")
 	reviewControls := repeatedStringFlag{}
 	set.Var(&reviewControls, "review-control", "review only this control ID for debugging; repeatable")
 	adapterManifests := repeatedStringFlag{}
@@ -2232,6 +2347,9 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 		*format != "html" && *format != "sarif" && *format != "junit" {
 		return exitInternal, exitError(exitConfiguration, fmt.Errorf("unsupported format %q", *format))
 	}
+	if *reviewPlanOnly && *format != "human" && *format != "json" {
+		return exitInternal, exitError(exitConfiguration, fmt.Errorf("--review-plan supports human or json output"))
+	}
 	if *colorMode != "auto" && *colorMode != "always" && *colorMode != "never" {
 		return exitInternal, exitError(exitConfiguration, fmt.Errorf("unsupported color mode %q", *colorMode))
 	}
@@ -2260,7 +2378,7 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 	if *reviewProvider != "none" && *reviewProvider != "codex" && *reviewProvider != "claude" {
 		return exitInternal, exitError(exitConfiguration, fmt.Errorf("unsupported review provider %q", *reviewProvider))
 	}
-	reviewFlags := []string{"review-executable", "review-model", "review-effort", "review-depth", "review-state-dir", "allow-remote-source-processing", "review-batch-size", "review-workers", "review-timeout", "review-max-cost-usd", "review-control"}
+	reviewFlags := []string{"review-executable", "review-model", "review-effort", "review-depth", "review-state-dir", "allow-remote-source-processing", "review-batch-size", "review-workers", "review-timeout", "review-max-cost-usd", "review-max-batches", "review-max-duration", "review-plan", "review-control"}
 	if *reviewProvider == "none" {
 		for _, name := range reviewFlags {
 			if flagWasSet(set, name) {
@@ -2366,7 +2484,7 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 				return exitInternal, exitError(exitConfiguration, fmt.Errorf("--adapter-data references unrequested adapter %s", adapterID))
 			}
 		}
-		adapterContext := context.Background()
+		adapterContext := commandContext
 		cancelAdapters := func() {}
 		if validation != nil {
 			adapterContext, cancelAdapters = context.WithTimeout(
@@ -2401,7 +2519,7 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 	var attachErr error
 	if programErr == nil {
 		exactExecutions, executionErr := repositoryevidence.EvaluateSupported(
-			context.Background(), programCatalog, item, profileRun.CompletedAt,
+			commandContext, programCatalog, item, profileRun.CompletedAt,
 		)
 		if executionErr != nil {
 			return exitInternal, exitError(exitExecution, fmt.Errorf("collect exact repository evidence: %w", executionErr))
@@ -2473,21 +2591,56 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 	var reviewSummary controlreview.Summary
 	var reviewFailure error
 	if *reviewProvider != "none" {
+		reviewOptions := controlreview.Options{
+			Provider: *reviewProvider, Executable: *reviewExecutable, Model: *reviewModel,
+			ReasoningEffort: *reviewEffort, ReviewDepth: *reviewDepth, StateDirectory: *reviewStateDirectory,
+			SchemaPath:                  filepath.Join(*catalogRoot, "schemas", "control-review-output.schema.json"),
+			AllowRemoteSourceProcessing: *allowRemoteReview, BatchSize: *reviewBatchSize,
+			Workers: *reviewWorkers, Timeout: *reviewTimeout, MaxCostUSD: *reviewMaxCost,
+			MaxBatches: *reviewMaxBatches, MaxDuration: *reviewMaxDuration,
+			ControlIDs: append([]string{}, reviewControls...),
+		}
+		if *reviewPlanOnly {
+			preview, previewErr := controlreview.BuildPreview(commandContext, run, reviewOptions)
+			if previewErr != nil {
+				return exitInternal, exitError(exitExecution, previewErr)
+			}
+			if *format == "json" {
+				if err := encodeJSON(stdout, preview); err != nil {
+					return exitInternal, err
+				}
+			} else {
+				fmt.Fprintln(stdout, "AI review plan — no provider was started")
+				fmt.Fprintf(stdout, "  Provider          %s%s\n", preview.Provider, optionalModel(preview.Model))
+				fmt.Fprintf(stdout, "  Work              %d controls in %d batches of up to %d\n", preview.Controls, preview.Batches, preview.BatchSize)
+				fmt.Fprintf(stdout, "  Parallel workers  %d\n", preview.Workers)
+				fmt.Fprintf(stdout, "  Source snapshot   %d screened text files · %s\n", preview.SourceFiles, formatByteCount(preview.SourceBytes))
+				fmt.Fprintf(stdout, "  Selected context  %d excerpts · %s across all batches · max %d files / %s per batch\n",
+					preview.ContextFiles, formatByteCount(preview.ContextBytes), preview.MaxContextFiles, formatByteCount(int64(preview.MaxContextBytes)))
+				if preview.ContextLimited > 0 {
+					fmt.Fprintf(stdout, "  Context limits    %d/%d batches reached an excerpt cap; each sealed task names the limitation\n",
+						preview.ContextLimited, preview.Batches)
+				}
+				fmt.Fprintf(stdout, "  Omitted files     %d\n", preview.OmittedFiles)
+				fmt.Fprintf(stdout, "  Safety limits     %d batches · %s total · %s per batch\n", preview.MaximumBatches, preview.MaximumDuration, preview.TimeoutPerBatch)
+				if *reviewMaxCost > 0 {
+					fmt.Fprintf(stdout, "  Claude limit      $%.4f per batch; this is not a whole-run cost cap\n", *reviewMaxCost)
+				}
+				for _, limitation := range preview.Limitations {
+					fmt.Fprintf(stdout, "  Limit             %s\n", terminalText(limitation))
+				}
+				fmt.Fprintln(stdout, "\nAI output would be advice only. Run the same command without --plan to start it.")
+			}
+			return exitSuccess, nil
+		}
 		var reviewProgress func(controlreview.Progress)
 		if *format == "human" {
 			fmt.Fprintln(stdout, progressStyle.paint(ansiBlue,
 				"      Running the locked-down "+authenticationProviderTitle(*reviewProvider)+" advisory review; this can take a while..."))
 			reviewProgress = aiReviewProgressPrinter(stdout, progressStyle)
 		}
-		reviewed, summary, reviewErr := controlreview.Apply(context.Background(), run, controlreview.Options{
-			Provider: *reviewProvider, Executable: *reviewExecutable, Model: *reviewModel,
-			ReasoningEffort: *reviewEffort, ReviewDepth: *reviewDepth, StateDirectory: *reviewStateDirectory,
-			SchemaPath:                  filepath.Join(*catalogRoot, "schemas", "control-review-output.schema.json"),
-			AllowRemoteSourceProcessing: *allowRemoteReview, BatchSize: *reviewBatchSize,
-			Workers: *reviewWorkers, Timeout: *reviewTimeout, MaxCostUSD: *reviewMaxCost,
-			ControlIDs: append([]string{}, reviewControls...),
-			Progress:   reviewProgress,
-		})
+		reviewOptions.Progress = reviewProgress
+		reviewed, summary, reviewErr := controlreview.Apply(commandContext, run, reviewOptions)
 		if reviewed.ControlCatalog != nil {
 			run, reviewSummary = reviewed, summary
 		}
@@ -2504,7 +2657,7 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 	}
 	var stateStore *state.Store
 	if *stateDirectory != "" {
-		stateStore, err = state.Open(context.Background(), *stateDirectory)
+		stateStore, err = state.Open(commandContext, *stateDirectory)
 		if err != nil {
 			return exitInternal, exitError(exitConfiguration, err)
 		}
@@ -2514,7 +2667,7 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 		return exitInternal, exitError(exitInternal, err)
 	}
 	if stateStore != nil {
-		if err := stateStore.IndexRun(context.Background(), run); err != nil {
+		if err := stateStore.IndexRun(commandContext, run); err != nil {
 			return exitInternal, exitError(exitInternal, err)
 		}
 	}
@@ -2699,6 +2852,12 @@ func printScanSummary(output io.Writer, run model.RunResult, style terminalStyle
 			fmt.Fprintf(output, "  … %d more checks need attention; see the HTML report.\n", remaining)
 		}
 	}
+	for _, result := range run.Results {
+		if result.AssertionID == "PRC-A-CORE-013" && result.Execution == "blocked" {
+			fmt.Fprintln(output, "  Next: run `prc verify` to add the pinned offline secret check; its reviewed image must already exist locally.")
+			break
+		}
+	}
 
 	fmt.Fprintln(output, "\nCoverage")
 	fmt.Fprintf(output, "  Local checks     %d total · %d passed · %d need attention · %d did not apply\n",
@@ -2723,6 +2882,13 @@ func printScanSummary(output io.Writer, run model.RunResult, style terminalStyle
 			}
 			fmt.Fprintf(output, "  Signed evidence  %d exact entries from %d dual-signed bundle(s)\n", entries, len(run.AuthoritativeEvidence))
 		}
+	}
+	if excluded := inventoryFactCount(run.Inventory, "repository.user_exclusion"); excluded > 0 {
+		label := "directories"
+		if excluded == 1 {
+			label = "directory"
+		}
+		fmt.Fprintf(output, "  Scope warning     %d reviewed .prcignore %s omitted and bound into this inventory\n", excluded, label)
 	}
 
 	fmt.Fprintln(output, "\nReport")

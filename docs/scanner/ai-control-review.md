@@ -44,13 +44,44 @@ separate `--allow-remote-source-processing` switch.
 
 ## Try one control first
 
-The shortest full-review command is:
+Preview the full review before starting it:
+
+```bash
+prc full codex --plan
+```
+
+The preview screens the same source and builds the same batches, but it never
+resolves or starts the provider and never creates resume state. It prints the
+exact number of screened files and bytes, omitted files, controls, batches,
+selected excerpt files and bytes across all batches, the per-batch context cap,
+workers, per-batch timeout, total deadline, and hard batch ceiling. Context is
+indexed once and batch tasks are built as a stream, so planning a full review
+does not retain a duplicate source snapshot for every batch. Then remove
+`--plan` only when the plan is acceptable:
 
 ```bash
 prc full codex
 ```
 
-Use `prc full claude` for Claude Code. `prc scan --ai codex|claude` uses the
+If a source file intentionally contains fake credential-shaped text—for
+example, a secret-scanner test fixture—put one exact file and a reviewed reason
+in a root `.prcreviewignore` file:
+
+```text
+fixtures/secret_test.go | Contains fake credential-shaped values used to test local secret screening.
+```
+
+This file limits only optional remote AI context. The target remains in the
+content-hashed local inventory and remains visible to local checks, adapters,
+and authoritative evidence collectors. The format accepts at most 100 exact
+canonical regular-file paths, no directory, glob, traversal, symlink, missing
+path, or already automatically omitted file, and a 10–300 character reason.
+The scanner reopens and hashes the exact file before omitting it, then lists the
+path and reason in every AI task limitation and preview count. Because AI output
+is advisory only, this omission can reduce advice but can never create a Pass or
+hide a file from a verified secret check.
+
+Use `prc full claude --plan` and `prc full claude` for Claude Code. `prc scan --ai codex|claude` uses the
 same guarded review engine but keeps the advanced defaults of standard depth,
 one worker, and high reasoning. To test only one control first, use the advanced
 form:
@@ -111,7 +142,8 @@ prc full claude
 ```
 
 The short `prc full` path is quality-first: it uses deep review, four parallel
-provider workers, and Codex `xhigh` reasoning. The advanced form can choose
+provider workers, Codex `xhigh` reasoning, a hard default ceiling of 1,500
+batches, and a 24-hour total deadline. The advanced form can choose
 different settings, for example a one-control standard review:
 
 ```bash
@@ -123,14 +155,16 @@ prc scan /path/to/project \
 ```
 
 This is deliberately slow and expensive. The scanner makes batches of at most
-eight controls. For each batch, it tells the top AI process to create exactly
-one separate primary subagent per control. Deep mode also creates one separate
-skeptical subagent for the batch, runs the independent work concurrently, and
-requires the coordinator to preserve the strongest objection or counterexample
-for every result. With 9,356 nondeterministic controls and the default batch
-size, expect about 1,170 provider calls, 9,356 primary rule reviews, and about
+eight controls. For each batch, its sealed task asks the top AI process to
+create exactly one separate primary subagent per control. Deep mode also asks
+for one separate skeptical subagent for the batch and requires the coordinator
+to preserve the strongest objection or counterexample for every result. With
+9,356 nondeterministic controls and the default batch size, the scanner plans
+about 1,170 provider calls and requests 9,356 primary rule reviews plus about
 1,170 batch-skeptic reviews. The exact token and money cost depends on the
-chosen provider and model.
+chosen provider and model. Current provider output does not independently
+attest every internal subagent invocation, so those requested internal counts
+are a plan, not a proven execution fact.
 
 Before the first provider call, the terminal shows the exact number of controls,
 batches, cached batches, workers, and the private resume directory. Small
@@ -227,19 +261,23 @@ language, build system, size, boundaries, and conventions.
 | `--review-provider` | `none` | Choose `codex` or `claude`. No AI starts by default. |
 | `--review-control ID` | all active | Review one named control; repeat for a small test set. |
 | `--review-batch-size` | `8` | Provider calls contain 1–8 controls; every control still gets its own subagent. |
-| `--review-depth` | `standard` | `standard` uses one primary subagent per rule; `deep` also adds an independent skeptical subagent per batch. `prc full` selects `deep`. |
+| `--review-depth` | `standard` | `standard` requests one primary subagent per rule; `deep` also requests an independent skeptical subagent per batch. Provider internals are not independently attested. `prc full` selects `deep`. |
 | `--review-workers` | `1` | Run 1–4 provider calls at once. One is safer for cost and rate limits. |
 | `--review-timeout` | `30m` | Limit for each resumable batch. |
 | `--review-effort` | `high` | Codex supports `high` or `xhigh`; Claude uses `high`. |
 | `--review-model` | provider default | Pin a provider model when needed. |
 | `--review-state-dir` | user cache | Choose a private resume directory outside the target. |
 | `--review-max-cost-usd` | no limit | Claude-only enforced cost limit for each new batch. The terminal separately labels Claude's reported total as a client estimate. Codex does not expose the same hard CLI limit. |
+| `--review-max-batches` | `1500` | Stop before the provider and before resume-state creation if the selected controls need more batches. |
+| `--review-max-duration` | `24h` | Cancel the whole review after this wall-clock time; completed sealed batches remain resumable. |
+| `--review-plan` / `prc full ... --plan` | off | Screen source and print exact work and limits without starting a provider or creating resume data. |
 
 More workers can finish sooner but increase simultaneous cost and the chance of
 provider rate limits. More controls per call reduce top-level calls but make the
 coordinator's job larger. Advanced `prc scan` defaults to one worker and
 standard depth. The simple `prc full` command deliberately selects four workers
-and deep review because it is the quality-first path.
+and deep review because it is the quality-first path. The duration and batch
+limits bound work; they do not predict or cap total tokens or total money.
 
 ## What stops the run
 

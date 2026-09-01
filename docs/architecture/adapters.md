@@ -335,7 +335,8 @@ The default `PRC-A-CORE-013` binding pins
 `adapters/gitleaks-v8.30.0.yaml`. It remains Blocked in an ordinary inspect-mode
 core scan because inspect mode never launches containers. To produce executed
 evidence, an operator must first pull the exact image digest and then explicitly
-select `--mode verify-local` with the checked-in manifest. The checked-in
+run `prc verify`, which selects `--mode verify-local` with the bundled manifest.
+The alias rejects custom adapter, profile, and AI overrides. The checked-in
 protocol fixture still exercises generic JSONL plumbing in tests but is not
 authorized by the production profile.
 
@@ -343,11 +344,7 @@ authorized by the production profile.
 docker pull \
   ghcr.io/gitleaks/gitleaks@sha256:691af3c7c5a48b16f187ce3446d5f194838f91238f27270ed36eef6359a574d9
 
-prc scan \
-  --target /path/to/project \
-  --catalog-root /path/to/production-readiness-checklist \
-  --mode verify-local \
-  --adapter-manifest /path/to/production-readiness-checklist/adapters/gitleaks-v8.30.0.yaml
+prc verify /path/to/project
 ```
 
 The command scans only the sealed current-tree snapshot. It does not scan Git

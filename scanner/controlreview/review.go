@@ -23,11 +23,24 @@ import (
 )
 
 const (
-	maximumContextFileBytes = 128 * 1024
-	maximumContextTotal     = 4 * 1024 * 1024
+	maximumContextFileBytes = 64 * 1024
+	maximumContextTotal     = 384 * 1024
+	maximumContextFiles     = 12
 	maximumPathContextBytes = 1024 * 1024
 	maximumCachedOutput     = 1024 * 1024
+	maximumTaskLimitations  = 128
+	maximumLimitationBytes  = 128 * 1024
 )
+
+var contextStopWords = map[string]bool{
+	"across": true, "after": true, "against": true, "also": true, "before": true,
+	"between": true, "complete": true, "current": true, "defined": true, "each": true,
+	"every": true, "explicit": true, "from": true, "have": true, "into": true,
+	"must": true, "only": true, "project": true, "required": true, "should": true,
+	"than": true, "that": true, "their": true, "there": true, "these": true,
+	"this": true, "through": true, "using": true, "versioned": true, "when": true,
+	"where": true, "which": true, "with": true, "within": true, "without": true,
+}
 
 var reviewedDeterministicRoutes = map[string]bool{
 	"local_static": true, "artifact_verification": true, "bounded_execution": true,
@@ -56,6 +69,11 @@ func Apply(ctx context.Context, run model.RunResult, options Options) (model.Run
 	if err := normalizeOptions(&options); err != nil {
 		return model.RunResult{}, Summary{}, err
 	}
+	if options.MaxDuration > 0 {
+		var cancel context.CancelFunc
+		ctx, cancel = context.WithTimeout(ctx, options.MaxDuration)
+		defer cancel()
+	}
 	// Reject legacy, unknown, and explicitly deterministic selections before
 	// copying any source context or creating resumable state.
 	if _, _, err := selectReviewControls(run, options.ControlIDs); err != nil {
@@ -66,15 +84,21 @@ func Apply(ctx context.Context, run model.RunResult, options Options) (model.Run
 		return model.RunResult{}, Summary{}, fmt.Errorf("prepare safe remote-review snapshot: %w", err)
 	}
 	defer os.RemoveAll(snapshot.Directory)
+	builder, focused, err := newTaskBuilder(run, snapshot, options)
+	if err != nil {
+		return model.RunResult{}, Summary{}, err
+	}
+	if builder.count() > options.MaxBatches {
+		return model.RunResult{}, Summary{}, fmt.Errorf(
+			"AI review requires %d batches, exceeding the configured maximum of %d; run a focused review or raise --review-max-batches explicitly",
+			builder.count(), options.MaxBatches,
+		)
+	}
 	stateDirectory, err := prepareStateDirectory(run, options)
 	if err != nil {
 		return model.RunResult{}, Summary{}, err
 	}
 	options.StateDirectory = stateDirectory
-	tasks, focused, err := buildTasks(run, snapshot, options)
-	if err != nil {
-		return model.RunResult{}, Summary{}, err
-	}
 	runner := options.Runner
 	if runner == nil {
 		runner, err = newCLIRunner(options)
@@ -82,13 +106,21 @@ func Apply(ctx context.Context, run model.RunResult, options Options) (model.Run
 			return model.RunResult{}, Summary{}, err
 		}
 	}
-	outputs := make([]Output, len(tasks))
+	outputs := make([]Output, builder.count())
 	reused := 0
 	totalControls := 0
 	reusedControls := 0
-	pending := make([]int, 0, len(tasks))
-	for index, task := range tasks {
+	pending := make([]int, 0, builder.count())
+	controlTaskIDs := make(map[string]string, len(builder.controls))
+	for index := 0; index < builder.count(); index++ {
+		task, buildErr := builder.build(index)
+		if buildErr != nil {
+			return model.RunResult{}, Summary{}, buildErr
+		}
 		totalControls += len(task.Controls)
+		for _, control := range task.Controls {
+			controlTaskIDs[control.ControlID] = task.TaskID
+		}
 		cached, ok, cacheErr := loadCachedOutput(stateDirectory, task)
 		if cacheErr != nil {
 			return model.RunResult{}, Summary{}, cacheErr
@@ -105,7 +137,7 @@ func Apply(ctx context.Context, run model.RunResult, options Options) (model.Run
 		Phase: "prepared", Provider: options.Provider, Model: options.Model,
 		ReviewDepth:    options.ReviewDepth,
 		StateDirectory: stateDirectory, Workers: options.Workers,
-		TotalBatches: len(tasks), CompletedBatches: reused, ReusedBatches: reused,
+		TotalBatches: builder.count(), CompletedBatches: reused, ReusedBatches: reused,
 		TotalControls: totalControls, CompletedControls: reusedControls,
 		MaxCostUSD: options.MaxCostUSD, Elapsed: time.Since(started),
 	}
@@ -113,7 +145,7 @@ func Apply(ctx context.Context, run model.RunResult, options Options) (model.Run
 		options.Progress(baseProgress)
 	}
 	statistics, batchErr := runPendingBatches(
-		ctx, runner, tasks, pending, outputs, stateDirectory, options.Workers,
+		ctx, runner, builder.build, pending, outputs, stateDirectory, options.Workers,
 		options.Progress, baseProgress, started,
 	)
 	reviews := map[string]Review{}
@@ -154,7 +186,7 @@ func Apply(ctx context.Context, run model.RunResult, options Options) (model.Run
 			Limitations:          append([]string{}, review.Limitations...),
 			CitationVerification: citationVerification(review.Evidence),
 			ClaimVerification:    "advisory_unverified",
-			TaskID:               taskForControl(tasks, review.ControlID),
+			TaskID:               controlTaskIDs[review.ControlID],
 		}
 	}
 	run.ControlCatalog.AIReviewProvider = options.Provider
@@ -190,6 +222,76 @@ func Apply(ctx context.Context, run model.RunResult, options Options) (model.Run
 		return run, summary, batchErr
 	}
 	return run, summary, nil
+}
+
+// BuildPreview performs the same option validation, source screening, snapshot
+// construction, control selection, and batching as Apply, but never resolves
+// or starts an AI provider and never creates resumable state.
+func BuildPreview(ctx context.Context, run model.RunResult, options Options) (Preview, error) {
+	if err := ctx.Err(); err != nil {
+		return Preview{}, err
+	}
+	if run.ControlCatalog == nil || len(run.ControlResults) == 0 {
+		return Preview{}, fmt.Errorf("AI review preview requires a complete control-catalog scan")
+	}
+	if !options.AllowRemoteSourceProcessing {
+		return Preview{}, fmt.Errorf("AI review preview requires explicit remote source processing acknowledgement")
+	}
+	if err := normalizeOptions(&options); err != nil {
+		return Preview{}, err
+	}
+	if _, _, err := selectReviewControls(run, options.ControlIDs); err != nil {
+		return Preview{}, err
+	}
+	snapshot, err := createSnapshot(run.Inventory)
+	if err != nil {
+		return Preview{}, fmt.Errorf("prepare safe remote-review preview: %w", err)
+	}
+	defer os.RemoveAll(snapshot.Directory)
+	builder, _, err := newTaskBuilder(run, snapshot, options)
+	if err != nil {
+		return Preview{}, err
+	}
+	if builder.count() > options.MaxBatches {
+		return Preview{}, fmt.Errorf(
+			"AI review requires %d batches, exceeding the configured maximum of %d; choose a focused review or raise the limit explicitly",
+			builder.count(), options.MaxBatches,
+		)
+	}
+	controls, contextFiles, contextLimited := 0, 0, 0
+	var contextBytes int64
+	for batch := 0; batch < builder.count(); batch++ {
+		if err := ctx.Err(); err != nil {
+			return Preview{}, err
+		}
+		task, buildErr := builder.build(batch)
+		if buildErr != nil {
+			return Preview{}, buildErr
+		}
+		controls += len(task.Controls)
+		contextFiles += len(task.ContextFiles)
+		for _, file := range task.ContextFiles {
+			contextBytes += int64(len(file.Content))
+		}
+		for _, limitation := range task.SnapshotLimitations {
+			if strings.HasPrefix(limitation, "Relevant repository excerpts were capped") ||
+				strings.HasPrefix(limitation, "At least one relevant file excerpt was truncated") {
+				contextLimited++
+				break
+			}
+		}
+	}
+	return Preview{
+		SchemaVersion: "prc.ai-review-preview/v0.2", Provider: options.Provider, Model: options.Model,
+		ReviewDepth: options.ReviewDepth, Workers: options.Workers, Controls: controls,
+		Batches: builder.count(), BatchSize: options.BatchSize, TimeoutPerBatch: options.Timeout.String(),
+		MaximumBatches: options.MaxBatches, MaximumDuration: options.MaxDuration.String(),
+		SourceFiles: len(snapshot.Paths), SourceBytes: snapshot.Bytes, OmittedFiles: snapshot.Omitted,
+		ContextFiles: contextFiles, ContextBytes: contextBytes,
+		ContextLimited:  contextLimited,
+		MaxContextFiles: maximumContextFiles, MaxContextBytes: maximumContextTotal,
+		Limitations: append([]string(nil), snapshot.Limitations...),
+	}, nil
 }
 
 func citationVerification(evidence []model.FindingLocation) string {
@@ -242,6 +344,18 @@ func normalizeOptions(options *Options) error {
 	if options.MaxCostUSD < 0 || options.Provider == "codex" && options.MaxCostUSD > 0 {
 		return fmt.Errorf("only Claude can enforce a nonzero per-batch AI review cost limit")
 	}
+	if options.MaxBatches == 0 {
+		options.MaxBatches = 1500
+	}
+	if options.MaxBatches < 1 || options.MaxBatches > 10000 {
+		return fmt.Errorf("AI review maximum batches must be between 1 and 10000")
+	}
+	if options.MaxDuration == 0 {
+		options.MaxDuration = 24 * time.Hour
+	}
+	if options.MaxDuration < time.Minute || options.MaxDuration > 7*24*time.Hour {
+		return fmt.Errorf("AI review maximum duration must be between 1 minute and 7 days")
+	}
 	return nil
 }
 
@@ -280,6 +394,33 @@ func pathInside(root, path string) bool {
 }
 
 func buildTasks(run model.RunResult, snapshot reviewSnapshot, options Options) ([]Task, bool, error) {
+	builder, focusedRequested, err := newTaskBuilder(run, snapshot, options)
+	if err != nil {
+		return nil, false, err
+	}
+	tasks := make([]Task, 0, builder.count())
+	for batch := 0; batch < builder.count(); batch++ {
+		task, err := builder.build(batch)
+		if err != nil {
+			return nil, false, err
+		}
+		tasks = append(tasks, task)
+	}
+	return tasks, focusedRequested, nil
+}
+
+type taskBuilder struct {
+	run            model.RunResult
+	options        Options
+	controls       []model.ControlResult
+	assertions     map[string]model.AssertionResult
+	contextIndexes []contextSearchIndex
+	snapshot       reviewSnapshot
+	paths          []string
+	limitations    []string
+}
+
+func newTaskBuilder(run model.RunResult, snapshot reviewSnapshot, options Options) (*taskBuilder, bool, error) {
 	if options.ReviewDepth == "" {
 		options.ReviewDepth = "standard"
 	}
@@ -291,49 +432,64 @@ func buildTasks(run model.RunResult, snapshot reviewSnapshot, options Options) (
 	for _, result := range run.Results {
 		assertions[result.AssertionID] = result
 	}
-	tasks := make([]Task, 0, (len(controls)+options.BatchSize-1)/options.BatchSize)
-	for start := 0; start < len(controls); start += options.BatchSize {
-		end := min(start+options.BatchSize, len(controls))
-		task := Task{
-			SchemaVersion: TaskSchema, InventoryDigest: run.Inventory.Digest,
-			RegistrySHA256: run.ControlCatalog.RegistrySHA256, Provider: options.Provider,
-			ReviewDepth: options.ReviewDepth, RequireOneSubagentPerRule: true,
-			RequireBatchSkeptic: options.ReviewDepth == "deep", Controls: []TaskControl{},
-		}
-		for _, control := range controls[start:end] {
-			item := TaskControl{
-				ControlID: control.ControlID, Statement: control.Statement,
-				ChecklistSource: control.Source, CurrentDisposition: control.Disposition,
-				ContractSHA256: control.ContractSHA256, ContractStatus: control.ContractStatus,
-				Classification: control.Classification, ClassificationRoute: control.ClassificationRoute,
-				ClassificationDecisionBasis: control.ClassificationDecisionBasis,
-				ClassificationRowSHA256:     control.ClassificationRowSHA256,
-				CanonicalControlID:          control.CanonicalControlID, EvaluationClass: control.EvaluationClass,
-				AutomationClass: control.AutomationClass, ApplicabilityClass: control.ApplicabilityClass,
-				Atomicity: control.Atomicity, CompleteInventory: control.CompleteInventoryRequired,
-				NegativeCondition: control.NegativeCondition, ProjectThresholds: control.ProjectThresholdsRequired,
-				EvidenceAuthorities: append([]string{}, control.EvidenceAuthorities...),
-				NotApplicableProof:  control.NotApplicableProof,
-				CurrentCoverage:     control.Coverage, CurrentAssertionChecks: []AssertionContext{},
-			}
-			for _, assertionID := range control.ExecutedAssertionIDs {
-				result := assertions[assertionID]
-				item.CurrentAssertionChecks = append(item.CurrentAssertionChecks, AssertionContext{
-					AssertionID: assertionID, Assessment: result.Assessment,
-					Summary: result.Summary, Locations: append([]model.FindingLocation{}, result.Locations...),
-				})
-			}
-			task.Controls = append(task.Controls, item)
-		}
-		task.RepositoryPaths, task.SnapshotLimitations = boundedPaths(snapshot.Paths, snapshot.Limitations)
-		task.ContextFiles, task.SnapshotLimitations = selectContext(task.Controls, snapshot, task.SnapshotLimitations)
-		sealed, err := sealTask(task)
-		if err != nil {
-			return nil, false, err
-		}
-		tasks = append(tasks, sealed)
+	paths, limitations := boundedPaths(snapshot.Paths, snapshot.Limitations)
+	return &taskBuilder{
+		run: run, options: options, controls: controls, assertions: assertions,
+		contextIndexes: buildContextIndexes(controls, options.BatchSize, snapshot),
+		snapshot:       snapshot,
+		paths:          append([]string(nil), paths...), limitations: append([]string(nil), limitations...),
+	}, focusedRequested, nil
+}
+
+func (builder *taskBuilder) count() int {
+	return (len(builder.controls) + builder.options.BatchSize - 1) / builder.options.BatchSize
+}
+
+func (builder *taskBuilder) build(batch int) (Task, error) {
+	if builder == nil || batch < 0 || batch >= builder.count() {
+		return Task{}, fmt.Errorf("invalid AI review batch index %d", batch)
 	}
-	return tasks, focusedRequested, nil
+	start := batch * builder.options.BatchSize
+	end := min(start+builder.options.BatchSize, len(builder.controls))
+	task := Task{
+		SchemaVersion: TaskSchema, InventoryDigest: builder.run.Inventory.Digest,
+		RegistrySHA256: builder.run.ControlCatalog.RegistrySHA256, Provider: builder.options.Provider,
+		ReviewDepth: builder.options.ReviewDepth, RequireOneSubagentPerRule: true,
+		RequireBatchSkeptic: builder.options.ReviewDepth == "deep", Controls: []TaskControl{},
+		RepositoryPaths:     append([]string(nil), builder.paths...),
+		SnapshotLimitations: append([]string(nil), builder.limitations...),
+	}
+	for _, control := range builder.controls[start:end] {
+		item := TaskControl{
+			ControlID: control.ControlID, Statement: control.Statement,
+			ChecklistSource: control.Source, CurrentDisposition: control.Disposition,
+			ContractSHA256: control.ContractSHA256, ContractStatus: control.ContractStatus,
+			Classification: control.Classification, ClassificationRoute: control.ClassificationRoute,
+			ClassificationDecisionBasis: control.ClassificationDecisionBasis,
+			ClassificationRowSHA256:     control.ClassificationRowSHA256,
+			CanonicalControlID:          control.CanonicalControlID, EvaluationClass: control.EvaluationClass,
+			AutomationClass: control.AutomationClass, ApplicabilityClass: control.ApplicabilityClass,
+			Atomicity: control.Atomicity, CompleteInventory: control.CompleteInventoryRequired,
+			NegativeCondition: control.NegativeCondition, ProjectThresholds: control.ProjectThresholdsRequired,
+			EvidenceAuthorities: append([]string{}, control.EvidenceAuthorities...),
+			NotApplicableProof:  control.NotApplicableProof,
+			CurrentCoverage:     control.Coverage, CurrentAssertionChecks: []AssertionContext{},
+		}
+		for _, assertionID := range control.ExecutedAssertionIDs {
+			result := builder.assertions[assertionID]
+			item.CurrentAssertionChecks = append(item.CurrentAssertionChecks, AssertionContext{
+				AssertionID: assertionID, Assessment: result.Assessment,
+				Summary: result.Summary, Locations: append([]model.FindingLocation{}, result.Locations...),
+			})
+		}
+		task.Controls = append(task.Controls, item)
+	}
+	// Context excerpts are copied only for the one batch being built. Callers
+	// can stream batches without retaining hundreds of MiB of duplicate text.
+	task.ContextFiles, task.SnapshotLimitations = selectContext(
+		builder.snapshot, builder.contextIndexes[batch], task.SnapshotLimitations,
+	)
+	return sealTask(task)
 }
 
 func selectReviewControls(run model.RunResult, requested []string) ([]model.ControlResult, bool, error) {
@@ -423,56 +579,122 @@ type scoredPath struct {
 	path       string
 	score      int
 	anchorLine int
+	anchorSet  bool
 }
 
-func selectContext(controls []TaskControl, snapshot reviewSnapshot, limitations []string) ([]ContextFile, []string) {
+type contextSearchIndex struct {
+	scores []scoredPath
+}
+
+func statementTokens(statement string) map[string]bool {
 	tokens := map[string]bool{}
-	for _, control := range controls {
-		for _, token := range strings.FieldsFunc(strings.ToLower(control.Statement), func(value rune) bool { return !unicode.IsLetter(value) && !unicode.IsDigit(value) }) {
-			if len(token) >= 4 {
-				tokens[token] = true
+	for _, token := range strings.FieldsFunc(strings.ToLower(statement), func(value rune) bool {
+		return !unicode.IsLetter(value) && !unicode.IsDigit(value)
+	}) {
+		if len(token) >= 4 && !contextStopWords[token] {
+			tokens[token] = true
+		}
+	}
+	return tokens
+}
+
+// buildContextIndexes scans the snapshot text once for the complete selected
+// control corpus. The former implementation lowercased and searched every
+// file again for every batch, which made a full 9,356-control preview scale as
+// batches × source bytes. The batch indexes keep only one score per matched
+// file and batch rather than a much larger token × file hit matrix.
+func buildContextIndexes(controls []model.ControlResult, batchSize int, snapshot reviewSnapshot) []contextSearchIndex {
+	batchCount := (len(controls) + batchSize - 1) / batchSize
+	tokenBatches := map[string][]int{}
+	for controlIndex, control := range controls {
+		batch := controlIndex / batchSize
+		for token := range statementTokens(control.Statement) {
+			batches := tokenBatches[token]
+			if len(batches) == 0 || batches[len(batches)-1] != batch {
+				tokenBatches[token] = append(batches, batch)
 			}
 		}
 	}
-	scores := make([]scoredPath, 0, len(snapshot.Paths))
+	candidates := make([][]scoredPath, batchCount)
 	for _, path := range snapshot.Paths {
 		lowerPath := strings.ToLower(path)
-		lowerContent := strings.ToLower(string(snapshot.Contents[path]))
-		score := 0
-		anchorLine := 1
-		firstMatch := -1
-		for token := range tokens {
-			if strings.Contains(lowerPath, token) {
-				score += 20
+		byBatch := map[int]*scoredPath{}
+		add := func(batch, score, line int) {
+			match := byBatch[batch]
+			if match == nil {
+				match = &scoredPath{path: path, anchorLine: 1}
+				byBatch[batch] = match
 			}
-			if offset := strings.Index(lowerContent, token); offset >= 0 {
-				score += 2
-				if firstMatch < 0 || offset < firstMatch {
-					firstMatch = offset
+			match.score += score
+			if line > 0 && (!match.anchorSet || line < match.anchorLine) {
+				match.anchorLine, match.anchorSet = line, true
+			}
+		}
+		for token, batches := range tokenBatches {
+			if strings.Contains(lowerPath, token) {
+				for _, batch := range batches {
+					add(batch, 20, 0)
 				}
 			}
 		}
 		base := strings.ToLower(filepath.Base(path))
 		if strings.HasPrefix(base, "readme") || base == "security.md" || base == "contributing.md" ||
 			base == "package.json" || base == "go.mod" || base == "pyproject.toml" || base == "cargo.toml" {
-			score += 10
-		}
-		if score > 0 {
-			if firstMatch >= 0 {
-				anchorLine = bytes.Count(snapshot.Contents[path][:firstMatch], []byte{'\n'}) + 1
+			for batch := 0; batch < batchCount; batch++ {
+				add(batch, 10, 0)
 			}
-			scores = append(scores, scoredPath{path: path, score: score, anchorLine: anchorLine})
+		}
+		lowerContent := strings.ToLower(string(snapshot.Contents[path]))
+		line, tokenLine, start := 1, 1, -1
+		seenContent := map[string]bool{}
+		flush := func(end int) {
+			if start < 0 {
+				return
+			}
+			token := lowerContent[start:end]
+			if batches := tokenBatches[token]; len(batches) > 0 && !seenContent[token] {
+				seenContent[token] = true
+				for _, batch := range batches {
+					add(batch, 2, tokenLine)
+				}
+			}
+			start = -1
+		}
+		for offset, value := range lowerContent {
+			if unicode.IsLetter(value) || unicode.IsDigit(value) {
+				if start < 0 {
+					start, tokenLine = offset, line
+				}
+				continue
+			}
+			flush(offset)
+			if value == '\n' {
+				line++
+			}
+		}
+		flush(len(lowerContent))
+		for batch, match := range byBatch {
+			candidates[batch] = append(candidates[batch], *match)
 		}
 	}
-	sort.Slice(scores, func(left, right int) bool {
-		if scores[left].score != scores[right].score {
-			return scores[left].score > scores[right].score
-		}
-		return scores[left].path < scores[right].path
-	})
+	indexes := make([]contextSearchIndex, batchCount)
+	for batch := range candidates {
+		scores := candidates[batch]
+		sort.Slice(scores, func(left, right int) bool {
+			if scores[left].score != scores[right].score {
+				return scores[left].score > scores[right].score
+			}
+			return scores[left].path < scores[right].path
+		})
+		indexes[batch] = contextSearchIndex{scores: scores}
+	}
+	return indexes
+}
+
+func selectContext(snapshot reviewSnapshot, index contextSearchIndex, limitations []string) ([]ContextFile, []string) {
 	files := make([]ContextFile, 0)
 	used := 0
-	for _, scored := range scores {
+	for _, scored := range index.scores {
 		if len(snapshot.Contents[scored.path]) == 0 {
 			limitations = append(limitations, "At least one relevant empty text file could not provide a citable excerpt.")
 			continue
@@ -489,10 +711,10 @@ func selectContext(controls []TaskControl, snapshot reviewSnapshot, limitations 
 		})
 		used += len(data)
 		if truncated {
-			limitations = append(limitations, "At least one relevant file excerpt was truncated at 128 KiB.")
+			limitations = append(limitations, "At least one relevant file excerpt was truncated at 64 KiB.")
 		}
-		if len(files) == 64 {
-			limitations = append(limitations, "Relevant repository excerpts were capped at 64 files.")
+		if len(files) == maximumContextFiles {
+			limitations = append(limitations, "Relevant repository excerpts were capped at 12 files.")
 			break
 		}
 	}
@@ -576,7 +798,7 @@ type batchRunStatistics struct {
 }
 
 func runPendingBatches(
-	ctx context.Context, runner BatchRunner, tasks []Task, pending []int, outputs []Output,
+	ctx context.Context, runner BatchRunner, buildTask func(int) (Task, error), pending []int, outputs []Output,
 	stateDirectory string, workers int, progress func(Progress), base Progress, started time.Time,
 ) (batchRunStatistics, error) {
 	workContext, cancel := context.WithCancel(ctx)
@@ -592,22 +814,31 @@ func runPendingBatches(
 			if workContext.Err() != nil {
 				return
 			}
-			output, execution, err := runner.Run(workContext, tasks[index])
+			task, err := buildTask(index)
+			var output Output
+			var execution Execution
 			if err == nil {
-				output = attachTaskLimitations(output, tasks[index])
-				err = validateOutput(output, tasks[index])
+				output, execution, err = runner.Run(workContext, task)
+			}
+			if err == nil {
+				output = attachTaskLimitations(output, task)
+				err = validateOutput(output, task)
 			}
 			if err == nil {
 				err = storeCachedOutput(stateDirectory, output)
 			}
 			lock.Lock()
 			if err != nil && firstErr == nil {
-				firstErr = fmt.Errorf("AI review batch %s failed: %w", tasks[index].TaskID, err)
+				batchID := fmt.Sprintf("index-%d", index)
+				if task.TaskID != "" {
+					batchID = task.TaskID
+				}
+				firstErr = fmt.Errorf("AI review batch %s failed: %w", batchID, err)
 				cancel()
 			} else if err == nil {
 				outputs[index] = output
 				statistics.CompletedBatches++
-				statistics.CompletedControls += len(tasks[index].Controls)
+				statistics.CompletedControls += len(task.Controls)
 				if execution.TokenUsageKnown {
 					if usageErr := addTokenUsage(&statistics.TokenUsage, execution.TokenUsage); usageErr != nil {
 						firstErr = usageErr
@@ -718,15 +949,4 @@ func storeCachedOutput(directory string, output Output) error {
 		return fmt.Errorf("finish cached AI review: %w", err)
 	}
 	return nil
-}
-
-func taskForControl(tasks []Task, controlID string) string {
-	for _, task := range tasks {
-		for _, control := range task.Controls {
-			if control.ControlID == controlID {
-				return task.TaskID
-			}
-		}
-	}
-	return ""
 }

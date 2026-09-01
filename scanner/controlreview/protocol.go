@@ -118,7 +118,15 @@ func validateTask(task Task) error {
 		seenContext[input.Path] = true
 		contextBytes += len(input.Content)
 	}
-	if contextBytes > maximumContextTotal || len(task.SnapshotLimitations) > 64 {
+	limitationBytes := 0
+	for _, limitation := range task.SnapshotLimitations {
+		if !utf8.ValidString(limitation) || strings.IndexByte(limitation, 0) >= 0 {
+			return fmt.Errorf("review context contains an invalid snapshot limitation")
+		}
+		limitationBytes += len(limitation)
+	}
+	if contextBytes > maximumContextTotal || len(task.SnapshotLimitations) > maximumTaskLimitations ||
+		limitationBytes > maximumLimitationBytes {
 		return fmt.Errorf("review context exceeds its total limit")
 	}
 	return nil

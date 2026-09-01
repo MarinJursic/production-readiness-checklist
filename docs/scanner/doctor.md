@@ -8,12 +8,14 @@ hashed without being launched.
 ## Check read-only scanning
 
 ```bash
-./prc doctor \
-  --target /path/to/project \
-  --catalog-root /path/to/production-readiness-checklist
+prc setup /path/to/project
+# or, for the full diagnostic record:
+prc doctor --target /path/to/project
 ```
 
-Target inventory and catalog validation are required. State storage, candidate
+Published builds discover their bundled catalog automatically. Pass
+`--catalog-root` only when deliberately testing a source checkout or another
+catalog build. Target inventory and catalog validation are required. State storage, candidate
 workspaces, an OCI runtime, and agent providers are reported as optional warnings
 unless their corresponding flags are supplied.
 
@@ -24,9 +26,8 @@ Create the state directory with private permissions before probing it:
 ```bash
 mkdir -m 0700 /safe/path/prc-state
 
-./prc doctor \
+prc doctor \
   --target /path/to/project \
-  --catalog-root /path/to/production-readiness-checklist \
   --state-dir /safe/path/prc-state \
   --candidate-parent /safe/path/candidates
 ```
@@ -44,9 +45,8 @@ disjoint sibling of the target.
 ## Inspect optional executables
 
 ```bash
-./prc doctor \
+prc doctor \
   --target /path/to/project \
-  --catalog-root /path/to/production-readiness-checklist \
   --oci-runtime docker \
   --provider codex \
   --provider claude
@@ -60,10 +60,15 @@ filename is not treated as trust; execution planning can bind the exact digest
 later. Doctor does not test authentication, make network requests, pull images,
 or prove that a daemon is running.
 
+After the exact Gitleaks image in the
+[adapter guide](../architecture/adapters.md#inspect-and-validate) is present,
+`prc verify /path/to/project` runs the core scan plus that one bundled adapter.
+It never downloads the image and fails closed if the digest is unavailable.
+
 ## Automation output
 
 ```bash
-./prc doctor --target . --catalog-root . --format json > doctor.json
+prc doctor --target . --format json > doctor.json
 python scripts/validate_instance.py doctor.schema.json doctor.json
 ```
 

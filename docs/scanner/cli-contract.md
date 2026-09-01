@@ -52,16 +52,37 @@ equivalent advanced `--target` flag remains available, but it cannot be combined
 with the positional project path.
 
 `prc quick` selects the 18-assertion `prc/quick` local profile. `prc scan`
-selects the 40-assertion core local profile. `prc full codex` and
+selects the 40-assertion core local profile. `prc verify` selects that same
+core profile plus the exact bundled Gitleaks manifest in `verify-local` mode.
+It owns the bundled catalog, profile, execution mode, and adapter selection; it rejects AI and
+custom-adapter flags. The OCI plan always uses `--pull=never`, no network, a
+read-only root, removed capabilities, resource limits, and a sealed read-only
+snapshot, so the reviewed digest must already exist in Docker or Podman.
+`prc full codex` and
 `prc full claude` select the core profile plus advisory AI review of all 9,356
 reviewed nondeterministic controls. The 686 reviewed deterministic controls are
 never handed to AI for a verdict; supported exact programs use authoritative
 collectors and all other programs remain honestly Blocked. `full` uses deep review, four parallel provider
-batches, and one primary subagent per rule plus one independent skeptical
-subagent per batch. Codex full review also selects `xhigh` reasoning. `quick`
+batches, and requests one primary subagent per rule plus one independent skeptical
+subagent per batch. Provider output cannot independently attest those internal
+invocations, so orchestration is never treated as evidence. Codex full review
+also selects `xhigh` reasoning. `quick`
 rejects AI-provider flags, and both aliases reject a profile override so their
 meaning cannot be silently changed. Every mode still includes all 10,042
 controls in the complete report.
+
+`prc setup [project]` is the short first-run preflight. It validates the target
+and bundled catalog and reports optional provider availability without running
+project code, a provider, or a container. `prc report` opens the newest private
+scanner report; `prc report path` prints its path and `prc report list` lists
+bounded recent results. `prc update` is the only ordinary command that checks
+the npm registry; it never installs anything or runs in the background.
+
+`prc ci [project]` is a fixed, local-only alias for SARIF stdout with no HTML
+report. It rejects AI and output-format overrides. Its assessment exit code is
+unchanged; callers may use ordinary scan options such as a configuration or
+profile-independent evidence input, but must not weaken the release gate with
+`--exit-policy never`.
 
 Human output creates one detailed standalone HTML report by default. The file is
 created privately outside the target, its absolute path is printed, and an
@@ -89,6 +110,29 @@ disposition. Cited paths and lines are snapshot-location validated, while the
 AI claims remain explicitly `advisory_unverified`. Provider launch,
 timeout, secret-screening, or protocol failures return `4`. See
 [safe AI control review](ai-control-review.md).
+
+`prc full codex --plan` and `prc full claude --plan` perform the same source
+screening, control selection, and batching without resolving or starting the
+provider and without creating resume state. Full review defaults to a maximum
+of 1,500 batches and a 24-hour whole-run deadline. `--review-max-batches` and
+`--review-max-duration` may change those bounds within their validated ranges.
+They do not promise a token or whole-run money ceiling.
+
+The optional root `.prcreviewignore` file narrows remote AI context only. Each
+line is an exact `relative/file | reviewed reason`; directories, globs,
+traversal, missing files, symlinks, and files already omitted by remote-review
+safety rules are rejected. The file and every target remain in the local
+inventory. Accepted targets are rehashed before omission and appear as explicit
+sealed task limitations. This mechanism cannot change authoritative control
+results.
+
+The root `.prcignore` file is a narrow inventory escape hatch for reviewed
+non-source directories that would otherwise cross the size guard. It uses exact
+`relative/directory | reason` entries, never globs, and refuses unsafe paths,
+symlinks, missing directories, and directories containing recognized project
+source, configuration, deployment, CI, documentation, environment, or security
+files. Accepted omissions are explicit inventory facts and part of the scan
+identity; they are not evidence that omitted data is harmless.
 
 An advanced scan may import one offline deterministic evidence bundle with
 `--evidence-bundle`, `--evidence-trust-store`,

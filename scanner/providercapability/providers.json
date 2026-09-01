@@ -2,8 +2,20 @@
   "schema_version": "prc.provider-capabilities/v0.1",
   "capabilities": [
     {
+      "collector_id": "prc.collect.prc.36.002.c1@0.1",
+      "control_id": "PRC-36-002",
+      "clause_ordinal": 1,
+      "authority": "repository"
+    },
+    {
       "collector_id": "prc.collect.prc.36.004.c1@0.1",
       "control_id": "PRC-36-004",
+      "clause_ordinal": 1,
+      "authority": "repository"
+    },
+    {
+      "collector_id": "prc.collect.prc.36.005.c1@0.1",
+      "control_id": "PRC-36-005",
       "clause_ordinal": 1,
       "authority": "repository"
     }

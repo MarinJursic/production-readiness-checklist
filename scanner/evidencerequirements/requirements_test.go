@@ -14,7 +14,7 @@ func TestBuildExportsEveryExactClauseAndHonestCollectorCoverage(t *testing.T) {
 	}
 	if report.SchemaVersion != SchemaVersion || report.ExactControlCount != 686 || report.ExactClauseCount != 765 ||
 		report.SelectedControlCount != 686 || report.SelectedClauseCount != 765 ||
-		report.BuiltInCollectorCount != 1 || report.MissingCollectorCount != 764 ||
+		report.BuiltInCollectorCount != 3 || report.MissingCollectorCount != 762 ||
 		report.SignedImportRouteCount != 765 || len(report.Requirements) != 765 || len(report.Authorities) != 6 {
 		t.Fatalf("unexpected report summary: controls=%d clauses=%d selected_controls=%d selected_clauses=%d built_in=%d missing=%d imports=%d authorities=%d",
 			report.ExactControlCount, report.ExactClauseCount, report.SelectedControlCount, report.SelectedClauseCount,
@@ -48,8 +48,8 @@ func TestBuildFiltersMissingRepositoryCollectors(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if report.SelectedClauseCount != 25 || report.SelectedControlCount != 25 || report.BuiltInCollectorCount != 0 ||
-		report.MissingCollectorCount != 25 || report.SignedImportRouteCount != 25 || len(report.Authorities) != 1 ||
+	if report.SelectedClauseCount != 23 || report.SelectedControlCount != 23 || report.BuiltInCollectorCount != 0 ||
+		report.MissingCollectorCount != 23 || report.SignedImportRouteCount != 23 || len(report.Authorities) != 1 ||
 		report.Authorities[0].Name != "repository" {
 		t.Fatalf("unexpected repository filter report: %+v", report)
 	}

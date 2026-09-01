@@ -161,6 +161,14 @@ work, and plain text when output is redirected. The report separates:
 - controls that still need proof; and
 - inventory limits and exclusions.
 
+The large percentage is labeled as the applicable local-check pass rate, not a
+whole-project readiness grade. Categories with only one or two applicable checks
+are marked `Limited evidence`. The complete catalog is embedded as inert JSON
+and the browser creates only 25 matching control rows at a time. A restrictive
+Content Security Policy keeps the standalone report offline. Use `prc report`
+to reopen the newest report and `prc cache status` to inspect scanner-owned disk
+use without deleting anything.
+
 Reports can contain project names, paths, evidence summaries, and optional AI
 review text. Treat them as project data. Store them in a private location and do
 not upload them automatically.
@@ -172,6 +180,7 @@ through the scanner once, then use the short AI option:
 
 ```bash
 prc login codex
+prc full codex --plan
 prc full codex
 ```
 
@@ -185,6 +194,12 @@ temporary API-key environment variables and the longer
 full command deliberately selects deep review, four workers, and Codex `xhigh`
 reasoning. The advanced command keeps standard depth, one worker, and high
 reasoning unless you override those options.
+
+`--plan` performs the same source screening and batching without resolving or
+starting a provider and without creating resume data. It shows exact source
+bytes, omissions, controls, batches, workers, per-batch timeout, the default
+1,500-batch ceiling, and the default 24-hour total deadline. These are work
+bounds, not a guaranteed token or whole-run money limit.
 
 `full` reviews the 9,356 controls whose reviewed classification is
 nondeterministic. Every rule gets its own primary subagent. Deep mode adds one

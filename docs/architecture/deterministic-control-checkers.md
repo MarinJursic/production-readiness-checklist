@@ -16,8 +16,8 @@ pass-while-broken counterexample that must fail.
 The current validated corpus contains 686 deterministic controls and 765
 clauses. All 765 clauses have executable predicates and all four definition
 fixtures pass through the Go evaluator. This does not mean all 765 clauses have
-collectors. The runtime ships the first reviewed repository collector for
-`PRC-36-004`. It also accepts an offline, authority-scoped bundle for any exact
+collectors. The runtime ships three reviewed repository collectors for
+`PRC-36-002`, `PRC-36-004`, and `PRC-36-005`. It also accepts an offline, authority-scoped bundle for any exact
 template when two different trusted keys approve the two ordered subjects: one
 policy key signs programs and runtime inputs before collection, and one
 evidence-authority key signs the complete bundle after collection. This does
@@ -38,12 +38,20 @@ Run-state validation rejects missing, duplicate, unreferenced, or mismatched
 replay evidence. The HTML report keeps the normalized facts in a collapsed
 technical section.
 
-The first collector is intentionally narrow. It reopens the exact hashed
+The command collector is intentionally narrow. It reopens the exact hashed
 `package.json` and Markdown files without following links, rejects changed or
 oversized input and duplicate JSON keys, and recognizes public build and test
 invocations only inside Markdown code. It never runs either script. A supported
 positive case can Pass; missing, prose-only, malformed, oversized, changed, or
 unsupported evidence stays Blocked instead of becoming a guessed Fail.
+
+The two topic collectors use the same bounded, hash-verified Markdown corpus.
+They require exact headings and meaningful visible content for every topic
+sealed from the control statement. Fenced examples, comments, placeholders,
+aliases, invalid text, missing sections, and evidence available only beyond the bounded read window cannot create
+a Pass. The headings may live in any inventoried Markdown file, so the
+collector proves a narrow positive documentation fact without forcing folder
+names or a universal document layout.
 
 The generated `catalog/control-check-programs.json` contains the runtime form of
 those definitions. The loader authenticates the catalog against the reviewed

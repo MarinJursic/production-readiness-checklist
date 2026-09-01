@@ -155,6 +155,8 @@ type Options struct {
 	Workers                     int
 	Timeout                     time.Duration
 	MaxCostUSD                  float64
+	MaxBatches                  int
+	MaxDuration                 time.Duration
 	ControlIDs                  []string
 	Runner                      BatchRunner
 	Progress                    func(Progress)
@@ -176,4 +178,30 @@ type Summary struct {
 	EstimatedCostBatches int
 	MaxCostUSD           float64
 	Duration             time.Duration
+}
+
+// Preview is a no-provider-call preflight for an advisory review. It reports
+// the bounded source snapshot and exact amount of provider work before the user
+// allows a long or costly run to begin.
+type Preview struct {
+	SchemaVersion   string   `json:"schema_version"`
+	Provider        string   `json:"provider"`
+	Model           string   `json:"model,omitempty"`
+	ReviewDepth     string   `json:"review_depth"`
+	Workers         int      `json:"workers"`
+	Controls        int      `json:"controls"`
+	Batches         int      `json:"batches"`
+	BatchSize       int      `json:"batch_size"`
+	TimeoutPerBatch string   `json:"timeout_per_batch"`
+	MaximumBatches  int      `json:"maximum_batches"`
+	MaximumDuration string   `json:"maximum_duration"`
+	SourceFiles     int      `json:"source_files"`
+	SourceBytes     int64    `json:"source_bytes"`
+	OmittedFiles    int      `json:"omitted_files"`
+	ContextFiles    int      `json:"context_files_across_batches"`
+	ContextBytes    int64    `json:"context_bytes_across_batches"`
+	ContextLimited  int      `json:"context_limited_batches"`
+	MaxContextFiles int      `json:"maximum_context_files_per_batch"`
+	MaxContextBytes int      `json:"maximum_context_bytes_per_batch"`
+	Limitations     []string `json:"limitations"`
 }

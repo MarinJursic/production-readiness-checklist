@@ -126,7 +126,12 @@ func TestVerifiedBundleSurvivesFullRunHistoryReplay(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	run, err := engine.New(assertionCatalog).Scan("prc/core-repository", fixture.item)
+	scanner := engine.New(assertionCatalog)
+	// Keep the replay test inside the signed fixture's validity window. Using
+	// wall-clock time makes a permanent fixture expire and tests clock drift
+	// instead of history replay.
+	scanner.Now = func() time.Time { return fixture.verifiedAt }
+	run, err := scanner.Scan("prc/core-repository", fixture.item)
 	if err != nil {
 		t.Fatal(err)
 	}

@@ -3,6 +3,7 @@ package repositoryevidence
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"os"
 	"path/filepath"
 	"strings"
@@ -163,5 +164,26 @@ func TestDocumentedCommandsProviderBlocksOversizedDocumentation(t *testing.T) {
 	result := controlruntime.Evaluate(context.Background(), template, binding, registry, time.Now().UTC())
 	if result.Status != controlruntime.StatusBlockedEvidence {
 		t.Fatalf("oversized documentation status = %s", result.Status)
+	}
+}
+
+func TestDocumentedCommandsProviderCanProveEarlyEvidenceInALargeDocumentationRepository(t *testing.T) {
+	root := t.TempDir()
+	writeFixture(t, root, "package.json", `{"scripts":{"build":"node build.mjs","test":"node --test"}}`)
+	writeFixture(t, root, "README.md", "```sh\nnpm run build\nnpm test\n```\n")
+	for index := 0; index < maximumDocumentationFiles+20; index++ {
+		writeFixture(t, root, fmt.Sprintf("docs/archive/%04d.md", index), "Archived unrelated note.\n")
+	}
+	item, err := workspaceinventory.Build(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	provider, _ := NewDocumentedCommandsProvider(item)
+	registry, _ := controlruntime.NewRegistry(provider)
+	template := documentedCommandsTemplate(t)
+	binding, _ := Binding(item, template)
+	result := controlruntime.Evaluate(context.Background(), template, binding, registry, time.Now().UTC())
+	if result.Status != controlruntime.StatusPassed {
+		t.Fatalf("early positive evidence was blocked by unrelated documentation: %+v", result)
 	}
 }

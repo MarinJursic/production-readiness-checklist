@@ -15,10 +15,10 @@
   "template_count": 765,
   "predicate_defined_count": 765,
   "implementation_missing_count": 0,
-  "provider_capability_missing_count": 764,
-  "end_to_end_runnable_template_count": 1,
-  "end_to_end_runnable_control_count": 1,
-  "blocked_control_count": 685,
+  "provider_capability_missing_count": 762,
+  "end_to_end_runnable_template_count": 3,
+  "end_to_end_runnable_control_count": 3,
+  "blocked_control_count": 683,
   "classification_error_count": 0,
   "predicate_shape_counts": {
     "all": 745,
@@ -23119,9 +23119,9 @@
       "required_authority": "repository",
       "implementation_id": "prc.check.structured-document@0.1",
       "implementation_contract_sha256": "cd05c2c2c6cd7981722127c94b9e93e967fa72df62a99398fb0aacd77ad2d354",
-      "review_status": "predicate_defined_provider_unregistered",
+      "review_status": "predicate_defined_provider_registered",
       "predicate_defined": true,
-      "end_to_end_runnable": false,
+      "end_to_end_runnable": true,
       "predicate_shape": "all",
       "review_reason": "For PRC-36-002 clause 1, the executable decision for 'Architecture, data flow, dependencies, deployment, and recovery are documented.' is: Every independently required key is present with a direct nonempty parsed value. It evaluates the raw fields documented_topic_content with the exact operators all, map_keys_eq_set_parameter, string_map_all_nonempty. Scope and expected values are compiled from Exact required topic identities sealed from the control statement: architecture, data-flow, dependencies, deployment, recovery.; evidence collection cannot change them.",
       "counterexample_analysis": "A heading or key named recovery exists, but its content is empty; name presence alone cannot pass.",
@@ -23171,9 +23171,9 @@
         "normalization_contract": "For PRC-36-002 clause 1, emit only direct typed values for documented_topic_content; do not emit a compliance result, score, or semantic shortcut.",
         "completeness_contract": "For PRC-36-002 clause 1, any omitted key or value, parse error, permission gap, unsupported subject, or source conflict affecting documented_topic_content sets complete=false.",
         "freshness_contract": "For PRC-36-002 clause 1, bind every observation for documented_topic_content to the program maximum evidence age and the exact assessed revision.",
-        "provider_status": "unregistered"
+        "provider_status": "registered"
       },
-      "provider_capability_status": "unregistered",
+      "provider_capability_status": "registered",
       "runtime_requirements": {
         "subject_id": "inject_at_runtime",
         "subjects": "inject_complete_bounded_inventory_at_runtime",
@@ -23185,11 +23185,11 @@
         "sealed_parameters_bound_by": "program_sha256",
         "evidence_provider_may_supply_parameters": false,
         "provider_registration": "required_before_evidence",
-        "provider_claimed": false,
-        "domain_evidence_collector": "not_shipped_or_registered",
+        "provider_claimed": true,
+        "domain_evidence_collector": "shipped_and_registered",
         "missing_capability_result": "blocked"
       },
-      "template_sha256": "be6c62d60f99b5c13a380d77d962e57f9ca67fceed3451bc74ca1784db8e3b8a"
+      "template_sha256": "b7c0fdb02be69ef06ba49b372db4b87785355568ff0575fe4e35b77b3357de22"
     },
     {
       "template_id": "aac4c07665f4d73b5610fef18194c6687829615e1e91da38720f4a70e9831ee0",
@@ -23293,9 +23293,9 @@
       "required_authority": "repository",
       "implementation_id": "prc.check.structured-document@0.1",
       "implementation_contract_sha256": "cd05c2c2c6cd7981722127c94b9e93e967fa72df62a99398fb0aacd77ad2d354",
-      "review_status": "predicate_defined_provider_unregistered",
+      "review_status": "predicate_defined_provider_registered",
       "predicate_defined": true,
-      "end_to_end_runnable": false,
+      "end_to_end_runnable": true,
       "predicate_shape": "all",
       "review_reason": "For PRC-36-005 clause 1, the executable decision for 'Coding, review, testing, and release conventions are documented.' is: Every independently required key is present with a direct nonempty parsed value. It evaluates the raw fields documented_convention_content with the exact operators all, map_keys_eq_set_parameter, string_map_all_nonempty. Scope and expected values are compiled from Exact required topic identities sealed from the control statement: coding, review, testing, release.; evidence collection cannot change them.",
       "counterexample_analysis": "A heading or key named release exists, but its content is empty; name presence alone cannot pass.",
@@ -23345,9 +23345,9 @@
         "normalization_contract": "For PRC-36-005 clause 1, emit only direct typed values for documented_convention_content; do not emit a compliance result, score, or semantic shortcut.",
         "completeness_contract": "For PRC-36-005 clause 1, any omitted key or value, parse error, permission gap, unsupported subject, or source conflict affecting documented_convention_content sets complete=false.",
         "freshness_contract": "For PRC-36-005 clause 1, bind every observation for documented_convention_content to the program maximum evidence age and the exact assessed revision.",
-        "provider_status": "unregistered"
+        "provider_status": "registered"
       },
-      "provider_capability_status": "unregistered",
+      "provider_capability_status": "registered",
       "runtime_requirements": {
         "subject_id": "inject_at_runtime",
         "subjects": "inject_complete_bounded_inventory_at_runtime",
@@ -23359,11 +23359,11 @@
         "sealed_parameters_bound_by": "program_sha256",
         "evidence_provider_may_supply_parameters": false,
         "provider_registration": "required_before_evidence",
-        "provider_claimed": false,
-        "domain_evidence_collector": "not_shipped_or_registered",
+        "provider_claimed": true,
+        "domain_evidence_collector": "shipped_and_registered",
         "missing_capability_result": "blocked"
       },
-      "template_sha256": "f67b2d6b433539a93d74b47362e3ad131a6b127d26e6d96070a4cfcf31d2e6cd"
+      "template_sha256": "8020e0aa8c360922d8f98f51d56693c0cf887e5471e6b9d9ee95f9e730866f14"
     },
     {
       "template_id": "3da0d88cf703a1a2aba1b816c8def969c1ce051a83b2d3661477ac74fade806e",
@@ -108695,5 +108695,5 @@
       "template_sha256": "d7aa6ca694cc8de418a90465f26f07a07d92a26a2f29f4ed237f9cca8c964a3c"
     }
   ],
-  "catalog_sha256": "5fafae9bd54642c51bbdf069d4fbbfc5c200fe6ff2ca71183e35498c84a74e68"
+  "catalog_sha256": "926fdcc0652902a0295ad56776a20de1a24c3bc1cb55f91e7452ceff74e17f68"
 }

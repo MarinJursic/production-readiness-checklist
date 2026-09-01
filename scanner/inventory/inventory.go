@@ -30,15 +30,18 @@ const (
 	maxGitReferenceBytes   = 4 * 1024
 	maxPackedRefsBytes     = 8 * 1024 * 1024
 	maxGitStatusBytes      = 32 * 1024 * 1024
+	maxIgnoreFileBytes     = 64 * 1024
+	maxUserExclusions      = 100
 	gitInspectionTimeout   = 10 * time.Second
 )
 
-const detectorVersion = "0.4"
+const detectorVersion = "0.6"
 
 var (
 	kubernetesAPIVersion = regexp.MustCompile(`(?m)^apiVersion:[[:space:]]*[^[:space:]#]+`)
 	kubernetesKind       = regexp.MustCompile(`(?m)^kind:[[:space:]]*[^[:space:]#]+`)
 	openAPIYAMLMarker    = regexp.MustCompile(`(?m)^openapi[ \t]*:[ \t]*["']?3\.`)
+	mkdocsSiteDirectory  = regexp.MustCompile(`(?m)^[ \t]*(?:site_dir|["']site_dir["'])[ \t]*:`)
 	gitCommitPattern     = regexp.MustCompile(`^[0-9a-f]{40}(?:[0-9a-f]{24})?$`)
 )
 
@@ -103,8 +106,34 @@ func directoryExclusion(path string, entry fs.DirEntry) (string, bool) {
 			directoryMarker(filepath.Join(path, "lcov-report")) {
 			return "Coverage-tool markers identify this directory as generated test output.", true
 		}
+	case "site":
+		if mkdocsUsesDefaultSiteDirectory(parent) {
+			return "The root MkDocs configuration identifies this as the default generated documentation site.", true
+		}
 	}
 	return "", false
+}
+
+func mkdocsUsesDefaultSiteDirectory(root string) bool {
+	for _, name := range []string{"mkdocs.yml", "mkdocs.yaml"} {
+		path := filepath.Join(root, name)
+		info, err := os.Lstat(path)
+		if os.IsNotExist(err) {
+			continue
+		}
+		if err != nil || !info.Mode().IsRegular() || info.Mode()&os.ModeSymlink != 0 || info.Size() > maxIgnoreFileBytes {
+			return false
+		}
+		_, data, err := inspectFile(path, name, true, maxIgnoreFileBytes)
+		if err != nil {
+			return false
+		}
+		// MkDocs writes to `site` when site_dir is absent. If a project sets
+		// site_dir explicitly, leave the directory in scope instead of trying
+		// to interpret YAML aliases, tags, or environment substitutions here.
+		return !mkdocsSiteDirectory.Match(data)
+	}
+	return false
 }
 
 func regularMarker(path string) bool {
@@ -119,14 +148,14 @@ func directoryMarker(path string) bool {
 
 func inventoryFileLimitError(root, path string, size int64) error {
 	return fmt.Errorf(
-		"inventory stopped at %q: file size %s exceeds the %s inventory limit per file; target is %q. Run prc scan from the exact project root and remove generated or unrelated large files from that target",
+		"inventory stopped at %q: file size %s exceeds the %s inventory limit per file; target is %q. Run prc from the exact project root, or put a reviewed non-source directory in .prcignore as `relative/path | reason`",
 		inventoryRelativePath(root, path), formatInventoryBytes(size), formatInventoryBytes(maxInventoryFileBytes), root,
 	)
 }
 
 func inventoryTotalLimitError(root, path string, counted, next int64) error {
 	return fmt.Errorf(
-		"inventory stopped at %q after counting %s: adding the next %s file would exceed the %s total inventory limit; target is %q. Run prc scan from the exact project root, for example prc scan /path/to/project, and remove generated or unrelated large data from that target",
+		"inventory stopped at %q after counting %s: adding the next %s file would exceed the %s total inventory limit; target is %q. Run prc from the exact project root, or put a reviewed non-source directory in .prcignore as `relative/path | reason`",
 		inventoryRelativePath(root, path), formatInventoryBytes(counted), formatInventoryBytes(next),
 		formatInventoryBytes(maxInventoryTotalBytes), root,
 	)
@@ -159,10 +188,23 @@ func formatInventoryBytes(value int64) string {
 }
 
 var sourceExtensions = map[string]bool{
-	".c": true, ".cc": true, ".cpp": true, ".cs": true, ".go": true,
-	".java": true, ".js": true, ".jsx": true, ".kt": true, ".php": true,
-	".py": true, ".rb": true, ".rs": true, ".scala": true, ".sh": true,
-	".swift": true, ".ts": true, ".tsx": true,
+	".astro": true, ".bash": true, ".c": true, ".cc": true, ".cjs": true, ".clj": true,
+	".cljc": true, ".cljs": true, ".cpp": true, ".cs": true, ".css": true, ".cxx": true,
+	".dart": true, ".erl": true, ".ex": true, ".exs": true, ".fish": true, ".fs": true,
+	".fsx": true, ".go": true, ".gradle": true, ".graphql": true, ".groovy": true,
+	".gql": true, ".h": true, ".hh": true, ".hpp": true, ".hrl": true, ".htm": true,
+	".html": true, ".java": true, ".jl": true, ".js": true, ".jsx": true, ".kt": true,
+	".kts": true, ".less": true, ".lua": true, ".m": true, ".mjs": true, ".mm": true,
+	".move": true, ".php": true, ".pl": true, ".pm": true, ".proto": true, ".ps1": true,
+	".py": true, ".r": true, ".rb": true, ".rs": true, ".sass": true, ".scala": true,
+	".scss": true, ".sh": true, ".sol": true, ".sql": true, ".svelte": true, ".swift": true,
+	".ts": true, ".tsx": true, ".vb": true, ".vue": true, ".zig": true, ".zsh": true,
+}
+
+var projectDefinitionExtensions = map[string]bool{
+	".cfg": true, ".conf": true, ".ini": true, ".json": true, ".lock": true,
+	".mk": true, ".properties": true, ".rst": true, ".sum": true, ".tf": true,
+	".toml": true, ".xml": true, ".yaml": true, ".yml": true,
 }
 
 func IsSourcePath(path string) bool {
@@ -216,6 +258,119 @@ type digestInput struct {
 	DeclaredScope     *model.DeclaredScope          `json:"declared_scope,omitempty"`
 }
 
+type userExclusion struct {
+	Path   string
+	Reason string
+}
+
+func loadUserExclusions(root string) (map[string]userExclusion, error) {
+	path := filepath.Join(root, ".prcignore")
+	info, err := os.Lstat(path)
+	if os.IsNotExist(err) {
+		return map[string]userExclusion{}, nil
+	}
+	if err != nil {
+		return nil, fmt.Errorf("inspect .prcignore: %w", err)
+	}
+	if !info.Mode().IsRegular() || info.Mode()&os.ModeSymlink != 0 {
+		return nil, fmt.Errorf(".prcignore must be a regular file inside the target")
+	}
+	if info.Size() > maxIgnoreFileBytes {
+		return nil, fmt.Errorf(".prcignore exceeds the %d-byte limit", maxIgnoreFileBytes)
+	}
+	_, data, err := inspectFile(path, ".prcignore", true, maxIgnoreFileBytes)
+	if err != nil {
+		return nil, err
+	}
+	result := map[string]userExclusion{}
+	scanner := bufio.NewScanner(bytes.NewReader(data))
+	for line := 1; scanner.Scan(); line++ {
+		value := strings.TrimSpace(scanner.Text())
+		if value == "" || strings.HasPrefix(value, "#") {
+			continue
+		}
+		parts := strings.SplitN(value, "|", 2)
+		if len(parts) != 2 {
+			return nil, fmt.Errorf(".prcignore line %d must use `relative/directory | reviewed reason`", line)
+		}
+		relative := strings.TrimSpace(parts[0])
+		reason := strings.Join(strings.Fields(parts[1]), " ")
+		if relative == "" || filepath.IsAbs(relative) || strings.Contains(relative, `\`) ||
+			filepath.ToSlash(filepath.Clean(filepath.FromSlash(relative))) != relative || relative == "." ||
+			relative == ".." || strings.HasPrefix(relative, "../") {
+			return nil, fmt.Errorf(".prcignore line %d contains an unsafe path %q", line, relative)
+		}
+		if len(reason) < 10 || len(reason) > 300 {
+			return nil, fmt.Errorf(".prcignore line %d requires a 10-300 character reviewed reason", line)
+		}
+		if _, exists := result[relative]; exists {
+			return nil, fmt.Errorf(".prcignore repeats %q", relative)
+		}
+		if len(result) >= maxUserExclusions {
+			return nil, fmt.Errorf(".prcignore exceeds the %d-entry limit", maxUserExclusions)
+		}
+		result[relative] = userExclusion{Path: relative, Reason: reason}
+	}
+	if err := scanner.Err(); err != nil {
+		return nil, fmt.Errorf("read .prcignore: %w", err)
+	}
+	return result, nil
+}
+
+func validateUserExclusion(root string, exclusion userExclusion) error {
+	path := filepath.Join(root, filepath.FromSlash(exclusion.Path))
+	info, err := os.Lstat(path)
+	if err != nil {
+		return fmt.Errorf(".prcignore path %q is unavailable: %w", exclusion.Path, err)
+	}
+	if !info.IsDir() || info.Mode()&os.ModeSymlink != 0 {
+		return fmt.Errorf(".prcignore path %q must name a real directory", exclusion.Path)
+	}
+	entries := 0
+	err = filepath.WalkDir(path, func(candidate string, entry fs.DirEntry, walkErr error) error {
+		if walkErr != nil {
+			return walkErr
+		}
+		if candidate == path {
+			return nil
+		}
+		entries++
+		if entries > maxEntries {
+			return fmt.Errorf("contains more than %d entries and cannot be reviewed safely", maxEntries)
+		}
+		if entry.Type()&os.ModeSymlink != 0 {
+			relative, _ := filepath.Rel(root, candidate)
+			return fmt.Errorf("contains symbolic link %q; symlink targets cannot be approved as omitted non-source files", filepath.ToSlash(relative))
+		}
+		if entry.IsDir() {
+			if _, automatic := excludedDirectories[entry.Name()]; automatic {
+				return filepath.SkipDir
+			}
+			return nil
+		}
+		name := strings.ToLower(entry.Name())
+		relative, _ := filepath.Rel(root, candidate)
+		relative = filepath.ToSlash(relative)
+		extension := strings.ToLower(filepath.Ext(name))
+		_, manifest := manifests[entry.Name()]
+		importantName := manifest || lockFiles[entry.Name()] || isContainerFile(entry.Name()) ||
+			name == "readme" || strings.HasPrefix(name, "readme.") || name == "license" || strings.HasPrefix(name, "license.") ||
+			name == "security.md" || name == "production-readiness.yaml" || name == ".env" || strings.HasPrefix(name, ".env.") ||
+			name == "makefile" || name == "justfile" || name == "procfile" || name == "rakefile" ||
+			name == "cmakelists.txt" || name == "gemfile" || name == "go.work" || name == ".gitignore"
+		importantPath := strings.HasPrefix(relative, ".github/workflows/")
+		importantType := IsSourcePath(name) || projectDefinitionExtensions[extension] || extension == ".md"
+		if importantName || importantPath || importantType {
+			return fmt.Errorf("contains reviewable project file %q", relative)
+		}
+		return nil
+	})
+	if err != nil {
+		return fmt.Errorf("refuse .prcignore exclusion %q: %w", exclusion.Path, err)
+	}
+	return nil
+}
+
 func Build(target string) (model.Inventory, error) {
 	root, err := filepath.Abs(target)
 	if err != nil {
@@ -230,6 +385,21 @@ func Build(target string) (model.Inventory, error) {
 	}
 	if resolved, err := filepath.EvalSymlinks(root); err == nil {
 		root = resolved
+	}
+	userExclusions, err := loadUserExclusions(root)
+	if err != nil {
+		return model.Inventory{}, err
+	}
+	exclusionPaths := make([]string, 0, len(userExclusions))
+	for path := range userExclusions {
+		exclusionPaths = append(exclusionPaths, path)
+	}
+	sort.Strings(exclusionPaths)
+	for _, path := range exclusionPaths {
+		exclusion := userExclusions[path]
+		if err := validateUserExclusion(root, exclusion); err != nil {
+			return model.Inventory{}, err
+		}
 	}
 
 	result := model.Inventory{
@@ -268,6 +438,7 @@ func Build(target string) (model.Inventory, error) {
 		})
 	}
 	visitedEntries := 0
+	seenUserExclusions := map[string]bool{}
 	var totalBytes int64
 	err = filepath.WalkDir(root, func(path string, entry fs.DirEntry, walkErr error) error {
 		if walkErr != nil {
@@ -280,11 +451,28 @@ func Build(target string) (model.Inventory, error) {
 		if visitedEntries > maxEntries {
 			return fmt.Errorf("target exceeds %d filesystem entries", maxEntries)
 		}
-		if reason, excluded := directoryExclusion(path, entry); excluded {
-			relative, relativeErr := filepath.Rel(root, path)
-			if relativeErr != nil {
-				return relativeErr
+		relative, relativeErr := filepath.Rel(root, path)
+		if relativeErr != nil {
+			return relativeErr
+		}
+		relative = filepath.ToSlash(relative)
+		if exclusion, excluded := userExclusions[relative]; excluded {
+			if !entry.IsDir() {
+				return fmt.Errorf(".prcignore path %q changed from a directory during inventory", relative)
 			}
+			// Review again immediately before skipping. The first validation gives
+			// stable, sorted errors for missing paths; this second validation narrows
+			// the window in which files could be added after that review.
+			if err := validateUserExclusion(root, exclusion); err != nil {
+				return err
+			}
+			seenUserExclusions[relative] = true
+			addFact("repository.user_exclusion", exclusion.Reason, relative, "prc.inventory.user-exclusion", 1,
+				"Entries below this reviewed non-source directory were not counted or hashed.",
+				"The exclusion is part of the inventory digest and must not be treated as proof about omitted artifacts.")
+			return filepath.SkipDir
+		}
+		if reason, excluded := directoryExclusion(path, entry); excluded {
 			addFact("repository.exclusion", reason, filepath.ToSlash(relative), "prc.inventory.exclusion", 1,
 				"Entries below this directory were not counted or hashed.")
 			return filepath.SkipDir
@@ -316,11 +504,6 @@ func Build(target string) (model.Inventory, error) {
 		if entryInfo.Size() > maxInventoryTotalBytes-totalBytes {
 			return inventoryTotalLimitError(root, path, totalBytes, entryInfo.Size())
 		}
-		relative, err := filepath.Rel(root, path)
-		if err != nil {
-			return err
-		}
-		relative = filepath.ToSlash(relative)
 		name := entry.Name()
 		structuredCandidate := isYAML(name) || isOpenAPIFileName(name)
 		fileRecord, structuredData, err := inspectFile(
@@ -387,6 +570,11 @@ func Build(target string) (model.Inventory, error) {
 	})
 	if err != nil {
 		return model.Inventory{}, err
+	}
+	for _, path := range exclusionPaths {
+		if !seenUserExclusions[path] {
+			return model.Inventory{}, fmt.Errorf(".prcignore path %q is hidden below an automatically excluded directory; remove the redundant entry", path)
+		}
 	}
 	sort.Slice(result.Files, func(i, j int) bool { return result.Files[i].Path < result.Files[j].Path })
 	sort.Strings(result.Manifests)

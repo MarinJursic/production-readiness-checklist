@@ -255,7 +255,7 @@ func TestCheckedInTaskAndProviderFixtures(t *testing.T) {
 		t.Fatal(err)
 	}
 	if resealed.TaskID != task.TaskID || resealed.WorkspaceInventoryDigest != task.WorkspaceInventoryDigest {
-		t.Fatalf("checked-in task is stale for its workspace: task=%s resealed=%s", task.TaskID, resealed.TaskID)
+		t.Fatalf("checked-in task is stale for its workspace: task=%s resealed=%s inventory=%s files=%+v facts=%+v", task.TaskID, resealed.TaskID, inventory.Digest, inventory.Files, inventory.Facts)
 	}
 	valid, err := os.ReadFile(filepath.Join(root, "fixtures", "providers", "valid-output.json"))
 	if err != nil {

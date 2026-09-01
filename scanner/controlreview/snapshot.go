@@ -1,6 +1,7 @@
 package controlreview
 
 import (
+	"bufio"
 	"bytes"
 	"crypto/sha256"
 	"encoding/hex"
@@ -18,6 +19,9 @@ import (
 const (
 	maximumSnapshotFileBytes  = 2 * 1024 * 1024
 	maximumSnapshotTotalBytes = 128 * 1024 * 1024
+	maximumReviewIgnoreBytes  = 64 * 1024
+	maximumReviewIgnoreFiles  = 100
+	reviewIgnoreName          = ".prcreviewignore"
 )
 
 var reviewExtensions = map[string]bool{
@@ -42,6 +46,13 @@ type reviewSnapshot struct {
 	Contents    map[string][]byte
 	Digests     map[string]string
 	Limitations []string
+	Bytes       int64
+	Omitted     int
+}
+
+type reviewExclusion struct {
+	Path   string
+	Reason string
 }
 
 func createSnapshot(inventory model.Inventory) (reviewSnapshot, error) {
@@ -60,6 +71,10 @@ func createSnapshot(inventory model.Inventory) (reviewSnapshot, error) {
 		Directory: directory, LineCounts: map[string]int{}, Paths: []string{},
 		Contents: map[string][]byte{}, Digests: map[string]string{}, Limitations: []string{},
 	}
+	exclusions, err := loadReviewExclusions(inventory)
+	if err != nil {
+		return cleanup(err)
+	}
 	omitted := map[string]int{}
 	total := int64(0)
 	for _, record := range inventory.Files {
@@ -70,6 +85,19 @@ func createSnapshot(inventory model.Inventory) (reviewSnapshot, error) {
 		}
 		if record.Size > maximumSnapshotFileBytes {
 			omitted["larger than the 2 MiB per-file remote-review limit"]++
+			continue
+		}
+		if exclusion, excluded := exclusions[record.Path]; excluded {
+			// Reopen and hash the exact inventoried file immediately before
+			// omitting it. The bytes stay local, but a changed path cannot use
+			// the ignore file to widen the remote-review snapshot unnoticed.
+			if _, err := readInventoryFile(inventory.Root, record); err != nil {
+				return cleanup(err)
+			}
+			result.Omitted++
+			result.Limitations = append(result.Limitations, fmt.Sprintf(
+				"Remote AI review intentionally omitted %q: %s", exclusion.Path, exclusion.Reason,
+			))
 			continue
 		}
 		if total+record.Size > maximumSnapshotTotalBytes {
@@ -108,11 +136,85 @@ func createSnapshot(inventory model.Inventory) (reviewSnapshot, error) {
 		total += record.Size
 	}
 	for reason, count := range omitted {
+		result.Omitted += count
 		result.Limitations = append(result.Limitations, fmt.Sprintf(
 			"The scanner omitted %d inventoried file(s) from remote review because they were %s.", count, reason,
 		))
 	}
+	result.Bytes = total
 	result.Limitations = uniqueSorted(result.Limitations)
+	return result, nil
+}
+
+// loadReviewExclusions reads an optional, inventoried root file that limits
+// only what may be sent to a remote AI reviewer. It does not remove files from
+// the local inventory, local checks, adapters, or authoritative evidence.
+// Entries are exact regular-file paths; globs and directories are rejected so
+// every omission remains visible and reviewable.
+func loadReviewExclusions(inventory model.Inventory) (map[string]reviewExclusion, error) {
+	records := make(map[string]model.FileRecord, len(inventory.Files))
+	var config *model.FileRecord
+	for index := range inventory.Files {
+		record := inventory.Files[index]
+		records[record.Path] = record
+		if record.Path == reviewIgnoreName {
+			candidate := record
+			config = &candidate
+		}
+	}
+	if config == nil {
+		return map[string]reviewExclusion{}, nil
+	}
+	if config.Size > maximumReviewIgnoreBytes {
+		return nil, fmt.Errorf("%s exceeds the %d-byte limit", reviewIgnoreName, maximumReviewIgnoreBytes)
+	}
+	data, err := readInventoryFile(inventory.Root, *config)
+	if err != nil {
+		return nil, fmt.Errorf("read %s: %w", reviewIgnoreName, err)
+	}
+	result := map[string]reviewExclusion{}
+	scanner := bufio.NewScanner(bytes.NewReader(data))
+	for line := 1; scanner.Scan(); line++ {
+		value := strings.TrimSpace(scanner.Text())
+		if value == "" || strings.HasPrefix(value, "#") {
+			continue
+		}
+		parts := strings.SplitN(value, "|", 2)
+		if len(parts) != 2 {
+			return nil, fmt.Errorf("%s line %d must use `relative/file | reviewed reason`", reviewIgnoreName, line)
+		}
+		relative := strings.TrimSpace(parts[0])
+		reason := strings.Join(strings.Fields(parts[1]), " ")
+		if relative == "" || relative == reviewIgnoreName || filepath.IsAbs(relative) ||
+			strings.Contains(relative, `\`) || filepath.ToSlash(filepath.Clean(filepath.FromSlash(relative))) != relative ||
+			relative == "." || relative == ".." || strings.HasPrefix(relative, "../") {
+			return nil, fmt.Errorf("%s line %d contains an unsafe file path %q", reviewIgnoreName, line, relative)
+		}
+		if len(reason) < 10 || len(reason) > 300 {
+			return nil, fmt.Errorf("%s line %d requires a 10-300 character reviewed reason", reviewIgnoreName, line)
+		}
+		if _, exists := result[relative]; exists {
+			return nil, fmt.Errorf("%s repeats %q", reviewIgnoreName, relative)
+		}
+		if len(result) >= maximumReviewIgnoreFiles {
+			return nil, fmt.Errorf("%s exceeds the %d-entry limit", reviewIgnoreName, maximumReviewIgnoreFiles)
+		}
+		record, exists := records[relative]
+		if !exists {
+			return nil, fmt.Errorf("%s path %q is not an inventoried regular file", reviewIgnoreName, relative)
+		}
+		candidate, candidateReason := remoteReviewCandidate(record.Path)
+		if !candidate {
+			return nil, fmt.Errorf("%s path %q is already omitted because it is %s", reviewIgnoreName, relative, candidateReason)
+		}
+		if record.Size > maximumSnapshotFileBytes {
+			return nil, fmt.Errorf("%s path %q is already omitted because it exceeds the 2 MiB per-file remote-review limit", reviewIgnoreName, relative)
+		}
+		result[relative] = reviewExclusion{Path: relative, Reason: reason}
+	}
+	if err := scanner.Err(); err != nil {
+		return nil, fmt.Errorf("read %s: %w", reviewIgnoreName, err)
+	}
 	return result, nil
 }
 

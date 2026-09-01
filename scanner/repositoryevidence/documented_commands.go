@@ -11,8 +11,6 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	"path/filepath"
-	"sort"
 	"strings"
 	"time"
 
@@ -106,31 +104,27 @@ func (provider *DocumentedCommandsProvider) Collect(ctx context.Context, request
 }
 
 func (provider *DocumentedCommandsProvider) findDocumentedCommands(ctx context.Context) (map[string]string, bool, error) {
-	paths := make([]string, 0)
-	total := int64(0)
-	for _, file := range provider.inventory.Files {
-		extension := strings.ToLower(filepath.Ext(file.Path))
-		if extension != ".md" && extension != ".markdown" && extension != ".mdx" {
-			continue
-		}
-		if file.Size > maximumDocumentationFileBytes || len(paths) == maximumDocumentationFiles || total+file.Size > maximumDocumentationBytes {
-			return nil, false, nil
-		}
-		paths = append(paths, file.Path)
-		total += file.Size
-	}
-	if len(paths) == 0 {
-		return nil, false, nil
-	}
-	sort.Strings(paths)
 	result := map[string]string{}
-	for _, relative := range paths {
+	readFiles, readBytes := 0, int64(0)
+	for _, record := range documentationRecords(provider.inventory) {
+		if result["build-command"] != "" && result["test-command"] != "" {
+			return result, true, nil
+		}
 		if err := ctx.Err(); err != nil {
 			return nil, false, err
 		}
-		data, err := workspaceinventory.ReadVerifiedFile(provider.inventory, relative, maximumDocumentationFileBytes)
+		if record.Size > maximumDocumentationFileBytes || readFiles >= maximumDocumentationFiles ||
+			readBytes+record.Size > maximumDocumentationBytes {
+			continue
+		}
+		data, err := workspaceinventory.ReadVerifiedFile(provider.inventory, record.Path, maximumDocumentationFileBytes)
 		if err != nil {
-			return nil, false, fmt.Errorf("read inventoried documentation %s: %w", relative, err)
+			return nil, false, fmt.Errorf("read inventoried documentation %s: %w", record.Path, err)
+		}
+		readFiles++
+		readBytes += record.Size
+		if !validDocumentationText(data) {
+			continue
 		}
 		for _, command := range markdownCodeCommands(string(data)) {
 			if _, exists := result["build-command"]; !exists && matchesInvocation(command, buildInvocations) {
@@ -141,7 +135,7 @@ func (provider *DocumentedCommandsProvider) findDocumentedCommands(ctx context.C
 			}
 		}
 	}
-	return result, true, nil
+	return result, result["build-command"] != "" && result["test-command"] != "", nil
 }
 
 var buildInvocations = []string{
@@ -155,6 +149,9 @@ var testInvocations = []string{
 // Binding returns the scanner-owned scope and the exact statement-derived
 // parameter set for the one collector implemented by this package.
 func Binding(item model.Inventory, template controlprogramcatalog.Template) (controlprogramcatalog.RuntimeBinding, bool) {
+	if binding, ok := documentedTopicsBinding(item, template); ok {
+		return binding, true
+	}
 	if item.Digest == "" || template.ControlID != documentedCommandsControlID || template.ClauseOrdinal != 1 ||
 		template.CollectorContract.CollectorID != DocumentedCommandsCollectorID {
 		return controlprogramcatalog.RuntimeBinding{}, false
@@ -181,7 +178,15 @@ func EvaluateSupported(ctx context.Context, catalog *controlprogramcatalog.Catal
 	if err != nil {
 		return nil, err
 	}
-	registry, err := controlruntime.NewRegistry(provider)
+	topicProviders, err := NewDocumentedTopicsProviders(item)
+	if err != nil {
+		return nil, err
+	}
+	providers := []controlruntime.Provider{provider}
+	for _, topicProvider := range topicProviders {
+		providers = append(providers, topicProvider)
+	}
+	registry, err := controlruntime.NewRegistry(providers...)
 	if err != nil {
 		return nil, err
 	}

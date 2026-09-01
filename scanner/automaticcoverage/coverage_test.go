@@ -20,7 +20,7 @@ func TestReportKeepsCollectionSeparateFromImportCompatibility(t *testing.T) {
 		reportValue.ReviewedRoutingControlCount != 10_042 || reportValue.DeterministicControlCount != 686 ||
 		reportValue.NondeterministicControlCount != 9_356 || reportValue.ExactClauseCount != 765 ||
 		reportValue.AdvisoryAIReviewControlCount != 9_356 ||
-		reportValue.ExactPredicateClauseCount != 765 || reportValue.BuiltInCollectorClauseCount != 1 ||
+		reportValue.ExactPredicateClauseCount != 765 || reportValue.BuiltInCollectorClauseCount != 3 ||
 		reportValue.SignedImportSupportedClauseCount != 765 || len(reportValue.Authorities) != 6 {
 		t.Fatalf("automatic coverage = %+v", reportValue)
 	}

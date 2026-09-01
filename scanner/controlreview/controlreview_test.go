@@ -4,8 +4,10 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
+	"fmt"
 	"os"
 	"path/filepath"
+	"sort"
 	"strings"
 	"testing"
 	"time"
@@ -160,6 +162,65 @@ func TestApplyReviewsControlsWithoutChangingAuthoritativeDispositionAndResumes(t
 	}
 }
 
+func TestPreviewScreensAndBatchesWithoutProviderOrResumeState(t *testing.T) {
+	target := t.TempDir()
+	write := func(relative, content string) {
+		path := filepath.Join(target, relative)
+		if err := os.MkdirAll(filepath.Dir(path), 0o755); err != nil {
+			t.Fatal(err)
+		}
+		if err := os.WriteFile(path, []byte(content), 0o600); err != nil {
+			t.Fatal(err)
+		}
+	}
+	write("README.md", "# Example\n\nSmall, safe context.\n")
+	item, err := inventory.Build(target)
+	if err != nil {
+		t.Fatal(err)
+	}
+	run := model.RunResult{
+		SchemaVersion: model.RunSchema, RunID: strings.Repeat("0", 64), Inventory: item,
+		ControlCatalog: &model.ControlCatalogSummary{
+			RegistrySHA256: strings.Repeat("a", 64), ActiveControlCount: 2,
+			ReviewedNondeterministicCount: 2,
+		},
+		ControlResults: []model.ControlResult{
+			contractedControl("PRC-01-001", "The layout fits the project.", 1, "needs_review", "nondeterministic_advisory", "none", "Review needed."),
+			contractedControl("PRC-01-002", "Ownership is clear.", 2, "needs_review", "nondeterministic_advisory", "none", "Review needed."),
+		},
+		Results: []model.AssertionResult{}, Findings: []model.Finding{}, AdapterExecutions: []model.AdapterExecution{},
+	}
+	run, err = fullscan.Reidentify(run)
+	if err != nil {
+		t.Fatal(err)
+	}
+	stateDirectory := filepath.Join(t.TempDir(), "must-not-exist")
+	preview, err := BuildPreview(context.Background(), run, Options{
+		Provider: "codex", ReasoningEffort: "high", ReviewDepth: "deep",
+		StateDirectory: stateDirectory, AllowRemoteSourceProcessing: true,
+		BatchSize: 1, Workers: 2, Timeout: time.Minute, MaxBatches: 2, MaxDuration: time.Hour,
+		Runner: &failingRunner{},
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if preview.Controls != 2 || preview.Batches != 2 || preview.SourceFiles != 1 || preview.SourceBytes == 0 ||
+		preview.MaximumBatches != 2 || preview.MaximumDuration != "1h0m0s" {
+		t.Fatalf("preview = %+v", preview)
+	}
+	if _, err := os.Stat(stateDirectory); !os.IsNotExist(err) {
+		t.Fatalf("preview created resume state: %v", err)
+	}
+
+	_, err = BuildPreview(context.Background(), run, Options{
+		Provider: "codex", ReasoningEffort: "high", AllowRemoteSourceProcessing: true,
+		BatchSize: 1, Workers: 1, Timeout: time.Minute, MaxBatches: 1, MaxDuration: time.Hour,
+	})
+	if err == nil || !strings.Contains(err.Error(), "2 batches") || !strings.Contains(err.Error(), "maximum of 1") {
+		t.Fatalf("preview did not enforce the batch ceiling: %v", err)
+	}
+}
+
 func TestApplyReturnsAndResumesASealedPartialReviewAfterBatchFailure(t *testing.T) {
 	target := t.TempDir()
 	if err := os.WriteFile(filepath.Join(target, "README.md"), []byte("# Example\n"), 0o600); err != nil {
@@ -235,6 +296,98 @@ func TestSnapshotStopsBeforeRemoteReviewWithoutEchoingSecret(t *testing.T) {
 	_, err = createSnapshot(item)
 	if !errors.Is(err, provider.ErrSensitiveInput) || strings.Contains(err.Error(), secret) || !strings.Contains(err.Error(), "app.go") {
 		t.Fatalf("secret preflight error was unsafe or unclear: %v", err)
+	}
+}
+
+func TestReviewIgnoreOmitsOnlyAnExactInventoriedFileAndKeepsLocalInventory(t *testing.T) {
+	target := t.TempDir()
+	fakeCredential := "postgres://operator:credential@database.example/app"
+	write := func(relative, content string) {
+		path := filepath.Join(target, filepath.FromSlash(relative))
+		if err := os.MkdirAll(filepath.Dir(path), 0o755); err != nil {
+			t.Fatal(err)
+		}
+		if err := os.WriteFile(path, []byte(content), 0o600); err != nil {
+			t.Fatal(err)
+		}
+	}
+	write("README.md", "# Safe context\n")
+	write("fixtures/provider_test.go", "package fixtures\nvar fake = \""+fakeCredential+"\"\n")
+	write(reviewIgnoreName, "fixtures/provider_test.go | Contains a fake credential-shaped value used to test local screening.\n")
+	item, err := inventory.Build(target)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(item.Files) != 3 {
+		t.Fatalf("remote-only exclusion changed the local inventory: %+v", item.Files)
+	}
+	snapshot, err := createSnapshot(item)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer os.RemoveAll(snapshot.Directory)
+	if _, exists := snapshot.Contents["fixtures/provider_test.go"]; exists ||
+		!strings.Contains(strings.Join(snapshot.Limitations, "\n"), "fixtures/provider_test.go") ||
+		!strings.Contains(strings.Join(snapshot.Limitations, "\n"), "fake credential-shaped") || snapshot.Omitted < 2 {
+		t.Fatalf("review omission was not explicit and bounded: %+v", snapshot)
+	}
+	if _, exists := snapshot.Contents["README.md"]; !exists {
+		t.Fatal("safe context was unexpectedly omitted")
+	}
+}
+
+func TestReviewIgnoreRejectsUnsafeRedundantOrMissingEntries(t *testing.T) {
+	for name, line := range map[string]string{
+		"traversal":        "../outside.go | This path must not escape the project root.\n",
+		"missing":          "missing.go | This exact file does not exist in the inventory.\n",
+		"directory":        "fixtures | Directories and globs must never be accepted here.\n",
+		"sensitive-name":   ".env | Sensitive names are already excluded from remote review.\n",
+		"unsupported-type": "archive.bin | Binary names are already excluded from remote review.\n",
+	} {
+		t.Run(name, func(t *testing.T) {
+			target := t.TempDir()
+			if err := os.Mkdir(filepath.Join(target, "fixtures"), 0o700); err != nil {
+				t.Fatal(err)
+			}
+			for _, file := range []string{".env", "archive.bin"} {
+				if err := os.WriteFile(filepath.Join(target, file), []byte("safe fixture\n"), 0o600); err != nil {
+					t.Fatal(err)
+				}
+			}
+			if err := os.WriteFile(filepath.Join(target, reviewIgnoreName), []byte(line), 0o600); err != nil {
+				t.Fatal(err)
+			}
+			item, err := inventory.Build(target)
+			if err != nil {
+				t.Fatal(err)
+			}
+			if _, err := createSnapshot(item); err == nil || !strings.Contains(err.Error(), reviewIgnoreName) {
+				t.Fatalf("unsafe review exclusion was accepted: %v", err)
+			}
+		})
+	}
+}
+
+func TestReviewIgnoreCannotHideFileDriftAfterInventory(t *testing.T) {
+	target := t.TempDir()
+	path := filepath.Join(target, "fixture.go")
+	if err := os.WriteFile(path, []byte("package fixture\n"), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(filepath.Join(target, reviewIgnoreName), []byte(
+		"fixture.go | This synthetic file is intentionally kept out of remote advice.\n",
+	), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	item, err := inventory.Build(target)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(path, []byte("package changed\n"), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := createSnapshot(item); err == nil || !strings.Contains(err.Error(), "no longer matches") {
+		t.Fatalf("changed ignored file was accepted: %v", err)
 	}
 }
 
@@ -387,6 +540,37 @@ func TestContextExcerptCentersRelevantLateContentAndPreservesUTF8(t *testing.T) 
 	}
 }
 
+func TestContextIndexAvoidsCommonWordFloodAndKeepsPayloadBounded(t *testing.T) {
+	snapshot := reviewSnapshot{
+		Paths: []string{"README.md", "docs/rollback.md"},
+		Contents: map[string][]byte{
+			"README.md":        []byte("Every project should have current explicit documentation.\n"),
+			"docs/rollback.md": []byte(strings.Repeat("background\n", 10_000) + "Rollback recovery procedure\n"),
+		},
+		Digests: map[string]string{},
+	}
+	for index := 0; index < 30; index++ {
+		path := filepath.ToSlash(filepath.Join("notes", fmt.Sprintf("common-%02d.txt", index)))
+		snapshot.Paths = append(snapshot.Paths, path)
+		snapshot.Contents[path] = []byte("Every project must use this current explicit record.\n")
+	}
+	sort.Strings(snapshot.Paths)
+	controls := []model.ControlResult{{Statement: "A rollback recovery procedure is documented."}}
+	indexes := buildContextIndexes(controls, 8, snapshot)
+	files, limitations := selectContext(snapshot, indexes[0], nil)
+	if len(files) != 2 || files[0].Path != "docs/rollback.md" || files[1].Path != "README.md" {
+		t.Fatalf("common words flooded relevant context: files=%+v limitations=%v", files, limitations)
+	}
+	total := 0
+	for _, file := range files {
+		total += len(file.Content)
+	}
+	if len(files) > maximumContextFiles || total > maximumContextTotal || len(files[0].Content) > maximumContextFileBytes ||
+		!strings.Contains(files[0].Content, "Rollback recovery procedure") {
+		t.Fatalf("context bounds or centered excerpt failed: files=%d total=%d first=%+v", len(files), total, files[0])
+	}
+}
+
 func TestClaudeRejectsUnsupportedXHighEffort(t *testing.T) {
 	options := Options{Provider: "claude", ReasoningEffort: "xhigh", AllowRemoteSourceProcessing: true}
 	if err := normalizeOptions(&options); err == nil || !strings.Contains(err.Error(), "Codex-only") {
@@ -398,7 +582,8 @@ func TestRunPendingBatchesStopsSchedulingAfterFailure(t *testing.T) {
 	tasks := []Task{{TaskID: "one"}, {TaskID: "two"}, {TaskID: "three"}}
 	runner := &failingRunner{}
 	_, err := runPendingBatches(
-		context.Background(), runner, tasks, []int{0, 1, 2}, make([]Output, len(tasks)),
+		context.Background(), runner, func(index int) (Task, error) { return tasks[index], nil },
+		[]int{0, 1, 2}, make([]Output, len(tasks)),
 		t.TempDir(), 1, nil, Progress{}, time.Now(),
 	)
 	if err == nil || runner.calls != 1 {
@@ -573,6 +758,27 @@ func TestCodexTokenUsageParsesBoundedJSONLEvents(t *testing.T) {
 		`{"type":"turn.completed","usage":{"input_tokens":1,"cached_input_tokens":2,"output_tokens":0,"reasoning_output_tokens":0}}`,
 	)); err == nil {
 		t.Fatal("impossible cached token usage was accepted")
+	}
+}
+
+func TestTaskCanDiscloseTheDocumentedMaximumReviewExclusions(t *testing.T) {
+	task := sealedTestTask(t, "codex", "safe context\n")
+	task.SnapshotLimitations = make([]string, maximumReviewIgnoreFiles)
+	for index := range task.SnapshotLimitations {
+		task.SnapshotLimitations[index] = fmt.Sprintf(
+			"Remote AI review intentionally omitted %q: reviewed synthetic fixture %d",
+			fmt.Sprintf("fixtures/example-%03d.go", index), index,
+		)
+	}
+	if _, err := sealTask(task); err != nil {
+		t.Fatalf("the documented review-exclusion maximum could not be sealed: %v", err)
+	}
+	task.SnapshotLimitations = make([]string, maximumTaskLimitations+1)
+	for index := range task.SnapshotLimitations {
+		task.SnapshotLimitations[index] = "bounded limitation"
+	}
+	if _, err := sealTask(task); err == nil {
+		t.Fatal("an oversized limitation list was accepted")
 	}
 }
 
