@@ -2697,7 +2697,7 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 		}
 	} else if *format == "human" {
 		style := newTerminalStyle(*colorMode, stdout)
-		printScanSummary(stdout, run, reviewSummary, style, writtenReport, *details || *reviewDetails)
+		printScanSummary(stdout, run, reviewSummary, style, writtenReport, *details, *details || *reviewDetails)
 	} else if err := report.Write(*format, stdout, run); err != nil {
 		return exitInternal, exitError(exitInternal, err)
 	}
@@ -3013,7 +3013,7 @@ func reorderInterspersedFlags(set *flag.FlagSet, args []string) []string {
 
 func printScanSummary(
 	output io.Writer, run model.RunResult, reviewSummary controlreview.Summary,
-	style terminalStyle, writtenReport string, showDetails bool,
+	style terminalStyle, writtenReport string, showLocalDetails, showReviewDetails bool,
 ) {
 	local := report.SummarizeLocalChecks(run)
 	tone := terminalToneColor(local.Tone)
@@ -3026,7 +3026,7 @@ func printScanSummary(
 	fmt.Fprintf(output, "  ╰─ %s\n", local.Explanation)
 	attention := sortedScanAttention(run.Results)
 	printTerminalSection(output, style, "LOCAL CHECKS")
-	if showDetails {
+	if showLocalDetails {
 		fmt.Fprintf(output, "  Every local check · %d total\n\n", len(run.Results))
 		for _, result := range run.Results {
 			fmt.Fprintf(output, "  %s  %s  %s\n", assessmentLabel(result.Assessment, result.Execution, style),
@@ -3061,7 +3061,7 @@ func printScanSummary(
 		}
 	}
 
-	printAIReviewResults(output, run, reviewSummary, style, showDetails)
+	printAIReviewResults(output, run, reviewSummary, style, showReviewDetails)
 
 	printTerminalSection(output, style, "COVERAGE")
 	fmt.Fprintf(output, "  Local checks  %d total · %d applicable · %d not needed\n",

@@ -206,7 +206,7 @@ func TestFinalScanSummaryIsActionableAndOrdered(t *testing.T) {
 		ControlResults: []model.ControlResult{{Disposition: "needs_review"}, {Disposition: "confirmed_failure"}},
 	}
 	var output bytes.Buffer
-	printScanSummary(&output, run, controlreview.Summary{}, terminalStyle{}, "/reports/sample.html", false)
+	printScanSummary(&output, run, controlreview.Summary{}, terminalStyle{}, "/reports/sample.html", false, false)
 	text := output.String()
 	for _, expected := range []string{"SCAN RESULT", "LOCAL CHECKS", "COVERAGE", "REPORT", "/reports/sample.html", "Open it for every check", "no project scripts run"} {
 		if !strings.Contains(text, expected) {
@@ -226,9 +226,32 @@ func TestFinalScanSummaryIsActionableAndOrdered(t *testing.T) {
 	}
 
 	output.Reset()
-	printScanSummary(&output, run, controlreview.Summary{}, terminalStyle{}, "/reports/sample.html", true)
+	printScanSummary(&output, run, controlreview.Summary{}, terminalStyle{}, "/reports/sample.html", true, true)
 	if !strings.Contains(output.String(), "Every local check") || !strings.Contains(output.String(), "PRC-PASS") {
 		t.Fatalf("detailed output omitted a passing local check: %s", output.String())
+	}
+}
+
+func TestReviewDetailsDoNotExpandLocalChecks(t *testing.T) {
+	run := model.RunResult{
+		Plan:      model.Plan{ProfileID: "prc/full", ProfileVersion: "1.0"},
+		Inventory: model.Inventory{TargetName: "sample-app", Digest: "digest"},
+		Results: []model.AssertionResult{{
+			AssertionID: "PRC-PASS", Assessment: "pass", Execution: "completed", Severity: "high", Summary: "Passed.",
+		}},
+		ControlResults: []model.ControlResult{{
+			ControlID: "PRC-AI-001",
+			AIReview: &model.AIControlReview{AssessmentCandidate: "advisory_pass_candidate", Priority: "low", Advice: "Looks ready."},
+		}},
+	}
+	var output bytes.Buffer
+	printScanSummary(&output, run, controlreview.Summary{Provider: "codex", ReviewedControls: 1}, terminalStyle{}, "", false, true)
+	text := output.String()
+	if strings.Contains(text, "PRC-PASS") || strings.Contains(text, "Every local check") {
+		t.Fatalf("AI-only review details expanded local checks: %s", text)
+	}
+	if !strings.Contains(text, "PRC-AI-001") {
+		t.Fatalf("AI-only review details omitted the advisory review: %s", text)
 	}
 }
 
@@ -239,7 +262,7 @@ func TestFinalScanSummaryMakesInteractiveReportPathClickable(t *testing.T) {
 	}
 	reportPath := filepath.Join(t.TempDir(), "readiness report.html")
 	var output bytes.Buffer
-	printScanSummary(&output, run, controlreview.Summary{}, terminalStyle{hyperlink: true}, reportPath, false)
+	printScanSummary(&output, run, controlreview.Summary{}, terminalStyle{hyperlink: true}, reportPath, false, false)
 	text := output.String()
 	if !strings.Contains(text, "\x1b]8;;file://") || !strings.Contains(text, "%20") ||
 		!strings.Contains(text, reportPath) || !strings.Contains(text, "Click to open") {
@@ -257,7 +280,7 @@ func TestFinalScanSummaryPointsBlockedCoreSecretCheckToSafeShortcut(t *testing.T
 		}},
 	}
 	var output bytes.Buffer
-	printScanSummary(&output, run, controlreview.Summary{}, terminalStyle{}, "", false)
+	printScanSummary(&output, run, controlreview.Summary{}, terminalStyle{}, "", false, false)
 	if !strings.Contains(output.String(), "Run `prc verify`") || !strings.Contains(output.String(), "must already be local") {
 		t.Fatalf("blocked secret check omitted the safe next step: %s", output.String())
 	}
