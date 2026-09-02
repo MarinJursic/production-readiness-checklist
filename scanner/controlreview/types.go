@@ -122,9 +122,14 @@ type Progress struct {
 	Phase                string
 	Provider             string
 	Model                string
+	ReasoningEffort      string
 	ReviewDepth          string
 	StateDirectory       string
 	Workers              int
+	ActiveBatches        int
+	ActiveAgentSlots     int
+	TotalAgentSlots      int
+	CompletedAgentSlots  int
 	TotalBatches         int
 	CompletedBatches     int
 	ReusedBatches        int
@@ -136,6 +141,16 @@ type Progress struct {
 	EstimatedCostBatches int
 	MaxCostUSD           float64
 	Elapsed              time.Duration
+	RecentReviews        []ReviewProgress
+}
+
+// ReviewProgress is a small, terminal-safe view of a completed advisory
+// review. The full reasoning and evidence remain in the report.
+type ReviewProgress struct {
+	ControlID           string
+	AssessmentCandidate string
+	Priority            string
+	Advice              string
 }
 
 type BatchRunner interface {

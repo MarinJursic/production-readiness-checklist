@@ -22,8 +22,9 @@ const (
 )
 
 type terminalStyle struct {
-	color     bool
-	hyperlink bool
+	color       bool
+	hyperlink   bool
+	interactive bool
 }
 
 func newTerminalStyle(mode string, output io.Writer) terminalStyle {
@@ -35,7 +36,7 @@ func newTerminalStyle(mode string, output io.Writer) terminalStyle {
 		information, err := file.Stat()
 		interactive = err == nil && information.Mode()&os.ModeCharDevice != 0
 	}
-	style := terminalStyle{hyperlink: interactive}
+	style := terminalStyle{hyperlink: interactive, interactive: interactive}
 	if os.Getenv("NO_COLOR") != "" {
 		return style
 	}
@@ -145,6 +146,34 @@ func printProductBanner(output io.Writer, style terminalStyle) {
 	fmt.Fprintln(output, "  │        ╰──────╯                                                    │")
 	fmt.Fprintln(output, style.paint(ansiBlue, "  ╰────────────────────────────────────────────────────────────────────╯"))
 	fmt.Fprintln(output)
+}
+
+func printAuthenticationStart(output io.Writer, style terminalStyle, providerName string) {
+	title := authenticationProviderTitle(providerName)
+	label := fmt.Sprintf("%-47s", "CONNECT "+strings.ToUpper(title))
+	fmt.Fprintln(output, style.paint(ansiBlue, "  ╭────────────────────────────────────────────────────────────────────╮"))
+	fmt.Fprintln(output, "  │          ╭────╮                                                    │")
+	fmt.Fprintf(output, "  │         ╱  %s   ╲   %s│\n",
+		style.paint(ansiCyan, "●"), style.paint(ansiCyan, label))
+	fmt.Fprintln(output, "  │        │   │    │  Private sign-in for optional AI review.         │")
+	fmt.Fprintln(output, "  │         ╲  │   ╱   Your normal provider settings stay separate.   │")
+	fmt.Fprintln(output, "  │          ╰─┼──╯                                                    │")
+	fmt.Fprintln(output, "  │            ╰──────── official browser sign-in                      │")
+	fmt.Fprintln(output, style.paint(ansiBlue, "  ╰────────────────────────────────────────────────────────────────────╯"))
+	fmt.Fprintln(output)
+	fmt.Fprintf(output, "  %s Opening the official %s sign-in flow...\n", style.paint(ansiBlue, "→"), title)
+	fmt.Fprintln(output, "  Finish in your browser, then return here. PRC will check the result.")
+	fmt.Fprintln(output)
+}
+
+func printAuthenticationSuccess(output io.Writer, style terminalStyle, providerName string) {
+	title := authenticationProviderTitle(providerName)
+	fmt.Fprintln(output)
+	fmt.Fprintln(output, style.paint(ansiGreen, "  ╭─ CONNECTED"))
+	fmt.Fprintf(output, "  │ %s %s is ready for PRC reviews.\n", style.paint(ansiGreen, "✓"), title)
+	fmt.Fprintln(output, "  │ Login is kept in PRC's private provider folder.")
+	fmt.Fprintln(output, "  │ Preview: prc full "+providerName+" --plan")
+	fmt.Fprintln(output, "  ╰─ Start:   prc full "+providerName)
 }
 
 // terminalText makes untrusted repository text one printable terminal line.

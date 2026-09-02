@@ -8,6 +8,15 @@ The project follows [Semantic Versioning](https://semver.org/) for published rel
 
 ### Added
 
+- A clearer provider-login panel, compact live AI review bar with active
+  top-level jobs, requested reviewer slots, elapsed time, rough ETA, and
+  completed-batch token or cost updates. The final terminal now has distinct
+  result, local-check, AI, coverage, and report sections without repeating
+  passing checks; `--details` expands every local and completed AI result.
+- A Codex structured-output compatibility preflight and safe extraction of the
+  provider's structured failure reason. The bundled review schema now follows
+  Codex's strict required-field and supported-keyword rules.
+
 - Short first-run and everyday commands: `prc setup`, `prc report`,
   `prc update`, `prc cache`, shell completions, and a local-only `prc ci`
   SARIF preset. Update checks are explicit and cache deletion always requires a

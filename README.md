@@ -229,7 +229,7 @@ When running a source build that is not on `PATH`, use the same commands with th
 ./prc
 ```
 
-The command accepts options before or after the project path. The terminal shows every deterministic result with a word and symbol. On a real terminal, Pass is green and Fail is red; redirected and machine output has no color:
+The command accepts options before or after the project path. The default terminal view stays short: it shows the score, the highest-priority local problems, AI review totals when used, coverage, and the report path. Passing and not-needed checks are not repeated in the default view. Run `prc scan --details`, `prc quick --details`, or `prc full codex --details` to print every local check and every completed AI review. On a real terminal, Pass is green and Fail is red; redirected and machine output has no color:
 
 ```text
   ╭────────────────────────────────────────────────────╮
@@ -237,39 +237,27 @@ The command accepts options before or after the project path. The terminal shows
   │     Know what's ready and what still needs work.   │
   ╰────────────────────────────────────────────────────╯
 
-Production Readiness Checklist X.Y.Z
-
-Run: 91c2…
-Profile: prc/core-repository@1.0
-Target: example-api (4c0e…)
-Mode: scan only — no fixes and no project scripts
-
-Checking 40 deterministic assertions...
-
-  ✓ PASS     PRC-A-CORE-001  Observed README.md.
-  ✗ FAIL     PRC-A-CORE-007  No supported lock file was found for node.
-  ! BLOCKED  PRC-A-CORE-013  The optional analysis was not authorized.
-  ? MANUAL   PRC-A-CORE-012  An accountable reviewer must supply evidence.
-
-  ╭─ SCAN COMPLETE
-  │ Needs work
-  │ ██████████████████░░ 93% · 37/40 applicable checks passed
-  │ 1 failed · 1 unresolved · 1 manual · 0 not applicable
+  ╭─ SCAN RESULT
+  │ Needs work · 93%
+  │ ███████████████░ 37/40 applicable checks passed
+  │ 37 passed · 1 failed · 1 unresolved · 1 manual · 0 not needed
   ╰─ One or more required local checks failed.
 
-Needs attention
+── LOCAL CHECKS ──────────────────────────────────────────
+  3 checks need attention · showing the highest priority
+
   ✗ FAIL     HIGH     PRC-A-CORE-007  No supported lock file was found for node.
   ! BLOCKED  MEDIUM   PRC-A-CORE-013  The optional analysis was not authorized.
   ? MANUAL   LOW      PRC-A-CORE-012  An accountable reviewer must supply evidence.
 
-Coverage
-  Local checks     40 total · 37 passed · 3 need attention · 0 did not apply
-  Full catalog     10042/10042 included · 10020 need evidence or review
+── COVERAGE ────────────────────────────────────────────
+  Local checks  40 total · 40 applicable · 0 not needed
+  Full catalog  10042/10042 included · 10020 need evidence or review
 
-Report
-  Detailed report: /Users/you/Library/Caches/prc/reports/example-api-91c2….html
-  Click the report path to open remediation steps, evidence, category scores, and all controls.
-  Scan mode: report only; no fixes were applied. No project scripts were run.
+── REPORT ──────────────────────────────────────────────
+  /Users/you/Library/Caches/prc/reports/example-api-91c2….html
+  Click to open every check, finding, category score, and next step.
+  Read-only scan · no fixes applied · no project scripts run
 ```
 
 Click the reported path in a supported terminal to open the HTML file in your browser; in other terminals, run `prc report`. The first screen shows the project, one large **local-check pass rate**, the local gate result, and four counts: passed, failed, review, and not needed. It does not label that narrow percentage as proof that the whole project is ready. Smaller category circles come next, followed by verified problems sorted from critical to informational. A category with only one or two applicable checks is labeled **Limited evidence**, even when those checks pass. Each problem begins as a compact, severity-colored row; open it to see the full reason and suggested next action. Scoring notes, passed checks, raw evidence, long file lists, IDs, scan metadata, and the complete 10,042-control catalog stay behind clearly labeled details. The full catalog stays as compact data until its search section is opened, and only 25 matching rows are drawn at a time, so the browser does not start with thousands of openable elements. `needs_review` means the scanner has not proved the broad rule. `partially_verified` means linked narrow checks passed; it is still not a complete Pass. Reports are private and stored outside the scanned project by default, so creating one does not change the project being scanned. The cache keeps the five newest default reports and removes older scanner-generated reports; a path supplied with `--report` is never pruned.
@@ -370,7 +358,7 @@ prc full claude --plan
 prc full claude
 ```
 
-`prc auth` shows login status and `prc logout codex` or `prc logout claude` clears the scanner's saved login. These commands use each provider's official sign-in flow. The scanner stores that login in a private scanner-only directory, separate from the provider's normal configuration, plugins, instructions, and sessions. Existing supported API-key environment variables remain an alternative.
+`prc auth` shows login status and `prc logout codex` or `prc logout claude` clears the scanner's saved login. Login opens with a clear terminal panel, explains the browser handoff, and ends with the preview and scan commands. These commands use each provider's official sign-in flow. The scanner stores that login in a private scanner-only directory, separate from the provider's normal configuration, plugins, instructions, and sessions. Existing supported API-key environment variables remain an alternative.
 
 `--plan` performs the same source screening and control batching but does not
 resolve or start the provider and does not create resume data. It shows the
@@ -406,11 +394,21 @@ Completed batches are saved outside the target and reused when the same scan
 resumes. If a later batch fails, the scanner writes a clearly marked partial
 report containing every completed, schema-checked result before it returns the
 execution error. Run the same command again to reuse those batches and
-continue. The terminal shows the plan, bounded progress, elapsed time, cached
-work, and new Codex token totals or Claude cost estimates when the provider
-reports them. This can take a long time and use many tokens. AI results cannot
-create a verified Pass, verified Fail, or final Not Applicable decision, and
-they cannot modify the project.
+continue. The live terminal view shows the percent complete, batches and rules
+finished, exact active top-level provider jobs, requested inner reviewers,
+elapsed time, a rough ETA, cached work, and Codex token totals or Claude cost
+estimates. Token and cost totals update after a batch finishes because that is
+when the provider reports them; provider output does not expose a trustworthy
+live state for each inner subagent. At the end, the terminal lists the eight
+highest-priority rule reviews with plain `WORK`, `PROOF`, `OKAY`, and `N/A?`
+labels. Run `prc full codex --details` or `prc full claude --details` to print
+every completed rule review; the HTML report always contains all details.
+
+The scanner validates the Codex output schema locally before starting any
+provider work and includes a short, terminal-safe provider reason when Codex
+returns a structured error. This can take a long time and use many tokens. AI
+results cannot create a verified Pass, verified Fail, or final Not Applicable
+decision, and they cannot modify the project.
 
 Advanced options such as reviewing one control, changing effort, or setting a Claude cost limit remain available in the [safe AI control review](docs/scanner/ai-control-review.md).
 

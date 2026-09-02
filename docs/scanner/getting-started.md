@@ -19,8 +19,8 @@ different directory, `prc quick` for an 18-check screen, or `prc full codex`
 for the core scan plus advisory AI review of all 9,356 reviewed nondeterministic
 controls. `prc full claude` selects Claude Code instead. The commands do not fix
 files or execute project code. They print a summary and create a private,
-standalone HTML report outside the target. Click the exact path printed as
-`Detailed report:` in a supported terminal, or open the same plain path normally,
+standalone HTML report outside the target. Click the exact path in the final
+`REPORT` section in a supported terminal, or open the same plain path normally,
 to review verified findings and every incomplete or manual result. `quick` still includes every
 control in that report; it only runs fewer local assertions.
 

@@ -90,7 +90,7 @@ func runAuthentication(operation string, args []string, stdin io.Reader, stdout,
 	command.Stdout = stdout
 	command.Stderr = stderr
 	if operation == "login" {
-		fmt.Fprintf(stdout, "Signing in to %s with its official CLI...\n", authenticationProviderTitle(providerName))
+		printAuthenticationStart(stdout, newTerminalStyle("auto", stdout), providerName)
 	}
 	if err := command.Run(); err != nil {
 		return exitError(exitExecution, fmt.Errorf("%s %s failed: %w", providerName, operation, err))
@@ -99,8 +99,7 @@ func runAuthentication(operation string, args []string, stdin io.Reader, stdout,
 		if err := provider.MarkStoredAuthentication(providerName); err != nil {
 			return exitError(exitInternal, err)
 		}
-		fmt.Fprintf(stdout, "Ready. Preview the work with: prc full %s --plan\n", providerName)
-		fmt.Fprintf(stdout, "Start it with: prc full %s\n", providerName)
+		printAuthenticationSuccess(stdout, newTerminalStyle("auto", stdout), providerName)
 	} else if operation == "logout" {
 		if err := provider.ClearStoredAuthentication(providerName); err != nil {
 			return exitError(exitInternal, err)
