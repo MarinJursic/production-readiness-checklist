@@ -277,8 +277,9 @@ similar states keep the missing decision or evidence visible.
 The safe end of a normal run is therefore a report, not an automatic rewrite:
 
 ```text
-Scan mode: report only; no fixes were applied.
-Detailed report: /private/path/example-api-91c2....html
+── REPORT ────────────────────────────────────────────────
+  /private/path/example-api-91c2....html
+  Read-only scan · no fixes applied · no project scripts run
 ```
 
 Open that file, start with red failures and no-go findings, then review yellow

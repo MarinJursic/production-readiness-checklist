@@ -110,6 +110,8 @@ func Apply(ctx context.Context, run model.RunResult, options Options) (model.Run
 	reused := 0
 	totalControls := 0
 	reusedControls := 0
+	totalAgentSlots := 0
+	reusedAgentSlots := 0
 	pending := make([]int, 0, builder.count())
 	controlTaskIDs := make(map[string]string, len(builder.controls))
 	for index := 0; index < builder.count(); index++ {
@@ -118,6 +120,8 @@ func Apply(ctx context.Context, run model.RunResult, options Options) (model.Run
 			return model.RunResult{}, Summary{}, buildErr
 		}
 		totalControls += len(task.Controls)
+		agentSlots := taskAgentSlots(task)
+		totalAgentSlots += agentSlots
 		for _, control := range task.Controls {
 			controlTaskIDs[control.ControlID] = task.TaskID
 		}
@@ -129,14 +133,16 @@ func Apply(ctx context.Context, run model.RunResult, options Options) (model.Run
 			outputs[index] = cached
 			reused++
 			reusedControls += len(task.Controls)
+			reusedAgentSlots += agentSlots
 		} else {
 			pending = append(pending, index)
 		}
 	}
 	baseProgress := Progress{
 		Phase: "prepared", Provider: options.Provider, Model: options.Model,
-		ReviewDepth:    options.ReviewDepth,
+		ReasoningEffort: options.ReasoningEffort, ReviewDepth: options.ReviewDepth,
 		StateDirectory: stateDirectory, Workers: options.Workers,
+		TotalAgentSlots: totalAgentSlots, CompletedAgentSlots: reusedAgentSlots,
 		TotalBatches: builder.count(), CompletedBatches: reused, ReusedBatches: reused,
 		TotalControls: totalControls, CompletedControls: reusedControls,
 		MaxCostUSD: options.MaxCostUSD, Elapsed: time.Since(started),
@@ -797,10 +803,21 @@ type batchRunStatistics struct {
 	EstimatedCostBatches int
 }
 
+func taskAgentSlots(task Task) int {
+	count := len(task.Controls)
+	if task.RequireBatchSkeptic {
+		count++
+	}
+	return count
+}
+
 func runPendingBatches(
 	ctx context.Context, runner BatchRunner, buildTask func(int) (Task, error), pending []int, outputs []Output,
 	stateDirectory string, workers int, progress func(Progress), base Progress, started time.Time,
 ) (batchRunStatistics, error) {
+	if len(pending) == 0 {
+		return batchRunStatistics{}, nil
+	}
 	workContext, cancel := context.WithCancel(ctx)
 	defer cancel()
 	jobs := make(chan int)
@@ -808,6 +825,30 @@ func runPendingBatches(
 	var lock sync.Mutex
 	var firstErr error
 	statistics := batchRunStatistics{}
+	activeBatches := 0
+	activeAgentSlots := 0
+	completedAgentSlots := 0
+	progressSnapshot := func(phase string, recent []ReviewProgress) Progress {
+		current := base
+		current.Phase = phase
+		current.ActiveBatches = activeBatches
+		current.ActiveAgentSlots = activeAgentSlots
+		current.CompletedAgentSlots += completedAgentSlots
+		current.CompletedBatches += statistics.CompletedBatches
+		current.CompletedControls += statistics.CompletedControls
+		current.TokenUsage = statistics.TokenUsage
+		current.TokenUsageBatches = statistics.TokenUsageBatches
+		current.EstimatedCostUSD = statistics.EstimatedCostUSD
+		current.EstimatedCostBatches = statistics.EstimatedCostBatches
+		current.Elapsed = time.Since(started)
+		current.RecentReviews = append([]ReviewProgress(nil), recent...)
+		return current
+	}
+	emit := func(phase string, recent []ReviewProgress) {
+		if progress != nil {
+			progress(progressSnapshot(phase, recent))
+		}
+	}
 	worker := func() {
 		defer wait.Done()
 		for index := range jobs {
@@ -817,7 +858,14 @@ func runPendingBatches(
 			task, err := buildTask(index)
 			var output Output
 			var execution Execution
+			agentSlots := 0
 			if err == nil {
+				agentSlots = taskAgentSlots(task)
+				lock.Lock()
+				activeBatches++
+				activeAgentSlots += agentSlots
+				emit("batch_started", nil)
+				lock.Unlock()
 				output, execution, err = runner.Run(workContext, task)
 			}
 			if err == nil {
@@ -828,6 +876,10 @@ func runPendingBatches(
 				err = storeCachedOutput(stateDirectory, output)
 			}
 			lock.Lock()
+			if agentSlots > 0 {
+				activeBatches--
+				activeAgentSlots -= agentSlots
+			}
 			if err != nil && firstErr == nil {
 				batchID := fmt.Sprintf("index-%d", index)
 				if task.TaskID != "" {
@@ -835,10 +887,12 @@ func runPendingBatches(
 				}
 				firstErr = fmt.Errorf("AI review batch %s failed: %w", batchID, err)
 				cancel()
+				emit("batch_failed", nil)
 			} else if err == nil {
 				outputs[index] = output
 				statistics.CompletedBatches++
 				statistics.CompletedControls += len(task.Controls)
+				completedAgentSlots += agentSlots
 				if execution.TokenUsageKnown {
 					if usageErr := addTokenUsage(&statistics.TokenUsage, execution.TokenUsage); usageErr != nil {
 						firstErr = usageErr
@@ -855,21 +909,41 @@ func runPendingBatches(
 						statistics.EstimatedCostBatches++
 					}
 				}
-				if firstErr == nil && progress != nil {
-					current := base
-					current.Phase = "batch_completed"
-					current.CompletedBatches += statistics.CompletedBatches
-					current.CompletedControls += statistics.CompletedControls
-					current.TokenUsage = statistics.TokenUsage
-					current.TokenUsageBatches = statistics.TokenUsageBatches
-					current.EstimatedCostUSD = statistics.EstimatedCostUSD
-					current.EstimatedCostBatches = statistics.EstimatedCostBatches
-					current.Elapsed = time.Since(started)
-					progress(current)
+				if firstErr == nil {
+					recent := make([]ReviewProgress, 0, len(output.Reviews))
+					for _, review := range output.Reviews {
+						recent = append(recent, ReviewProgress{
+							ControlID: review.ControlID, AssessmentCandidate: review.AssessmentCandidate,
+							Priority: review.Priority, Advice: review.Advice,
+						})
+					}
+					emit("batch_completed", recent)
 				}
 			}
 			lock.Unlock()
 		}
+	}
+	var heartbeat sync.WaitGroup
+	heartbeatDone := make(chan struct{})
+	if progress != nil {
+		heartbeat.Add(1)
+		go func() {
+			defer heartbeat.Done()
+			ticker := time.NewTicker(time.Second)
+			defer ticker.Stop()
+			for {
+				select {
+				case <-ticker.C:
+					lock.Lock()
+					if firstErr == nil && activeBatches > 0 {
+						emit("running", nil)
+					}
+					lock.Unlock()
+				case <-heartbeatDone:
+					return
+				}
+			}
+		}()
 	}
 	for range min(workers, len(pending)) {
 		wait.Add(1)
@@ -888,6 +962,8 @@ enqueue:
 	}
 	close(jobs)
 	wait.Wait()
+	close(heartbeatDone)
+	heartbeat.Wait()
 	if firstErr != nil {
 		return statistics, firstErr
 	}

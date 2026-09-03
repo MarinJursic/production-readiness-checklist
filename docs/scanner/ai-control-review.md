@@ -102,7 +102,7 @@ prc scan /path/to/project \
   --allow-remote-source-processing
 ```
 
-Open the `Detailed report:` path printed at the end. Find `PRC-02-001`. Its
+Open the path in the final `REPORT` section. Find `PRC-02-001`. Its
 normal scanner state is still present. The AI section separately shows:
 
 - its suggested result;
@@ -167,24 +167,36 @@ attest every internal subagent invocation, so those requested internal counts
 are a plan, not a proven execution fact.
 
 Before the first provider call, the terminal shows the exact number of controls,
-batches, cached batches, workers, and the private resume directory. Small
-reviews print every completed batch. Large reviews print bounded progress at
-percentage changes, including elapsed time and completed control counts, so
-thousands of calls do not flood the terminal.
+batches, cached batches, workers, requested reviewer assignments, and the
+private resume directory. During the run, a live bar shows completed batches
+and rules, exact active top-level provider jobs, requested inner reviewers for
+those batches, elapsed time, and a rough ETA. Provider events do not expose a
+trustworthy live state for every inner subagent, so the CLI does not present
+requested reviewers as confirmed running agents.
 
 Codex reviews use its JSONL event stream. When the installed Codex CLI reports
 usage on `turn.completed`, the scanner totals input, cached-input, output, and
-reasoning tokens for new batches. Claude JSON output provides an estimated cost;
+reasoning tokens for new batches. Usage therefore updates after a batch, not
+token by token. Claude JSON output provides an estimated cost;
 the scanner totals that estimate and labels it as an estimate rather than a
 bill. A nonzero Claude `--review-max-cost-usd` remains an enforced limit for
 each new batch, including subagent spend on supported Claude Code versions.
 Codex does not expose an equivalent hard dollar limit through this path.
 
-[OpenAI documents the Codex JSONL usage event](https://learn.chatgpt.com/docs/non-interactive-mode#make-output-machine-readable).
+[OpenAI documents the Codex JSONL usage event](https://developers.openai.com/codex/noninteractive#make-output-machine-readable).
 [Claude Code documents JSON cost estimates and their limits](https://code.claude.com/docs/en/headless#pipe-data-through-claude).
 Cached review files contain sealed advice, not old billing records, so a run
 that reuses cached batches does not invent or re-count their past tokens or
 cost. The final terminal summary says how many new batches supplied accounting.
+
+The final terminal view shows the eight highest-priority completed rule reviews
+with plain `WORK`, `PROOF`, `OKAY`, and `N/A?` labels. The HTML report always
+contains every review and its evidence. Add `--details` to a short full command
+to print every completed review in the terminal:
+
+```bash
+prc full codex --details
+```
 
 The scanner can require this orchestration in the sealed task and verify that
 one final result returns for every control. Current provider output does not
@@ -271,6 +283,7 @@ language, build system, size, boundaries, and conventions.
 | `--review-max-batches` | `1500` | Stop before the provider and before resume-state creation if the selected controls need more batches. |
 | `--review-max-duration` | `24h` | Cancel the whole review after this wall-clock time; completed sealed batches remain resumable. |
 | `--review-plan` / `prc full ... --plan` | off | Screen source and print exact work and limits without starting a provider or creating resume data. |
+| `--review-details` / `prc full ... --details` | off | Advanced `--review-details` expands AI reviews only. Short-command `--details` prints every local check and completed AI review. The HTML report always contains every result. |
 
 More workers can finish sooner but increase simultaneous cost and the chance of
 provider rate limits. More controls per call reduce top-level calls but make the
@@ -285,7 +298,7 @@ The run stops with an execution error if:
 
 - a secret-like value is found before remote review;
 - the provider is missing, changes during the run, times out, or exits badly;
-- the schema changes during the run;
+- the output schema is not Codex-compatible before launch or changes during the run;
 - output is too large, malformed, incomplete, reordered, duplicated, or cites
   a path or line outside the screened copy; or
 - a saved batch does not match its sealed task.

@@ -120,8 +120,10 @@ func TestApplyReviewsControlsWithoutChangingAuthoritativeDispositionAndResumes(t
 	}
 	if summary.TokenUsageBatches != 2 || summary.TokenUsage.InputTokens != 200 ||
 		summary.TokenUsage.CachedInputTokens != 80 || summary.TokenUsage.OutputTokens != 40 ||
-		len(progress) != 3 || progress[0].Phase != "prepared" ||
-		progress[2].CompletedBatches != 2 || progress[2].CompletedControls != 2 {
+		len(progress) < 5 || progress[0].Phase != "prepared" ||
+		progress[len(progress)-1].Phase != "batch_completed" ||
+		progress[len(progress)-1].CompletedBatches != 2 || progress[len(progress)-1].CompletedControls != 2 ||
+		progress[len(progress)-1].CompletedAgentSlots != 2 || progress[len(progress)-1].TotalAgentSlots != 2 {
 		t.Fatalf("usage or progress summary is incomplete: summary=%+v progress=%+v", summary, progress)
 	}
 	if reviewed.RunID == run.RunID || reviewed.ControlCatalog.AIReviewState != "complete" || reviewed.ControlCatalog.AIReviewedCount != 2 {
@@ -139,6 +141,7 @@ func TestApplyReviewsControlsWithoutChangingAuthoritativeDispositionAndResumes(t
 			t.Fatalf("review changed authority or was omitted: %+v", result)
 		}
 	}
+	progressBeforeResume := len(progress)
 	resumed, resumedSummary, err := Apply(context.Background(), run, options)
 	if err != nil {
 		t.Fatal(err)
@@ -146,8 +149,9 @@ func TestApplyReviewsControlsWithoutChangingAuthoritativeDispositionAndResumes(t
 	if runner.calls != 2 || resumedSummary.ReusedBatches != 2 || resumed.RunID != reviewed.RunID {
 		t.Fatalf("sealed cache was not reused: calls=%d summary=%+v", runner.calls, resumedSummary)
 	}
-	if resumedSummary.TokenUsageBatches != 0 || len(progress) != 4 ||
-		progress[3].Phase != "prepared" || progress[3].CompletedBatches != 2 {
+	if resumedSummary.TokenUsageBatches != 0 || len(progress) != progressBeforeResume+1 ||
+		progress[len(progress)-1].Phase != "prepared" || progress[len(progress)-1].CompletedBatches != 2 ||
+		progress[len(progress)-1].CompletedAgentSlots != 2 {
 		t.Fatalf("cached progress or accounting was misleading: summary=%+v progress=%+v", resumedSummary, progress)
 	}
 	entries, err := os.ReadDir(stateDirectory)
@@ -159,6 +163,65 @@ func TestApplyReviewsControlsWithoutChangingAuthoritativeDispositionAndResumes(t
 		if statErr != nil || info.Mode().Perm() != 0o600 {
 			t.Fatalf("cache mode=%v err=%v", info.Mode().Perm(), statErr)
 		}
+	}
+}
+
+func TestBundledSchemaIsCodexStructuredOutputCompatible(t *testing.T) {
+	data, err := os.ReadFile(filepath.Join("..", "..", "schemas", "control-review-output.schema.json"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	var schema any
+	if err := json.Unmarshal(data, &schema); err != nil {
+		t.Fatal(err)
+	}
+	if err := validateCodexOutputSchema(schema); err != nil {
+		t.Fatalf("bundled schema is not accepted by the local Codex compatibility check: %v", err)
+	}
+
+	for name, item := range map[string]struct {
+		mutate func(map[string]any)
+		want   string
+	}{
+		"const without type": {
+			mutate: func(root map[string]any) {
+				delete(root["properties"].(map[string]any)["schema_version"].(map[string]any), "type")
+			},
+			want: "const without an explicit type",
+		},
+		"unsupported uniqueItems": {
+			mutate: func(root map[string]any) {
+				root["properties"].(map[string]any)["reviews"].(map[string]any)["uniqueItems"] = true
+			},
+			want: "unsupported uniqueItems",
+		},
+	} {
+		t.Run(name, func(t *testing.T) {
+			var changed map[string]any
+			if err := json.Unmarshal(data, &changed); err != nil {
+				t.Fatal(err)
+			}
+			item.mutate(changed)
+			if err := validateCodexOutputSchema(changed); err == nil || !strings.Contains(err.Error(), item.want) {
+				t.Fatalf("schema regression was not rejected: %v", err)
+			}
+		})
+	}
+}
+
+func TestCodexProviderFailureSummaryExtractsSafeAPIReason(t *testing.T) {
+	event := `{"type":"error","message":"{\"error\":{\"code\":\"invalid_json_schema\",\"message\":\"Invalid schema for response_format: missing type.\"}}"}` + "\n"
+	summary := providerFailureSummary("codex", []byte(event))
+	if !strings.Contains(summary, "invalid_json_schema") || !strings.Contains(summary, "missing type") || strings.ContainsRune(summary, '\n') {
+		t.Fatalf("unexpected provider failure summary: %q", summary)
+	}
+	if summary := providerFailureSummary("claude", []byte(event)); summary != "" {
+		t.Fatalf("Codex JSONL was interpreted for another provider: %q", summary)
+	}
+	fakeKey := "sk-" + "proj-" + strings.Repeat("A", 28)
+	sensitive := `{"type":"error","message":"provider rejected ` + fakeKey + `"}` + "\n"
+	if summary := providerFailureSummary("codex", []byte(sensitive)); summary != "provider returned a sensitive diagnostic; message redacted" {
+		t.Fatalf("sensitive provider diagnostic was exposed: %q", summary)
 	}
 }
 

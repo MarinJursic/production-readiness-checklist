@@ -15,6 +15,7 @@ import (
 	"path/filepath"
 	"runtime"
 	"sort"
+	"strconv"
 	"strings"
 	"syscall"
 	"time"
@@ -579,6 +580,7 @@ func runScanAlias(name string, args []string, stdout, stderr io.Writer) (int, er
 			fmt.Fprintln(stdout, "Requests one primary subagent per rule and a skeptical review per batch; provider internals cannot be independently attested.")
 			fmt.Fprintln(stdout, "The provider name explicitly allows bounded, screened remote source processing.")
 			fmt.Fprintln(stdout, "Add --plan to inspect source and exact batch limits without starting the provider.")
+			fmt.Fprintln(stdout, "Add --details to print every local check and completed AI rule review; the HTML report always contains all of them.")
 			fmt.Fprintln(stdout, "Use prc scan --help for advanced review, report, and output options.")
 		case "verify":
 			fmt.Fprintln(stdout, "Usage: prc verify [project path] [scan options]")
@@ -2294,6 +2296,7 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 	mode := set.String("mode", engine.ExecutionModeInspect, "execution mode: inspect or verify-local")
 	format := set.String("format", "human", "human, json, markdown, html, sarif, or junit")
 	colorMode := set.String("color", "auto", "human output color: auto, always, or never")
+	details := set.Bool("details", false, "show every local check and completed AI rule review in human output")
 	reportPath := set.String("report", "", "write a detailed HTML report to this new file")
 	noReport := set.Bool("no-report", false, "do not create the default HTML report")
 	stateDirectory := set.String("state-dir", "", "optional directory for content-addressed evidence and run records")
@@ -2313,6 +2316,7 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 	reviewMaxBatches := set.Int("review-max-batches", 1500, "hard limit on provider batches for the complete review")
 	reviewMaxDuration := set.Duration("review-max-duration", 24*time.Hour, "total resumable AI review time limit")
 	reviewPlanOnly := set.Bool("review-plan", false, "screen source and print the exact AI work plan without starting a provider")
+	reviewDetails := set.Bool("review-details", false, "print every completed advisory rule review in the terminal")
 	reviewControls := repeatedStringFlag{}
 	set.Var(&reviewControls, "review-control", "review only this control ID for debugging; repeatable")
 	adapterManifests := repeatedStringFlag{}
@@ -2356,6 +2360,9 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 	if *format != "human" && flagWasSet(set, "color") {
 		return exitInternal, exitError(exitConfiguration, fmt.Errorf("--color applies only to human output"))
 	}
+	if *format != "human" && flagWasSet(set, "details") {
+		return exitInternal, exitError(exitConfiguration, fmt.Errorf("--details applies only to human output"))
+	}
 	if *exitPolicy != "profile" && *exitPolicy != "no-go" && *exitPolicy != "never" {
 		return exitInternal, exitError(exitConfiguration, fmt.Errorf("unsupported exit policy %q", *exitPolicy))
 	}
@@ -2378,7 +2385,7 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 	if *reviewProvider != "none" && *reviewProvider != "codex" && *reviewProvider != "claude" {
 		return exitInternal, exitError(exitConfiguration, fmt.Errorf("unsupported review provider %q", *reviewProvider))
 	}
-	reviewFlags := []string{"review-executable", "review-model", "review-effort", "review-depth", "review-state-dir", "allow-remote-source-processing", "review-batch-size", "review-workers", "review-timeout", "review-max-cost-usd", "review-max-batches", "review-max-duration", "review-plan", "review-control"}
+	reviewFlags := []string{"review-executable", "review-model", "review-effort", "review-depth", "review-state-dir", "allow-remote-source-processing", "review-batch-size", "review-workers", "review-timeout", "review-max-cost-usd", "review-max-batches", "review-max-duration", "review-plan", "review-details", "review-control"}
 	if *reviewProvider == "none" {
 		for _, name := range reviewFlags {
 			if flagWasSet(set, name) {
@@ -2635,8 +2642,6 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 		}
 		var reviewProgress func(controlreview.Progress)
 		if *format == "human" {
-			fmt.Fprintln(stdout, progressStyle.paint(ansiBlue,
-				"      Running the locked-down "+authenticationProviderTitle(*reviewProvider)+" advisory review; this can take a while..."))
 			reviewProgress = aiReviewProgressPrinter(stdout, progressStyle)
 		}
 		reviewOptions.Progress = reviewProgress
@@ -2673,7 +2678,11 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 	}
 	writtenReport := ""
 	if *format == "human" {
-		fmt.Fprintln(stdout, progressStyle.paint(ansiBlue, "[4/4] Writing the report..."))
+		finalStage := "[4/4] Preparing the final result..."
+		if *reportPath != "" || !*noReport {
+			finalStage = "[4/4] Writing the report..."
+		}
+		fmt.Fprintln(stdout, progressStyle.paint(ansiBlue, finalStage))
 		fmt.Fprintln(stdout)
 	}
 	if *reportPath != "" || *format == "human" && !*noReport {
@@ -2688,28 +2697,7 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 		}
 	} else if *format == "human" {
 		style := newTerminalStyle(*colorMode, stdout)
-		if reviewSummary.Provider != "" {
-			fmt.Fprintf(stdout, "AI review: %d controls reviewed by %s in %s mode; %d advisory failure candidates\n", reviewSummary.ReviewedControls, terminalText(reviewSummary.Provider), terminalText(reviewSummary.ReviewDepth), reviewSummary.AdvisoryFailures)
-			fmt.Fprintf(stdout, "AI batches: %d completed · %d reused · %s elapsed\n",
-				reviewSummary.CompletedBatches, reviewSummary.ReusedBatches, reviewSummary.Duration.Round(time.Millisecond))
-			if reviewSummary.TokenUsageBatches > 0 {
-				fmt.Fprintf(stdout, "AI token usage: %d input (%d cached) · %d output · %d reasoning · %d new batches reported usage\n",
-					reviewSummary.TokenUsage.InputTokens, reviewSummary.TokenUsage.CachedInputTokens,
-					reviewSummary.TokenUsage.OutputTokens, reviewSummary.TokenUsage.ReasoningOutputTokens,
-					reviewSummary.TokenUsageBatches)
-			} else if reviewSummary.Provider == "codex" && reviewSummary.CompletedBatches > reviewSummary.ReusedBatches {
-				fmt.Fprintln(stdout, "AI token usage: unavailable from the completed Codex batch events")
-			}
-			if reviewSummary.EstimatedCostBatches > 0 {
-				fmt.Fprintf(stdout, "AI estimated cost: $%.4f across %d new batches (provider estimate, not a bill)\n",
-					reviewSummary.EstimatedCostUSD, reviewSummary.EstimatedCostBatches)
-			}
-			if reviewSummary.MaxCostUSD > 0 {
-				fmt.Fprintf(stdout, "AI enforced limit: $%.4f per new Claude batch\n", reviewSummary.MaxCostUSD)
-			}
-			fmt.Fprintf(stdout, "AI review resume data: %s\n\n", terminalText(reviewSummary.StateDirectory))
-		}
-		printScanSummary(stdout, run, style, writtenReport)
+		printScanSummary(stdout, run, reviewSummary, style, writtenReport, *details, *details || *reviewDetails)
 	} else if err := report.Write(*format, stdout, run); err != nil {
 		return exitInternal, exitError(exitInternal, err)
 	}
@@ -2730,39 +2718,258 @@ func runScan(args []string, stdout, stderr io.Writer) (int, error) {
 func aiReviewProgressPrinter(output io.Writer, style terminalStyle) func(controlreview.Progress) {
 	lastCompleted := -1
 	lastPercent := -1
+	lastElapsedBucket := -1
+	liveLine := false
 	return func(progress controlreview.Progress) {
 		if progress.Phase == "prepared" {
-			fmt.Fprintf(output, "      AI plan: %d controls in %d batches · %s mode · %d cached · %d worker(s)\n",
-				progress.TotalControls, progress.TotalBatches, terminalText(progress.ReviewDepth), progress.ReusedBatches, progress.Workers)
-			if progress.MaxCostUSD > 0 {
-				fmt.Fprintf(output, "      Enforced limit: $%.4f per new Claude batch\n", progress.MaxCostUSD)
+			newBatches := max(progress.TotalBatches-progress.ReusedBatches, 0)
+			parallelJobs := min(progress.Workers, newBatches)
+			fmt.Fprintln(output, style.paint(ansiBlue, "      ╭─ AI REVIEW"))
+			fmt.Fprintf(output, "      │ %s · %s thinking · %s review\n",
+				style.paint(ansiCyan, authenticationProviderTitle(progress.Provider)),
+				terminalText(progress.ReasoningEffort), terminalText(progress.ReviewDepth))
+			jobPlan := "no new " + authenticationProviderTitle(progress.Provider) + " jobs"
+			if parallelJobs > 0 {
+				jobPlan = "up to " + countedNoun(parallelJobs, authenticationProviderTitle(progress.Provider)+" job", authenticationProviderTitle(progress.Provider)+" jobs")
 			}
-			fmt.Fprintf(output, "      Resume data: %s\n", terminalText(progress.StateDirectory))
+			fmt.Fprintf(output, "      │ %s · %s · %s\n",
+				countedNoun(progress.TotalControls, "rule", "rules"), countedNoun(progress.TotalBatches, "batch", "batches"), jobPlan)
+			fmt.Fprintf(output, "      │ %s will be reused\n", countedNoun(progress.ReusedBatches, "cached batch", "cached batches"))
+			if newBatches == 0 {
+				fmt.Fprintln(output, "      ╰─ All AI work is cached; the provider will not start.")
+			} else {
+				fmt.Fprintf(output, "      │ %s across this run\n", countedNoun(progress.TotalAgentSlots, "requested rule-review assignment", "requested rule-review assignments"))
+				if progress.MaxCostUSD > 0 {
+					fmt.Fprintf(output, "      │ Enforced limit: $%.4f per new Claude batch\n", progress.MaxCostUSD)
+				}
+				fmt.Fprintln(output, "      │ Inner-agent counts are requested work; exact state is not exposed.")
+				fmt.Fprintln(output, "      ╰─ Ctrl+C stops safely. Finished batches are kept for the next run.")
+			}
 			if progress.CompletedBatches == 0 {
 				return
 			}
 		}
-		if progress.TotalBatches == 0 || progress.CompletedBatches == lastCompleted {
+		if progress.TotalBatches == 0 {
 			return
 		}
 		percent := progress.CompletedBatches * 100 / progress.TotalBatches
-		if progress.Phase != "prepared" && progress.TotalBatches > 20 &&
-			progress.CompletedBatches != progress.TotalBatches && percent == lastPercent {
-			return
+		if !style.interactive {
+			elapsedBucket := int(progress.Elapsed / (15 * time.Second))
+			completedChanged := progress.CompletedBatches != lastCompleted
+			if progress.Phase == "running" && elapsedBucket == lastElapsedBucket {
+				return
+			}
+			if progress.Phase == "batch_started" && lastCompleted >= 0 {
+				return
+			}
+			if progress.Phase == "batch_completed" && progress.TotalBatches > 20 &&
+				progress.CompletedBatches != progress.TotalBatches && percent == lastPercent && elapsedBucket == lastElapsedBucket {
+				return
+			}
+			if !completedChanged && progress.Phase == "prepared" {
+				return
+			}
+			lastElapsedBucket = elapsedBucket
 		}
 		lastCompleted, lastPercent = progress.CompletedBatches, percent
-		line := fmt.Sprintf("      AI progress: %d%% · %d/%d batches · %d/%d controls · %s",
-			percent, progress.CompletedBatches, progress.TotalBatches,
-			progress.CompletedControls, progress.TotalControls, progress.Elapsed.Round(time.Second))
+		spinner := []string{"◐", "◓", "◑", "◒"}[int(progress.Elapsed/time.Second)%4]
+		if progress.CompletedBatches == progress.TotalBatches {
+			spinner = "✓"
+		} else if progress.Phase == "batch_failed" {
+			spinner = "!"
+		}
+		line := fmt.Sprintf("      %s %s %3d%%  %d/%d batches  %d/%d rules",
+			spinner, localCheckBar(percent, 10), percent, progress.CompletedBatches, progress.TotalBatches,
+			progress.CompletedControls, progress.TotalControls)
+		if progress.CompletedBatches < progress.TotalBatches {
+			line += fmt.Sprintf("  %d jobs  ≤%d requested", progress.ActiveBatches, progress.ActiveAgentSlots)
+		}
+		line += "  " + formatProgressDuration(progress.Elapsed)
+		if eta, ok := reviewETA(progress); ok {
+			line += "  ETA " + formatProgressDuration(eta)
+		}
 		if progress.TokenUsageBatches > 0 {
-			line += fmt.Sprintf(" · tokens %d input (%d cached), %d output, %d reasoning",
-				progress.TokenUsage.InputTokens, progress.TokenUsage.CachedInputTokens,
-				progress.TokenUsage.OutputTokens, progress.TokenUsage.ReasoningOutputTokens)
+			line += fmt.Sprintf("  tok %s in/%s out",
+				formatCompactCount(progress.TokenUsage.InputTokens),
+				formatCompactCount(progress.TokenUsage.OutputTokens))
 		}
 		if progress.EstimatedCostBatches > 0 {
-			line += fmt.Sprintf(" · est. cost $%.4f", progress.EstimatedCostUSD)
+			line += fmt.Sprintf("  est. $%.4f", progress.EstimatedCostUSD)
 		}
-		fmt.Fprintln(output, style.paint(ansiBlue, line))
+		colored := style.paint(ansiBlue, line)
+		if style.interactive {
+			fmt.Fprintf(output, "\r\x1b[2K%s", colored)
+			liveLine = true
+			if progress.CompletedBatches == progress.TotalBatches || progress.Phase == "batch_failed" {
+				fmt.Fprintln(output)
+				liveLine = false
+			}
+			return
+		}
+		if liveLine {
+			fmt.Fprintln(output)
+			liveLine = false
+		}
+		fmt.Fprintln(output, colored)
+	}
+}
+
+func reviewETA(progress controlreview.Progress) (time.Duration, bool) {
+	completed := progress.CompletedBatches - progress.ReusedBatches
+	remaining := progress.TotalBatches - progress.CompletedBatches
+	if completed < 1 || remaining < 1 || progress.Elapsed <= 0 {
+		return 0, false
+	}
+	return time.Duration(float64(progress.Elapsed) * float64(remaining) / float64(completed)), true
+}
+
+func formatProgressDuration(value time.Duration) string {
+	if value < 0 {
+		value = 0
+	}
+	value = value.Round(time.Second)
+	hours := int(value / time.Hour)
+	minutes := int((value % time.Hour) / time.Minute)
+	seconds := int((value % time.Minute) / time.Second)
+	if hours > 0 {
+		return fmt.Sprintf("%dh %02dm", hours, minutes)
+	}
+	if minutes > 0 {
+		return fmt.Sprintf("%dm %02ds", minutes, seconds)
+	}
+	return fmt.Sprintf("%ds", seconds)
+}
+
+func formatCompactCount(value int64) string {
+	switch {
+	case value >= 1_000_000_000:
+		return fmt.Sprintf("%.1fB", float64(value)/1_000_000_000)
+	case value >= 1_000_000:
+		return fmt.Sprintf("%.1fM", float64(value)/1_000_000)
+	case value >= 1_000:
+		return fmt.Sprintf("%.1fk", float64(value)/1_000)
+	default:
+		return strconv.FormatInt(value, 10)
+	}
+}
+
+func countedNoun(count int, singular, plural string) string {
+	label := plural
+	if count == 1 {
+		label = singular
+	}
+	return fmt.Sprintf("%d %s", count, label)
+}
+
+func printAIReviewResults(output io.Writer, run model.RunResult, summary controlreview.Summary, style terminalStyle, showAll bool) {
+	reviewed := make([]model.ControlResult, 0)
+	counts := map[string]int{}
+	for _, result := range run.ControlResults {
+		if result.AIReview == nil {
+			continue
+		}
+		reviewed = append(reviewed, result)
+		counts[result.AIReview.AssessmentCandidate]++
+	}
+	if len(reviewed) == 0 {
+		return
+	}
+	sort.SliceStable(reviewed, func(left, right int) bool {
+		leftReview, rightReview := reviewed[left].AIReview, reviewed[right].AIReview
+		if leftRank, rightRank := scanSeverityRank(leftReview.Priority), scanSeverityRank(rightReview.Priority); leftRank != rightRank {
+			return leftRank < rightRank
+		}
+		if leftRank, rightRank := aiCandidateRank(leftReview.AssessmentCandidate), aiCandidateRank(rightReview.AssessmentCandidate); leftRank != rightRank {
+			return leftRank < rightRank
+		}
+		return reviewed[left].ControlID < reviewed[right].ControlID
+	})
+
+	printTerminalSection(output, style, "AI REVIEW")
+	if summary.Provider != "" {
+		fmt.Fprintf(output, "  %s · %s review · %s · %s completed · %s cached · %s\n",
+			authenticationProviderTitle(summary.Provider), terminalText(summary.ReviewDepth),
+			countedNoun(summary.ReviewedControls, "rule", "rules"),
+			countedNoun(summary.CompletedBatches, "batch", "batches"),
+			countedNoun(summary.ReusedBatches, "batch", "batches"), formatProgressDuration(summary.Duration))
+	}
+	fmt.Fprintf(output, "  %s %d work · %s %d proof · %s %d okay · %s %d may not apply\n",
+		style.paint(ansiRed, "✗"), counts["advisory_fail_candidate"],
+		style.paint(ansiYellow, "?"), counts["needs_evidence"],
+		style.paint(ansiGreen, "✓"), counts["advisory_pass_candidate"],
+		style.paint(ansiBlue, "–"), counts["not_applicable_candidate"])
+	if summary.TokenUsageBatches > 0 {
+		fmt.Fprintf(output, "  Tokens  %s in (%s cached) · %s out · %s thinking\n",
+			formatCompactCount(summary.TokenUsage.InputTokens), formatCompactCount(summary.TokenUsage.CachedInputTokens),
+			formatCompactCount(summary.TokenUsage.OutputTokens), formatCompactCount(summary.TokenUsage.ReasoningOutputTokens))
+	} else if summary.Provider == "codex" && summary.CompletedBatches > summary.ReusedBatches {
+		fmt.Fprintln(output, "  Tokens  not reported by the completed Codex events")
+	}
+	if summary.EstimatedCostBatches > 0 {
+		fmt.Fprintf(output, "  Cost    $%.4f provider estimate · not a bill\n", summary.EstimatedCostUSD)
+	}
+	if summary.MaxCostUSD > 0 {
+		fmt.Fprintf(output, "  Limit   $%.4f for each new Claude batch\n", summary.MaxCostUSD)
+	}
+	fmt.Fprintln(output, "  AI advice only — it does not change verified pass or fail results.")
+
+	visible := len(reviewed)
+	if !showAll && visible > 8 {
+		visible = 8
+	}
+	fmt.Fprintln(output)
+	for _, result := range reviewed[:visible] {
+		review := result.AIReview
+		priority := strings.ToUpper(review.Priority)
+		if priority == "" || priority == "NONE" {
+			priority = "INFO"
+		}
+		fmt.Fprintf(output, "  %s  %-8s %s  %s\n",
+			aiCandidateLabel(review.AssessmentCandidate, style),
+			style.paint(terminalSeverityColor(review.Priority), priority),
+			terminalText(result.ControlID), terminalBrief(review.Advice, 96))
+	}
+	if hidden := len(reviewed) - visible; hidden > 0 {
+		fmt.Fprintf(output, "  + %d more — open the report or run again with --details.\n", hidden)
+	}
+	if showAll && summary.StateDirectory != "" {
+		fmt.Fprintf(output, "\n  Resume data  %s\n", terminalText(summary.StateDirectory))
+	}
+}
+
+func printTerminalSection(output io.Writer, style terminalStyle, title string) {
+	line := "── " + title + " " + strings.Repeat("─", max(2, 54-len(title)))
+	fmt.Fprintln(output)
+	fmt.Fprintln(output, style.paint(ansiBlue, line))
+}
+
+func aiCandidateLabel(candidate string, style terminalStyle) string {
+	switch candidate {
+	case "advisory_fail_candidate":
+		return style.paint(ansiRed, "✗ WORK  ")
+	case "needs_evidence":
+		return style.paint(ansiYellow, "? PROOF ")
+	case "advisory_pass_candidate":
+		return style.paint(ansiGreen, "✓ OKAY  ")
+	case "not_applicable_candidate":
+		return style.paint(ansiBlue, "– N/A?  ")
+	default:
+		return style.paint(ansiRed, "× ERROR ")
+	}
+}
+
+func aiCandidateRank(candidate string) int {
+	switch candidate {
+	case "advisory_fail_candidate":
+		return 0
+	case "needs_evidence":
+		return 1
+	case "not_applicable_candidate":
+		return 2
+	case "advisory_pass_candidate":
+		return 3
+	default:
+		return 4
 	}
 }
 
@@ -2804,40 +3011,35 @@ func reorderInterspersedFlags(set *flag.FlagSet, args []string) []string {
 	return append(flags, positionals...)
 }
 
-func printScanSummary(output io.Writer, run model.RunResult, style terminalStyle, writtenReport string) {
-	fmt.Fprintf(output, "Production Readiness Checklist %s\n\n", terminalText(version))
-	fmt.Fprintf(output, "Run: %s\n", terminalText(run.RunID))
-	fmt.Fprintf(output, "Profile: %s@%s\n", terminalText(run.Plan.ProfileID), terminalText(run.Plan.ProfileVersion))
-	fmt.Fprintf(output, "Target: %s (%s)\n", terminalText(run.Inventory.TargetName), terminalText(run.Inventory.Digest))
-	fmt.Fprintln(output, "Mode: scan only — no fixes and no project scripts")
-	fmt.Fprintf(output, "\nChecking %d deterministic assertions...\n\n", len(run.Results))
-	for _, result := range run.Results {
-		fmt.Fprintf(output, "  %s  %s  %s\n", assessmentLabel(result.Assessment, result.Execution, style),
-			terminalText(result.AssertionID), terminalText(result.Summary))
-	}
+func printScanSummary(
+	output io.Writer, run model.RunResult, reviewSummary controlreview.Summary,
+	style terminalStyle, writtenReport string, showLocalDetails, showReviewDetails bool,
+) {
 	local := report.SummarizeLocalChecks(run)
 	tone := terminalToneColor(local.Tone)
-	fmt.Fprintln(output)
-	fmt.Fprintln(output, style.paint(tone, "  ╭─ SCAN COMPLETE"))
-	fmt.Fprintf(output, "  │ %s\n", style.paint(tone, local.Label))
-	fmt.Fprintf(output, "  │ %s %d%% · %d/%d applicable checks passed\n",
-		style.paint(tone, localCheckBar(local.Percentage, 20)), local.Percentage, local.Passed, local.Applicable)
-	fmt.Fprintf(output, "  │ %d failed · %d unresolved · %d manual · %d not applicable\n",
-		local.Failed, local.Unresolved, local.Manual, local.NotApplicable)
+	fmt.Fprintln(output, style.paint(tone, "  ╭─ SCAN RESULT"))
+	fmt.Fprintf(output, "  │ %s · %d%%\n", style.paint(tone, local.Label), local.Percentage)
+	fmt.Fprintf(output, "  │ %s %d/%d applicable checks passed\n",
+		style.paint(tone, localCheckBar(local.Percentage, 16)), local.Passed, local.Applicable)
+	fmt.Fprintf(output, "  │ %d passed · %d failed · %d unresolved · %d manual · %d not needed\n",
+		local.Passed, local.Failed, local.Unresolved, local.Manual, local.NotApplicable)
 	fmt.Fprintf(output, "  ╰─ %s\n", local.Explanation)
-	counts := map[string]int{}
-	for _, result := range run.Results {
-		counts[result.Assessment]++
-	}
-	fmt.Fprintln(output, "\nNeeds attention")
 	attention := sortedScanAttention(run.Results)
-	if len(attention) == 0 {
-		fmt.Fprintf(output, "  %s No local checks need attention.\n", style.paint(ansiGreen, "✓"))
+	printTerminalSection(output, style, "LOCAL CHECKS")
+	if showLocalDetails {
+		fmt.Fprintf(output, "  Every local check · %d total\n\n", len(run.Results))
+		for _, result := range run.Results {
+			fmt.Fprintf(output, "  %s  %s  %s\n", assessmentLabel(result.Assessment, result.Execution, style),
+				terminalText(result.AssertionID), terminalBrief(result.Summary, 108))
+		}
+	} else if len(attention) == 0 {
+		fmt.Fprintf(output, "  %s All applicable local checks passed.\n", style.paint(ansiGreen, "✓"))
 	} else {
 		visible := len(attention)
 		if visible > 6 {
 			visible = 6
 		}
+		fmt.Fprintf(output, "  %s · showing the highest priority\n\n", countedNoun(len(attention), "check needs attention", "checks need attention"))
 		for _, result := range attention[:visible] {
 			severity := strings.ToUpper(result.Severity)
 			if severity == "" {
@@ -2849,38 +3051,42 @@ func printScanSummary(output io.Writer, run model.RunResult, style terminalStyle
 				terminalText(result.AssertionID), terminalBrief(result.Summary, 96))
 		}
 		if remaining := len(attention) - visible; remaining > 0 {
-			fmt.Fprintf(output, "  … %d more checks need attention; see the HTML report.\n", remaining)
+			fmt.Fprintf(output, "  + %d more — open the report or run again with --details.\n", remaining)
 		}
 	}
 	for _, result := range run.Results {
 		if result.AssertionID == "PRC-A-CORE-013" && result.Execution == "blocked" {
-			fmt.Fprintln(output, "  Next: run `prc verify` to add the pinned offline secret check; its reviewed image must already exist locally.")
+			fmt.Fprintln(output, "  Next  Run `prc verify` for the pinned secret check; its image must already be local.")
 			break
 		}
 	}
 
-	fmt.Fprintln(output, "\nCoverage")
-	fmt.Fprintf(output, "  Local checks     %d total · %d passed · %d need attention · %d did not apply\n",
-		len(run.Results), counts["pass"], len(attention), counts["not_applicable"])
+	printAIReviewResults(output, run, reviewSummary, style, showReviewDetails)
+
+	printTerminalSection(output, style, "COVERAGE")
+	fmt.Fprintf(output, "  Local checks  %d total · %d applicable · %d not needed\n",
+		len(run.Results), local.Applicable, local.NotApplicable)
 	if run.ControlCatalog != nil {
 		controlCounts := map[string]int{}
 		for _, result := range run.ControlResults {
 			controlCounts[result.Disposition]++
 		}
-		fmt.Fprintf(output, "  Full catalog     %d/%d included · %d need evidence or review\n",
+		fmt.Fprintf(output, "  Full catalog  %d/%d included · %d need evidence or review\n",
 			len(run.ControlResults), run.ControlCatalog.ControlCount, controlCounts["needs_review"]+controlCounts["blocked"])
 		if run.ControlCatalog.AIReviewedCount > 0 {
-			fmt.Fprintf(output, "  AI review        %d advisory reviews; no AI result creates a verified pass\n", run.ControlCatalog.AIReviewedCount)
+			fmt.Fprintf(output, "  AI review     %s · never counted as verified passes\n",
+				countedNoun(run.ControlCatalog.AIReviewedCount, "advisory result", "advisory results"))
 		}
 		if run.AIImprovementPlan != nil {
-			fmt.Fprintf(output, "  AI action plan   %d exact cause groups; estimates remain advisory\n", run.AIImprovementPlan.ItemCount)
+			fmt.Fprintf(output, "  Action plan   %s · estimates remain advisory\n",
+				countedNoun(run.AIImprovementPlan.ItemCount, "exact cause group", "exact cause groups"))
 		}
 		if len(run.AuthoritativeEvidence) > 0 {
 			entries := 0
 			for _, verification := range run.AuthoritativeEvidence {
 				entries += verification.EntryCount
 			}
-			fmt.Fprintf(output, "  Signed evidence  %d exact entries from %d dual-signed bundle(s)\n", entries, len(run.AuthoritativeEvidence))
+			fmt.Fprintf(output, "  Evidence      %d exact entries from %d signed bundle(s)\n", entries, len(run.AuthoritativeEvidence))
 		}
 	}
 	if excluded := inventoryFactCount(run.Inventory, "repository.user_exclusion"); excluded > 0 {
@@ -2891,19 +3097,19 @@ func printScanSummary(output io.Writer, run model.RunResult, style terminalStyle
 		fmt.Fprintf(output, "  Scope warning     %d reviewed .prcignore %s omitted and bound into this inventory\n", excluded, label)
 	}
 
-	fmt.Fprintln(output, "\nReport")
+	printTerminalSection(output, style, "REPORT")
 	if writtenReport == "" {
-		fmt.Fprintln(output, "  Detailed report: disabled")
+		fmt.Fprintln(output, "  Detailed report disabled")
 	} else {
 		reportLink, clickable := style.fileLink(writtenReport)
-		fmt.Fprintf(output, "  Detailed report: %s\n", reportLink)
+		fmt.Fprintf(output, "  %s\n", reportLink)
 		if clickable {
-			fmt.Fprintln(output, "  Click the report path to open remediation steps, evidence, category scores, and all controls.")
+			fmt.Fprintln(output, "  Click to open every check, finding, category score, and next step.")
 		} else {
-			fmt.Fprintln(output, "  Open it for remediation steps, evidence, category scores, and all controls.")
+			fmt.Fprintln(output, "  Open it for every check, finding, category score, and next step.")
 		}
 	}
-	fmt.Fprintln(output, "  Scan mode: report only; no fixes were applied. No project scripts were run.")
+	fmt.Fprintln(output, "  Read-only scan · no fixes applied · no project scripts run")
 	fmt.Fprintln(output)
 }
 

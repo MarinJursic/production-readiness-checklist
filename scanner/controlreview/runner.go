@@ -16,6 +16,7 @@ import (
 	"strconv"
 	"strings"
 	"time"
+	"unicode"
 
 	"github.com/MarinJursic/production-readiness-checklist/scanner/provider"
 )
@@ -66,6 +67,11 @@ func newCLIRunner(options Options) (*cliRunner, error) {
 	if err := json.Unmarshal(schemaData, &schema); err != nil {
 		return nil, fmt.Errorf("control-review output schema is invalid JSON: %w", err)
 	}
+	if options.Provider == "codex" {
+		if err := validateCodexOutputSchema(schema); err != nil {
+			return nil, fmt.Errorf("control-review output schema is not compatible with Codex structured output: %w", err)
+		}
+	}
 	return &cliRunner{
 		options: options, executable: executable,
 		exeDigest: digest, schemaPath: schemaPath, schemaData: schemaData, schemaHash: schemaHash,
@@ -108,6 +114,12 @@ func (runner *cliRunner) Run(ctx context.Context, task Task) (Output, Execution,
 		return Output{}, Execution{}, fmt.Errorf("AI review provider transcript exceeded its scanner-owned limit")
 	}
 	if runErr != nil {
+		if summary := providerFailureSummary(plan.Provider, stdout.data); summary != "" {
+			return Output{}, Execution{}, fmt.Errorf(
+				"AI review provider failed: %s; diagnostics digest %s: %w",
+				summary, digestBytes(append(append([]byte{}, stdout.data...), stderr.data...)), runErr,
+			)
+		}
 		return Output{}, Execution{}, fmt.Errorf("AI review provider process failed; diagnostics digest %s: %w", digestBytes(stderr.data), runErr)
 	}
 	currentExecutable, err := hashFile(plan.ExecutablePath, maximumExecutableBytes)
@@ -248,6 +260,142 @@ func boolInt(value bool) int {
 		return 1
 	}
 	return 0
+}
+
+func validateCodexOutputSchema(value any) error {
+	root, ok := value.(map[string]any)
+	if !ok {
+		return fmt.Errorf("root must be an object schema")
+	}
+	return validateCodexSchemaNode(root, "$")
+}
+
+func validateCodexSchemaNode(node map[string]any, path string) error {
+	if _, exists := node["uniqueItems"]; exists {
+		return fmt.Errorf("%s uses unsupported uniqueItems", path)
+	}
+	if _, exists := node["const"]; exists {
+		if _, typed := node["type"]; !typed {
+			return fmt.Errorf("%s uses const without an explicit type", path)
+		}
+	}
+	if _, exists := node["enum"]; exists {
+		if _, typed := node["type"]; !typed {
+			return fmt.Errorf("%s uses enum without an explicit type", path)
+		}
+	}
+	if propertiesValue, exists := node["properties"]; exists {
+		properties, ok := propertiesValue.(map[string]any)
+		if !ok {
+			return fmt.Errorf("%s properties must be an object", path)
+		}
+		if node["type"] != "object" {
+			return fmt.Errorf("%s properties require type object", path)
+		}
+		if additional, ok := node["additionalProperties"].(bool); !ok || additional {
+			return fmt.Errorf("%s must set additionalProperties to false", path)
+		}
+		requiredValues, ok := node["required"].([]any)
+		if !ok {
+			return fmt.Errorf("%s must require every property", path)
+		}
+		required := make(map[string]bool, len(requiredValues))
+		for _, value := range requiredValues {
+			name, ok := value.(string)
+			if !ok || name == "" {
+				return fmt.Errorf("%s has an invalid required property", path)
+			}
+			required[name] = true
+		}
+		for name, propertyValue := range properties {
+			if !required[name] {
+				return fmt.Errorf("%s.%s is not required", path, name)
+			}
+			property, ok := propertyValue.(map[string]any)
+			if !ok {
+				return fmt.Errorf("%s.%s is not an object schema", path, name)
+			}
+			if err := validateCodexSchemaNode(property, path+"."+name); err != nil {
+				return err
+			}
+		}
+	}
+	if itemsValue, exists := node["items"]; exists {
+		items, ok := itemsValue.(map[string]any)
+		if !ok {
+			return fmt.Errorf("%s items must be an object schema", path)
+		}
+		if err := validateCodexSchemaNode(items, path+"[]"); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func providerFailureSummary(providerName string, transcript []byte) string {
+	if providerName != "codex" {
+		return ""
+	}
+	for _, line := range bytes.Split(transcript, []byte{'\n'}) {
+		line = bytes.TrimSpace(line)
+		if len(line) == 0 {
+			continue
+		}
+		var event struct {
+			Type    string `json:"type"`
+			Message string `json:"message"`
+			Error   struct {
+				Message string `json:"message"`
+			} `json:"error"`
+		}
+		if json.Unmarshal(line, &event) != nil || event.Type != "error" && event.Type != "turn.failed" {
+			continue
+		}
+		message := event.Message
+		if message == "" {
+			message = event.Error.Message
+		}
+		if summary := codexAPIErrorSummary(message); summary != "" {
+			return summary
+		}
+	}
+	return ""
+}
+
+func codexAPIErrorSummary(message string) string {
+	var envelope struct {
+		Error struct {
+			Code    string `json:"code"`
+			Message string `json:"message"`
+		} `json:"error"`
+	}
+	if json.Unmarshal([]byte(message), &envelope) == nil && envelope.Error.Message != "" {
+		message = envelope.Error.Message
+		if envelope.Error.Code != "" {
+			message = envelope.Error.Code + ": " + message
+		}
+	}
+	if provider.ScreenRemoteContent("provider-diagnostic", []byte(message)) != nil {
+		return "provider returned a sensitive diagnostic; message redacted"
+	}
+	return boundedProviderDiagnostic(message, 600)
+}
+
+func boundedProviderDiagnostic(value string, limit int) string {
+	value = strings.Map(func(character rune) rune {
+		if unicode.IsControl(character) || character == '\u007f' || character >= '\u0080' && character <= '\u009f' ||
+			character == '\u061c' || character == '\u200e' || character == '\u200f' ||
+			character >= '\u202a' && character <= '\u202e' || character >= '\u2066' && character <= '\u2069' {
+			return ' '
+		}
+		return character
+	}, value)
+	value = strings.Join(strings.Fields(value), " ")
+	characters := []rune(value)
+	if len(characters) > limit {
+		value = strings.TrimSpace(string(characters[:limit])) + "…"
+	}
+	return value
 }
 
 type boundedBuffer struct {

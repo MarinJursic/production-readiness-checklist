@@ -84,8 +84,9 @@ func TestAIReviewProgressIsReadableAndThrottled(t *testing.T) {
 	var output bytes.Buffer
 	printProgress := aiReviewProgressPrinter(&output, newTerminalStyle("never", &output))
 	base := controlreview.Progress{
-		Phase: "prepared", Provider: "codex", StateDirectory: "/private/review-state",
-		Workers: 1, TotalBatches: 1256, TotalControls: 10042,
+		Phase: "prepared", Provider: "codex", ReasoningEffort: "xhigh", ReviewDepth: "deep",
+		StateDirectory: "/private/review-state", Workers: 4, TotalAgentSlots: 11298,
+		TotalBatches: 1256, TotalControls: 10042,
 	}
 	printProgress(base)
 	first := base
@@ -103,9 +104,10 @@ func TestAIReviewProgressIsReadableAndThrottled(t *testing.T) {
 	printProgress(complete)
 	text := output.String()
 	for _, expected := range []string{
-		"AI plan: 10042 controls in 1256 batches", "Resume data: /private/review-state",
-		"1/1256 batches", "tokens 100 input (40 cached), 20 output, 5 reasoning",
-		"100% · 1256/1256 batches · 10042/10042 controls",
+		"AI REVIEW", "Codex · xhigh thinking · deep review", "10042 rules · 1256 batches · up to 4 Codex jobs",
+		"11298 requested rule-review assignments", "exact state is not exposed",
+		"1/1256 batches", "tok 100 in/20 out",
+		"100%  1256/1256 batches  10042/10042 rules",
 	} {
 		if !strings.Contains(text, expected) {
 			t.Fatalf("progress output omitted %q:\n%s", expected, text)
@@ -140,8 +142,21 @@ func TestFriendlyRootHelpVersionAliasAndScanHelp(t *testing.T) {
 	stderr.Reset()
 	if code := run([]string{"scan", "--help"}, &stdout, &stderr); code != exitSuccess ||
 		!strings.Contains(stderr.String(), "Usage: prc scan [project path] [options]") ||
+		!strings.Contains(stderr.String(), "-details") ||
 		strings.Contains(stderr.String(), "PRC-EXIT") {
 		t.Fatalf("scan help exit=%d stdout=%q stderr=%q", code, stdout.String(), stderr.String())
+	}
+	stdout.Reset()
+	stderr.Reset()
+	if code := run([]string{"full", "--help"}, &stdout, &stderr); code != exitSuccess ||
+		!strings.Contains(stdout.String(), "every local check and completed AI rule review") {
+		t.Fatalf("full help exit=%d stdout=%q stderr=%q", code, stdout.String(), stderr.String())
+	}
+	stdout.Reset()
+	stderr.Reset()
+	if code := run([]string{"scan", "--format", "json", "--details", "--no-report"}, &stdout, &stderr); code != exitConfiguration ||
+		!strings.Contains(stderr.String(), "--details applies only to human output") {
+		t.Fatalf("machine details exit=%d stdout=%q stderr=%q", code, stdout.String(), stderr.String())
 	}
 }
 
@@ -1140,8 +1155,8 @@ func TestSimpleScanDiscoversCatalogCreatesPrivateReportAndNeverFixesTarget(t *te
 	if code != 0 || stderr.Len() != 0 {
 		t.Fatalf("exit=%d stdout=%s stderr=%s", code, stdout.String(), stderr.String())
 	}
-	if !strings.Contains(stdout.String(), "Scan mode: report only; no fixes were applied.") ||
-		!strings.Contains(stdout.String(), "Detailed report: ") ||
+	if !strings.Contains(stdout.String(), "Read-only scan · no fixes applied · no project scripts run") ||
+		!strings.Contains(stdout.String(), "── REPORT") ||
 		!strings.Contains(stdout.String(), "Project  "+target) {
 		t.Fatalf("simple scan output = %s", stdout.String())
 	}

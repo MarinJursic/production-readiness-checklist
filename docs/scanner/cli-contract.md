@@ -118,6 +118,17 @@ of 1,500 batches and a 24-hour whole-run deadline. `--review-max-batches` and
 `--review-max-duration` may change those bounds within their validated ranges.
 They do not promise a token or whole-run money ceiling.
 
+Human full-review output includes a live completion bar, completed batch and
+rule counts, exact active top-level provider jobs, requested inner-review
+slots, elapsed time, and a rough ETA. Codex token usage and Claude's reported
+cost update only after completed batches. Provider events do not expose a
+trustworthy live state for every inner subagent, so the CLI labels those counts
+as requested rather than confirmed running agents. The default terminal keeps
+only the six highest-priority local problems and eight highest-priority AI
+reviews. `--details` prints every local check and completed AI review; advanced
+`--review-details` expands only AI reviews. Every result remains in the HTML
+report either way.
+
 The optional root `.prcreviewignore` file narrows remote AI context only. Each
 line is an exact `relative/file | reviewed reason`; directories, globs,
 traversal, missing files, symlinks, and files already omitted by remote-review
